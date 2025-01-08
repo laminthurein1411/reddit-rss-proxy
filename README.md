@@ -1,6 +1,6 @@
 # Reddit RSS/ATOM Proxy
 
-![Logo](reddit_rss_small.png)
+![Logo](reddit_rss_2_small.png)
 
 This helps Feedly grab the latest RSS feeds for various subreddits from Old Reddit by acting as an Atom proxy.
 
