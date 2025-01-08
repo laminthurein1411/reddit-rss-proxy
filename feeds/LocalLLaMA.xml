@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-08T15:05:51+00:00</updated>
+  <updated>2025-01-08T15:24:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hvv39z</id>
-    <title>Phi-4 in insanely good at rephrasing the last message for multi-turn rag questions</title>
-    <updated>2025-01-07T16:20:26+00:00</updated>
-    <author>
-      <name>/u/LinkSea8324</name>
-      <uri>https://old.reddit.com/user/LinkSea8324</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Following this post from &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1fi1kex/multi_turn_conversation_and_rag/"&gt;few weeks ago&lt;/a&gt; when you do rag on the last posted message, you might need to recontextualize it, for example : &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Q :When was Jesus born ?&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;A : A long time ago !&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Q : What about his mother ?&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here &lt;code&gt;What about his mother ?&lt;/code&gt; has missing references.&lt;/p&gt; &lt;p&gt;This problem is more complex than it seems, because the reference is not always in the latest message, for example : &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Q : Who is Orano's Boss ?&lt;/li&gt; &lt;li&gt;A : it's Philippe Knoche&lt;/li&gt; &lt;li&gt;Q : Where did he go to school ?&lt;/li&gt; &lt;li&gt;A : Polytechnique and Ecole des Mines &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here we can have multiple tricky questions that requires good reasoning to be correctly rephrased : &lt;/p&gt; &lt;p&gt;&lt;code&gt;What about his wife ?&lt;/code&gt; -&amp;gt; Implies getting Philippe Knoche and school question to rephrase it&lt;/p&gt; &lt;p&gt;&lt;code&gt;Where is the HQ ?&lt;/code&gt; -&amp;gt; Implies the company HQ, not the two school &amp;quot;HQs&amp;quot;&lt;/p&gt; &lt;p&gt;Long story short, I tried multiple models, Qwen 2.5 7b, 14b Llama 3.1, Mistrals models , while Qwen is really good on the whole spectrum, it's not good enough at that and &lt;a href="https://huggingface.co/matteogeniaccio/phi-4"&gt;phi-4 &lt;del&gt;leaked&lt;/del&gt; model&lt;/a&gt; is FAR BEYOND every other model tested so far.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LinkSea8324"&gt; /u/LinkSea8324 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hvv39z/phi4_in_insanely_good_at_rephrasing_the_last/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hvv39z/phi4_in_insanely_good_at_rephrasing_the_last/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hvv39z/phi4_in_insanely_good_at_rephrasing_the_last/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-07T16:20:26+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hvwaj9</id>
     <title>Are you gonna wait for Digits or get the 5090?</title>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwm2dp/question_about_nvidias_nemotron_offerings/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-08T14:57:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hwmlz8</id>
+    <title>The pipeline I follow for open source LLM model finetuning</title>
+    <updated>2025-01-08T15:22:16+00:00</updated>
+    <author>
+      <name>/u/Ahmad401</name>
+      <uri>https://old.reddit.com/user/Ahmad401</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been working on local LLMs and training for quite some time. Based on my experience, its a two fold problem. Which can be addressed in three phases. &lt;/p&gt; &lt;p&gt;Phase-1: &lt;/p&gt; &lt;ol&gt; &lt;li&gt;Development of the full solution using any close source model like ChatGPT or Geminai. &lt;/li&gt; &lt;li&gt;Measuring the accuracy and storing the output for few samples (like 100)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;OUTCOME: Pipeline Development, Base Accuracy and rough annotations&lt;/p&gt; &lt;p&gt;Phase-2:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Correcting the rough annotations and creating a small dataset&lt;/li&gt; &lt;li&gt;Selecting a local LLM and finetuning that with the small dataset&lt;/li&gt; &lt;li&gt;Measuring the results accuracy and quality&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;OUTCOME: Streamlined prompts, dataset and model training flow&lt;/p&gt; &lt;p&gt;Phase-3:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Using this model and developing large scale psudo dataset&lt;/li&gt; &lt;li&gt;Correcting the psudo dataset and&lt;/li&gt; &lt;li&gt;Finetuning model with largescale data&lt;/li&gt; &lt;li&gt;Testing the accuracy and results quality. &lt;/li&gt; &lt;li&gt;Repeating until the desired results are met&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;OUTCOME: Suffisticated dataset, properly trained model&lt;/p&gt; &lt;p&gt;Phase-4: (OPTIONAL) Benchmarking with other closed source LLMs and preparing a benchmarking report. &lt;/p&gt; &lt;p&gt;Any thoughts on this flow. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ahmad401"&gt; /u/Ahmad401 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwmlz8/the_pipeline_i_follow_for_open_source_llm_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwmlz8/the_pipeline_i_follow_for_open_source_llm_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwmlz8/the_pipeline_i_follow_for_open_source_llm_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-08T15:22:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1hw3jzx</id>
@@ -242,19 +242,6 @@
     <published>2025-01-08T13:44:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hwlka6</id>
-    <title>I made the world's first AI meeting copilot, and open sourced it!</title>
-    <updated>2025-01-08T14:33:52+00:00</updated>
-    <author>
-      <name>/u/stealthanthrax</name>
-      <uri>https://old.reddit.com/user/stealthanthrax</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got tired of relying on clunky SaaS tools for meeting transcriptions that didn’t respect my privacy or workflow. Everyone I tried had issues:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Bots awkwardly join meetings and announce themselves.&lt;/li&gt; &lt;li&gt;Poor transcription quality.&lt;/li&gt; &lt;li&gt;No flexibility to tweak things to fit &lt;em&gt;my&lt;/em&gt; setup.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So I built &lt;strong&gt;Amurex&lt;/strong&gt;, a self-hosted solution that actually works:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Records meetings quietly, with no bots interrupting.&lt;/li&gt; &lt;li&gt;Delivers clean, accurate diarized transcripts right after the meeting.&lt;/li&gt; &lt;li&gt;Does late meeting summaries. i.e. a recap for a meeting if I am late&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;But most importantly, it has it is the only meeting tool in the world that can give&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time suggestions to stay engaged in boring meetings.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It’s completely open source and designed for self-hosting, so you control your data and your workflow. No subscriptions, and no vendor lock-in.&lt;/p&gt; &lt;p&gt;I would love to know what you all think of it. It only works on Google Meet for now but I will be scaling it to all the famous meeting providers.&lt;/p&gt; &lt;p&gt;Github - &lt;a href="https://github.com/thepersonalaicompany/amurex"&gt;https://github.com/thepersonalaicompany/amurex&lt;/a&gt;&lt;br /&gt; Website - &lt;a href="https://www.amurex.ai/"&gt;https://www.amurex.ai/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stealthanthrax"&gt; /u/stealthanthrax &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-08T14:33:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hwf5lv</id>
     <title>I Tested Aider vs Cline using DeepSeek 3: Codebase &gt;20k LOC...</title>
     <updated>2025-01-08T08:18:08+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwfblu/nvidia_open_model_license_nvidia_cosmos_is_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-08T08:29:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hwlka6</id>
+    <title>I made the world's first AI meeting copilot, and open sourced it!</title>
+    <updated>2025-01-08T14:33:52+00:00</updated>
+    <author>
+      <name>/u/stealthanthrax</name>
+      <uri>https://old.reddit.com/user/stealthanthrax</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got tired of relying on clunky SaaS tools for meeting transcriptions that didn’t respect my privacy or workflow. Everyone I tried had issues:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Bots awkwardly join meetings and announce themselves.&lt;/li&gt; &lt;li&gt;Poor transcription quality.&lt;/li&gt; &lt;li&gt;No flexibility to tweak things to fit &lt;em&gt;my&lt;/em&gt; setup.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So I built &lt;strong&gt;Amurex&lt;/strong&gt;, a self-hosted solution that actually works:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Records meetings quietly, with no bots interrupting.&lt;/li&gt; &lt;li&gt;Delivers clean, accurate diarized transcripts right after the meeting.&lt;/li&gt; &lt;li&gt;Does late meeting summaries. i.e. a recap for a meeting if I am late&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;But most importantly, it has it is the only meeting tool in the world that can give&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time suggestions to stay engaged in boring meetings.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It’s completely open source and designed for self-hosting, so you control your data and your workflow. No subscriptions, and no vendor lock-in.&lt;/p&gt; &lt;p&gt;I would love to know what you all think of it. It only works on Google Meet for now but I will be scaling it to all the famous meeting providers.&lt;/p&gt; &lt;p&gt;Github - &lt;a href="https://github.com/thepersonalaicompany/amurex"&gt;https://github.com/thepersonalaicompany/amurex&lt;/a&gt;&lt;br /&gt; Website - &lt;a href="https://www.amurex.ai/"&gt;https://www.amurex.ai/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stealthanthrax"&gt; /u/stealthanthrax &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwlka6/i_made_the_worlds_first_ai_meeting_copilot_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-08T14:33:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1hwjzw1</id>
