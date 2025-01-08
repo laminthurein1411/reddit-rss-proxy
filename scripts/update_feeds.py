@@ -136,16 +136,5 @@ def main():
         with open(xml_filename, "wb") as xml_file:
             xml_file.write(atom_feed_str)
 
-    # Stage and commit any changes
-    subprocess.run(["git", "add", "*.xml"], check=True)
-    # Only commit if there's a diff
-    diff_exitcode = subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode
-    if diff_exitcode == 1:
-        subprocess.run(["git", "commit", "-m", "Update Atom feeds"], check=True)
-        subprocess.run(["git", "push"], check=True)
-    else:
-        print("No changes to commit.")
-
-
 if __name__ == "__main__":
     main()

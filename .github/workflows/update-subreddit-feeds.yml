@@ -24,3 +24,10 @@ jobs:
       - name: Run update_feeds script
         run: |
           python scripts/update_feeds.py
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit --allow-empty -m "update Reddit feeds" -a
+          git push
