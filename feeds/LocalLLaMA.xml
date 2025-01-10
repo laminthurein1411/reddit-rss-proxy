@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T22:48:47+00:00</updated>
+  <updated>2025-01-10T23:05:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hybfdx</id>
-    <title>Best practices of retrieval/context maintenance for multi-turn RAG conversational systems</title>
-    <updated>2025-01-10T18:38:05+00:00</updated>
-    <author>
-      <name>/u/oposteriori</name>
-      <uri>https://old.reddit.com/user/oposteriori</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone!&lt;/p&gt; &lt;p&gt;I have a pretty specific question regarding modern best practices ononversational RAG: &lt;strong&gt;How do we utilize retrieved documents for previous user queries within the conversation and fuse it with context retrieved for the latest query?&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;My understanding of current approaches&lt;/h2&gt; &lt;p&gt;Conversational RAG consists of multiple Q/A turns where the user might ask many questions. Each question usually needs some sort of retrieval to be answered. Each time we take the query, transform it to reflect chat history, use it in our retrieval system, then get document ranking and fuse it with the chat history to answer the user latest query.&lt;/p&gt; &lt;p&gt;What I don't really understand here -&amp;gt; &lt;strong&gt;each answer relies on a set of documents retrieved for this particular query&lt;/strong&gt;. But from what I understand, &lt;strong&gt;most approaches to Conversational RAG do not include those documents in the chat history for the most part&lt;/strong&gt;. They keep the &lt;strong&gt;answer, keep the query and each time the model sees only the latest set of retrieved documents&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;Context maintenance idea and some potential issues&lt;/h2&gt; &lt;p&gt;I suspect it to work great for conversation around a fixed set of documents, but in many cases, responses produced by the model in previous turns of the conversation were generated based on sets of documents that do not necessarily overlap with the set of documents retrieved for the current query. And because those latest questions usually rely on query-answers introduced before and &lt;strong&gt;THEREFORE&lt;/strong&gt; on information present in sets of previously retrieved documents, shouldn't we somehow maintain a coherent continuously updated set of documents used for query answering that reflects the basis of previous answers while providing enough insight on new context specific to the latest query?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;In addition, this approach (with continuous maintanance of relevant set of documents) allows us to reduce the number of retrievals, for example, if previously retrieved context already contains enough of information to answer the follow-ups.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;I'm curious if the fact previous responses might not be grounded in current set of documents provide the basis for hallucinations?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Is this reasonable? Or this is just over complication of things which is not neccessary to provide reasonable performance in multi-turn RAG QA scenario?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I'm aware of the fact that in some specific scenarios (each follow-up question needs a lot of additional retireval) -&amp;gt; context needed to accurately reflect the basis for all answers might grow exponentially&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What is the optimal way of formatting such a conversation?&lt;/strong&gt; - Inserting context in a system prompt, for example, feels like the worst possible way, since as i said, previous unswers might not be even grounded in this freshed set of documents, which might be extrememly dangerous in terms of hallucinations. - Inserting context in the latest user turn is more reasonable, but in this case I dont understand how to approach fine-tuning dataset creation in this case: should we keep it multiturn and train only on the latest response? Or we should maintain more instruct-oriented task formulation, whre previous chat is ingested into a specific one-prompt format?&lt;/p&gt; &lt;p&gt;Unfortunately I was unable to find relevant literature on this. Any suggestions are welcomed!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oposteriori"&gt; /u/oposteriori &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T18:38:05+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hy8g61</id>
     <title>Llama3.3-70B takes 4+ hours to load at 4bit quantisation</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8g61/llama3370b_takes_4_hours_to_load_at_4bit/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T16:34:49+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hyg0f5</id>
-    <title>What is the best Text-to-speech model to run locally?</title>
-    <updated>2025-01-10T21:51:20+00:00</updated>
-    <author>
-      <name>/u/fewsats</name>
-      <uri>https://old.reddit.com/user/fewsats</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I think llama 4 will have multimodality (including audio input/output) but until then, what do people use for going from text to speech + how do they run it locally (Ollama does not support this kind of models does it?)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fewsats"&gt; /u/fewsats &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T21:51:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy7pxb</id>
@@ -97,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxyc92/ran_phi_4_on_my_laptop_and_then_asked_claude/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T06:31:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyg0f5</id>
+    <title>What is the best Text-to-speech model to run locally?</title>
+    <updated>2025-01-10T21:51:20+00:00</updated>
+    <author>
+      <name>/u/fewsats</name>
+      <uri>https://old.reddit.com/user/fewsats</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I think llama 4 will have multimodality (including audio input/output) but until then, what do people use for going from text to speech + how do they run it locally (Ollama does not support this kind of models does it?)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fewsats"&gt; /u/fewsats &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T21:51:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxjzol</id>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxwtpy/energy_efficiency_of_5090_is_slightly_worse_than/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T04:56:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyh9y3</id>
+    <title>DeepSeek-V3 imatrix quants by team mradermacher</title>
+    <updated>2025-01-10T22:47:05+00:00</updated>
+    <author>
+      <name>/u/oobabooga4</name>
+      <uri>https://old.reddit.com/user/oobabooga4</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt; &lt;img alt="DeepSeek-V3 imatrix quants by team mradermacher" src="https://external-preview.redd.it/m-G04wn3IB1jswcKbDUS8jJlKetCzX6HK1WoeuTcULY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059108de9020787af36b4f6d446ccbfc92d4ba7e" title="DeepSeek-V3 imatrix quants by team mradermacher" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oobabooga4"&gt; /u/oobabooga4 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mradermacher/DeepSeek-V3-i1-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T22:47:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy8ii4</id>
