@@ -2,62 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T22:05:45+00:00</updated>
+  <updated>2025-01-10T22:23:27+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1hxq364</id>
-    <title>RTX 4090 48GB - $4700 on eBay. Is it legit?</title>
-    <updated>2025-01-09T23:09:20+00:00</updated>
+    <id>t3_1hybfdx</id>
+    <title>Best practices of retrieval/context maintenance for multi-turn RAG conversational systems</title>
+    <updated>2025-01-10T18:38:05+00:00</updated>
     <author>
-      <name>/u/MLDataScientist</name>
-      <uri>https://old.reddit.com/user/MLDataScientist</uri>
+      <name>/u/oposteriori</name>
+      <uri>https://old.reddit.com/user/oposteriori</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxq364/rtx_4090_48gb_4700_on_ebay_is_it_legit/"&gt; &lt;img alt="RTX 4090 48GB - $4700 on eBay. Is it legit?" src="https://external-preview.redd.it/bMoZdiDXs9kYJMXSF2LPqzveI23P9l8lgEc9DnQ7Gg8.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9b4491fc39b4da2e3a9466072f17bde0fad92791" title="RTX 4090 48GB - $4700 on eBay. Is it legit?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just came across this listing on eBay: &lt;a href="https://www.ebay.com/itm/226494741895"&gt;https://www.ebay.com/itm/226494741895&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It is listing dual slot RTX 4090 48GB for $4700. I thought 48GB were not manufactured. Is it legit?&lt;/p&gt; &lt;p&gt;Screenshot here if it gets lost.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/0ggim0y1v1ce1.png?width=3302&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=51e939b07a3a8b3bf9e6cebd0e5fe4822664f985"&gt;RTX 4090 48GB for $4700!&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I found out in this post (&lt;a href="https://github.com/ggerganov/llama.cpp/discussions/9193"&gt;https://github.com/ggerganov/llama.cpp/discussions/9193&lt;/a&gt;) that one could buy it for ~$3500. I think RTX 4090 48GB would sell instantly if it was $3k.&lt;/p&gt; &lt;p&gt;Update: for me personally, It is better to buy 2x 5090 for the same price to get 64GB total VRAM.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MLDataScientist"&gt; /u/MLDataScientist &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxq364/rtx_4090_48gb_4700_on_ebay_is_it_legit/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxq364/rtx_4090_48gb_4700_on_ebay_is_it_legit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxq364/rtx_4090_48gb_4700_on_ebay_is_it_legit/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone!&lt;/p&gt; &lt;p&gt;I have a pretty specific question regarding modern best practices ononversational RAG: &lt;strong&gt;How do we utilize retrieved documents for previous user queries within the conversation and fuse it with context retrieved for the latest query?&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;My understanding of current approaches&lt;/h2&gt; &lt;p&gt;Conversational RAG consists of multiple Q/A turns where the user might ask many questions. Each question usually needs some sort of retrieval to be answered. Each time we take the query, transform it to reflect chat history, use it in our retrieval system, then get document ranking and fuse it with the chat history to answer the user latest query.&lt;/p&gt; &lt;p&gt;What I don't really understand here -&amp;gt; &lt;strong&gt;each answer relies on a set of documents retrieved for this particular query&lt;/strong&gt;. But from what I understand, &lt;strong&gt;most approaches to Conversational RAG do not include those documents in the chat history for the most part&lt;/strong&gt;. They keep the &lt;strong&gt;answer, keep the query and each time the model sees only the latest set of retrieved documents&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;Context maintenance idea and some potential issues&lt;/h2&gt; &lt;p&gt;I suspect it to work great for conversation around a fixed set of documents, but in many cases, responses produced by the model in previous turns of the conversation were generated based on sets of documents that do not necessarily overlap with the set of documents retrieved for the current query. And because those latest questions usually rely on query-answers introduced before and &lt;strong&gt;THEREFORE&lt;/strong&gt; on information present in sets of previously retrieved documents, shouldn't we somehow maintain a coherent continuously updated set of documents used for query answering that reflects the basis of previous answers while providing enough insight on new context specific to the latest query?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;In addition, this approach (with continuous maintanance of relevant set of documents) allows us to reduce the number of retrievals, for example, if previously retrieved context already contains enough of information to answer the follow-ups.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;I'm curious if the fact previous responses might not be grounded in current set of documents provide the basis for hallucinations?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Is this reasonable? Or this is just over complication of things which is not neccessary to provide reasonable performance in multi-turn RAG QA scenario?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I'm aware of the fact that in some specific scenarios (each follow-up question needs a lot of additional retireval) -&amp;gt; context needed to accurately reflect the basis for all answers might grow exponentially&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What is the optimal way of formatting such a conversation?&lt;/strong&gt; - Inserting context in a system prompt, for example, feels like the worst possible way, since as i said, previous unswers might not be even grounded in this freshed set of documents, which might be extrememly dangerous in terms of hallucinations. - Inserting context in the latest user turn is more reasonable, but in this case I dont understand how to approach fine-tuning dataset creation in this case: should we keep it multiturn and train only on the latest response? Or we should maintain more instruct-oriented task formulation, whre previous chat is ingested into a specific one-prompt format?&lt;/p&gt; &lt;p&gt;Unfortunately I was unable to find relevant literature on this. Any suggestions are welcomed!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oposteriori"&gt; /u/oposteriori &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-09T23:09:20+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hxpjey</id>
-    <title>Phi-3.5-MoE support merged into llama.cpp</title>
-    <updated>2025-01-09T22:45:29+00:00</updated>
-    <author>
-      <name>/u/skeeto</name>
-      <uri>https://old.reddit.com/user/skeeto</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxpjey/phi35moe_support_merged_into_llamacpp/"&gt; &lt;img alt="Phi-3.5-MoE support merged into llama.cpp" src="https://external-preview.redd.it/m74SPCYv3b2-Etc8gMsq03I8DcmHrV56tfhuw4oGpHM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e5aef7783c2f074e3447066229f618ac46fcef97" title="Phi-3.5-MoE support merged into llama.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/skeeto"&gt; /u/skeeto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggerganov/llama.cpp/pull/11003"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxpjey/phi35moe_support_merged_into_llamacpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxpjey/phi35moe_support_merged_into_llamacpp/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-09T22:45:29+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hy7pxb</id>
-    <title>4 days troubleshooting, finally fixed</title>
-    <updated>2025-01-10T16:03:19+00:00</updated>
-    <author>
-      <name>/u/darkmaniac7</name>
-      <uri>https://old.reddit.com/user/darkmaniac7</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - It was Risers. It's always risers.&lt;/p&gt; &lt;p&gt;Was conflicted on whether to assign question/help or funny or discussion as the flair.&lt;/p&gt; &lt;p&gt;Hey everyone first post here,&lt;/p&gt; &lt;p&gt;Just wanted to share my recent experience with troubleshooting issues when working with LLMs on my server. Hopefully, it will save someone else the headache I went through.&lt;/p&gt; &lt;p&gt;I started noticing instability when I added a third NVLink bridge to my server with 6x3090s. Large models (100B+ parameters, 6bpw) would crash the LLM server/VM after generating a few queries. The behavior was consistent: the model would load fine, I'd run a few queries, and then it would crash after the second or third query.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Journey&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I spent nearly a week troubleshooting, looking at every possible culprit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;NUMA Nodes:&lt;/strong&gt; I thought it might be a memory allocation issue across NUMA nodes. or the way ESXi dynamically assigns them, so I added a variable to force the cards on 1 numa node, or multiple.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;NVLink:&lt;/strong&gt; Given the new addition, I suspected NVLink might be causing issues. After removing the bridges the behavior was the same&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Drivers:&lt;/strong&gt; Updated or purged all NV/Cuda drivers to the latest versions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS &amp;amp; ESXi:&lt;/strong&gt; Checked for any OS-level or hypervisor-related problems. Rebuilt the OS from scratch or Veeam backup multiple times&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Heat:&lt;/strong&gt; Temps were fine as all 6 are watercooled with 2100mm of Radiator. max temps seen on inferencing was 40c. When trying to generate a Load, using Kali/hashcat max temp was 45c&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Backend Changes:&lt;/strong&gt; Tried using LM Studio or vLLM instead of TabbyAPI, like I usually use. Same behavior&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PCIe Seating:&lt;/strong&gt; Made sure all components were properly seated. Again &amp;amp; again.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;The Culprit&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;After exhausting all these possibilities, I finally realized the issue: the SLIMSAS 8i riser cables. These cables had been working fine for months but started acting up on PCIe 4.0 speeds. They were stable at PCIe 3.0 but occasionally unstable at PCIe 4.0.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Lesson&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Sometimes, the simplest things can be the root cause of complex problems. &lt;/p&gt; &lt;p&gt;I think the highbrow RCA would be to check the simple things first. But in this scenario I'm just going to say. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Check Risers first. It's always risers.&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkmaniac7"&gt; /u/darkmaniac7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:03:19+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hyc9gy</id>
-    <title>Recommendations for a dockerized fast whisper endpoint with Pascal GPU support?</title>
-    <updated>2025-01-10T19:12:26+00:00</updated>
-    <author>
-      <name>/u/DeltaSqueezer</name>
-      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for recommendations for a dockerized endpoint for fast whisper support that will run well on Pascal class GPUs (notably which have very poor FP16 performance). Whisper Large or Distil Whisper is fine.&lt;/p&gt; &lt;p&gt;I'm looking for latency optimized options (for low latency chat applications). Although one which can handle both low latency chat and batched inference would be welcome.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T19:12:26+00:00</published>
+    <published>2025-01-10T18:38:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy8g61</id>
@@ -73,6 +34,32 @@
     <published>2025-01-10T16:34:49+00:00</published>
   </entry>
   <entry>
+    <id>t3_1hyg0f5</id>
+    <title>What is the best Text-to-speech model to run locally?</title>
+    <updated>2025-01-10T21:51:20+00:00</updated>
+    <author>
+      <name>/u/fewsats</name>
+      <uri>https://old.reddit.com/user/fewsats</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I think llama 4 will have multimodality (including audio input/output) but until then, what do people use for going from text to speech + how do they run it locally (Ollama does not support this kind of models does it?)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fewsats"&gt; /u/fewsats &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyg0f5/what_is_the_best_texttospeech_model_to_run_locally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T21:51:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hy7pxb</id>
+    <title>4 days troubleshooting, finally fixed</title>
+    <updated>2025-01-10T16:03:19+00:00</updated>
+    <author>
+      <name>/u/darkmaniac7</name>
+      <uri>https://old.reddit.com/user/darkmaniac7</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - It was Risers. It's always risers.&lt;/p&gt; &lt;p&gt;Was conflicted on whether to assign question/help or funny or discussion as the flair.&lt;/p&gt; &lt;p&gt;Hey everyone first post here,&lt;/p&gt; &lt;p&gt;Just wanted to share my recent experience with troubleshooting issues when working with LLMs on my server. Hopefully, it will save someone else the headache I went through.&lt;/p&gt; &lt;p&gt;I started noticing instability when I added a third NVLink bridge to my server with 6x3090s. Large models (100B+ parameters, 6bpw) would crash the LLM server/VM after generating a few queries. The behavior was consistent: the model would load fine, I'd run a few queries, and then it would crash after the second or third query.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Journey&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I spent nearly a week troubleshooting, looking at every possible culprit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;NUMA Nodes:&lt;/strong&gt; I thought it might be a memory allocation issue across NUMA nodes. or the way ESXi dynamically assigns them, so I added a variable to force the cards on 1 numa node, or multiple.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;NVLink:&lt;/strong&gt; Given the new addition, I suspected NVLink might be causing issues. After removing the bridges the behavior was the same&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Drivers:&lt;/strong&gt; Updated or purged all NV/Cuda drivers to the latest versions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS &amp;amp; ESXi:&lt;/strong&gt; Checked for any OS-level or hypervisor-related problems. Rebuilt the OS from scratch or Veeam backup multiple times&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Heat:&lt;/strong&gt; Temps were fine as all 6 are watercooled with 2100mm of Radiator. max temps seen on inferencing was 40c. When trying to generate a Load, using Kali/hashcat max temp was 45c&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Backend Changes:&lt;/strong&gt; Tried using LM Studio or vLLM instead of TabbyAPI, like I usually use. Same behavior&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PCIe Seating:&lt;/strong&gt; Made sure all components were properly seated. Again &amp;amp; again.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;The Culprit&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;After exhausting all these possibilities, I finally realized the issue: the SLIMSAS 8i riser cables. These cables had been working fine for months but started acting up on PCIe 4.0 speeds. They were stable at PCIe 3.0 but occasionally unstable at PCIe 4.0.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Lesson&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Sometimes, the simplest things can be the root cause of complex problems. &lt;/p&gt; &lt;p&gt;I think the highbrow RCA would be to check the simple things first. But in this scenario I'm just going to say. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Check Risers first. It's always risers.&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkmaniac7"&gt; /u/darkmaniac7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T16:03:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hy8wa0</id>
     <title>Q on inference speed: int4 vs fp8; ada fp8 support</title>
     <updated>2025-01-10T16:53:20+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8wa0/q_on_inference_speed_int4_vs_fp8_ada_fp8_support/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T16:53:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyc9gy</id>
+    <title>Recommendations for a dockerized fast whisper endpoint with Pascal GPU support?</title>
+    <updated>2025-01-10T19:12:26+00:00</updated>
+    <author>
+      <name>/u/DeltaSqueezer</name>
+      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for recommendations for a dockerized endpoint for fast whisper support that will run well on Pascal class GPUs (notably which have very poor FP16 performance). Whisper Large or Distil Whisper is fine.&lt;/p&gt; &lt;p&gt;I'm looking for latency optimized options (for low latency chat applications). Although one which can handle both low latency chat and batched inference would be welcome.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T19:12:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxyc92</id>
@@ -255,19 +255,6 @@
     <published>2025-01-10T13:44:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hy91m1</id>
-    <title>0.5B Distilled QwQ, runnable on IPhone</title>
-    <updated>2025-01-10T16:59:44+00:00</updated>
-    <author>
-      <name>/u/Lord_of_Many_Memes</name>
-      <uri>https://old.reddit.com/user/Lord_of_Many_Memes</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt; &lt;img alt="0.5B Distilled QwQ, runnable on IPhone" src="https://external-preview.redd.it/hOvT7Zh2EDTGcuqajUYbM7IboIMuAwdCFsY0UWAS0pU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85274e9584cd8dc27f3835483f32b47ea48f28f0" title="0.5B Distilled QwQ, runnable on IPhone" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_of_Many_Memes"&gt; /u/Lord_of_Many_Memes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/spaces/kz919/Mini-QwQ"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:59:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hy5l18</id>
     <title>Local TTS models that can match ElevenLabs in terms of quality and consistency</title>
     <updated>2025-01-10T14:28:17+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy5l18/local_tts_models_that_can_match_elevenlabs_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T14:28:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hy91m1</id>
+    <title>0.5B Distilled QwQ, runnable on IPhone</title>
+    <updated>2025-01-10T16:59:44+00:00</updated>
+    <author>
+      <name>/u/Lord_of_Many_Memes</name>
+      <uri>https://old.reddit.com/user/Lord_of_Many_Memes</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt; &lt;img alt="0.5B Distilled QwQ, runnable on IPhone" src="https://external-preview.redd.it/hOvT7Zh2EDTGcuqajUYbM7IboIMuAwdCFsY0UWAS0pU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85274e9584cd8dc27f3835483f32b47ea48f28f0" title="0.5B Distilled QwQ, runnable on IPhone" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_of_Many_Memes"&gt; /u/Lord_of_Many_Memes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/spaces/kz919/Mini-QwQ"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T16:59:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1hyapzu</id>
