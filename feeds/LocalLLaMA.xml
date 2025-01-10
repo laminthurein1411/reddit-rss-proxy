@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T18:49:20+00:00</updated>
+  <updated>2025-01-10T19:05:36+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hy773u</id>
-    <title>Finetuning Llama 3.2 3B to support text classification only</title>
-    <updated>2025-01-10T15:41:05+00:00</updated>
-    <author>
-      <name>/u/funceval</name>
-      <uri>https://old.reddit.com/user/funceval</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;How can I do that? I am not going to use it for any kind of code generation. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/funceval"&gt; /u/funceval &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy773u/finetuning_llama_32_3b_to_support_text/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy773u/finetuning_llama_32_3b_to_support_text/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy773u/finetuning_llama_32_3b_to_support_text/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T15:41:05+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hy8enl</id>
     <title>Anyone using Git for active dataset collaboration? Here's what I learned</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy4ifb/how_to_build_your_own_llm_from_scratch_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T13:34:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hybfdx</id>
+    <title>Best practices of retrieval/context maintenance for multi-turn RAG conversational systems</title>
+    <updated>2025-01-10T18:38:05+00:00</updated>
+    <author>
+      <name>/u/oposteriori</name>
+      <uri>https://old.reddit.com/user/oposteriori</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone!&lt;/p&gt; &lt;p&gt;I have a pretty specific question regarding modern best practices ononversational RAG: &lt;strong&gt;How do we utilize retrieved documents for previous user queries within the conversation and fuse it with context retrieved for the latest query?&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;My understanding of current approaches&lt;/h2&gt; &lt;p&gt;Conversational RAG consists of multiple Q/A turns where the user might ask many questions. Each question usually needs some sort of retrieval to be answered. Each time we take the query, transform it to reflect chat history, use it in our retrieval system, then get document ranking and fuse it with the chat history to answer the user latest query.&lt;/p&gt; &lt;p&gt;What I don't really understand here -&amp;gt; &lt;strong&gt;each answer relies on a set of documents retrieved for this particular query&lt;/strong&gt;. But from what I understand, &lt;strong&gt;most approaches to Conversational RAG do not include those documents in the chat history for the most part&lt;/strong&gt;. They keep the &lt;strong&gt;answer, keep the query and each time the model sees only the latest set of retrieved documents&lt;/strong&gt;.&lt;/p&gt; &lt;h2&gt;Context maintenance idea and some potential issues&lt;/h2&gt; &lt;p&gt;I suspect it to work great for conversation around a fixed set of documents, but in many cases, responses produced by the model in previous turns of the conversation were generated based on sets of documents that do not necessarily overlap with the set of documents retrieved for the current query. And because those latest questions usually rely on query-answers introduced before and &lt;strong&gt;THEREFORE&lt;/strong&gt; on information present in sets of previously retrieved documents, shouldn't we somehow maintain a coherent continuously updated set of documents used for query answering that reflects the basis of previous answers while providing enough insight on new context specific to the latest query?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;In addition, this approach (with continuous maintanance of relevant set of documents) allows us to reduce the number of retrievals, for example, if previously retrieved context already contains enough of information to answer the follow-ups.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;I'm curious if the fact previous responses might not be grounded in current set of documents provide the basis for hallucinations?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Is this reasonable? Or this is just over complication of things which is not neccessary to provide reasonable performance in multi-turn RAG QA scenario?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I'm aware of the fact that in some specific scenarios (each follow-up question needs a lot of additional retireval) -&amp;gt; context needed to accurately reflect the basis for all answers might grow exponentially&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What is the optimal way of formatting such a conversation?&lt;/strong&gt; - Inserting context in a system prompt, for example, feels like the worst possible way, since as i said, previous unswers might not be even grounded in this freshed set of documents, which might be extrememly dangerous in terms of hallucinations. - Inserting context in the latest user turn is more reasonable, but in this case I dont understand how to approach fine-tuning dataset creation in this case: should we keep it multiturn and train only on the latest response? Or we should maintain more instruct-oriented task formulation, whre previous chat is ingested into a specific one-prompt format?&lt;/p&gt; &lt;p&gt;Unfortunately I was unable to find relevant literature on this. Any suggestions are welcomed!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oposteriori"&gt; /u/oposteriori &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hybfdx/best_practices_of_retrievalcontext_maintenance/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T18:38:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy8g61</id>
@@ -138,19 +138,6 @@
     <published>2025-01-10T12:54:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hy91m1</id>
-    <title>0.5B Distilled QwQ, runnable on IPhone</title>
-    <updated>2025-01-10T16:59:44+00:00</updated>
-    <author>
-      <name>/u/Lord_of_Many_Memes</name>
-      <uri>https://old.reddit.com/user/Lord_of_Many_Memes</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt; &lt;img alt="0.5B Distilled QwQ, runnable on IPhone" src="https://external-preview.redd.it/hOvT7Zh2EDTGcuqajUYbM7IboIMuAwdCFsY0UWAS0pU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85274e9584cd8dc27f3835483f32b47ea48f28f0" title="0.5B Distilled QwQ, runnable on IPhone" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_of_Many_Memes"&gt; /u/Lord_of_Many_Memes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/spaces/kz919/Mini-QwQ"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:59:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hxyc92</id>
     <title>Ran Phi 4 on my laptop and then asked Claude Sonnet to compare itself. Interesting answers</title>
     <updated>2025-01-10T06:31:18+00:00</updated>
@@ -229,19 +216,6 @@
     <published>2025-01-10T02:57:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hy8ehf</id>
-    <title>Does anyone know how to replicate this setup for coding ?</title>
-    <updated>2025-01-10T16:32:48+00:00</updated>
-    <author>
-      <name>/u/Alive-Tax3189</name>
-      <uri>https://old.reddit.com/user/Alive-Tax3189</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"&gt; &lt;img alt="Does anyone know how to replicate this setup for coding ?" src="https://external-preview.redd.it/enU0ZnVheGwxN2NlMZs7egYfaDsCtkR_AYCrnVuq-88BdYMxPb_V_Fpy742y.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=311e897110b819f7974eee9811f460d255b45faf" title="Does anyone know how to replicate this setup for coding ?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Alive-Tax3189"&gt; /u/Alive-Tax3189 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/wz5qfaxl17ce1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:32:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hxwtpy</id>
     <title>Energy efficiency of 5090 is slightly worse than 4090</title>
     <updated>2025-01-10T04:56:48+00:00</updated>
@@ -255,17 +229,30 @@
     <published>2025-01-10T04:56:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hyapzu</id>
-    <title>Phi-4 Finetuning - now with &gt;128K context length + Bug Fix Details</title>
-    <updated>2025-01-10T18:09:05+00:00</updated>
+    <id>t3_1hy91m1</id>
+    <title>0.5B Distilled QwQ, runnable on IPhone</title>
+    <updated>2025-01-10T16:59:44+00:00</updated>
     <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
+      <name>/u/Lord_of_Many_Memes</name>
+      <uri>https://old.reddit.com/user/Lord_of_Many_Memes</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt; &lt;img alt="Phi-4 Finetuning - now with &amp;gt;128K context length + Bug Fix Details" src="https://external-preview.redd.it/GToYANeKQHKhFdKJjLK03Emv1ylZ0l8jeD1iuQJ8-dE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57fbf9c89972d5c31e3bd2d3354696be4e8d5b9d" title="Phi-4 Finetuning - now with &amp;gt;128K context length + Bug Fix Details" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys! You can now fine-tune Phi-4 with &amp;gt;128K context lengths using &lt;a href="https://github.com/unslothai/unsloth/"&gt;Unsloth&lt;/a&gt;! That's 12x longer than Hugging Face + FA2’s 11K on a 48GB GPU.&lt;/p&gt; &lt;p&gt;Phi-4 Finetuning Colab: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4-Conversational.ipynb"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4-Conversational.ipynb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We also previously announced bug fixes for Phi-4 and so we’ll reveal the details.&lt;/p&gt; &lt;p&gt;But, before we do, some of you were curious if our fixes actually worked? Yes! Our fixed Phi-4 uploads show clear performance gains, with even better scores than Microsoft's original uploads on the &lt;a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/?search=phi-4"&gt;Open LLM Leaderboard&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/d8hew26e06ce1.png?width=2366&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=173c23feacc625566271470839fe7a5e25eb860e"&gt;https://preview.redd.it/d8hew26e06ce1.png?width=2366&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=173c23feacc625566271470839fe7a5e25eb860e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Some of you even tested it to show greatly improved results in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Example 1: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1hwzmqc/comment/m665h08/"&gt;Multiple-choice tasks&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qx50pkq706ce1.png?width=1579&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=437da2cabdbf98ef5a8b8cbdc5592907a20e2316"&gt;https://preview.redd.it/qx50pkq706ce1.png?width=1579&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=437da2cabdbf98ef5a8b8cbdc5592907a20e2316&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Example 2: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1hwzmqc/comment/m65wr3e/"&gt;ASCII art generation&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ircz0pnc06ce1.png?width=1433&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=16c770a0fd58a469af3b98216844447845b98ada"&gt;https://preview.redd.it/ircz0pnc06ce1.png?width=1433&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=16c770a0fd58a469af3b98216844447845b98ada&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Bug Fix Details&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Tokenizer Fix: Phi-4 incorrectly uses &amp;lt;|endoftext|&amp;gt; as EOS instead of &amp;lt;|im_end|&amp;gt;.&lt;/li&gt; &lt;li&gt;Finetuning Fix: Use a proper padding token (e.g., &amp;lt;|dummy_87|&amp;gt;).&lt;/li&gt; &lt;li&gt;Chat Template Fix: Avoid adding an assistant prompt unless specified to prevent serving issues.&lt;/li&gt; &lt;li&gt;More in-depth in our blog: &lt;a href="https://unsloth.ai/blog/phi4"&gt;https://unsloth.ai/blog/phi4&lt;/a&gt; or &lt;a href="https://twitter.com/danielhanchen/status/1877781452818968615"&gt;tweet&lt;/a&gt;&lt;/li&gt; &lt;/ol&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Phi-4 Uploads (with our bug fixes)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-GGUF"&gt;GGUFs&lt;/a&gt; including 2, 3, 4, 5, 6, 8, 16-bit&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-unsloth-bnb-4bit"&gt;Unsloth Dynamic 4-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4"&gt;Original 16-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;For all other model uploads, see &lt;a href="https://docs.unsloth.ai/get-started/all-our-models"&gt;our docs&lt;/a&gt;&lt;br /&gt; I know this post was a bit long, but I hope it was informative and please ask any questions!! :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt; &lt;img alt="0.5B Distilled QwQ, runnable on IPhone" src="https://external-preview.redd.it/hOvT7Zh2EDTGcuqajUYbM7IboIMuAwdCFsY0UWAS0pU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85274e9584cd8dc27f3835483f32b47ea48f28f0" title="0.5B Distilled QwQ, runnable on IPhone" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_of_Many_Memes"&gt; /u/Lord_of_Many_Memes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/spaces/kz919/Mini-QwQ"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy91m1/05b_distilled_qwq_runnable_on_iphone/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T18:09:05+00:00</published>
+    <published>2025-01-10T16:59:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hy8ehf</id>
+    <title>Does anyone know how to replicate this setup for coding ?</title>
+    <updated>2025-01-10T16:32:48+00:00</updated>
+    <author>
+      <name>/u/Alive-Tax3189</name>
+      <uri>https://old.reddit.com/user/Alive-Tax3189</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"&gt; &lt;img alt="Does anyone know how to replicate this setup for coding ?" src="https://external-preview.redd.it/enU0ZnVheGwxN2NlMZs7egYfaDsCtkR_AYCrnVuq-88BdYMxPb_V_Fpy742y.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=311e897110b819f7974eee9811f460d255b45faf" title="Does anyone know how to replicate this setup for coding ?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Alive-Tax3189"&gt; /u/Alive-Tax3189 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/wz5qfaxl17ce1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ehf/does_anyone_know_how_to_replicate_this_setup_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T16:32:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxm0ep</id>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxm0ep/anyone_want_the_script_to_run_moondream_2bs_new/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-09T20:12:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyapzu</id>
+    <title>Phi-4 Finetuning - now with &gt;128K context length + Bug Fix Details</title>
+    <updated>2025-01-10T18:09:05+00:00</updated>
+    <author>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt; &lt;img alt="Phi-4 Finetuning - now with &amp;gt;128K context length + Bug Fix Details" src="https://external-preview.redd.it/GToYANeKQHKhFdKJjLK03Emv1ylZ0l8jeD1iuQJ8-dE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57fbf9c89972d5c31e3bd2d3354696be4e8d5b9d" title="Phi-4 Finetuning - now with &amp;gt;128K context length + Bug Fix Details" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys! You can now fine-tune Phi-4 with &amp;gt;128K context lengths using &lt;a href="https://github.com/unslothai/unsloth/"&gt;Unsloth&lt;/a&gt;! That's 12x longer than Hugging Face + FA2’s 11K on a 48GB GPU.&lt;/p&gt; &lt;p&gt;Phi-4 Finetuning Colab: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4-Conversational.ipynb"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4-Conversational.ipynb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We also previously announced bug fixes for Phi-4 and so we’ll reveal the details.&lt;/p&gt; &lt;p&gt;But, before we do, some of you were curious if our fixes actually worked? Yes! Our fixed Phi-4 uploads show clear performance gains, with even better scores than Microsoft's original uploads on the &lt;a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/?search=phi-4"&gt;Open LLM Leaderboard&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/d8hew26e06ce1.png?width=2366&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=173c23feacc625566271470839fe7a5e25eb860e"&gt;https://preview.redd.it/d8hew26e06ce1.png?width=2366&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=173c23feacc625566271470839fe7a5e25eb860e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Some of you even tested it to show greatly improved results in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Example 1: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1hwzmqc/comment/m665h08/"&gt;Multiple-choice tasks&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qx50pkq706ce1.png?width=1579&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=437da2cabdbf98ef5a8b8cbdc5592907a20e2316"&gt;https://preview.redd.it/qx50pkq706ce1.png?width=1579&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=437da2cabdbf98ef5a8b8cbdc5592907a20e2316&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Example 2: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1hwzmqc/comment/m65wr3e/"&gt;ASCII art generation&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ircz0pnc06ce1.png?width=1433&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=16c770a0fd58a469af3b98216844447845b98ada"&gt;https://preview.redd.it/ircz0pnc06ce1.png?width=1433&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=16c770a0fd58a469af3b98216844447845b98ada&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Bug Fix Details&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Tokenizer Fix: Phi-4 incorrectly uses &amp;lt;|endoftext|&amp;gt; as EOS instead of &amp;lt;|im_end|&amp;gt;.&lt;/li&gt; &lt;li&gt;Finetuning Fix: Use a proper padding token (e.g., &amp;lt;|dummy_87|&amp;gt;).&lt;/li&gt; &lt;li&gt;Chat Template Fix: Avoid adding an assistant prompt unless specified to prevent serving issues.&lt;/li&gt; &lt;li&gt;More in-depth in our blog: &lt;a href="https://unsloth.ai/blog/phi4"&gt;https://unsloth.ai/blog/phi4&lt;/a&gt; or &lt;a href="https://twitter.com/danielhanchen/status/1877781452818968615"&gt;tweet&lt;/a&gt;&lt;/li&gt; &lt;/ol&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Phi-4 Uploads (with our bug fixes)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-GGUF"&gt;GGUFs&lt;/a&gt; including 2, 3, 4, 5, 6, 8, 16-bit&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-unsloth-bnb-4bit"&gt;Unsloth Dynamic 4-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4"&gt;Original 16-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;For all other model uploads, see &lt;a href="https://docs.unsloth.ai/get-started/all-our-models"&gt;our docs&lt;/a&gt;&lt;br /&gt; I know this post was a bit long, but I hope it was informative and please ask any questions!! :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyapzu/phi4_finetuning_now_with_128k_context_length_bug/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T18:09:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy5l18</id>
