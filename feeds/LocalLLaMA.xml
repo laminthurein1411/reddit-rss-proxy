@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T23:34:19+00:00</updated>
+  <updated>2025-01-10T23:48:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8g61/llama3370b_takes_4_hours_to_load_at_4bit/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T16:34:49+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hy7pxb</id>
-    <title>4 days troubleshooting, finally fixed</title>
-    <updated>2025-01-10T16:03:19+00:00</updated>
-    <author>
-      <name>/u/darkmaniac7</name>
-      <uri>https://old.reddit.com/user/darkmaniac7</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - It was Risers. It's always risers.&lt;/p&gt; &lt;p&gt;Was conflicted on whether to assign question/help or funny or discussion as the flair.&lt;/p&gt; &lt;p&gt;Hey everyone first post here,&lt;/p&gt; &lt;p&gt;Just wanted to share my recent experience with troubleshooting issues when working with LLMs on my server. Hopefully, it will save someone else the headache I went through.&lt;/p&gt; &lt;p&gt;I started noticing instability when I added a third NVLink bridge to my server with 6x3090s. Large models (100B+ parameters, 6bpw) would crash the LLM server/VM after generating a few queries. The behavior was consistent: the model would load fine, I'd run a few queries, and then it would crash after the second or third query.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Journey&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I spent nearly a week troubleshooting, looking at every possible culprit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;NUMA Nodes:&lt;/strong&gt; I thought it might be a memory allocation issue across NUMA nodes. or the way ESXi dynamically assigns them, so I added a variable to force the cards on 1 numa node, or multiple.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;NVLink:&lt;/strong&gt; Given the new addition, I suspected NVLink might be causing issues. After removing the bridges the behavior was the same&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Drivers:&lt;/strong&gt; Updated or purged all NV/Cuda drivers to the latest versions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS &amp;amp; ESXi:&lt;/strong&gt; Checked for any OS-level or hypervisor-related problems. Rebuilt the OS from scratch or Veeam backup multiple times&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Heat:&lt;/strong&gt; Temps were fine as all 6 are watercooled with 2100mm of Radiator. max temps seen on inferencing was 40c. When trying to generate a Load, using Kali/hashcat max temp was 45c&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Backend Changes:&lt;/strong&gt; Tried using LM Studio or vLLM instead of TabbyAPI, like I usually use. Same behavior&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PCIe Seating:&lt;/strong&gt; Made sure all components were properly seated. Again &amp;amp; again.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;The Culprit&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;After exhausting all these possibilities, I finally realized the issue: the SLIMSAS 8i riser cables. These cables had been working fine for months but started acting up on PCIe 4.0 speeds. They were stable at PCIe 3.0 but occasionally unstable at PCIe 4.0.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Lesson&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Sometimes, the simplest things can be the root cause of complex problems. &lt;/p&gt; &lt;p&gt;I think the highbrow RCA would be to check the simple things first. But in this scenario I'm just going to say. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Check Risers first. It's always risers.&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkmaniac7"&gt; /u/darkmaniac7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7pxb/4_days_troubleshooting_finally_fixed/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:03:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy8wa0</id>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T19:12:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyi24a</id>
+    <title>Help With Chunking a PDF Textbook for GraphRAG Applications</title>
+    <updated>2025-01-10T23:22:31+00:00</updated>
+    <author>
+      <name>/u/GapElectrical8507</name>
+      <uri>https://old.reddit.com/user/GapElectrical8507</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi,&lt;/p&gt; &lt;p&gt;I'm building a project where we're trying to create a physics course based off a knowledge graph database we're building. I've found a couple open source physics textbooks which I'm trying to essentially extract concepts, definitions, and equations out of to put in a knowledge graph that maps relationships between concepts, equations, and definitions. &lt;/p&gt; &lt;p&gt;However, I'm not sure how to get started on chunking the PDF to extract relevant information because it's a massive PDF, and because there's images, tables, and examples that are used throughout the textbook content when I'm just trying to extract concepts, definitions, and derivations of equations out of the PDF. Any help would be appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GapElectrical8507"&gt; /u/GapElectrical8507 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyi24a/help_with_chunking_a_pdf_textbook_for_graphrag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyi24a/help_with_chunking_a_pdf_textbook_for_graphrag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyi24a/help_with_chunking_a_pdf_textbook_for_graphrag/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T23:22:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxyc92</id>
@@ -164,19 +164,6 @@
     <published>2025-01-10T04:56:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hyh9y3</id>
-    <title>DeepSeek-V3 imatrix quants by team mradermacher</title>
-    <updated>2025-01-10T22:47:05+00:00</updated>
-    <author>
-      <name>/u/oobabooga4</name>
-      <uri>https://old.reddit.com/user/oobabooga4</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt; &lt;img alt="DeepSeek-V3 imatrix quants by team mradermacher" src="https://external-preview.redd.it/m-G04wn3IB1jswcKbDUS8jJlKetCzX6HK1WoeuTcULY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059108de9020787af36b4f6d446ccbfc92d4ba7e" title="DeepSeek-V3 imatrix quants by team mradermacher" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oobabooga4"&gt; /u/oobabooga4 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mradermacher/DeepSeek-V3-i1-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T22:47:05+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hy8ii4</id>
     <title>freeact: A Lightweight Library for Code-Action Based Agents</title>
     <updated>2025-01-10T16:37:39+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyeblk/o3mini_coming_soon/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T20:38:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyh9y3</id>
+    <title>DeepSeek-V3 imatrix quants by team mradermacher</title>
+    <updated>2025-01-10T22:47:05+00:00</updated>
+    <author>
+      <name>/u/oobabooga4</name>
+      <uri>https://old.reddit.com/user/oobabooga4</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt; &lt;img alt="DeepSeek-V3 imatrix quants by team mradermacher" src="https://external-preview.redd.it/m-G04wn3IB1jswcKbDUS8jJlKetCzX6HK1WoeuTcULY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059108de9020787af36b4f6d446ccbfc92d4ba7e" title="DeepSeek-V3 imatrix quants by team mradermacher" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oobabooga4"&gt; /u/oobabooga4 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mradermacher/DeepSeek-V3-i1-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyh9y3/deepseekv3_imatrix_quants_by_team_mradermacher/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T22:47:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hyf1pf</id>
