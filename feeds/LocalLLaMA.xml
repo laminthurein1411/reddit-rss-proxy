@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T04:36:43+00:00</updated>
+  <updated>2025-01-10T04:48:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hwzmqc</id>
-    <title>Phi-4 Llamafied + 4 Bug Fixes + GGUFs, Dynamic 4bit Quants</title>
-    <updated>2025-01-09T00:20:50+00:00</updated>
-    <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwzmqc/phi4_llamafied_4_bug_fixes_ggufs_dynamic_4bit/"&gt; &lt;img alt="Phi-4 Llamafied + 4 Bug Fixes + GGUFs, Dynamic 4bit Quants" src="https://b.thumbs.redditmedia.com/0aD2C0A02Gg08d6G5AgWeGQyp6FZmThRfyFVw15avlQ.jpg" title="Phi-4 Llamafied + 4 Bug Fixes + GGUFs, Dynamic 4bit Quants" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; ! I've uploaded &lt;strong&gt;fixed versions&lt;/strong&gt; of &lt;a href="https://unsloth.ai/blog/phi4"&gt;Phi-4&lt;/a&gt;, including GGUF + 4-bit + 16-bit versions on HuggingFace!&lt;/p&gt; &lt;p&gt;We’ve fixed over &lt;strong&gt;4 bugs (3 major ones)&lt;/strong&gt; in Phi-4, mainly related to tokenizers and chat templates which affected inference and finetuning workloads. If you were experiencing poor results, we recommend trying our GGUF upload. A detailed post on the fixes will be released tomorrow.&lt;/p&gt; &lt;p&gt;We also &lt;strong&gt;Llamafied&lt;/strong&gt; the model meaning it should work out of the box with every framework including &lt;a href="https://github.com/unslothai/unsloth"&gt;Unsloth&lt;/a&gt;. Fine-tuning is &lt;strong&gt;2x faster, uses 70% VRAM&lt;/strong&gt; &amp;amp; has 9x longer context lengths with Unsloth.&lt;/p&gt; &lt;p&gt;View all Phi-4 versions with our bug fixes: &lt;a href="https://huggingface.co/collections/unsloth/phi-4-all-versions-677eecf93784e61afe762afa"&gt;https://huggingface.co/collections/unsloth/phi-4-all-versions-677eecf93784e61afe762afa&lt;/a&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Phi-4 Uploads (with our bug fixes)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-GGUF"&gt;GGUFs&lt;/a&gt; including 2, 3, 4, 5, 6, 8, 16-bit&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-unsloth-bnb-4bit"&gt;Unsloth Dynamic 4-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4-bnb-4bit"&gt;4-bit Bnb&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/phi-4"&gt;Original 16-bit&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;I uploaded Q2_K_L quants which works well as well - they are Q2_K quants, but leaves the embedding as Q4 and lm_head as Q6 - this should increase accuracy by a bit!&lt;/p&gt; &lt;p&gt;To use Phi-4 in llama.cpp, do:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama.cpp/llama-cli --model unsloth/phi-4-GGUF/phi-4-Q2_K_L.gguf --prompt '&amp;lt;|im_start|&amp;gt;user&amp;lt;|im_sep|&amp;gt;Provide all combinations of a 5 bit binary number.&amp;lt;|im_end|&amp;gt;&amp;lt;|im_start|&amp;gt;assistant&amp;lt;|im_sep|&amp;gt;' --threads 16 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Which will produce:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;A 5-bit binary number consists of 5 positions, each of which can be either 0 or 1. Therefore, there are \(2^5 = 32\) possible combinations. Here they are, listed in ascending order: 1. 00000 2. 00001 3. 00010 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I also uploaded &lt;strong&gt;Dynamic 4bit quants&lt;/strong&gt; which don't quantize every layer to 4bit, and leaves some in 16bit - by using only an extra 1GB of VRAM, you get superior accuracy, especially for finetuning! - Head over to &lt;a href="https://github.com/unslothai/unsloth"&gt;https://github.com/unslothai/unsloth&lt;/a&gt; to finetune LLMs and Vision models 2x faster and use 70% less VRAM!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/74tja0m83vbe1.png?width=1000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=99a09dc6e9ad8c1d8e8e19ad519ccaaabebde3a8"&gt;Dynamic 4bit quants leave some layers as 16bit and not 4bit&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwzmqc/phi4_llamafied_4_bug_fixes_ggufs_dynamic_4bit/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hwzmqc/phi4_llamafied_4_bug_fixes_ggufs_dynamic_4bit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hwzmqc/phi4_llamafied_4_bug_fixes_ggufs_dynamic_4bit/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-09T00:20:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hx6sjc</id>
-    <title>Weirdly good finetune - QwQ-LCoT-7B-Instruct</title>
-    <updated>2025-01-09T06:33:12+00:00</updated>
-    <author>
-      <name>/u/1ncehost</name>
-      <uri>https://old.reddit.com/user/1ncehost</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use a lot of complex, large-context coding prompts that are high on the difficulty scale using &lt;a href="https://github.com/curvedinf/dir-assistant"&gt;https://github.com/curvedinf/dir-assistant&lt;/a&gt; . I've been using APIs for a number of months since prices have come down, but I just did a round of tests in the 7B-14B range. I found this tune randomly while browsing huggingface and it has a whole 304 downloads, but damn is it good. Its consistently outperforming newer 32B models, and older 70B models in my tests. I don't know what the secret is here, but I just wanted to pass this along. I test a LOT of models, and this one is weirdly good for coding.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/prithivMLmods/QwQ-LCoT-7B-Instruct"&gt;https://huggingface.co/prithivMLmods/QwQ-LCoT-7B-Instruct&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/bartowski/QwQ-LCoT-7B-Instruct-GGUF"&gt;https://huggingface.co/bartowski/QwQ-LCoT-7B-Instruct-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1ncehost"&gt; /u/1ncehost &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hx6sjc/weirdly_good_finetune_qwqlcot7binstruct/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hx6sjc/weirdly_good_finetune_qwqlcot7binstruct/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hx6sjc/weirdly_good_finetune_qwqlcot7binstruct/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-09T06:33:12+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hxl5ze</id>
     <title>Thoughts on using Ampere Altra for running LLMs locally?</title>
@@ -73,6 +47,19 @@
     <published>2025-01-09T19:47:06+00:00</published>
   </entry>
   <entry>
+    <id>t3_1hxv8rh</id>
+    <title>Anyone interested in a SF meetup to live eval LLMs?</title>
+    <updated>2025-01-10T03:25:30+00:00</updated>
+    <author>
+      <name>/u/rm-rf-rm</name>
+      <uri>https://old.reddit.com/user/rm-rf-rm</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Do a few hours of evals over coffee. Maybe come up with a eval Q&amp;amp;A set, run across SOTA local models, across quantizations.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rm-rf-rm"&gt; /u/rm-rf-rm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxv8rh/anyone_interested_in_a_sf_meetup_to_live_eval_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxv8rh/anyone_interested_in_a_sf_meetup_to_live_eval_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxv8rh/anyone_interested_in_a_sf_meetup_to_live_eval_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T03:25:30+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hxp4ts</id>
     <title>Dir-assistant 1.2.0 release announcement</title>
     <updated>2025-01-09T22:27:36+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxp4ts/dirassistant_120_release_announcement/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-09T22:27:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hxvcfz</id>
+    <title>AWQ on native INT4 and FP8</title>
+    <updated>2025-01-10T03:31:04+00:00</updated>
+    <author>
+      <name>/u/val_in_tech</name>
+      <uri>https://old.reddit.com/user/val_in_tech</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've had fast quantized INT4 inferance with AWQ for awhile now. Runs faster everywhere. &lt;/p&gt; &lt;p&gt;4090 suppports native FP8, now 5090 INT4. &lt;/p&gt; &lt;p&gt;Are those cards expected to run inferance much much faster than 3090 and older generations once the whole underlying software stack gets optimized?&lt;/p&gt; &lt;p&gt;Or is it the usual ~20% boost per generation in real life situation? &lt;/p&gt; &lt;p&gt;Context - I see people talk that software is yet to be optimized for FP8 and INT4 so we haven't seen the boost that's possible. So curious if we're sitting on some sort of huge speed up in inferance about to happen or no not really. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/val_in_tech"&gt; /u/val_in_tech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxvcfz/awq_on_native_int4_and_fp8/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hxvcfz/awq_on_native_int4_and_fp8/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxvcfz/awq_on_native_int4_and_fp8/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T03:31:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxe2cy</id>
