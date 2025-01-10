@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-10T19:34:09+00:00</updated>
+  <updated>2025-01-10T19:48:53+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hy8enl</id>
-    <title>Anyone using Git for active dataset collaboration? Here's what I learned</title>
-    <updated>2025-01-10T16:33:01+00:00</updated>
-    <author>
-      <name>/u/davernow</name>
-      <uri>https://old.reddit.com/user/davernow</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is anyone using Git as their primary store for training/eval data? I see it used everywhere for sharing dataset files, but mostly just for sharing large files -- not for rapid, line-by-line collaboration like how we use Git with code. From my experience, when teams need to iterate they usually end up moving data into other tools (labeling tools, databases, etc).&lt;/p&gt; &lt;p&gt;I'm convinced Git should be perfect for datasets (just like it is for code), but it's missing some tooling to make that work well.&lt;/p&gt; &lt;p&gt;I've been working through a bunch of gotchas while building a Git-friendly data format for my dataset management tool (here's the &lt;a href="https://github.com/Kiln-AI/Kiln"&gt;project on Github&lt;/a&gt; if you're interested). I think I've solved the main issues, and included details below. Would love to hear if anyone else has tackled similar problems or has ideas to share.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Making a Git-friendly file format&lt;/strong&gt;: The main issue is that giant dataset files aren't ideal for teams using Git; they cause constant merge conflicts whenever multiple people work simultaneously. Instead, I created a Git-friendly file format:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Use lots of small files, making it rare for multiple people to need the same file at once, reducing conflicts (basically each row is now it's own file)&lt;/li&gt; &lt;li&gt;Use predominantly append-only operations, further reducing the chance of conflicts&lt;/li&gt; &lt;li&gt;Format files in a way that's easy to diff/merge when conflicts do happen (formatted, ordered JSON)&lt;/li&gt; &lt;li&gt;Generate unique random IDs for new items to avoid conflicts/collisions, letting many people work concurrently on the same project, even offline&lt;/li&gt; &lt;li&gt;Enforce a good schema: everyone uses the same format for prompts/ratings/samples, with validators that prevent badly formatted data from getting into the dataset. We even validate the LLM inputs/outputs using JSON Schema (optional, depending on your task definition)&lt;/li&gt; &lt;li&gt;Use nested folders to make paths really descriptive and easy to understand in PRs: Projects &amp;gt; Task &amp;gt; (Runs | Prompts | Fine-tunes | Splits)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Working with non-technical teammates&lt;/strong&gt;: Not everyone knows Git, and that's totally fine! Folks like subject matter experts, labelers, and QA still have a lot of value to add. With this design it's easy to share a branch through any shared drive (Dropbox, iCloud, OneDrive). These teammates can rate/label/eval/add-data through our friendly app with a super simple installer (no terminal, no Docker). Right now someone technical needs to sync the shared branch back to main on occasion, but I might add auto-sync if enough people want it.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I've built with this so far&lt;/strong&gt;: Having clean, structured data opened up some pretty cool possibilities. I added synthetic data generation (basically letting the LLM riff on our existing examples to create training data). It worked surprisingly well. I also added fine-tuning support - you can use Unsloth locally or the cloud. A little strangely, my favorite feature is that it automatically builds better prompts as you use it. The multi-shot prompts pick up highly rated examples and keep getting better.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Integrating with other tools (pandas/polars)&lt;/strong&gt;: Most DS tutorials/tools assume you're working with big files (CSV, JSONL), but our format splits things into lots of small files. To make this work we have 1) a simple SDK that helps load everything into whatever data structure you need (pandas DataFrames, etc.), and 2) some examples showing how to directly load the JSON files directly.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What's left&lt;/strong&gt;: I think a solid eval framework should be next on the list. Would love to hear what eval systems you all are using and what's working well!&lt;/p&gt; &lt;p&gt;Let me know if you have any tips or workflows I haven't thought of! Super curious how others are handling their datasets in Git. Feel free to drop feature requests on &lt;a href="https://github.com/Kiln-AI/Kiln"&gt;Github&lt;/a&gt; too if that's more your style.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davernow"&gt; /u/davernow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8enl/anyone_using_git_for_active_dataset_collaboration/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8enl/anyone_using_git_for_active_dataset_collaboration/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8enl/anyone_using_git_for_active_dataset_collaboration/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:33:01+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hxz5de</id>
     <title>Has anyone tried Virgo-72B yet?</title>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8wa0/q_on_inference_speed_int4_vs_fp8_ada_fp8_support/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T16:53:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hyc9gy</id>
+    <title>Recommendations for a dockerized fast whisper endpoint with Pascal GPU support?</title>
+    <updated>2025-01-10T19:12:26+00:00</updated>
+    <author>
+      <name>/u/DeltaSqueezer</name>
+      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for recommendations for a dockerized endpoint for fast whisper support that will run well on Pascal class GPUs (notably which have very poor FP16 performance). Whisper Large or Distil Whisper is fine.&lt;/p&gt; &lt;p&gt;I'm looking for latency optimized options (for low latency chat applications). Although one which can handle both low latency chat and batched inference would be welcome.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyc9gy/recommendations_for_a_dockerized_fast_whisper/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T19:12:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1hxq364</id>
@@ -151,19 +151,6 @@
     <published>2025-01-10T06:31:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hy7m1y</id>
-    <title>Which Local LLMs know best when to speak and when to STFU in group chat agent-to-agent conversations?</title>
-    <updated>2025-01-10T15:58:52+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So we’re experimenting with Autogen AG2 group chat right now and it’s kind of going horribly with regards to agent-to-agent conversations, like really bad. So far Llams3.3 seems to be the absolute worst at group chats, sometimes it just flat out refuses to provide any response like it’s the shy kid in school and gets timed out. Nemotron seems better but still not great. &lt;/p&gt; &lt;p&gt;My question is, which models have you found are good at multi-LLM multi-turn conversations in group chat scenarios?&lt;/p&gt; &lt;p&gt;We have tried Llama3.3, Nemotron, and Qwen2.5-72b mainly so far and are about to try a range of small to midsize models (Phi-4, Dolphin3, Exaone, and Falcon). &lt;/p&gt; &lt;p&gt;Our roles are Project Manager, Engineer, Researcher, Writer, and Critic. Also, we are exploring both group chat and swarm methods of communication between agents. &lt;/p&gt; &lt;p&gt;I would love to hear from anyone who has already “plowed this ground” before. Any insights you have are appreciated. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T15:58:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hxjzol</id>
     <title>New Moondream 2B vision language model release</title>
     <updated>2025-01-09T18:48:07+00:00</updated>
@@ -190,6 +177,19 @@
     <published>2025-01-10T14:48:48+00:00</published>
   </entry>
   <entry>
+    <id>t3_1hy7m1y</id>
+    <title>Which Local LLMs know best when to speak and when to STFU in group chat agent-to-agent conversations?</title>
+    <updated>2025-01-10T15:58:52+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So we’re experimenting with Autogen AG2 group chat right now and it’s kind of going horribly with regards to agent-to-agent conversations, like really bad. So far Llams3.3 seems to be the absolute worst at group chats, sometimes it just flat out refuses to provide any response like it’s the shy kid in school and gets timed out. Nemotron seems better but still not great. &lt;/p&gt; &lt;p&gt;My question is, which models have you found are good at multi-LLM multi-turn conversations in group chat scenarios?&lt;/p&gt; &lt;p&gt;We have tried Llama3.3, Nemotron, and Qwen2.5-72b mainly so far and are about to try a range of small to midsize models (Phi-4, Dolphin3, Exaone, and Falcon). &lt;/p&gt; &lt;p&gt;Our roles are Project Manager, Engineer, Researcher, Writer, and Critic. Also, we are exploring both group chat and swarm methods of communication between agents. &lt;/p&gt; &lt;p&gt;I would love to hear from anyone who has already “plowed this ground” before. Any insights you have are appreciated. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy7m1y/which_local_llms_know_best_when_to_speak_and_when/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T15:58:52+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hxuprn</id>
     <title>Project Digits: How NVIDIA's $3,000 AI Supercomputer Could Democratize Local AI Development | Caveman Press</title>
     <updated>2025-01-10T02:57:55+00:00</updated>
@@ -203,19 +203,6 @@
     <published>2025-01-10T02:57:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hy8ii4</id>
-    <title>freeact: A Lightweight Library for Code-Action Based Agents</title>
-    <updated>2025-01-10T16:37:39+00:00</updated>
-    <author>
-      <name>/u/krasserm</name>
-      <uri>https://old.reddit.com/user/krasserm</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt; &lt;img alt="freeact: A Lightweight Library for Code-Action Based Agents" src="https://external-preview.redd.it/LzADpwKw8mUc5MZG38ssaaBnDyw6elEdCSjne9inj0g.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=19b672149c7219c55d19b0e99adc3b4bbb5b158c" title="freeact: A Lightweight Library for Code-Action Based Agents" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello! We just released &lt;a href="https://github.com/gradion-ai/freeact"&gt;freeact&lt;/a&gt;, a lightweight agent library that empowers language models to act as autonomous agents through executable &lt;strong&gt;code actions&lt;/strong&gt;. By enabling agents to express their actions directly in code rather than through constrained formats like JSON, freeact provides a flexible and powerful approach to solving complex, open-ended problems that require dynamic solution paths.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Supports dynamic installation and utilization of Python packages at runtime&lt;/li&gt; &lt;li&gt;Agents learn from feedback and store successful code actions as reusable skills in long-term memory&lt;/li&gt; &lt;li&gt;Skills can be interactively developed and refined in collaboration with freeact agents&lt;/li&gt; &lt;li&gt;Agents compose skills and any other Python modules to build increasingly sophisticated capabilities&lt;/li&gt; &lt;li&gt;Code actions are executed in &lt;a href="https://github.com/gradion-ai/ipybox"&gt;ipybox&lt;/a&gt;, a secure Docker + IPython sandbox that runs locally or remotely&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;GitHub repo: &lt;a href="https://github.com/gradion-ai/freeact"&gt;https://github.com/gradion-ai/freeact&lt;/a&gt;&lt;br /&gt; Evaluation: &lt;a href="https://gradion-ai.github.io/freeact/evaluation/"&gt;https://gradion-ai.github.io/freeact/evaluation/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We'd love to hear your feedback!&lt;/p&gt; &lt;p&gt;See it in action:&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1hy8ii4/video/rs73092327ce1/player"&gt;https://reddit.com/link/1hy8ii4/video/rs73092327ce1/player&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/krasserm"&gt; /u/krasserm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-10T16:37:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hxwtpy</id>
     <title>Energy efficiency of 5090 is slightly worse than 4090</title>
     <updated>2025-01-10T04:56:48+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hxwtpy/energy_efficiency_of_5090_is_slightly_worse_than/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-10T04:56:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hy8ii4</id>
+    <title>freeact: A Lightweight Library for Code-Action Based Agents</title>
+    <updated>2025-01-10T16:37:39+00:00</updated>
+    <author>
+      <name>/u/krasserm</name>
+      <uri>https://old.reddit.com/user/krasserm</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt; &lt;img alt="freeact: A Lightweight Library for Code-Action Based Agents" src="https://external-preview.redd.it/LzADpwKw8mUc5MZG38ssaaBnDyw6elEdCSjne9inj0g.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=19b672149c7219c55d19b0e99adc3b4bbb5b158c" title="freeact: A Lightweight Library for Code-Action Based Agents" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello! We just released &lt;a href="https://github.com/gradion-ai/freeact"&gt;freeact&lt;/a&gt;, a lightweight agent library that empowers language models to act as autonomous agents through executable &lt;strong&gt;code actions&lt;/strong&gt;. By enabling agents to express their actions directly in code rather than through constrained formats like JSON, freeact provides a flexible and powerful approach to solving complex, open-ended problems that require dynamic solution paths.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Supports dynamic installation and utilization of Python packages at runtime&lt;/li&gt; &lt;li&gt;Agents learn from feedback and store successful code actions as reusable skills in long-term memory&lt;/li&gt; &lt;li&gt;Skills can be interactively developed and refined in collaboration with freeact agents&lt;/li&gt; &lt;li&gt;Agents compose skills and any other Python modules to build increasingly sophisticated capabilities&lt;/li&gt; &lt;li&gt;Code actions are executed in &lt;a href="https://github.com/gradion-ai/ipybox"&gt;ipybox&lt;/a&gt;, a secure Docker + IPython sandbox that runs locally or remotely&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;GitHub repo: &lt;a href="https://github.com/gradion-ai/freeact"&gt;https://github.com/gradion-ai/freeact&lt;/a&gt;&lt;br /&gt; Evaluation: &lt;a href="https://gradion-ai.github.io/freeact/evaluation/"&gt;https://gradion-ai.github.io/freeact/evaluation/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We'd love to hear your feedback!&lt;/p&gt; &lt;p&gt;See it in action:&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1hy8ii4/video/rs73092327ce1/player"&gt;https://reddit.com/link/1hy8ii4/video/rs73092327ce1/player&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/krasserm"&gt; /u/krasserm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hy8ii4/freeact_a_lightweight_library_for_codeaction/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-10T16:37:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy8ehf</id>
