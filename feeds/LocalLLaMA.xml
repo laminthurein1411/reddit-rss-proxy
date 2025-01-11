@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-11T22:05:27+00:00</updated>
+  <updated>2025-01-11T22:22:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,19 +47,6 @@
     <published>2025-01-10T19:56:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hz2dj1</id>
-    <title>Good docker compose for vision LLM that fits in 24gb vram?</title>
-    <updated>2025-01-11T18:31:01+00:00</updated>
-    <author>
-      <name>/u/LightBrightLeftRight</name>
-      <uri>https://old.reddit.com/user/LightBrightLeftRight</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with a 3090 server I have at my house, trying to have a vision-capable and tool-capable model to integrate with home assistant, cameras etc. My homelab setup is a lot of docker-compose containers, and as a medium-competent person I've been trying to just use prebuild docker images.&lt;/p&gt; &lt;p&gt;I've had a hell of a time getting any of the vision models to work on VLLM, Aphrodite. Ollama works but I want a model to stay in the VRAM rather than loading/unloading, I don't like how hacky it is getting that to work with Ollama.&lt;/p&gt; &lt;p&gt;Does anybody have a docker compose I could gank from you that would give me an open-ai vision/tool model that would fit in a 24gb graphics card? Would be greatly appreciated.&lt;/p&gt; &lt;p&gt;OK based on the docker command from &lt;a href="/u/DeltaSqueezer"&gt;u/DeltaSqueezer&lt;/a&gt; I played around with some settings and got this:&lt;/p&gt; &lt;p&gt;&lt;code&gt; services: vllm-openai: runtime: nvidia deploy: resources: reservations: devices: - driver: nvidia count: all capabilities: - gpu environment: - VLLM_RPC_TIMEOUT=999000 - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True volumes: - /home/root/.cache/huggingface:/root/.cache/huggingface ports: - 18888:18888 image: vllm/vllm-openai:latest command: --model Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int8 --host 0.0.0.0 --port 18888 --max-model-len 16384 --gpu-memory-utilization 0.85 --disable-custom-all-reduce --swap-space 1 --max-num-seqs 6 --dtype half --enforce-eager --enable-prefix-caching &lt;/code&gt;&lt;/p&gt; &lt;p&gt;I needed to decrease the gpu memory utilization or there wasn't enough to process new requests. I had this before, and this doesn't feel like the right way to go about tuning this but I'm not sure what a better way would be. I also changed the max model length to handle some complaints I was getting.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LightBrightLeftRight"&gt; /u/LightBrightLeftRight &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T18:31:01+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hy8733</id>
     <title>Biden to Further Limit Nvidia AI Chip Exports in Final Push Restricting US Allies Such As Poland, Portugal, India or UAE Maker Of Falcon Models</title>
     <updated>2025-01-10T16:24:05+00:00</updated>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T19:56:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hz2dj1</id>
+    <title>Good docker compose for vision LLM that fits in 24gb vram?</title>
+    <updated>2025-01-11T18:31:01+00:00</updated>
+    <author>
+      <name>/u/LightBrightLeftRight</name>
+      <uri>https://old.reddit.com/user/LightBrightLeftRight</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with a 3090 server I have at my house, trying to have a vision-capable and tool-capable model to integrate with home assistant, cameras etc. My homelab setup is a lot of docker-compose containers, and as a medium-competent person I've been trying to just use prebuild docker images.&lt;/p&gt; &lt;p&gt;I've had a hell of a time getting any of the vision models to work on VLLM, Aphrodite. Ollama works but I want a model to stay in the VRAM rather than loading/unloading, I don't like how hacky it is getting that to work with Ollama.&lt;/p&gt; &lt;p&gt;Does anybody have a docker compose I could gank from you that would give me an open-ai vision/tool model that would fit in a 24gb graphics card? Would be greatly appreciated.&lt;/p&gt; &lt;p&gt;OK based on the docker command from &lt;a href="/u/DeltaSqueezer"&gt;u/DeltaSqueezer&lt;/a&gt; I played around with some settings and got this:&lt;/p&gt; &lt;p&gt;&lt;code&gt; services: vllm-openai: runtime: nvidia deploy: resources: reservations: devices: - driver: nvidia count: all capabilities: - gpu environment: - VLLM_RPC_TIMEOUT=999000 - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True volumes: - /home/root/.cache/huggingface:/root/.cache/huggingface ports: - 18888:18888 image: vllm/vllm-openai:latest command: --model Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int8 --host 0.0.0.0 --port 18888 --max-model-len 16384 --gpu-memory-utilization 0.85 --disable-custom-all-reduce --swap-space 1 --max-num-seqs 6 --dtype half --enforce-eager --enable-prefix-caching &lt;/code&gt;&lt;/p&gt; &lt;p&gt;I needed to decrease the gpu memory utilization or there wasn't enough to process new requests. I had this before, and this doesn't feel like the right way to go about tuning this but I'm not sure what a better way would be. I also changed the max model length to handle some complaints I was getting.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LightBrightLeftRight"&gt; /u/LightBrightLeftRight &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T18:31:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1hyf1pf</id>
