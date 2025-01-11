@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-11T20:23:24+00:00</updated>
+  <updated>2025-01-11T20:34:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1hyu07n</id>
-    <title>Localhost LLM Benchmark</title>
-    <updated>2025-01-11T11:29:56+00:00</updated>
-    <author>
-      <name>/u/05032-MendicantBias</name>
-      <uri>https://old.reddit.com/user/05032-MendicantBias</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm trying to benchmark my self hosted LLM, I want to run benchmarks like MMLU to evaluate the acceleration and accuracy of various quants against my GPU limitations&lt;/p&gt; &lt;p&gt;I tried the below tool, but it doesn't hit the API at all&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;&lt;a href="http://github.com/EleutherAI/lm-evaluation-harness"&gt;github.com/EleutherAI/lm-evaluation-harness&lt;/a&gt;&lt;/p&gt; &lt;p&gt;lm_eval --model local-chat-completions --tasks gsm8k --model_args base_url=http://localhost:8000 --apply_chat_template&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Any suggestions?&lt;/p&gt; &lt;p&gt;EDIT: As a sanity check I made a quick python program to query my self hosted LLM and it works, so the problem is not the LLM hosting:&lt;/p&gt; &lt;p&gt;CODE:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;import requests # Define the URL for the LLM endpoint url = &amp;quot;http://localhost:8000/v1/completions&amp;quot; # Define the payload with your input data payload = { &amp;quot;prompt&amp;quot;: &amp;quot;Once upon a time&amp;quot;, &amp;quot;max_tokens&amp;quot;: 100 } # Set the headers (if needed) headers = { &amp;quot;Content-Type&amp;quot;: &amp;quot;application/json&amp;quot;, &amp;quot;Authorization&amp;quot;: &amp;quot;Bearer YOUR_API_KEY&amp;quot; # Replace 'YOUR_API_KEY' with your actual API key if required } # Send the POST request to the LLM endpoint response = requests.post(url, json=payload, headers=headers) # Check if the request was successful if response.status_code == 200: # Print the response from the LLM completion = response.json() print(&amp;quot;Completion:&amp;quot;, completion[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) else: # Print an error message if the request was not successful print(&amp;quot;Error:&amp;quot;, response.status_code, response.text) import requests # Define the URL for the LLM endpoint url = &amp;quot;http://localhost:8000/v1/completions&amp;quot; # Define the payload with your input data payload = { &amp;quot;prompt&amp;quot;: &amp;quot;Once upon a time&amp;quot;, &amp;quot;max_tokens&amp;quot;: 100 } # Set the headers (if needed) headers = { &amp;quot;Content-Type&amp;quot;: &amp;quot;application/json&amp;quot;, &amp;quot;Authorization&amp;quot;: &amp;quot;Bearer YOUR_API_KEY&amp;quot; # Replace 'YOUR_API_KEY' with your actual API key if required } # Send the POST request to the LLM endpoint response = requests.post(url, json=payload, headers=headers) # Check if the request was successful if response.status_code == 200: # Print the response from the LLM completion = response.json() print(&amp;quot;Completion:&amp;quot;, completion[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) else: # Print an error message if the request was not successful print(&amp;quot;Error:&amp;quot;, response.status_code, response.text) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;ANSWER&lt;/p&gt; &lt;pre&gt;&lt;code&gt;2025-01-11 12:53:43 [INFO] [LM STUDIO SERVER] Running completion on text: Once upon a time 2025-01-11 12:53:43 [INFO] [LM STUDIO SERVER] Processing... 2025-01-11 12:53:44 [INFO] Generated prediction: { &amp;quot;id&amp;quot;: &amp;quot;cmpl-kelaozz9r929wvhnt1vse&amp;quot;, &amp;quot;object&amp;quot;: &amp;quot;text_completion&amp;quot;, &amp;quot;created&amp;quot;: 1736596423, &amp;quot;model&amp;quot;: &amp;quot;qwen2.5-7b-instruct&amp;quot;, &amp;quot;choices&amp;quot;: [ { &amp;quot;index&amp;quot;: 0, &amp;quot;text&amp;quot;: &amp;quot;, in the middle ages, there was a great king. He had many friends, but one of them he loved more than all his other friends combined. One day this friend of the king told him that he wanted to be the next king.\n\nThe king was a little upset by this, but he agreed to make the request formal in writing and signed it.\n\nA few days later, the friend of the king sent back the document with some notes written on the side, indicating what parts were acceptable&amp;quot;, &amp;quot;logprobs&amp;quot;: null, &amp;quot;finish_reason&amp;quot;: &amp;quot;length&amp;quot; } ], &amp;quot;usage&amp;quot;: { &amp;quot;prompt_tokens&amp;quot;: 4, &amp;quot;completion_tokens&amp;quot;: 99, &amp;quot;total_tokens&amp;quot;: 103 } } 2025-01-11 12:53:44 [INFO] [LM STUDIO SERVER] Client disconnected. Stopping generation.. &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/05032-MendicantBias"&gt; /u/05032-MendicantBias &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyu07n/localhost_llm_benchmark/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hyu07n/localhost_llm_benchmark/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyu07n/localhost_llm_benchmark/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T11:29:56+00:00</published>
-  </entry>
   <entry>
     <id>t3_1hy91m1</id>
     <title>0.5B Distilled QwQ, runnable on IPhone</title>
@@ -71,19 +58,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyytg9/any_local_ui_for_deployed_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T15:54:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1hz4arl</id>
-    <title>Vision for the Future</title>
-    <updated>2025-01-11T19:56:06+00:00</updated>
-    <author>
-      <name>/u/ranoutofusernames__</name>
-      <uri>https://old.reddit.com/user/ranoutofusernames__</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;With NVIDIA's release of their Project Digits, previously the Jetson Super and several other major players putting resources into local AI hardware, what is the vision for the future when it comes to local AI use? &lt;/p&gt; &lt;p&gt;In the limit, do we envision every household equipped with local AI inference? If that's the case, what is the scenario for when you're not in proximity to these devices and need access to the AI? &lt;/p&gt; &lt;p&gt;Are they only for use at home or do we envision a world where people's devices are accessible from outside the home using something like dynamic DNS for external accessibility? &lt;/p&gt; &lt;p&gt;Or we do we envision people using current cloud infrastructure when away from these AI devices?&lt;/p&gt; &lt;p&gt;If the future is local but local as in you do inference on your phone, your laptop etc... (without a dedicated AI machine) how does personal context gets synced between devices?&lt;/p&gt; &lt;p&gt;TLDR: what's your long term vision for local AI use?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ranoutofusernames__"&gt; /u/ranoutofusernames__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T19:56:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1hy34ir</id>
@@ -138,6 +112,19 @@
     <published>2025-01-10T16:24:05+00:00</published>
   </entry>
   <entry>
+    <id>t3_1hz4arl</id>
+    <title>Vision for the Future</title>
+    <updated>2025-01-11T19:56:06+00:00</updated>
+    <author>
+      <name>/u/ranoutofusernames__</name>
+      <uri>https://old.reddit.com/user/ranoutofusernames__</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;With NVIDIA's release of their Project Digits, previously the Jetson Super and several other major players putting resources into local AI hardware, what is the vision for the future when it comes to local AI use? &lt;/p&gt; &lt;p&gt;In the limit, do we envision every household equipped with local AI inference? If that's the case, what is the scenario for when you're not in proximity to these devices and need access to the AI? &lt;/p&gt; &lt;p&gt;Are they only for use at home or do we envision a world where people's devices are accessible from outside the home using something like dynamic DNS for external accessibility? &lt;/p&gt; &lt;p&gt;Or we do we envision people using current cloud infrastructure when away from these AI devices?&lt;/p&gt; &lt;p&gt;If the future is local but local as in you do inference on your phone, your laptop etc... (without a dedicated AI machine) how does personal context gets synced between devices?&lt;/p&gt; &lt;p&gt;TLDR: what's your long term vision for local AI use?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ranoutofusernames__"&gt; /u/ranoutofusernames__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4arl/vision_for_the_future/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T19:56:06+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hyf1pf</id>
     <title>Text to speech in 82m params is perfect for edge AI. Who's building an audio assistant with Kokoro?</title>
     <updated>2025-01-10T21:09:12+00:00</updated>
@@ -190,19 +177,6 @@
     <published>2025-01-11T05:04:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hz1a01</id>
-    <title>48gb vs 96gb VRAM for fine-tuning</title>
-    <updated>2025-01-11T17:43:37+00:00</updated>
-    <author>
-      <name>/u/salec65</name>
-      <uri>https://old.reddit.com/user/salec65</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A popular configuration for local hosting is 2x 24gb GPUs (3090's for example). This would let me access LLama3.3 Q4 which I find myself using often. In order to go beyond this, one either has to add more consumer GPUs, which gets tricky in standard desktops or rackmount cases, or switch to workstation/server GPUs where they can be more efficiently packed in.&lt;/p&gt; &lt;p&gt;For someone that is about to start really getting into fine-tuning models but hasn't quite understood when to use QLoRA/LoRA/FFT as well as starting to use larger prompts, I am curious whether it'd be worth it (or necessary) to go the extra mile and get myself setup for 96gb or more.&lt;/p&gt; &lt;p&gt;Some of my goals include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Code/Data generation - Generating documents w/ a specific syntax (xml-ish) based on prompts.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Domain specific Q&amp;amp;A&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Creative personas and characters for unique dialog&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;While I plan to spin up instances of 2x 3090 and 2x A6000 to see for myself, I am very interested to hear from others with experience.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/salec65"&gt; /u/salec65 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T17:43:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hyukc2</id>
     <title>GitHub - tegridydev/dnd-llm-game: MVP of an idea using multiple local LLM models to simulate and play D&amp;D</title>
     <updated>2025-01-11T12:09:03+00:00</updated>
@@ -216,6 +190,19 @@
     <published>2025-01-11T12:09:03+00:00</published>
   </entry>
   <entry>
+    <id>t3_1hz1a01</id>
+    <title>48gb vs 96gb VRAM for fine-tuning</title>
+    <updated>2025-01-11T17:43:37+00:00</updated>
+    <author>
+      <name>/u/salec65</name>
+      <uri>https://old.reddit.com/user/salec65</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A popular configuration for local hosting is 2x 24gb GPUs (3090's for example). This would let me access LLama3.3 Q4 which I find myself using often. In order to go beyond this, one either has to add more consumer GPUs, which gets tricky in standard desktops or rackmount cases, or switch to workstation/server GPUs where they can be more efficiently packed in.&lt;/p&gt; &lt;p&gt;For someone that is about to start really getting into fine-tuning models but hasn't quite understood when to use QLoRA/LoRA/FFT as well as starting to use larger prompts, I am curious whether it'd be worth it (or necessary) to go the extra mile and get myself setup for 96gb or more.&lt;/p&gt; &lt;p&gt;Some of my goals include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Code/Data generation - Generating documents w/ a specific syntax (xml-ish) based on prompts.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Domain specific Q&amp;amp;A&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Creative personas and characters for unique dialog&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;While I plan to spin up instances of 2x 3090 and 2x A6000 to see for myself, I am very interested to hear from others with experience.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/salec65"&gt; /u/salec65 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1a01/48gb_vs_96gb_vram_for_finetuning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T17:43:37+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hyyrml</id>
     <title>[Mini Rant] Are LLMs trapped in English and the assistant paradigms?</title>
     <updated>2025-01-11T15:52:33+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyyrml/mini_rant_are_llms_trapped_in_english_and_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T15:52:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hz4vgm</id>
+    <title>I lost track of how good deepfakes are getting</title>
+    <updated>2025-01-11T20:21:28+00:00</updated>
+    <author>
+      <name>/u/TheLogiqueViper</name>
+      <uri>https://old.reddit.com/user/TheLogiqueViper</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4vgm/i_lost_track_of_how_good_deepfakes_are_getting/"&gt; &lt;img alt="I lost track of how good deepfakes are getting" src="https://external-preview.redd.it/NWkzYjZ2MGNiZmNlMb2jfsb5QnWJTtG7eE9LYo3ISJ62g2ejiuiPOrO5k-S6.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ce3eb3743b8a47035799598b6123366e88fd6de0" title="I lost track of how good deepfakes are getting" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLogiqueViper"&gt; /u/TheLogiqueViper &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/6easpphcbfce1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4vgm/i_lost_track_of_how_good_deepfakes_are_getting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz4vgm/i_lost_track_of_how_good_deepfakes_are_getting/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T20:21:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1hz254t</id>
