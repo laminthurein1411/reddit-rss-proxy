@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-11T21:34:12+00:00</updated>
+  <updated>2025-01-11T21:48:53+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -54,7 +54,7 @@
       <name>/u/LightBrightLeftRight</name>
       <uri>https://old.reddit.com/user/LightBrightLeftRight</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with a 3090 server I have at my house, trying to have a vision-capable and tool-capable model to integrate with home assistant, cameras etc. My homelab setup is a lot of docker-compose containers, and as a medium-competent person I've been trying to just use prebuild docker images.&lt;/p&gt; &lt;p&gt;I've had a hell of a time getting any of the vision models to work on VLLM, Aphrodite. Ollama works but I want a model to stay in the VRAM rather than loading/unloading, I don't like how hacky it is getting that to work with Ollama.&lt;/p&gt; &lt;p&gt;Does anybody have a docker compose I could gank from you that would give me an open-ai vision/tool model that would fit in a 24gb graphics card? Would be greatly appreciated.&lt;/p&gt; &lt;p&gt;OK based on the docker command from &lt;a href="/u/DeltaSqueezer"&gt;/u/DeltaSqueezer&lt;/a&gt; I played around with some settings and got this:&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;services:&lt;/p&gt; &lt;p&gt;vllm-openai:&lt;/p&gt; &lt;p&gt;runtime: nvidia&lt;/p&gt; &lt;p&gt;deploy:&lt;/p&gt; &lt;p&gt;resources:&lt;/p&gt; &lt;p&gt;reservations:&lt;/p&gt; &lt;p&gt;devices:&lt;/p&gt; &lt;p&gt;- driver: nvidia&lt;/p&gt; &lt;p&gt;count: all&lt;/p&gt; &lt;p&gt;capabilities:&lt;/p&gt; &lt;p&gt;- gpu&lt;/p&gt; &lt;p&gt;environment:&lt;/p&gt; &lt;p&gt;- VLLM_RPC_TIMEOUT=999000&lt;/p&gt; &lt;p&gt;- PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True&lt;/p&gt; &lt;p&gt;volumes:&lt;/p&gt; &lt;p&gt;- /home/root/.cache/huggingface:/root/.cache/huggingface&lt;/p&gt; &lt;p&gt;ports:&lt;/p&gt; &lt;p&gt;- 18888:18888&lt;/p&gt; &lt;p&gt;image: vllm/vllm-openai:latest&lt;/p&gt; &lt;p&gt;command: --model Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int8 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --port 18888&lt;/p&gt; &lt;p&gt;--max-model-len 16384 --gpu-memory-utilization 0.85&lt;/p&gt; &lt;p&gt;--disable-custom-all-reduce --swap-space 1 --max-num-seqs 6 --dtype&lt;/p&gt; &lt;p&gt;half --enforce-eager --enable-prefix-caching&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;I needed to decrease the gpu memory utilization or there wasn't enough to process new requests. I had this before, and this doesn't feel like the right way to go about tuning this but I'm not sure what a better way would be. I also changed the max model length to handle some complaints I was getting.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LightBrightLeftRight"&gt; /u/LightBrightLeftRight &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with a 3090 server I have at my house, trying to have a vision-capable and tool-capable model to integrate with home assistant, cameras etc. My homelab setup is a lot of docker-compose containers, and as a medium-competent person I've been trying to just use prebuild docker images.&lt;/p&gt; &lt;p&gt;I've had a hell of a time getting any of the vision models to work on VLLM, Aphrodite. Ollama works but I want a model to stay in the VRAM rather than loading/unloading, I don't like how hacky it is getting that to work with Ollama.&lt;/p&gt; &lt;p&gt;Does anybody have a docker compose I could gank from you that would give me an open-ai vision/tool model that would fit in a 24gb graphics card? Would be greatly appreciated.&lt;/p&gt; &lt;p&gt;OK based on the docker command from &lt;a href="/u/DeltaSqueezer"&gt;u/DeltaSqueezer&lt;/a&gt; I played around with some settings and got this:&lt;/p&gt; &lt;p&gt;&lt;code&gt; services: vllm-openai: runtime: nvidia deploy: resources: reservations: devices: - driver: nvidia count: all capabilities: - gpu environment: - VLLM_RPC_TIMEOUT=999000 - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True volumes: - /home/root/.cache/huggingface:/root/.cache/huggingface ports: - 18888:18888 image: vllm/vllm-openai:latest command: --model Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int8 --host 0.0.0.0 --port 18888 --max-model-len 16384 --gpu-memory-utilization 0.85 --disable-custom-all-reduce --swap-space 1 --max-num-seqs 6 --dtype half --enforce-eager --enable-prefix-caching &lt;/code&gt;&lt;/p&gt; &lt;p&gt;I needed to decrease the gpu memory utilization or there wasn't enough to process new requests. I had this before, and this doesn't feel like the right way to go about tuning this but I'm not sure what a better way would be. I also changed the max model length to handle some complaints I was getting.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LightBrightLeftRight"&gt; /u/LightBrightLeftRight &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz2dj1/good_docker_compose_for_vision_llm_that_fits_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T18:31:01+00:00</published>
@@ -112,19 +112,6 @@
     <published>2025-01-10T21:09:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hz1g2z</id>
-    <title>Why are YC companies bullish on AI Workflows?</title>
-    <updated>2025-01-11T17:51:05+00:00</updated>
-    <author>
-      <name>/u/Sam_Tech1</name>
-      <uri>https://old.reddit.com/user/Sam_Tech1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have seen a lot of YC Companies building AI workflows but I haven't seen any real life use case for it yet. They are very bullish on it but are any companies or individuals using it? If yes, what are the use cases? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sam_Tech1"&gt; /u/Sam_Tech1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T17:51:05+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hyjoau</id>
     <title>This is my Powermac G3 sleeper AI workstation. 80gb total ram(32gb vram + 48gb ram)</title>
     <updated>2025-01-11T00:38:10+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hyjoau/this_is_my_powermac_g3_sleeper_ai_workstation/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T00:38:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hz1g2z</id>
+    <title>Why are YC companies bullish on AI Workflows?</title>
+    <updated>2025-01-11T17:51:05+00:00</updated>
+    <author>
+      <name>/u/Sam_Tech1</name>
+      <uri>https://old.reddit.com/user/Sam_Tech1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have seen a lot of YC Companies building AI workflows but I haven't seen any real life use case for it yet. They are very bullish on it but are any companies or individuals using it? If yes, what are the use cases? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sam_Tech1"&gt; /u/Sam_Tech1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz1g2z/why_are_yc_companies_bullish_on_ai_workflows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T17:51:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1hz50c0</id>
@@ -281,19 +281,6 @@
     <published>2025-01-11T18:48:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1hz5caf</id>
-    <title>Tutorial: Run Moondream 2b's new gaze detection on any video</title>
-    <updated>2025-01-11T20:42:31+00:00</updated>
-    <author>
-      <name>/u/ParsaKhaz</name>
-      <uri>https://old.reddit.com/user/ParsaKhaz</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"&gt; &lt;img alt="Tutorial: Run Moondream 2b's new gaze detection on any video" src="https://external-preview.redd.it/a2VmczhmdHllZmNlMTF40J1mEmizgXzWsZQRgxJwv14NVEzVGBQqF-uixs9J.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d6d357b58a592f06ed596b1615e185d70bfedfdf" title="Tutorial: Run Moondream 2b's new gaze detection on any video" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParsaKhaz"&gt; /u/ParsaKhaz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/i9ofbftyefce1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-11T20:42:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1hys13h</id>
     <title>New Model from https://novasky-ai.github.io/ Sky-T1-32B-Preview, open-source reasoning model that matches o1-preview on popular reasoning and coding benchmarks — trained under $450!</title>
     <updated>2025-01-11T09:02:18+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz0n8c/gmk_announces_worlds_first_minipc_based_on_amd/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T17:15:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1hz5caf</id>
+    <title>Tutorial: Run Moondream 2b's new gaze detection on any video</title>
+    <updated>2025-01-11T20:42:31+00:00</updated>
+    <author>
+      <name>/u/ParsaKhaz</name>
+      <uri>https://old.reddit.com/user/ParsaKhaz</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"&gt; &lt;img alt="Tutorial: Run Moondream 2b's new gaze detection on any video" src="https://external-preview.redd.it/a2VmczhmdHllZmNlMTF40J1mEmizgXzWsZQRgxJwv14NVEzVGBQqF-uixs9J.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d6d357b58a592f06ed596b1615e185d70bfedfdf" title="Tutorial: Run Moondream 2b's new gaze detection on any video" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParsaKhaz"&gt; /u/ParsaKhaz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/i9ofbftyefce1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz5caf/tutorial_run_moondream_2bs_new_gaze_detection_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-11T20:42:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1hz28ld</id>
