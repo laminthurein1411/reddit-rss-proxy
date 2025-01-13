@@ -2,49 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-13T11:05:38+00:00</updated>
+  <updated>2025-01-13T11:21:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i0182p</id>
-    <title>Anyone worked with distributed inference on Llama.cpp?</title>
-    <updated>2025-01-13T00:17:19+00:00</updated>
+    <id>t3_1i089lx</id>
+    <title>Where to Begin?</title>
+    <updated>2025-01-13T06:53:08+00:00</updated>
     <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
+      <name>/u/susne</name>
+      <uri>https://old.reddit.com/user/susne</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have it sort of working with:&lt;br /&gt; build-rpc-cuda/bin/rpc-server -p 7000 (on the first gpu rig)&lt;br /&gt; build-rpc-cuda/bin/rpc-server -p 7001 (on the second gpu rig)&lt;br /&gt; build-rpc/bin/llama-cli -m ../model.gguf -p &amp;quot;Hello, my name is&amp;quot; --repeat-penalty 1.0 -n 64 --rpc 127.0.0.1:7000,127.0.0.1:7001 -ngl 99 &lt;/p&gt; &lt;p&gt;This does distributed inference across the 2 machines, but I'm having to reload the entire model for each query. &lt;/p&gt; &lt;p&gt;I skimmed through the llama-cli -h and didn't see a way to make it keep the model loaded, or listen for connections instead of directly doing inference inside the command line.&lt;/p&gt; &lt;p&gt;Also skimmed though llama-server, which would allow keeping the model loaded and hosting an api, but doesn't appear to support RPC servers.&lt;/p&gt; &lt;p&gt;I assume I am missing something right?&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md"&gt;https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md&lt;/a&gt;&lt;br /&gt; &lt;a href="https://github.com/ggerganov/llama.cpp/tree/master/examples/rpc"&gt;https://github.com/ggerganov/llama.cpp/tree/master/examples/rpc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0182p/anyone_worked_with_distributed_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0182p/anyone_worked_with_distributed_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0182p/anyone_worked_with_distributed_inference_on/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey there I'm gonna be starting out on a 4080 mobile (12gb vram, 32gb ram, 14900hx) while I finish my 7900xtx desktop build and would like to know a few things.&lt;/p&gt; &lt;p&gt;Which version of LLaMA should I start out with on the 4080 mobile? I think it can handle 13bP, I want to just get a feel of the possibilities and setup a TTS that can view my screen and chat for starters.&lt;/p&gt; &lt;p&gt;What distro(s) of Linux are ideal and why?&lt;/p&gt; &lt;p&gt;I will be using Windows 11 Home and want a Linux distro to contrast and compare experiences on both.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/susne"&gt; /u/susne &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i089lx/where_to_begin/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i089lx/where_to_begin/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i089lx/where_to_begin/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-13T00:17:19+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i01j4k</id>
-    <title>PSA: You can use Ollama to generate your git commit messages locally</title>
-    <updated>2025-01-13T00:32:18+00:00</updated>
-    <author>
-      <name>/u/mehyay76</name>
-      <uri>https://old.reddit.com/user/mehyay76</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Using git commit hooks you can ask any model from Ollama to generate a git commit message for you:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;#!/usr/bin/env sh # .git/hooks/prepare-commit-msg # Make this file executable: chmod +x .git/hooks/prepare-commit-msg echo &amp;quot;Running prepare-commit-msg hook&amp;quot; COMMIT_MSG_FILE=&amp;quot;$1&amp;quot; # Get the staged diff DIFF=$(git diff --cached) # Generate a summary with ollama CLI and phi4 model SUMMARY=$( ollama run phi4 &amp;lt;&amp;lt;EOF Generate a raw text commit message for the following diff. Keep commit message concise and to the point. Make the first line the title (100 characters max) and the rest the body: $DIFF EOF ) if [ -f &amp;quot;$COMMIT_MSG_FILE&amp;quot; ]; then # Save the AI generated summary to the commit message file echo &amp;quot;$SUMMARY&amp;quot; &amp;gt;&amp;quot;$COMMIT_MSG_FILE&amp;quot; # Append existing message if it exists if [ -n &amp;quot;$EXISTING_MSG&amp;quot; ]; then echo &amp;quot;&amp;quot; &amp;gt;&amp;gt;&amp;quot;$COMMIT_MSG_FILE&amp;quot; echo &amp;quot;$EXISTING_MSG&amp;quot; &amp;gt;&amp;gt;&amp;quot;$COMMIT_MSG_FILE&amp;quot; fi fi &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;You can also use tools like &lt;a href="https://github.com/mohsen1/yek"&gt;yek&lt;/a&gt; to put the entire repo plus the changes in the prompt to give the model more context for better messages&lt;/p&gt; &lt;p&gt;You can also cap the maximum time this should take with &lt;code&gt;--keep-alive&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mehyay76"&gt; /u/mehyay76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i01j4k/psa_you_can_use_ollama_to_generate_your_git/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i01j4k/psa_you_can_use_ollama_to_generate_your_git/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i01j4k/psa_you_can_use_ollama_to_generate_your_git/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-13T00:32:18+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i09rdj</id>
-    <title>Any cheaper and better alternative to ElevenLabs?</title>
-    <updated>2025-01-13T08:46:34+00:00</updated>
-    <author>
-      <name>/u/findinghorses</name>
-      <uri>https://old.reddit.com/user/findinghorses</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We have been using ElevenLabs in our Text to Video product however the cost is extremely high &lt;/p&gt; &lt;p&gt;What would you all suggest as a better alternative?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/findinghorses"&gt; /u/findinghorses &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i09rdj/any_cheaper_and_better_alternative_to_elevenlabs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i09rdj/any_cheaper_and_better_alternative_to_elevenlabs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i09rdj/any_cheaper_and_better_alternative_to_elevenlabs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-13T08:46:34+00:00</published>
+    <published>2025-01-13T06:53:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1i05sl8</id>
@@ -138,6 +112,19 @@
     <published>2025-01-12T13:54:45+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i0bsha</id>
+    <title>Is this where all LLMs are going?</title>
+    <updated>2025-01-13T11:19:47+00:00</updated>
+    <author>
+      <name>/u/omnisvosscio</name>
+      <uri>https://old.reddit.com/user/omnisvosscio</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bsha/is_this_where_all_llms_are_going/"&gt; &lt;img alt="Is this where all LLMs are going? " src="https://preview.redd.it/l1h02xo8wqce1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=03d40d0e8695392ff6f2dbe6e68c5d8afd724e12" title="Is this where all LLMs are going? " /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/omnisvosscio"&gt; /u/omnisvosscio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/l1h02xo8wqce1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bsha/is_this_where_all_llms_are_going/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bsha/is_this_where_all_llms_are_going/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-13T11:19:47+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1hzwun4</id>
     <title>Current best local models for companionship? for random small talk for lonely people</title>
     <updated>2025-01-12T21:01:10+00:00</updated>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1hz28ld/bro_whaaaat/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-11T18:24:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i0bm84</id>
+    <title>Best translation model?</title>
+    <updated>2025-01-13T11:07:24+00:00</updated>
+    <author>
+      <name>/u/xdoso</name>
+      <uri>https://old.reddit.com/user/xdoso</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I'm searching for the current best translation model with interest on quality and latency, and the condition that it must be real open source (allowing commercial usage). Some languages that I'm interested on are English, Japanese and Portuguese. Is there any leaderboard for this?&lt;/p&gt; &lt;p&gt;Some of the options that I'm considering are: - NLLB - mBART - madlad - opus models - LibreTranslate (openNMT behind)&lt;/p&gt; &lt;p&gt;Any recommendations?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/xdoso"&gt; /u/xdoso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bm84/best_translation_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bm84/best_translation_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0bm84/best_translation_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-13T11:07:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1hzyy6h</id>
