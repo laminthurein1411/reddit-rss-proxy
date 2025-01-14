@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-14T12:26:13+00:00</updated>
+  <updated>2025-01-14T12:46:12+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i13d0m</id>
-    <title>How will you prepare for the future of LLMs/AI?</title>
-    <updated>2025-01-14T10:42:13+00:00</updated>
+    <id>t3_1i0hqic</id>
+    <title>I Built an LLM Framework in just 100 Lines!!</title>
+    <updated>2025-01-13T16:23:39+00:00</updated>
     <author>
-      <name>/u/NotTheTitanic</name>
-      <uri>https://old.reddit.com/user/NotTheTitanic</uri>
+      <name>/u/Willing-Site-8137</name>
+      <uri>https://old.reddit.com/user/Willing-Site-8137</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’m not talking about bigger and better ones. Time and again, software is new, free, amazing, complex. And eventually, it gets monetized. Massively monetized.&lt;/p&gt; &lt;p&gt;I’m trying to avoid hyperbole, and rely on reality. Think the early internet, early social media, email, the start bar on windows, games. Everything has ads now and combs your usage for data they can use. This isn’t a post or discussions about that or the ethics of it. It’s about how you plan to use LLMs. &lt;/p&gt; &lt;p&gt;Are you building your own framework or models? Do you plan to just keep going (maybe the future has less open source, maybe it doesn’t) without change? Are you looking forward to the monetization of LLMs? (No judgement, a lot of things have and do get better when a company can make money). Is there anything you expect to see in the future of LLMs? Personally I’m shocked I can use copilot/chatgpt to search the internet and not have ads injected into it. &lt;/p&gt; &lt;p&gt;So rather than discuss the possible future of LLMs, what’s YOUR plan for YOUR future with LLMs and AI (if any)?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NotTheTitanic"&gt; /u/NotTheTitanic &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i13d0m/how_will_you_prepare_for_the_future_of_llmsai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i13d0m/how_will_you_prepare_for_the_future_of_llmsai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i13d0m/how_will_you_prepare_for_the_future_of_llmsai/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've seen lots of complaints about how complex frameworks like LangChain are. Over the holidays, I wanted to explore just how minimal an LLM framework could be if we stripped away every unnecessary feature.&lt;/p&gt; &lt;p&gt;For example, why even include OpenAI wrappers in an LLM framework??&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;API Changes:&lt;/strong&gt; OpenAI API evolves (client after 0.27), and the official libraries often introduce bugs or dependency issues that are a pain to maintain.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;DIY Is Simple:&lt;/strong&gt; It's straightforward to generate your own wrapper—just feed the latest vendor documentation to an LLM!&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Extendibility:&lt;/strong&gt; By avoiding vendor-specific wrappers, developers can easily switch to the latest open-source or self-deployed models..&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Similarly, I strip out features that could be built on-demand rather than baked into the framework. The result? I created a 100-line LLM framework: &lt;a href="https://github.com/miniLLMFlow/PocketFlow/"&gt;https://github.com/miniLLMFlow/PocketFlow/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;These 100 lines capture what I see as the core abstraction of most LLM frameworks: a nested directed graph that breaks down tasks into multiple LLM steps, with branching and recursion to enable agent-like decision-making. From there, you can:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Layer On Complex Features:&lt;/strong&gt; I’ve included examples for building (&lt;a href="https://minillmflow.github.io/PocketFlow/multi_agent.html"&gt;multi-&lt;/a&gt;)&lt;a href="https://minillmflow.github.io/PocketFlow/agent.html"&gt;agents&lt;/a&gt;, &lt;a href="https://minillmflow.github.io/PocketFlow/rag.html"&gt;Retrieval-Augmented Generation (RAG)&lt;/a&gt;, &lt;a href="https://minillmflow.github.io/PocketFlow/decomp.html"&gt;task decomposition&lt;/a&gt;, and more.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Work Seamlessly With Coding Assistants:&lt;/strong&gt; Because it’s so minimal, it integrates well with coding assistants like &lt;a href="https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant"&gt;ChatGPT&lt;/a&gt;, Claude, and Cursor.ai. You only need to share the relevant &lt;a href="https://github.com/miniLLMFlow/PocketFlow/tree/main/docs"&gt;documentation &lt;/a&gt;(e.g., in the Claude project), and the assistant can help you build new workflows on the fly.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m adding more examples and would love feedback. If there’s a feature you’d like to see or a specific use case you think is missing, please let me know!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Willing-Site-8137"&gt; /u/Willing-Site-8137 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hqic/i_built_an_llm_framework_in_just_100_lines/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hqic/i_built_an_llm_framework_in_just_100_lines/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hqic/i_built_an_llm_framework_in_just_100_lines/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T10:42:13+00:00</published>
+    <published>2025-01-13T16:23:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1i0usyy</id>
@@ -112,17 +112,17 @@
     <published>2025-01-13T11:19:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i0hecs</id>
-    <title>Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450</title>
-    <updated>2025-01-13T16:09:19+00:00</updated>
+    <id>t3_1i10xzl</id>
+    <title>GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation</title>
+    <updated>2025-01-14T07:40:55+00:00</updated>
     <author>
-      <name>/u/mr_house7</name>
-      <uri>https://old.reddit.com/user/mr_house7</uri>
+      <name>/u/mazen160</name>
+      <uri>https://old.reddit.com/user/mazen160</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"&gt; &lt;img alt="Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450" src="https://external-preview.redd.it/CoBta77nxTwOGfkB2XmPAkIRcSe1Pm3XBChHXR_0ZNI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7add0ea55f9158b47f0d4f1c57b35784adb6a682" title="Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mr_house7"&gt; /u/mr_house7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/01/11/researchers-open-source-sky-t1-a-reasoning-ai-model-that-can-be-trained-for-less-than-450/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"&gt; &lt;img alt="GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation" src="https://external-preview.redd.it/kUJ8ldjMwlu5j4ZyXRJNdi0V4qdDcgF3b5_dwBmElCg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2e9a8d0aa1145c94a6dd8e92a4170570cdefa3d7" title="GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mazen160"&gt; /u/mazen160 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mazen160/llmquery/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-13T16:09:19+00:00</published>
+    <published>2025-01-14T07:40:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1i0u8su</id>
@@ -138,17 +138,17 @@
     <published>2025-01-14T01:14:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i10xzl</id>
-    <title>GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation</title>
-    <updated>2025-01-14T07:40:55+00:00</updated>
+    <id>t3_1i0hecs</id>
+    <title>Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450</title>
+    <updated>2025-01-13T16:09:19+00:00</updated>
     <author>
-      <name>/u/mazen160</name>
-      <uri>https://old.reddit.com/user/mazen160</uri>
+      <name>/u/mr_house7</name>
+      <uri>https://old.reddit.com/user/mr_house7</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"&gt; &lt;img alt="GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation" src="https://external-preview.redd.it/kUJ8ldjMwlu5j4ZyXRJNdi0V4qdDcgF3b5_dwBmElCg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2e9a8d0aa1145c94a6dd8e92a4170570cdefa3d7" title="GitHub - mazen160/llmquery: Powerful LLM Query Framework with YAML Prompt Templates. Made for Automation" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mazen160"&gt; /u/mazen160 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mazen160/llmquery/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i10xzl/github_mazen160llmquery_powerful_llm_query/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"&gt; &lt;img alt="Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450" src="https://external-preview.redd.it/CoBta77nxTwOGfkB2XmPAkIRcSe1Pm3XBChHXR_0ZNI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7add0ea55f9158b47f0d4f1c57b35784adb6a682" title="Researchers open source Sky-T1, a 'reasoning' AI model that can be trained for less than $450" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mr_house7"&gt; /u/mr_house7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/01/11/researchers-open-source-sky-t1-a-reasoning-ai-model-that-can-be-trained-for-less-than-450/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0hecs/researchers_open_source_skyt1_a_reasoning_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T07:40:55+00:00</published>
+    <published>2025-01-13T16:09:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1i0rdx1</id>
@@ -203,6 +203,19 @@
     <published>2025-01-13T19:30:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i12g9x</id>
+    <title>Android voice input method based on Whisper</title>
+    <updated>2025-01-14T09:35:42+00:00</updated>
+    <author>
+      <name>/u/DocWolle</name>
+      <uri>https://old.reddit.com/user/DocWolle</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://f-droid.org/de/packages/org.woheller69.whisper/"&gt;https://f-droid.org/de/packages/org.woheller69.whisper/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DocWolle"&gt; /u/DocWolle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-14T09:35:42+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i0q8nw</id>
     <title>Titans: Learning to Memorize at Test Time</title>
     <updated>2025-01-13T22:13:41+00:00</updated>
@@ -227,19 +240,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0sj1f/testing_vllm_with_openwebui_llama_3_70b_tulu_4x/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-13T23:54:49+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i12g9x</id>
-    <title>Android voice input method based on Whisper</title>
-    <updated>2025-01-14T09:35:42+00:00</updated>
-    <author>
-      <name>/u/DocWolle</name>
-      <uri>https://old.reddit.com/user/DocWolle</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://f-droid.org/de/packages/org.woheller69.whisper/"&gt;https://f-droid.org/de/packages/org.woheller69.whisper/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DocWolle"&gt; /u/DocWolle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i12g9x/android_voice_input_method_based_on_whisper/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T09:35:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1i0vrm5</id>
