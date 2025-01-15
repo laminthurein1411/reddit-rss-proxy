@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-15T15:05:49+00:00</updated>
+  <updated>2025-01-15T15:24:03+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1i192xf</id>
-    <title>DDR6 RAM and a reasonable GPU should be able to run 70b models with good speed</title>
-    <updated>2025-01-14T15:51:58+00:00</updated>
-    <author>
-      <name>/u/itsnottme</name>
-      <uri>https://old.reddit.com/user/itsnottme</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Right now low VRAM GPUs are the bottleneck in running bigger models, but DDR6 ram should somewhat fix this issue. The ram can supplement GPUs to run LLMs at pretty good speed. &lt;/p&gt; &lt;p&gt;Running bigger models on CPU alone is not ideal, a reasonable speed GPU will still be needed to calculate the context. Let's use a RTX 4080 for example but a slower one is fine as well.&lt;/p&gt; &lt;p&gt;A 70b Q4 KM model is ~40 GB&lt;/p&gt; &lt;p&gt;8192 context is around 3.55 GB&lt;/p&gt; &lt;p&gt;RTX 4080 can hold around 12 GB of the model + 3.55 GB context + leaving 0.45 GB for system memory.&lt;/p&gt; &lt;p&gt;RTX 4080 Memory Bandwidth is 716.8 GB/s x 0.7 for efficiency = ~502 GB/s&lt;/p&gt; &lt;p&gt;For DDR6 ram, it's hard to say for sure but should be around twice the speed of DDR5 and supports Quad Channel so should be close to 360 GB/s * 0.7 = 252 GB/s&lt;/p&gt; &lt;p&gt;(0.3×502) + (0.7×252) = 327 GB/s&lt;/p&gt; &lt;p&gt;So the model should run at around 8.2 tokens/s&lt;/p&gt; &lt;p&gt;It should be a pretty reasonable speed for the average user. Even a slower GPU should be fine as well.&lt;/p&gt; &lt;p&gt;If I made a mistake in the calculation, feel free to let me know.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/itsnottme"&gt; /u/itsnottme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i192xf/ddr6_ram_and_a_reasonable_gpu_should_be_able_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i192xf/ddr6_ram_and_a_reasonable_gpu_should_be_able_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i192xf/ddr6_ram_and_a_reasonable_gpu_should_be_able_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T15:51:58+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i1jpvi</id>
-    <title>I built a fast "agentic" insurance app with FastAPIs using small function calling LLMs</title>
-    <updated>2025-01-14T23:29:23+00:00</updated>
-    <author>
-      <name>/u/Terrible_Attention83</name>
-      <uri>https://old.reddit.com/user/Terrible_Attention83</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1jpvi/i_built_a_fast_agentic_insurance_app_with/"&gt; &lt;img alt="I built a fast &amp;quot;agentic&amp;quot; insurance app with FastAPIs using small function calling LLMs" src="https://preview.redd.it/gf7clczln1de1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f1d16508d11da2cd20e0adecb6812fc481fae7d0" title="I built a fast &amp;quot;agentic&amp;quot; insurance app with FastAPIs using small function calling LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently came across this post on small function-calling LLMs &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1hr9ll1/i_built_a_small_function_calling_llm_that_packs_a/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1hr9ll1/i_built_a_small_function_calling_llm_that_packs_a/&lt;/a&gt; and decided to give the project a whirl. My use case was to build an agentic workflow for insurance claims (being able to process them, show updates, add documents, etc)&lt;/p&gt; &lt;p&gt;Here is what I liked: I was able to build an agentic solution with just APIs (for the most part) - and it was fast as advertised. The Arch-Function LLMs did generalize well and I wrote mostly business logic. The thing that I found interesting was its prompt_target feature which helped me build task routing and extracted keywords/information from a user query so that I can improve accuracy of tasks and trigger downstream agents when/if needed.&lt;/p&gt; &lt;p&gt;Here is what I did not like: There seems to be a close integration with Gradio at the moment. The gateway enriches conversational state with meta-data, which seems to improve function calling performance. But i suspect they might improve that over time. Also descriptions of prompt_targets/function calling need to be simple and terse. There is some work to make sure the parameters and descriptions aren't too obtuse. I think OpenAI offers similar guidance, but it needs simple and concise descriptions of downstream tasks and parameters. &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/katanemo/archgw"&gt;https://github.com/katanemo/archgw&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Terrible_Attention83"&gt; /u/Terrible_Attention83 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/gf7clczln1de1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1jpvi/i_built_a_fast_agentic_insurance_app_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1jpvi/i_built_a_fast_agentic_insurance_app_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T23:29:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i148es</id>
-    <title>Today I start my very own org 100% devoted to open-source - and it's all thanks to LLMs</title>
-    <updated>2025-01-14T11:43:10+00:00</updated>
-    <author>
-      <name>/u/mark-lord</name>
-      <uri>https://old.reddit.com/user/mark-lord</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;P.S.&lt;/strong&gt; Big thank you to every single one of you here!! My background is in biology - not software dev. This huge milestone in my life could never have happened if it wasn't for LLMs, the fantastic open source ecosystem around them, and of course all the awesome folks here in r /LocalLlama!&lt;/p&gt; &lt;p&gt;Also this post was originally a lot longer but I keep getting autofiltered lol - will put the rest in comments 😄&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i148es/today_i_start_my_very_own_org_100_devoted_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i148es/today_i_start_my_very_own_org_100_devoted_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i148es/today_i_start_my_very_own_org_100_devoted_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T11:43:10+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i11hre</id>
     <title>Why are they releasing open source models for free?</title>
@@ -138,17 +99,30 @@
     <published>2025-01-15T09:21:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1yuke</id>
-    <title>Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns</title>
-    <updated>2025-01-15T14:41:59+00:00</updated>
+    <id>t3_1i1zbul</id>
+    <title>First Intel B580 inference speed test</title>
+    <updated>2025-01-15T15:03:33+00:00</updated>
     <author>
-      <name>/u/Thrumpwart</name>
-      <uri>https://old.reddit.com/user/Thrumpwart</uri>
+      <name>/u/ComprehensiveQuail77</name>
+      <uri>https://old.reddit.com/user/ComprehensiveQuail77</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"&gt; &lt;img alt="Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns" src="https://external-preview.redd.it/ll0sI2kj9OWJW1iOriHpZm1jSfC278YnLF-jisELKs4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f5f30bf0b3bae15b4dee53ba7bd37f2486072c04" title="Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Arxiv paper - &lt;a href="https://arxiv.org/abs/2501.06252"&gt;https://arxiv.org/abs/2501.06252&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Thrumpwart"&gt; /u/Thrumpwart &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://sakana.ai/transformer-squared/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zbul/first_intel_b580_inference_speed_test/"&gt; &lt;img alt="First Intel B580 inference speed test " src="https://b.thumbs.redditmedia.com/nf6RzwI74zZMHig11fK5CgyR1IIx4RjHmOSfgV0lXSA.jpg" title="First Intel B580 inference speed test " /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Upon my request someone agreed to test his B580 and the result is this:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vhjixnb7a6de1.png?width=1024&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2413cfd6985fecdcd88e4f17fd0d0844f2d1d70e"&gt;https://preview.redd.it/vhjixnb7a6de1.png?width=1024&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2413cfd6985fecdcd88e4f17fd0d0844f2d1d70e&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ComprehensiveQuail77"&gt; /u/ComprehensiveQuail77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zbul/first_intel_b580_inference_speed_test/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zbul/first_intel_b580_inference_speed_test/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zbul/first_intel_b580_inference_speed_test/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-15T14:41:59+00:00</published>
+    <published>2025-01-15T15:03:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i1a88y</id>
+    <title>MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)</title>
+    <updated>2025-01-14T16:41:20+00:00</updated>
+    <author>
+      <name>/u/Many_SuchCases</name>
+      <uri>https://old.reddit.com/user/Many_SuchCases</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt; &lt;img alt="MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)" src="https://external-preview.redd.it/HbANHzNsjzvIfVaIHJm0DQnyVjkhdwH7FoXz3GLoR3k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ceab60c72e05525604b9367fa7915922146839a5" title="MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-Text-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-Text-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8os84sl2mzce1.png?width=3320&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4f6f93b8a0965d65139ba727de29c55880f1b91"&gt;https://preview.redd.it/8os84sl2mzce1.png?width=3320&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4f6f93b8a0965d65139ba727de29c55880f1b91&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; MiniMax-Text-01 is a powerful language model with 456 billion total parameters, of which 45.9 billion are activated per token. To better unlock the long context capabilities of the model, MiniMax-Text-01 adopts a hybrid architecture that combines Lightning Attention, Softmax Attention and Mixture-of-Experts (MoE). Leveraging advanced parallel strategies and innovative compute-communication overlap methods—such as Linear Attention Sequence Parallelism Plus (LASP+), varlen ring attention, Expert Tensor Parallel (ETP), etc., MiniMax-Text-01's training context length is extended to 1 million tokens, and it can handle a context of up to 4 million tokens during the inference. On various academic benchmarks, MiniMax-Text-01 also demonstrates the performance of a top-tier model.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model Architecture:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Total Parameters: 456B&lt;/li&gt; &lt;li&gt;Activated Parameters per Token: 45.9B&lt;/li&gt; &lt;li&gt;Number Layers: 80&lt;/li&gt; &lt;li&gt;Hybrid Attention: a softmax attention is positioned after every 7 lightning attention. &lt;ul&gt; &lt;li&gt;Number of attention heads: 64&lt;/li&gt; &lt;li&gt;Attention head dimension: 128&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Mixture of Experts: &lt;ul&gt; &lt;li&gt;Number of experts: 32&lt;/li&gt; &lt;li&gt;Expert hidden dimension: 9216&lt;/li&gt; &lt;li&gt;Top-2 routing strategy&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Positional Encoding: Rotary Position Embedding (RoPE) applied to half of the attention head dimension with a base frequency of 10,000,000&lt;/li&gt; &lt;li&gt;Hidden Size: 6144&lt;/li&gt; &lt;li&gt;Vocab Size: 200,064&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Blog post:&lt;/strong&gt; &lt;a href="https://www.minimaxi.com/en/news/minimax-01-series-2"&gt;https://www.minimaxi.com/en/news/minimax-01-series-2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;HuggingFace:&lt;/strong&gt; &lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-Text-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-Text-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Try online:&lt;/strong&gt; &lt;a href="https://www.hailuo.ai/"&gt;https://www.hailuo.ai/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Github:&lt;/strong&gt; &lt;a href="https://github.com/MiniMax-AI/MiniMax-01"&gt;https://github.com/MiniMax-AI/MiniMax-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Homepage:&lt;/strong&gt; &lt;a href="https://www.minimaxi.com/en"&gt;https://www.minimaxi.com/en&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;PDF paper:&lt;/strong&gt; &lt;a href="https://filecdn.minimax.chat/_Arxiv_MiniMax_01_Report.pdf"&gt;https://filecdn.minimax.chat/_Arxiv_MiniMax_01_Report.pdf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Note: I am not affiliated&lt;/p&gt; &lt;p&gt;GGUF quants might take a while because the architecture is new (MiniMaxText01ForCausalLM)&lt;/p&gt; &lt;p&gt;A Vision model was also released: &lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-VL-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-VL-01&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Many_SuchCases"&gt; /u/Many_SuchCases &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-14T16:41:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1ntmb</id>
@@ -164,17 +138,17 @@
     <published>2025-01-15T02:52:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1a88y</id>
-    <title>MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)</title>
-    <updated>2025-01-14T16:41:20+00:00</updated>
+    <id>t3_1i1yuke</id>
+    <title>Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns</title>
+    <updated>2025-01-15T14:41:59+00:00</updated>
     <author>
-      <name>/u/Many_SuchCases</name>
-      <uri>https://old.reddit.com/user/Many_SuchCases</uri>
+      <name>/u/Thrumpwart</name>
+      <uri>https://old.reddit.com/user/Thrumpwart</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt; &lt;img alt="MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)" src="https://external-preview.redd.it/HbANHzNsjzvIfVaIHJm0DQnyVjkhdwH7FoXz3GLoR3k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ceab60c72e05525604b9367fa7915922146839a5" title="MiniMax-Text-01 - A powerful new MoE language model with 456B total parameters (45.9 billion activated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-Text-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-Text-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8os84sl2mzce1.png?width=3320&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4f6f93b8a0965d65139ba727de29c55880f1b91"&gt;https://preview.redd.it/8os84sl2mzce1.png?width=3320&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4f6f93b8a0965d65139ba727de29c55880f1b91&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; MiniMax-Text-01 is a powerful language model with 456 billion total parameters, of which 45.9 billion are activated per token. To better unlock the long context capabilities of the model, MiniMax-Text-01 adopts a hybrid architecture that combines Lightning Attention, Softmax Attention and Mixture-of-Experts (MoE). Leveraging advanced parallel strategies and innovative compute-communication overlap methods—such as Linear Attention Sequence Parallelism Plus (LASP+), varlen ring attention, Expert Tensor Parallel (ETP), etc., MiniMax-Text-01's training context length is extended to 1 million tokens, and it can handle a context of up to 4 million tokens during the inference. On various academic benchmarks, MiniMax-Text-01 also demonstrates the performance of a top-tier model.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model Architecture:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Total Parameters: 456B&lt;/li&gt; &lt;li&gt;Activated Parameters per Token: 45.9B&lt;/li&gt; &lt;li&gt;Number Layers: 80&lt;/li&gt; &lt;li&gt;Hybrid Attention: a softmax attention is positioned after every 7 lightning attention. &lt;ul&gt; &lt;li&gt;Number of attention heads: 64&lt;/li&gt; &lt;li&gt;Attention head dimension: 128&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Mixture of Experts: &lt;ul&gt; &lt;li&gt;Number of experts: 32&lt;/li&gt; &lt;li&gt;Expert hidden dimension: 9216&lt;/li&gt; &lt;li&gt;Top-2 routing strategy&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Positional Encoding: Rotary Position Embedding (RoPE) applied to half of the attention head dimension with a base frequency of 10,000,000&lt;/li&gt; &lt;li&gt;Hidden Size: 6144&lt;/li&gt; &lt;li&gt;Vocab Size: 200,064&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Blog post:&lt;/strong&gt; &lt;a href="https://www.minimaxi.com/en/news/minimax-01-series-2"&gt;https://www.minimaxi.com/en/news/minimax-01-series-2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;HuggingFace:&lt;/strong&gt; &lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-Text-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-Text-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Try online:&lt;/strong&gt; &lt;a href="https://www.hailuo.ai/"&gt;https://www.hailuo.ai/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Github:&lt;/strong&gt; &lt;a href="https://github.com/MiniMax-AI/MiniMax-01"&gt;https://github.com/MiniMax-AI/MiniMax-01&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Homepage:&lt;/strong&gt; &lt;a href="https://www.minimaxi.com/en"&gt;https://www.minimaxi.com/en&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;PDF paper:&lt;/strong&gt; &lt;a href="https://filecdn.minimax.chat/_Arxiv_MiniMax_01_Report.pdf"&gt;https://filecdn.minimax.chat/_Arxiv_MiniMax_01_Report.pdf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Note: I am not affiliated&lt;/p&gt; &lt;p&gt;GGUF quants might take a while because the architecture is new (MiniMaxText01ForCausalLM)&lt;/p&gt; &lt;p&gt;A Vision model was also released: &lt;a href="https://huggingface.co/MiniMaxAI/MiniMax-VL-01"&gt;https://huggingface.co/MiniMaxAI/MiniMax-VL-01&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Many_SuchCases"&gt; /u/Many_SuchCases &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1a88y/minimaxtext01_a_powerful_new_moe_language_model/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"&gt; &lt;img alt="Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns" src="https://external-preview.redd.it/ll0sI2kj9OWJW1iOriHpZm1jSfC278YnLF-jisELKs4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f5f30bf0b3bae15b4dee53ba7bd37f2486072c04" title="Sakana.ai proposes Transformer-squared - Adaptive AI that adjusts its own weights dynamically and eveolves as it learns" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Arxiv paper - &lt;a href="https://arxiv.org/abs/2501.06252"&gt;https://arxiv.org/abs/2501.06252&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Thrumpwart"&gt; /u/Thrumpwart &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://sakana.ai/transformer-squared/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1yuke/sakanaai_proposes_transformersquared_adaptive_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T16:41:20+00:00</published>
+    <published>2025-01-15T14:41:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1i17k5e</id>
@@ -229,6 +203,32 @@
     <published>2025-01-14T23:54:42+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i1owp1</id>
+    <title>OpenRouter Users: What feature are you missing?</title>
+    <updated>2025-01-15T03:51:27+00:00</updated>
+    <author>
+      <name>/u/punkpeye</name>
+      <uri>https://old.reddit.com/user/punkpeye</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I accidentally built an &lt;a href="https://glama.ai/gateway"&gt;OpenRouter alternative&lt;/a&gt;. I say accidentally because that wasn’t the goal of my project, but as people and companies adopted it, they requested similar features. Over time, I ended up with something that feels like an alternative.&lt;/p&gt; &lt;p&gt;The main benefit of both services is elevated rate limits without subscription, and the ability to easily switch models using OpenAI-compatible API. That's not different.&lt;/p&gt; &lt;p&gt;The unique benefits to my gateway include integration with the Chat and &lt;a href="https://glama.ai/mcp/servers"&gt;MCP ecosystem&lt;/a&gt;, more advanced analytics/logging, and reportedly lower latency and greater stability than OpenRouter. Pricing is similar, and we process several billion tokens daily. Having addressed feedback from current users, I’m now looking to the broader community for ideas on where to take the project next.&lt;/p&gt; &lt;p&gt;What are your painpoints with OpenRouter?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/punkpeye"&gt; /u/punkpeye &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-15T03:51:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i1z8kk</id>
+    <title>Is there much use case for paying $20-200pm for ChatGPT now?</title>
+    <updated>2025-01-15T14:59:52+00:00</updated>
+    <author>
+      <name>/u/omnisvosscio</name>
+      <uri>https://old.reddit.com/user/omnisvosscio</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1z8kk/is_there_much_use_case_for_paying_20200pm_for/"&gt; &lt;img alt="Is there much use case for paying $20-200pm for ChatGPT now?" src="https://b.thumbs.redditmedia.com/HBgmW4MqCdej281PL3DAhaioZhwuyZNlYyIKQjOiQ5g.jpg" title="Is there much use case for paying $20-200pm for ChatGPT now?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/omnisvosscio"&gt; /u/omnisvosscio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1i1z8kk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1z8kk/is_there_much_use_case_for_paying_20200pm_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1z8kk/is_there_much_use_case_for_paying_20200pm_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-15T14:59:52+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i1z0ur</id>
     <title>NVIDIA unveils Sana for ultra HD image generation on laptops</title>
     <updated>2025-01-15T14:50:16+00:00</updated>
@@ -242,17 +242,17 @@
     <published>2025-01-15T14:50:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1owp1</id>
-    <title>OpenRouter Users: What feature are you missing?</title>
-    <updated>2025-01-15T03:51:27+00:00</updated>
+    <id>t3_1i1zcnq</id>
+    <title>Hugging Face is doing a FREE and CERTIFIED course on LLM Agents!</title>
+    <updated>2025-01-15T15:04:30+00:00</updated>
     <author>
-      <name>/u/punkpeye</name>
-      <uri>https://old.reddit.com/user/punkpeye</uri>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I accidentally built an &lt;a href="https://glama.ai/gateway"&gt;OpenRouter alternative&lt;/a&gt;. I say accidentally because that wasn’t the goal of my project, but as people and companies adopted it, they requested similar features. Over time, I ended up with something that feels like an alternative.&lt;/p&gt; &lt;p&gt;The main benefit of both services is elevated rate limits without subscription, and the ability to easily switch models using OpenAI-compatible API. That's not different.&lt;/p&gt; &lt;p&gt;The unique benefits to my gateway include integration with the Chat and &lt;a href="https://glama.ai/mcp/servers"&gt;MCP ecosystem&lt;/a&gt;, more advanced analytics/logging, and reportedly lower latency and greater stability than OpenRouter. Pricing is similar, and we process several billion tokens daily. Having addressed feedback from current users, I’m now looking to the broader community for ideas on where to take the project next.&lt;/p&gt; &lt;p&gt;What are your painpoints with OpenRouter?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/punkpeye"&gt; /u/punkpeye &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1owp1/openrouter_users_what_feature_are_you_missing/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zcnq/hugging_face_is_doing_a_free_and_certified_course/"&gt; &lt;img alt="Hugging Face is doing a FREE and CERTIFIED course on LLM Agents!" src="https://b.thumbs.redditmedia.com/a5-3uVODyTgc7eCD_36qPt_mrPSb1OQD2UG5Sy8hsrs.jpg" title="Hugging Face is doing a FREE and CERTIFIED course on LLM Agents!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Learn to build AI agents that can automate tasks, generate code, and more!&lt;/strong&gt; 🤖&lt;/p&gt; &lt;p&gt;Hugging Face just launched a &lt;strong&gt;free, certified course&lt;/strong&gt; on building and deploying AI agents.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Learn what Agents are&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Build your own Agents&lt;/strong&gt; using the latest libraries and tools.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Earn a certificate of completion&lt;/strong&gt; to showcase your achievement.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/pb6tsyaoa6de1.png?width=720&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f5274f727b9755934bfc21f2ec298a48aeaa4c0a"&gt;https://preview.redd.it/pb6tsyaoa6de1.png?width=720&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f5274f727b9755934bfc21f2ec298a48aeaa4c0a&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zcnq/hugging_face_is_doing_a_free_and_certified_course/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zcnq/hugging_face_is_doing_a_free_and_certified_course/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1zcnq/hugging_face_is_doing_a_free_and_certified_course/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-15T03:51:27+00:00</published>
+    <published>2025-01-15T15:04:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1ty0e</id>
@@ -281,19 +281,6 @@
     <published>2025-01-14T20:18:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1x1mm</id>
-    <title>Flow charts, flow charts everywhere</title>
-    <updated>2025-01-15T13:10:56+00:00</updated>
-    <author>
-      <name>/u/AnotherSoftEng</name>
-      <uri>https://old.reddit.com/user/AnotherSoftEng</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"&gt; &lt;img alt="Flow charts, flow charts everywhere" src="https://preview.redd.it/su32pem6q5de1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=48d3c26cb427054e3de9f38bb7fa6f4ea73f3686" title="Flow charts, flow charts everywhere" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnotherSoftEng"&gt; /u/AnotherSoftEng &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/su32pem6q5de1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-15T13:10:56+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i1rgn9</id>
     <title>New model....</title>
     <updated>2025-01-15T06:29:44+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1rgn9/new_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-15T06:29:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i1x1mm</id>
+    <title>Flow charts, flow charts everywhere</title>
+    <updated>2025-01-15T13:10:56+00:00</updated>
+    <author>
+      <name>/u/AnotherSoftEng</name>
+      <uri>https://old.reddit.com/user/AnotherSoftEng</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"&gt; &lt;img alt="Flow charts, flow charts everywhere" src="https://preview.redd.it/su32pem6q5de1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=48d3c26cb427054e3de9f38bb7fa6f4ea73f3686" title="Flow charts, flow charts everywhere" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnotherSoftEng"&gt; /u/AnotherSoftEng &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/su32pem6q5de1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1x1mm/flow_charts_flow_charts_everywhere/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-15T13:10:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1xqrk</id>
