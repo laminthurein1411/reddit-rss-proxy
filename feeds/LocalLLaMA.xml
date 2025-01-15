@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-15T00:24:49+00:00</updated>
+  <updated>2025-01-15T00:49:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i1bi3b</id>
-    <title>Running a 2B LLM on an iphone with swift-mlx</title>
-    <updated>2025-01-14T17:34:11+00:00</updated>
+    <id>t3_1i19ysx</id>
+    <title>Deepseek v3 Experiences</title>
+    <updated>2025-01-14T16:30:17+00:00</updated>
     <author>
-      <name>/u/l-m-z</name>
-      <uri>https://old.reddit.com/user/l-m-z</uri>
+      <name>/u/easyrider99</name>
+      <uri>https://old.reddit.com/user/easyrider99</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all 👋!&lt;/p&gt; &lt;p&gt;A bit of self promotion in this post but hopefully that's fine :) I work at Kyutai and we released yesterday a new multilingual 2B LLM aimed at on device inference, Helium 2B. Just wanted to share a video with the model running locally on an iPhone 16 Pro at ~28 tok/s (seems to reach ~35 tok/s when plugged in) 🚀 All that uses mlx-swift with q4 quantization - not much optimizations at this stage so just relying on mlx to do all the hard work for us!&lt;/p&gt; &lt;p&gt;It's just a proof of concept at this stage as you cannot even enter a prompt and we don't have an instruct variant of the model anyway. We're certainly looking forward to some feedback on the model itself, we plan on supporting more languages in the near future as well as releasing the whole training pipeline. And we also plan to release more models that run on device too!&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1i1bi3b/video/gswzis8ewzce1/player"&gt;https://reddit.com/link/1i1bi3b/video/gswzis8ewzce1/player&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/l-m-z"&gt; /u/l-m-z &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1bi3b/running_a_2b_llm_on_an_iphone_with_swiftmlx/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1bi3b/running_a_2b_llm_on_an_iphone_with_swiftmlx/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1bi3b/running_a_2b_llm_on_an_iphone_with_swiftmlx/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi All,&lt;/p&gt; &lt;p&gt;I would like to probe the community to find out your experiences with running Deepseek v3 locally. I have been building a local inference machine and managed to get enough ram to be able to run the Q4_K_M.&lt;/p&gt; &lt;p&gt;Build:&lt;br /&gt; Xeon w7-3455&lt;br /&gt; Asus W790 Sage&lt;br /&gt; 432gb DDR5 @ 4800 ( 4x32, 3x96, 16 ) &lt;/p&gt; &lt;p&gt;3 x RTX 3090&lt;/p&gt; &lt;p&gt;llama command:&lt;/p&gt; &lt;p&gt;./build/bin/llama-server --model ~/llm/models/unsloth_DeepSeek-V3-GGUF_f_Q4_K_M/DeepSeek-V3-Q4_K_M/DeepSeek-V3-Q4_K_M-00001-of-00009.gguf --cache-type-k q5_0 --threads 22 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --no-context-shift --port 9999 --ctx-size 8240 --gpu-layers 6&lt;/p&gt; &lt;p&gt;Results with small context: (What is deepseek?) about 7&lt;/p&gt; &lt;p&gt;prompt eval time = 1317.45 ms / 7 tokens ( 188.21 ms per token, 5.31 tokens per second)&lt;/p&gt; &lt;p&gt;eval time = 81081.39 ms / 269 tokens ( 301.42 ms per token, 3.32 tokens per second)&lt;/p&gt; &lt;p&gt;total time = 82398.83 ms / 276 tokens&lt;/p&gt; &lt;p&gt;Results with large context: ( Shopify theme file + prompt )&lt;br /&gt; prompt eval time = 368904.48 ms / 3099 tokens ( 119.04 ms per token, 8.40 tokens per second)&lt;/p&gt; &lt;p&gt;eval time = 372849.73 ms / 779 tokens ( 478.63 ms per token, 2.09 tokens per second)&lt;/p&gt; &lt;p&gt;total time = 741754.21 ms / 3878 tokens&lt;/p&gt; &lt;p&gt;It doesn't seem like running this model locally makes any sense until the ktransformers team can integrate it. What do you guys think? Is there something I am missing to get the performance higher?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/easyrider99"&gt; /u/easyrider99 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T17:34:11+00:00</published>
+    <published>2025-01-14T16:30:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1ibte</id>
@@ -34,30 +34,17 @@
     <published>2025-01-14T22:26:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1hmd7</id>
-    <title>What do you use your local LLM on your phone to do?</title>
-    <updated>2025-01-14T21:56:18+00:00</updated>
+    <id>t3_1i1knlj</id>
+    <title>2025 will be the year of small omni models?</title>
+    <updated>2025-01-15T00:13:27+00:00</updated>
     <author>
-      <name>/u/t0f0b0</name>
-      <uri>https://old.reddit.com/user/t0f0b0</uri>
+      <name>/u/foldl-li</name>
+      <uri>https://old.reddit.com/user/foldl-li</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Those of you who have set up a local LLM on your phone: What do you use it for? Have you found any interesting things you can do with it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/t0f0b0"&gt; /u/t0f0b0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1hmd7/what_do_you_use_your_local_llm_on_your_phone_to_do/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1hmd7/what_do_you_use_your_local_llm_on_your_phone_to_do/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1hmd7/what_do_you_use_your_local_llm_on_your_phone_to_do/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I believe 2025 will be the year of small omni models.&lt;/p&gt; &lt;p&gt;What we already have:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://huggingface.co/Infinigence/Megrez-3B-Omni"&gt;Megrez-3B-Omni&lt;/a&gt; (released at the end of 2024)&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/openbmb/MiniCPM-o-2_6"&gt;MiniCPM-o&lt;/a&gt; built on top of SigLip-400M, Whisper-medium-300M, ChatTTS-200M, and Qwen2.5-7B.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;What's your opinion?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/foldl-li"&gt; /u/foldl-li &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1knlj/2025_will_be_the_year_of_small_omni_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1knlj/2025_will_be_the_year_of_small_omni_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1knlj/2025_will_be_the_year_of_small_omni_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T21:56:18+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i19ysx</id>
-    <title>Deepseek v3 Experiences</title>
-    <updated>2025-01-14T16:30:17+00:00</updated>
-    <author>
-      <name>/u/easyrider99</name>
-      <uri>https://old.reddit.com/user/easyrider99</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi All,&lt;/p&gt; &lt;p&gt;I would like to probe the community to find out your experiences with running Deepseek v3 locally. I have been building a local inference machine and managed to get enough ram to be able to run the Q4_K_M.&lt;/p&gt; &lt;p&gt;Build:&lt;br /&gt; Xeon w7-3455&lt;br /&gt; Asus W790 Sage&lt;br /&gt; 432gb DDR5 @ 4800 ( 4x32, 3x96, 16 ) &lt;/p&gt; &lt;p&gt;3 x RTX 3090&lt;/p&gt; &lt;p&gt;llama command:&lt;/p&gt; &lt;p&gt;./build/bin/llama-server --model ~/llm/models/unsloth_DeepSeek-V3-GGUF_f_Q4_K_M/DeepSeek-V3-Q4_K_M/DeepSeek-V3-Q4_K_M-00001-of-00009.gguf --cache-type-k q5_0 --threads 22 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --no-context-shift --port 9999 --ctx-size 8240 --gpu-layers 6&lt;/p&gt; &lt;p&gt;Results with small context: (What is deepseek?) about 7&lt;/p&gt; &lt;p&gt;prompt eval time = 1317.45 ms / 7 tokens ( 188.21 ms per token, 5.31 tokens per second)&lt;/p&gt; &lt;p&gt;eval time = 81081.39 ms / 269 tokens ( 301.42 ms per token, 3.32 tokens per second)&lt;/p&gt; &lt;p&gt;total time = 82398.83 ms / 276 tokens&lt;/p&gt; &lt;p&gt;Results with large context: ( Shopify theme file + prompt )&lt;br /&gt; prompt eval time = 368904.48 ms / 3099 tokens ( 119.04 ms per token, 8.40 tokens per second)&lt;/p&gt; &lt;p&gt;eval time = 372849.73 ms / 779 tokens ( 478.63 ms per token, 2.09 tokens per second)&lt;/p&gt; &lt;p&gt;total time = 741754.21 ms / 3878 tokens&lt;/p&gt; &lt;p&gt;It doesn't seem like running this model locally makes any sense until the ktransformers team can integrate it. What do you guys think? Is there something I am missing to get the performance higher?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/easyrider99"&gt; /u/easyrider99 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i19ysx/deepseek_v3_experiences/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T16:30:17+00:00</published>
+    <published>2025-01-15T00:13:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1jlop</id>
@@ -73,17 +60,17 @@
     <published>2025-01-14T23:23:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1k8yq</id>
-    <title>Audiblez: Generate audiobooks from e-books with Kokoro-82M</title>
-    <updated>2025-01-14T23:54:42+00:00</updated>
+    <id>t3_1i0ysa7</id>
+    <title>Qwen released a 72B and a 7B process reward models (PRM) on their recent math models</title>
+    <updated>2025-01-14T05:12:52+00:00</updated>
     <author>
-      <name>/u/inkompatible</name>
-      <uri>https://old.reddit.com/user/inkompatible</uri>
+      <name>/u/Nunki08</name>
+      <uri>https://old.reddit.com/user/Nunki08</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/inkompatible"&gt; /u/inkompatible &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://claudio.uk/posts/epub-to-audiobook.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1k8yq/audiblez_generate_audiobooks_from_ebooks_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1k8yq/audiblez_generate_audiobooks_from_ebooks_with/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt; &lt;img alt="Qwen released a 72B and a 7B process reward models (PRM) on their recent math models" src="https://external-preview.redd.it/VHyrFnoulzKOpumKfTYgd3z5gbzActL7OlrPPgPm9KM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c713b68d12275996f8c476345dd6d21eae4d0b75" title="Qwen released a 72B and a 7B process reward models (PRM) on their recent math models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B"&gt;https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B"&gt;https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;In addition to the mathematical Outcome Reward Model (ORM) Qwen2.5-Math-RM-72B, we release the Process Reward Model (PRM), namely Qwen2.5-Math-PRM-7B and Qwen2.5-Math-PRM-72B. PRMs emerge as a promising approach for process supervision in mathematical reasoning of Large Language Models (LLMs), aiming to identify and mitigate intermediate errors in the reasoning processes. Our trained PRMs exhibit both impressive performance in the Best-of-N (BoN) evaluation and stronger error identification performance in ProcessBench.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ekfsi99i7wce1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=412d38180444dc55ea80687762ea2ed8d0cb3e8f"&gt;https://preview.redd.it/ekfsi99i7wce1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=412d38180444dc55ea80687762ea2ed8d0cb3e8f&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The paper: The Lessons of Developing Process Reward Models in Mathematical Reasoning&lt;br /&gt; arXiv:2501.07301 [cs.CL]: &lt;a href="https://arxiv.org/abs/2501.07301"&gt;https://arxiv.org/abs/2501.07301&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nunki08"&gt; /u/Nunki08 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T23:54:42+00:00</published>
+    <published>2025-01-14T05:12:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1i1de3o</id>
@@ -112,17 +99,17 @@
     <published>2025-01-14T17:09:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i0ysa7</id>
-    <title>Qwen released a 72B and a 7B process reward models (PRM) on their recent math models</title>
-    <updated>2025-01-14T05:12:52+00:00</updated>
+    <id>t3_1i1k8yq</id>
+    <title>Audiblez: Generate audiobooks from e-books with Kokoro-82M</title>
+    <updated>2025-01-14T23:54:42+00:00</updated>
     <author>
-      <name>/u/Nunki08</name>
-      <uri>https://old.reddit.com/user/Nunki08</uri>
+      <name>/u/inkompatible</name>
+      <uri>https://old.reddit.com/user/inkompatible</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt; &lt;img alt="Qwen released a 72B and a 7B process reward models (PRM) on their recent math models" src="https://external-preview.redd.it/VHyrFnoulzKOpumKfTYgd3z5gbzActL7OlrPPgPm9KM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c713b68d12275996f8c476345dd6d21eae4d0b75" title="Qwen released a 72B and a 7B process reward models (PRM) on their recent math models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B"&gt;https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B"&gt;https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;In addition to the mathematical Outcome Reward Model (ORM) Qwen2.5-Math-RM-72B, we release the Process Reward Model (PRM), namely Qwen2.5-Math-PRM-7B and Qwen2.5-Math-PRM-72B. PRMs emerge as a promising approach for process supervision in mathematical reasoning of Large Language Models (LLMs), aiming to identify and mitigate intermediate errors in the reasoning processes. Our trained PRMs exhibit both impressive performance in the Best-of-N (BoN) evaluation and stronger error identification performance in ProcessBench.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ekfsi99i7wce1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=412d38180444dc55ea80687762ea2ed8d0cb3e8f"&gt;https://preview.redd.it/ekfsi99i7wce1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=412d38180444dc55ea80687762ea2ed8d0cb3e8f&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The paper: The Lessons of Developing Process Reward Models in Mathematical Reasoning&lt;br /&gt; arXiv:2501.07301 [cs.CL]: &lt;a href="https://arxiv.org/abs/2501.07301"&gt;https://arxiv.org/abs/2501.07301&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nunki08"&gt; /u/Nunki08 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i0ysa7/qwen_released_a_72b_and_a_7b_process_reward/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/inkompatible"&gt; /u/inkompatible &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://claudio.uk/posts/epub-to-audiobook.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1k8yq/audiblez_generate_audiobooks_from_ebooks_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1k8yq/audiblez_generate_audiobooks_from_ebooks_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T05:12:52+00:00</published>
+    <published>2025-01-14T23:54:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1i16lvy</id>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1b0bo/an_llm_serving_framework_that_can_fast_run_o1like/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-14T17:13:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i1kz1c</id>
+    <title>Sharing my unorthodox home setup, and how I use local LLMs</title>
+    <updated>2025-01-15T00:28:26+00:00</updated>
+    <author>
+      <name>/u/SomeOddCodeGuy</name>
+      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So for the past year and a half+ I've been tinkering with, planning out and updating my home setup, and figured that with 2025 here, I'd join in on sharing where it's at. It's an expensive little home lab, though nothing nearly as fancy or cool as what other folks have.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;tl;dr&lt;/em&gt;&lt;/strong&gt;&lt;em&gt;- I have 2 &amp;quot;assistants&amp;quot; (1 large and 1 small, with each assistant made up of between 4-7 models working together), and a development machine/assistant. The dev box simulates the smaller assistant for dev purposes. Each assistant has offline wiki access, vision capability, and I use them for all my hobby work/random stuff.&lt;/em&gt;&lt;/p&gt; &lt;h1&gt;The Hardware&lt;/h1&gt; &lt;p&gt;The hardware is a mix of stuff I already had, or stuff I bought for LLM tinkering. I'm a software dev and tinkering with stuff is one of my main hobbies, so I threw a fair bit of money at it. &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Refurb M2 Ultra Mac Studio w/1 TB internal drive + USB C 2TB drive&lt;/li&gt; &lt;li&gt;Refurb M2 Max Macbook Pro 96GB&lt;/li&gt; &lt;li&gt;Refurb M2 Mac Mini base model&lt;/li&gt; &lt;li&gt;Windows 10 Desktop w/ RTX 4090&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Total Hardware Pricing: ~$5,500 for studio refurbished + ~$3000 for Macbook Pro refurbished + ~$500 Mac Mini refurbished (&lt;em&gt;already owned&lt;/em&gt;) + ~$2000 Windows desktop (&lt;em&gt;already owned&lt;/em&gt;) == &lt;strong&gt;$10,500 in total hardware&lt;/strong&gt;&lt;/p&gt; &lt;h1&gt;The Software&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;I do most of my inference using KoboldCPP&lt;/li&gt; &lt;li&gt;I do vision inference through Ollama and my dev box uses Ollama&lt;/li&gt; &lt;li&gt;I run all inference through WilmerAI, which handles all the workflows and domain routing. This lets me use as many models as I want to power the assistants, and also setup workflows for coding windows, use the offline wiki api, etc.&lt;/li&gt; &lt;li&gt;For zero-shots, simple dev questions and other quick hits, I use Open WebUI as my front end. Otherwise I use SillyTavern for more involved programming tasks and for my assistants. &lt;ul&gt; &lt;li&gt;All of the gaming quality of life features in ST double over very nicely for assistant work and programming lol&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;The Setup&lt;/h1&gt; &lt;p&gt;The Mac Mini acts as one of three WilmerAI &amp;quot;cores&amp;quot;; the mini is the Wilmer home core, and also acts as the web server for all of my instances of ST and Open WebUI. There are 6 instances of Wilmer on this machine, each with its own purpose. The Macbook Pro is the Wilmer portable core (3 instances of Wilmer), and the Windows Desktop is the Wilmer dev core (2 instances of Wilmer).&lt;/p&gt; &lt;p&gt;All of the models for the Wilmer home core are on the Mac Studio, and I hope to eventually add another box to expand the home core.&lt;/p&gt; &lt;p&gt;Each core acts independently from the others, meaning doing things like removing the macbook from the network won't hurt the home core. Each core has its own text models, offline wiki api, and vision model.&lt;/p&gt; &lt;p&gt;I have 2 &amp;quot;assistants&amp;quot; set up, with the intention to later add a third. Each assistant is essentially built to be an advanced &amp;quot;rubber duck&amp;quot; (&lt;em&gt;as in the rubber duck programming method where you talk through a problem to an inanimate object and it helps you solve this problem&lt;/em&gt;). Each assistant is built entirely to talk through problems with me, of any kind, and help me solve them by challenging me, answering my questions, or using a specific set of instructions on how to think through issues in unique ways. Each assistant is built to be different, and thus solve things differently.&lt;/p&gt; &lt;p&gt;Each assistant is made up of multiple LLMs. Some examples would be: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;A responder model, which does the talking&lt;/li&gt; &lt;li&gt;A RAG model, which I use for pulling data from the offline wikipedia api for factual questions&lt;/li&gt; &lt;li&gt;A reasoning model, for thinking through a response before the responder answers&lt;/li&gt; &lt;li&gt;A coding model, for handle code issues and math issues.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The two assistants are:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;RolandAI&lt;/strong&gt;- powered by the home core. All of Roland's models are generally running on the Mac Studio, and is by far the more powerful of the two. Its got conversation memories going back to early 2024, and I primarily use it. At this point I have to prune the memories regularly lol. I'm saving the pruned memories for when I get a secondary memory system into Wilmer that I can backload them into.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;SomeOddCodeBot&lt;/strong&gt;- powered by the portable core. All these models run on the Macbook. This is my &amp;quot;second opinion&amp;quot; bot, and also my portable bot for when I'm on the road. It's setup is specifically different from Roland, beyond just being smaller, so that they will &amp;quot;think&amp;quot; differently about problems.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Each assistant's persona and problem solving instructions exist only within the workflows of Wilmer, meaning that front ends like SillyTavern have no information in a character card for it, Open WebUI has no prompt for it, etc. Roland, as an entity, is a specific series of workflow nodes that are designed to act, speak and process problems/prompts in a very specific way. &lt;/p&gt; &lt;p&gt;I generally have a total of about 8 front end SillyTavern/Open WebUI windows open. &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Four ST windows. Two are for the two assistants individually, and one is a group chat that have both in case I want the two assistants to process a longer/more complex concept together. This replaced my old &amp;quot;development group&amp;quot;.&lt;/li&gt; &lt;li&gt;I have a fourth ST window for my home core &amp;quot;Coding&amp;quot; Wilmer instance, which is a workflow that is just for coding questions (for example, one iteration of this was using QwQ + Qwen2.5 32b coder, which the response quality landed somewhere between ChatGPT 4o and o1. Tis slow though). &lt;/li&gt; &lt;li&gt;After that, I have 4 Open WebUI windows for coding workflows, reasoning workflows and a encyclopedic questions using the offline wiki api.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How I Use Them&lt;/h1&gt; &lt;p&gt;Roland is obviously going to be the more powerful of the two assistants; I have 180GB, give or take, of VRAM to build out its model structure with. SomeOddCodeBot has about 76GB of VRAM, but has a similar structure just using smaller models.&lt;/p&gt; &lt;p&gt;I use these assistants for any personal projects that I have; I can't use them for anything work related, but I do a &lt;em&gt;lot&lt;/em&gt; of personal dev and tinkering. Whenever I have an idea, whenever I'm checking something, etc I usually bounce the ideas off of one or both assistants. If I'm trying to think through a problem I might do similarly.&lt;/p&gt; &lt;p&gt;Another example is code reviews: I often pass in the before/after code to both bots, and ask for a general analysis of what's what. I'm reviewing it myself as well, but the bots help me find little things I might have missed, and generally make me feel better that I didn't miss anything. &lt;/p&gt; &lt;p&gt;The code reviews will often be for my own work, as well as anyone committing to my personal projects.&lt;/p&gt; &lt;p&gt;For the dev core, I use Ollama as the main inference because I can do a neat trick with Wilmer on it. As long as each individual model fits on 20GB of VRAM, I can use as many models as I want in the workflow. Ollama API calls let you pass the model name in, and it unloads the current model and loads the new model instead, so I can have each Wilmer node just pass in a different model name. This lets me simulate the 76GB portable core with only 20GB, since I only use smaller models on the portable core, so I can have a dev assistant to break and mess with while I'm updating Wilmer code.&lt;/p&gt; &lt;h1&gt;2025 Plans&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;I plan to convert the dev core into a coding agent box and build a Wilmer agent jobs system; think of like an agent wrapping an agent lol. I want something like Aider running as the worker agent, that is controlled by a wrapping agent that calls a Roland Wilmer instance to manage the coder. ie- Roland is in charge of the agent doing the coding. &lt;ul&gt; &lt;li&gt;I've been using Roland to code review me, help me come up with architectures for things, etc for a while. The goal of that is to tune the workflows so that I can eventually just put Roland in charge of a coding agent running on the Windows box. Write down what I want, get back a higher quality version than if I just left the normal agent to its devices; something QAed by a workflow thinking in a specific way that I want it to think. If that works well, I'd try to expand that out to have N number of agents running off of runpod boxes for larger dev work.&lt;/li&gt; &lt;li&gt;All of this is just a really high level plan atm, but I became more interested in it after finding out about that $1m competition =D What was a &amp;quot;that's a neat idea&amp;quot; became a &amp;quot;I really want to try this&amp;quot;. So this whole plan may fail miserably, but I do have some hope based on how I'm already using Wilmer today.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;I want to add Home Assistant integration in and start making home automation workflows in Wilmer. Once I've got some going, I'll add a new Wilmer core to the house, as well as a third assistant, to manage it.&lt;/li&gt; &lt;li&gt;I've got my eye on an NVidia digits... might get it to expand Roland a bit.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Anyhow, that's pretty much it. It's an odd setup, but I thought some of you might get a kick out of it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1kz1c/sharing_my_unorthodox_home_setup_and_how_i_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1kz1c/sharing_my_unorthodox_home_setup_and_how_i_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1kz1c/sharing_my_unorthodox_home_setup_and_how_i_use/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-15T00:28:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1i10okg</id>
@@ -242,19 +242,6 @@
     <published>2025-01-14T19:59:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i1b2xq</id>
-    <title>Transformer^2: Self-adaptive LLMs</title>
-    <updated>2025-01-14T17:16:19+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2501.06252"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1b2xq/transformer2_selfadaptive_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1b2xq/transformer2_selfadaptive_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-14T17:16:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i148es</id>
     <title>Today I start my very own org 100% devoted to open-source - and it's all thanks to LLMs</title>
     <updated>2025-01-14T11:43:10+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i148es/today_i_start_my_very_own_org_100_devoted_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-14T11:43:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i1b2xq</id>
+    <title>Transformer^2: Self-adaptive LLMs</title>
+    <updated>2025-01-14T17:16:19+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2501.06252"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i1b2xq/transformer2_selfadaptive_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i1b2xq/transformer2_selfadaptive_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-14T17:16:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1i19e8u</id>
