@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-17T12:26:13+00:00</updated>
+  <updated>2025-01-17T12:45:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1i31sxj</id>
+    <title>How to use chat templates for multicharacter roleplays?</title>
+    <updated>2025-01-16T22:54:17+00:00</updated>
+    <author>
+      <name>/u/martinerous</name>
+      <uri>https://old.reddit.com/user/martinerous</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have implemented my own roleplay front-end for KoboldCpp. In contrast to SillyTavern and BackyardAI, my approach is not character-centric but rather scenario-centric. Both AI and the user can control multiple characters, and AI makes its own choice of who should speak next.&lt;/p&gt; &lt;p&gt;At first, I did not even bother to figure out how to use chat templates. I just send a simple example dialogue to the LLM together with my scenario:&lt;/p&gt; &lt;p&gt;Bob: Hi!&lt;/p&gt; &lt;p&gt;Anna: Hello!&lt;/p&gt; &lt;p&gt;Then I launch the generation and poll the API to check for the result. I look for a valid `Character Name:` marker in the response and allow only the characters that are setup for AI control. If I receive one more character marker, I stop the generation to avoid the infamous &amp;quot;speaking for others&amp;quot; issue, and clean up the response to remove the unnecessary text.&lt;/p&gt; &lt;p&gt;I'm testing it now and even Llama 3.2 3B seems to work quite OK with this setup.&lt;/p&gt; &lt;p&gt;However, I've heard that some models benefit from system prompts, and, as I understand, to pass the system prompt to the model, I need to use a proper chat template for the specific model. &lt;/p&gt; &lt;p&gt;And now we come to the root of the problem. &lt;strong&gt;Chat templates seem to be centered on the idea of only two parties - the user and the assistant. I have more parties. How would I encode their messages in a chat template?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;A naive approach would be to send the system prompt with the proper formatting for the template, and then just dump the entire accumulated context with the scenario, character descriptions and all the chat messages into a single &amp;quot;assistant&amp;quot; message and ignore the user part of the template completely. &lt;/p&gt; &lt;p&gt;But wouldn't this somehow make the model less smart and not obey the scenario as well as it would if I separate the chat messages and create a single assistant (or user) message for every character's reply? &lt;/p&gt; &lt;p&gt;What are the practical effects of the chat template on the inference quality? Is the chat template just a convenient wrapper to properly separate messages in more complex situations or does it actually improve the model's behavior?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/martinerous"&gt; /u/martinerous &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i31sxj/how_to_use_chat_templates_for_multicharacter/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i31sxj/how_to_use_chat_templates_for_multicharacter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i31sxj/how_to_use_chat_templates_for_multicharacter/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-16T22:54:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i3csqz</id>
+    <title>Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?</title>
+    <updated>2025-01-17T09:39:23+00:00</updated>
+    <author>
+      <name>/u/GeorgiaWitness1</name>
+      <uri>https://old.reddit.com/user/GeorgiaWitness1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt; &lt;img alt="Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?" src="https://b.thumbs.redditmedia.com/PH94xm8eiN7x1NwNJ3IFuRCx7gAYOvWPtZT0_42KVOM.jpg" title="Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello! &lt;/p&gt; &lt;p&gt;I posted something similar a few months ago, but after evaluating the quality of the new SLM models, I think it would make sense to undertake a project to finetune a model specifically for PII. Additionally, perhaps developing a Docker container with a complete solution incorporating the model, agentic behavior, and possibly &lt;a href="https://microsoft.github.io/presidio/"&gt;Presidio&lt;/a&gt; could be beneficial.&lt;/p&gt; &lt;p&gt;Could be a good way to learn all the finetuning pipeline with &lt;a href="https://unsloth.ai/"&gt;unsloth&lt;/a&gt;?&lt;/p&gt; &lt;p&gt;Tell me what you think. Thank you!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/wrdfedt0yide1.png?width=3190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=98842a4696a8cf4ac8780dc0749565e32856bfb1"&gt;https://preview.redd.it/wrdfedt0yide1.png?width=3190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=98842a4696a8cf4ac8780dc0749565e32856bfb1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GeorgiaWitness1"&gt; /u/GeorgiaWitness1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-17T09:39:23+00:00</published>
+  </entry>
   <entry>
     <id>t3_1i2nkui</id>
     <title>Do you think that LLMs can do better natural language translation than services like DeepL, GoogleTranslate, Microsoft Translate etc.?</title>
@@ -47,17 +73,17 @@
     <published>2025-01-17T11:16:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i3bieb</id>
-    <title>Models for shorter context</title>
-    <updated>2025-01-17T07:58:56+00:00</updated>
+    <id>t3_1i3enfs</id>
+    <title>Anyone collecting numbers on efficiency / performance in terms of tokens-per-watt? | LLM-efficiency leaderboard?</title>
+    <updated>2025-01-17T11:51:17+00:00</updated>
     <author>
-      <name>/u/DeltaSqueezer</name>
-      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
+      <name>/u/mark-lord</name>
+      <uri>https://old.reddit.com/user/mark-lord</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recent trends have been to push for larger context windows and to compensate for the ballooning VRAM and compute costs of longer contexts by using techniques such as GQA etc.&lt;/p&gt; &lt;p&gt;But let's say you have a task that requires only 4k or 8k of context. And you want to have the best performance possible for this context size.&lt;/p&gt; &lt;p&gt;Are there models that perform better within this limited context or a way of tuning existing models to perform better with a 4k or 8k context window?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3bieb/models_for_shorter_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3bieb/models_for_shorter_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3bieb/models_for_shorter_context/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;EDIT: Title should say tokens-per-joule lol&lt;/p&gt; &lt;p&gt;EDIT 2: Found a little bit of info from &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1d54iv8/power_limit_vs_tokens_llama_38bq443b_1_rtx_3090/"&gt;this post&lt;/a&gt;, and some extra data to extrapolate from this &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1gb5ii7/power_scaling_tests_with_4x_rtx_3090s_using_mlc/"&gt;post&lt;/a&gt; too&lt;br /&gt; ---&lt;/p&gt; &lt;p&gt;Hey everyone! Basically just the title - anyone know if there's any data out there on e.g. max tokens-per-watt of a RaspPi vs, say, a 4090? I found &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1gb8lmp/inference_comparing_tokens_per_watt_4090_vs_apple/?utm_source=share&amp;amp;utm_medium=web3x&amp;amp;utm_name=web3xcss&amp;amp;utm_term=1&amp;amp;utm_content=share_button"&gt;this post&lt;/a&gt; from a few months back but it didn't have much actual data, just anecdotal stuff. I'm kind assuming that if any kind of LLM-efficiency leaderboard &lt;strong&gt;did&lt;/strong&gt; exist I'd probably be able to find it, but a quick Google hasn't yielded anything fruitful either.&lt;/p&gt; &lt;p&gt;Would appreciate if anyone's got any leads / would be willing to share any numbers 🙌&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T07:58:56+00:00</published>
+    <published>2025-01-17T11:51:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1i29wz5</id>
@@ -99,17 +125,17 @@
     <published>2025-01-16T13:50:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i3csqz</id>
-    <title>Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?</title>
-    <updated>2025-01-17T09:39:23+00:00</updated>
+    <id>t3_1i37x87</id>
+    <title>Whats the current State-of-The-Art for voice cloning?</title>
+    <updated>2025-01-17T04:02:10+00:00</updated>
     <author>
-      <name>/u/GeorgiaWitness1</name>
-      <uri>https://old.reddit.com/user/GeorgiaWitness1</uri>
+      <name>/u/pigeon57434</name>
+      <uri>https://old.reddit.com/user/pigeon57434</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt; &lt;img alt="Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?" src="https://b.thumbs.redditmedia.com/PH94xm8eiN7x1NwNJ3IFuRCx7gAYOvWPtZT0_42KVOM.jpg" title="Thinking about finetuning an SLM (i.e 0.5B, 2B) for PII a as a way to learn. Worth the shot?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello! &lt;/p&gt; &lt;p&gt;I posted something similar a few months ago, but after evaluating the quality of the new SLM models, I think it would make sense to undertake a project to finetune a model specifically for PII. Additionally, perhaps developing a Docker container with a complete solution incorporating the model, agentic behavior, and possibly &lt;a href="https://microsoft.github.io/presidio/"&gt;Presidio&lt;/a&gt; could be beneficial.&lt;/p&gt; &lt;p&gt;Could be a good way to learn all the finetuning pipeline with &lt;a href="https://unsloth.ai/"&gt;unsloth&lt;/a&gt;?&lt;/p&gt; &lt;p&gt;Tell me what you think. Thank you!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/wrdfedt0yide1.png?width=3190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=98842a4696a8cf4ac8780dc0749565e32856bfb1"&gt;https://preview.redd.it/wrdfedt0yide1.png?width=3190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=98842a4696a8cf4ac8780dc0749565e32856bfb1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GeorgiaWitness1"&gt; /u/GeorgiaWitness1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3csqz/thinking_about_finetuning_an_slm_ie_05b_2b_for/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;last time i checked which was quite a while voice cloning and like making AI song covers and etc used RVC v2 but im sure a LOT has changed since then Ive heard a lot of stuff about tts models like the new 82M model but i dont think ive heard specifically about voice cloning and cover tools&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pigeon57434"&gt; /u/pigeon57434 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T09:39:23+00:00</published>
+    <published>2025-01-17T04:02:10+00:00</published>
   </entry>
   <entry>
     <id>t3_1i3d6t0</id>
@@ -125,30 +151,17 @@
     <published>2025-01-17T10:09:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i3enfs</id>
-    <title>Anyone collecting numbers on efficiency / performance in terms of tokens-per-watt? | LLM-efficiency leaderboard?</title>
-    <updated>2025-01-17T11:51:17+00:00</updated>
+    <id>t3_1i3dcxz</id>
+    <title>Table extraction from Finance PDF's</title>
+    <updated>2025-01-17T10:22:21+00:00</updated>
     <author>
-      <name>/u/mark-lord</name>
-      <uri>https://old.reddit.com/user/mark-lord</uri>
+      <name>/u/Maleficent_Repair359</name>
+      <uri>https://old.reddit.com/user/Maleficent_Repair359</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;EDIT: Title should say tokens-per-joule lol&lt;/p&gt; &lt;p&gt;EDIT 2: Found a little bit of info from &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1d54iv8/power_limit_vs_tokens_llama_38bq443b_1_rtx_3090/"&gt;this post&lt;/a&gt;, and some extra data to extrapolate from this &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1gb5ii7/power_scaling_tests_with_4x_rtx_3090s_using_mlc/"&gt;post&lt;/a&gt; too&lt;br /&gt; ---&lt;/p&gt; &lt;p&gt;Hey everyone! Basically just the title - anyone know if there's any data out there on e.g. max tokens-per-watt of a RaspPi vs, say, a 4090? I found &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1gb8lmp/inference_comparing_tokens_per_watt_4090_vs_apple/?utm_source=share&amp;amp;utm_medium=web3x&amp;amp;utm_name=web3xcss&amp;amp;utm_term=1&amp;amp;utm_content=share_button"&gt;this post&lt;/a&gt; from a few months back but it didn't have much actual data, just anecdotal stuff. I'm kind assuming that if any kind of LLM-efficiency leaderboard &lt;strong&gt;did&lt;/strong&gt; exist I'd probably be able to find it, but a quick Google hasn't yielded anything fruitful either.&lt;/p&gt; &lt;p&gt;Would appreciate if anyone's got any leads / would be willing to share any numbers 🙌&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3enfs/anyone_collecting_numbers_on_efficiency/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;By any chance is there any way which is 100% accurate to extract tabular data from finance pdfs which basically contains balance sheets and tables.&lt;/p&gt; &lt;p&gt;I tried everything pytesseract , camelot , tabula , Microsoft table transformer , but there isnt any accuracy with proper headers , empty columns.&lt;/p&gt; &lt;p&gt;I even tried openai's assistant api with code_interpreter as tool but that also lacks with the accuracy.&lt;/p&gt; &lt;p&gt;Anyone has ever tried to work on this solution ??&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Maleficent_Repair359"&gt; /u/Maleficent_Repair359 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T11:51:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i37x87</id>
-    <title>Whats the current State-of-The-Art for voice cloning?</title>
-    <updated>2025-01-17T04:02:10+00:00</updated>
-    <author>
-      <name>/u/pigeon57434</name>
-      <uri>https://old.reddit.com/user/pigeon57434</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;last time i checked which was quite a while voice cloning and like making AI song covers and etc used RVC v2 but im sure a LOT has changed since then Ive heard a lot of stuff about tts models like the new 82M model but i dont think ive heard specifically about voice cloning and cover tools&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pigeon57434"&gt; /u/pigeon57434 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i37x87/whats_the_current_stateoftheart_for_voice_cloning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T04:02:10+00:00</published>
+    <published>2025-01-17T10:22:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1i30yy4</id>
@@ -188,19 +201,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i2p6n3/why_cant_gpus_have_removable_memory_like_pc_ram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-16T13:43:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i3dcxz</id>
-    <title>Table extraction from Finance PDF's</title>
-    <updated>2025-01-17T10:22:21+00:00</updated>
-    <author>
-      <name>/u/Maleficent_Repair359</name>
-      <uri>https://old.reddit.com/user/Maleficent_Repair359</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;By any chance is there any way which is 100% accurate to extract tabular data from finance pdfs which basically contains balance sheets and tables.&lt;/p&gt; &lt;p&gt;I tried everything pytesseract , camelot , tabula , Microsoft table transformer , but there isnt any accuracy with proper headers , empty columns.&lt;/p&gt; &lt;p&gt;I even tried openai's assistant api with code_interpreter as tool but that also lacks with the accuracy.&lt;/p&gt; &lt;p&gt;Anyone has ever tried to work on this solution ??&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Maleficent_Repair359"&gt; /u/Maleficent_Repair359 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3dcxz/table_extraction_from_finance_pdfs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T10:22:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1i3cdws</id>
@@ -268,19 +268,6 @@
     <published>2025-01-16T11:37:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i3b1jb</id>
-    <title>New framework aims to mimic human thinking for writing long-form content (OmniThink)</title>
-    <updated>2025-01-17T07:22:39+00:00</updated>
-    <author>
-      <name>/u/emanuilov</name>
-      <uri>https://old.reddit.com/user/emanuilov</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt; &lt;img alt="New framework aims to mimic human thinking for writing long-form content (OmniThink)" src="https://external-preview.redd.it/P3wPulsj-vbHIfL8pdoJemWboTREaTu--SoaotPYjzU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=098b6934967a73dbc796419d5bd3b3397ed04814" title="New framework aims to mimic human thinking for writing long-form content (OmniThink)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sharing a paper about OmniThink - an approach that tries to replicate how humans write long-form content. The framework focuses on continuous reflection and exploration, similar to how we gather information and refine our understanding when writing detailed articles.&lt;/p&gt; &lt;p&gt;(Not affiliated with the authors)&lt;/p&gt; &lt;p&gt;The paper's style reminds me of Google Deep Research's functionality. I couldn't get their online demo to work, but the ideas in the paper are worth checking out, IMO. I will spend some time on their repo to see if that will work out of the box.&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://huggingface.co/papers/2501.09751"&gt;https://huggingface.co/papers/2501.09751&lt;/a&gt;&lt;br /&gt; Project page: &lt;a href="https://zjunlp.github.io/project/OmniThink/"&gt;https://zjunlp.github.io/project/OmniThink/&lt;/a&gt;&lt;br /&gt; GitHub: &lt;a href="https://github.com/zjunlp/OmniThink"&gt;https://github.com/zjunlp/OmniThink&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/alrt6fyh9ide1.png?width=3875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a41e77eac565e5bf61deeaae9c0de535fb45feb"&gt;https://preview.redd.it/alrt6fyh9ide1.png?width=3875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a41e77eac565e5bf61deeaae9c0de535fb45feb&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/emanuilov"&gt; /u/emanuilov &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-17T07:22:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i3cxm0</id>
     <title>Korea AI Chip - DEEPX NPU . Price? Under 50$ . Better that GPU?</title>
     <updated>2025-01-17T09:50:04+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3cxm0/korea_ai_chip_deepx_npu_price_under_50_better/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-17T09:50:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i3b1jb</id>
+    <title>New framework aims to mimic human thinking for writing long-form content (OmniThink)</title>
+    <updated>2025-01-17T07:22:39+00:00</updated>
+    <author>
+      <name>/u/emanuilov</name>
+      <uri>https://old.reddit.com/user/emanuilov</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt; &lt;img alt="New framework aims to mimic human thinking for writing long-form content (OmniThink)" src="https://external-preview.redd.it/P3wPulsj-vbHIfL8pdoJemWboTREaTu--SoaotPYjzU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=098b6934967a73dbc796419d5bd3b3397ed04814" title="New framework aims to mimic human thinking for writing long-form content (OmniThink)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sharing a paper about OmniThink - an approach that tries to replicate how humans write long-form content. The framework focuses on continuous reflection and exploration, similar to how we gather information and refine our understanding when writing detailed articles.&lt;/p&gt; &lt;p&gt;(Not affiliated with the authors)&lt;/p&gt; &lt;p&gt;The paper's style reminds me of Google Deep Research's functionality. I couldn't get their online demo to work, but the ideas in the paper are worth checking out, IMO. I will spend some time on their repo to see if that will work out of the box.&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://huggingface.co/papers/2501.09751"&gt;https://huggingface.co/papers/2501.09751&lt;/a&gt;&lt;br /&gt; Project page: &lt;a href="https://zjunlp.github.io/project/OmniThink/"&gt;https://zjunlp.github.io/project/OmniThink/&lt;/a&gt;&lt;br /&gt; GitHub: &lt;a href="https://github.com/zjunlp/OmniThink"&gt;https://github.com/zjunlp/OmniThink&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/alrt6fyh9ide1.png?width=3875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a41e77eac565e5bf61deeaae9c0de535fb45feb"&gt;https://preview.redd.it/alrt6fyh9ide1.png?width=3875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a41e77eac565e5bf61deeaae9c0de535fb45feb&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/emanuilov"&gt; /u/emanuilov &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i3b1jb/new_framework_aims_to_mimic_human_thinking_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-17T07:22:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1i2t82i</id>
