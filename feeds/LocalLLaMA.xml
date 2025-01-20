@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-20T02:11:49+00:00</updated>
+  <updated>2025-01-20T02:38:00+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1i4hb2l</id>
-    <title>Theory: trying to use newer and more powerful LLMs to sound more human is likely moving in the wrong direction</title>
-    <updated>2025-01-18T21:01:51+00:00</updated>
-    <author>
-      <name>/u/SomeOddCodeGuy</name>
-      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I feel like using more powerful LLMs to try to achieve human like speech is probably moving AWAY from the solution rather than towards it.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;EDIT:&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;tl;dr-&lt;/em&gt;&lt;/strong&gt; &lt;em&gt;Newer models are more powerful and have larger context, but are heavily trained with outputs from other LLMs. This results in modern models responding far more intelligently than Llama 1 era models, but also loaded with inescapable &amp;quot;slop&amp;quot; and &amp;quot;GPTisms&amp;quot;. My proposal is that by using older Llama 1 era models/fine-tunes like Guanaco 65b (which is primarily human data trained) as a final step &amp;quot;editor&amp;quot; to rewrite what modern LLMs put out, you can get output that sounds more human and has more natural speech patterns. This could be good for articles/emails/papers/etc.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;My thought process is this: what's the difference between Llama 3.3 and Llama 1? Besides technology, I mean. Lets go back in time, to the days when we only had a 2048 token context windows; before things like NTK RoPE scaling, when your only choices were linear RoPE scaling and/or a superHoT model. Forget all the technological differences, and think: what differentiated the models of those days to the models of today?&lt;/p&gt; &lt;p&gt;Synthetic data in the training, right? The models back then were trained on minimal, if any, synthetic data. Even most of the chat models were barely trained on user/assistant type interactions. The training data was mostly human text.&lt;/p&gt; &lt;p&gt;But today? Modern models have tons and tons of &amp;quot;GPTisms&amp;quot; baked into the training data, not even speaking about how bad the instruct tune can be. So of course when you talk to the thing, it's going to sound like what we now expect an AI Assistant to sound like. And the more powerful models we get, the more we're going to see this synthetic data further baked in there.&lt;/p&gt; &lt;p&gt;In my opinion, it makes a lot of sense to go back and try some of these older models for this purpose, such as using a workflow to have the final step use an old Llama 1 model to rewrite the output of the modern LLMs.&lt;/p&gt; &lt;p&gt;Just to test it, I updated one of my Wilmer workflows to use Mistral Small as the thinker and Guanaco 65b as the responder. I had mistral write the initial response to me trying to sound human, and gave Guanaco very simple instructions to take that response and rewrite it to also sound more human. I then did the same using ChatGPT and Llama 3.3 70b.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; &lt;em&gt;This was a very small and simple POC test, and the quality of the output could be far higher with proper prompting, but I was just curious what the difference would be.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;I asked the question: &lt;strong&gt;&lt;em&gt;&amp;quot;Which do you like better: Java or C#?&amp;quot;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Mistral Small response:&lt;/strong&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Well, it depends on what you're looking to do. Both Java and C# have their strengths. For example:&lt;/p&gt; &lt;p&gt;- **Java**: It’s great for building web applications, Android apps, and large-scale enterprise systems. It has a larger community and more libraries available.&lt;/p&gt; &lt;p&gt;- **C#**: It's fantastic for game development (thanks to Unity), building Windows applications, and integrating with other Microsoft services.&lt;/p&gt; &lt;p&gt;Personally, I think they both have their use cases. Java might be more versatile for certain web projects, but C# can be incredibly efficient for desktop applications and games.&lt;/p&gt; &lt;p&gt;Do you have a specific type of project in mind that you want to work on?&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Obviously a very complete and well written answer, but also very indicative that an AI wrote it. Something about the way it responds is familiar to folks who would be using chatgpt and the like.&lt;/p&gt; &lt;p&gt;Now, look at &lt;strong&gt;Guanaco 65b's rewrite&lt;/strong&gt;:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;I'd say Java and C# both have their pros and cons. Java is great for building websites, Android apps, and huge enterprise systems. But C# is amazing for making games with Unity, building Windows programs, and hooking into other Microsoft services. Personally, I'd use Java for web stuff and C# for desktop apps and games, but it depends on your project.&lt;/p&gt; &lt;p&gt;So, what're you trying to build? I can give you some pointers.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;The difference is subtle, but see how it feels a bit more... human?&lt;/p&gt; &lt;p&gt;Here is &lt;strong&gt;ChatGPT o1's rewrite&lt;/strong&gt;:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Honestly, it really depends on what you’re trying to accomplish. Both Java and C# have their own strengths:&lt;/p&gt; &lt;p&gt;* Java: Great for web applications, Android apps, and large-scale enterprise systems. It also has a huge community and tons of libraries.&lt;/p&gt; &lt;p&gt;* C#: Awesome for game development (especially with Unity), building Windows apps, and integrating with Microsoft services.&lt;/p&gt; &lt;p&gt;Personally, I think both are solid choices. Java might be more versatile for certain web-based projects, while C# shines when it comes to desktop applications and gaming.&lt;/p&gt; &lt;p&gt;Any specific type of project you’re looking to work on?&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This one remains sounding like an AI assistant. Same instructions and prompt I gave Guanaco.&lt;/p&gt; &lt;p&gt;Here is &lt;strong&gt;Llama 3.3's rewrite&lt;/strong&gt;:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;so you're wondering about c# and java, right? they both have their own things goin for 'em, and honestly it kinda comes down to what you're workin on and what you like. they're actually pretty similar, they're both object-oriented, they both run on virtual machines, c# uses .net and java uses the jvm, and they both got a ton of libraries and a huge community behind 'em.&lt;/p&gt; &lt;p&gt;so like, here's some differences, ok? c# is made by microsoft, so it works super well with windows and all that, and java's open-source and can run on pretty much anything that's got a jvm, so that's linux, mac, android, all that. and syntax-wise, they're a little different too, like c# uses these curly braces to define a block of code and java uses semicolons to end statements and all that.&lt;/p&gt; &lt;p&gt;personally, i'm cool with both, i mean c# is awesome for windows stuff, but java's got that whole cross-platform thing goin on, so yeah… what about you, got a preference or whatever?&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Its... well, about what you'd expect lol. Llama also deciding rewriting like a human means no capitalization =D Also, it added some details of its own to the response, but that's ok.&lt;/p&gt; &lt;p&gt;Again, this is a very simplistic POC just to show what I mean, and I'm probably going to spend more time delving into the idea, but I really think that there's still value in these old models, especially when trying to write things that sound more &amp;quot;human&amp;quot;, like maybe article or email writing.&lt;/p&gt; &lt;p&gt;Anyhow, just a thought I'd figure might spark some conversation.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4hb2l/theory_trying_to_use_newer_and_more_powerful_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4hb2l/theory_trying_to_use_newer_and_more_powerful_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i4hb2l/theory_trying_to_use_newer_and_more_powerful_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-18T21:01:51+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i5eocn</id>
-    <title>3090 TI?</title>
-    <updated>2025-01-20T01:22:40+00:00</updated>
-    <author>
-      <name>/u/johngo233</name>
-      <uri>https://old.reddit.com/user/johngo233</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I found a MSI Gaming Force Trio RTX 3090ti (24GB) listed for a decent price. Just getting into running local LLMs, and my use would primarily be for Home Assistant. I also plan on fine-tuning encoder-only models (e.g., BERT, ModernBERT), which I think this would be more than enough for. I can't find a lot on the &amp;quot;MSI Gaming Force Trio&amp;quot; version, is my assumption correct that it's the same as a regular 3090 TI? Happy to hear thoughts on if it's even worth purchasing. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/johngo233"&gt; /u/johngo233 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5eocn/3090_ti/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5eocn/3090_ti/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5eocn/3090_ti/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-20T01:22:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i59xpy</id>
-    <title>Anything like animate diff recently?</title>
-    <updated>2025-01-19T21:42:12+00:00</updated>
-    <author>
-      <name>/u/Nimrod5000</name>
-      <uri>https://old.reddit.com/user/Nimrod5000</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was wondering how some companies are generating avatars and wanted to self host one. Is there anything open source out that can act somewhat like an AI video chatbot where you can prompt it continuously and generate realtime live video responses?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nimrod5000"&gt; /u/Nimrod5000 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i59xpy/anything_like_animate_diff_recently/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i59xpy/anything_like_animate_diff_recently/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i59xpy/anything_like_animate_diff_recently/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-19T21:42:12+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i4kzgp</id>
     <title>We need to be able to train models on consumer-grade hardware</title>
@@ -58,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i4kzgp/we_need_to_be_able_to_train_models_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-18T23:55:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i5a7yg</id>
+    <title>MCP Clients (Desktop and CLI)</title>
+    <updated>2025-01-19T21:53:56+00:00</updated>
+    <author>
+      <name>/u/punkpeye</name>
+      <uri>https://old.reddit.com/user/punkpeye</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5a7yg/mcp_clients_desktop_and_cli/"&gt; &lt;img alt="MCP Clients (Desktop and CLI)" src="https://external-preview.redd.it/8aWXNRvTyCeN34Ta1_BubzV8hiZ6e25e91N8vwuA4dQ.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a15860b81e9e9b939f39fd2dfd3ec914aa18312a" title="MCP Clients (Desktop and CLI)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/punkpeye"&gt; /u/punkpeye &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://glama.ai/mcp/clients"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5a7yg/mcp_clients_desktop_and_cli/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5a7yg/mcp_clients_desktop_and_cli/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-19T21:53:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1i4rsnr</id>
@@ -86,6 +60,19 @@
     <published>2025-01-19T00:03:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i5fw10</id>
+    <title>Advice on Running Local LLMs for Coding</title>
+    <updated>2025-01-20T02:26:33+00:00</updated>
+    <author>
+      <name>/u/Apprehensive_Ad_5565</name>
+      <uri>https://old.reddit.com/user/Apprehensive_Ad_5565</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I'm planning to buy one of the new NVIDIA GPUs to run local LLMs for coding, mainly for data engineering tasks. Before I make the purchase, I want to make sure I have a solid plan for the setup and apps I'll be using.&lt;/p&gt; &lt;p&gt;I’m looking to run everything on Windows and have tested LM Studio and MSTY so far. My goal is to use my local GitHub repositories as a RAG source to improve context-aware responses.&lt;/p&gt; &lt;p&gt;One thing I noticed is that MSTY’s RAG feature seems more focused on documents, and I’m not sure if it can properly process the file types used in a code repository. Has anyone tried this, or is there a better approach for integrating a local codebase into an LLM workflow?&lt;/p&gt; &lt;p&gt;Would appreciate any insights or recommendations!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Apprehensive_Ad_5565"&gt; /u/Apprehensive_Ad_5565 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5fw10/advice_on_running_local_llms_for_coding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5fw10/advice_on_running_local_llms_for_coding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5fw10/advice_on_running_local_llms_for_coding/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-20T02:26:33+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i4oeg9</id>
     <title>yek -- serialize your code repo (or part of it) to feed into any LLM using a fast Rust based program</title>
     <updated>2025-01-19T02:50:53+00:00</updated>
@@ -97,19 +84,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i4oeg9/yek_serialize_your_code_repo_or_part_of_it_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-19T02:50:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i56rrf</id>
-    <title>Do you think we should block singularity and Futurology?</title>
-    <updated>2025-01-19T19:32:13+00:00</updated>
-    <author>
-      <name>/u/Lynorisa</name>
-      <uri>https://old.reddit.com/user/Lynorisa</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This place is supposed to be serious.&lt;/p&gt; &lt;p&gt;Yet every single time, there’s at least one of these cultists:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;prophetizing the coming of AGI&lt;/li&gt; &lt;li&gt;spreading misinformation about fundamental things about LLMs and ML in general&lt;/li&gt; &lt;li&gt;vehemently defending ClosedAI and other subversive actions by corporations&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/poll/1i56rrf"&gt;View Poll&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lynorisa"&gt; /u/Lynorisa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-19T19:32:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1i4znfj</id>
@@ -138,6 +112,19 @@
     <published>2025-01-19T19:45:28+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i56rrf</id>
+    <title>Do you think we should block singularity and Futurology?</title>
+    <updated>2025-01-19T19:32:13+00:00</updated>
+    <author>
+      <name>/u/Lynorisa</name>
+      <uri>https://old.reddit.com/user/Lynorisa</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This place is supposed to be serious.&lt;/p&gt; &lt;p&gt;Yet every single time, there’s at least one of these cultists:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;prophetizing the coming of AGI&lt;/li&gt; &lt;li&gt;spreading misinformation about fundamental things about LLMs and ML in general&lt;/li&gt; &lt;li&gt;vehemently defending ClosedAI and other subversive actions by corporations&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/poll/1i56rrf"&gt;View Poll&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lynorisa"&gt; /u/Lynorisa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i56rrf/do_you_think_we_should_block_singularity_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-19T19:32:13+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i4wv1h</id>
     <title>Overview Article of China's Six Leading AI Companies</title>
     <updated>2025-01-19T11:54:00+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i58tba/best_current_modelstools_for_assisting_writing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-19T20:56:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i5g15m</id>
+    <title>Working on a local TTS compatible PDF Reader (to use with Kokoro-82M)</title>
+    <updated>2025-01-20T02:34:36+00:00</updated>
+    <author>
+      <name>/u/richardr1126</name>
+      <uri>https://old.reddit.com/user/richardr1126</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5g15m/working_on_a_local_tts_compatible_pdf_reader_to/"&gt; &lt;img alt="Working on a local TTS compatible PDF Reader (to use with Kokoro-82M)" src="https://external-preview.redd.it/Zzl3YnAxdXo4MmVlMaNDgHgQWM2mdDZB7xhNGcVXZbgcu-O9WP6fr_kyodHv.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c5641a7ad41d731780ed387b4453de0708dc550e" title="Working on a local TTS compatible PDF Reader (to use with Kokoro-82M)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/richardr1126"&gt; /u/richardr1126 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/gax0ckuz82ee1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5g15m/working_on_a_local_tts_compatible_pdf_reader_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5g15m/working_on_a_local_tts_compatible_pdf_reader_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-20T02:34:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1i51xp7</id>
@@ -216,17 +216,17 @@
     <published>2025-01-19T12:26:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i5dm1f</id>
-    <title>A code generator, a code executor and a file manager, is all you need to build agents</title>
-    <updated>2025-01-20T00:28:26+00:00</updated>
+    <id>t3_1i4w47k</id>
+    <title>A summary of Qwen Models!</title>
+    <updated>2025-01-19T11:03:14+00:00</updated>
     <author>
-      <name>/u/Better_Athlete_JJ</name>
-      <uri>https://old.reddit.com/user/Better_Athlete_JJ</uri>
+      <name>/u/rbgo404</name>
+      <uri>https://old.reddit.com/user/rbgo404</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Better_Athlete_JJ"&gt; /u/Better_Athlete_JJ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.slashml.com/blog/testing-autogen"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5dm1f/a_code_generator_a_code_executor_and_a_file/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5dm1f/a_code_generator_a_code_executor_and_a_file/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"&gt; &lt;img alt="A summary of Qwen Models!" src="https://preview.redd.it/bvg95yewmxde1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3f3b57fffcd0c406cfbf23fc038343779f95f470" title="A summary of Qwen Models!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rbgo404"&gt; /u/rbgo404 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/bvg95yewmxde1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-20T00:28:26+00:00</published>
+    <published>2025-01-19T11:03:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1i5b9v1</id>
@@ -242,19 +242,6 @@
     <published>2025-01-19T22:39:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i4w47k</id>
-    <title>A summary of Qwen Models!</title>
-    <updated>2025-01-19T11:03:14+00:00</updated>
-    <author>
-      <name>/u/rbgo404</name>
-      <uri>https://old.reddit.com/user/rbgo404</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"&gt; &lt;img alt="A summary of Qwen Models!" src="https://preview.redd.it/bvg95yewmxde1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3f3b57fffcd0c406cfbf23fc038343779f95f470" title="A summary of Qwen Models!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rbgo404"&gt; /u/rbgo404 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/bvg95yewmxde1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i4w47k/a_summary_of_qwen_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-19T11:03:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i5bj66</id>
     <title>Epyc 7532/dual MI50</title>
     <updated>2025-01-19T22:50:34+00:00</updated>
@@ -268,17 +255,17 @@
     <published>2025-01-19T22:50:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i5bw2a</id>
-    <title>Harbor App v0.2.24 officially supports Windows</title>
-    <updated>2025-01-19T23:06:37+00:00</updated>
+    <id>t3_1i5dm1f</id>
+    <title>A code generator, a code executor and a file manager, is all you need to build agents</title>
+    <updated>2025-01-20T00:28:26+00:00</updated>
     <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
+      <name>/u/Better_Athlete_JJ</name>
+      <uri>https://old.reddit.com/user/Better_Athlete_JJ</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"&gt; &lt;img alt="Harbor App v0.2.24 officially supports Windows" src="https://external-preview.redd.it/am0wY2t1OWU3MWVlMXI8IEr-dnDizOwLz4sVhNUay1tQ6a6VeB4mfBu_sFj4.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=99e3dff894ae2bc37ef9362c0156daa7f9e2c0de" title="Harbor App v0.2.24 officially supports Windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/2syjnt9e71ee1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Better_Athlete_JJ"&gt; /u/Better_Athlete_JJ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.slashml.com/blog/testing-autogen"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5dm1f/a_code_generator_a_code_executor_and_a_file/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5dm1f/a_code_generator_a_code_executor_and_a_file/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-19T23:06:37+00:00</published>
+    <published>2025-01-20T00:28:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1i543yp</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i543yp/huggingface_and_its_insane_storage_and_bandwidth/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-19T17:43:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i5bw2a</id>
+    <title>Harbor App v0.2.24 officially supports Windows</title>
+    <updated>2025-01-19T23:06:37+00:00</updated>
+    <author>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"&gt; &lt;img alt="Harbor App v0.2.24 officially supports Windows" src="https://external-preview.redd.it/am0wY2t1OWU3MWVlMXI8IEr-dnDizOwLz4sVhNUay1tQ6a6VeB4mfBu_sFj4.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=99e3dff894ae2bc37ef9362c0156daa7f9e2c0de" title="Harbor App v0.2.24 officially supports Windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/2syjnt9e71ee1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5bw2a/harbor_app_v0224_officially_supports_windows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-19T23:06:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1i4vwm7</id>
