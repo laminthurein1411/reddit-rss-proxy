@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-20T23:05:29+00:00</updated>
+  <updated>2025-01-20T23:21:56+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1i5tyin</id>
-    <title>Lets get the Qwen Deepseek 32b R1 model running properly... System Prompt?</title>
-    <updated>2025-01-20T16:20:52+00:00</updated>
-    <author>
-      <name>/u/teachersecret</name>
-      <uri>https://old.reddit.com/user/teachersecret</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Alright, I've got the deepseek 32b R1 qwen finetune up and running in VLLM on my 4090. For now, I'm running like this:&lt;/p&gt; &lt;p&gt;&lt;code&gt;vllm serve casperhansen/deepseek-r1-distill-qwen-32b-awq \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--max-model-len 8192 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--gpu-memory-utilization 0.98&lt;/code&gt;&lt;/p&gt; &lt;p&gt;That's 8192 context. I'm sure I can push that all the way to 32k context with KV quantization (maybe tabbyapi exl2 or GGUF), but for now I'm just testing with VLLM and AWQ until the uploads settle and there are some good EXL2 versions out there.&lt;/p&gt; &lt;p&gt;Anyway...&lt;/p&gt; &lt;p&gt;I've done some searching, but &lt;strong&gt;I can't find any information about a system prompt&lt;/strong&gt; for this thing. Anyone have the exact system prompt meant for these distilled models? I don't even know how to -add- a sytem prompt to this. I've tried a few things like this (edited this, I initially used chatml, but I see this is using its own unique tokens so I tried to use them below):&lt;/p&gt; &lt;p&gt;&amp;lt;｜begin▁of▁sentence｜&amp;gt; &amp;lt;sys&amp;gt; You are a helpful reasoning assistant. Always wrap your thoughts in &amp;lt;think&amp;gt; tags, then provide a final response based on your thinking and your knowledge.&amp;lt;/sys&amp;gt;&amp;lt;｜end▁of▁sentence｜&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;｜User｜&amp;gt; Hi there. Are you ready to get started today?&amp;lt;｜end▁of▁sentence｜&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;｜Assistant｜&amp;gt;&amp;lt;think&amp;gt; Alright, the user greeted me with &amp;quot;Hi there. Are you ready to get started today?&amp;quot; They seem friendly and maybe looking for assistance or guidance.&lt;/p&gt; &lt;p&gt;I want to respond in a welcoming manner. I'll acknowledge their greeting and offer my help. It's important to be open-ended so they feel comfortable asking anything.&lt;/p&gt; &lt;p&gt;Maybe something like, &amp;quot;Hello! Yes, I'm here and ready to assist you. What can I help you with today?&amp;quot; That should cover it. &amp;lt;/think&amp;gt;&lt;/p&gt; &lt;p&gt;Hello! Yes, I'm here and ready to assist you. What can I help you with today?&amp;lt;｜end▁of▁sentence｜&amp;gt; &amp;lt;｜User｜&amp;gt;&lt;/p&gt; &lt;p&gt;So... any help? Anybody want to talk about how they're setting this bad boy up? My first tests are looking pretty good. I'm optimistic, I just want to make sure I'm getting optimal quality which usually means using their defined system prompt if I can find it. Doesn't appear to be in the repo.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/teachersecret"&gt; /u/teachersecret &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5tyin/lets_get_the_qwen_deepseek_32b_r1_model_running/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i5tyin/lets_get_the_qwen_deepseek_32b_r1_model_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5tyin/lets_get_the_qwen_deepseek_32b_r1_model_running/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-20T16:20:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i60o9t</id>
     <title>Funny thought about the R1 distilled models and Reflection 70B</title>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5pepa/deepseekr1_paper/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-20T12:48:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i61ou3</id>
+    <title>Deepseek R1 distill still knows better than me what is "safe" and "appropriate" for me, on my own computer. Is there an end to this corporate-security state driving our thoughts?</title>
+    <updated>2025-01-20T21:30:51+00:00</updated>
+    <author>
+      <name>/u/Sidran</name>
+      <uri>https://old.reddit.com/user/Sidran</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last generation of LLMs still wasnt properly uncensored through finetunes and abliteration and new, more sophisticated and still patronizing ones are starting to come out.&lt;br /&gt; What are your thoughts, are we sentenced to this patronizing crap until real intelligence emerges which will inevitably adjust to the needs of each individual user?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sidran"&gt; /u/Sidran &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i61ou3/deepseek_r1_distill_still_knows_better_than_me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i61ou3/deepseek_r1_distill_still_knows_better_than_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i61ou3/deepseek_r1_distill_still_knows_better_than_me/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-20T21:30:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1i5oygi</id>
@@ -242,19 +242,6 @@
     <published>2025-01-20T12:54:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i615u1</id>
-    <title>The first time I've felt a LLM wrote *well*, not just well *for a LLM*.</title>
-    <updated>2025-01-20T21:09:18+00:00</updated>
-    <author>
-      <name>/u/_sqrkl</name>
-      <uri>https://old.reddit.com/user/_sqrkl</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"&gt; &lt;img alt="The first time I've felt a LLM wrote *well*, not just well *for a LLM*." src="https://preview.redd.it/48kw0dyao7ee1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85f94bde55ce83180ff26c640d9632cd2e976d23" title="The first time I've felt a LLM wrote *well*, not just well *for a LLM*." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/48kw0dyao7ee1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-20T21:09:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i5t1be</id>
     <title>o1 thought for 12 minutes 35 sec, r1 thought for 5 minutes and 9 seconds. Both got a correct answer. Both in two tries. They are the first two models that have done it correctly.</title>
     <updated>2025-01-20T15:42:59+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i5t1be/o1_thought_for_12_minutes_35_sec_r1_thought_for_5/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-20T15:42:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i615u1</id>
+    <title>The first time I've felt a LLM wrote *well*, not just well *for a LLM*.</title>
+    <updated>2025-01-20T21:09:18+00:00</updated>
+    <author>
+      <name>/u/_sqrkl</name>
+      <uri>https://old.reddit.com/user/_sqrkl</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"&gt; &lt;img alt="The first time I've felt a LLM wrote *well*, not just well *for a LLM*." src="https://preview.redd.it/48kw0dyao7ee1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85f94bde55ce83180ff26c640d9632cd2e976d23" title="The first time I've felt a LLM wrote *well*, not just well *for a LLM*." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/48kw0dyao7ee1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i615u1/the_first_time_ive_felt_a_llm_wrote_well_not_just/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-20T21:09:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1i5q6b9</id>
