@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-01-22T01:33:29+00:00</updated>
+  <updated>2025-01-22T02:11:53+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1i5kpjm</id>
-    <title>Speech to 3D Model</title>
-    <updated>2025-01-20T07:15:16+00:00</updated>
-    <author>
-      <name>/u/ConsultingJoe</name>
-      <uri>https://old.reddit.com/user/ConsultingJoe</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1i5kpjm/speech_to_3d_model/"&gt; &lt;img alt="Speech to 3D Model" src="https://external-preview.redd.it/FCugAp2XsrtRKrRdQFiqY85v5aE1-IkFf45owu34XRo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9bad2747aed01a62f4720354a4583f67df98c0b2" title="Speech to 3D Model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ConsultingJoe"&gt; /u/ConsultingJoe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/jsammarco/Speech2Model"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i5kpjm/speech_to_3d_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i5kpjm/speech_to_3d_model/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-20T07:15:16+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i5dvzk</id>
     <title>Find and run Linux commands using Ollama</title>
@@ -223,10 +210,23 @@
       <name>/u/Oceanboi</name>
       <uri>https://old.reddit.com/user/Oceanboi</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;EDITED POST FOR SPECIFIC PROBLEM:&lt;/p&gt; &lt;p&gt;Issue: Difficulty changing port.&lt;/p&gt; &lt;p&gt;Steps to reproduce:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Install ollama using this guide: &lt;a href="https://github.com/ollama/ollama/blob/main/docs/linux.md"&gt;https://github.com/ollama/ollama/blob/main/docs/linux.md&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Works and serves and appears correctly in browser on default port and address.&lt;/li&gt; &lt;li&gt;Here I have both tested setting the environment variable OLLAMA_HOST in command line, as well as editing it using systemctl, as well as using nano to edit the actual .service file. It gets ignored in the latter two cases. When I do it in the command line, it appears to give the same output as default debug_mode case, but when 11434 default port is used no matter the address, I can access it using ollama -v in a new terminal. If I do it with 3001 manually in the command line (I'd rather understand the motivation behind their service and user/group system, than use a batch script to force that into the terminal. In all cases it doesn't make sense.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I used the correct daemon and restart commands in every case without exception.&lt;/p&gt; &lt;p&gt;I will limit explanation past that, but I've tried every chronological permutation of that. I've reinstalled. The only thing I can think is that debug_mode is not telling me something and 3001 port is failing, but still being &amp;quot;taken up for use&amp;quot; if I attempt to load it again.&lt;/p&gt; &lt;p&gt;Really, pick initial installation guide + the top 30 links on google, in every iteration, we're there. I don't know how to encapsulate it better than that.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Oceanboi"&gt; /u/Oceanboi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;ol&gt; &lt;li&gt;&lt;strong&gt;Default Setup:&lt;/strong&gt; Following the installation guide, Ollama works without issues when hosted on the default port.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Changing Address to 0.0.0.0:&lt;/strong&gt; I was able to successfully change the address to &lt;a href="http://0.0.0.0"&gt;&lt;code&gt;0.0.0.0&lt;/code&gt;&lt;/a&gt;, which works fine. However, when trying to change the port, I encountered issues.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Modifying the Service File:&lt;/strong&gt; When I modify the system service file with commands above the &lt;code&gt;##############################&lt;/code&gt; section, I can successfully set the address to &lt;code&gt;0.0.0.0&lt;/code&gt;. However, after trying to add a custom port, I encounter &amp;quot;debug mode.&amp;quot; Even when canceling this debug mode and re-running the default port setup, the &lt;code&gt;ollama -v&lt;/code&gt; command shows the same output, with no apparent difference between the two.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Environment Variable Overrides:&lt;/strong&gt; When I try to override the port by setting &lt;code&gt;OLLAMA_HOST=0.0.0.0:3001 ollama serve&lt;/code&gt;, the command hangs as described in the documentation. Opening another terminal and running &lt;code&gt;ollama&lt;/code&gt; seems to indicate that the service is not running. However, when I attempt to start Ollama on the same port, it says the port is already in use.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Temporary File Confusion:&lt;/strong&gt; After making edits, I found that when I open the service file to remove my changes, it shows as an empty temporary file. I'm unsure whether the service is running in the background or if it's stuck due to previous configurations.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Lack of Clear Documentation:&lt;/strong&gt; The documentation around configuring Ollama to run on a custom port is unclear. It seems like some people suggest not including the port in the &lt;code&gt;OLLAMA_HOST&lt;/code&gt; variable, while others recommend adding it. I don't see a clear explanation of how to configure the service properly for a custom setup.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Confusion Over Service and Manual Commands:&lt;/strong&gt; I'm also confused about the relationship between the system service and the manual command &lt;code&gt;ollama serve&lt;/code&gt;. It seems like the service is already running the process on the port I specified in the &lt;code&gt;.service&lt;/code&gt; file, but when I try to call &lt;code&gt;ollama&lt;/code&gt; manually, it either doesn't respond or conflicts with the service. There's advice suggesting it is unnecessary to modify the service directly, but this has led to further confusion, as I cannot get the &lt;code&gt;ollama&lt;/code&gt; command to behave as expected.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Unclear Chronological Setup Process:&lt;/strong&gt; I would like a clearer understanding of the intended setup process. Specifically, how the service is supposed to be configured on Linux when using a custom port, and how it interacts with &lt;code&gt;ollama serve&lt;/code&gt; and other commands.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Request for Help:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I would appreciate any clarification or guidance on the following:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;How to properly configure the Ollama service to run on a custom port.&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;What the expected interaction is between system services (e.g.,&lt;/strong&gt; &lt;code&gt;systemctl&lt;/code&gt;&lt;strong&gt;) and manual commands like&lt;/strong&gt; &lt;code&gt;ollama serve&lt;/code&gt;&lt;strong&gt;.&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Whether modifying the&lt;/strong&gt; &lt;code&gt;.service&lt;/code&gt; &lt;strong&gt;file directly is appropriate, and if so, how to ensure my changes persist.&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Any additional resources or documentation that can provide a clearer explanation of these steps.&lt;/strong&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I would be happy to contribute to the documentation once I better understand the process, as I believe clearer guidance is needed, especially for production-focused setups.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Oceanboi"&gt; /u/Oceanboi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-01-21T23:42:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i6zjct</id>
+    <title>How many GPU's?</title>
+    <updated>2025-01-22T01:41:42+00:00</updated>
+    <author>
+      <name>/u/Any_Praline_8178</name>
+      <uri>https://old.reddit.com/user/Any_Praline_8178</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;How many GPU's have you deployed in your home ?&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/poll/1i6zjct"&gt;View Poll&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Any_Praline_8178"&gt; /u/Any_Praline_8178 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6zjct/how_many_gpus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6zjct/how_many_gpus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i6zjct/how_many_gpus/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-22T01:41:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1i65qzs</id>
@@ -242,19 +242,6 @@
     <published>2025-01-21T00:25:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i6ycpk</id>
-    <title>Can ollama return multiple completions for the same query, the way openai API can?</title>
-    <updated>2025-01-22T00:45:00+00:00</updated>
-    <author>
-      <name>/u/intotheirishole</name>
-      <uri>https://old.reddit.com/user/intotheirishole</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For a experiment I needed several completions from the model, and I am trying to skip the expensive KV-cache building time for the large prompt.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intotheirishole"&gt; /u/intotheirishole &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-22T00:45:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i6y0uy</id>
     <title>Help making a chatbot?</title>
     <updated>2025-01-22T00:29:36+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1i6y0uy/help_making_a_chatbot/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-01-22T00:29:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i6ycpk</id>
+    <title>Can ollama return multiple completions for the same query, the way openai API can?</title>
+    <updated>2025-01-22T00:45:00+00:00</updated>
+    <author>
+      <name>/u/intotheirishole</name>
+      <uri>https://old.reddit.com/user/intotheirishole</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For a experiment I needed several completions from the model, and I am trying to skip the expensive KV-cache building time for the large prompt.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intotheirishole"&gt; /u/intotheirishole &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i6ycpk/can_ollama_return_multiple_completions_for_the/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-22T00:45:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1i66o1d</id>
