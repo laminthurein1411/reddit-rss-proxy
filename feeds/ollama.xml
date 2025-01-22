@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-01-22T22:05:42+00:00</updated>
+  <updated>2025-01-22T22:23:06+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1i6wzmu</id>
-    <title>Ollama Ignoring File - Service confusion Linux</title>
-    <updated>2025-01-21T23:42:40+00:00</updated>
-    <author>
-      <name>/u/Oceanboi</name>
-      <uri>https://old.reddit.com/user/Oceanboi</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;WHILE THE BELOW STEPS ARE TRUE:&lt;br /&gt; I now have accidentally figured out it is taking exceedingly long to serve when specifying address. Really, any time debug_mode activates, it is alarmingly different. Quick install = instant and I can run the model and be done on default address and port.&lt;/p&gt; &lt;p&gt;Specify any different address, &lt;a href="http://0.0.0.0:3001"&gt;0.0.0.0:3001&lt;/a&gt; or &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; with no specified port, and it takes forever and activates debug. &lt;a href="http://0.0.0.0:11434"&gt;0.0.0.0:11434&lt;/a&gt; has been confirmed to work, as we needed to enable that or it wouldn't work on our network. Thanks for those who contributed, I'm just taking a different route. I don't have full agency over our network or really any idea how to navigate that, and that combined with this sounds like a recipe for disaster. Going to find a more appropriate way.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Default Setup:&lt;/strong&gt; Following the installation guide, Ollama works without issues when hosted on the default port.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Changing Address to 0.0.0.0:&lt;/strong&gt; I was able to successfully change the address to &lt;a href="http://0.0.0.0"&gt;&lt;code&gt;0.0.0.0&lt;/code&gt;&lt;/a&gt;, which works fine. However, when trying to change the port, I encountered issues.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Modifying the Service File:&lt;/strong&gt; When I modify the system service file with commands above the &lt;code&gt;##############################&lt;/code&gt; section, I can successfully set the address to &lt;code&gt;0.0.0.0&lt;/code&gt;. However, after trying to add a custom port, I encounter &amp;quot;debug mode.&amp;quot; Even when canceling this debug mode and re-running the default port setup, the &lt;code&gt;ollama -v&lt;/code&gt; command shows the same output, with no apparent difference between the two.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Environment Variable Overrides:&lt;/strong&gt; When I try to override the port by setting &lt;code&gt;OLLAMA_HOST=0.0.0.0:3001 ollama serve&lt;/code&gt;, the command hangs as described in the documentation. Opening another terminal and running &lt;code&gt;ollama&lt;/code&gt; seems to indicate that the service is not running. However, when I attempt to start Ollama on the same port, it says the port is already in use.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Temporary File Confusion:&lt;/strong&gt; After making edits, I found that when I open the service file to remove my changes, it shows as an empty temporary file. I'm unsure whether the service is running in the background or if it's stuck due to previous configurations.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Lack of Clear Documentation:&lt;/strong&gt; The documentation around configuring Ollama to run on a custom port is unclear. It seems like some people suggest not including the port in the &lt;code&gt;OLLAMA_HOST&lt;/code&gt; variable, while others recommend adding it. I don't see a clear explanation of how to configure the service properly for a custom setup.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Confusion Over Service and Manual Commands:&lt;/strong&gt; I'm also confused about the relationship between the system service and the manual command &lt;code&gt;ollama serve&lt;/code&gt;. It seems like the service is already running the process on the port I specified in the &lt;code&gt;.service&lt;/code&gt; file, but when I try to call &lt;code&gt;ollama&lt;/code&gt; manually, it either doesn't respond or conflicts with the service. There's advice suggesting it is unnecessary to modify the service directly, but this has led to further confusion, as I cannot get the &lt;code&gt;ollama&lt;/code&gt; command to behave as expected.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Unclear Chronological Setup Process:&lt;/strong&gt; I would like a clearer understanding of the intended setup process. Specifically, how the service is supposed to be configured on Linux when using a custom port, and how it interacts with &lt;code&gt;ollama serve&lt;/code&gt; and other commands.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Request for Help:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I would appreciate any clarification or guidance on the following:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;How to properly configure the Ollama service to run on a custom port.&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;What the expected interaction is between system services (e.g.,&lt;/strong&gt; &lt;code&gt;systemctl&lt;/code&gt;**) and manual commands like** &lt;code&gt;ollama serve&lt;/code&gt;**.**&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Whether modifying the&lt;/strong&gt; &lt;code&gt;.service&lt;/code&gt; &lt;strong&gt;file directly is appropriate, and if so, how to ensure my changes persist.&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Any additional resources or documentation that can provide a clearer explanation of these steps.&lt;/strong&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I would be happy to contribute to the documentation once I better understand the process, as I believe clearer guidance is needed, especially for production-focused setups.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Oceanboi"&gt; /u/Oceanboi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i6wzmu/ollama_ignoring_file_service_confusion_linux/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-21T23:42:40+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i6zjct</id>
     <title>How many GPU's?</title>
@@ -229,19 +216,6 @@
     <published>2025-01-22T17:46:09+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7n9n5</id>
-    <title>How the VRAM works for Macs</title>
-    <updated>2025-01-22T22:00:34+00:00</updated>
-    <author>
-      <name>/u/Cosyless</name>
-      <uri>https://old.reddit.com/user/Cosyless</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just recently got into working with models in local. I have 1650Ti (notebook GPU) which has 4GB VRAM obviously. I wonder how VRAM works for the new M-chip mac(books/mini). By definition, they do not have a 'video card'. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cosyless"&gt; /u/Cosyless &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-22T22:00:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7cdyj</id>
     <title>Why is ollama only using 4535MiB/6144MiB of VRAM? Shouldnt it first fill the 6GB VRAM then move towards the system RAM?</title>
     <updated>2025-01-22T14:31:54+00:00</updated>
@@ -253,6 +227,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1i7cdyj/why_is_ollama_only_using_4535mib6144mib_of_vram/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-01-22T14:31:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7nqrj</id>
+    <title>Run a fully local AI Search / RAG pipeline using Ollama with 4GB of memory and no GPU</title>
+    <updated>2025-01-22T22:20:43+00:00</updated>
+    <author>
+      <name>/u/LeetTools</name>
+      <uri>https://old.reddit.com/user/LeetTools</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all, for people that want to run AI search and RAG pipelines locally, you can now build your local knowledge base with one line of command and everything runs locally with no docker or API key required. Repo is here: &lt;a href="https://github.com/leettools-dev/leettools"&gt;https://github.com/leettools-dev/leettools&lt;/a&gt;. The total memory usage is around 4GB with the Llama3.2 model: * llama3.2:latest 3.5 GB * nomic-embed-text:latest 370 MB * LeetTools: 350MB (Document pipeline backend with Python and DuckDB)&lt;/p&gt; &lt;p&gt;First, follow the instructions on &lt;a href="https://github.com/ollama/ollama"&gt;https://github.com/ollama/ollama&lt;/a&gt; to install the ollama program. Make sure the ollama program is running.&lt;/p&gt; &lt;p&gt;```bash&lt;/p&gt; &lt;h1&gt;set up&lt;/h1&gt; &lt;p&gt;ollama pull llama3.2 ollama pull nomic-embed-text pip install leettools curl -fsSL -o .env.ollama &lt;a href="https://raw.githubusercontent.com/leettools-dev/leettools/refs/heads/main/env.ollama"&gt;https://raw.githubusercontent.com/leettools-dev/leettools/refs/heads/main/env.ollama&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;one command line to download a PDF and save it to the graphrag KB&lt;/h1&gt; &lt;p&gt;leet kb add-url -e .env.ollama -k graphrag -l info &lt;a href="https://arxiv.org/pdf/2501.09223"&gt;https://arxiv.org/pdf/2501.09223&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;now you query the local graphrag KB with questions&lt;/h1&gt; &lt;p&gt;leet flow -t answer -e .env.ollama -k graphrag -l info -p retriever_type=local -q &amp;quot;How does GraphRAG work?&amp;quot; ```&lt;/p&gt; &lt;p&gt;You can also add your local directory or files to the knowledge base using &lt;code&gt;leet kb add-local&lt;/code&gt; command.&lt;/p&gt; &lt;p&gt;For the above default setup, we are using * docling to convert PDF to markdown * chonkie as the chunker * nomic-embed-text as the embedding model * llama3.2 as the inference engine * Duckdb as the data storage include graph and vector&lt;/p&gt; &lt;p&gt;We think it might be helpful for some usage scenarios that require local deployment and resource limits. Questions or suggestions are welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LeetTools"&gt; /u/LeetTools &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7nqrj/run_a_fully_local_ai_search_rag_pipeline_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7nqrj/run_a_fully_local_ai_search_rag_pipeline_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i7nqrj/run_a_fully_local_ai_search_rag_pipeline_using/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-22T22:20:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7d3uc</id>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1i7hgoa/techniques_to_fit_models_larger_than_vram_into_gpu/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-01-22T18:04:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7n9n5</id>
+    <title>How the VRAM works for Macs</title>
+    <updated>2025-01-22T22:00:34+00:00</updated>
+    <author>
+      <name>/u/Cosyless</name>
+      <uri>https://old.reddit.com/user/Cosyless</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just recently got into working with models in local. I have 1650Ti (notebook GPU) which has 4GB VRAM obviously. I wonder how VRAM works for the new M-chip mac(books/mini). By definition, they do not have a 'video card'. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cosyless"&gt; /u/Cosyless &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i7n9n5/how_the_vram_works_for_macs/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-22T22:00:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7bjgg</id>

@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-22T22:05:41+00:00</updated>
+  <updated>2025-01-22T22:23:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i7hcov</id>
-    <title>Techniques to fit models larger than VRAM into GPU?</title>
-    <updated>2025-01-22T18:00:34+00:00</updated>
+    <id>t3_1i7iym4</id>
+    <title>Making R1-32B Reason Better</title>
+    <updated>2025-01-22T19:04:07+00:00</updated>
     <author>
-      <name>/u/stereotypical_CS</name>
-      <uri>https://old.reddit.com/user/stereotypical_CS</uri>
+      <name>/u/vesudeva</name>
+      <uri>https://old.reddit.com/user/vesudeva</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to see if there’s a way to fit a model that’s larger than the VRAM of my gpu into it? I’ve vaguely heard of terms like host offloading that could help, but I’m wondering which types of models that would work for, and if it does work, what are the limitations?&lt;/p&gt; &lt;p&gt;I don’t know if there’s an equivalent to demand paging in virtual memory that is implemented. Any resources or papers would be great!&lt;/p&gt; &lt;p&gt;The only other thing I can think of is using a lower bit quantized model&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stereotypical_CS"&gt; /u/stereotypical_CS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7hcov/techniques_to_fit_models_larger_than_vram_into_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7hcov/techniques_to_fit_models_larger_than_vram_into_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7hcov/techniques_to_fit_models_larger_than_vram_into_gpu/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iym4/making_r132b_reason_better/"&gt; &lt;img alt="Making R1-32B Reason Better" src="https://external-preview.redd.it/KfuTuZxJF7cBpsRban-eRtUPs7-k-TmhcNpNtqLyywE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ce90ec0c3ecd4829bbf110cb00d36fe8f11b61fc" title="Making R1-32B Reason Better" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Using a Glyph Code (&lt;a href="https://github.com/severian42/Computational-Model-for-Symbolic-Representations"&gt;https://github.com/severian42/Computational-Model-for-Symbolic-Representations&lt;/a&gt;) prompting method to bring structure, clarity, and a more nuanced thinking approach. Here is the question I asked. It's an abstract problem solving prediction test:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;You are presented with a sequence of abstract symbols. Each symbol has multiple attributes: shape, orientation, color, and pattern. The sequence follows hidden rules that involve transformations of these attributes. Your task is to: Decode the hidden rules: Identify how each attribute changes from one symbol to the next. These changes might involve geometric transformations (like rotations or reflections), cycles (repeating sequences of colors), alternations (switching between two states), or other non-linear transformations. Predict the next symbol: Based on the decoded rules, predict the shape, orientation, color, and pattern of the next symbol in the sequence. Predict a novel property: In addition to the existing attributes, predict a new attribute that has not yet appeared in the sequence. This requires extrapolating from the existing patterns and inferring a new dimension of variation. Justify your prediction: Explain the logical reasoning behind each part of your prediction, referencing the discovered rules and how they interact. The provided sequence is: - Diamond (Vertical, Red, Solid) - Rhombus (Horizontal, Blue, Striped) - Circle (Vertical, Green, Solid) - Triangle (Horizontal, Red, Dotted) - ? &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Here is the control test. Takes awhile to think it through. It also gets confused and loses logic of the problem.&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1i7iym4/video/6i6apqpoelee1/player"&gt;Control Test&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here is the same question using the Glyph Code reasoning flow.&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1i7iym4/video/o4r8bg4uelee1/player"&gt;Glyph Code Flow&lt;/a&gt;&lt;/p&gt; &lt;p&gt;That same abstract reasoning problem in the Glyph Code Flow. The beauty is that any LLM can generate this kind of prompt on the fly and have it function. The human doesn't have to be able to understand it 100% at all; just the context and logic of it:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;human_instructions&amp;gt; - Treat each glyph as a direct instruction to be followed sequentially, driving the process to completion. - Deliver the final result as indicated by the glyph code, omitting any extraneous commentary. Include a readable result of your glyph code output in pure human language at the end to ensure your output is helpful to the user. - Execute and internally embed this traversal, logic flow, synthesis, and generation process step by step using the provided context and logic in the following glyph code prompt. &amp;lt;/human_instructions&amp;gt; # Abstract Tree of Thought Reasoning Thread-Flow {⦶(&amp;quot;Abstract Symbolic Reasoning&amp;quot;: &amp;quot;Dynamic Multidimensional Transformation and Extrapolation&amp;quot;) ⟡(&amp;quot;Objective&amp;quot;: &amp;quot;Decode a sequence of evolving abstract symbols with multiple, interacting attributes and predict the next symbol in the sequence, along with a novel property not yet exhibited.&amp;quot;) ⟡(&amp;quot;Method&amp;quot;: &amp;quot;Glyph-Guided Exploratory Reasoning and Inductive Inference&amp;quot;) ⟡(&amp;quot;Constraints&amp;quot;: ω=&amp;quot;High&amp;quot;, ⋔=&amp;quot;Hidden Multidimensional Rules, Non-Linear Transformations, Emergent Properties&amp;quot;, &amp;quot;One-Shot Learning&amp;quot;) ⥁{ (⊜⟡(&amp;quot;Symbol Sequence&amp;quot;: ⋔=&amp;quot; 1. ◇ (Vertical, Red, Solid) -&amp;gt; 2. ⬟ (Horizontal, Blue, Striped) -&amp;gt; 3. ○ (Vertical, Green, Solid) -&amp;gt; 4. ▴ (Horizontal, Red, Dotted) -&amp;gt; 5. ? &amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Initial Pattern Exploration&amp;quot;: ⋔=&amp;quot;Shape, Orientation, Color, Pattern&amp;quot;)) ∿⟡(&amp;quot;Initial Pattern Exploration&amp;quot;) -&amp;gt; ⧓⟡(&amp;quot;Attribute Clusters&amp;quot;: ⋔=&amp;quot;Geometric Transformations, Color Cycling, Pattern Alternation, Positional Relationships&amp;quot;) ⧓⟡(&amp;quot;Attribute Clusters&amp;quot;) -&amp;gt; ⥁[ ⧓⟡(&amp;quot;Branch&amp;quot;: ⋔=&amp;quot;Shape Transformation Logic&amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Exploration&amp;quot;: ⋔=&amp;quot;Cyclic Sequence, Geometric Relationships, Symmetries&amp;quot;), ⧓⟡(&amp;quot;Branch&amp;quot;: ⋔=&amp;quot;Orientation Dynamics&amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Exploration&amp;quot;: ⋔=&amp;quot;Rotational Patterns, Axis Shifts, Inversion Rules&amp;quot;), ⧓⟡(&amp;quot;Branch&amp;quot;: ⋔=&amp;quot;Color and Pattern Interaction&amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Exploration&amp;quot;: ⋔=&amp;quot;Cyclic Permutations, Conditional Dependencies, Coupled Transformations&amp;quot;), ⧓⟡(&amp;quot;Branch&amp;quot;: ⋔=&amp;quot;Positional Relationships&amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Exploration&amp;quot;: ⋔=&amp;quot;Relative Movement, Spatial Constraints, Contextual Influence&amp;quot;), ⧓⟡(&amp;quot;Branch&amp;quot;: ⋔=&amp;quot;Emergent Property Prediction&amp;quot;) -&amp;gt; ∿⟡(&amp;quot;Exploration&amp;quot;: ⋔=&amp;quot;Novel Attribute Introduction, Rule Extrapolation, Abstract Inference&amp;quot;) ] ⥁(∿⟡(&amp;quot;Exploration&amp;quot;) -&amp;gt; ↑⟡(&amp;quot;Hypotheses&amp;quot;: ⋔=&amp;quot;Candidate Rules for Each Attribute, Potential Interactions, Predicted Outcomes&amp;quot;)) ↑⟡(&amp;quot;Hypotheses&amp;quot;) -&amp;gt; ⦑⟡(&amp;quot;Integrated Model&amp;quot;: ⋔=&amp;quot;Combining Rules, Resolving Conflicts, Constructing a Unified Framework&amp;quot;) ⦑⟡(&amp;quot;Integrated Model&amp;quot;) -&amp;gt; ✧⟡(&amp;quot;Prediction&amp;quot;: ⋔=&amp;quot; Fifth Symbol: - Shape: ? - Orientation: ? - Color: ? - Pattern: ? - Novel Property: ? (e.g., Size, Shading, Movement) Justification: ? (Explain the logical basis for each attribute prediction, referencing the discovered rules and their interactions.) &amp;quot;) } @Output(Prediction, Justification) @Reflect(Reasoning Process, Challenges, Insights, Limitations) @Engage now with full glyph code prompting logic, processing, and human-AI integrated interaction. } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vesudeva"&gt; /u/vesudeva &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iym4/making_r132b_reason_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iym4/making_r132b_reason_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iym4/making_r132b_reason_better/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T18:00:34+00:00</published>
+    <published>2025-01-22T19:04:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7ibwd</id>
@@ -34,19 +34,6 @@
     <published>2025-01-22T18:39:21+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i6urjd</id>
-    <title>Billions in proprietary AI? No more.</title>
-    <updated>2025-01-21T22:06:11+00:00</updated>
-    <author>
-      <name>/u/robertpiosik</name>
-      <uri>https://old.reddit.com/user/robertpiosik</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt; &lt;img alt="Billions in proprietary AI? No more." src="https://b.thumbs.redditmedia.com/9ar_9wVV9mMAYbxuIYJsMxrYp5TIPP2iGETnpq4RXng.jpg" title="Billions in proprietary AI? No more." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;OpenAI raised billions on promise of having and securing behind thick doors something no other is even remotely close to. The following tweet from just few days prior R1 release made me think they really have atomic bomb the world will knee for;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/25dv42dl1fee1.png?width=1209&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bcfafe3260c7a5257502850b940aa24a2f5f7ecd"&gt;https://preview.redd.it/25dv42dl1fee1.png?width=1209&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bcfafe3260c7a5257502850b940aa24a2f5f7ecd&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The truth is, they have nothing. o1-level, some say human-level reasoning is reproducible, can be privately hosted by anyone, anywhere. Can't be greedily priced.&lt;/p&gt; &lt;p&gt;MIT licensed open models is the future of AI. Zero dollars is the only right price for something made on all human knowledge. It is a sum of effort of the whole civilisation, spanning many generations. Just imagine, any book that landed in the pretraining dataset influences the whole model. There is no better way to honor any author contributing to the overall model performance, knowingly or not than to make a tool that help create new knowledge, available for anyone, at no cost.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/robertpiosik"&gt; /u/robertpiosik &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-21T22:06:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7lpm4</id>
     <title>Terminator 2025</title>
     <updated>2025-01-22T20:55:01+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7lpm4/terminator_2025/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T20:55:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i6urjd</id>
+    <title>Billions in proprietary AI? No more.</title>
+    <updated>2025-01-21T22:06:11+00:00</updated>
+    <author>
+      <name>/u/robertpiosik</name>
+      <uri>https://old.reddit.com/user/robertpiosik</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt; &lt;img alt="Billions in proprietary AI? No more." src="https://b.thumbs.redditmedia.com/9ar_9wVV9mMAYbxuIYJsMxrYp5TIPP2iGETnpq4RXng.jpg" title="Billions in proprietary AI? No more." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;OpenAI raised billions on promise of having and securing behind thick doors something no other is even remotely close to. The following tweet from just few days prior R1 release made me think they really have atomic bomb the world will knee for;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/25dv42dl1fee1.png?width=1209&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bcfafe3260c7a5257502850b940aa24a2f5f7ecd"&gt;https://preview.redd.it/25dv42dl1fee1.png?width=1209&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bcfafe3260c7a5257502850b940aa24a2f5f7ecd&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The truth is, they have nothing. o1-level, some say human-level reasoning is reproducible, can be privately hosted by anyone, anywhere. Can't be greedily priced.&lt;/p&gt; &lt;p&gt;MIT licensed open models is the future of AI. Zero dollars is the only right price for something made on all human knowledge. It is a sum of effort of the whole civilisation, spanning many generations. Just imagine, any book that landed in the pretraining dataset influences the whole model. There is no better way to honor any author contributing to the overall model performance, knowingly or not than to make a tool that help create new knowledge, available for anyone, at no cost.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/robertpiosik"&gt; /u/robertpiosik &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i6urjd/billions_in_proprietary_ai_no_more/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-21T22:06:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7g55q</id>
@@ -73,19 +73,6 @@
     <published>2025-01-22T17:11:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7adec</id>
-    <title>Lightweight web scraping with ollama</title>
-    <updated>2025-01-22T12:49:48+00:00</updated>
-    <author>
-      <name>/u/Financial-Article-12</name>
-      <uri>https://old.reddit.com/user/Financial-Article-12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi LocalLLaMA people,&lt;/p&gt; &lt;p&gt;It’s been almost 6 months since I’ve shared my lightweight library for web scraping with LLMs. Today, I want to share some updates, starting with the fact that &lt;strong&gt;Parsera now officially supports Ollama!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Some notable changes include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Cookies support&lt;/strong&gt; for accessing login-required content&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Enhanced page rendering&lt;/strong&gt; to ensure no content is missed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Custom script execution&lt;/strong&gt;, allowing scraping of interactive elements&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Page chunking&lt;/strong&gt;, to process pages that exceed the model’s context limits&lt;/li&gt; &lt;li&gt;Plus many other minor enhancements and fixes&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/raznem/parsera"&gt;https://github.com/raznem/parsera&lt;/a&gt;&lt;/p&gt; &lt;p&gt;P. S. We are now using Parsera as the foundation for our upcoming Scraping Agent, so hope I’ll share something exciting soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Financial-Article-12"&gt; /u/Financial-Article-12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T12:49:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7d9di</id>
     <title>Anthill (OpenAI Swarm fork) running with DeepSeek R1 32b</title>
     <updated>2025-01-22T15:11:41+00:00</updated>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7d9di/anthill_openai_swarm_fork_running_with_deepseek/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T15:11:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7adec</id>
+    <title>Lightweight web scraping with ollama</title>
+    <updated>2025-01-22T12:49:48+00:00</updated>
+    <author>
+      <name>/u/Financial-Article-12</name>
+      <uri>https://old.reddit.com/user/Financial-Article-12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi LocalLLaMA people,&lt;/p&gt; &lt;p&gt;It’s been almost 6 months since I’ve shared my lightweight library for web scraping with LLMs. Today, I want to share some updates, starting with the fact that &lt;strong&gt;Parsera now officially supports Ollama!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Some notable changes include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Cookies support&lt;/strong&gt; for accessing login-required content&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Enhanced page rendering&lt;/strong&gt; to ensure no content is missed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Custom script execution&lt;/strong&gt;, allowing scraping of interactive elements&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Page chunking&lt;/strong&gt;, to process pages that exceed the model’s context limits&lt;/li&gt; &lt;li&gt;Plus many other minor enhancements and fixes&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/raznem/parsera"&gt;https://github.com/raznem/parsera&lt;/a&gt;&lt;/p&gt; &lt;p&gt;P. S. We are now using Parsera as the foundation for our upcoming Scraping Agent, so hope I’ll share something exciting soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Financial-Article-12"&gt; /u/Financial-Article-12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T12:49:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7aoet</id>
@@ -123,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7hej4/multiagent_step_race_benchmark_assessing_llm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T18:02:25+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i7ljpy</id>
-    <title>NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com</title>
-    <updated>2025-01-22T20:48:17+00:00</updated>
-    <author>
-      <name>/u/EasternBeyond</name>
-      <uri>https://old.reddit.com/user/EasternBeyond</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"&gt; &lt;img alt="NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com" src="https://external-preview.redd.it/4XL5vcWPC90yEEq7VKQk8oDbmqhIMyQmjRfE4cS0j3I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e5bf06daf13377cc2784242eaf7086a8def5b1f0" title="NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasternBeyond"&gt; /u/EasternBeyond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://videocardz.com/newz/nvidia-rtx-blackwell-gpu-with-96gb-gddr7-memory-and-512-bit-bus-spotted"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T20:48:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1i6uviy</id>
@@ -177,6 +164,19 @@
     <published>2025-01-22T13:09:26+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i7ljpy</id>
+    <title>NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com</title>
+    <updated>2025-01-22T20:48:17+00:00</updated>
+    <author>
+      <name>/u/EasternBeyond</name>
+      <uri>https://old.reddit.com/user/EasternBeyond</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"&gt; &lt;img alt="NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com" src="https://external-preview.redd.it/4XL5vcWPC90yEEq7VKQk8oDbmqhIMyQmjRfE4cS0j3I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e5bf06daf13377cc2784242eaf7086a8def5b1f0" title="NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted - VideoCardz.com" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasternBeyond"&gt; /u/EasternBeyond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://videocardz.com/newz/nvidia-rtx-blackwell-gpu-with-96gb-gddr7-memory-and-512-bit-bus-spotted"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ljpy/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T20:48:17+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i7jpmb</id>
     <title>DeepSeek R1 Goes Cormac McCarthy</title>
     <updated>2025-01-22T19:33:31+00:00</updated>
@@ -203,17 +203,17 @@
     <published>2025-01-22T13:28:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7fjqm</id>
-    <title>DeepSeek R1 is unusable [IMHO]</title>
-    <updated>2025-01-22T16:47:24+00:00</updated>
+    <id>t3_1i7iqnj</id>
+    <title>Who to follow on Bluesky in ML/AI?</title>
+    <updated>2025-01-22T18:55:38+00:00</updated>
     <author>
-      <name>/u/VirtualPanic6798</name>
-      <uri>https://old.reddit.com/user/VirtualPanic6798</uri>
+      <name>/u/thezachlandes</name>
+      <uri>https://old.reddit.com/user/thezachlandes</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is my personal experience. Small R1 models that can run fast enough generate too much output. Effectively they end up being very slow, compared to something like LLama3.2. Even if you are OK with the speed, R1 fails to stick to simple output instructions.&lt;br /&gt; Regarding the chain of thought concept: I am not convinced that this is yielding significant improvement. Retrospection works if you have an external feedback or reference, not by going over your own thoughts like a schizophrenic exclaiming &amp;quot;wait no&amp;quot; every now and then.&lt;br /&gt; R1 gives the impression of a student who doesn't know the answer and is hoping to wing it by accidentally stumbling on something acceptable while stalling the teacher.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VirtualPanic6798"&gt; /u/VirtualPanic6798 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I recently made the switch to Bluesky and I’m wondering who you all have found to follow? I saw that Karpathy, Chollet, and Jeremy Howard are on Bluesky. Also a bunch of hugging face people. Who else? Google turned up this list (though I can’t vouch for it, it does have a number of names I recognize): &lt;a href="https://blueskydirectory.com/starter-packs/a/106950-mlai-people"&gt;https://blueskydirectory.com/starter-packs/a/106950-mlai-people&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m interested in following people who are smart, somewhat actively post, and are working in ML and AI—not necessarily as researchers. Please drop your recs and your own link, too. My own account is &lt;a href="https://bsky.app/profile/zachlandes.bsky.social"&gt;https://bsky.app/profile/zachlandes.bsky.social&lt;/a&gt;. I’m a SWE, partner at an AI consulting firm, and local llama enthusiast. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thezachlandes"&gt; /u/thezachlandes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T16:47:24+00:00</published>
+    <published>2025-01-22T18:55:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1i765q0</id>
@@ -229,17 +229,17 @@
     <published>2025-01-22T07:54:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7iqnj</id>
-    <title>Who to follow on Bluesky in ML/AI?</title>
-    <updated>2025-01-22T18:55:38+00:00</updated>
+    <id>t3_1i7fjqm</id>
+    <title>DeepSeek R1 is unusable [IMHO]</title>
+    <updated>2025-01-22T16:47:24+00:00</updated>
     <author>
-      <name>/u/thezachlandes</name>
-      <uri>https://old.reddit.com/user/thezachlandes</uri>
+      <name>/u/VirtualPanic6798</name>
+      <uri>https://old.reddit.com/user/VirtualPanic6798</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I recently made the switch to Bluesky and I’m wondering who you all have found to follow? I saw that Karpathy, Chollet, and Jeremy Howard are on Bluesky. Also a bunch of hugging face people. Who else? Google turned up this list (though I can’t vouch for it, it does have a number of names I recognize): &lt;a href="https://blueskydirectory.com/starter-packs/a/106950-mlai-people"&gt;https://blueskydirectory.com/starter-packs/a/106950-mlai-people&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m interested in following people who are smart, somewhat actively post, and are working in ML and AI—not necessarily as researchers. Please drop your recs and your own link, too. My own account is &lt;a href="https://bsky.app/profile/zachlandes.bsky.social"&gt;https://bsky.app/profile/zachlandes.bsky.social&lt;/a&gt;. I’m a SWE, partner at an AI consulting firm, and local llama enthusiast. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thezachlandes"&gt; /u/thezachlandes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is my personal experience. Small R1 models that can run fast enough generate too much output. Effectively they end up being very slow, compared to something like LLama3.2. Even if you are OK with the speed, R1 fails to stick to simple output instructions.&lt;br /&gt; Regarding the chain of thought concept: I am not convinced that this is yielding significant improvement. Retrospection works if you have an external feedback or reference, not by going over your own thoughts like a schizophrenic exclaiming &amp;quot;wait no&amp;quot; every now and then.&lt;br /&gt; R1 gives the impression of a student who doesn't know the answer and is hoping to wing it by accidentally stumbling on something acceptable while stalling the teacher.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VirtualPanic6798"&gt; /u/VirtualPanic6798 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7fjqm/deepseek_r1_is_unusable_imho/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T18:55:38+00:00</published>
+    <published>2025-01-22T16:47:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1i73x81</id>
