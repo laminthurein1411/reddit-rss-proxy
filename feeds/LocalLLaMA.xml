@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-22T20:06:40+00:00</updated>
+  <updated>2025-01-22T20:24:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i7ibwd</id>
-    <title>DeepSeek R1 Distilled -- local/cloud deployment with a unified framework</title>
-    <updated>2025-01-22T18:39:21+00:00</updated>
+    <id>t3_1i74jqg</id>
+    <title>DeepSeek R1 32B is way better than 7B Distill, even at Q4 quant</title>
+    <updated>2025-01-22T06:01:35+00:00</updated>
     <author>
-      <name>/u/SnooMachines3070</name>
-      <uri>https://old.reddit.com/user/SnooMachines3070</uri>
+      <name>/u/nderstand2grow</name>
+      <uri>https://old.reddit.com/user/nderstand2grow</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DeepSeek released several R1 Distilled models earlier this week, enabling the reasoning capabilities in the local deployment regime. While we still wait to see real-world use cases, it makes one look forward to the potential of small models.&lt;/p&gt; &lt;p&gt;MLC-LLM provides &lt;strong&gt;a unified local/cloud deployment solution&lt;/strong&gt;, allowing you to deploy with &lt;strong&gt;CUDA/ROCm/Metal, iOS/Android, and even web browsers&lt;/strong&gt; in JavaScript w/ WebGPU.&lt;/p&gt; &lt;p&gt;MLC-LLM not only makes &lt;a href="https://blog.mlc.ai/2024/06/07/universal-LLM-deployment-engine-with-ML-compilation"&gt;deploying on different devices&lt;/a&gt; possible, but also recently achieved &lt;a href="https://blog.mlc.ai/2024/10/10/optimizing-and-characterizing-high-throughput-low-latency-llm-inference"&gt;competitive performance in high-throughput and low-latency serving&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Quick Start&lt;/h1&gt; &lt;p&gt;The converted weights for all DeepSeek-R1 models can be found at &lt;a href="https://huggingface.co/mlc-ai"&gt;https://huggingface.co/mlc-ai&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Python deployment can be as easy as the following lines, after &lt;a href="https://llm.mlc.ai/docs/install/mlc_llm.html#install-mlc-packages"&gt;installing MLC LLM&lt;/a&gt;:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;from mlc_llm import MLCEngine # Create engine model = &amp;quot;HF://mlc-ai/DeepSeek-R1-Distill-Llama-8B-q4f16_1-MLC&amp;quot; engine = MLCEngine(model) # Run chat completion in OpenAI API. for response in engine.chat.completions.create( messages=[{&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;How many rs are there in strawberry.&amp;quot;}], model=model, stream=True, ): for choice in response.choices: print(choice.delta.content, end=&amp;quot;&amp;quot;, flush=True) print(&amp;quot;\n&amp;quot;) engine.terminate() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;With a Chrome browser, directly try it out locally with no setup at &lt;a href="https://chat.webllm.ai/"&gt;https://chat.webllm.ai/&lt;/a&gt;, as shown below:&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1i7ibwd/video/pgcmht0bblee1/player"&gt;DeepSeek-R1-Distill-Llama-8B (4-bit quantized) counting \&amp;quot;r\&amp;quot;s on M3 Max Macbook&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Resources&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Laptops &amp;amp; servers w/ Nvidia, AMD, and Apple GPUs: checkout &lt;a href="https://llm.mlc.ai/docs/deploy/python_engine.html"&gt;Python API doc&lt;/a&gt; for deployment, and &lt;a href="https://blog.mlc.ai/2024/10/10/optimizing-and-characterizing-high-throughput-low-latency-llm-inference"&gt;performance blog post&lt;/a&gt; for high-throughput low-latency serving&lt;/li&gt; &lt;li&gt;Browser (WebLLM): try out the demo on &lt;a href="https://chat.webllm.ai/"&gt;https://chat.webllm.ai/&lt;/a&gt;, &lt;a href="https://blog.mlc.ai/2024/06/13/webllm-a-high-performance-in-browser-llm-inference-engine"&gt;WebLLM blog post&lt;/a&gt; for an overview, and &lt;a href="https://github.com/mlc-ai/web-llm"&gt;WebLLM repo&lt;/a&gt; for dev and code&lt;/li&gt; &lt;li&gt;iPhone: see &lt;a href="https://llm.mlc.ai/docs/deploy/ios.html"&gt;iOS doc&lt;/a&gt; for development (&lt;a href="https://apps.apple.com/us/app/mlc-chat/id6448482937"&gt;the app in App Store&lt;/a&gt; does not have all updated models yet but offers a demo)&lt;/li&gt; &lt;li&gt;Android: checkout the &lt;a href="https://llm.mlc.ai/docs/deploy/android.html"&gt;Android doc&lt;/a&gt; (APK inside for trying out the demo, which also does not have all updated models yet)&lt;/li&gt; &lt;li&gt;MLC-LLM in general: check out &lt;a href="https://blog.mlc.ai/2024/06/07/universal-LLM-deployment-engine-with-ML-compilation"&gt;the blog post&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SnooMachines3070"&gt; /u/SnooMachines3070 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been quite impressed by the model. I'm using the Qwen distill and so far it's working well, although as is typical with these models, they tend to overthink a lot! But it answered my trick question in one shot (See comments).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nderstand2grow"&gt; /u/nderstand2grow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T18:39:21+00:00</published>
+    <published>2025-01-22T06:01:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7f6xe</id>
@@ -34,19 +34,6 @@
     <published>2025-01-22T16:32:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i74jqg</id>
-    <title>DeepSeek R1 32B is way better than 7B Distill, even at Q4 quant</title>
-    <updated>2025-01-22T06:01:35+00:00</updated>
-    <author>
-      <name>/u/nderstand2grow</name>
-      <uri>https://old.reddit.com/user/nderstand2grow</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been quite impressed by the model. I'm using the Qwen distill and so far it's working well, although as is typical with these models, they tend to overthink a lot! But it answered my trick question in one shot (See comments).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nderstand2grow"&gt; /u/nderstand2grow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i74jqg/deepseek_r1_32b_is_way_better_than_7b_distill/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T06:01:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i6zid8</id>
     <title>Just a comparison of US $500B Stargate AI project to other tech projects</title>
     <updated>2025-01-22T01:40:19+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i6zid8/just_a_comparison_of_us_500b_stargate_ai_project/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T01:40:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7ibwd</id>
+    <title>DeepSeek R1 Distilled -- local/cloud deployment with a unified framework</title>
+    <updated>2025-01-22T18:39:21+00:00</updated>
+    <author>
+      <name>/u/SnooMachines3070</name>
+      <uri>https://old.reddit.com/user/SnooMachines3070</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DeepSeek released several R1 Distilled models earlier this week, enabling the reasoning capabilities in the local deployment regime. While we still wait to see real-world use cases, it makes one look forward to the potential of small models.&lt;/p&gt; &lt;p&gt;MLC-LLM provides &lt;strong&gt;a unified local/cloud deployment solution&lt;/strong&gt;, allowing you to deploy with &lt;strong&gt;CUDA/ROCm/Metal, iOS/Android, and even web browsers&lt;/strong&gt; in JavaScript w/ WebGPU.&lt;/p&gt; &lt;p&gt;MLC-LLM not only makes &lt;a href="https://blog.mlc.ai/2024/06/07/universal-LLM-deployment-engine-with-ML-compilation"&gt;deploying on different devices&lt;/a&gt; possible, but also recently achieved &lt;a href="https://blog.mlc.ai/2024/10/10/optimizing-and-characterizing-high-throughput-low-latency-llm-inference"&gt;competitive performance in high-throughput and low-latency serving&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Quick Start&lt;/h1&gt; &lt;p&gt;The converted weights for all DeepSeek-R1 models can be found at &lt;a href="https://huggingface.co/mlc-ai"&gt;https://huggingface.co/mlc-ai&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Python deployment can be as easy as the following lines, after &lt;a href="https://llm.mlc.ai/docs/install/mlc_llm.html#install-mlc-packages"&gt;installing MLC LLM&lt;/a&gt;:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;from mlc_llm import MLCEngine # Create engine model = &amp;quot;HF://mlc-ai/DeepSeek-R1-Distill-Llama-8B-q4f16_1-MLC&amp;quot; engine = MLCEngine(model) # Run chat completion in OpenAI API. for response in engine.chat.completions.create( messages=[{&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;How many rs are there in strawberry.&amp;quot;}], model=model, stream=True, ): for choice in response.choices: print(choice.delta.content, end=&amp;quot;&amp;quot;, flush=True) print(&amp;quot;\n&amp;quot;) engine.terminate() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;With a Chrome browser, directly try it out locally with no setup at &lt;a href="https://chat.webllm.ai/"&gt;https://chat.webllm.ai/&lt;/a&gt;, as shown below:&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1i7ibwd/video/pgcmht0bblee1/player"&gt;DeepSeek-R1-Distill-Llama-8B (4-bit quantized) counting \&amp;quot;r\&amp;quot;s on M3 Max Macbook&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Resources&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Laptops &amp;amp; servers w/ Nvidia, AMD, and Apple GPUs: checkout &lt;a href="https://llm.mlc.ai/docs/deploy/python_engine.html"&gt;Python API doc&lt;/a&gt; for deployment, and &lt;a href="https://blog.mlc.ai/2024/10/10/optimizing-and-characterizing-high-throughput-low-latency-llm-inference"&gt;performance blog post&lt;/a&gt; for high-throughput low-latency serving&lt;/li&gt; &lt;li&gt;Browser (WebLLM): try out the demo on &lt;a href="https://chat.webllm.ai/"&gt;https://chat.webllm.ai/&lt;/a&gt;, &lt;a href="https://blog.mlc.ai/2024/06/13/webllm-a-high-performance-in-browser-llm-inference-engine"&gt;WebLLM blog post&lt;/a&gt; for an overview, and &lt;a href="https://github.com/mlc-ai/web-llm"&gt;WebLLM repo&lt;/a&gt; for dev and code&lt;/li&gt; &lt;li&gt;iPhone: see &lt;a href="https://llm.mlc.ai/docs/deploy/ios.html"&gt;iOS doc&lt;/a&gt; for development (&lt;a href="https://apps.apple.com/us/app/mlc-chat/id6448482937"&gt;the app in App Store&lt;/a&gt; does not have all updated models yet but offers a demo)&lt;/li&gt; &lt;li&gt;Android: checkout the &lt;a href="https://llm.mlc.ai/docs/deploy/android.html"&gt;Android doc&lt;/a&gt; (APK inside for trying out the demo, which also does not have all updated models yet)&lt;/li&gt; &lt;li&gt;MLC-LLM in general: check out &lt;a href="https://blog.mlc.ai/2024/06/07/universal-LLM-deployment-engine-with-ML-compilation"&gt;the blog post&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SnooMachines3070"&gt; /u/SnooMachines3070 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7ibwd/deepseek_r1_distilled_localcloud_deployment_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T18:39:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7hcov</id>
@@ -86,19 +86,6 @@
     <published>2025-01-22T15:11:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7adec</id>
-    <title>Lightweight web scraping with ollama</title>
-    <updated>2025-01-22T12:49:48+00:00</updated>
-    <author>
-      <name>/u/Financial-Article-12</name>
-      <uri>https://old.reddit.com/user/Financial-Article-12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi LocalLLaMA people,&lt;/p&gt; &lt;p&gt;It’s been almost 6 months since I’ve shared my lightweight library for web scraping with LLMs. Today, I want to share some updates, starting with the fact that &lt;strong&gt;Parsera now officially supports Ollama!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Some notable changes include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Cookies support&lt;/strong&gt; for accessing login-required content&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Enhanced page rendering&lt;/strong&gt; to ensure no content is missed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Custom script execution&lt;/strong&gt;, allowing scraping of interactive elements&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Page chunking&lt;/strong&gt;, to process pages that exceed the model’s context limits&lt;/li&gt; &lt;li&gt;Plus many other minor enhancements and fixes&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/raznem/parsera"&gt;https://github.com/raznem/parsera&lt;/a&gt;&lt;/p&gt; &lt;p&gt;P. S. We are now using Parsera as the foundation for our upcoming Scraping Agent, so hope I’ll share something exciting soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Financial-Article-12"&gt; /u/Financial-Article-12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T12:49:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7g55q</id>
     <title>In image to 3d, open source is on top</title>
     <updated>2025-01-22T17:11:00+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g55q/in_image_to_3d_open_source_is_on_top/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T17:11:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7adec</id>
+    <title>Lightweight web scraping with ollama</title>
+    <updated>2025-01-22T12:49:48+00:00</updated>
+    <author>
+      <name>/u/Financial-Article-12</name>
+      <uri>https://old.reddit.com/user/Financial-Article-12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi LocalLLaMA people,&lt;/p&gt; &lt;p&gt;It’s been almost 6 months since I’ve shared my lightweight library for web scraping with LLMs. Today, I want to share some updates, starting with the fact that &lt;strong&gt;Parsera now officially supports Ollama!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Some notable changes include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Cookies support&lt;/strong&gt; for accessing login-required content&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Enhanced page rendering&lt;/strong&gt; to ensure no content is missed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Custom script execution&lt;/strong&gt;, allowing scraping of interactive elements&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Page chunking&lt;/strong&gt;, to process pages that exceed the model’s context limits&lt;/li&gt; &lt;li&gt;Plus many other minor enhancements and fixes&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/raznem/parsera"&gt;https://github.com/raznem/parsera&lt;/a&gt;&lt;/p&gt; &lt;p&gt;P. S. We are now using Parsera as the foundation for our upcoming Scraping Agent, so hope I’ll share something exciting soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Financial-Article-12"&gt; /u/Financial-Article-12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7adec/lightweight_web_scraping_with_ollama/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T12:49:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7aoet</id>
@@ -216,19 +216,6 @@
     <published>2025-01-22T16:47:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7iqnj</id>
-    <title>Who to follow on Bluesky in ML/AI?</title>
-    <updated>2025-01-22T18:55:38+00:00</updated>
-    <author>
-      <name>/u/thezachlandes</name>
-      <uri>https://old.reddit.com/user/thezachlandes</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I recently made the switch to Bluesky and I’m wondering who you all have found to follow? I saw that Karpathy, Chollet, and Jeremy Howard are on Bluesky. Also a bunch of hugging face people. Who else? Google turned up this list (though I can’t vouch for it, it does have a number of names I recognize): &lt;a href="https://blueskydirectory.com/starter-packs/a/106950-mlai-people"&gt;https://blueskydirectory.com/starter-packs/a/106950-mlai-people&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m interested in following people who are smart, somewhat actively post, and are working in ML and AI—not necessarily as researchers. Please drop your recs and your own link, too. My own account is &lt;a href="https://bsky.app/profile/zachlandes.bsky.social"&gt;https://bsky.app/profile/zachlandes.bsky.social&lt;/a&gt;. I’m a SWE, partner at an AI consulting firm, and local llama enthusiast. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thezachlandes"&gt; /u/thezachlandes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T18:55:38+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7b3r1</id>
     <title>I did a quick test of MacBook M4 Max 128 GB token/second throughput across a few popular local LLMs (in the MLX format)</title>
     <updated>2025-01-22T13:28:52+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7b3r1/i_did_a_quick_test_of_macbook_m4_max_128_gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T13:28:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7iqnj</id>
+    <title>Who to follow on Bluesky in ML/AI?</title>
+    <updated>2025-01-22T18:55:38+00:00</updated>
+    <author>
+      <name>/u/thezachlandes</name>
+      <uri>https://old.reddit.com/user/thezachlandes</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I recently made the switch to Bluesky and I’m wondering who you all have found to follow? I saw that Karpathy, Chollet, and Jeremy Howard are on Bluesky. Also a bunch of hugging face people. Who else? Google turned up this list (though I can’t vouch for it, it does have a number of names I recognize): &lt;a href="https://blueskydirectory.com/starter-packs/a/106950-mlai-people"&gt;https://blueskydirectory.com/starter-packs/a/106950-mlai-people&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m interested in following people who are smart, somewhat actively post, and are working in ML and AI—not necessarily as researchers. Please drop your recs and your own link, too. My own account is &lt;a href="https://bsky.app/profile/zachlandes.bsky.social"&gt;https://bsky.app/profile/zachlandes.bsky.social&lt;/a&gt;. I’m a SWE, partner at an AI consulting firm, and local llama enthusiast. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thezachlandes"&gt; /u/thezachlandes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7iqnj/who_to_follow_on_bluesky_in_mlai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T18:55:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1i765q0</id>
@@ -281,19 +281,6 @@
     <published>2025-01-22T16:14:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7g9po</id>
-    <title>The Deep Seek R1 glaze is unreal but it’s true.</title>
-    <updated>2025-01-22T17:16:07+00:00</updated>
-    <author>
-      <name>/u/LostMyOtherAcct69</name>
-      <uri>https://old.reddit.com/user/LostMyOtherAcct69</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have had a programming issue in my code for a RAG machine for two days that I’ve been working through documentation and different LLM‘s. &lt;/p&gt; &lt;p&gt;I have tried every single major LLM from every provider and none could solve this issue including O1 pro. I was going crazy. I just tried R1 and it fixed on its first attempt… I think I found a new daily runner for coding.. time to cancel OpenAI pro lol. &lt;/p&gt; &lt;p&gt;So yes the glaze is unreal (especially that David and Goliath post lol) but it’s THAT good.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LostMyOtherAcct69"&gt; /u/LostMyOtherAcct69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-22T17:16:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i75g7p</id>
     <title>I don’t believe the $500 Billion OpenAI investment</title>
     <updated>2025-01-22T07:03:02+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i75g7p/i_dont_believe_the_500_billion_openai_investment/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T07:03:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i7g9po</id>
+    <title>The Deep Seek R1 glaze is unreal but it’s true.</title>
+    <updated>2025-01-22T17:16:07+00:00</updated>
+    <author>
+      <name>/u/LostMyOtherAcct69</name>
+      <uri>https://old.reddit.com/user/LostMyOtherAcct69</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have had a programming issue in my code for a RAG machine for two days that I’ve been working through documentation and different LLM‘s. &lt;/p&gt; &lt;p&gt;I have tried every single major LLM from every provider and none could solve this issue including O1 pro. I was going crazy. I just tried R1 and it fixed on its first attempt… I think I found a new daily runner for coding.. time to cancel OpenAI pro lol. &lt;/p&gt; &lt;p&gt;So yes the glaze is unreal (especially that David and Goliath post lol) but it’s THAT good.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LostMyOtherAcct69"&gt; /u/LostMyOtherAcct69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7g9po/the_deep_seek_r1_glaze_is_unreal_but_its_true/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-22T17:16:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1i78src</id>
