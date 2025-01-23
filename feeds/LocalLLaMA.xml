@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-23T15:24:05+00:00</updated>
+  <updated>2025-01-23T15:35:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1i84zzy</id>
-    <title>Local LLM Game Jam! Prototype fun games over a weekend with us</title>
-    <updated>2025-01-23T14:49:00+00:00</updated>
+    <id>t3_1i7r0s5</id>
+    <title>Pretraining small models - some takeaways from pretraining a 162M model</title>
+    <updated>2025-01-23T00:46:35+00:00</updated>
     <author>
-      <name>/u/No_Abbreviations_532</name>
-      <uri>https://old.reddit.com/user/No_Abbreviations_532</uri>
+      <name>/u/amang0112358</name>
+      <uri>https://old.reddit.com/user/amang0112358</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84zzy/local_llm_game_jam_prototype_fun_games_over_a/"&gt; &lt;img alt="Local LLM Game Jam! Prototype fun games over a weekend with us" src="https://preview.redd.it/jome85rqaree1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=63e08a645362ea7e218fb89922b7ac51b7d4f390" title="Local LLM Game Jam! Prototype fun games over a weekend with us" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Abbreviations_532"&gt; /u/No_Abbreviations_532 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/jome85rqaree1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84zzy/local_llm_game_jam_prototype_fun_games_over_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i84zzy/local_llm_game_jam_prototype_fun_games_over_a/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share some of my experience pretraining a small model from scratch. I have written out a &lt;strong&gt;tutorial&lt;/strong&gt; for anyone to follow here (includes code and checkpoints):&lt;/p&gt; &lt;p&gt;&lt;a href="https://medium.com/@gupta.aman/pre-training-logs-entry-1-training-a-smol-llama-from-scratch-04e4b5d4c5f7"&gt;https://medium.com/@gupta.aman/pre-training-logs-entry-1-training-a-smol-llama-from-scratch-04e4b5d4c5f7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here are some takeaways for me:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;The basic recipe is not that complicated. On the other hand, it's a great learning experience. For example, there are a bunch of interesting tools/libraries out there - like &lt;a href="https://github.com/huggingface/datatrove"&gt;datatrove from Huggingface&lt;/a&gt; - which I wouldn't have been exposed to if I had only been post-training (where dataset sizes are much smaller). Beyond large-scale tokenization (what I used it for), it has a lot of data curation pipelines, which will definitely be useful in the future.&lt;/li&gt; &lt;li&gt;While creating SoTA models on local hardware is kinda hard, even for the smallest models, there is a lot that can be &lt;em&gt;learned&lt;/em&gt; with 3090-like hardware. For example, one interesting surprise for me was that the model did learn a single paragraph of text perfectly (training takes a minute to run on a 3090). There are future memorization experiments I am interested in (e.g., Can an LLM memorize Shakespeare?), and given the size of the dataset, it's totally feasible to do it using a 3090 for model sizes up to 1B.&lt;/li&gt; &lt;li&gt;A lot of interesting architectural work has happened over the years. The most interesting for me was the MobileLLM research, which showed that using a smaller embedding size but more layers (like 32 layers) is better than wider models with fewer layers (e.g., GPT-2 135M has only 12 layers). I have a suspicion that memorization would be impacted by this decision, too, and that's something I want to look into.&lt;/li&gt; &lt;li&gt;I am really excited to try and go out of the box when it comes to datasets, like training a model on my emails for the last 20 years. Previously, I would have said that this is a tiny dataset and the model wouldn't be useful. But now I have enough conviction through this exercise that small datasets are OK to pre-train with as long as they are within a narrow domain and you expect to use the model within that narrow domain.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;And to me, that's what this whole Local LLM movement is about - we want to take control of LLM technology to make it work for us, and we are not afraid to tinker with the tech to make our own homemade LLMs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/amang0112358"&gt; /u/amang0112358 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T14:49:00+00:00</published>
+    <published>2025-01-23T00:46:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7x4va</id>
@@ -34,30 +34,17 @@
     <published>2025-01-23T06:18:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7r0s5</id>
-    <title>Pretraining small models - some takeaways from pretraining a 162M model</title>
-    <updated>2025-01-23T00:46:35+00:00</updated>
+    <id>t3_1i85ygw</id>
+    <title>5090 LLM Benchmark Results</title>
+    <updated>2025-01-23T15:31:21+00:00</updated>
     <author>
-      <name>/u/amang0112358</name>
-      <uri>https://old.reddit.com/user/amang0112358</uri>
+      <name>/u/olmoscd</name>
+      <uri>https://old.reddit.com/user/olmoscd</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share some of my experience pretraining a small model from scratch. I have written out a &lt;strong&gt;tutorial&lt;/strong&gt; for anyone to follow here (includes code and checkpoints):&lt;/p&gt; &lt;p&gt;&lt;a href="https://medium.com/@gupta.aman/pre-training-logs-entry-1-training-a-smol-llama-from-scratch-04e4b5d4c5f7"&gt;https://medium.com/@gupta.aman/pre-training-logs-entry-1-training-a-smol-llama-from-scratch-04e4b5d4c5f7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here are some takeaways for me:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;The basic recipe is not that complicated. On the other hand, it's a great learning experience. For example, there are a bunch of interesting tools/libraries out there - like &lt;a href="https://github.com/huggingface/datatrove"&gt;datatrove from Huggingface&lt;/a&gt; - which I wouldn't have been exposed to if I had only been post-training (where dataset sizes are much smaller). Beyond large-scale tokenization (what I used it for), it has a lot of data curation pipelines, which will definitely be useful in the future.&lt;/li&gt; &lt;li&gt;While creating SoTA models on local hardware is kinda hard, even for the smallest models, there is a lot that can be &lt;em&gt;learned&lt;/em&gt; with 3090-like hardware. For example, one interesting surprise for me was that the model did learn a single paragraph of text perfectly (training takes a minute to run on a 3090). There are future memorization experiments I am interested in (e.g., Can an LLM memorize Shakespeare?), and given the size of the dataset, it's totally feasible to do it using a 3090 for model sizes up to 1B.&lt;/li&gt; &lt;li&gt;A lot of interesting architectural work has happened over the years. The most interesting for me was the MobileLLM research, which showed that using a smaller embedding size but more layers (like 32 layers) is better than wider models with fewer layers (e.g., GPT-2 135M has only 12 layers). I have a suspicion that memorization would be impacted by this decision, too, and that's something I want to look into.&lt;/li&gt; &lt;li&gt;I am really excited to try and go out of the box when it comes to datasets, like training a model on my emails for the last 20 years. Previously, I would have said that this is a tiny dataset and the model wouldn't be useful. But now I have enough conviction through this exercise that small datasets are OK to pre-train with as long as they are within a narrow domain and you expect to use the model within that narrow domain.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;And to me, that's what this whole Local LLM movement is about - we want to take control of LLM technology to make it work for us, and we are not afraid to tinker with the tech to make our own homemade LLMs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/amang0112358"&gt; /u/amang0112358 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7r0s5/pretraining_small_models_some_takeaways_from/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85ygw/5090_llm_benchmark_results/"&gt; &lt;img alt="5090 LLM Benchmark Results" src="https://b.thumbs.redditmedia.com/MGfAH79aT_xaNFRSJ7poi3gO0-fB1zHyXrG-lv0CQCA.jpg" title="5090 LLM Benchmark Results" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/dda4kg39iree1.png?width=2469&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38562c75d3492cb57fbbc34c928f5773d01dbe0e"&gt;https://preview.redd.it/dda4kg39iree1.png?width=2469&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38562c75d3492cb57fbbc34c928f5773d01dbe0e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;So based on the 4090 prices and the small footprint, great thermals of the 5090. It doesn't seem like a bad deal to get 32GB VRAM and the fastest inferencing performance for $2K. Its looking like a 40% increase in performance (not that the 4090 was slow by any means).&lt;/p&gt; &lt;p&gt;I am still probably going for the 5080 but it is pretty tempting to have this compact beast for Qwen/Deepseek.&lt;/p&gt; &lt;p&gt;Please post any other results on LLM's if you got em!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/olmoscd"&gt; /u/olmoscd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85ygw/5090_llm_benchmark_results/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85ygw/5090_llm_benchmark_results/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i85ygw/5090_llm_benchmark_results/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T00:46:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i85jqm</id>
-    <title>IntellAgnet: An open-source framework to evaluate and optimize conversational agents</title>
-    <updated>2025-01-23T15:13:31+00:00</updated>
-    <author>
-      <name>/u/e2lv</name>
-      <uri>https://old.reddit.com/user/e2lv</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/plurai-ai/intellagent"&gt;IntellAgnet&lt;/a&gt; is a novel multi-agent framework to evaluate conversational agents. The system takes the prompt as an input and generates thousands of &lt;strong&gt;realistic&lt;/strong&gt; challenging interactions with the tested agent. It then simulates the interactions and provides fine-grained analysis. The &lt;a href="https://arxiv.org/abs/2501.11067"&gt;research paper&lt;/a&gt; provides many non-trivial insights that are produced by the system.&lt;/p&gt; &lt;p&gt;The system is open source: &lt;a href="https://github.com/plurai-ai/intellagent"&gt;https://github.com/plurai-ai/intellagent&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/e2lv"&gt; /u/e2lv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T15:13:31+00:00</published>
+    <published>2025-01-23T15:31:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7osek</id>
@@ -73,19 +60,6 @@
     <published>2025-01-22T23:05:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i82zkv</id>
-    <title>ChatGPT was down today. So tried a Local LLaMA. Thanks for the advice here!</title>
-    <updated>2025-01-23T13:10:23+00:00</updated>
-    <author>
-      <name>/u/BuyHighSellL0wer</name>
-      <uri>https://old.reddit.com/user/BuyHighSellL0wer</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LLM noob here. I took this as an opportunity to follow the excellent advice that somebody had posted &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/16y95hk/a_starter_guide_for_playing_with_your_own_local_ai/"&gt;here &lt;/a&gt;and &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1c9iawc/is_there_any_idiot_guide_to_running_local_llama/"&gt;here&lt;/a&gt;. Any whilst my computer is a pile of trash I was able to run 'DeepSeek-R1-Distill-Llama-8B-Q5_K_M.gguf' by merely downloading koboldcpp.exe. What a time to be alive!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BuyHighSellL0wer"&gt; /u/BuyHighSellL0wer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T13:10:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7o9xo</id>
     <title>Deepseek R1's Open Source Version Differs from the Official API Version</title>
     <updated>2025-01-22T22:42:59+00:00</updated>
@@ -97,6 +71,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7o9xo/deepseek_r1s_open_source_version_differs_from_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T22:42:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i85jqm</id>
+    <title>IntellAgnet: An open-source framework to evaluate and optimize conversational agents</title>
+    <updated>2025-01-23T15:13:31+00:00</updated>
+    <author>
+      <name>/u/e2lv</name>
+      <uri>https://old.reddit.com/user/e2lv</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/plurai-ai/intellagent"&gt;IntellAgnet&lt;/a&gt; is a novel multi-agent framework to evaluate conversational agents. The system takes the prompt as an input and generates thousands of &lt;strong&gt;realistic&lt;/strong&gt; challenging interactions with the tested agent. It then simulates the interactions and provides fine-grained analysis. The &lt;a href="https://arxiv.org/abs/2501.11067"&gt;research paper&lt;/a&gt; provides many non-trivial insights that are produced by the system.&lt;/p&gt; &lt;p&gt;The system is open source: &lt;a href="https://github.com/plurai-ai/intellagent"&gt;https://github.com/plurai-ai/intellagent&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/e2lv"&gt; /u/e2lv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i85jqm/intellagnet_an_opensource_framework_to_evaluate/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-23T15:13:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i82zkv</id>
+    <title>ChatGPT was down today. So tried a Local LLaMA. Thanks for the advice here!</title>
+    <updated>2025-01-23T13:10:23+00:00</updated>
+    <author>
+      <name>/u/BuyHighSellL0wer</name>
+      <uri>https://old.reddit.com/user/BuyHighSellL0wer</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LLM noob here. I took this as an opportunity to follow the excellent advice that somebody had posted &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/16y95hk/a_starter_guide_for_playing_with_your_own_local_ai/"&gt;here &lt;/a&gt;and &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1c9iawc/is_there_any_idiot_guide_to_running_local_llama/"&gt;here&lt;/a&gt;. Any whilst my computer is a pile of trash I was able to run 'DeepSeek-R1-Distill-Llama-8B-Q5_K_M.gguf' by merely downloading koboldcpp.exe. What a time to be alive!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BuyHighSellL0wer"&gt; /u/BuyHighSellL0wer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i82zkv/chatgpt_was_down_today_so_tried_a_local_llama/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-23T13:10:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7nxhy</id>
@@ -164,19 +164,6 @@
     <published>2025-01-23T05:14:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i84uew</id>
-    <title>Is this the key methodology that Anthropic used to make Claude so good?</title>
-    <updated>2025-01-23T14:41:33+00:00</updated>
-    <author>
-      <name>/u/takuonline</name>
-      <uri>https://old.reddit.com/user/takuonline</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.anthropic.com/research/claude-character"&gt;This article&lt;/a&gt; is a bit old(June 8 2024), but this seems like it has the biggest contribution to what makes Claude sonnet 3.5 so good and open models could benefit from similar training.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Claude 3 was the first model where we added &amp;quot;character training&amp;quot; to our alignment finetuning process: the part of training that occurs after initial model training, and the part that turns it from a predictive text model into an AI assistant. The goal of character training is to make Claude begin to have more nuanced, richer traits like curiosity, open-mindedness, and thoughtfulness.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;I haven't heard people talk about this a lot and l feel like it should be talked about a lot more. Especially the traits that they shared in the last sentence (&amp;quot;more nuanced, richer traits like curiosity, open-mindedness, and thoughtfulness&amp;quot;) really make the model, particular if you are looking for something that you can have a great conversation with.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/takuonline"&gt; /u/takuonline &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T14:41:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i7nmk5</id>
     <title>NVIDIA RTX Blackwell GPU with 96GB GDDR7 memory and 512-bit bus spotted</title>
     <updated>2025-01-22T22:15:41+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7nmk5/nvidia_rtx_blackwell_gpu_with_96gb_gddr7_memory/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-22T22:15:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i84uew</id>
+    <title>Is this the key methodology that Anthropic used to make Claude so good?</title>
+    <updated>2025-01-23T14:41:33+00:00</updated>
+    <author>
+      <name>/u/takuonline</name>
+      <uri>https://old.reddit.com/user/takuonline</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.anthropic.com/research/claude-character"&gt;This article&lt;/a&gt; is a bit old(June 8 2024), but this seems like it has the biggest contribution to what makes Claude sonnet 3.5 so good and open models could benefit from similar training.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Claude 3 was the first model where we added &amp;quot;character training&amp;quot; to our alignment finetuning process: the part of training that occurs after initial model training, and the part that turns it from a predictive text model into an AI assistant. The goal of character training is to make Claude begin to have more nuanced, richer traits like curiosity, open-mindedness, and thoughtfulness.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;I haven't heard people talk about this a lot and l feel like it should be talked about a lot more. Especially the traits that they shared in the last sentence (&amp;quot;more nuanced, richer traits like curiosity, open-mindedness, and thoughtfulness&amp;quot;) really make the model, particular if you are looking for something that you can have a great conversation with.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/takuonline"&gt; /u/takuonline &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i84uew/is_this_the_key_methodology_that_anthropic_used/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-23T14:41:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7l8jq</id>
@@ -242,17 +242,17 @@
     <published>2025-01-23T11:56:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i856wr</id>
-    <title>Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !</title>
-    <updated>2025-01-23T14:57:59+00:00</updated>
+    <id>t3_1i7x5nd</id>
+    <title>The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)</title>
+    <updated>2025-01-23T06:19:53+00:00</updated>
     <author>
-      <name>/u/BidHot8598</name>
-      <uri>https://old.reddit.com/user/BidHot8598</uri>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"&gt; &lt;img alt="Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !" src="https://preview.redd.it/lxwhx4eicree1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b6a7b23129dc6a37671b0f77472359990567d0e4" title="Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BidHot8598"&gt; /u/BidHot8598 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/lxwhx4eicree1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"&gt; &lt;img alt="The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)" src="https://preview.redd.it/o28q2pl6roee1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fbcc9bcc3ec8f998f0c0b948df4117b2f7a6ae30" title="The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/o28q2pl6roee1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T14:57:59+00:00</published>
+    <published>2025-01-23T06:19:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7zeqz</id>
@@ -268,19 +268,6 @@
     <published>2025-01-23T09:09:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i7x5nd</id>
-    <title>The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)</title>
-    <updated>2025-01-23T06:19:53+00:00</updated>
-    <author>
-      <name>/u/jd_3d</name>
-      <uri>https://old.reddit.com/user/jd_3d</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"&gt; &lt;img alt="The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)" src="https://preview.redd.it/o28q2pl6roee1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fbcc9bcc3ec8f998f0c0b948df4117b2f7a6ae30" title="The first performant open-source byte-level model without tokenization has been released. EvaByte is a 6.5B param model that also has multibyte prediction for faster inference (vs similar sized tokenized models)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/o28q2pl6roee1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i7x5nd/the_first_performant_opensource_bytelevel_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T06:19:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i81znv</id>
     <title>SmolVLM 256 and 500M. Beating our 80B VLM from 17 months ago!</title>
     <updated>2025-01-23T12:14:25+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i81znv/smolvlm_256_and_500m_beating_our_80b_vlm_from_17/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-23T12:14:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i856wr</id>
+    <title>Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !</title>
+    <updated>2025-01-23T14:57:59+00:00</updated>
+    <author>
+      <name>/u/BidHot8598</name>
+      <uri>https://old.reddit.com/user/BidHot8598</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"&gt; &lt;img alt="Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !" src="https://preview.redd.it/lxwhx4eicree1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b6a7b23129dc6a37671b0f77472359990567d0e4" title="Open-source Deepseek beat not so OpenAI in 'humanity's last exam' !" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BidHot8598"&gt; /u/BidHot8598 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/lxwhx4eicree1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i856wr/opensource_deepseek_beat_not_so_openai_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-23T14:57:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1i7wcry</id>
