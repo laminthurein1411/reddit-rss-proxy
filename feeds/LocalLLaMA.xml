@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-24T20:23:44+00:00</updated>
+  <updated>2025-01-24T20:34:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,17 +21,17 @@
     <published>2025-01-23T23:47:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i87fkl</id>
-    <title>Deepseek R1 is the only one that nails this new viral benchmark</title>
-    <updated>2025-01-23T16:34:21+00:00</updated>
+    <id>t3_1i916on</id>
+    <title>Run a fully local AI Search / RAG pipeline using llama:3.2 with Ollama using 4GB of memory and no GPU</title>
+    <updated>2025-01-24T17:43:02+00:00</updated>
     <author>
-      <name>/u/Charuru</name>
-      <uri>https://old.reddit.com/user/Charuru</uri>
+      <name>/u/LeetTools</name>
+      <uri>https://old.reddit.com/user/LeetTools</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i87fkl/deepseek_r1_is_the_only_one_that_nails_this_new/"&gt; &lt;img alt="Deepseek R1 is the only one that nails this new viral benchmark" src="https://external-preview.redd.it/dTNsOXYwcnJ0cmVlMQcGL6cDuoI_ROA8VT0SlOGuG2iHRRkQmxqkRS_k8D6O.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1f916bf51cb83dcc443906e66c7cbbd04f4cf9cc" title="Deepseek R1 is the only one that nails this new viral benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/4skrezsntree1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i87fkl/deepseek_r1_is_the_only_one_that_nails_this_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i87fkl/deepseek_r1_is_the_only_one_that_nails_this_new/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all, for people that want to run AI search and RAG pipelines locally, you can now build your local knowledge base with one line of command and everything runs locally with no docker or API key required. Repo is here: &lt;a href="https://github.com/leettools-dev/leettools"&gt;https://github.com/leettools-dev/leettools&lt;/a&gt;. The total memory usage is around 4GB with the Llama3.2 model: * llama3.2:latest 3.5 GB * nomic-embed-text:latest 370 MB * LeetTools: 350MB (Document pipeline backend with Python and DuckDB)&lt;/p&gt; &lt;p&gt;First, follow the instructions on &lt;a href="https://github.com/ollama/ollama"&gt;https://github.com/ollama/ollama&lt;/a&gt; to install the ollama program. Make sure the ollama program is running.&lt;/p&gt; &lt;p&gt;```bash&lt;/p&gt; &lt;h1&gt;set up&lt;/h1&gt; &lt;p&gt;ollama pull llama3.2 ollama pull nomic-embed-text pip install leettools curl -fsSL -o .env.ollama &lt;a href="https://raw.githubusercontent.com/leettools-dev/leettools/refs/heads/main/env.ollama"&gt;https://raw.githubusercontent.com/leettools-dev/leettools/refs/heads/main/env.ollama&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;one command line to download a PDF and save it to the graphrag KB&lt;/h1&gt; &lt;p&gt;leet kb add-url -e .env.ollama -k graphrag -l info &lt;a href="https://arxiv.org/pdf/2501.09223"&gt;https://arxiv.org/pdf/2501.09223&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;now you query the local graphrag KB with questions&lt;/h1&gt; &lt;p&gt;leet flow -t answer -e .env.ollama -k graphrag -l info -p retriever_type=local -q &amp;quot;How does GraphRAG work?&amp;quot; ```&lt;/p&gt; &lt;p&gt;You can also add your local directory or files to the knowledge base using &lt;code&gt;leet kb add-local&lt;/code&gt; command.&lt;/p&gt; &lt;p&gt;For the above default setup, we are using * &lt;a href="https://github.com/DS4SD/docling"&gt;Docling&lt;/a&gt; to convert PDF to markdown * &lt;a href="https://github.com/bhavnicksm/chonkie"&gt;Chonkie&lt;/a&gt; as the chunker * &lt;a href="https://ollama.com/library/nomic-embed-text"&gt;nomic-embed-text&lt;/a&gt; as the embedding model * &lt;a href="https://ollama.com/library/llama3.2"&gt;llama3.2&lt;/a&gt; as the inference engine * &lt;a href="https://github.com/duckdb/duckdb"&gt;Duckdb&lt;/a&gt; as the data storage include graph and vector&lt;/p&gt; &lt;p&gt;We think it might be helpful for some usage scenarios that require local deployment and resource limits. Questions or suggestions are welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LeetTools"&gt; /u/LeetTools &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i916on/run_a_fully_local_ai_search_rag_pipeline_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i916on/run_a_fully_local_ai_search_rag_pipeline_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i916on/run_a_fully_local_ai_search_rag_pipeline_using/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-23T16:34:21+00:00</published>
+    <published>2025-01-24T17:43:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1i90q3c</id>
@@ -112,19 +112,6 @@
     <published>2025-01-24T10:51:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i93frg</id>
-    <title>Muti-Turn RAG/Agentic Scenarios Made Easy: Process adjusted retrieval, switching intent scenarios in a multi-turn conversation simply via structured APIs. Arch-Function gets an update to extract intent and parameters across multi-turn conversations.</title>
-    <updated>2025-01-24T19:16:27+00:00</updated>
-    <author>
-      <name>/u/AdditionalWeb107</name>
-      <uri>https://old.reddit.com/user/AdditionalWeb107</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/18mqwg6/best_practice_for_rag_with_followup_chat/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/18mqwg6/best_practice_for_rag_with_followup_chat/&lt;/a&gt; and several other posts that talk about intent detection and information extraction especially in the context of multi-turn chat scenarios. &lt;/p&gt; &lt;p&gt;We recently updated the function-calling LLM in Arch to be able to handle these scenarios effectively. Benchmarks for multi-turn are sparse, but we'll update the model cards soon. Here is a guide on how you can use this capability to support accurate multi-turn capabilities via structured APIs. &lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.archgw.com/build_with_arch/multi_turn.html"&gt;https://docs.archgw.com/build_with_arch/multi_turn.html&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AdditionalWeb107"&gt; /u/AdditionalWeb107 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-24T19:16:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i80cwf</id>
     <title>deepseek is a side project</title>
     <updated>2025-01-23T10:22:48+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i8vthd/8xb200_fully_idle_for_the_next_few_weeks_what/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-24T13:50:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i93frg</id>
+    <title>Muti-Turn RAG/Agentic Scenarios Made Easy: Process adjusted retrieval, switching intent scenarios in a multi-turn conversation simply via structured APIs. Arch-Function gets an update to extract intent and parameters across multi-turn conversations.</title>
+    <updated>2025-01-24T19:16:27+00:00</updated>
+    <author>
+      <name>/u/AdditionalWeb107</name>
+      <uri>https://old.reddit.com/user/AdditionalWeb107</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/18mqwg6/best_practice_for_rag_with_followup_chat/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/18mqwg6/best_practice_for_rag_with_followup_chat/&lt;/a&gt; and several other posts that talk about intent detection and information extraction especially in the context of multi-turn chat scenarios. &lt;/p&gt; &lt;p&gt;We recently updated the function-calling LLM in Arch to be able to handle these scenarios effectively. Benchmarks for multi-turn are sparse, but we'll update the model cards soon. Here is a guide on how you can use this capability to support accurate multi-turn capabilities via structured APIs. &lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.archgw.com/build_with_arch/multi_turn.html"&gt;https://docs.archgw.com/build_with_arch/multi_turn.html&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AdditionalWeb107"&gt; /u/AdditionalWeb107 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i93frg/mutiturn_ragagentic_scenarios_made_easy_process/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-24T19:16:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1i8mwpc</id>
