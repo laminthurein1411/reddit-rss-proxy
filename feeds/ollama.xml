@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-01-24T08:48:51+00:00</updated>
+  <updated>2025-01-24T09:06:33+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1i8749h</id>
-    <title>Problem launching Ollama Open-WebUI</title>
-    <updated>2025-01-23T16:21:04+00:00</updated>
-    <author>
-      <name>/u/StuartMillington</name>
-      <uri>https://old.reddit.com/user/StuartMillington</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am trying to install and run Ollama and the Open-WebUI running in a VM on linux Ubuntu. I do NOT want to use Docker because it is an extra layer of complexity I can do without at this stage. My specifi problem is that although I have installed Ollama and the OpenWebUI, when I enter localhost:8080 into my browser, the response is that the localhost refused to connect. When I issue localhost:11434 the response is that Ollama is running. I have done the following:&lt;/p&gt; &lt;p&gt;Installed Ollama as per &lt;a href="https://itsfoss.com/ollama-setup-linux/"&gt;this link&lt;/a&gt; - Step #1 only. I have not tried to install any LLMs yet.&lt;/p&gt; &lt;p&gt;I installed the WebUI as per &lt;a href="https://docs.openwebui.com/getting-started/quick-start/"&gt;this link&lt;/a&gt; using the Python method onto a Linux machine. I have also update the application using Pip as per the same document. The problem comes when I try to launch the WebUI with localhost:8080 (for the Python installation). &lt;/p&gt; &lt;p&gt;Researching the problem on the internet suggests that there can be a problem if not all local interfaces are open to listening, as per &lt;a href="https://github.com/ollama/ollama/issues/703"&gt;this post&lt;/a&gt;. So I edited a service override file to add the following:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;[Service] Environment=&amp;quot;OLLAMA_HOST=0.0.0.0&amp;quot; &amp;quot;OLLAMA_KEEP_ALIVE=-1&amp;quot; &amp;quot;OLLAMA_MAX_LOADED_MODELS=4&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;rather than edit the service daemon directly as per the advice by &lt;a href="https://github.com/nuaimat"&gt;nuaimat&lt;/a&gt;&lt;a href="https://github.com/ollama/ollama/issues/703#issuecomment-2325253842"&gt;on Sep 2, 2024&lt;/a&gt;. I then did the following:&lt;/p&gt; &lt;p&gt;&lt;code&gt;sudo systemctl daemon-reload&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;sudo service ollama restart&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;sudo service ollama status&lt;/code&gt;&lt;/p&gt; &lt;p&gt;The output of the last command is as follows:&lt;/p&gt; &lt;p&gt;&lt;code&gt;ollama.service - Ollama Service&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Loaded: loaded (/etc/systemd/system/ollama.service; enabled; preset: enabled)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Drop-In: /etc/systemd/system/ollama.service.d&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;└─override.conf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Active: active (running) since Thu 2025-01-23 15:43:21 GMT; 33min ago&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Main PID: 1142 (ollama)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Tasks: 11 (limit: 23348)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Memory: 33.0M (peak: 33.5M)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;CPU: 271ms&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;CGroup: /system.slice/ollama.service&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;└─1142 /usr/local/bin/ollama serve&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: [GIN-debug] HEAD /api/version --&amp;gt;&lt;/code&gt; &lt;a href="http://github.com/ollama/ollama/server.(*Server"&gt;&lt;code&gt;github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2&lt;/code&gt;&lt;/a&gt;.GenerateRoutes.func2) &lt;code&gt;(5 handlers)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: time=2025-01-23T15:43:22.157Z level=INFO source=routes.go:1238 msg=&amp;quot;Listening on [::]:11434 (version 0.5.7)&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: time=2025-01-23T15:43:22.162Z level=INFO source=routes.go:1267 msg=&amp;quot;Dynamic LLM libraries&amp;quot; runners=&amp;quot;[cpu_avx2 cuda_v11_avx cuda_v12_avx rocm_avx cpu cpu&amp;gt;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: time=2025-01-23T15:43:22.165Z level=INFO source=gpu.go:226 msg=&amp;quot;looking for compatible GPUs&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: time=2025-01-23T15:43:22.212Z level=INFO source=gpu.go:392 msg=&amp;quot;no compatible GPUs were discovered&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:43:22 FRANK1 ollama[1142]: time=2025-01-23T15:43:22.212Z level=INFO source=types.go:131 msg=&amp;quot;inference compute&amp;quot; id=0 library=cpu variant=avx compute=&amp;quot;&amp;quot; driver=0.0 name=&amp;quot;&amp;quot; total=&amp;quot;1&amp;gt;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:52:11 FRANK1 ollama[1142]: [GIN] 2025/01/23 - 15:52:11 | 200 | 1.056082ms | ::1 | GET &amp;quot;/&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:52:11 FRANK1 ollama[1142]: [GIN] 2025/01/23 - 15:52:11 | 404 | 6.26µs | ::1 | GET &amp;quot;/favicon.ico&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:56:04 FRANK1 ollama[1142]: [GIN] 2025/01/23 - 15:56:04 | 200 | 50.966µs |&lt;/code&gt; &lt;a href="http://127.0.0.1"&gt;&lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/a&gt; &lt;code&gt;| HEAD &amp;quot;/&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Jan 23 15:56:04 FRANK1 ollama[1142]: [GIN] 2025/01/23 - 15:56:04 | 200 | 1.10902ms |&lt;/code&gt; &lt;a href="http://127.0.0.1"&gt;&lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/a&gt; &lt;code&gt;| GET &amp;quot;/api/ps&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;I feel that I am very close to getting this right, but there is something I am missing. Can anybody help, please. Regards, Stuart M&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StuartMillington"&gt; /u/StuartMillington &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8749h/problem_launching_ollama_openwebui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8749h/problem_launching_ollama_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i8749h/problem_launching_ollama_openwebui/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-23T16:21:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i7ds9g</id>
-    <title>It didn't even need to think to reply 😂 (deepseek-r1)</title>
-    <updated>2025-01-22T15:33:52+00:00</updated>
-    <author>
-      <name>/u/EnoughVeterinarian90</name>
-      <uri>https://old.reddit.com/user/EnoughVeterinarian90</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1i7ds9g/it_didnt_even_need_to_think_to_reply_deepseekr1/"&gt; &lt;img alt="It didn't even need to think to reply 😂 (deepseek-r1)" src="https://b.thumbs.redditmedia.com/bU5DA_X-RMAId5YJB4pzOMTQS9Hz0n0JNBOyXhHZi3E.jpg" title="It didn't even need to think to reply 😂 (deepseek-r1)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EnoughVeterinarian90"&gt; /u/EnoughVeterinarian90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1i7ds9g"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i7ds9g/it_didnt_even_need_to_think_to_reply_deepseekr1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i7ds9g/it_didnt_even_need_to_think_to_reply_deepseekr1/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-22T15:33:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i87oru</id>
     <title>Struggling to run a RAQ application on my m1 mbp 16gb ram and 512ssd; model is ollama3.2 3b params</title>
@@ -216,6 +190,32 @@
     <published>2025-01-23T21:46:50+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i8r79t</id>
+    <title>How to run models that are not on ollama website? Especially uncensored ones</title>
+    <updated>2025-01-24T08:53:40+00:00</updated>
+    <author>
+      <name>/u/discoveringnature12</name>
+      <uri>https://old.reddit.com/user/discoveringnature12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;trying to figure out how to run models not listed &lt;a href="https://ollama.com/library"&gt;https://ollama.com/library&lt;/a&gt;. Want to run uncensored models.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/discoveringnature12"&gt; /u/discoveringnature12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8r79t/how_to_run_models_that_are_not_on_ollama_website/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8r79t/how_to_run_models_that_are_not_on_ollama_website/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i8r79t/how_to_run_models_that_are_not_on_ollama_website/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-24T08:53:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i8r971</id>
+    <title>I want to try to replicate the RAG functionality similar to LM Studio using open source tools. Any ideas on where to start?</title>
+    <updated>2025-01-24T08:57:53+00:00</updated>
+    <author>
+      <name>/u/ikmalsaid</name>
+      <uri>https://old.reddit.com/user/ikmalsaid</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ikmalsaid"&gt; /u/ikmalsaid &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8r971/i_want_to_try_to_replicate_the_rag_functionality/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8r971/i_want_to_try_to_replicate_the_rag_functionality/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i8r971/i_want_to_try_to_replicate_the_rag_functionality/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-24T08:57:53+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i8m6ls</id>
     <title>Llama 3.1 405B + 8x AMD Instinct Mi60 AI Server - Shockingly Good!</title>
     <updated>2025-01-24T03:26:28+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-01-24T01:47:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i8q0gk</id>
-    <title>LLM website that lets you use any model and pay as you go. I can’t remember what it’s called.</title>
-    <updated>2025-01-24T07:22:08+00:00</updated>
-    <author>
-      <name>/u/opelly</name>
-      <uri>https://old.reddit.com/user/opelly</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The title says it all. I came across a website a while ago that has a ChatGPT like interface, but lets you use all kinds of different models, and pay by the token. I specifically remember a leaderboard that ranks the models by popularity and even showed the number of tokens that each model had generated among all users on the website. I can’t find it for the life of me. Please let me know what site this is if it rings a bell. Thank you!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/opelly"&gt; /u/opelly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-01-24T07:22:08+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i8qckb</id>
     <title>List of top Open Source Chat UI for ollama/any LLM in general. (community edition)</title>
     <updated>2025-01-24T07:47:35+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1i8fg88/i_built_an_opensource_rag_api_for_docs_github/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-01-23T22:05:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i8q0gk</id>
+    <title>LLM website that lets you use any model and pay as you go. I can’t remember what it’s called.</title>
+    <updated>2025-01-24T07:22:08+00:00</updated>
+    <author>
+      <name>/u/opelly</name>
+      <uri>https://old.reddit.com/user/opelly</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The title says it all. I came across a website a while ago that has a ChatGPT like interface, but lets you use all kinds of different models, and pay by the token. I specifically remember a leaderboard that ranks the models by popularity and even showed the number of tokens that each model had generated among all users on the website. I can’t find it for the life of me. Please let me know what site this is if it rings a bell. Thank you!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/opelly"&gt; /u/opelly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1i8q0gk/llm_website_that_lets_you_use_any_model_and_pay/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-01-24T07:22:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1i8qav7</id>
