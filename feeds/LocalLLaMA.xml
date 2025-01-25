@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-25T20:22:35+00:00</updated>
+  <updated>2025-01-25T20:34:24+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1i8rujw</id>
-    <title>Notes on Deepseek r1: Just how good it is compared to OpenAI o1</title>
-    <updated>2025-01-24T09:44:13+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Finally, there is a model worthy of the hype it has been getting since Claude 3.6 Sonnet. Deepseek has released something anyone hardly expected: a reasoning model on par with OpenAI’s o1 within a month of the v3 release, with an MIT license and 1/20th of o1’s cost.&lt;/p&gt; &lt;p&gt;This is easily the best release since GPT-4. It's wild; the general public seems excited about this, while the big AI labs are probably scrambling. It feels like things are about to speed up in the AI world. And it's all thanks to this new DeepSeek-R1 model and how they trained it. &lt;/p&gt; &lt;p&gt;Some key details from the paper&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Pure RL (GRPO) on v3-base to get r1-zero. (No Monte-Carlo Tree Search or Process Reward Modelling)&lt;/li&gt; &lt;li&gt;The model uses “Aha moments” as pivot tokens to reflect and reevaluate answers during CoT.&lt;/li&gt; &lt;li&gt;To overcome r1-zero’s readability issues, v3 was SFTd on cold start data.&lt;/li&gt; &lt;li&gt;Distillation works, small models like Qwen and Llama trained over r1 generated data show significant improvements.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here’s an overall r0 pipeline&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;v3 base + RL (GRPO) → r1-zero &lt;/p&gt; &lt;p&gt;r1 training pipeline.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;DeepSeek-V3 Base&lt;/strong&gt; + SFT (Cold Start Data) → &lt;strong&gt;Checkpoint 1&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Checkpoint 1&lt;/strong&gt; + RL (GRPO + Language Consistency) → &lt;strong&gt;Checkpoint 2&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Checkpoint 2&lt;/strong&gt; used to Generate Data (Rejection Sampling)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;DeepSeek-V3 Base&lt;/strong&gt; + SFT (Generated Data + Other Data) → &lt;strong&gt;Checkpoint 3&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Checkpoint 3&lt;/strong&gt; + RL (Reasoning + Preference Rewards) → &lt;strong&gt;DeepSeek-R1&lt;/strong&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;We know the benchmarks, but just how good is it?&lt;/p&gt; &lt;h1&gt;Deepseek r1 vs OpenAI o1.&lt;/h1&gt; &lt;p&gt;So, for this, I tested r1 and o1 side by side on complex reasoning, math, coding, and creative writing problems. These are the questions that o1 solved only or by none before.&lt;/p&gt; &lt;p&gt;Here’s what I found:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;For &lt;strong&gt;reasoning&lt;/strong&gt;, it is much better than any previous SOTA model until o1. It is better than o1-preview but a notch below o1. This is also shown in the ARC AGI bench.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Mathematics&lt;/strong&gt;: It's also the same for mathematics; r1 is a killer, but o1 is better.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Coding&lt;/strong&gt;: I didn’t get to play much, but on first look, it’s up there with o1, and the fact that it costs 20x less makes it the practical winner.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Writing&lt;/strong&gt;: This is where R1 takes the lead. It gives the same vibes as early Opus. It’s free, less censored, has much more personality, is easy to steer, and is very creative compared to the rest, even o1-pro.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;What interested me was how free the model sounded and thought traces were, akin to human internal monologue. Perhaps this is because of the less stringent RLHF, unlike US models.&lt;/p&gt; &lt;p&gt;The fact that you can get r1 from v3 via pure RL was the most surprising.&lt;/p&gt; &lt;p&gt;For in-depth analysis, commentary, and remarks on the Deepseek r1, check out this blog post: &lt;a href="https://composio.dev/blog/notes-on-the-new-deepseek-r1/"&gt;Notes on Deepseek r1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;What are your experiences with the new Deepseek r1? Did you find the model useful for your use cases?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i8rujw/notes_on_deepseek_r1_just_how_good_it_is_compared/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i8rujw/notes_on_deepseek_r1_just_how_good_it_is_compared/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i8rujw/notes_on_deepseek_r1_just_how_good_it_is_compared/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-24T09:44:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i9txf3</id>
-    <title>Deepseek is way better in Python code generation than ChatGPT (talking about the "free" versions of both)</title>
-    <updated>2025-01-25T18:49:57+00:00</updated>
-    <author>
-      <name>/u/ThiccStorms</name>
-      <uri>https://old.reddit.com/user/ThiccStorms</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I haven't bought any subscriptions and im talking about the web based apps for both, and im just taking this opportunity to fanboy on deepseek because it produces super clean python code in one shot, whereas chat gpt generates a complex mess and i still had to specify some things again and again because it missed out on them in the initial prompt.&lt;br /&gt; I didn't generate a snippet out of scratch, i had an old function in python which i wanted to re-utilise for a similar use case, I wrote a detailed prompt to get what I need but ChatGPT still managed to screw up while deepseek nailed it in the first try. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThiccStorms"&gt; /u/ThiccStorms &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T18:49:57+00:00</published>
-  </entry>
   <entry>
     <id>t3_1i9na24</id>
     <title>I really like the "Murderers in a field" question</title>
@@ -45,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9na24/i_really_like_the_murderers_in_a_field_question/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T13:47:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i9vsal</id>
+    <title>How to send multi image inputs to LM studio?</title>
+    <updated>2025-01-25T20:10:25+00:00</updated>
+    <author>
+      <name>/u/GHOST--1</name>
+      <uri>https://old.reddit.com/user/GHOST--1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am using LM studio with Qwen2 VL 7B. I have to send a template image and a filled image and ask the llm to compare them and give me key-value pairs output.&lt;br /&gt; But, I also want to send a few examples in the prompt. How can I add few images side by side and answers, and then at the end of the prompt, add my test image? Has anyone tried this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GHOST--1"&gt; /u/GHOST--1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9vsal/how_to_send_multi_image_inputs_to_lm_studio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9vsal/how_to_send_multi_image_inputs_to_lm_studio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9vsal/how_to_send_multi_image_inputs_to_lm_studio/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T20:10:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1i95kdg</id>
@@ -73,6 +60,19 @@
     <published>2025-01-24T18:16:22+00:00</published>
   </entry>
   <entry>
+    <id>t3_1i9txf3</id>
+    <title>Deepseek is way better in Python code generation than ChatGPT (talking about the "free" versions of both)</title>
+    <updated>2025-01-25T18:49:57+00:00</updated>
+    <author>
+      <name>/u/ThiccStorms</name>
+      <uri>https://old.reddit.com/user/ThiccStorms</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I haven't bought any subscriptions and im talking about the web based apps for both, and im just taking this opportunity to fanboy on deepseek because it produces super clean python code in one shot, whereas chat gpt generates a complex mess and i still had to specify some things again and again because it missed out on them in the initial prompt.&lt;br /&gt; I didn't generate a snippet out of scratch, i had an old function in python which i wanted to re-utilise for a similar use case, I wrote a detailed prompt to get what I need but ChatGPT still managed to screw up while deepseek nailed it in the first try. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThiccStorms"&gt; /u/ThiccStorms &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9txf3/deepseek_is_way_better_in_python_code_generation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T18:49:57+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i9jre5</id>
     <title>The browser version of DeepSeek R1 allows for maximum of 50 messages, the API version has no such limitations, you buy the number of tokens you want to use. My issue is I cant find a nice application to hook the Deepseek API so I can run it somewhat similarly to the browser version.</title>
     <updated>2025-01-25T09:56:35+00:00</updated>
@@ -84,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9jre5/the_browser_version_of_deepseek_r1_allows_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T09:56:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i9mv9q</id>
+    <title>Memory makes computation universal, remember?</title>
+    <updated>2025-01-25T13:24:35+00:00</updated>
+    <author>
+      <name>/u/waxbolt</name>
+      <uri>https://old.reddit.com/user/waxbolt</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;IMO current ML/AI/deep learning has forgotten how important memory is for general intelligence. To the tune of removing &amp;quot;thinking tokens&amp;quot; of past iterations from the context from o1, even when that access to the history of thought is theoretically the thing giving these chain of thought models their power. WDYT?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/waxbolt"&gt; /u/waxbolt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://thinks.lol/2025/01/memory-makes-computation-universal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9mv9q/memory_makes_computation_universal_remember/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9mv9q/memory_makes_computation_universal_remember/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T13:24:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9gjok</id>
@@ -110,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i8xy2e/llama_4_is_going_to_be_sota/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-24T15:27:34+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i9mv9q</id>
-    <title>Memory makes computation universal, remember?</title>
-    <updated>2025-01-25T13:24:35+00:00</updated>
-    <author>
-      <name>/u/waxbolt</name>
-      <uri>https://old.reddit.com/user/waxbolt</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;IMO current ML/AI/deep learning has forgotten how important memory is for general intelligence. To the tune of removing &amp;quot;thinking tokens&amp;quot; of past iterations from the context from o1, even when that access to the history of thought is theoretically the thing giving these chain of thought models their power. WDYT?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/waxbolt"&gt; /u/waxbolt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://thinks.lol/2025/01/memory-makes-computation-universal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9mv9q/memory_makes_computation_universal_remember/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9mv9q/memory_makes_computation_universal_remember/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T13:24:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9df4h</id>
@@ -164,19 +164,6 @@
     <published>2025-01-25T05:13:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i9kpu4</id>
-    <title>DeepSeek R1 vs o1 Pro</title>
-    <updated>2025-01-25T11:06:09+00:00</updated>
-    <author>
-      <name>/u/YourAverageDev0</name>
-      <uri>https://old.reddit.com/user/YourAverageDev0</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious what people think of this. I personally have a ChatGPT Plus subscription which allows me to access o1 (not pro). I feel that R1 definitely beats o1, but there's lots of people claiming o1 Pro as just a completely different level of model. Curious about the people who has access to o1 Pro, how does it compare?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YourAverageDev0"&gt; /u/YourAverageDev0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T11:06:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i8tx5z</id>
     <title>I benchmarked (almost) every model that can fit in 24GB VRAM (Qwens, R1 distils, Mistrals, even Llama 70b gguf)</title>
     <updated>2025-01-24T12:08:50+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i8tx5z/i_benchmarked_almost_every_model_that_can_fit_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-24T12:08:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i9kpu4</id>
+    <title>DeepSeek R1 vs o1 Pro</title>
+    <updated>2025-01-25T11:06:09+00:00</updated>
+    <author>
+      <name>/u/YourAverageDev0</name>
+      <uri>https://old.reddit.com/user/YourAverageDev0</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious what people think of this. I personally have a ChatGPT Plus subscription which allows me to access o1 (not pro). I feel that R1 definitely beats o1, but there's lots of people claiming o1 Pro as just a completely different level of model. Curious about the people who has access to o1 Pro, how does it compare?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YourAverageDev0"&gt; /u/YourAverageDev0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9kpu4/deepseek_r1_vs_o1_pro/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T11:06:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1i8vclf</id>
@@ -281,19 +281,6 @@
     <published>2025-01-25T10:16:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1i9t0x2</id>
-    <title>How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI</title>
-    <updated>2025-01-25T18:10:15+00:00</updated>
-    <author>
-      <name>/u/CarbonTail</name>
-      <uri>https://old.reddit.com/user/CarbonTail</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"&gt; &lt;img alt="How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI" src="https://external-preview.redd.it/GaYe6FpTRtNr23ADdM65dvNw3TVMjwFcEfKfrHC4ukE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=aa1a135c85bd082bf94671971fb8ea8e80f02eb2" title="How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CarbonTail"&gt; /u/CarbonTail &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.wired.com/story/deepseek-china-model-ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T18:10:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i9dvrk</id>
     <title>Deepseek v3 will make MoE opensource models wayyy more common.</title>
     <updated>2025-01-25T03:22:08+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9dvrk/deepseek_v3_will_make_moe_opensource_models_wayyy/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T03:22:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1i9t0x2</id>
+    <title>How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI</title>
+    <updated>2025-01-25T18:10:15+00:00</updated>
+    <author>
+      <name>/u/CarbonTail</name>
+      <uri>https://old.reddit.com/user/CarbonTail</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"&gt; &lt;img alt="How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI" src="https://external-preview.redd.it/GaYe6FpTRtNr23ADdM65dvNw3TVMjwFcEfKfrHC4ukE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=aa1a135c85bd082bf94671971fb8ea8e80f02eb2" title="How Chinese AI Startup DeepSeek Made a Model that Rivals OpenAI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CarbonTail"&gt; /u/CarbonTail &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.wired.com/story/deepseek-china-model-ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9t0x2/how_chinese_ai_startup_deepseek_made_a_model_that/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T18:10:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9oqou</id>
