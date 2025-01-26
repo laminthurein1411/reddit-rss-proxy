@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-26T08:48:55+00:00</updated>
+  <updated>2025-01-26T09:05:30+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,32 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-26T08:07:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i9k18t</id>
-    <title>I am simply blown away by this 32B model. It's a Sky-T1 + Fuse-O1 + DeepseekR1 + Qwen32B fusion. Please read the full post</title>
-    <updated>2025-01-25T10:16:36+00:00</updated>
-    <author>
-      <name>/u/Educational_Gap5867</name>
-      <uri>https://old.reddit.com/user/Educational_Gap5867</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Model available here: &lt;a href="https://huggingface.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF"&gt;https://huggingface.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF&lt;/a&gt;&lt;br /&gt; Original reddit post by &lt;a href="/u/AaronFeng47"&gt;u/AaronFeng47&lt;/a&gt; : &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1i9ddj1/skyt132bflash_think_less_achieve_more_cut/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1i9ddj1/skyt132bflash_think_less_achieve_more_cut/&lt;/a&gt;&lt;br /&gt; Leetcode 1430. Prompt + Thought process here: &lt;a href="https://pastebin.com/hqWfbG7e"&gt;https://pastebin.com/hqWfbG7e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I am simply blown away. This AI's thought process is so smooth. Every time I thought it was overthinking it wasn't it was judging the cases.&lt;br /&gt; Only caveat. 1: I think if the question would have been unknown it would've fucked up the final output I think it got distracted because it thought all the way through in Python but then suddenly started writing final code in Java and I am not sure what that was about. I had no pre-prompted it or anything like that.&lt;/p&gt; &lt;p&gt;Commands I ran&lt;br /&gt; `ollama pull &lt;a href="http://hf.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF"&gt;hf.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF&lt;/a&gt; `&lt;br /&gt; `Ollama run &lt;a href="http://hf.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF%60"&gt;hf.co/sm54/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview-Q4_K_M-GGUF`&lt;/a&gt;&lt;br /&gt; `&amp;gt; PROMPT (check pastebin for Prompt) `&lt;/p&gt; &lt;p&gt;Final code here:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;```java public class Solution { public boolean doesPathExist(TreeNode root, int[] arr) { if (root == null || arr.length == 0) { return false; } Stack&amp;lt;Pair&amp;lt;TreeNode, Integer&amp;gt;&amp;gt; stack = new Stack&amp;lt;&amp;gt;(); stack.push(new Pair&amp;lt;&amp;gt;(root, 0)); while (!stack.isEmpty()) { Pair&amp;lt;TreeNode, Integer&amp;gt; currentPair = stack.pop(); TreeNode currentNode = currentPair.getKey(); int currentIndex = currentPair.getValue(); if (currentIndex &amp;gt;= arr.length) { continue; } if (currentNode.val != arr[currentIndex]) { continue; } // Check if this is the last element and a leaf if (currentIndex == arr.length - 1) { if (currentNode.left == null &amp;amp;&amp;amp; currentNode.right == null) { return true; } } else { // Push right first to process left later, maintaining order if (currentNode.right != null) { stack.push(new Pair&amp;lt;&amp;gt;(currentNode.right, currentIndex + 1)); } if (currentNode.left != null) { stack.push(new Pair&amp;lt;&amp;gt;(currentNode.left, currentIndex + 1)); } } } return false; } } // Helper class to store node and index class Pair&amp;lt;K, V&amp;gt; { private K key; private V value; public Pair(K key, V value) { this.key = key; this.value = value; } public K getKey() { return key; } public V getValue() { return value; } } ``` &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Here is a dry run the model did to confirm all the different test cases. Simply immaculate.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;```plaintext Let me test it against some examples. Test case 1: Tree: 0 / \ 1 2 arr = [0,1] Expected output: True (path root -&amp;gt; left child) Code execution: stack starts with [(root,0)] pop root, i=0. value matches arr[0] =0. i is not last index, so push right and left children with i+1=1. Now stack has (2,1), then (1,1). Next iteration: pop (1,1). node 1's value is 1 == arr[1]=1. Check if it's last index: yes. Check if leaf. Node 1 has no left or right? In this tree, node 1 is a leaf (assuming original tree as in test case). Yes: return True. Test case passes. Another test case: Tree: 0 / \ 1 2 arr = [0,2] Expected output: True. In code: stack has root with i=0. matches. push right (2,1), then left(1,1). pop (1,1): node.val is 1 != arr[1]=2? So skip. then pop (2,1). val is 2 == arr[1]. Check if last index: yes, and node 2 is a leaf. So return True. Test passes. Another test case: Tree: 0 / \ 1 2 / 3 arr = [0,1,3] Expected output: True. Code: stack starts with (root,0). val matches. i is not last index. Push left (1,1) and right (2,1). Next pop (2,1): value 2 != arr[1]=1? So skip. pop (1,1): val 1 == arr[1]. Not last index (len(arr)=3). push its children: left (3,2), no right. stack now has (3,2). Pop (3,2): val is 3 == arr[2]=3. Check if i==2 (last) and node is leaf. Node 3's left and right are None? So yes: return True. Test passes. Another test case: Tree: 0 / \ 1 2 / 3 arr = [0,1,4] In code: At (3,2), val is 3 !=4. so continue. No other possibilities. stack becomes empty: return False. Yes. Another test case where arr is longer than any path. Tree: 0 / \ 1 2 arr = [0,1,3] So the tree has no node beyond left child's left (which doesn't exist). So len(arr)=3, but all root-to-leaf paths have length 2. So expected output is False. In code: stack pops (root,0): val matches, push children with i=1. pop (2,1): not arr[1]=1? So no. pop(1,1): match. since len(arr)=3&amp;gt;1+1=2? Wait: node 1 has left child 3? Wait in previous example, but in this test case's tree: node 1 doesn't have any children? Because the tree is: root 0 with left 1 (no children) and right 2. So in code: At node 1, i=1. since len(arr)-1 =2, which is greater than 1. so node 1's val matches arr[1] (1), then push its children: none. Thus, stack after popping (1,1): nothing pushed. So stack becomes empty. No other elements. Return False. Which is correct. Another edge case: root is None and arr is [0]: return False. Yes. root is a single node with val 5 and arr [5]. Return True. In code: yes. So the code seems to handle all these cases. Thus, I think this should be the correct approach. ``` &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Wow.. just wow. I am really gonna use these think tags for my own leetcode prep.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Educational_Gap5867"&gt; /u/Educational_Gap5867 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9k18t/i_am_simply_blown_away_by_this_32b_model_its_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9k18t/i_am_simply_blown_away_by_this_32b_model_its_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9k18t/i_am_simply_blown_away_by_this_32b_model_its_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T10:16:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ia9iy1</id>
-    <title>DeepSeekR1 3D game 100% from scratch</title>
-    <updated>2025-01-26T08:36:26+00:00</updated>
-    <author>
-      <name>/u/Trick-Independent469</name>
-      <uri>https://old.reddit.com/user/Trick-Independent469</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"&gt; &lt;img alt="DeepSeekR1 3D game 100% from scratch" src="https://preview.redd.it/qrdlt6i8vafe1.gif?width=640&amp;amp;crop=smart&amp;amp;s=8d13a97797fa31e558155d2f6738fd891080c24b" title="DeepSeekR1 3D game 100% from scratch" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've asked DeepSeek R1 to make me a game like kkrieger ( where most of the things are generated on run ) and it made me this &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Trick-Independent469"&gt; /u/Trick-Independent469 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qrdlt6i8vafe1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T08:36:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia78wh</id>
@@ -125,19 +99,6 @@
     <published>2025-01-26T01:43:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ia0j9o</id>
-    <title>So what is now the best local AI for coding?</title>
-    <updated>2025-01-25T23:46:34+00:00</updated>
-    <author>
-      <name>/u/Tenkinn</name>
-      <uri>https://old.reddit.com/user/Tenkinn</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I heard that the distill versions of Deepseek r1 are not that good for coding compared to qwen 2.5 coder instruct and the full deepseek r1 version&lt;/p&gt; &lt;p&gt;also that the 32b qwen version is better than the 70b llama one&lt;/p&gt; &lt;p&gt;Is the full deepseek r1 the only model better than Claude sonnet 3.5 ? Is it worth it use use it through the api if we can run the 32b or 70b locally?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tenkinn"&gt; /u/Tenkinn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T23:46:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i9x23l</id>
     <title>[Magnum/Rei] Mistral Nemo 12b</title>
     <updated>2025-01-25T21:06:33+00:00</updated>
@@ -149,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9x23l/magnumrei_mistral_nemo_12b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T21:06:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ia0j9o</id>
+    <title>So what is now the best local AI for coding?</title>
+    <updated>2025-01-25T23:46:34+00:00</updated>
+    <author>
+      <name>/u/Tenkinn</name>
+      <uri>https://old.reddit.com/user/Tenkinn</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I heard that the distill versions of Deepseek r1 are not that good for coding compared to qwen 2.5 coder instruct and the full deepseek r1 version&lt;/p&gt; &lt;p&gt;also that the 32b qwen version is better than the 70b llama one&lt;/p&gt; &lt;p&gt;Is the full deepseek r1 the only model better than Claude sonnet 3.5 ? Is it worth it use use it through the api if we can run the 32b or 70b locally?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tenkinn"&gt; /u/Tenkinn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia0j9o/so_what_is_now_the_best_local_ai_for_coding/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-25T23:46:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9t0x2</id>
@@ -175,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia8h46/how_cpu_inference_speed_scales_with_memory/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-26T07:18:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ia9nzm</id>
+    <title>China Unicom announced Unichat-32B-c1 (Beat GPT-4 and Deepseek V3)</title>
+    <updated>2025-01-26T08:47:19+00:00</updated>
+    <author>
+      <name>/u/External_Mood4719</name>
+      <uri>https://old.reddit.com/user/External_Mood4719</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9nzm/china_unicom_announced_unichat32bc1_beat_gpt4_and/"&gt; &lt;img alt="China Unicom announced Unichat-32B-c1 (Beat GPT-4 and Deepseek V3)" src="https://external-preview.redd.it/xPmyWRJan7ulb3PcWvyYjbtkiBhdqYVeIf1sY9iUMiM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=285acbaf1e44da73546abd95c35ff3a0369dd036" title="China Unicom announced Unichat-32B-c1 (Beat GPT-4 and Deepseek V3)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The Yuansheng Thinking Chain Large Model achieves adaptive slow thinking through two strategies: task adaptation and difficulty adaptation. In the evaluation set of non-inference tasks, this model tends to generate shorter answers while ensuring accuracy, thus improving response efficiency. Additionally, when evaluating generated long thinking chain data, the model comprehensively considers the difficulty of the questions and the length of the generated answers, using reinforcement learning to match the answer length with the question difficulty, further enhancing the model's accuracy and practicality.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/bd28qcf9xafe1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=214bdd271beeb39ee43991f43b78158e0077927e"&gt;https://preview.redd.it/bd28qcf9xafe1.jpg?width=1000&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=214bdd271beeb39ee43991f43b78158e0077927e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/UnicomAI/Unichat-32B-c1.git"&gt;Model Link (Chinese Only)&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/External_Mood4719"&gt; /u/External_Mood4719 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9nzm/china_unicom_announced_unichat32bc1_beat_gpt4_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9nzm/china_unicom_announced_unichat32bc1_beat_gpt4_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9nzm/china_unicom_announced_unichat32bc1_beat_gpt4_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T08:47:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9oqou</id>
@@ -216,6 +203,19 @@
     <published>2025-01-26T01:38:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ia9iy1</id>
+    <title>DeepSeekR1 3D game 100% from scratch</title>
+    <updated>2025-01-26T08:36:26+00:00</updated>
+    <author>
+      <name>/u/Trick-Independent469</name>
+      <uri>https://old.reddit.com/user/Trick-Independent469</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"&gt; &lt;img alt="DeepSeekR1 3D game 100% from scratch" src="https://preview.redd.it/qrdlt6i8vafe1.gif?width=640&amp;amp;crop=smart&amp;amp;s=8d13a97797fa31e558155d2f6738fd891080c24b" title="DeepSeekR1 3D game 100% from scratch" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've asked DeepSeek R1 to make me a game like kkrieger ( where most of the things are generated on run ) and it made me this &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Trick-Independent469"&gt; /u/Trick-Independent469 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qrdlt6i8vafe1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia9iy1/deepseekr1_3d_game_100_from_scratch/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T08:36:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1i9wnfs</id>
     <title>Why do openai and meta etc plan to spend so much on data centers? how do they make the money back?</title>
     <updated>2025-01-25T20:48:52+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-01-26T00:26:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ia7v0x</id>
-    <title>the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp.</title>
-    <updated>2025-01-26T06:34:30+00:00</updated>
-    <author>
-      <name>/u/Juude89</name>
-      <uri>https://old.reddit.com/user/Juude89</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt; &lt;img alt="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." src="https://external-preview.redd.it/GkVEj8SEXSUPkh7D3z-zTGfIOGq41yOTpDWE4Fj1WE4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=01e2d3507d8b0dc551310e81cc376bab8fb4fc91" title="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;app maim page: &lt;a href="https://github.com/alibaba/MNN"&gt;MNN-LLM-APP&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5xo6fjer8afe1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2da05212d5e1af8855cedc2a23a8166e4a5340dc"&gt;the mulitimodal app&lt;/a&gt;&lt;/p&gt; &lt;p&gt;inference speed vs llama.cpp&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/elrqgjh59afe1.gif"&gt;https://i.redd.it/elrqgjh59afe1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T06:34:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i9wbya</id>
     <title>ByteDance announces Doubao-1.5-pro</title>
     <updated>2025-01-25T20:34:44+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia4mx6/project_digits_memory_speed/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-26T03:17:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ia7v0x</id>
+    <title>the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp.</title>
+    <updated>2025-01-26T06:34:30+00:00</updated>
+    <author>
+      <name>/u/Juude89</name>
+      <uri>https://old.reddit.com/user/Juude89</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt; &lt;img alt="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." src="https://external-preview.redd.it/GkVEj8SEXSUPkh7D3z-zTGfIOGq41yOTpDWE4Fj1WE4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=01e2d3507d8b0dc551310e81cc376bab8fb4fc91" title="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;app maim page: &lt;a href="https://github.com/alibaba/MNN"&gt;MNN-LLM-APP&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5xo6fjer8afe1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2da05212d5e1af8855cedc2a23a8166e4a5340dc"&gt;the mulitimodal app&lt;/a&gt;&lt;/p&gt; &lt;p&gt;inference speed vs llama.cpp&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/elrqgjh59afe1.gif"&gt;https://i.redd.it/elrqgjh59afe1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T06:34:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia40om</id>
