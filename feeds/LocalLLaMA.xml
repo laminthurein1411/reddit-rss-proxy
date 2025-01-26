@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-26T15:48:49+00:00</updated>
+  <updated>2025-01-26T16:05:53+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1iai3oc</id>
+    <title>Model training data density</title>
+    <updated>2025-01-26T15:58:55+00:00</updated>
+    <author>
+      <name>/u/frivolousfidget</name>
+      <uri>https://old.reddit.com/user/frivolousfidget</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/abs/2411.04330"&gt;https://arxiv.org/abs/2411.04330&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Wow… just read this article and went on to do some experiments. Qwen 2.5 Coder is trained on 5.5T and as a rule of thumb simplifying what the article says we can go by the idea that if a Trillion tokens &amp;gt; Billion params, we can assume that the model would be sensitive to quantization. And it really does show, this is the perplexity delta compared to f16:&lt;/p&gt; &lt;p&gt;0.5B (T/N ≈ 11,000):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Q6_K: 0.187% worse Q4_K_M: 3.42% worse Q3_K_L: 3.98% worse &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;3B (T/N ≈ 1,833):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Q6_K: 0.41% worse Q4_K_M: 1.96% worse Q3_K_M: 76.09% worse (goes into 0.5b result territory while still being larger than 0.5b f16) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;7B (T/N ≈ 786 which is below the rule of thumb hence not affected at Q4):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Q6_K: (not tested) Q4_K_M: 0.95% worse Q3_K_L: 3.28% worse &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;All compared to the best result (it is sunday and I am lazy rn so I asked sonnet to do it for me… looks correct 🤷 but dont trust it too much)&lt;/p&gt; &lt;p&gt;7B (T/N ≈ 786):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;F16: baseline (8.0125) Q4_K_M: +0.95% Q3_K_L: +3.28% &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;3B (T/N ≈ 1,833):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;F16: +1.66% Q6_K: +2.08% Q4_K_M: +3.65% Q3_K_M: +79.02% &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;0.5B (T/N ≈ 11,000):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;F16: +93.79% Q8_0: +93.89% Q6_K: +94.15% Q4_K_M: +100.42% Q3_K_L: +101.49% &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frivolousfidget"&gt; /u/frivolousfidget &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iai3oc/model_training_data_density/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iai3oc/model_training_data_density/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iai3oc/model_training_data_density/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T15:58:55+00:00</published>
+  </entry>
   <entry>
     <id>t3_1iagwr5</id>
     <title>LM Studio vs. Ollama Memory release after specific idle time</title>
@@ -19,32 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iagwr5/lm_studio_vs_ollama_memory_release_after_specific/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-26T15:11:47+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1i9oqou</id>
-    <title>Nvidia to wind down CUDA support for Maxwell and Pascal</title>
-    <updated>2025-01-25T15:01:14+00:00</updated>
-    <author>
-      <name>/u/FullstackSensei</name>
-      <uri>https://old.reddit.com/user/FullstackSensei</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;Nvidia's release notes for CUDA 12.8 revealed that Maxwell, Pascal, and Volta GPUs will likely transition to the legacy driver branch. The document states that &amp;quot;architecture support for Maxwell, Pascal, and Volta is considered feature-complete and will be frozen in an upcoming release.&amp;quot; &lt;/p&gt; &lt;p&gt;I think most of us new this day was coming soon. I wouldn't fret too much about it though. This doesn't mean that the cards will stop working or any software built on CUDA will stop working anytime soon. Even if CUDA 12.8 is the last version to support Pascal, I think open source projects like Llama.cpp will continue supporting those cards for a few more years, given how widely used Pascal is in the community and the lack of any decently priced alternatives until now.&lt;/p&gt; &lt;p&gt;If anyone is considering buying a P40 for a new build, I don't think they should change their plans because of this announcement, especially if they find a good deal on the P40. &lt;/p&gt; &lt;p&gt;Personally, I have 10 P40s (just bought 5 last week at $180/card), 4 P100s, and 4 V100s and I'm not planning on retiring them anytime soon. They're great and work really well for my use cases. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FullstackSensei"&gt; /u/FullstackSensei &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.tomshardware.com/pc-components/gpu-drivers/nvidia-starts-phasing-out-maxwell-pascal-and-volta-gpus-geforce-driver-support-status-unclear"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1i9oqou/nvidia_to_wind_down_cuda_support_for_maxwell_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9oqou/nvidia_to_wind_down_cuda_support_for_maxwell_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-25T15:01:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ia6re7</id>
-    <title>I made a Free &amp; Open-Source FastAPI Template to build online services that uses LLMs!</title>
-    <updated>2025-01-26T05:22:35+00:00</updated>
-    <author>
-      <name>/u/AleksCube</name>
-      <uri>https://old.reddit.com/user/AleksCube</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"&gt; &lt;img alt="I made a Free &amp;amp; Open-Source FastAPI Template to build online services that uses LLMs!" src="https://external-preview.redd.it/ZXozaWh2dGl3OWZlMY4brPbXXnlynLbYgxRYsYbRz1arEGB1SqG_c2u4ImT_.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ee0d09f41a1db91ed052ee91e35a9037651d7579" title="I made a Free &amp;amp; Open-Source FastAPI Template to build online services that uses LLMs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AleksCube"&gt; /u/AleksCube &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/iesj4wtiw9fe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T05:22:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia8h46</id>
@@ -60,17 +47,17 @@
     <published>2025-01-26T07:18:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ia95ap</id>
-    <title>Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5</title>
-    <updated>2025-01-26T08:07:40+00:00</updated>
+    <id>t3_1ia6re7</id>
+    <title>I made a Free &amp; Open-Source FastAPI Template to build online services that uses LLMs!</title>
+    <updated>2025-01-26T05:22:35+00:00</updated>
     <author>
-      <name>/u/phoneixAdi</name>
-      <uri>https://old.reddit.com/user/phoneixAdi</uri>
+      <name>/u/AleksCube</name>
+      <uri>https://old.reddit.com/user/AleksCube</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"&gt; &lt;img alt="Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5" src="https://external-preview.redd.it/rp7VJjsBbW35ue65hF_AusrsgbxRmLjaK2DB4dGUml4.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d0047285645af07421832798a077a8010328c7dc" title="Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/MbX9J1Tt_I0"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"&gt; &lt;img alt="I made a Free &amp;amp; Open-Source FastAPI Template to build online services that uses LLMs!" src="https://external-preview.redd.it/ZXozaWh2dGl3OWZlMY4brPbXXnlynLbYgxRYsYbRz1arEGB1SqG_c2u4ImT_.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ee0d09f41a1db91ed052ee91e35a9037651d7579" title="I made a Free &amp;amp; Open-Source FastAPI Template to build online services that uses LLMs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AleksCube"&gt; /u/AleksCube &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/iesj4wtiw9fe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia6re7/i_made_a_free_opensource_fastapi_template_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T08:07:40+00:00</published>
+    <published>2025-01-26T05:22:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia2rzn</id>
@@ -99,17 +86,17 @@
     <published>2025-01-26T10:20:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iadr5g</id>
-    <title>How better is Deepseek r1 compared to llama3? Both are open source right?</title>
-    <updated>2025-01-26T12:51:27+00:00</updated>
+    <id>t3_1ia95ap</id>
+    <title>Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5</title>
+    <updated>2025-01-26T08:07:40+00:00</updated>
     <author>
-      <name>/u/trenmost</name>
-      <uri>https://old.reddit.com/user/trenmost</uri>
+      <name>/u/phoneixAdi</name>
+      <uri>https://old.reddit.com/user/phoneixAdi</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Afaik Llama3 is open source as well, is the hype around DeepSeek R1 so large because its way better than llama3? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/trenmost"&gt; /u/trenmost &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"&gt; &lt;img alt="Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5" src="https://external-preview.redd.it/rp7VJjsBbW35ue65hF_AusrsgbxRmLjaK2DB4dGUml4.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d0047285645af07421832798a077a8010328c7dc" title="Reinforcement Learning Works! Reflecting on Chinese Models DeepSeek-R1 and Kimi k1.5" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/MbX9J1Tt_I0"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia95ap/reinforcement_learning_works_reflecting_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T12:51:27+00:00</published>
+    <published>2025-01-26T08:07:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1i9zdh3</id>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9wnfs/why_do_openai_and_meta_etc_plan_to_spend_so_much/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T20:48:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iadr5g</id>
+    <title>How better is Deepseek r1 compared to llama3? Both are open source right?</title>
+    <updated>2025-01-26T12:51:27+00:00</updated>
+    <author>
+      <name>/u/trenmost</name>
+      <uri>https://old.reddit.com/user/trenmost</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Afaik Llama3 is open source as well, is the hype around DeepSeek R1 so large because its way better than llama3? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/trenmost"&gt; /u/trenmost &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iadr5g/how_better_is_deepseek_r1_compared_to_llama3_both/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T12:51:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia10ld</id>
@@ -177,32 +177,6 @@
     <published>2025-01-26T00:26:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iafeo3</id>
-    <title>Exploring UI-TARS</title>
-    <updated>2025-01-26T14:08:04+00:00</updated>
-    <author>
-      <name>/u/AnhedoniaJack</name>
-      <uri>https://old.reddit.com/user/AnhedoniaJack</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"&gt; &lt;img alt="Exploring UI-TARS" src="https://external-preview.redd.it/MmhpOHA4aWVpY2ZlMWl7IhHQloSAXpiaOFGmAmD3rCPajgZPYYle5x1W-3q1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=24143b889760431f2e6242c32363f8304d9d30f9" title="Exploring UI-TARS" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been exploring UI-TARS and the UI-TARS-Desktop agent (Note: I compiled my own version of it) and like a lot of early stage AI things, it's impressive and pretty easy to see how this could be disruptive, but it's also pretty funny to watch it fail miserably at simple tasks. &lt;/p&gt; &lt;p&gt;I am currently using UI-TARS-2B-SFT since I don't have the horsepower to run 7B or 72B unquantized, and the GGUF quants shit the bed for the time being. I can only assume that the 2B model is quite a bit more limited than the 7B or 72B.&lt;/p&gt; &lt;p&gt;I have sped up the boring parts where it is waiting on inference, but when quantized versions come out, the speed should be pretty impressive.&lt;/p&gt; &lt;p&gt;It can do quite a few simple tasks, but I was curious if I could have it visually get some dynamic direction from a third party. By instructing it to think about the result, the model does a pretty good job of sending a message that the user wants it to think about the text it just visually extracted. &lt;/p&gt; &lt;p&gt;Super basic, but pretty damn interesting to play with. I look forward to the quants!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnhedoniaJack"&gt; /u/AnhedoniaJack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0j4w85keicfe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T14:08:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iaesuv</id>
-    <title>FuseO1-Preview</title>
-    <updated>2025-01-26T13:40:58+00:00</updated>
-    <author>
-      <name>/u/External_Mood4719</name>
-      <uri>https://old.reddit.com/user/External_Mood4719</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt; &lt;img alt="FuseO1-Preview" src="https://b.thumbs.redditmedia.com/M7yy8Cu0LM2UAlyJJIM-1-FstZup74RV72OURlRcN3M.jpg" title="FuseO1-Preview" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/18vmrqh5fcfe1.jpg?width=5100&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4ba59ecda40b71a5a95d3d1d990ba862e8bb87ea"&gt;https://preview.redd.it/18vmrqh5fcfe1.jpg?width=5100&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4ba59ecda40b71a5a95d3d1d990ba862e8bb87ea&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Long-Long Reasoning Merging: This approach involves model fusion across LLMs that utilize long-CoT reasoning, with the goal of enhancing long-CoT reasoning capabilities. The resulted FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-32B-Preview achieves a Pass@1 accuracy of 74.0 on AIME24, demonstrating significant performance improvements compared to the OpenAI o1-preview (44.6) and OpenAI o1-mini (63.4), even approaching OpenAI o1 (79.2). Long-Short Reasoning Merging: This approach involves model fusion between long-CoT and short-CoT LLMs, aiming to improve reasoning capabilities in both long and short reasoning processes. The resulted FuseAI/FuseO1-DeepSeekR1-Qwen2.5-Instruct-32B-Preview and FuseAI/FuseO1-DeepSeekR1-Qwen2.5-Coder-32B-Preview is capable of utilizing both long and short reasoning processes and demonstrates relatively strong performance in long reasoning tasks. &lt;a href="https://huggingface.co/FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview"&gt;https://huggingface.co/FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/External_Mood4719"&gt; /u/External_Mood4719 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T13:40:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iadomi</id>
     <title>[Rumor] Huawei 910C will double 910B performance</title>
     <updated>2025-01-26T12:47:48+00:00</updated>
@@ -216,6 +190,19 @@
     <published>2025-01-26T12:47:48+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iafeo3</id>
+    <title>Exploring UI-TARS</title>
+    <updated>2025-01-26T14:08:04+00:00</updated>
+    <author>
+      <name>/u/AnhedoniaJack</name>
+      <uri>https://old.reddit.com/user/AnhedoniaJack</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"&gt; &lt;img alt="Exploring UI-TARS" src="https://external-preview.redd.it/MmhpOHA4aWVpY2ZlMWl7IhHQloSAXpiaOFGmAmD3rCPajgZPYYle5x1W-3q1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=24143b889760431f2e6242c32363f8304d9d30f9" title="Exploring UI-TARS" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been exploring UI-TARS and the UI-TARS-Desktop agent (Note: I compiled my own version of it) and like a lot of early stage AI things, it's impressive and pretty easy to see how this could be disruptive, but it's also pretty funny to watch it fail miserably at simple tasks. &lt;/p&gt; &lt;p&gt;I am currently using UI-TARS-2B-SFT since I don't have the horsepower to run 7B or 72B unquantized, and the GGUF quants shit the bed for the time being. I can only assume that the 2B model is quite a bit more limited than the 7B or 72B.&lt;/p&gt; &lt;p&gt;I have sped up the boring parts where it is waiting on inference, but when quantized versions come out, the speed should be pretty impressive.&lt;/p&gt; &lt;p&gt;It can do quite a few simple tasks, but I was curious if I could have it visually get some dynamic direction from a third party. By instructing it to think about the result, the model does a pretty good job of sending a message that the user wants it to think about the text it just visually extracted. &lt;/p&gt; &lt;p&gt;Super basic, but pretty damn interesting to play with. I look forward to the quants!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnhedoniaJack"&gt; /u/AnhedoniaJack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0j4w85keicfe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iafeo3/exploring_uitars/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T14:08:04+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ia4mx6</id>
     <title>Project Digits Memory Speed</title>
     <updated>2025-01-26T03:17:58+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia4mx6/project_digits_memory_speed/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-26T03:17:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iaesuv</id>
+    <title>FuseO1-Preview</title>
+    <updated>2025-01-26T13:40:58+00:00</updated>
+    <author>
+      <name>/u/External_Mood4719</name>
+      <uri>https://old.reddit.com/user/External_Mood4719</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt; &lt;img alt="FuseO1-Preview" src="https://b.thumbs.redditmedia.com/M7yy8Cu0LM2UAlyJJIM-1-FstZup74RV72OURlRcN3M.jpg" title="FuseO1-Preview" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/18vmrqh5fcfe1.jpg?width=5100&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4ba59ecda40b71a5a95d3d1d990ba862e8bb87ea"&gt;https://preview.redd.it/18vmrqh5fcfe1.jpg?width=5100&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4ba59ecda40b71a5a95d3d1d990ba862e8bb87ea&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Long-Long Reasoning Merging: This approach involves model fusion across LLMs that utilize long-CoT reasoning, with the goal of enhancing long-CoT reasoning capabilities. The resulted FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-32B-Preview achieves a Pass@1 accuracy of 74.0 on AIME24, demonstrating significant performance improvements compared to the OpenAI o1-preview (44.6) and OpenAI o1-mini (63.4), even approaching OpenAI o1 (79.2). Long-Short Reasoning Merging: This approach involves model fusion between long-CoT and short-CoT LLMs, aiming to improve reasoning capabilities in both long and short reasoning processes. The resulted FuseAI/FuseO1-DeepSeekR1-Qwen2.5-Instruct-32B-Preview and FuseAI/FuseO1-DeepSeekR1-Qwen2.5-Coder-32B-Preview is capable of utilizing both long and short reasoning processes and demonstrates relatively strong performance in long reasoning tasks. &lt;a href="https://huggingface.co/FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview"&gt;https://huggingface.co/FuseAI/FuseO1-DeepSeekR1-QwQ-SkyT1-Flash-32B-Preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/External_Mood4719"&gt; /u/External_Mood4719 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iaesuv/fuseo1preview/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T13:40:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia9nzm</id>
@@ -281,19 +281,6 @@
     <published>2025-01-26T11:45:21+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ia7v0x</id>
-    <title>the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp.</title>
-    <updated>2025-01-26T06:34:30+00:00</updated>
-    <author>
-      <name>/u/Juude89</name>
-      <uri>https://old.reddit.com/user/Juude89</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt; &lt;img alt="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." src="https://external-preview.redd.it/GkVEj8SEXSUPkh7D3z-zTGfIOGq41yOTpDWE4Fj1WE4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=01e2d3507d8b0dc551310e81cc376bab8fb4fc91" title="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;app maim page: &lt;a href="https://github.com/alibaba/MNN"&gt;MNN-LLM-APP&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5xo6fjer8afe1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2da05212d5e1af8855cedc2a23a8166e4a5340dc"&gt;the mulitimodal app&lt;/a&gt;&lt;/p&gt; &lt;p&gt;inference speed vs llama.cpp&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/elrqgjh59afe1.gif"&gt;https://i.redd.it/elrqgjh59afe1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-26T06:34:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1i9y42v</id>
     <title>New OpenAI</title>
     <updated>2025-01-25T21:54:09+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1i9y42v/new_openai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-25T21:54:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ia7v0x</id>
+    <title>the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp.</title>
+    <updated>2025-01-26T06:34:30+00:00</updated>
+    <author>
+      <name>/u/Juude89</name>
+      <uri>https://old.reddit.com/user/Juude89</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt; &lt;img alt="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." src="https://external-preview.redd.it/GkVEj8SEXSUPkh7D3z-zTGfIOGq41yOTpDWE4Fj1WE4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=01e2d3507d8b0dc551310e81cc376bab8fb4fc91" title="the MNN team at Alibaba has open-sourced multimodal Android app running without netowrk that supports: Audio , Image and Diffusion Models. with blazing-fast speeds on cpu with 2.3x faster decoding speeds compared to llama.cpp." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;app maim page: &lt;a href="https://github.com/alibaba/MNN"&gt;MNN-LLM-APP&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5xo6fjer8afe1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2da05212d5e1af8855cedc2a23a8166e4a5340dc"&gt;the mulitimodal app&lt;/a&gt;&lt;/p&gt; &lt;p&gt;inference speed vs llama.cpp&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/elrqgjh59afe1.gif"&gt;https://i.redd.it/elrqgjh59afe1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ia7v0x/the_mnn_team_at_alibaba_has_opensourced/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-26T06:34:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1ia9iy1</id>
