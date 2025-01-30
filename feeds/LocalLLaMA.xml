@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-30T10:06:22+00:00</updated>
+  <updated>2025-01-30T10:23:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1idjavc</id>
+    <title>KV cache performance - unexpected issue</title>
+    <updated>2025-01-30T09:29:06+00:00</updated>
+    <author>
+      <name>/u/henker92</name>
+      <uri>https://old.reddit.com/user/henker92</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi,&lt;/p&gt; &lt;p&gt;I'm trying to implement a simple decoder-only llm, for educational purpose, and have been struggling with some issue related to KV caching. For some reason, the below implementation results in &lt;strong&gt;lower&lt;/strong&gt; performances when using the KV caching. Profiling the code reveals that despite slightly faster matmuls (both for kqv generation and for the actual self attention mechanism), the read/write slicings of the KV cache actually makes the whole thing slower.&lt;/p&gt; &lt;p&gt;Am I doing something really dumb, here ? I implemented the KV cache as a circular buffer, and I have k/v cache for each SelfAttention heads&lt;/p&gt; &lt;pre&gt;&lt;code&gt;class SelfAttentionHead(torch.nn.Module): def __init__(self, head_size): super().__init__() self.head_size = head_size self.key = torch.nn.Linear(n_embedding, head_size, bias=False) self.query = torch.nn.Linear(n_embedding, head_size, bias=False) self.value = torch.nn.Linear(n_embedding, head_size, bias=False) self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size))) self.register_buffer('k_cache', torch.zeros(0)) self.register_buffer('v_cache', torch.zeros(0)) self.last_index = None self.use_cache = False def train(self, mode=True): super().train(mode) if(mode==False): self.use_cache = True self.last_index = None self.k_cache = torch.zeros(0, device=device) self.v_cache = torch.zeros(0, device=device) torch.cuda.empty_cache() else: self.use_cache = False self.k_cache = torch.zeros(0, device=device) self.v_cache = torch.zeros(0, device=device) torch.cuda.empty_cache() def eval(self): super().eval() self.use_cache = True self.last_index = None self.k_cache = torch.zeros(0, device=device) self.v_cache = torch.zeros(0, device=device) torch.cuda.empty_cache() def forward(self, x): B, T, _ = x.shape if self.use_cache: x_new = x[:,-1,:] if(self.k_cache.shape[0] == 0 and self.v_cache.shape[0] == 0): self.k_cache = torch.zeros(size=[B,block_size,self.head_size], device=device) self.v_cache = torch.zeros(size=[B,block_size,self.head_size], device=device) k_new = self.key(x_new) #batch_size, 1, head_size q_new = self.query(x_new) # batch_size, 1, head_size v_new = self.value(x_new) # batch_size, 1, head_size if(self.last_index is None): self.last_index = 0 else: self.last_index += 1 update_index = self.last_index % block_size self.k_cache[:,update_index,:] = k_new self.v_cache[:,update_index,:] = v_new #Retrieve appropriate K, V by fetching the KV cache valid_start = max(0,self.last_index-block_size+1) cache_indices = torch.arange(valid_start, self.last_index+1, device=device) % block_size K = self.k_cache[:, cache_indices, :] V = self.v_cache[:, cache_indices, :] QKt = (q_new @ K.transpose(-1,-2)) * self.head_size**-0.5 QKt[:,T:,:] = float('-inf') wei = F.softmax(QKt, dim=-1) out = wei @ V return out else: k = self.key(x) # batch_size, block_size, head_size q = self.query(x) # batch_size, block_size, head_size v = self.value(x) # batch_size, block_size, head_size if (self.last_index is None): self.last_index = 0 else: self.last_index += 1 update_index = self.last_index % block_size QKt = (q @ k.transpose(-1, -2)) * (self.head_size**-0.5) wei = QKt.masked_fill(self.tril[:T, :T] == 0, float('-inf')) wei = F.softmax(wei, dim=-1) out = wei @ v return out &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/henker92"&gt; /u/henker92 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idjavc/kv_cache_performance_unexpected_issue/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idjavc/kv_cache_performance_unexpected_issue/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idjavc/kv_cache_performance_unexpected_issue/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-30T09:29:06+00:00</published>
+  </entry>
   <entry>
     <id>t3_1idi5j1</id>
     <title>Has Anyone Successfully Fine-Tuned Whisper for a Local Language?</title>
@@ -19,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idi5j1/has_anyone_successfully_finetuned_whisper_for_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-30T08:01:05+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1idjqdt</id>
-    <title>Deepseek are clever fuckers</title>
-    <updated>2025-01-30T10:02:40+00:00</updated>
-    <author>
-      <name>/u/lewqfu</name>
-      <uri>https://old.reddit.com/user/lewqfu</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wrote this about how Deepseek is pushing decision makers in large financial institutions to seriously consider running their own models instead of calling out to Microsoft, Amazon &amp;amp; Google&lt;/p&gt; &lt;p&gt;&lt;a href="https://blog.helix.ml/p/you-should-run-local-models-run-deepseek"&gt;https://blog.helix.ml/p/you-should-run-local-models-run-deepseek&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lewqfu"&gt; /u/lewqfu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idjqdt/deepseek_are_clever_fuckers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idjqdt/deepseek_are_clever_fuckers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idjqdt/deepseek_are_clever_fuckers/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-30T10:02:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1icwz9s</id>
@@ -73,19 +73,6 @@
     <published>2025-01-30T07:01:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ide31d</id>
-    <title>How crazy is this idea?</title>
-    <updated>2025-01-30T04:11:45+00:00</updated>
-    <author>
-      <name>/u/Buddyboy142</name>
-      <uri>https://old.reddit.com/user/Buddyboy142</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"&gt; &lt;img alt="How crazy is this idea?" src="https://b.thumbs.redditmedia.com/bpOVx5Yy1l3dI9E7YIhoD4OWks9SYucawZGZoX1OIRQ.jpg" title="How crazy is this idea?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Buddyboy142"&gt; /u/Buddyboy142 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ide31d"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-30T04:11:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1icta5y</id>
     <title>Why do people like Ollama more than LM Studio?</title>
     <updated>2025-01-29T13:04:17+00:00</updated>
@@ -99,17 +86,17 @@
     <published>2025-01-29T13:04:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1idiurl</id>
-    <title>What about 1 TB Sys RAM system with the 7995WX to run LLMs ?</title>
-    <updated>2025-01-30T08:53:33+00:00</updated>
+    <id>t3_1ide31d</id>
+    <title>How crazy is this idea?</title>
+    <updated>2025-01-30T04:11:45+00:00</updated>
     <author>
-      <name>/u/MatrixEternal</name>
-      <uri>https://old.reddit.com/user/MatrixEternal</uri>
+      <name>/u/Buddyboy142</name>
+      <uri>https://old.reddit.com/user/Buddyboy142</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Title Edit : ..... with a most powerful CPU ....&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;Today, I tried running the DeepSeek R1 2.58-bit Quant version on a 24 vCPU, 192 GB RAM server without a GPU. I achieved a speed of about 11 tokens/second in the pg512 test. Meanwhile, four A40 GPUs produced around 33 tokens/second.&lt;/p&gt; &lt;p&gt;This got me thinking about a possible setup. For my personal needs, 11 tokens/second seems adequate. However, for a very large LLM such as R1 Q8_0, which requires 700 GB of VRAM, one would typically need eight A100 GPUs (H100s are even more expensive) and would also have to offload some layers to the CPU. That setup costs around $177,840.&lt;/p&gt; &lt;p&gt;In contrast, a Ryzen Threadripper PRO 7995WX costs around $11,500, and 1 TB of RAM is about $2,400, so the total would be roughly $14,000—about twelve times cheaper. Of course, the inference speed would be significantly slower, and performance might suffer as the context window grows, but it’s still feasible to own a personal system.&lt;/p&gt; &lt;p&gt;I’m new to LLMs, so I’d love to hear any additional thoughts or suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MatrixEternal"&gt; /u/MatrixEternal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"&gt; &lt;img alt="How crazy is this idea?" src="https://b.thumbs.redditmedia.com/bpOVx5Yy1l3dI9E7YIhoD4OWks9SYucawZGZoX1OIRQ.jpg" title="How crazy is this idea?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Buddyboy142"&gt; /u/Buddyboy142 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ide31d"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ide31d/how_crazy_is_this_idea/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-30T08:53:33+00:00</published>
+    <published>2025-01-30T04:11:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1id4faw</id>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1id4faw/even_established_cloud_providers_like_lambda_are/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-29T20:58:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1idiurl</id>
+    <title>What about 1 TB Sys RAM system with the 7995WX to run LLMs ?</title>
+    <updated>2025-01-30T08:53:33+00:00</updated>
+    <author>
+      <name>/u/MatrixEternal</name>
+      <uri>https://old.reddit.com/user/MatrixEternal</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Title Edit : ..... with a most powerful CPU ....&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;Today, I tried running the DeepSeek R1 2.58-bit Quant version on a 24 vCPU, 192 GB RAM server without a GPU. I achieved a speed of about 11 tokens/second in the pg512 test. Meanwhile, four A40 GPUs produced around 33 tokens/second.&lt;/p&gt; &lt;p&gt;This got me thinking about a possible setup. For my personal needs, 11 tokens/second seems adequate. However, for a very large LLM such as R1 Q8_0, which requires 700 GB of VRAM, one would typically need eight A100 GPUs (H100s are even more expensive) and would also have to offload some layers to the CPU. That setup costs around $177,840.&lt;/p&gt; &lt;p&gt;In contrast, a Ryzen Threadripper PRO 7995WX costs around $11,500, and 1 TB of RAM is about $2,400, so the total would be roughly $14,000—about twelve times cheaper. Of course, the inference speed would be significantly slower, and performance might suffer as the context window grows, but it’s still feasible to own a personal system.&lt;/p&gt; &lt;p&gt;I’m new to LLMs, so I’d love to hear any additional thoughts or suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MatrixEternal"&gt; /u/MatrixEternal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-30T08:53:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1iddnjb</id>
