@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-01-30T18:25:01+00:00</updated>
+  <updated>2025-01-30T18:37:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iczucy</id>
-    <title>Running Deepseek R1 IQ2XXS (200GB) from SSD actually works</title>
-    <updated>2025-01-29T17:51:28+00:00</updated>
-    <author>
-      <name>/u/Wrong-Historian</name>
-      <uri>https://old.reddit.com/user/Wrong-Historian</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;prompt eval time = 97774.66 ms / 367 tokens ( 266.42 ms per token, 3.75 tokens per second) eval time = 253545.02 ms / 380 tokens ( 667.22 ms per token, 1.50 tokens per second) total time = 351319.68 ms / 747 tokens &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;No, not a distill, but a 2bit quantized version of the actual 671B model (&lt;a href="https://huggingface.co/unsloth/DeepSeek-R1-GGUF/tree/main/DeepSeek-R1-UD-IQ2_XXS"&gt;IQ2XXS&lt;/a&gt;), about 200GB large, running on a 14900K with 96GB DDR5 6800 and a single 3090 24GB (with 5 layers offloaded), and for the rest running off of PCIe 4.0 SSD (Samsung 990 pro)&lt;/p&gt; &lt;p&gt;Although of limited actual usefulness, it's just amazing that is actually works! With larger context it takes a couple of minutes just to process the prompt, token generation is actually reasonably fast.&lt;/p&gt; &lt;p&gt;Thanks &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1icrc2l/comment/m9t5cbw/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1icrc2l/comment/m9t5cbw/&lt;/a&gt; !&lt;/p&gt; &lt;p&gt;Edit: one hour later, i've tried a bigger prompt (800 tokens input), with more tokens output (6000 tokens output)&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;prompt eval time = 210540.92 ms / 803 tokens ( 262.19 ms per token, 3.81 tokens per second)&lt;br /&gt; eval time = 6883760.49 ms / 6091 tokens ( 1130.15 ms per token, 0.88 tokens per second)&lt;br /&gt; total time = 7094301.41 ms / 6894 tokens&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;It 'works'. Lets keep it at that. Usable? Meh. The main drawback is all the &amp;lt;thinking&amp;gt;... honestly. For a simple answer it does a whole lot of &amp;lt;thinking&amp;gt; and that takes a lot of tokens and thus a lot of time and context in follow-up questions taking even more time.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Wrong-Historian"&gt; /u/Wrong-Historian &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iczucy/running_deepseek_r1_iq2xxs_200gb_from_ssd/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iczucy/running_deepseek_r1_iq2xxs_200gb_from_ssd/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iczucy/running_deepseek_r1_iq2xxs_200gb_from_ssd/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-29T17:51:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1idiurl</id>
-    <title>What about 1 TB Sys RAM system with the 7995WX to run LLMs ?</title>
-    <updated>2025-01-30T08:53:33+00:00</updated>
-    <author>
-      <name>/u/MatrixEternal</name>
-      <uri>https://old.reddit.com/user/MatrixEternal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Title Edit : ..... with a most powerful CPU ....&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;Today, I tried running the DeepSeek R1 2.58-bit Quant version on a 24 vCPU, 192 GB RAM server without a GPU. I achieved a speed of about 11 tokens/second in the pg512 test. Meanwhile, four A40 GPUs produced around 33 tokens/second.&lt;/p&gt; &lt;p&gt;This got me thinking about a possible setup. For my personal needs, 11 tokens/second seems adequate. However, for a very large LLM such as R1 Q8_0, which requires 700 GB of VRAM, one would typically need eight A100 GPUs (H100s are even more expensive) and would also have to offload some layers to the CPU. That setup costs around $177,840.&lt;/p&gt; &lt;p&gt;In contrast, a Ryzen Threadripper PRO 7995WX costs around $11,500, and 1 TB of RAM is about $2,400, so the total would be roughly $14,000—about twelve times cheaper. Of course, the inference speed would be significantly slower, and performance might suffer as the context window grows, but it’s still feasible to own a personal system.&lt;/p&gt; &lt;p&gt;I’m new to LLMs, so I’d love to hear any additional thoughts or suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MatrixEternal"&gt; /u/MatrixEternal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idiurl/what_about_1_tb_sys_ram_system_with_the_7995wx_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-30T08:53:33+00:00</published>
-  </entry>
   <entry>
     <id>t3_1idrxfs</id>
     <title>What is the current best small model for coding?</title>
@@ -45,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idrxfs/what_is_the_current_best_small_model_for_coding/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-30T17:13:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1idrzhz</id>
+    <title>"Low-Cost" 70b 8-bit inference rig.</title>
+    <updated>2025-01-30T17:15:38+00:00</updated>
+    <author>
+      <name>/u/koalfied-coder</name>
+      <uri>https://old.reddit.com/user/koalfied-coder</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idrzhz/lowcost_70b_8bit_inference_rig/"&gt; &lt;img alt="&amp;quot;Low-Cost&amp;quot; 70b 8-bit inference rig." src="https://external-preview.redd.it/00dKHdq21sJRX1oSrcbJ8tTfRNH4p_MaFaor6S4Sbck.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9dd3564bdfc16966a6ab1d540c005730c11012bc" title="&amp;quot;Low-Cost&amp;quot; 70b 8-bit inference rig." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Thank you for viewing my best attempt at a reasonably priced 70b 8-bit inference rig.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I appreciate everyone's input on my sanity check post as it has yielded greatness. :)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Inspiration:&lt;/strong&gt; &lt;a href="https://towardsdatascience.com/how-to-build-a-multi-gpu-system-for-deep-learning-in-2023-e5bbb905d935"&gt;Towards Data Science Article&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Build Details and Costs:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&amp;quot;Low Cost&amp;quot; Necessities:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Intel Xeon W-2155 10-Core - $167.43 (used)&lt;/li&gt; &lt;li&gt;ASUS WS C422 SAGE/10G Intel C422 MOBO - $362.16 (open-box)&lt;/li&gt; &lt;li&gt;EVGA Supernova 1600 P+ - $285.36 (new)&lt;/li&gt; &lt;li&gt;(256GB) Micron (8x32GB) 2Rx4 PC4-2400T RDIMM - $227.28&lt;/li&gt; &lt;li&gt;PNY RTX A5000 GPU X4 - ~$5,596.68 (open-box)&lt;/li&gt; &lt;li&gt;Micron 7450 PRO 960 GB - ~$200 (on hand)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Personal Selections, Upgrades, and Additions:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;SilverStone Technology RM44 Chassis - $319.99 (new) (Best 8 PCIE slot case IMO)&lt;/li&gt; &lt;li&gt;Noctua NH-D9DX i4 3U, Premium CPU Cooler - $59.89 (new)&lt;/li&gt; &lt;li&gt;Noctua NF-A12x25 PWM X3 - $98.76 (new)&lt;/li&gt; &lt;li&gt;Seagate Barracuda 3TB ST3000DM008 7200RPM 3.5&amp;quot; SATA Hard Drive HDD - $63.20 (new)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Total w/ GPUs:&lt;/strong&gt; ~$7,350&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Issues:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;RAM issues. It seems they must be paired and it was picky needing Micron.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Key Gear Reviews:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Silverstone Chassis:&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;Truly a pleasure to build and work in. Cannot say enough how smart the design is. No issues.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Noctua Gear:&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;All excellent and quiet with a pleasing noise at load. I mean, it's Noctua.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Basic Benchmarks&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;~27 t/s non concurrent&lt;br /&gt; ~120 t/s concurrent&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Non-concurrent&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;**Input command:**Copy code python token_benchmark_ray.py --model &amp;quot;cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic&amp;quot; --mean-input-tokens 550 --stddev-input-tokens 150 --mean-output-tokens 150 --stddev-output-tokens 10 --max-num-completed-requests 10 --timeout 600 --num-concurrent-requests 1 --results-dir &amp;quot;result_outputs&amp;quot; --llm-api openai --additional-sampling-params '{}'&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;Number Of Errored Requests: 0&lt;/li&gt; &lt;li&gt;Overall Output Throughput: 26.933382788310297&lt;/li&gt; &lt;li&gt;Number Of Completed Requests: 10&lt;/li&gt; &lt;li&gt;Completed Requests Per Minute: 9.439269668800337&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Concurrent&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;**Input command:**Copy code python token_benchmark_ray.py --model &amp;quot;cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic&amp;quot; --mean-input-tokens 550 --stddev-input-tokens 150 --mean-output-tokens 150 --stddev-output-tokens 10 --max-num-completed-requests 100 --timeout 600 --num-concurrent-requests 16 --results-dir &amp;quot;result_outputs&amp;quot; --llm-api openai --additional-sampling-params '{}'&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;Number Of Errored Requests: 0&lt;/li&gt; &lt;li&gt;Overall Output Throughput: 120.43197653058412&lt;/li&gt; &lt;li&gt;Number Of Completed Requests: 100&lt;/li&gt; &lt;li&gt;Completed Requests Per Minute: 40.81286976467126&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Built a cost-effective 70b 8-bit inference rig with some open-box and used parts. Faced RAM compatibility issues but achieved satisfactory build quality and performance benchmarks. Total cost with GPUs is approximately $7,350.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8gl5mv7dz5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=6ce96fa726c7626d414b078c9ba4a2a2d9931ee1"&gt;https://preview.redd.it/8gl5mv7dz5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=6ce96fa726c7626d414b078c9ba4a2a2d9931ee1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/hh8ngdwez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=171bb79ce7314c36d7649cfa4ff2b8741f48a5df"&gt;https://preview.redd.it/hh8ngdwez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=171bb79ce7314c36d7649cfa4ff2b8741f48a5df&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/oje989wez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=03288135cf349f6006ab41c5de00d4083e4b8bca"&gt;https://preview.redd.it/oje989wez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=03288135cf349f6006ab41c5de00d4083e4b8bca&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/uv1lfbwez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=bd8c02e8bd46fec360dbaeecf90f0566ebd51b95"&gt;https://preview.redd.it/uv1lfbwez5ge1.jpg?width=4080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=bd8c02e8bd46fec360dbaeecf90f0566ebd51b95&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/koalfied-coder"&gt; /u/koalfied-coder &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idrzhz/lowcost_70b_8bit_inference_rig/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idrzhz/lowcost_70b_8bit_inference_rig/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idrzhz/lowcost_70b_8bit_inference_rig/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-30T17:15:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1id3ak8</id>
@@ -112,19 +99,6 @@
     <published>2025-01-29T15:54:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1idny30</id>
-    <title>mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face</title>
-    <updated>2025-01-30T14:17:54+00:00</updated>
-    <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"&gt; &lt;img alt="mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face" src="https://external-preview.redd.it/8WbpVBLCMGZToRjDI6ufWcY1nKKfpipz-TKy8aHrbsg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0fb438638f6c72b0b1b0db98ac490b6bda471f2f" title="mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-30T14:17:54+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1idgrh4</id>
     <title>What are you *actually* using R1 for?</title>
     <updated>2025-01-30T06:35:23+00:00</updated>
@@ -136,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idgrh4/what_are_you_actually_using_r1_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-30T06:35:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1idny30</id>
+    <title>mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face</title>
+    <updated>2025-01-30T14:17:54+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"&gt; &lt;img alt="mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face" src="https://external-preview.redd.it/8WbpVBLCMGZToRjDI6ufWcY1nKKfpipz-TKy8aHrbsg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0fb438638f6c72b0b1b0db98ac490b6bda471f2f" title="mistralai/Mistral-Small-24B-Instruct-2501 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idny30/mistralaimistralsmall24binstruct2501_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-30T14:17:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1id5179</id>
@@ -177,6 +164,19 @@
     <published>2025-01-30T14:18:01+00:00</published>
   </entry>
   <entry>
+    <id>t3_1id2poe</id>
+    <title>"DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)" says Anthropic's CEO</title>
+    <updated>2025-01-29T19:46:32+00:00</updated>
+    <author>
+      <name>/u/siegevjorn</name>
+      <uri>https://old.reddit.com/user/siegevjorn</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"&gt; &lt;img alt="&amp;quot;DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)&amp;quot; says Anthropic's CEO" src="https://external-preview.redd.it/33CmrJWIyiH-IL_JOc7gY-avdl30Pd-oQB-Pun7s774.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6512765018eb834d1f7c5898ca5a6e6f6fd0af6e" title="&amp;quot;DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)&amp;quot; says Anthropic's CEO" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Anthropic's CEO has a word about DeepSeek. &lt;/p&gt; &lt;p&gt;Here are some of his statements:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&amp;quot;Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train&amp;quot;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;3.5 Sonnet did not involve a larger or more expensive model&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&amp;quot;Sonnet's training was conducted 9-12 months ago, while Sonnet remains notably ahead of DeepSeek in many internal and external evals. &amp;quot;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DeepSeek's cost efficiency is x8 compared to Sonnet, which is much less than the &amp;quot;original GPT-4 to Claude 3.5 Sonnet inference price differential (10x).&amp;quot; Yet 3.5 Sonnet is a better model than GPT-4, while DeepSeek is not.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;TL;DR: Although DeepSeekV3 was a real deal, but such innovation has been achieved regularly by U.S. AI companies. DeepSeek had enough resources to make it happen. /s&lt;/p&gt; &lt;p&gt;I guess an important distinction, that the Anthorpic CEO refuses to recognize, is the fact that DeepSeekV3 it open weight. In his mind, it is U.S. vs China. It appears that he doesn't give a fuck about local LLMs. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/siegevjorn"&gt; /u/siegevjorn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/01/29/anthropics-ceo-says-deepseek-shows-that-u-s-export-rules-are-working-as-intended/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-29T19:46:32+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1idro19</id>
     <title>DeepSeek R1 scores between o1 and o1-mini on NYT Connections</title>
     <updated>2025-01-30T17:02:39+00:00</updated>
@@ -203,19 +203,6 @@
     <published>2025-01-30T16:23:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1id2poe</id>
-    <title>"DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)" says Anthropic's CEO</title>
-    <updated>2025-01-29T19:46:32+00:00</updated>
-    <author>
-      <name>/u/siegevjorn</name>
-      <uri>https://old.reddit.com/user/siegevjorn</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"&gt; &lt;img alt="&amp;quot;DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)&amp;quot; says Anthropic's CEO" src="https://external-preview.redd.it/33CmrJWIyiH-IL_JOc7gY-avdl30Pd-oQB-Pun7s774.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6512765018eb834d1f7c5898ca5a6e6f6fd0af6e" title="&amp;quot;DeepSeek produced a model close to the performance of US models 7-10 months older, for a good deal less cost (but NOT anywhere near the ratios people have suggested)&amp;quot; says Anthropic's CEO" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Anthropic's CEO has a word about DeepSeek. &lt;/p&gt; &lt;p&gt;Here are some of his statements:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&amp;quot;Claude 3.5 Sonnet is a mid-sized model that cost a few $10M's to train&amp;quot;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;3.5 Sonnet did not involve a larger or more expensive model&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&amp;quot;Sonnet's training was conducted 9-12 months ago, while Sonnet remains notably ahead of DeepSeek in many internal and external evals. &amp;quot;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DeepSeek's cost efficiency is x8 compared to Sonnet, which is much less than the &amp;quot;original GPT-4 to Claude 3.5 Sonnet inference price differential (10x).&amp;quot; Yet 3.5 Sonnet is a better model than GPT-4, while DeepSeek is not.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;TL;DR: Although DeepSeekV3 was a real deal, but such innovation has been achieved regularly by U.S. AI companies. DeepSeek had enough resources to make it happen. /s&lt;/p&gt; &lt;p&gt;I guess an important distinction, that the Anthorpic CEO refuses to recognize, is the fact that DeepSeekV3 it open weight. In his mind, it is U.S. vs China. It appears that he doesn't give a fuck about local LLMs. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/siegevjorn"&gt; /u/siegevjorn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/01/29/anthropics-ceo-says-deepseek-shows-that-u-s-export-rules-are-working-as-intended/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1id2poe/deepseek_produced_a_model_close_to_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-01-29T19:46:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1idp6n6</id>
     <title>Deepseek is hosted on Huawei cloud</title>
     <updated>2025-01-30T15:15:46+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ideaxu/nvidia_cuts_fp8_training_performance_in_half_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-01-30T04:22:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1idtkll</id>
+    <title>Interview with Deepseek Founder: We won’t go closed-source. We believe that establishing a robust technology ecosystem matters more.</title>
+    <updated>2025-01-30T18:20:59+00:00</updated>
+    <author>
+      <name>/u/deoxykev</name>
+      <uri>https://old.reddit.com/user/deoxykev</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idtkll/interview_with_deepseek_founder_we_wont_go/"&gt; &lt;img alt="Interview with Deepseek Founder: We won’t go closed-source. We believe that establishing a robust technology ecosystem matters more." src="https://external-preview.redd.it/VCPkBGJsVaggWY7c9V20KQQGCJhrF411vyVYUsHeuns.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=495bbbb03e5ebeff92050c2a71f7e340cb4bbebc" title="Interview with Deepseek Founder: We won’t go closed-source. We believe that establishing a robust technology ecosystem matters more." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/deoxykev"&gt; /u/deoxykev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://thechinaacademy.org/interview-with-deepseek-founder-were-done-following-its-time-to-lead/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1idtkll/interview_with_deepseek_founder_we_wont_go/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1idtkll/interview_with_deepseek_founder_we_wont_go/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-01-30T18:20:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1ido2up</id>
