@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-03T00:25:28+00:00</updated>
+  <updated>2025-02-03T00:49:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ifrf9t</id>
-    <title>Deepseek R1 just told me to fist a frozen orange, for real. (This model is AMAZING)</title>
-    <updated>2025-02-02T06:45:50+00:00</updated>
-    <author>
-      <name>/u/IversusAI</name>
-      <uri>https://old.reddit.com/user/IversusAI</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am using Open WebUI and Deepseek R1 through Open Router to build my own healbot to help heal from sugar and wheat addiction. I was talking to the model, &lt;strong&gt;which is AMAZING&lt;/strong&gt; no joke and I was trying to make it to 10:00pm (when the store closes) and it was giving me help and suggestions to get through.&lt;/p&gt; &lt;p&gt;Note: My system prompt does NOT have anything in it about being explicit. It just asks the model to help me recover and how I want it to act (kind, supportive, etc).&lt;/p&gt; &lt;h3&gt;I had just asked it to help me get to 10:00pm:&lt;/h3&gt; &lt;p&gt;&lt;a href="https://i.imgur.com/5Y97e8x.jpeg"&gt;https://i.imgur.com/5Y97e8x.jpeg&lt;/a&gt;&lt;/p&gt; &lt;h3&gt;Yeah, there will be no frozen orange fisting, mkay?&lt;/h3&gt; &lt;p&gt;&lt;a href="https://i.imgur.com/LAVYIPM.jpeg"&gt;https://i.imgur.com/LAVYIPM.jpeg&lt;/a&gt;&lt;/p&gt; &lt;h3&gt;LOLOLOL:&lt;/h3&gt; &lt;p&gt;&lt;a href="https://i.imgur.com/c8ss1p4.jpeg"&gt;https://i.imgur.com/c8ss1p4.jpeg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;P.S.: I did make it to 10pm and the cravings eased. :-)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/IversusAI"&gt; /u/IversusAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifrf9t/deepseek_r1_just_told_me_to_fist_a_frozen_orange/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifrf9t/deepseek_r1_just_told_me_to_fist_a_frozen_orange/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifrf9t/deepseek_r1_just_told_me_to_fist_a_frozen_orange/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T06:45:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ifltll</id>
-    <title>I tested 11 popular local LLM's against my instruction-heavy game/application</title>
-    <updated>2025-02-02T01:23:20+00:00</updated>
-    <author>
-      <name>/u/ForsookComparison</name>
-      <uri>https://old.reddit.com/user/ForsookComparison</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Intro&lt;/h1&gt; &lt;p&gt;I have a few applications with some relatively large system prompts for how to handle requests. A lot of them use very strict JSON-formatting. I've scripted benchmarks for them going through a series of real use-case inputs and outputs and here's what I found&lt;/p&gt; &lt;h1&gt;The Test&lt;/h1&gt; &lt;p&gt;A dungeon-master scenario. The LLM first plays the role of the dungeon master, being fed state and inventory and then needing to take a user action/decision - reporting the output. The LLM is then responsible for reading over its own response and updating state and inventory JSON, quantity, locations, notes, descriptions, etc based on the content of the story. There are A LOT of rules involved, including of course actually successfully interacting with structured data. Successful models will both be able to advance the story in a very sane way given the long script of inputs/responses (I review afterwards) and track both state and inventory in the desired format.&lt;/p&gt; &lt;h1&gt;Rules&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;32b or less. Llama 3.3 70b performs this task superbly, but i want something that will feasibly run well on GPUs a regular consumer owns. I'm considering that 32gb of high bandwidth memory or VRAM or less.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;no API-only models&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;all quants are Q6. I tested Q8's but results were identical &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;context window of tests accommodates smaller models in that any test that goes over is thrown out&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;temperature is within the model author's recommended range, leaning slightly towards less-creative outputs&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;instruct versions unless otherwise specified&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Results (best to worst)&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Phi4 14b&lt;/strong&gt; - Best by far. Not as smart as some of the others on this list, but it nails the response format instructions and rules 100% of the time. Being 14b its naturally very fast.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Mistral Small 2 22b&lt;/strong&gt; - Best balance. Extremely smart and superb at the interpretation and problem solving portion of the task. Will occasionally fail on JSON output but rarely&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Qwen 32b Instruct&lt;/strong&gt; - this model was probably the smartest of them all. If handed a complex scenario, it would come up with what I considered the best logical solution, however it was pretty poor at JSON and rule-following&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Mistral Small 3 24b&lt;/strong&gt; - this one disappointed me. It's very clever and smart, but compared to the older Mistral Small 2, it's much weaker at instructon following. It could only track state for a short time before it would start deleting or forgetting items and events. Good at JSON format though.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Qwen-R1-Distill 32b&lt;/strong&gt; - smart(er) than Qwen 32b instruct but would completely flop on instruction following every 2-3 sequences. Amazing at interpreting state and story, but fell flat on its face with instructions and JSON.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Mistral-Nemo 12b&lt;/strong&gt; - I like this model a lot. It punches higher than its benchmarks consistently and it will get through a number of sequences just fine, but it eventually hallucinates and returns either nonsense JSON, breaks rules, or loses track of state.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Falcon 3 10b&lt;/strong&gt; - Extremelt fast, shockingly smart, but would reliably produce a totally hallucinated output and content every few sequences&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Llama 3.1 8b&lt;/strong&gt; - follows instructions well, but hallucinated JSON formatting and contents far too often to be usable &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Codestral 22b&lt;/strong&gt; - a coding model!? for this? Well yeah - it actually nails the JSON 100% of the time, - but the story/content generation and understanding of actions and their impact on state were terrible. It also would inevitably enter a loop of nonsense output&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Qwen-Coder 32b&lt;/strong&gt; - exactly the same as Codestral, just with even worse writing. I love this model &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Nous-Hermes 3 8b&lt;/strong&gt; - slightly worse than regular Llama3.1 8b. Generated far more interesting (better written?) text in sections that allowed it though. This model to me is always &amp;quot;Llama 3.1 that went to art school instead of STEM&amp;quot;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;(bonus) &lt;strong&gt;Llama 3.2 3b&lt;/strong&gt; - runs at lightspeed, I want this to be the future of local LLMs - but it's not a fair fight for the little guy. It goes off the rails or fails to follow instructions&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Conclusion&lt;/h1&gt; &lt;p&gt;Phi4 14b is the best &lt;em&gt;so far&lt;/em&gt;. It just follows instructions well. But it's not as creative or natural in writing as Llama-based models, nor is it as intelligent or clever as Qwen or Mistral. It's the best at this test, there is no denying it, but i don't particularly enjoy its content compared to the flavor and intelligence of the other models tested. Mistral-Nemo 12b getting close to following instructions and struggling sug&lt;/p&gt; &lt;p&gt;&lt;strong&gt;if you have any other models you'd like to test this against, please mention them!&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ForsookComparison"&gt; /u/ForsookComparison &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifltll/i_tested_11_popular_local_llms_against_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifltll/i_tested_11_popular_local_llms_against_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifltll/i_tested_11_popular_local_llms_against_my/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T01:23:20+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ifmiuu</id>
     <title>Open WebUI Coder Overhaul is now live on GitHub for testing!</title>
@@ -60,19 +34,6 @@
     <published>2025-02-01T22:19:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1igb4ee</id>
-    <title>Fine tune and test your LLM in a few simple easy steps locally on your PC</title>
-    <updated>2025-02-02T23:35:21+00:00</updated>
-    <author>
-      <name>/u/Maxwell10206</name>
-      <uri>https://old.reddit.com/user/Maxwell10206</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a super simple way for anyone to quickly start fine tune training and testing LLMs on their local PC using the best tools available. Unsloth, Llama.cpp, Ollama, OpenWebUI all wrapped up into a Docker image. You can get started in as little as 7 steps. If anyone has time please try it out and give me feedback, the features are super limited, but the flow is there.&lt;/p&gt; &lt;p&gt;Try it out here!&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/MaxHastings/Kolo"&gt;https://github.com/MaxHastings/Kolo&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Maxwell10206"&gt; /u/Maxwell10206 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T23:35:21+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ig05tf</id>
     <title>Beginner Walkthrough to Install LLMs on Windows</title>
     <updated>2025-02-02T15:52:10+00:00</updated>
@@ -86,19 +47,6 @@
     <published>2025-02-02T15:52:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ifuiiu</id>
-    <title>What does your current model lineup look like? Heres mine</title>
-    <updated>2025-02-02T10:31:12+00:00</updated>
-    <author>
-      <name>/u/getpodapp</name>
-      <uri>https://old.reddit.com/user/getpodapp</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"&gt; &lt;img alt="What does your current model lineup look like? Heres mine" src="https://preview.redd.it/jz2j4geydpge1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2dc81856dffe6a71d07c12209cea3e879ccb588c" title="What does your current model lineup look like? Heres mine" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/getpodapp"&gt; /u/getpodapp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/jz2j4geydpge1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T10:31:12+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ifjuh8</id>
     <title>Got my 3090 and 3060 working on a fresh Ubuntu installation. Please clap.</title>
     <updated>2025-02-01T23:45:19+00:00</updated>
@@ -110,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifjuh8/got_my_3090_and_3060_working_on_a_fresh_ubuntu/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-01T23:45:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ifuiiu</id>
+    <title>What does your current model lineup look like? Heres mine</title>
+    <updated>2025-02-02T10:31:12+00:00</updated>
+    <author>
+      <name>/u/getpodapp</name>
+      <uri>https://old.reddit.com/user/getpodapp</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"&gt; &lt;img alt="What does your current model lineup look like? Heres mine" src="https://preview.redd.it/jz2j4geydpge1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2dc81856dffe6a71d07c12209cea3e879ccb588c" title="What does your current model lineup look like? Heres mine" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/getpodapp"&gt; /u/getpodapp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/jz2j4geydpge1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifuiiu/what_does_your_current_model_lineup_look_like/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-02T10:31:12+00:00</published>
   </entry>
   <entry>
     <id>t3_1ig7q8n</id>
@@ -138,17 +99,30 @@
     <published>2025-02-02T22:11:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ig9kd1</id>
-    <title>Is there a way to see or edit a local LLM's system prompt?</title>
-    <updated>2025-02-02T22:25:49+00:00</updated>
+    <id>t3_1igb4ee</id>
+    <title>Fine tune and test your LLM in a few simple easy steps locally on your PC</title>
+    <updated>2025-02-02T23:35:21+00:00</updated>
     <author>
-      <name>/u/internetpillows</name>
-      <uri>https://old.reddit.com/user/internetpillows</uri>
+      <name>/u/Maxwell10206</name>
+      <uri>https://old.reddit.com/user/Maxwell10206</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm pretty new to running LLMs locally so this may be a dumb question, but figured I'd ask! I'm using LM Studio and have left the system prompt field blank, but some of the responses seem to indicate that there is some kind of automatic system prompt that is included anyway.&lt;/p&gt; &lt;p&gt;For example, I started a completely blank chat with DeepSeek-R1-Distill-Qwen-14B-GGUF Q8_0 and wrote &amp;quot;You are a cat. Hello cat&amp;quot; and its thinking box started with &amp;quot;Alright, so I'm trying to figure out how to respond to someone who addressed me as &amp;quot;Hello cat.&amp;quot; They mentioned that I'm an AI developed in 2023 by DeepSeek, and they're curious about what I think when someone calls me a cat.&amp;quot;&lt;/p&gt; &lt;p&gt;Now obviously I didn't mention that they are an AI developed in 2023 by DeepSeek, is that's coming from some kind of system prompt that my prompt is wrapped in? And is there a way to see that or edit it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/internetpillows"&gt; /u/internetpillows &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a super simple way for anyone to quickly start fine tune training and testing LLMs on their local PC using the best tools available. Unsloth, Llama.cpp, Ollama, OpenWebUI all wrapped up into a Docker image. You can get started in as little as 7 steps. If anyone has time please try it out and give me feedback, the features are super limited, but the flow is there.&lt;/p&gt; &lt;p&gt;Try it out here!&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/MaxHastings/Kolo"&gt;https://github.com/MaxHastings/Kolo&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Maxwell10206"&gt; /u/Maxwell10206 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igb4ee/fine_tune_and_test_your_llm_in_a_few_simple_easy/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T22:25:49+00:00</published>
+    <published>2025-02-02T23:35:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1igcead</id>
+    <title>An open source alternative to OpenAI deep search?</title>
+    <updated>2025-02-03T00:36:19+00:00</updated>
+    <author>
+      <name>/u/Wonderful-Excuse4922</name>
+      <uri>https://old.reddit.com/user/Wonderful-Excuse4922</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I know the product has been out for 30 minutes, but I've been looking for a long time for a similar architecture to implement with Deepseek, for example. Are there any interesting projects dealing with this problem?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Wonderful-Excuse4922"&gt; /u/Wonderful-Excuse4922 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igcead/an_open_source_alternative_to_openai_deep_search/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igcead/an_open_source_alternative_to_openai_deep_search/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igcead/an_open_source_alternative_to_openai_deep_search/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-03T00:36:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1ifqagd</id>
@@ -164,17 +138,17 @@
     <published>2025-02-02T05:33:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ig7bm4</id>
-    <title>Higher Parameters with Lower Quant: Is It Better?</title>
-    <updated>2025-02-02T20:50:38+00:00</updated>
+    <id>t3_1ig9kd1</id>
+    <title>Is there a way to see or edit a local LLM's system prompt?</title>
+    <updated>2025-02-02T22:25:49+00:00</updated>
     <author>
-      <name>/u/TheMikeans</name>
-      <uri>https://old.reddit.com/user/TheMikeans</uri>
+      <name>/u/internetpillows</name>
+      <uri>https://old.reddit.com/user/internetpillows</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Introduction&lt;/h1&gt; &lt;p&gt;I was curious to explore whether increasing model parameters while using lower quantization would be worth it compared to running a smaller model with higher quantization. To investigate this, I tested two models on my machine:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek R1 Distill 7B Q5_K_M&lt;/li&gt; &lt;li&gt;DeepSeek R1 Distill 14B Q2_K&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I evaluated them based on logic questions, factual knowledge, and writing improvement tasks.&lt;/p&gt; &lt;h1&gt;Testing Methodology&lt;/h1&gt; &lt;p&gt;I used the following sets of questions and tasks:&lt;/p&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;A lily pad in a pond doubles in size every day. It takes 60 days for the lily pad to cover the entire pond. On which day is the pond half covered?&lt;/li&gt; &lt;li&gt;A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?&lt;/li&gt; &lt;li&gt;If it takes 5 machines 5 minutes to make 5 gadgets, how long would it take 100 machines to make 100 gadgets?&lt;/li&gt; &lt;li&gt;A rope ladder is hanging over the side of a ship, with the bottom rung just touching the water. Each rung is 30 cm apart, and the tide rises at a rate of 40 cm per hour. How many rungs will be underwater after 3 hours?&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Who is the Secretary-General of the United Nations as of 2023?&lt;/li&gt; &lt;li&gt;Which country hosted the 2020 Summer Olympics?&lt;/li&gt; &lt;li&gt;What is the chemical symbol for the element with the atomic number 26?&lt;/li&gt; &lt;li&gt;Who won the ACM Turing Award in 2022?&lt;/li&gt; &lt;li&gt;Who is the current Director-General of the World Health Organization (WHO)?&lt;/li&gt; &lt;li&gt;What is the only known human-made object visible from the Moon with the naked eye?&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Writing Tasks&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Write 10 sentences that end with the word “forever.”&lt;/li&gt; &lt;li&gt;Rewrite the following email to correct spelling and grammatical errors while improving overall professionalism:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Original Email:&lt;/p&gt; &lt;p&gt;Hey team,&lt;br /&gt; just wanted to give you an update on the prjects status. were behind schedule cuz of some unexpected issues that came up last week. so im gona need everyone to put in extra hours this week so we can catch up. also, make sure youre documenting all your work properly, weve been having some problems with missing info in the reports. if you have any questions or need help, dont hesitate to ask.&lt;/p&gt; &lt;p&gt;btw, the meeting with the client has been moved to friday at 3pm instead of thursday. pls make sure to update your calenders accordingly. its important that we all attend this meeting and be prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;thanks for all your hard work.&lt;/p&gt; &lt;p&gt;best,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;h1&gt;DeepSeek R1 Distill 7B Q5_K_M&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Size: 5.44GB&lt;/li&gt; &lt;li&gt;Speed: ~8.3 tokens/sec&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;p&gt;✅ 1 - PASS&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;/p&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;p&gt;❌ 1 - FAIL&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;br /&gt; ✅ 5 - PASS&lt;br /&gt; ❌ 6 - FAIL&lt;/p&gt; &lt;h1&gt;Writing Improvement&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;2/10 sentences correct&lt;/li&gt; &lt;li&gt;Response: A more professional rewrite of the email:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Rewritten Email:&lt;/p&gt; &lt;p&gt;Subject: Update on Project Status&lt;/p&gt; &lt;p&gt;Hi Team,&lt;br /&gt; I’m writing to provide an update on the project’s status. We are currently behind schedule due to some unexpected issues that arose last week. I’ll need everyone to work an extra hour this week to catch up. Please ensure that you're documenting all your work properly; we've been experiencing some problems with missing information in the reports.&lt;/p&gt; &lt;p&gt;If you have any questions or need assistance, feel free to ask.&lt;/p&gt; &lt;p&gt;Additionally, our scheduled meeting with the client has been rescheduled for Friday at 3 p.m., replacing our previous meeting on Thursday. Please make sure everyone attends the meeting and is prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;Thanks for your continued hard work!&lt;/p&gt; &lt;p&gt;Best regards,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;DeepSeek R1 Distill 14B Q2_K&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Size: 5.77GB&lt;/li&gt; &lt;li&gt;Speed: ~6 tokens/sec&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;p&gt;✅ 1 - PASS&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;/p&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;p&gt;❌ 1 - FAIL&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;br /&gt; ✅ 5 - PASS&lt;br /&gt; ❌ 6 - FAIL&lt;/p&gt; &lt;h1&gt;Writing Improvement&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;10/10 sentences correct&lt;/li&gt; &lt;li&gt;Response: Another professional rewrite of the email:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Revised Email:&lt;/p&gt; &lt;p&gt;Subject: Update on Project Status&lt;/p&gt; &lt;p&gt;Hey team,&lt;/p&gt; &lt;p&gt;Just wanted to give you an update on the projects' status. We're running a bit behind schedule due to some unexpected issues that came up last week. So, I'm going to need everyone's focus this week—please make sure to put in extra hours so we can catch up.&lt;/p&gt; &lt;p&gt;Also, please ensure you're documenting all your work properly; we've been having some problems with missing info in the reports. If you have any questions or need help, don't hesitate to ask.&lt;/p&gt; &lt;p&gt;BTW, the meeting with the client has been moved to Friday at 3pm instead of Thursday. Please make sure to update your calendars accordingly. It's important that we all attend this meeting and be prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;Thanks for all your hard work.&lt;/p&gt; &lt;p&gt;Best regards,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;Conclusion&lt;/h1&gt; &lt;p&gt;While the 14B model appears slightly better, the results were not overwhelmingly different from the 7B model in logic and factual performance (The reasoning seemed better in the 14B even when it was wrong, don't know how much that matters really).. However, the 14B model outperformed the 7B model in writing tasks.&lt;/p&gt; &lt;p&gt;That said, my tests may not have been the most rigorous or comprehensive. If you have any links to discussions, blog posts, or research that dive deeper into this topic, I'd love to check them out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheMikeans"&gt; /u/TheMikeans &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm pretty new to running LLMs locally so this may be a dumb question, but figured I'd ask! I'm using LM Studio and have left the system prompt field blank, but some of the responses seem to indicate that there is some kind of automatic system prompt that is included anyway.&lt;/p&gt; &lt;p&gt;For example, I started a completely blank chat with DeepSeek-R1-Distill-Qwen-14B-GGUF Q8_0 and wrote &amp;quot;You are a cat. Hello cat&amp;quot; and its thinking box started with &amp;quot;Alright, so I'm trying to figure out how to respond to someone who addressed me as &amp;quot;Hello cat.&amp;quot; They mentioned that I'm an AI developed in 2023 by DeepSeek, and they're curious about what I think when someone calls me a cat.&amp;quot;&lt;/p&gt; &lt;p&gt;Now obviously I didn't mention that they are an AI developed in 2023 by DeepSeek, is that's coming from some kind of system prompt that my prompt is wrapped in? And is there a way to see that or edit it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/internetpillows"&gt; /u/internetpillows &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig9kd1/is_there_a_way_to_see_or_edit_a_local_llms_system/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T20:50:38+00:00</published>
+    <published>2025-02-02T22:25:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1ig3m32</id>
@@ -188,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig3m32/mistral_small_3_through_openrouter_is_broken/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-02T18:17:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ig7bm4</id>
+    <title>Higher Parameters with Lower Quant: Is It Better?</title>
+    <updated>2025-02-02T20:50:38+00:00</updated>
+    <author>
+      <name>/u/TheMikeans</name>
+      <uri>https://old.reddit.com/user/TheMikeans</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Introduction&lt;/h1&gt; &lt;p&gt;I was curious to explore whether increasing model parameters while using lower quantization would be worth it compared to running a smaller model with higher quantization. To investigate this, I tested two models on my machine:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek R1 Distill 7B Q5_K_M&lt;/li&gt; &lt;li&gt;DeepSeek R1 Distill 14B Q2_K&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I evaluated them based on logic questions, factual knowledge, and writing improvement tasks.&lt;/p&gt; &lt;h1&gt;Testing Methodology&lt;/h1&gt; &lt;p&gt;I used the following sets of questions and tasks:&lt;/p&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;A lily pad in a pond doubles in size every day. It takes 60 days for the lily pad to cover the entire pond. On which day is the pond half covered?&lt;/li&gt; &lt;li&gt;A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?&lt;/li&gt; &lt;li&gt;If it takes 5 machines 5 minutes to make 5 gadgets, how long would it take 100 machines to make 100 gadgets?&lt;/li&gt; &lt;li&gt;A rope ladder is hanging over the side of a ship, with the bottom rung just touching the water. Each rung is 30 cm apart, and the tide rises at a rate of 40 cm per hour. How many rungs will be underwater after 3 hours?&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Who is the Secretary-General of the United Nations as of 2023?&lt;/li&gt; &lt;li&gt;Which country hosted the 2020 Summer Olympics?&lt;/li&gt; &lt;li&gt;What is the chemical symbol for the element with the atomic number 26?&lt;/li&gt; &lt;li&gt;Who won the ACM Turing Award in 2022?&lt;/li&gt; &lt;li&gt;Who is the current Director-General of the World Health Organization (WHO)?&lt;/li&gt; &lt;li&gt;What is the only known human-made object visible from the Moon with the naked eye?&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Writing Tasks&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Write 10 sentences that end with the word “forever.”&lt;/li&gt; &lt;li&gt;Rewrite the following email to correct spelling and grammatical errors while improving overall professionalism:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Original Email:&lt;/p&gt; &lt;p&gt;Hey team,&lt;br /&gt; just wanted to give you an update on the prjects status. were behind schedule cuz of some unexpected issues that came up last week. so im gona need everyone to put in extra hours this week so we can catch up. also, make sure youre documenting all your work properly, weve been having some problems with missing info in the reports. if you have any questions or need help, dont hesitate to ask.&lt;/p&gt; &lt;p&gt;btw, the meeting with the client has been moved to friday at 3pm instead of thursday. pls make sure to update your calenders accordingly. its important that we all attend this meeting and be prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;thanks for all your hard work.&lt;/p&gt; &lt;p&gt;best,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;h1&gt;DeepSeek R1 Distill 7B Q5_K_M&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Size: 5.44GB&lt;/li&gt; &lt;li&gt;Speed: ~8.3 tokens/sec&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;p&gt;✅ 1 - PASS&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;/p&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;p&gt;❌ 1 - FAIL&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;br /&gt; ✅ 5 - PASS&lt;br /&gt; ❌ 6 - FAIL&lt;/p&gt; &lt;h1&gt;Writing Improvement&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;2/10 sentences correct&lt;/li&gt; &lt;li&gt;Response: A more professional rewrite of the email:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Rewritten Email:&lt;/p&gt; &lt;p&gt;Subject: Update on Project Status&lt;/p&gt; &lt;p&gt;Hi Team,&lt;br /&gt; I’m writing to provide an update on the project’s status. We are currently behind schedule due to some unexpected issues that arose last week. I’ll need everyone to work an extra hour this week to catch up. Please ensure that you're documenting all your work properly; we've been experiencing some problems with missing information in the reports.&lt;/p&gt; &lt;p&gt;If you have any questions or need assistance, feel free to ask.&lt;/p&gt; &lt;p&gt;Additionally, our scheduled meeting with the client has been rescheduled for Friday at 3 p.m., replacing our previous meeting on Thursday. Please make sure everyone attends the meeting and is prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;Thanks for your continued hard work!&lt;/p&gt; &lt;p&gt;Best regards,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;DeepSeek R1 Distill 14B Q2_K&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Size: 5.77GB&lt;/li&gt; &lt;li&gt;Speed: ~6 tokens/sec&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Logic Questions&lt;/h1&gt; &lt;p&gt;✅ 1 - PASS&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;/p&gt; &lt;h1&gt;Factual Questions&lt;/h1&gt; &lt;p&gt;❌ 1 - FAIL&lt;br /&gt; ✅ 2 - PASS&lt;br /&gt; ✅ 3 - PASS&lt;br /&gt; ❌ 4 - FAIL&lt;br /&gt; ✅ 5 - PASS&lt;br /&gt; ❌ 6 - FAIL&lt;/p&gt; &lt;h1&gt;Writing Improvement&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;10/10 sentences correct&lt;/li&gt; &lt;li&gt;Response: Another professional rewrite of the email:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Revised Email:&lt;/p&gt; &lt;p&gt;Subject: Update on Project Status&lt;/p&gt; &lt;p&gt;Hey team,&lt;/p&gt; &lt;p&gt;Just wanted to give you an update on the projects' status. We're running a bit behind schedule due to some unexpected issues that came up last week. So, I'm going to need everyone's focus this week—please make sure to put in extra hours so we can catch up.&lt;/p&gt; &lt;p&gt;Also, please ensure you're documenting all your work properly; we've been having some problems with missing info in the reports. If you have any questions or need help, don't hesitate to ask.&lt;/p&gt; &lt;p&gt;BTW, the meeting with the client has been moved to Friday at 3pm instead of Thursday. Please make sure to update your calendars accordingly. It's important that we all attend this meeting and be prepared to discuss our progress and any roadblocks.&lt;/p&gt; &lt;p&gt;Thanks for all your hard work.&lt;/p&gt; &lt;p&gt;Best regards,&lt;br /&gt; John&lt;/p&gt; &lt;h1&gt;Conclusion&lt;/h1&gt; &lt;p&gt;While the 14B model appears slightly better, the results were not overwhelmingly different from the 7B model in logic and factual performance (The reasoning seemed better in the 14B even when it was wrong, don't know how much that matters really).. However, the 14B model outperformed the 7B model in writing tasks.&lt;/p&gt; &lt;p&gt;That said, my tests may not have been the most rigorous or comprehensive. If you have any links to discussions, blog posts, or research that dive deeper into this topic, I'd love to check them out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheMikeans"&gt; /u/TheMikeans &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig7bm4/higher_parameters_with_lower_quant_is_it_better/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-02T20:50:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1ifyu5b</id>
@@ -216,19 +203,6 @@
     <published>2025-02-02T01:36:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ig4g1u</id>
-    <title>Medtator, local Llama research medical helper</title>
-    <updated>2025-02-02T18:51:52+00:00</updated>
-    <author>
-      <name>/u/RaiRamz</name>
-      <uri>https://old.reddit.com/user/RaiRamz</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"&gt; &lt;img alt="Medtator, local Llama research medical helper" src="https://preview.redd.it/g7qcnt3fvrge1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a0da08cfc3f47f01ce1481a781c7b65ab51fcc7f" title="Medtator, local Llama research medical helper" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Built a Medical AI Chatbot Using Llama 3 and PubMed&lt;/p&gt; &lt;p&gt;Hey everyone, I’ve been working on a project that combines Llama 3 with PubMed to create an AI-powered medical research assistant. Meet Medtator—a chatbot that retrieves, summarizes, and explains medical literature from PubMed in an accessible way.&lt;/p&gt; &lt;p&gt;How It Works:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;User asks a medical question in natural language.&lt;/li&gt; &lt;li&gt;Keyword extraction (via a transformer-based pipeline) identifies relevant biomedical terms. &lt;/li&gt; &lt;li&gt;PubTator API fetches PubMed articles, ranking the most relevant studies.&lt;/li&gt; &lt;li&gt;Llama 3 generates concise answers using the retrieved context.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Why?&lt;/p&gt; &lt;p&gt;Searching PubMed is a pain. If you’re a medical student, researcher, or just a nerd like me, you know how frustrating it is to sift through thousands of articles. Medtator helps find relevant papers quickly and provides AI-assisted summaries to save time.&lt;/p&gt; &lt;p&gt;Challenges &amp;amp; Learnings: • Keyword extraction is tricky—LLMs sometimes miss the right biomedical terms. • Context window limitations force careful article selection to avoid hallucination. • Fine-tuning vs. prompt engineering—so far, smart prompting works surprisingly well.&lt;/p&gt; &lt;p&gt;Still improving it, but I’d love to hear your thoughts on optimizing Llama 3 for retrieval-augmented generation (RAG) tasks. Would love to hear any feedback/recommendations:). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RaiRamz"&gt; /u/RaiRamz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/g7qcnt3fvrge1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T18:51:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ifyzvv</id>
     <title>Mistral Small 3 24b is the first model under 70b I’ve seen pass the “apple” test (even using Q4).</title>
     <updated>2025-02-02T14:59:50+00:00</updated>
@@ -240,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifyzvv/mistral_small_3_24b_is_the_first_model_under_70b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-02T14:59:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ig4g1u</id>
+    <title>Medtator, local Llama research medical helper</title>
+    <updated>2025-02-02T18:51:52+00:00</updated>
+    <author>
+      <name>/u/RaiRamz</name>
+      <uri>https://old.reddit.com/user/RaiRamz</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"&gt; &lt;img alt="Medtator, local Llama research medical helper" src="https://preview.redd.it/g7qcnt3fvrge1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a0da08cfc3f47f01ce1481a781c7b65ab51fcc7f" title="Medtator, local Llama research medical helper" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Built a Medical AI Chatbot Using Llama 3 and PubMed&lt;/p&gt; &lt;p&gt;Hey everyone, I’ve been working on a project that combines Llama 3 with PubMed to create an AI-powered medical research assistant. Meet Medtator—a chatbot that retrieves, summarizes, and explains medical literature from PubMed in an accessible way.&lt;/p&gt; &lt;p&gt;How It Works:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;User asks a medical question in natural language.&lt;/li&gt; &lt;li&gt;Keyword extraction (via a transformer-based pipeline) identifies relevant biomedical terms. &lt;/li&gt; &lt;li&gt;PubTator API fetches PubMed articles, ranking the most relevant studies.&lt;/li&gt; &lt;li&gt;Llama 3 generates concise answers using the retrieved context.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Why?&lt;/p&gt; &lt;p&gt;Searching PubMed is a pain. If you’re a medical student, researcher, or just a nerd like me, you know how frustrating it is to sift through thousands of articles. Medtator helps find relevant papers quickly and provides AI-assisted summaries to save time.&lt;/p&gt; &lt;p&gt;Challenges &amp;amp; Learnings: • Keyword extraction is tricky—LLMs sometimes miss the right biomedical terms. • Context window limitations force careful article selection to avoid hallucination. • Fine-tuning vs. prompt engineering—so far, smart prompting works surprisingly well.&lt;/p&gt; &lt;p&gt;Still improving it, but I’d love to hear your thoughts on optimizing Llama 3 for retrieval-augmented generation (RAG) tasks. Would love to hear any feedback/recommendations:). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RaiRamz"&gt; /u/RaiRamz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/g7qcnt3fvrge1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig4g1u/medtator_local_llama_research_medical_helper/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-02T18:51:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1ifw36r</id>
@@ -294,6 +281,19 @@
     <published>2025-02-02T21:55:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1igc6r0</id>
+    <title>20 yrs in jail or $1 million for downloading Chinese models proposed at congress</title>
+    <updated>2025-02-03T00:26:00+00:00</updated>
+    <author>
+      <name>/u/segmond</name>
+      <uri>https://old.reddit.com/user/segmond</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.hawley.senate.gov/wp-content/uploads/2025/01/Hawley-Decoupling-Americas-Artificial-Intelligence-Capabilities-from-China-Act.pdf"&gt;https://www.hawley.senate.gov/wp-content/uploads/2025/01/Hawley-Decoupling-Americas-Artificial-Intelligence-Capabilities-from-China-Act.pdf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Seriously stop giving your money to these anti open companies and encourage everyone and anyone you know to do the same, don't let your company use their products. Anthrophic and OpenAI are the worse. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/segmond"&gt; /u/segmond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igc6r0/20_yrs_in_jail_or_1_million_for_downloading/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igc6r0/20_yrs_in_jail_or_1_million_for_downloading/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igc6r0/20_yrs_in_jail_or_1_million_for_downloading/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-03T00:26:00+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ig2cm2</id>
     <title>mistral-small-24b-instruct-2501 is simply the best model ever made.</title>
     <updated>2025-02-02T17:25:29+00:00</updated>
@@ -307,19 +307,6 @@
     <published>2025-02-02T17:25:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ig6e6t</id>
-    <title>DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt.</title>
-    <updated>2025-02-02T20:12:17+00:00</updated>
-    <author>
-      <name>/u/Qaxar</name>
-      <uri>https://old.reddit.com/user/Qaxar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"&gt; &lt;img alt="DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt." src="https://external-preview.redd.it/Er7i7V1ka8BO-MpGkuLs0Jmvu0-6GTVfn9JqY2PTKfM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fd56ea2fa742541be1366b6615889d6a52f560b3" title="DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We knew R1 was good, but not that good. All the cries of CCP censorship are meaningless when it's trivial to bypass its guard rails.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Qaxar"&gt; /u/Qaxar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://x.com/rohanpaul_ai/status/1886025249273339961?t=Wpp2kGJKVSZtSAOmTJjh0g&amp;amp;s=19"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-02T20:12:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ify8f9</id>
     <title>How national security advisors evaluate tech companies</title>
     <updated>2025-02-02T14:22:33+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ify8f9/how_national_security_advisors_evaluate_tech/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-02T14:22:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ig6e6t</id>
+    <title>DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt.</title>
+    <updated>2025-02-02T20:12:17+00:00</updated>
+    <author>
+      <name>/u/Qaxar</name>
+      <uri>https://old.reddit.com/user/Qaxar</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"&gt; &lt;img alt="DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt." src="https://external-preview.redd.it/Er7i7V1ka8BO-MpGkuLs0Jmvu0-6GTVfn9JqY2PTKfM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fd56ea2fa742541be1366b6615889d6a52f560b3" title="DeepSeek-R1 fails every safety test. It exhibits a 100% attack success rate, meaning it failed to block a single harmful prompt." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We knew R1 was good, but not that good. All the cries of CCP censorship are meaningless when it's trivial to bypass its guard rails.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Qaxar"&gt; /u/Qaxar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://x.com/rohanpaul_ai/status/1886025249273339961?t=Wpp2kGJKVSZtSAOmTJjh0g&amp;amp;s=19"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig6e6t/deepseekr1_fails_every_safety_test_it_exhibits_a/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-02T20:12:17+00:00</published>
   </entry>
 </feed>
