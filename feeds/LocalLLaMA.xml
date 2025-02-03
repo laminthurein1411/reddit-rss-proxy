@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-03T10:06:22+00:00</updated>
+  <updated>2025-02-03T10:24:02+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1igihdm</id>
-    <title>DeepSeek-R1 HR Bot Turning Policy Responses Lengthier and adding Context itself – How to Fix It?</title>
-    <updated>2025-02-03T06:01:47+00:00</updated>
+    <id>t3_1ig3m32</id>
+    <title>Mistral small 3 through Openrouter is broken, while it works great with the exact same prompts through other providers and the official API</title>
+    <updated>2025-02-02T18:17:46+00:00</updated>
     <author>
-      <name>/u/samy_here</name>
-      <uri>https://old.reddit.com/user/samy_here</uri>
+      <name>/u/HIVVIH</name>
+      <uri>https://old.reddit.com/user/HIVVIH</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First time trying to build a chatbot with RAG, I tried fixing it with ChatGPT, the problem is that Deepseek add more context to it and and not limiting to documents&lt;/p&gt; &lt;p&gt;for example if I ask &amp;quot;What is the notice period in the company?&lt;/p&gt; &lt;pre&gt;&lt;code&gt; Sure! The notice period in our company is 30 days. It must be served before an employee leaves the company. This notice period ensures everyone is accounted for and prevents unnecessary termination. It's an important part of maintaining a positive work environment. &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;its adding to extra content.&lt;/p&gt; &lt;p&gt;import torch from transformers import AutoModelForCausalLM, AutoTokenizer from sentence_transformers import SentenceTransformer from langchain_community.embeddings import HuggingFaceEmbeddings from langchain_community.vectorstores import Chroma from langchain.schema import Document import chromadb&lt;/p&gt; &lt;h1&gt;✅ Load Local DeepSeek Model&lt;/h1&gt; &lt;p&gt;DEVICE = &amp;quot;cuda&amp;quot; if torch.cuda.is_available() else &amp;quot;cpu&amp;quot; MODEL_NAME = &amp;quot;deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B&amp;quot; tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME) model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)&lt;/p&gt; &lt;h1&gt;✅ Load Embedding Model for Retrieval&lt;/h1&gt; &lt;p&gt;embedder = SentenceTransformer(&amp;quot;BAAI/bge-small-en-v1.5&amp;quot;) # Best for retrieval&lt;/p&gt; &lt;h1&gt;✅ Set Up ChromaDB for Local Policy Storage&lt;/h1&gt; &lt;p&gt;chroma_client = chromadb.PersistentClient(path=&amp;quot;./chroma_db&amp;quot;) chroma_collection = chroma_client.get_or_create_collection(name=&amp;quot;hr_policies&amp;quot;)&lt;/p&gt; &lt;p&gt;class HRAssistant: def &lt;strong&gt;init&lt;/strong&gt;(self): self.db = Chroma(persist_directory=&amp;quot;./chroma_db&amp;quot;, embedding_function=HuggingFaceEmbeddings(model_name=&amp;quot;all-MiniLM-L6-v2&amp;quot;))&lt;/p&gt; &lt;pre&gt;&lt;code&gt;def add_policies(self, policies): &amp;quot;&amp;quot;&amp;quot;Adds HR policies to the database&amp;quot;&amp;quot;&amp;quot; documents = [Document(page_content=p) for p in policies] self.db.add_documents(documents) def retrieve_best_policy(self, query): &amp;quot;&amp;quot;&amp;quot;Finds the best policy match using embeddings (RAG Step 1).&amp;quot;&amp;quot;&amp;quot; docs = self.db.similarity_search(query, k=1) if not docs: return None return docs[0].page_content def generate_response(self, query): &amp;quot;&amp;quot;&amp;quot;Retrieves a policy and generates a conversational response using DeepSeek-R1.&amp;quot;&amp;quot;&amp;quot; best_policy = self.retrieve_best_policy(query) if not best_policy: return &amp;quot;I'm sorry, I couldn't find a specific policy for your request. Let me know if you need help with something else!&amp;quot; # ✅ STRICT INSTRUCTIONS: NO EXTRA INTERPRETATIONS input_text = f&amp;quot;&amp;quot;&amp;quot; You are a friendly HR assistant. Your job is to answer employee questions in a **conversational, warm, and engaging** way, based only on the given HR policy. ### REFERENCE INFORMATION ### {best_policy} ### USER QUESTION ### {query} ### INSTRUCTIONS ### - **Only rephrase the policy that's it, nothing else** - **Dont add anything other words or sentences** - **Rephrase the policy naturally in a conversational tone, without altering its meaning.** - **Ensure it is clear that employees must serve the notice period before leaving—do NOT add extra context.** - **Do NOT explain, summarize, or add reasoning.** - **Do NOT justify or explain why the policy exists.** - **Do NOT change key words that define employee obligations.** - **Do NOT add phrases like 'ensuring everyone is accounted for' or 'prevents unnecessary termination.'** - **Do NOT assume why employees are leaving or their personal situation.** - **Strictly return the policy in a friendly, conversational way.** - **Do NOT add extra explanations, advice, or commentary.** - **Do NOT generate policies that do not exist in the system.** - **Do NOT infer missing details or speculate on policy intent.** - **If a request involves sensitive information, return: &amp;quot;I'm sorry, but I can’t provide that information.&amp;quot;** - **If the policy request is unclear, ask for clarification instead of assuming.** - **If multiple policies apply, return the most relevant one.** - **If a policy is outdated or under revision, return: &amp;quot;This policy is currently under review. Please check back later.&amp;quot;** - **Maintain required action words such as 'must serve' or 'before leaving'.** - **If the policy does not match, return: &amp;quot;I'm sorry, I couldn't find a specific policy for your request.&amp;quot;** ### ANSWER: &amp;quot;&amp;quot;&amp;quot; # ✅ Generate Response Using DeepSeek-R1 inputs = tokenizer(input_text, return_tensors=&amp;quot;pt&amp;quot;, padding=True).to(DEVICE) output = model.generate( **inputs, max_new_tokens=20, # 🔹 Keeps responses concise temperature=0.1, # 🔹 Balances variation without adding assumptions top_p=0.8, # 🔹 Narrows word selection top_k=30, # 🔹 Limits randomness do_sample=True, # 🔹 Ensures conversational tone pad_token_id=tokenizer.eos_token_id ) response_text = tokenizer.decode(output[0], skip_special_tokens=True).strip() return response_text &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == &amp;quot;&lt;strong&gt;main&lt;/strong&gt;&amp;quot;: assistant = HRAssistant()&lt;/p&gt; &lt;pre&gt;&lt;code&gt;# ✅ Add Policies to Vector DB (Run Once) policies = [ &amp;quot;Leave Policy: Employees are entitled to 12 paid leaves per year. Any additional leave will be considered unpaid leave.&amp;quot;, &amp;quot;Resignation Notice Period: Employees must serve a notice period of 30 days before leaving the company.&amp;quot;, &amp;quot;Paternity Leave: Male employees are entitled to 10 days of paid paternity leave.&amp;quot; ] assistant.add_policies(policies) # ✅ Query the RAG System user_query = input(&amp;quot;Ask about HR policies: &amp;quot;) print(assistant.generate_response(user_query)) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Is this a best approach, or I need to tweak this code. Please help me out with this. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/samy_here"&gt; /u/samy_here &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igihdm/deepseekr1_hr_bot_turning_policy_responses/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igihdm/deepseekr1_hr_bot_turning_policy_responses/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igihdm/deepseekr1_hr_bot_turning_policy_responses/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig3m32/mistral_small_3_through_openrouter_is_broken/"&gt; &lt;img alt="Mistral small 3 through Openrouter is broken, while it works great with the exact same prompts through other providers and the official API" src="https://preview.redd.it/mwax9fnbprge1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7e20eb50542a043d90fbbd09b00d1b8f8ffea5e4" title="Mistral small 3 through Openrouter is broken, while it works great with the exact same prompts through other providers and the official API" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HIVVIH"&gt; /u/HIVVIH &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/mwax9fnbprge1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ig3m32/mistral_small_3_through_openrouter_is_broken/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ig3m32/mistral_small_3_through_openrouter_is_broken/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-03T06:01:47+00:00</published>
+    <published>2025-02-02T18:17:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1ifyu5b</id>
@@ -125,19 +125,6 @@
     <published>2025-02-02T07:48:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1igiufi</id>
-    <title>Morning Radio - Locally Generated Personal Morning Broadcast</title>
-    <updated>2025-02-03T06:25:14+00:00</updated>
-    <author>
-      <name>/u/wuduzodemu</name>
-      <uri>https://old.reddit.com/user/wuduzodemu</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"&gt; &lt;img alt="Morning Radio - Locally Generated Personal Morning Broadcast" src="https://external-preview.redd.it/nm0MbB12ySzfO4ubcdzXCPER80VcIu9Qwn1HsmfJdUo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=86dfe57958b48ede90588fe692559b9bc0184778" title="Morning Radio - Locally Generated Personal Morning Broadcast" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/wuduzodemu"&gt; /u/wuduzodemu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/smy20011/MorningRadio"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-03T06:25:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ifw36r</id>
     <title>R1 is cool, but Mistral 3 Small is the boring workhorse I’m actually excited to fine-tune and deploy</title>
     <updated>2025-02-02T12:21:07+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ifw36r/r1_is_cool_but_mistral_3_small_is_the_boring/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-02T12:21:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1igiufi</id>
+    <title>Morning Radio - Locally Generated Personal Morning Broadcast</title>
+    <updated>2025-02-03T06:25:14+00:00</updated>
+    <author>
+      <name>/u/wuduzodemu</name>
+      <uri>https://old.reddit.com/user/wuduzodemu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"&gt; &lt;img alt="Morning Radio - Locally Generated Personal Morning Broadcast" src="https://external-preview.redd.it/nm0MbB12ySzfO4ubcdzXCPER80VcIu9Qwn1HsmfJdUo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=86dfe57958b48ede90588fe692559b9bc0184778" title="Morning Radio - Locally Generated Personal Morning Broadcast" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/wuduzodemu"&gt; /u/wuduzodemu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/smy20011/MorningRadio"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1igiufi/morning_radio_locally_generated_personal_morning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-03T06:25:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1ig7fwk</id>
