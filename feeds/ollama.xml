@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-05T19:48:57+00:00</updated>
+  <updated>2025-02-05T20:06:48+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1ihzvrd</id>
-    <title>Deepseek benchmarks</title>
-    <updated>2025-02-05T02:39:54+00:00</updated>
-    <author>
-      <name>/u/darkgamer_nw</name>
-      <uri>https://old.reddit.com/user/darkgamer_nw</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Where can I find benchmarks comparing the performance of deepseek-r1 8b with llama with a similar number of parameters?&lt;/p&gt; &lt;p&gt;I cannot find a page with benchmarks on recent models&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkgamer_nw"&gt; /u/darkgamer_nw &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ihzvrd/deepseek_benchmarks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ihzvrd/deepseek_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ihzvrd/deepseek_benchmarks/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-05T02:39:54+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ii8af6</id>
     <title>Any help for deepseek r1:70b</title>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1ii11dz/deepseek_r1_15b_thinking_about_rose_flower/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-05T03:39:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iijdrc</id>
+    <title>num_ctx parameter does not work</title>
+    <updated>2025-02-05T20:05:17+00:00</updated>
+    <author>
+      <name>/u/Captain21_aj</name>
+      <uri>https://old.reddit.com/user/Captain21_aj</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I tried running deepseek-r1:32b but no matter the context length (above 2048) i keep getting input truncate warning with the &lt;code&gt;n_ctx&lt;/code&gt; value stuck to &lt;code&gt;2048&lt;/code&gt;&lt;/p&gt; &lt;p&gt;LLM server log:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llm_load_print_meta: general.name = DeepSeek R1 Distill Qwen 32B llm_load_print_meta: BOS token = 151646 '&amp;lt;｜begin▁of▁sentence｜&amp;gt;' llm_load_print_meta: EOS token = 151643 '&amp;lt;｜end▁of▁sentence ｜&amp;gt;' llm_load_print_meta: PAD token = 151643 '&amp;lt;｜end▁of▁sentence ｜&amp;gt;' llm_load_print_meta: LF token = 148848 'ÄĬ' llm_load_print_meta: EOG token = 151643 '&amp;lt;｜end▁of▁sentence ｜&amp;gt;' llm_load_print_meta: max token length = 256 ggml_cuda_init: GGML_CUDA_FORCE_MMQ: no ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no ggml_cuda_init: found 1 CUDA devices: Device 0: NVIDIA GeForce RTX 3090 Ti, compute capability 8.6, VMM: yes llm_load_tensors: ggml ctx size = 0.68 MiB llm_load_tensors: offloading 49 repeating layers to GPU llm_load_tensors: offloaded 49/65 layers to GPU llm_load_tensors: CUDA_Host buffer size = 5312.13 MiB llm_load_tensors: CUDA0 buffer size = 13613.88 MiB llama_new_context_with_model: n_ctx = 32000 llama_new_context_with_model: n_batch = 512 llama_new_context_with_model: n_ubatch = 512 llama_new_context_with_model: flash_attn = 0 llama_new_context_with_model: freq_base = 1000000.0 llama_new_context_with_model: freq_scale = 1 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;LLM request log:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;INFO [update_slots] input truncated | n_ctx=2048 n_erase=6660 n_keep=4 n_left=2044 n_shift=1022 tid=&amp;quot;140586800865280&amp;quot; timestamp=1738784475 INFO [update_slots] input truncated | n_ctx=2048 n_erase=3299 n_keep=4 n_left=2044 n_shift=1022 tid=&amp;quot;140586800865280&amp;quot; timestamp=1738784485 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;It seems that this issue has been raised since July last year on this &lt;a href="https://github.com/ollama/ollama/issues/5661"&gt;GitHub Issue&lt;/a&gt;. From what I experienced I feel that the model is actually running high context length but the warning still persist, Is there any way to overcome this? Running on arch linux.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Captain21_aj"&gt; /u/Captain21_aj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iijdrc/num_ctx_parameter_does_not_work/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iijdrc/num_ctx_parameter_does_not_work/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1iijdrc/num_ctx_parameter_does_not_work/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-05T20:05:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1ii6zut</id>
