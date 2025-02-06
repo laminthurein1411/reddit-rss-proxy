@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-06T13:48:52+00:00</updated>
+  <updated>2025-02-06T14:05:58+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1iip9ss</id>
-    <title>why is macos reporting 1gb ram used instead of +5?</title>
-    <updated>2025-02-06T00:15:42+00:00</updated>
-    <author>
-      <name>/u/Avansay</name>
-      <uri>https://old.reddit.com/user/Avansay</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running llama3.1:8b q4 on my m3max. activity monitory says it's using 1ish gb of ram. &lt;/p&gt; &lt;p&gt;the model page at ollama says this model is 4.9 gb.&lt;/p&gt; &lt;p&gt;Can someone explain why it's not showing at least the size of the model as what's used by ram?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Avansay"&gt; /u/Avansay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iip9ss/why_is_macos_reporting_1gb_ram_used_instead_of_5/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iip9ss/why_is_macos_reporting_1gb_ram_used_instead_of_5/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1iip9ss/why_is_macos_reporting_1gb_ram_used_instead_of_5/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-06T00:15:42+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iipuqg</id>
     <title>Variables to force more GPU usage?</title>
@@ -190,6 +177,19 @@
     <published>2025-02-06T13:37:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iiwunj</id>
+    <title>Hosting ollama on a Proxmox LXC Container with GPU Passthrough.</title>
+    <updated>2025-02-06T07:09:34+00:00</updated>
+    <author>
+      <name>/u/ninja-con-gafas</name>
+      <uri>https://old.reddit.com/user/ninja-con-gafas</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently hosted the DeepSeek-R1 14b model on a LXC container. I am sharing some key lessons that I learnt during the process. You can find the original article &lt;a href="https://www.linkedin.com/pulse/lessons-learned-setting-up-lxc-container-proxmox-gpu-atharv-darekar-s1xef/?trackingId=UP4SkEJNtMEehqiXXIxzqw%3D%3D"&gt;hear&lt;/a&gt;. I have used AI to compose my thoughts.&lt;/p&gt; &lt;h1&gt;1. Preparation is Everything&lt;/h1&gt; &lt;p&gt;Before diving into the setup, it’s essential to refer to a well-documented guide or tutorial to avoid potential pitfalls. I found the following resources particularly useful:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Video Tutorial:&lt;/strong&gt; &lt;a href="https://youtu.be/lNGNRIJ708k?feature=shared"&gt;Proxmox LXC GPU Passthrough&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Guide:&lt;/strong&gt; &lt;a href="https://digitalspaceport.com/proxmox-lxc-gpu-passthru-setup-guide/"&gt;Digital Spaceport’s Setup Guide&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;2. Get the Right Drivers&lt;/h1&gt; &lt;p&gt;Ensure you download and install the correct and latest GPU drivers for both the host and the container. Any version mismatch can cause frustrating errors down the line.&lt;/p&gt; &lt;h1&gt;3. Beware of Dynamic Device Numbers&lt;/h1&gt; &lt;p&gt;Running the command `ls -al /dev/nvidia*` will give you the major and minor device numbers, but these numbers are not static—they can change after a system reboot. To mitigate this issue, list all known device numbers in the container’s configuration file. This way, the container can automatically pick the relevant one without requiring manual intervention post-reboot.&lt;/p&gt; &lt;h1&gt;4. Keep Host and Container Drivers in Sync&lt;/h1&gt; &lt;p&gt;The host and container must have &lt;strong&gt;identical driver versions&lt;/strong&gt;. If you’re installing CUDA, be sure to uncheck the bundled driver option—installing it could cause a version mismatch error in the container.&lt;/p&gt; &lt;h1&gt;5. Host Changes Can Break the Container&lt;/h1&gt; &lt;p&gt;Since an LXC container shares the kernel with the host, any updates to the host (such as a driver update or kernel upgrade) may break the container. Also, use the -dkms flag when installing drivers on the host (ensure dkms is installed first) and when installing drivers inside the container, use the --no-kernel-modules option to prevent conflicts.&lt;/p&gt; &lt;h1&gt;6. Backup, Backup, Backup...!&lt;/h1&gt; &lt;p&gt;Before making any major system changes—like installing new packages, updating drivers, or modifying kernel modules—&lt;strong&gt;create a system backup&lt;/strong&gt;. Having a rollback option can be a lifesaver if something goes wrong.&lt;/p&gt; &lt;h1&gt;Final Thoughts&lt;/h1&gt; &lt;p&gt;Setting up an LXC container on Proxmox with GPU passthrough requires attention to detail, but with proper planning, the process becomes much smoother. If you're tackling this for the first time, take it slow, document your steps, and always have a backup ready.&lt;/p&gt; &lt;p&gt;Have you encountered any challenges while setting up GPU passthrough in LXC? I’d love to hear about your experiences and solutions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninja-con-gafas"&gt; /u/ninja-con-gafas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-06T07:09:34+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iihpxs</id>
     <title>Which small models are better than the original ChatGPT (based on GPT 3.5 released in November 2022) ?</title>
     <updated>2025-02-05T18:59:06+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-02-06T03:43:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iiwunj</id>
-    <title>Hosting ollama on a Proxmox LXC Container with GPU Passthrough.</title>
-    <updated>2025-02-06T07:09:34+00:00</updated>
-    <author>
-      <name>/u/ninja-con-gafas</name>
-      <uri>https://old.reddit.com/user/ninja-con-gafas</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently hosted the DeepSeek-R1 14b model on a LXC container. I am sharing some key lessons that I learnt during the process. You can find the original article &lt;a href="https://www.linkedin.com/pulse/lessons-learned-setting-up-lxc-container-proxmox-gpu-atharv-darekar-s1xef/?trackingId=UP4SkEJNtMEehqiXXIxzqw%3D%3D"&gt;hear&lt;/a&gt;. I have used AI to compose my thoughts.&lt;/p&gt; &lt;h1&gt;1. Preparation is Everything&lt;/h1&gt; &lt;p&gt;Before diving into the setup, it’s essential to refer to a well-documented guide or tutorial to avoid potential pitfalls. I found the following resources particularly useful:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Video Tutorial:&lt;/strong&gt; &lt;a href="https://youtu.be/lNGNRIJ708k?feature=shared"&gt;Proxmox LXC GPU Passthrough&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Guide:&lt;/strong&gt; &lt;a href="https://digitalspaceport.com/proxmox-lxc-gpu-passthru-setup-guide/"&gt;Digital Spaceport’s Setup Guide&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;2. Get the Right Drivers&lt;/h1&gt; &lt;p&gt;Ensure you download and install the correct and latest GPU drivers for both the host and the container. Any version mismatch can cause frustrating errors down the line.&lt;/p&gt; &lt;h1&gt;3. Beware of Dynamic Device Numbers&lt;/h1&gt; &lt;p&gt;Running the command `ls -al /dev/nvidia*` will give you the major and minor device numbers, but these numbers are not static—they can change after a system reboot. To mitigate this issue, list all known device numbers in the container’s configuration file. This way, the container can automatically pick the relevant one without requiring manual intervention post-reboot.&lt;/p&gt; &lt;h1&gt;4. Keep Host and Container Drivers in Sync&lt;/h1&gt; &lt;p&gt;The host and container must have &lt;strong&gt;identical driver versions&lt;/strong&gt;. If you’re installing CUDA, be sure to uncheck the bundled driver option—installing it could cause a version mismatch error in the container.&lt;/p&gt; &lt;h1&gt;5. Host Changes Can Break the Container&lt;/h1&gt; &lt;p&gt;Since an LXC container shares the kernel with the host, any updates to the host (such as a driver update or kernel upgrade) may break the container. Also, use the -dkms flag when installing drivers on the host (ensure dkms is installed first) and when installing drivers inside the container, use the --no-kernel-modules option to prevent conflicts.&lt;/p&gt; &lt;h1&gt;6. Backup, Backup, Backup...!&lt;/h1&gt; &lt;p&gt;Before making any major system changes—like installing new packages, updating drivers, or modifying kernel modules—&lt;strong&gt;create a system backup&lt;/strong&gt;. Having a rollback option can be a lifesaver if something goes wrong.&lt;/p&gt; &lt;h1&gt;Final Thoughts&lt;/h1&gt; &lt;p&gt;Setting up an LXC container on Proxmox with GPU passthrough requires attention to detail, but with proper planning, the process becomes much smoother. If you're tackling this for the first time, take it slow, document your steps, and always have a backup ready.&lt;/p&gt; &lt;p&gt;Have you encountered any challenges while setting up GPU passthrough in LXC? I’d love to hear about your experiences and solutions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninja-con-gafas"&gt; /u/ninja-con-gafas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-06T07:09:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ij2iry</id>
     <title>What am I missing about DeepSeek? I asked it to tell me a knock knock joke...</title>
     <updated>2025-02-06T13:28:18+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/ollama/comments/1ij23pm/can_a_malicious_model_execute_code/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-06T13:07:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ij345i</id>
+    <title>Can anyone help me? i really don't understand what i'm doing wrong.</title>
+    <updated>2025-02-06T13:57:13+00:00</updated>
+    <author>
+      <name>/u/RevolutionaryBus4545</name>
+      <uri>https://old.reddit.com/user/RevolutionaryBus4545</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1ij345i/can_anyone_help_me_i_really_dont_understand_what/"&gt; &lt;img alt="Can anyone help me? i really don't understand what i'm doing wrong." src="https://preview.redd.it/gurn3vbgyihe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=81c1c17805ce018b0fc08afcf7535c8018e411f7" title="Can anyone help me? i really don't understand what i'm doing wrong." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RevolutionaryBus4545"&gt; /u/RevolutionaryBus4545 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/gurn3vbgyihe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij345i/can_anyone_help_me_i_really_dont_understand_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1ij345i/can_anyone_help_me_i_really_dont_understand_what/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-06T13:57:13+00:00</published>
   </entry>
 </feed>
