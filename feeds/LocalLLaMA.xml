@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-06T19:21:16+00:00</updated>
+  <updated>2025-02-06T19:34:25+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iikhg3</id>
-    <title>I found a way to speed up CPU based LLM inference using a HNSW index on the output embeddings</title>
-    <updated>2025-02-05T20:50:51+00:00</updated>
-    <author>
-      <name>/u/martinloretz</name>
-      <uri>https://old.reddit.com/user/martinloretz</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;To get the next token from an LLM, we compute the probabilities for each individual token in the LLM's vocabulary by multiplying the last hidden state with the output embedding matrix. This matrix is massive, accounting for up to 20% of the total parameters in small multilingual LLMs. &lt;/p&gt; &lt;p&gt;When sampling the next token with top-k sampling, we're only sampling from the 40 most probable tokens out of 128,256 (for Llama 3.2 models). By using an HNSW vector index, we can retrieve these 40 most probable tokens directly through an approximate nearest neighbor search over the output embeddings, avoiding the full matrix multiplication with the output embeddings. &lt;/p&gt; &lt;p&gt;This reduces memory accesses and computation, resulting in up to 28% faster CPU-based inference for Llama 2.1 1B on mid-range laptops.&lt;/p&gt; &lt;h3&gt;For more details, read the full blog post on &lt;a href="https://martinloretz.com/blog/vector-index-cpu/"&gt;martinloretz.com/blog/vector-index-cpu/&lt;/a&gt;&lt;/h3&gt; &lt;h2&gt;Benchmarks&lt;/h2&gt; &lt;p&gt;&lt;code&gt;llama-bench&lt;/code&gt; for Llama 1B F16 (Ubuntu = Intel® Core™ i7-10750H x 12, 2 x 16GiB DDR4 2933 MHz, MacBook = MacBook Pro 16&amp;quot; M4 Pro, vec = vector index, MM = matrix multiplication (reference)):&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;model&lt;/th&gt; &lt;th align="right"&gt;threads&lt;/th&gt; &lt;th align="right"&gt;test&lt;/th&gt; &lt;th align="right"&gt;Vec t/s&lt;/th&gt; &lt;th align="right"&gt;MM t/s&lt;/th&gt; &lt;th align="right"&gt;Speedup&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Ubuntu&lt;/td&gt; &lt;td align="right"&gt;1&lt;/td&gt; &lt;td align="right"&gt;tg256&lt;/td&gt; &lt;td align="right"&gt;5.99 ± 0.05&lt;/td&gt; &lt;td align="right"&gt;4.73 ± 0.04&lt;/td&gt; &lt;td align="right"&gt;&lt;strong&gt;1.27&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Ubuntu&lt;/td&gt; &lt;td align="right"&gt;6&lt;/td&gt; &lt;td align="right"&gt;tg256&lt;/td&gt; &lt;td align="right"&gt;12.51 ± 0.30&lt;/td&gt; &lt;td align="right"&gt;9.72 ± 0.13&lt;/td&gt; &lt;td align="right"&gt;&lt;strong&gt;1.29&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;MacBook&lt;/td&gt; &lt;td align="right"&gt;1&lt;/td&gt; &lt;td align="right"&gt;tg256&lt;/td&gt; &lt;td align="right"&gt;23.56 ± 0.24&lt;/td&gt; &lt;td align="right"&gt;20.11 ± 0.44&lt;/td&gt; &lt;td align="right"&gt;&lt;strong&gt;1.17&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;MacBook&lt;/td&gt; &lt;td align="right"&gt;10&lt;/td&gt; &lt;td align="right"&gt;tg256&lt;/td&gt; &lt;td align="right"&gt;12.52 ± 0.31&lt;/td&gt; &lt;td align="right"&gt;11.80 ± 0.18&lt;/td&gt; &lt;td align="right"&gt;&lt;strong&gt;1.06&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;LLama 3.2 1B was selected for these benchmarks because of its relatively large embedding matrix (21% of all parameters). Full model speedups for larger models are lower because less time is spent computing the output embeddings.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;To replicate these benchmarks, checkout this code of the &lt;a href="https://github.com/martinloretzzz/llama.cpp"&gt;fork of llama.cpp&lt;/a&gt;.&lt;/strong&gt; Installation instructions are in the Readme.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/martinloretz"&gt; /u/martinloretz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iikhg3/i_found_a_way_to_speed_up_cpu_based_llm_inference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iikhg3/i_found_a_way_to_speed_up_cpu_based_llm_inference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iikhg3/i_found_a_way_to_speed_up_cpu_based_llm_inference/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-05T20:50:51+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ii82yg</id>
     <title>DeepSeek just released an official demo for DeepSeek VL2 Small - It's really powerful at OCR, text extraction and chat use-cases (Hugging Face Space)</title>
@@ -99,6 +86,19 @@
     <published>2025-02-06T15:46:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ijauz4</id>
+    <title>Behold: The results of training a 1.49B llama for 13 hours on a single 4060Ti 16GB (20M tokens)</title>
+    <updated>2025-02-06T19:21:19+00:00</updated>
+    <author>
+      <name>/u/Master-Meal-77</name>
+      <uri>https://old.reddit.com/user/Master-Meal-77</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijauz4/behold_the_results_of_training_a_149b_llama_for/"&gt; &lt;img alt="Behold: The results of training a 1.49B llama for 13 hours on a single 4060Ti 16GB (20M tokens)" src="https://b.thumbs.redditmedia.com/6OGmjsnhti76DWcguefqugQlxvuIkCmz7tZF5JbY5Uo.jpg" title="Behold: The results of training a 1.49B llama for 13 hours on a single 4060Ti 16GB (20M tokens)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Master-Meal-77"&gt; /u/Master-Meal-77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ijauz4"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijauz4/behold_the_results_of_training_a_149b_llama_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ijauz4/behold_the_results_of_training_a_149b_llama_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-06T19:21:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ij4c7h</id>
     <title>Unpopular opinion. The chatbot arena benchmark is not useless, rather it is misunderstood. It is not necessarily an hard benchmark, rather it is a benchmark of "what if the LLM would answer common queries for search engines"?</title>
     <updated>2025-02-06T14:54:12+00:00</updated>
@@ -164,19 +164,6 @@
     <published>2025-02-06T12:29:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ija3v4</id>
-    <title>DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!</title>
-    <updated>2025-02-06T18:51:33+00:00</updated>
-    <author>
-      <name>/u/maxwell321</name>
-      <uri>https://old.reddit.com/user/maxwell321</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt; &lt;img alt="DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!" src="https://external-preview.redd.it/GEk7Ll7QhkvaFAkkOayBbV1OyQKQVaWruZ9jP8F9VEw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=342c762f73e43798fe1835ee49e5c48ce5e3e306" title="DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/1iqbdg4y3khe1.png?width=1293&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=7695c218715a211f47f5bc37aa8309fc6bb8cc62"&gt;React Renderer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vb2iknfy3khe1.png?width=1370&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a2226fcf5d30f59a1d3453c374e48c16fd82156"&gt;Full tailwind support w/ preview&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/an4w4onrekhe1.png?width=1283&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fc67cfdb95a8c1990a3f7aaf821bf4297d962977"&gt;Difference viewer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hello everyone! I have been getting a lot of real world use this week now with the open-webui-artifacts-overhaul version of open-webui. It has been AMAZING at work and it completely replaced my need for Claude or OpenAI's artifacts. Of course, full disclaimer: I am the creator of this fork -- but all the features requested were from YOU, the community. I didn't realize how much I needed these features in my life, it really brings Open-WebUI up to par with the UI's used provided by SOTA models. &lt;/p&gt; &lt;p&gt;Feel free to try it out yourself! &lt;a href="https://www.github.com/nick-tonjum/open-webui-artifacts-overhaul"&gt;https://www.github.com/nick-tonjum/open-webui-artifacts-overhaul&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I believe this will be another couple of weeks of real world testing to iron out bugs and implement more features requested by the community. Please feel free to help out and submit Issues and Feature requests.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/maxwell321"&gt; /u/maxwell321 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-06T18:51:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iiveqd</id>
     <title>So, Google has no state-of-the-art frontier model now?</title>
     <updated>2025-02-06T05:34:09+00:00</updated>
@@ -229,30 +216,17 @@
     <published>2025-02-06T06:43:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ijab77</id>
-    <title>Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)</title>
-    <updated>2025-02-06T18:59:49+00:00</updated>
+    <id>t3_1ija3v4</id>
+    <title>DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!</title>
+    <updated>2025-02-06T18:51:33+00:00</updated>
     <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
+      <name>/u/maxwell321</name>
+      <uri>https://old.reddit.com/user/maxwell321</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt; &lt;img alt="Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)" src="https://external-preview.redd.it/to7Gx1lMl0voSDkT7id5Fh2N7SEb6nUJ2HQzl2en4NU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=598db52b5cff8719b6abbc6affa07d300858717d" title="Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey [&lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;]()! We're excited to introduce reasoning in &lt;a href="https://github.com/unslothai/unsloth/releases/tag/2025-02"&gt;Unsloth&lt;/a&gt; so you can now reproduce R1's &amp;quot;aha&amp;quot; moment locally. You'll only need &lt;strong&gt;7GB of VRAM&lt;/strong&gt; to do it with Qwen2.5 (1.5B).&lt;/p&gt; &lt;ol&gt; &lt;li&gt;This is done through &lt;strong&gt;GRPO&lt;/strong&gt;, and we've enhanced the entire process to make it use &lt;strong&gt;80% less VRAM&lt;/strong&gt;. Try it in the &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Llama3.1_(8B"&gt;Colab notebook&lt;/a&gt;-GRPO.ipynb) for Llama 3.1 8B!&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/Jiayi-Pan/TinyZero"&gt;Tiny-Zero&lt;/a&gt; demonstrated that you could achieve your own &amp;quot;aha&amp;quot; moment with Qwen2.5 (1.5B) - but it required a minimum 4xA100 GPUs (160GB VRAM). Now, with Unsloth, you can achieve the same &amp;quot;aha&amp;quot; moment using just a single 7GB VRAM GPU&lt;/li&gt; &lt;li&gt;Previously GRPO only worked with FFT, but we made it work with QLoRA and LoRA.&lt;/li&gt; &lt;li&gt;With 15GB VRAM, you can transform Phi-4 (14B), Llama 3.1 (8B), Mistral (12B), or any model up to 15B parameters into a reasoning model&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Blog for more details: &lt;a href="https://unsloth.ai/blog/r1-reasoning"&gt;https://unsloth.ai/blog/r1-reasoning&lt;/a&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Llama3.1_(8B"&gt;Llama 3.1 8B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4_(14B"&gt;Phi-4 14B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen2.5_(3B"&gt;Qwen 2.5 3B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 8B needs ~ 13GB&lt;/td&gt; &lt;td align="left"&gt;Phi-4 14B needs ~ 15GB&lt;/td&gt; &lt;td align="left"&gt;Qwen 3B needs ~7GB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;I plotted the rewards curve for a specific run:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xj5rtk69fkhe1.png?width=2057&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a25a3a96393be54bc9687258df49329a56d530d7"&gt;https://preview.redd.it/xj5rtk69fkhe1.png?width=2057&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a25a3a96393be54bc9687258df49329a56d530d7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Unsloth also now has 20x faster inference via vLLM! Please update Unsloth and vLLM via:&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install --upgrade --no-cache-dir --force-reinstall unsloth_zoo unsloth vllm&lt;/code&gt;&lt;/p&gt; &lt;p&gt;P.S. thanks for all your overwhelming love and support for our R1 Dynamic 1.58-bit GGUF last week! Things like this really keep us going so thank you again.&lt;/p&gt; &lt;p&gt;Happy reasoning!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt; &lt;img alt="DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!" src="https://external-preview.redd.it/GEk7Ll7QhkvaFAkkOayBbV1OyQKQVaWruZ9jP8F9VEw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=342c762f73e43798fe1835ee49e5c48ce5e3e306" title="DeepSeek Llama 3.3 + Open-Webui Artifacts Overhaul Fork = BEST LOCAL CLAUDE/OAI CANVAS REPLACEMENT!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/1iqbdg4y3khe1.png?width=1293&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=7695c218715a211f47f5bc37aa8309fc6bb8cc62"&gt;React Renderer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vb2iknfy3khe1.png?width=1370&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6a2226fcf5d30f59a1d3453c374e48c16fd82156"&gt;Full tailwind support w/ preview&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/an4w4onrekhe1.png?width=1283&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fc67cfdb95a8c1990a3f7aaf821bf4297d962977"&gt;Difference viewer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hello everyone! I have been getting a lot of real world use this week now with the open-webui-artifacts-overhaul version of open-webui. It has been AMAZING at work and it completely replaced my need for Claude or OpenAI's artifacts. Of course, full disclaimer: I am the creator of this fork -- but all the features requested were from YOU, the community. I didn't realize how much I needed these features in my life, it really brings Open-WebUI up to par with the UI's used provided by SOTA models. &lt;/p&gt; &lt;p&gt;Feel free to try it out yourself! &lt;a href="https://www.github.com/nick-tonjum/open-webui-artifacts-overhaul"&gt;https://www.github.com/nick-tonjum/open-webui-artifacts-overhaul&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I believe this will be another couple of weeks of real world testing to iron out bugs and implement more features requested by the community. Please feel free to help out and submit Issues and Feature requests.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/maxwell321"&gt; /u/maxwell321 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ija3v4/deepseek_llama_33_openwebui_artifacts_overhaul/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-06T18:59:49+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ij96e5</id>
-    <title>deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++</title>
-    <updated>2025-02-06T18:13:29+00:00</updated>
-    <author>
-      <name>/u/reasonableklout</name>
-      <uri>https://old.reddit.com/user/reasonableklout</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"&gt; &lt;img alt="deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++" src="https://external-preview.redd.it/xxUqvQ7bjDufrBkxeXC-RZ_b54GSDiLzEjIobqu9d1M.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=99ba4ad51d925840f322676fb0bc2f13784c90d1" title="deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/reasonableklout"&gt; /u/reasonableklout &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/andrewkchan/deepseek.cpp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-06T18:13:29+00:00</published>
+    <published>2025-02-06T18:51:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1iiwmsq</id>
@@ -268,6 +242,19 @@
     <published>2025-02-06T06:55:03+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ij96e5</id>
+    <title>deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++</title>
+    <updated>2025-02-06T18:13:29+00:00</updated>
+    <author>
+      <name>/u/reasonableklout</name>
+      <uri>https://old.reddit.com/user/reasonableklout</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"&gt; &lt;img alt="deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++" src="https://external-preview.redd.it/xxUqvQ7bjDufrBkxeXC-RZ_b54GSDiLzEjIobqu9d1M.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=99ba4ad51d925840f322676fb0bc2f13784c90d1" title="deepseek.cpp: CPU inference for the DeepSeek family of large language models in pure C++" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/reasonableklout"&gt; /u/reasonableklout &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/andrewkchan/deepseek.cpp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ij96e5/deepseekcpp_cpu_inference_for_the_deepseek_family/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-06T18:13:29+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ij1xge</id>
     <title>Autiobooks: Automatically convert epubs to audiobooks (kokoro)</title>
     <updated>2025-02-06T12:58:49+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ij1xge/autiobooks_automatically_convert_epubs_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-06T12:58:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ijab77</id>
+    <title>Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)</title>
+    <updated>2025-02-06T18:59:49+00:00</updated>
+    <author>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt; &lt;img alt="Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)" src="https://external-preview.redd.it/to7Gx1lMl0voSDkT7id5Fh2N7SEb6nUJ2HQzl2en4NU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=598db52b5cff8719b6abbc6affa07d300858717d" title="Train your own Reasoning model - 80% less VRAM - GRPO now in Unsloth (7GB VRAM min.)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey [&lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;]()! We're excited to introduce reasoning in &lt;a href="https://github.com/unslothai/unsloth/releases/tag/2025-02"&gt;Unsloth&lt;/a&gt; so you can now reproduce R1's &amp;quot;aha&amp;quot; moment locally. You'll only need &lt;strong&gt;7GB of VRAM&lt;/strong&gt; to do it with Qwen2.5 (1.5B).&lt;/p&gt; &lt;ol&gt; &lt;li&gt;This is done through &lt;strong&gt;GRPO&lt;/strong&gt;, and we've enhanced the entire process to make it use &lt;strong&gt;80% less VRAM&lt;/strong&gt;. Try it in the &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Llama3.1_(8B"&gt;Colab notebook&lt;/a&gt;-GRPO.ipynb) for Llama 3.1 8B!&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/Jiayi-Pan/TinyZero"&gt;Tiny-Zero&lt;/a&gt; demonstrated that you could achieve your own &amp;quot;aha&amp;quot; moment with Qwen2.5 (1.5B) - but it required a minimum 4xA100 GPUs (160GB VRAM). Now, with Unsloth, you can achieve the same &amp;quot;aha&amp;quot; moment using just a single 7GB VRAM GPU&lt;/li&gt; &lt;li&gt;Previously GRPO only worked with FFT, but we made it work with QLoRA and LoRA.&lt;/li&gt; &lt;li&gt;With 15GB VRAM, you can transform Phi-4 (14B), Llama 3.1 (8B), Mistral (12B), or any model up to 15B parameters into a reasoning model&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Blog for more details: &lt;a href="https://unsloth.ai/blog/r1-reasoning"&gt;https://unsloth.ai/blog/r1-reasoning&lt;/a&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Llama3.1_(8B"&gt;Llama 3.1 8B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Phi_4_(14B"&gt;Phi-4 14B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen2.5_(3B"&gt;Qwen 2.5 3B Colab Link&lt;/a&gt;-GRPO.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 8B needs ~ 13GB&lt;/td&gt; &lt;td align="left"&gt;Phi-4 14B needs ~ 15GB&lt;/td&gt; &lt;td align="left"&gt;Qwen 3B needs ~7GB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;I plotted the rewards curve for a specific run:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xj5rtk69fkhe1.png?width=2057&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a25a3a96393be54bc9687258df49329a56d530d7"&gt;https://preview.redd.it/xj5rtk69fkhe1.png?width=2057&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a25a3a96393be54bc9687258df49329a56d530d7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Unsloth also now has 20x faster inference via vLLM! Please update Unsloth and vLLM via:&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install --upgrade --no-cache-dir --force-reinstall unsloth_zoo unsloth vllm&lt;/code&gt;&lt;/p&gt; &lt;p&gt;P.S. thanks for all your overwhelming love and support for our R1 Dynamic 1.58-bit GGUF last week! Things like this really keep us going so thank you again.&lt;/p&gt; &lt;p&gt;Happy reasoning!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ijab77/train_your_own_reasoning_model_80_less_vram_grpo/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-06T18:59:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1ij5sma</id>
