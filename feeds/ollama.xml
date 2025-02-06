@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-06T17:48:54+00:00</updated>
+  <updated>2025-02-06T18:07:33+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1iioy7r</id>
-    <title>Another Ollama+OpenWebUI Docker post...</title>
-    <updated>2025-02-06T00:00:45+00:00</updated>
-    <author>
-      <name>/u/PaulLee420</name>
-      <uri>https://old.reddit.com/user/PaulLee420</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So... I'm on MacOS and can install Ollama using the MacOS download. Then I can spin up an Open WebUI docker container and it works perfectly.&lt;/p&gt; &lt;p&gt;However, I'd like to have ALL my AI data in docker containers - but when I install Ollama via docker, Open WebUI can see the LLMs but is gets some 500 error when I try to send a prompt...&lt;/p&gt; &lt;p&gt;I have followed the troubleshooting stuff on Open WebUI about this issue, changing the Docker run commands - but it simply doesn't work. Has there been any movement on this issue?&lt;/p&gt; &lt;p&gt;Do I need to post more details??? Will update if needed...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PaulLee420"&gt; /u/PaulLee420 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iioy7r/another_ollamaopenwebui_docker_post/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iioy7r/another_ollamaopenwebui_docker_post/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1iioy7r/another_ollamaopenwebui_docker_post/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-06T00:00:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ij2iry</id>
     <title>What am I missing about DeepSeek? I asked it to tell me a knock knock joke...</title>
@@ -255,6 +242,19 @@
     <published>2025-02-06T16:47:22+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ij8vhn</id>
+    <title>Ollama still downloads models into ~/.ollama</title>
+    <updated>2025-02-06T18:01:17+00:00</updated>
+    <author>
+      <name>/u/TheTobruk</name>
+      <uri>https://old.reddit.com/user/TheTobruk</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, following &lt;a href="https://github.com/ollama/ollama/issues/680"&gt;this thread&lt;/a&gt; I made changes to my systemctl ollama service:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;[Service] WorkingDirectory=/home/deutschegabanna/external.dump.d/ollama Environment=&amp;quot;HOME=/home/deutschegabanna/external.dump.d/ollama Environment=&amp;quot;OLLAMA_MODELS=/home/deutschegabanna/external.dump.d/ollama&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And given necessary permissions for the new folder:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; ls -al ~/external.dump.d/ollama drwxrwxr-x 2 ollama ollama 4096 Feb 3 14:50 . &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Yet ollama still downloads the models into the wrong directory - namely ~/.ollama. Why? I've restarted my computer since making those changes so the systemctl runner-daemon and all services should load up with new settings.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; ollama serve 2025/02/06 18:59:08 routes.go:1187: INFO server config env=&amp;quot;map[CUDA_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/home/deutschegabanna/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]&amp;quot; time=2025-02-06T18:59:08.851+01:00 level=INFO source=images.go:432 msg=&amp;quot;total blobs: 0&amp;quot; time=2025-02-06T18:59:08.851+01:00 level=INFO source=images.go:439 msg=&amp;quot;total unused blobs removed: 0&amp;quot; time=2025-02-06T18:59:08.852+01:00 level=INFO source=routes.go:1238 msg=&amp;quot;Listening on 127.0.0.1:11434 (version 0.5.7)&amp;quot; &amp;gt; echo $OLLAMA_MODELS &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;If I forcefully export the environment variable for the duration of the boot, I get this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Error: mkdir /home/deutschegabanna/external.dump.d/ollama/blobs: permission denied &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheTobruk"&gt; /u/TheTobruk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij8vhn/ollama_still_downloads_models_into_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij8vhn/ollama_still_downloads_models_into_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1ij8vhn/ollama_still_downloads_models_into_ollama/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-06T18:01:17+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iiycpb</id>
     <title>How to Ollama on-demand?</title>
     <updated>2025-02-06T09:02:35+00:00</updated>
@@ -288,23 +288,10 @@
       <name>/u/oye_ap</name>
       <uri>https://old.reddit.com/user/oye_ap</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's my first time trying to download ollama and deepseek, I'm not much into tech &amp;amp; while I try to run deepseek, this is the issue that I'm facing &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oye_ap"&gt; /u/oye_ap &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"&gt; &lt;img alt="Please help me out with this issue in downloading ollama deepseek model" src="https://b.thumbs.redditmedia.com/QQEzKHUA0gBIZdUfvktJsyHlCUrLE0zeG37WUPx9imo.jpg" title="Please help me out with this issue in downloading ollama deepseek model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's my first time trying to download ollama and deepseek, I'm not much into tech &amp;amp; while I try to run deepseek, this is the issue that I'm facing&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/r8c1h6r66khe1.png?width=1500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d9f7fdce5488ae0a9a3554d584c0855a516ee8a5"&gt;https://preview.redd.it/r8c1h6r66khe1.png?width=1500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d9f7fdce5488ae0a9a3554d584c0855a516ee8a5&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oye_ap"&gt; /u/oye_ap &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
     <link href="https://old.reddit.com/r/ollama/comments/1ij7dmw/please_help_me_out_with_this_issue_in_downloading/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-06T17:00:47+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ij7nuo</id>
-    <title>UNCENSORED AI MODELS</title>
-    <updated>2025-02-06T17:12:07+00:00</updated>
-    <author>
-      <name>/u/yng_kydd</name>
-      <uri>https://old.reddit.com/user/yng_kydd</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Some months ago i tried for the first time wizard vicuna and i was ok with it being a lil slow and not that optimized, i wasn't even complaining cause at least i had an AI uncensored, something i could ask for everything.&lt;/p&gt; &lt;p&gt;This week i've seen a post talking about other new models that are pretty much better like tiger gemma, dolphin and others&lt;/p&gt; &lt;p&gt;i've been searching about this for quite a lot and i'd want to ask y'all what is the best uncensored AI model right now.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yng_kydd"&gt; /u/yng_kydd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-06T17:12:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1ij2pw7</id>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1ij2pw7/being_thankful_for_everyone_who_made_this_project/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-06T13:37:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ij7nuo</id>
+    <title>UNCENSORED AI MODELS</title>
+    <updated>2025-02-06T17:12:07+00:00</updated>
+    <author>
+      <name>/u/yng_kydd</name>
+      <uri>https://old.reddit.com/user/yng_kydd</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Some months ago i tried for the first time wizard vicuna and i was ok with it being a lil slow and not that optimized, i wasn't even complaining cause at least i had an AI uncensored, something i could ask for everything.&lt;/p&gt; &lt;p&gt;This week i've seen a post talking about other new models that are pretty much better like tiger gemma, dolphin and others&lt;/p&gt; &lt;p&gt;i've been searching about this for quite a lot and i'd want to ask y'all what is the best uncensored AI model right now.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yng_kydd"&gt; /u/yng_kydd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1ij7nuo/uncensored_ai_models/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-06T17:12:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1ij345i</id>
