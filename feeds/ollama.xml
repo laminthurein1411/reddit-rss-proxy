@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-06T07:06:15+00:00</updated>
+  <updated>2025-02-06T07:23:23+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1ihfyi2</id>
-    <title>Ollama + DeepSeek + Obsidian = The Ultimate Offline AI Assistant!</title>
-    <updated>2025-02-04T11:54:17+00:00</updated>
-    <author>
-      <name>/u/Kind-Industry-609</name>
-      <uri>https://old.reddit.com/user/Kind-Industry-609</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1ihfyi2/ollama_deepseek_obsidian_the_ultimate_offline_ai/"&gt; &lt;img alt="Ollama + DeepSeek + Obsidian = The Ultimate Offline AI Assistant!" src="https://external-preview.redd.it/32JgoJVP2Vxa0PebR1pmCtaV_33XwoDfHhsNkStqIjE.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=49a27f19a9e63b070eb41d43f95929897b33eb6f" title="Ollama + DeepSeek + Obsidian = The Ultimate Offline AI Assistant!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kind-Industry-609"&gt; /u/Kind-Industry-609 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/qAsGO5N7OCk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ihfyi2/ollama_deepseek_obsidian_the_ultimate_offline_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ihfyi2/ollama_deepseek_obsidian_the_ultimate_offline_ai/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-04T11:54:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ii5o2q</id>
     <title>How do you know which LLM to use and for what use case?</title>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1iivo62/why_are_ollama_package_downloads_at_npm_zero/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-06T05:50:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iiwunj</id>
+    <title>Hosting ollama on a Proxmox LXC Container with GPU Passthrough.</title>
+    <updated>2025-02-06T07:09:34+00:00</updated>
+    <author>
+      <name>/u/ninja-con-gafas</name>
+      <uri>https://old.reddit.com/user/ninja-con-gafas</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently hosted the DeepSeek-R1 14b model on a LXC container. I am sharing some key lessons that I learnt during the process. You can find the original article &lt;a href="https://www.linkedin.com/pulse/lessons-learned-setting-up-lxc-container-proxmox-gpu-atharv-darekar-s1xef/?trackingId=UP4SkEJNtMEehqiXXIxzqw%3D%3D"&gt;hear&lt;/a&gt;. I have used AI to compose my thoughts.&lt;/p&gt; &lt;h1&gt;1. Preparation is Everything&lt;/h1&gt; &lt;p&gt;Before diving into the setup, it’s essential to refer to a well-documented guide or tutorial to avoid potential pitfalls. I found the following resources particularly useful:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Video Tutorial:&lt;/strong&gt; &lt;a href="https://youtu.be/lNGNRIJ708k?feature=shared"&gt;Proxmox LXC GPU Passthrough&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Guide:&lt;/strong&gt; &lt;a href="https://digitalspaceport.com/proxmox-lxc-gpu-passthru-setup-guide/"&gt;Digital Spaceport’s Setup Guide&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;2. Get the Right Drivers&lt;/h1&gt; &lt;p&gt;Ensure you download and install the correct and latest GPU drivers for both the host and the container. Any version mismatch can cause frustrating errors down the line.&lt;/p&gt; &lt;h1&gt;3. Beware of Dynamic Device Numbers&lt;/h1&gt; &lt;p&gt;Running the command `ls -al /dev/nvidia*` will give you the major and minor device numbers, but these numbers are not static—they can change after a system reboot. To mitigate this issue, list all known device numbers in the container’s configuration file. This way, the container can automatically pick the relevant one without requiring manual intervention post-reboot.&lt;/p&gt; &lt;h1&gt;4. Keep Host and Container Drivers in Sync&lt;/h1&gt; &lt;p&gt;The host and container must have &lt;strong&gt;identical driver versions&lt;/strong&gt;. If you’re installing CUDA, be sure to uncheck the bundled driver option—installing it could cause a version mismatch error in the container.&lt;/p&gt; &lt;h1&gt;5. Host Changes Can Break the Container&lt;/h1&gt; &lt;p&gt;Since an LXC container shares the kernel with the host, any updates to the host (such as a driver update or kernel upgrade) may break the container. Also, use the -dkms flag when installing drivers on the host (ensure dkms is installed first) and when installing drivers inside the container, use the --no-kernel-modules option to prevent conflicts.&lt;/p&gt; &lt;h1&gt;6. Backup, Backup, Backup...!&lt;/h1&gt; &lt;p&gt;Before making any major system changes—like installing new packages, updating drivers, or modifying kernel modules—&lt;strong&gt;create a system backup&lt;/strong&gt;. Having a rollback option can be a lifesaver if something goes wrong.&lt;/p&gt; &lt;h1&gt;Final Thoughts&lt;/h1&gt; &lt;p&gt;Setting up an LXC container on Proxmox with GPU passthrough requires attention to detail, but with proper planning, the process becomes much smoother. If you're tackling this for the first time, take it slow, document your steps, and always have a backup ready.&lt;/p&gt; &lt;p&gt;Have you encountered any challenges while setting up GPU passthrough in LXC? I’d love to hear about your experiences and solutions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninja-con-gafas"&gt; /u/ninja-con-gafas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1iiwunj/hosting_ollama_on_a_proxmox_lxc_container_with/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-06T07:09:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1iijkmy</id>
