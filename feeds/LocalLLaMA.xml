@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-08T19:05:30+00:00</updated>
+  <updated>2025-02-08T19:19:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ikprg7</id>
-    <title>Trouble with running llama.cpp with Deepseek-R1 on 4x NVME raid0.</title>
-    <updated>2025-02-08T15:29:24+00:00</updated>
-    <author>
-      <name>/u/U_A_beringianus</name>
-      <uri>https://old.reddit.com/user/U_A_beringianus</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am trying to get some speed benefit out of running llama.cpp with the model (Deepseek-R1, 671B, Q2) on a 4x nvme raid0 in comparison to a single nvme. But running it from raid yields a much, much lower inference speed than running it from a single disk.&lt;br /&gt; The raid0, with 16 PCIe (4.0) lanes in total, yields 25GB/s (with negligible CPU usage) when benchmarked with fio (for sequential reads in 1MB chunks), the single nvme yields 7GB/s.&lt;br /&gt; With the model mem-mapped from the single disk, I get 1.2t/s (no GPU offload), with roughly 40%-50% of CPU usage by llama.cpp, so it seems I/O is the bottleneck in this case. But with the model mem-mapped from the raid I get merely &amp;lt;0.1 t/s, tens of seconds per token, with the CPU fully utilized.&lt;br /&gt; My first wild guess here is that llama.cpp does very small, discontinuous, random reads, which causes a lot of CPU overhead, when reading from a software raid.&lt;br /&gt; I tested/tried the following things also: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Filesystem doesn't matter, tried ext4, btrfs, f2fs on the raid. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;md-raid (set up with mdadm) vs. btrfs-raid0 did not make a difference. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;In an attempt to reduce CPU overhead I used only 2 instead of 4 nvmes for raid0 -&amp;gt; no improvement &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Put swap on the raid array, and invoked llama.cpp with --no-mmap, to force the majority of the model into that swap: 0.5-0.7 t/s, so while better than mem-mapping from the raid, still slower than mem-mapping from a single disk. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;dissolved the raid, and put the parts of split gguf (4 pieces), onto a separate Filesystem/nvme each: Expectedly, the same speed as from a single nvme (1.2 t/s), since llama.cpp doesn't seem to read the parts in parallel. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;With raid0, tinkered with various stripe sizes and block sizes, always making sure they are well aligned: Negligible differences in speed.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So is there any way to get some use for llama.cpp out of those 4 NVMEs, with 16 direct-to-cpu PCIe lanes to them? I'd be happy if I could get llama.cpp inference to be at least a tiny bit faster with those than running simply from a single device.&lt;br /&gt; With simply writing/reading huge files, I get incredibly high speeds out of that array.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/U_A_beringianus"&gt; /u/U_A_beringianus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-08T15:29:24+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ikrgto</id>
     <title>There May Not be Aha Moment in R1-Zero-like Training</title>
@@ -60,6 +47,19 @@
     <published>2025-02-08T14:03:20+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ikprg7</id>
+    <title>Trouble with running llama.cpp with Deepseek-R1 on 4x NVME raid0.</title>
+    <updated>2025-02-08T15:29:24+00:00</updated>
+    <author>
+      <name>/u/U_A_beringianus</name>
+      <uri>https://old.reddit.com/user/U_A_beringianus</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am trying to get some speed benefit out of running llama.cpp with the model (Deepseek-R1, 671B, Q2) on a 4x nvme raid0 in comparison to a single nvme. But running it from raid yields a much, much lower inference speed than running it from a single disk.&lt;br /&gt; The raid0, with 16 PCIe (4.0) lanes in total, yields 25GB/s (with negligible CPU usage) when benchmarked with fio (for sequential reads in 1MB chunks), the single nvme yields 7GB/s.&lt;br /&gt; With the model mem-mapped from the single disk, I get 1.2t/s (no GPU offload), with roughly 40%-50% of CPU usage by llama.cpp, so it seems I/O is the bottleneck in this case. But with the model mem-mapped from the raid I get merely &amp;lt;0.1 t/s, tens of seconds per token, with the CPU fully utilized.&lt;br /&gt; My first wild guess here is that llama.cpp does very small, discontinuous, random reads, which causes a lot of CPU overhead, when reading from a software raid.&lt;br /&gt; I tested/tried the following things also: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Filesystem doesn't matter, tried ext4, btrfs, f2fs on the raid. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;md-raid (set up with mdadm) vs. btrfs-raid0 did not make a difference. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;In an attempt to reduce CPU overhead I used only 2 instead of 4 nvmes for raid0 -&amp;gt; no improvement &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Put swap on the raid array, and invoked llama.cpp with --no-mmap, to force the majority of the model into that swap: 0.5-0.7 t/s, so while better than mem-mapping from the raid, still slower than mem-mapping from a single disk. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;dissolved the raid, and put the parts of split gguf (4 pieces), onto a separate Filesystem/nvme each: Expectedly, the same speed as from a single nvme (1.2 t/s), since llama.cpp doesn't seem to read the parts in parallel. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;With raid0, tinkered with various stripe sizes and block sizes, always making sure they are well aligned: Negligible differences in speed.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So is there any way to get some use for llama.cpp out of those 4 NVMEs, with 16 direct-to-cpu PCIe lanes to them? I'd be happy if I could get llama.cpp inference to be at least a tiny bit faster with those than running simply from a single device.&lt;br /&gt; With simply writing/reading huge files, I get incredibly high speeds out of that array.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/U_A_beringianus"&gt; /u/U_A_beringianus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikprg7/trouble_with_running_llamacpp_with_deepseekr1_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-08T15:29:24+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ikosn5</id>
     <title>What are the best models for code autocomplete (like cursor autocomplete)?</title>
     <updated>2025-02-08T14:46:04+00:00</updated>
@@ -71,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikosn5/what_are_the_best_models_for_code_autocomplete/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-08T14:46:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ikjhn7</id>
-    <title>Why are many SWEs salty about LLM use for coding?</title>
-    <updated>2025-02-08T09:20:38+00:00</updated>
-    <author>
-      <name>/u/delicate_rabbit</name>
-      <uri>https://old.reddit.com/user/delicate_rabbit</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am SWE, and I'm using LLM on daily basis. It helps immensely. If I give it correct prompts/context it will spit out the methods/logic I need. It will generate complex SQL queries (if I need them) etc, etc. It will explain concepts I am not familiar with. It will even break down complex problems into digestable chunks where I can then form a whole picture of what I wanna do.&lt;/p&gt; &lt;p&gt;If I am unsure about the syntax/how I'd write some code, or hell even if I straight up don't know how to do it, it will give me the result or at least the direction. However I always, always check if it makes sense. I just don't blindly copy whatever it spits out. If it doesn't work, I fine tune it so it does.&lt;/p&gt; &lt;p&gt;So I am not sure why are so many shitting on it? &lt;/p&gt; &lt;p&gt;&amp;quot;You will forget how to do it yourself !&amp;quot; &lt;/p&gt; &lt;p&gt;Sure, the pure syntax/coding skills might get rustier, but if you can rely on it, evaluate the suggestion, so what? To me it is somewhat akin to saying: &amp;quot;your will forget how to create fire with 2 rocks because you are using the lighter!&amp;quot; If I understand what the end result should be does it matter that I used the lighter and know what fire does?&lt;/p&gt; &lt;p&gt;&amp;quot;AI gives me intern level results!&amp;quot;&lt;/p&gt; &lt;p&gt;Have you tried giving it a detailed prompt and context instead of a vague 5 word sentence before getting mad?&lt;/p&gt; &lt;p&gt;At the end of the day it's just a tool right? If you're getting the result, why does it matter how you got there?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/delicate_rabbit"&gt; /u/delicate_rabbit &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-08T09:20:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1ijxdue</id>
@@ -99,6 +86,19 @@
     <published>2025-02-07T15:20:49+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ikjhn7</id>
+    <title>Why are many SWEs salty about LLM use for coding?</title>
+    <updated>2025-02-08T09:20:38+00:00</updated>
+    <author>
+      <name>/u/delicate_rabbit</name>
+      <uri>https://old.reddit.com/user/delicate_rabbit</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am SWE, and I'm using LLM on daily basis. It helps immensely. If I give it correct prompts/context it will spit out the methods/logic I need. It will generate complex SQL queries (if I need them) etc, etc. It will explain concepts I am not familiar with. It will even break down complex problems into digestable chunks where I can then form a whole picture of what I wanna do.&lt;/p&gt; &lt;p&gt;If I am unsure about the syntax/how I'd write some code, or hell even if I straight up don't know how to do it, it will give me the result or at least the direction. However I always, always check if it makes sense. I just don't blindly copy whatever it spits out. If it doesn't work, I fine tune it so it does.&lt;/p&gt; &lt;p&gt;So I am not sure why are so many shitting on it? &lt;/p&gt; &lt;p&gt;&amp;quot;You will forget how to do it yourself !&amp;quot; &lt;/p&gt; &lt;p&gt;Sure, the pure syntax/coding skills might get rustier, but if you can rely on it, evaluate the suggestion, so what? To me it is somewhat akin to saying: &amp;quot;your will forget how to create fire with 2 rocks because you are using the lighter!&amp;quot; If I understand what the end result should be does it matter that I used the lighter and know what fire does?&lt;/p&gt; &lt;p&gt;&amp;quot;AI gives me intern level results!&amp;quot;&lt;/p&gt; &lt;p&gt;Have you tried giving it a detailed prompt and context instead of a vague 5 word sentence before getting mad?&lt;/p&gt; &lt;p&gt;At the end of the day it's just a tool right? If you're getting the result, why does it matter how you got there?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/delicate_rabbit"&gt; /u/delicate_rabbit &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikjhn7/why_are_many_swes_salty_about_llm_use_for_coding/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-08T09:20:38+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iksy75</id>
     <title>In Eleven Labs I can record a real voice performance and convert that performance into a different voice (and accent), is this possible locally yet?</title>
     <updated>2025-02-08T17:45:49+00:00</updated>
@@ -112,19 +112,6 @@
     <published>2025-02-08T17:45:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ikqsal</id>
-    <title>Which models do you run locally?</title>
-    <updated>2025-02-08T16:14:15+00:00</updated>
-    <author>
-      <name>/u/santhosh1993</name>
-      <uri>https://old.reddit.com/user/santhosh1993</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Also, if you are using a specific model heavily? which factors stood out for you?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/santhosh1993"&gt; /u/santhosh1993 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-08T16:14:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ikmv9x</id>
     <title>Podcasts with TinyLlama and Kokoro on iOS</title>
     <updated>2025-02-08T13:07:14+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikmv9x/podcasts_with_tinyllama_and_kokoro_on_ios/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-08T13:07:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ikqsal</id>
+    <title>Which models do you run locally?</title>
+    <updated>2025-02-08T16:14:15+00:00</updated>
+    <author>
+      <name>/u/santhosh1993</name>
+      <uri>https://old.reddit.com/user/santhosh1993</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Also, if you are using a specific model heavily? which factors stood out for you?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/santhosh1993"&gt; /u/santhosh1993 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqsal/which_models_do_you_run_locally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-08T16:14:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1ikn3m4</id>
@@ -268,19 +268,6 @@
     <published>2025-02-08T17:58:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iks9cl</id>
-    <title>Notes on OpenAI o3-mini: How good is it compared to r1 and o1?</title>
-    <updated>2025-02-08T17:16:46+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We finally have a reasonable reasoning model from OpenAI that has a reasonable cost; it must be Deepseek r1 impact. But anyway, we now have the first family of models from the o3 series. Also, It is the first reasoning model with official function-calling support.&lt;/p&gt; &lt;p&gt;Another interesting thing is that, unlike o1, we can now see the chain of thought (CoT). However, the CoT is not raw like Deepseek r1, but only a summarized version of it, and I am not sure why they are still keeping it under wraps.&lt;/p&gt; &lt;h1&gt;On pricing&lt;/h1&gt; &lt;p&gt;Perhaps the most highlighting aspect of the model is that it’s 15x cheaper than O1 with comparable performance and, in fact, better at times.&lt;/p&gt; &lt;p&gt;The fact that it is cheaper by 2x than even the GPT-4o is even more amusing. Then why do Chatgpt users have limited queries while GPT-4o has unlimited queries?&lt;/p&gt; &lt;p&gt;Did Deepseek force OpenAI to subsidize API costs?&lt;/p&gt; &lt;h1&gt;On performance&lt;/h1&gt; &lt;p&gt;To know if it actually is a better model than r1 and o1, I tested it on my benchmark questions for reasoning, Math, Coding, etc.&lt;/p&gt; &lt;p&gt;Here’s my observation:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;O3-mini-high is the best available model for reasoning tasks, apart from o1-pro.&lt;/li&gt; &lt;li&gt;For math, o1 and o3-mini-high are on par, a tad bit better than Deepseek r1.&lt;/li&gt; &lt;li&gt;Again, for coding, o3-mini-high felt better in my use cases but can vary from case to case. It is faster, so it is better to work with.&lt;/li&gt; &lt;li&gt;I can’t get over Deepseek r1 for creative writing, well, especially its CoT traces. I wish OpenAI would disclose the raw CoT in the coming models.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The model is actually good, and given the costs, it’s much better than o1. I would’ve loved if they showed us the actual CoT, and I think a lot of people are now more interested in thought patterns than actual responses.&lt;/p&gt; &lt;p&gt;For in-depth analysis, commentary, and remarks on the OpenAI o3-mini and comparison with Deepseek r1, check out this blog post: &lt;a href="https://composio.dev/blog/openai-o3-mini-vs-deepseek-r1/"&gt;On OpenAI o3-mini&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love to know what have been your views and experiences with the o3-mini. How did you like it compared to Deepseek r1?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-08T17:16:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ikguu9</id>
     <title>"Meta Torrented over 81 TB of Data Through Anna’s Archive, Despite Few Seeders"</title>
     <updated>2025-02-08T06:18:48+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikguu9/meta_torrented_over_81_tb_of_data_through_annas/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-08T06:18:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iks9cl</id>
+    <title>Notes on OpenAI o3-mini: How good is it compared to r1 and o1?</title>
+    <updated>2025-02-08T17:16:46+00:00</updated>
+    <author>
+      <name>/u/SunilKumarDash</name>
+      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We finally have a reasonable reasoning model from OpenAI that has a reasonable cost; it must be Deepseek r1 impact. But anyway, we now have the first family of models from the o3 series. Also, It is the first reasoning model with official function-calling support.&lt;/p&gt; &lt;p&gt;Another interesting thing is that, unlike o1, we can now see the chain of thought (CoT). However, the CoT is not raw like Deepseek r1, but only a summarized version of it, and I am not sure why they are still keeping it under wraps.&lt;/p&gt; &lt;h1&gt;On pricing&lt;/h1&gt; &lt;p&gt;Perhaps the most highlighting aspect of the model is that it’s 15x cheaper than O1 with comparable performance and, in fact, better at times.&lt;/p&gt; &lt;p&gt;The fact that it is cheaper by 2x than even the GPT-4o is even more amusing. Then why do Chatgpt users have limited queries while GPT-4o has unlimited queries?&lt;/p&gt; &lt;p&gt;Did Deepseek force OpenAI to subsidize API costs?&lt;/p&gt; &lt;h1&gt;On performance&lt;/h1&gt; &lt;p&gt;To know if it actually is a better model than r1 and o1, I tested it on my benchmark questions for reasoning, Math, Coding, etc.&lt;/p&gt; &lt;p&gt;Here’s my observation:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;O3-mini-high is the best available model for reasoning tasks, apart from o1-pro.&lt;/li&gt; &lt;li&gt;For math, o1 and o3-mini-high are on par, a tad bit better than Deepseek r1.&lt;/li&gt; &lt;li&gt;Again, for coding, o3-mini-high felt better in my use cases but can vary from case to case. It is faster, so it is better to work with.&lt;/li&gt; &lt;li&gt;I can’t get over Deepseek r1 for creative writing, well, especially its CoT traces. I wish OpenAI would disclose the raw CoT in the coming models.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The model is actually good, and given the costs, it’s much better than o1. I would’ve loved if they showed us the actual CoT, and I think a lot of people are now more interested in thought patterns than actual responses.&lt;/p&gt; &lt;p&gt;For in-depth analysis, commentary, and remarks on the OpenAI o3-mini and comparison with Deepseek r1, check out this blog post: &lt;a href="https://composio.dev/blog/openai-o3-mini-vs-deepseek-r1/"&gt;On OpenAI o3-mini&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love to know what have been your views and experiences with the o3-mini. How did you like it compared to Deepseek r1?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iks9cl/notes_on_openai_o3mini_how_good_is_it_compared_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-08T17:16:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1ikn5fg</id>
