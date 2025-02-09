@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-09T09:48:39+00:00</updated>
+  <updated>2025-02-09T10:05:22+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
   <entry>
-    <id>t3_1ikkd12</id>
-    <title>Context window syntax per ollama model?</title>
-    <updated>2025-02-08T10:23:33+00:00</updated>
+    <id>t3_1ik1p0d</id>
+    <title>Local Cursor.ai</title>
+    <updated>2025-02-07T18:18:19+00:00</updated>
     <author>
-      <name>/u/Private-Citizen</name>
-      <uri>https://old.reddit.com/user/Private-Citizen</uri>
+      <name>/u/Kind_Ad_2866</name>
+      <uri>https://old.reddit.com/user/Kind_Ad_2866</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;The Setup&lt;/h1&gt; &lt;p&gt;I am using ollama to pull and run models on linux. I wrote my own Web UI (httpd/php) to prompt the models instead of using the cli. The webpage connects to the API using:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;$data = json_encode([&amp;quot;model&amp;quot; =&amp;gt; $llm, &amp;quot;prompt&amp;quot; =&amp;gt; $prompt, &amp;quot;stream&amp;quot; =&amp;gt; true]); $ch = curl_init(&amp;quot;http://localhost:11434/api/generate&amp;quot;); ... curl_setopt($ch, CURLOPT_POSTFIELDS, $data); ... curl_exec($ch); &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I tried feeding the context window into the &amp;quot;messages&amp;quot; parameter like the following which didn't work, the model kept seeing every prompt as new with no history.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;# $history['role'] = &amp;quot;User&amp;quot;; # $history['content'] = &amp;quot;prompt text&amp;quot;; $data = json_encode([&amp;quot;model&amp;quot; =&amp;gt; $llm, &amp;quot;messages&amp;quot; =&amp;gt; $history &amp;quot;prompt&amp;quot; =&amp;gt; $prompt, &amp;quot;stream&amp;quot; =&amp;gt; true]); &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I asked GPT who said ollama requires the context windows to be fed into the prompt. So why does &amp;quot;messages&amp;quot; exist?&lt;/p&gt; &lt;p&gt;I started appending the $history to each &amp;quot;prompt&amp;quot; instead of sending it in &amp;quot;messages&amp;quot;. GPT gave me two formats to try, each with different degrees of success depending on the model.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;System: This is a rule to follow. User: prompt question? Assistant: response. User: Next question? Assistant: next response. &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And also this format:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;|begin_of_text|&amp;gt; &amp;lt;|start_header_id|&amp;gt;system&amp;lt;|end_header_id|&amp;gt; This is a system message. &amp;lt;|eot_id|&amp;gt; &amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; Question? &amp;lt;|eot_id|&amp;gt; &amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; Response. &amp;lt;|eot_id|&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Neither of these are perfect as some of the times the models will start putting some of the tags in the raw response like Putting &lt;code&gt;Assistant:&lt;/code&gt; before its response or adding &lt;code&gt;&amp;lt;|eot_id|&amp;gt;&lt;/code&gt; to the end. Or sometimes including the entire &lt;code&gt;&amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt;&lt;/code&gt; header in the response.&lt;/p&gt; &lt;h1&gt;Question:&lt;/h1&gt; &lt;p&gt;How do i use use the info provided on ollama to structure the context window for the selected model? I see the params and template links, is that it? I wasn't able to make sense of how to use them. Is &amp;quot;messages&amp;quot; really useless? Is appending to the &amp;quot;prompt&amp;quot; the way&amp;quot;?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Private-Citizen"&gt; /u/Private-Citizen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ikkd12/context_window_syntax_per_ollama_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ikkd12/context_window_syntax_per_ollama_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ikkd12/context_window_syntax_per_ollama_model/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Since cursor only supports online models such as Claude and OpenAI, I’m surprised no one has created an alternative for local models yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kind_Ad_2866"&gt; /u/Kind_Ad_2866 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ik1p0d/local_cursorai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ik1p0d/local_cursorai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1ik1p0d/local_cursorai/"/>
     <category term="ollama" label="r/ollama"/>
-    <published>2025-02-08T10:23:33+00:00</published>
+    <published>2025-02-07T18:18:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1ik3m98</id>
