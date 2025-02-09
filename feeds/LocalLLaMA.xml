@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-09T04:48:46+00:00</updated>
+  <updated>2025-02-09T05:05:35+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1il3yqk</id>
-    <title>A100 "Drive" SXM2 bench testing of various LocalLLM hosting Platforms</title>
-    <updated>2025-02-09T02:02:45+00:00</updated>
-    <author>
-      <name>/u/mp3m4k3r</name>
-      <uri>https://old.reddit.com/user/mp3m4k3r</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So, I started down this journey wanting to build out a local AI backend for immich and home assistant and started out picking up an nvidia Tesla A2. The seller happened to send over 2x P4s as well.&lt;/p&gt; &lt;p&gt;And wouldn't you know it &lt;em&gt;&amp;quot;oops honey I tripped and fell into a server, running circuits in my house, and then swapping out the perfectly fine GPUs with some updated models&amp;quot;&lt;/em&gt; ...&lt;/p&gt; &lt;p&gt;In expanding this out and learning tons in the process I wanted to also start doing some testing/benchmarking so that I could either share some information (or at least see if what I did marginally worked better than the last setting or not).&lt;/p&gt; &lt;p&gt;Below is the information I have so far, I am looking into moving to vLLM with vAttention as it looks pretty interesting and then also working on some augments to SWE-agent to play around with that and SWE-bench a bit.&lt;/p&gt; &lt;p&gt;Not on this post but I will be compiling the charts and stuff from this tomorrow to post as well.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Asks:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Do you have any recommendations for benchmarks?&lt;/li&gt; &lt;li&gt;Do you have any questions?&lt;/li&gt; &lt;li&gt;Anything you would like to see?&lt;/li&gt; &lt;li&gt;Do you know if I can get a bank loan for immersion cooling?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Test Setup:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Benchmark: &lt;a href="https://github.com/coder543/llm-speed-benchmark"&gt;llm-speed-benchmark&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Model: &lt;a href="https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf"&gt;Phi-3-mini-4k-instruct Q4&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;(Why a Quant of Phi-3 Mini? Because it would fit in each of the GPUs and was easily available across the platforms)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Methodology&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Ran the llm-speed-bench against each configuration for 100 runs. It automatically exports some charts, csv, and what filled out most of the MD formatting below. While the tests were running no other processing was really happening for this server.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Performance Summary&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Frontend&lt;/th&gt; &lt;th align="left"&gt;Platform&lt;/th&gt; &lt;th align="left"&gt;Backend&lt;/th&gt; &lt;th align="left"&gt;GPU&lt;/th&gt; &lt;th align="left"&gt;Warm?&lt;/th&gt; &lt;th align="left"&gt;Runs&lt;/th&gt; &lt;th align="left"&gt;Time To First Token&lt;/th&gt; &lt;th align="left"&gt;Prompt Tok/s&lt;/th&gt; &lt;th align="left"&gt;Response Tok/s&lt;/th&gt; &lt;th align="left"&gt;Num Response Tokens&lt;/th&gt; &lt;th align="left"&gt;Avg Tokens per Chunk&lt;/th&gt; &lt;th align="left"&gt;Avg Time Between Chunks&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;ollama&lt;/td&gt; &lt;td align="left"&gt;llama-cpp&lt;/td&gt; &lt;td align="left"&gt;A100D&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;0.17 +/- 0.02&lt;/td&gt; &lt;td align="left"&gt;453.18 +/- 65.78&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;119.55 +/- 6.20&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;201.00 +/- 373.00&lt;/td&gt; &lt;td align="left"&gt;3.50 +/- 0.62&lt;/td&gt; &lt;td align="left"&gt;0.01 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;ollama&lt;/td&gt; &lt;td align="left"&gt;llama-cpp&lt;/td&gt; &lt;td align="left"&gt;V100&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;0.21 +/- 0.03&lt;/td&gt; &lt;td align="left"&gt;379.30 +/- 63.55&lt;/td&gt; &lt;td align="left"&gt;112.01 +/- 5.59&lt;/td&gt; &lt;td align="left"&gt;191.00 +/- 201.75&lt;/td&gt; &lt;td align="left"&gt;3.38 +/- 0.45&lt;/td&gt; &lt;td align="left"&gt;0.01 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;LocalAi&lt;/td&gt; &lt;td align="left"&gt;llama-cpp-fallback&lt;/td&gt; &lt;td align="left"&gt;A100D&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;0.14 +/- 0.03&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;577.40 +/- 109.92&lt;/td&gt; &lt;td align="left"&gt;74.14 +/- 2.13&lt;/td&gt; &lt;td align="left"&gt;719.00 +/- 113.00&lt;/td&gt; &lt;td align="left"&gt;1.00 +/- 0.00&lt;/td&gt; &lt;td align="left"&gt;0.00 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;LocalAi&lt;/td&gt; &lt;td align="left"&gt;llama-cpp-fallback&lt;/td&gt; &lt;td align="left"&gt;V100&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;0.16 +/- 0.04&lt;/td&gt; &lt;td align="left"&gt;479.44 +/- 102.21&lt;/td&gt; &lt;td align="left"&gt;71.95 +/- 1.67&lt;/td&gt; &lt;td align="left"&gt;737.50 +/- 109.25&lt;/td&gt; &lt;td align="left"&gt;1.00 +/- 0.00&lt;/td&gt; &lt;td align="left"&gt;0.00 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;vLLM&lt;/td&gt; &lt;td align="left"&gt;vLLM&lt;/td&gt; &lt;td align="left"&gt;A100D&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;0.27 +/- 0.03&lt;/td&gt; &lt;td align="left"&gt;293.64 +/- 31.49&lt;/td&gt; &lt;td align="left"&gt;114.38 +/- 4.48&lt;/td&gt; &lt;td align="left"&gt;743.50 +/- 122.00&lt;/td&gt; &lt;td align="left"&gt;3.81 +/- 0.20&lt;/td&gt; &lt;td align="left"&gt;0.01 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;OpenWebUI&lt;/td&gt; &lt;td align="left"&gt;vLLM&lt;/td&gt; &lt;td align="left"&gt;vLLM&lt;/td&gt; &lt;td align="left"&gt;V100&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;0.31 +/- 0.03&lt;/td&gt; &lt;td align="left"&gt;253.70 +/- 18.75&lt;/td&gt; &lt;td align="left"&gt;107.08 +/- 3.09&lt;/td&gt; &lt;td align="left"&gt;782.50 +/- 128.75&lt;/td&gt; &lt;td align="left"&gt;3.80 +/- 0.14&lt;/td&gt; &lt;td align="left"&gt;0.01 +/- 0.00&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;em&gt;Values are presented as median +/- IQR (Interquartile Range). Tokenization of non-OpenAI models is approximate.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Environmental Configuration:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;All platforms/frontends mentioned are running in docker containers across 2 chassis. Chassis 1: This hosts OpenWebUi and some other services as it is external facing Chassis 2: This is the &amp;quot;compute&amp;quot; node in the backend&lt;/p&gt; &lt;p&gt;Chassis 1 and 2 are connected via 10GB links through a cisco switch and are within the same VLANs (where applicable). OpenWebUi does make use of a docker &amp;quot;bridge&amp;quot; network to egress to the compute node.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;System Specs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Chassis: Gigabyte T181-G20 OCPv1 with custom power supply so I can run it outside of an OCPv1 rack&lt;/li&gt; &lt;li&gt;CPU: 1x Intel(R) Xeon(R) Gold 5115 CPU @ 2.40GHz (10C,20T)&lt;/li&gt; &lt;li&gt;RAM: 12*32GB Samsung ECC 2400 MT/s (fills all channels) M393A4K40CB1-CRC&lt;/li&gt; &lt;li&gt;OS: Ubuntu 24.04.1 LTS&lt;/li&gt; &lt;li&gt;GPUs: &lt;ul&gt; &lt;li&gt;1x SXM2 A100 &amp;quot;Drive&amp;quot; module with 32GB of ram and 0 chill (it gets hot) &lt;ul&gt; &lt;li&gt;I have the other 3 but may hold off installing them until I can get some better cooling or the stupid IPMI in this chassis to take remote fan commands from the OS.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;3x V100 16GB&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&amp;#8203;&lt;/p&gt; &lt;pre&gt;&lt;code&gt; +-----------------------------------------------------------------------------------------+ | NVIDIA-SMI 565.57.01 Driver Version: 565.57.01 CUDA Version: 12.7 | |-----------------------------------------+------------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | | | | MIG M. | |=========================================+========================+======================| | 0 Tesla V100-SXM2-16GB On | 00000000:1A:00.0 Off | 0 | | N/A 31C P0 56W / 300W | 7933MiB / 16384MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 1 Tesla V100-SXM2-16GB On | 00000000:1B:00.0 Off | 0 | | N/A 24C P0 39W / 300W | 1MiB / 16384MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 2 Tesla V100-SXM2-16GB On | 00000000:1C:00.0 Off | 0 | | N/A 43C P0 58W / 300W | 15051MiB / 16384MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 3 NVIDIA DRIVE-PG199-PROD On | 00000000:1D:00.0 Off | 0 | | N/A 39C P0 36W / N/A | 1MiB / 32768MiB | 0% Default | | | | Disabled | +-----------------------------------------+------------------------+----------------------+ &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mp3m4k3r"&gt; /u/mp3m4k3r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il3yqk/a100_drive_sxm2_bench_testing_of_various_localllm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il3yqk/a100_drive_sxm2_bench_testing_of_various_localllm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il3yqk/a100_drive_sxm2_bench_testing_of_various_localllm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-09T02:02:45+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1il6ucl</id>
-    <title>How much VRAM does a typical training run take with TinyZero RL?</title>
-    <updated>2025-02-09T04:40:24+00:00</updated>
-    <author>
-      <name>/u/SussyAmogusChungus</name>
-      <uri>https://old.reddit.com/user/SussyAmogusChungus</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to run this for a 11B vision model along with LoRA in 4-Bit. Can we run this on a single GPU (L4)?&lt;/p&gt; &lt;p&gt;For context, &lt;a href="https://github.com/Jiayi-Pan/TinyZero"&gt;https://github.com/Jiayi-Pan/TinyZero&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SussyAmogusChungus"&gt; /u/SussyAmogusChungus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-09T04:40:24+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ik98l2</id>
     <title>I haven't seen many quad GPU setups so here is one</title>
@@ -73,17 +47,17 @@
     <published>2025-02-08T09:40:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ikqy5w</id>
-    <title>Building an LLM-Optimized Linux Server on a Budget</title>
-    <updated>2025-02-08T16:21:16+00:00</updated>
+    <id>t3_1il6ucl</id>
+    <title>How much VRAM does a typical training run take with TinyZero RL?</title>
+    <updated>2025-02-09T04:40:24+00:00</updated>
     <author>
-      <name>/u/Unprotectedtxt</name>
-      <uri>https://old.reddit.com/user/Unprotectedtxt</uri>
+      <name>/u/SussyAmogusChungus</name>
+      <uri>https://old.reddit.com/user/SussyAmogusChungus</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"&gt; &lt;img alt="Building an LLM-Optimized Linux Server on a Budget" src="https://external-preview.redd.it/9ar9q08cZR3Pnd8Hxka6_rkxXup9YdrkJJw3Y1V7agI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7da33d2c9a8a6d7c6f95f5206eb1b4796158fe2f" title="Building an LLM-Optimized Linux Server on a Budget" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Based on these benchmarks wouldn’t buying a Mac Studio with 128 GB RAM M2 Ultra 60 or 72 core be far better than traditional dedicated PC builds?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Unprotectedtxt"&gt; /u/Unprotectedtxt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://linuxblog.io/build-llm-linux-server-on-budget/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to run this for a 11B vision model along with LoRA in 4-Bit. Can we run this on a single GPU (L4)?&lt;/p&gt; &lt;p&gt;For context, &lt;a href="https://github.com/Jiayi-Pan/TinyZero"&gt;https://github.com/Jiayi-Pan/TinyZero&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SussyAmogusChungus"&gt; /u/SussyAmogusChungus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il6ucl/how_much_vram_does_a_typical_training_run_take/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-08T16:21:16+00:00</published>
+    <published>2025-02-09T04:40:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1iko5y3</id>
@@ -99,6 +73,32 @@
     <published>2025-02-08T14:15:17+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ikqy5w</id>
+    <title>Building an LLM-Optimized Linux Server on a Budget</title>
+    <updated>2025-02-08T16:21:16+00:00</updated>
+    <author>
+      <name>/u/Unprotectedtxt</name>
+      <uri>https://old.reddit.com/user/Unprotectedtxt</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"&gt; &lt;img alt="Building an LLM-Optimized Linux Server on a Budget" src="https://external-preview.redd.it/9ar9q08cZR3Pnd8Hxka6_rkxXup9YdrkJJw3Y1V7agI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7da33d2c9a8a6d7c6f95f5206eb1b4796158fe2f" title="Building an LLM-Optimized Linux Server on a Budget" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Based on these benchmarks wouldn’t buying a Mac Studio with 128 GB RAM M2 Ultra 60 or 72 core be far better than traditional dedicated PC builds?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Unprotectedtxt"&gt; /u/Unprotectedtxt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://linuxblog.io/build-llm-linux-server-on-budget/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikqy5w/building_an_llmoptimized_linux_server_on_a_budget/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-08T16:21:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1il720d</id>
+    <title>Granite-Vision-3.1-2b-preview</title>
+    <updated>2025-02-09T04:53:07+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/ibm-granite/granite-vision-3.1-2b-preview"&gt;https://huggingface.co/ibm-granite/granite-vision-3.1-2b-preview&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;&lt;strong&gt;Model Summary:&lt;/strong&gt; granite-vision-3.1-2b-preview is a compact and efficient vision-language model, specifically designed for visual document understanding, enabling automated content extraction from tables, charts, infographics, plots, diagrams, and more. The model was trained on a meticulously curated instruction-following dataset, comprising diverse public datasets and synthetic datasets tailored to support a wide range of document understanding and general image tasks. It was trained by fine-tuning a Granite large language model (&lt;a href="https://huggingface.co/ibm-granite/granite-3.1-2b-instruct"&gt;https://huggingface.co/ibm-granite/granite-3.1-2b-instruct&lt;/a&gt;) with both image and text modalities.&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il720d/granitevision312bpreview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il720d/granitevision312bpreview/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il720d/granitevision312bpreview/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-09T04:53:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ik76bj</id>
     <title>It was Ilya who "closed" OpenAI</title>
     <updated>2025-02-07T22:08:04+00:00</updated>
@@ -110,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ik76bj/it_was_ilya_who_closed_openai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-07T22:08:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1il6hm1</id>
-    <title>Which API provider has most number of models and is decently priced?</title>
-    <updated>2025-02-09T04:20:03+00:00</updated>
-    <author>
-      <name>/u/liquidnitrogen</name>
-      <uri>https://old.reddit.com/user/liquidnitrogen</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got 2070 super with 8 Gigs VRAM which works great with 7B param models (qwencoder, deepseek etc), I really like trying out new models for coding, and day to day general question that I come across (tech, maths, health) but because of limited VRAM and obnoxious prices of these GPU by Nvidia (previously known as Tech DeBeers) I can't upgrade and play with larger models. Question is what is the top provider which allows me to load most models and remotely access it? Is open router price decent enough and worth it rather buying overpriced GPUs?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/liquidnitrogen"&gt; /u/liquidnitrogen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-09T04:20:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1il2tob</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ikgsl6/germany_we_released_model_equivalent_to_r1_back/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-08T06:14:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1il6hm1</id>
+    <title>Which API provider has most number of models and is decently priced?</title>
+    <updated>2025-02-09T04:20:03+00:00</updated>
+    <author>
+      <name>/u/liquidnitrogen</name>
+      <uri>https://old.reddit.com/user/liquidnitrogen</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got 2070 super with 8 Gigs VRAM which works great with 7B param models (qwencoder, deepseek etc), I really like trying out new models for coding, and day to day general question that I come across (tech, maths, health) but because of limited VRAM and obnoxious prices of these GPU by Nvidia (previously known as Tech DeBeers) I can't upgrade and play with larger models. Question is what is the top provider which allows me to load most models and remotely access it? Is open router price decent enough and worth it rather buying overpriced GPUs?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/liquidnitrogen"&gt; /u/liquidnitrogen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1il6hm1/which_api_provider_has_most_number_of_models_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-09T04:20:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1ikguu9</id>
