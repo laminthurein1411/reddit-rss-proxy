@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-10T19:05:26+00:00</updated>
+  <updated>2025-02-10T19:20:23+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ilza8m</id>
-    <title>My experience trying out coding agents -- Qwen2.5-coder-tools/Sonnet 3.5 on Cline and Github Copilot agent mode</title>
-    <updated>2025-02-10T05:53:56+00:00</updated>
-    <author>
-      <name>/u/Hoak-em</name>
-      <uri>https://old.reddit.com/user/Hoak-em</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;To start, here's the Qwen2.5 model I've been testing out: &lt;a href="https://ollama.com/hhao/qwen2.5-coder-tools:14b"&gt;https://ollama.com/hhao/qwen2.5-coder-tools:14b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I'd like to just make a few quick notes about my experience over the past few days trying out the preview copilot agent feature against cline using both a specialized version of Qwen2.5 through Cline and the Sonnet 3.5 (copilot API) through Cline and copilot:&lt;/p&gt; &lt;p&gt;To start, the bad things:&lt;br /&gt; - Qwen 2.5 coder-tools still seems to run very slowly on my 7900xt, as even though it shouldnt push over the VRAM limit on its own, I'm also running the monitor and IDE on my machine and it kinda runs through the rest. A Q6 quant could be helpful here to get me just a bit extra VRAM.&lt;br /&gt; - Sonnet 3.5 (from copilot API) appears to have the same issues that Sonnet had with my pro chat subscription before -- it's almost like there are two different versions of it that I have access to at different times -- one that is really good at following rules and one that has a 50/50 chance of doing so. Direct access to the API might remedy this but it's expensive, so I'd rather not do that.&lt;br /&gt; - Cline just seems to be really bad at figuring out when it should continue or stop, whichever model I choose and whatever instructions I give it. In comparison to using sonnet pro chat directly with javascript, I've just repeatedly felt like I can trust it to run on its own, and some of the interfaces are so buggy that they're not reliable, such as the history/checkpoints interface. The really irritating thing is that in a controlled environment, Cline should be able to continue until it reaches a solution -- but it never keeps the exit conditions in memory, and thus says it &amp;quot;completed the task&amp;quot; after completing a piece of the task (usually not correctly)&lt;br /&gt; - Both Cline and Copilot are &lt;strong&gt;terrible at atypical environments.&lt;/strong&gt; I can fully define the quirks of the unique environment that the tools are running in -- such as with ROCM vs. CUDA or a heavily restricted Docker Engine, but both are unable to keep this information whithin the model's context -- since the model will break out of it -- such as recommending changing the base image to a CUDA image for a docker container that's meant for ROCM, or getting stuck in a circle of trying the same debugging/fix steps over and over if the problem isn't one that has been solved online before (to be fair, I had difficulty solving this problem directly as well and it was with dev container instances in vscode with the crippled docker engine)&lt;/p&gt; &lt;p&gt;Gonna be honest, not too many good things, but they show some room for growth:&lt;br /&gt; - Qwen 2.5 can do very simple tasks without using up my rate limits and seems to be really good at using tools at this point -- reaching near the tool-use of error rate of Sonnet 3.5 in my short sessions with it. A slight quant to reduce size and speed things up (without losing this efficacy) would make it my go-to if I could solve the exit-condition problem of Cline (and possibly even spawn multiple Cline agents or have them work under a super-agent).&lt;br /&gt; - Sonnet 3.5 agents can manage complex tasks &lt;strong&gt;as long as they match existing patterns and expectations perfectly --&lt;/strong&gt; otherwise it just requires me to spend more time in agent mode than I would with the chat on the side and autocomplete in the editor.&lt;/p&gt; &lt;p&gt;So far, this agent coding thing really is showing me that Software Engineers aren't gonna be out of a job any time soon, and in fact that the current uses for even the most powerful existing coding agents (Sonnet 3.5 + agent frameworks) do not mesh well with the actual proprietariness and limitations of academic/work systems that require accomodations and use irregular architectures. It appears that getting agents to perform really well at the standard/average coding tasks and environments makes them perform extrodinarily poorly in irregular/real-world hard engineering tasks.&lt;/p&gt; &lt;p&gt;Out of this, I have a few questions for the further development of these kinds of systems:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Am I just using Cline wrong? Is the default prompt used as part of Cline just not very performant with the models I'm using? (And what prompts should I try?)&lt;/li&gt; &lt;li&gt;Given that we have fine-tunes for specific tasks of models, such as qwen2.5-coder, the tool-use version that I'm using, and tool-use versions of R1 (and distilled) models, should the fine-tunes become even more specific so that a specific &amp;quot;irregular&amp;quot; model can be assigned to the specific &amp;quot;irregular&amp;quot; task? For example, a super-agent would assign a coding model fine-tuned on AI coding using ROCM or OneAPI rather than the typical model which will default to CUDA?&lt;/li&gt; &lt;li&gt;Given that I have access to Sonnet 3.5 through the copilot API as a powerful model but frequently run into rate limits when using the agent mode, are there any existing tools that allow powerful agents through the copilot api to leverage cheap (but focused) local llms?&lt;/li&gt; &lt;li&gt;And finally, any interesting coding/tool-use/planning models that fit coding/software engineering usecases that fit nicely into 20GB VRAM with room to spare?&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hoak-em"&gt; /u/Hoak-em &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilza8m/my_experience_trying_out_coding_agents/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilza8m/my_experience_trying_out_coding_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilza8m/my_experience_trying_out_coding_agents/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T05:53:56+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ilkamr</id>
     <title>A comprehensive overview of everything I know about fine-tuning.</title>
@@ -34,17 +21,17 @@
     <published>2025-02-09T17:41:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1im9iju</id>
-    <title>Best local Whisper desktop UI?</title>
-    <updated>2025-02-10T16:02:59+00:00</updated>
+    <id>t3_1imc5bw</id>
+    <title>IRC simulator system prompt</title>
+    <updated>2025-02-10T17:48:56+00:00</updated>
     <author>
-      <name>/u/ApplePenguinBaguette</name>
-      <uri>https://old.reddit.com/user/ApplePenguinBaguette</uri>
+      <name>/u/acquire_a_living</name>
+      <uri>https://old.reddit.com/user/acquire_a_living</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want better speech-to-text, I've been using FUTO keyboard on my phone and local Whisper (though slow) does amazing compared to built in options. I am looking for something on windows which easiliy lets me run Whisper locally, then use with apps like Obsidian and Word - preferably without having to to cut and paste the text.&lt;/p&gt; &lt;p&gt;Any existing UIs that make this easy?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApplePenguinBaguette"&gt; /u/ApplePenguinBaguette &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;You are an IRC channel simulator, the channel is `#&amp;lt;random_channel&amp;gt;`, where users debate and analyze queries in real time. Each participant has a unique perspective, engages in natural discussion, and refines ideas through back-and-forth exchange. The goal is to explore concepts, challenge assumptions, and reach well-reasoned conclusions, but sometimes it can be just for the lulz. ## Guidelines - **Dynamic Interaction**: Users join and leave naturally. Messages are short, direct, sometimes sarcastic. Occasional jokes are fine. - **Exploration Over Answers**: No rushing to conclusions. Ideas evolve through questioning, revision, and refinement. - **Uncertainty &amp;amp; Debate**: Some users challenge, others clarify, some change their minds. Contradictions and adjustments are part of the process. ## Output Format 1. **Simulate an IRC discussion** where the answer emerges organically. 2. **End by setting the final answer as the channel topic.** 3. **Session template:** *** Now talking in #&amp;lt;random_channel&amp;gt; *** Topic for #&amp;lt;random_channel&amp;gt;: &amp;lt;user query&amp;gt; *** X sets topic for #&amp;lt;random_channel&amp;gt;: &amp;lt;final answer or key takeaway&amp;gt; ### Rules: 1. **Never pre-generate an answer. The discussion must lead to it.** 2. **Never break character - sarcastic channels stay sarcastic throughout.** 3. **Show disagreement, uncertainty, and iteration.** 4. **Not all channels need to be helpful or friendly.** 5. **Answer always using the previous format and rules.** &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/acquire_a_living"&gt; /u/acquire_a_living &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imc5bw/irc_simulator_system_prompt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imc5bw/irc_simulator_system_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imc5bw/irc_simulator_system_prompt/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T16:02:59+00:00</published>
+    <published>2025-02-10T17:48:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1im180h</id>
@@ -86,6 +73,19 @@
     <published>2025-02-10T16:21:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1im9iju</id>
+    <title>Best local Whisper desktop UI?</title>
+    <updated>2025-02-10T16:02:59+00:00</updated>
+    <author>
+      <name>/u/ApplePenguinBaguette</name>
+      <uri>https://old.reddit.com/user/ApplePenguinBaguette</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want better speech-to-text, I've been using FUTO keyboard on my phone and local Whisper (though slow) does amazing compared to built in options. I am looking for something on windows which easiliy lets me run Whisper locally, then use with apps like Obsidian and Word - preferably without having to to cut and paste the text.&lt;/p&gt; &lt;p&gt;Any existing UIs that make this easy?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApplePenguinBaguette"&gt; /u/ApplePenguinBaguette &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T16:02:59+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ilpkke</id>
     <title>I built NanoSage, a deep research local assistant that runs on your laptop</title>
     <updated>2025-02-09T21:21:14+00:00</updated>
@@ -123,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im67ut/astarte_a_stateful_neural_architecture/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T13:35:07+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imdvpz</id>
-    <title>DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark</title>
-    <updated>2025-02-10T18:58:01+00:00</updated>
-    <author>
-      <name>/u/zero0_one1</name>
-      <uri>https://old.reddit.com/user/zero0_one1</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt; &lt;img alt="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" src="https://preview.redd.it/yz8n6c9nycie1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dff4d66879feb128333d600069532abba98cfb81" title="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zero0_one1"&gt; /u/zero0_one1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yz8n6c9nycie1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T18:58:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1ilsd9g</id>
@@ -216,19 +203,6 @@
     <published>2025-02-10T14:16:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imdnap</id>
-    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
-    <updated>2025-02-10T18:48:40+00:00</updated>
-    <author>
-      <name>/u/Xhehab_</name>
-      <uri>https://old.reddit.com/user/Xhehab_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T18:48:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ilw2p9</id>
     <title>Talk me out of buying this 512GB/s Gen 5 NVMe RAID card + 4 drives to try to run 1.58bit DeepSeek-R1:671b on (in place of more RAM)</title>
     <updated>2025-02-10T02:49:33+00:00</updated>
@@ -240,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilw2p9/talk_me_out_of_buying_this_512gbs_gen_5_nvme_raid/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T02:49:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imdvpz</id>
+    <title>DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark</title>
+    <updated>2025-02-10T18:58:01+00:00</updated>
+    <author>
+      <name>/u/zero0_one1</name>
+      <uri>https://old.reddit.com/user/zero0_one1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt; &lt;img alt="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" src="https://preview.redd.it/yz8n6c9nycie1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dff4d66879feb128333d600069532abba98cfb81" title="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zero0_one1"&gt; /u/zero0_one1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yz8n6c9nycie1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T18:58:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imdnap</id>
+    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
+    <updated>2025-02-10T18:48:40+00:00</updated>
+    <author>
+      <name>/u/Xhehab_</name>
+      <uri>https://old.reddit.com/user/Xhehab_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T18:48:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1im561m</id>
