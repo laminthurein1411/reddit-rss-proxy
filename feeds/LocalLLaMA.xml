@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-10T19:20:23+00:00</updated>
+  <updated>2025-02-10T19:34:18+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ilkamr</id>
-    <title>A comprehensive overview of everything I know about fine-tuning.</title>
-    <updated>2025-02-09T17:41:46+00:00</updated>
-    <author>
-      <name>/u/The-Silvervein</name>
-      <uri>https://old.reddit.com/user/The-Silvervein</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I’ve been working on fine-tuning LLMs a bit later than everyone else (among the ones I know), and I’ve struggled to understand why I’m doing what I’m doing. I’ve compiled a small collection of everything I know about fine-tuning LLMs or transformer models for specific use cases. I’d like to hear your thoughts on these things!&lt;/p&gt; &lt;p&gt;Also, please share your experiences too! I'd love to hear those even more.&lt;/p&gt; &lt;p&gt;---------------------------------------&lt;/p&gt; &lt;p&gt;&lt;strong&gt;When you shouldn't fine-tune:&lt;/strong&gt;&lt;br /&gt; - When wanting the model to respond in a &amp;quot;specific&amp;quot; way in rare circumstances. That's what prompt engineering is for! Don't use a bulldozer to kill a fly.&lt;br /&gt; - For the model to learn &amp;quot;new knowledge&amp;quot;&lt;br /&gt; - When you have too little data. (Though it's being disproven that low data performs better than high data for mathematical reasoning! Still in research!)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Choosing the right data&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;You want the model to learn the patterns, not the words. You need enough diverse samples, not large data of the same kind.&lt;/li&gt; &lt;li&gt;More data isn't always better. Don't dump all the data you have onto the model.&lt;/li&gt; &lt;li&gt;Every training example needs a clear input and a clear output. And optionally, context text to add additional information.&lt;/li&gt; &lt;li&gt;The dataset must have enough cases, edge cases and everything in between. You can also augment the dataset by using data from a Larger LLM.&lt;/li&gt; &lt;li&gt;Pack your datasets! They help!&lt;/li&gt; &lt;li&gt;Determine if you're performing open-ended, Instruction or chat-based text generation**.**&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Choosing the right model:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;You don't need a 100B model for every task you have. For real-world applications, 1-13B models are more practical.&lt;/li&gt; &lt;li&gt;You must check the licensing to see if you use the model for commercial use cases. Some have very strict licensing.&lt;/li&gt; &lt;li&gt;A good starting point? Llama-3.1-8B.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;General fine-tuning:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;An 8B model needs ~16GB of memory to load up. So, mixed precision and quantisations are used to initialise a model in case of memory restrictions.&lt;/li&gt; &lt;li&gt;If the batch size can't be increased, use the Gradient-accumulation approach. General accumulations are done for overall batch sizes of 16,32,128.&lt;/li&gt; &lt;li&gt;Save checkpoints regularly, and use &lt;code&gt;resume_from_checkpoint=True&lt;/code&gt; when needed.&lt;/li&gt; &lt;li&gt;Consider using Model-parallelism or Data-parallelism techniques to work across multiple devices for large-scale training.&lt;/li&gt; &lt;li&gt;Documentation will help in surprisingly weird situations. Maintain it.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;LoRA finetuning:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Don't use QLoRA for everything. Use it only if you realise that the model couldn't fit your device. Using QLoRA roughly comes with 39% more training time while saving roughly a third of the memory needed.&lt;/li&gt; &lt;li&gt;SGD+Learning rate schedulers are useful. But using LR Schedulers with other optimizers like AdamW/Adam seems to give diminishing returns. &lt;em&gt;(need to check&lt;/em&gt; &lt;code&gt;sophia&lt;/code&gt; &lt;em&gt;optimiser.)&lt;/em&gt;&lt;/li&gt; &lt;li&gt;A high number of training epochs doesn't bode well for LoRA finetuning.&lt;/li&gt; &lt;li&gt;Despite the general understanding of lora_alpha ~2*lora_rank, it's sometimes better to check with other values too! These two parameters need meticulous adjustments.&lt;/li&gt; &lt;li&gt;The training times found outside might be confusing. It would take too long on your PC, but it seems very fast on the reported sites. Well, your choice of GPU would also be implicating the speed. So keep that in mind.&lt;/li&gt; &lt;li&gt;LoRA is actively changing. Don't forget to check and test its different versions, such as LoRA-plus, DoRA, LoFTQ, AdaLoRA, DyLoRA, LoRA-FA etc. (still need to check many of these...)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Choosing the finetuning strategy:&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Determine the right task:&lt;/strong&gt; &lt;ol&gt; &lt;li&gt;You must &amp;quot;adapt&amp;quot; the model for task-specific finetuning, such as code generation, document summarisation, and question answering.&lt;/li&gt; &lt;li&gt;For domain-specific needs like medical, financial, legal, etc., you need to push the model to update its knowledge =&amp;gt; Use RAG when applicable or fine-tune the entire model. (EDIT: This is supposed to be re-training, not fine-tuning.)&lt;/li&gt; &lt;/ol&gt;&lt;/li&gt; &lt;li&gt;Utilise pruning depending on the kind of task you're trying to perform. Generally, in production environments, the faster the inference, the better the performance. In this case, pruning+finetuning helps. We need to keep that in mind.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/The-Silvervein"&gt; /u/The-Silvervein &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilkamr/a_comprehensive_overview_of_everything_i_know/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilkamr/a_comprehensive_overview_of_everything_i_know/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilkamr/a_comprehensive_overview_of_everything_i_know/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-09T17:41:46+00:00</published>
-  </entry>
   <entry>
     <id>t3_1imc5bw</id>
     <title>IRC simulator system prompt</title>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im9iju/best_local_whisper_desktop_ui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T16:02:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imenfa</id>
+    <title>fair use vs stealing data</title>
+    <updated>2025-02-10T19:28:00+00:00</updated>
+    <author>
+      <name>/u/boxingdog</name>
+      <uri>https://old.reddit.com/user/boxingdog</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imenfa/fair_use_vs_stealing_data/"&gt; &lt;img alt="fair use vs stealing data" src="https://preview.redd.it/3bnanf625die1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=491c94da04a0556ad84f59944bf9958350b5f675" title="fair use vs stealing data" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/boxingdog"&gt; /u/boxingdog &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/3bnanf625die1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imenfa/fair_use_vs_stealing_data/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imenfa/fair_use_vs_stealing_data/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T19:28:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1ilpkke</id>
@@ -216,32 +216,6 @@
     <published>2025-02-10T02:49:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imdvpz</id>
-    <title>DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark</title>
-    <updated>2025-02-10T18:58:01+00:00</updated>
-    <author>
-      <name>/u/zero0_one1</name>
-      <uri>https://old.reddit.com/user/zero0_one1</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt; &lt;img alt="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" src="https://preview.redd.it/yz8n6c9nycie1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dff4d66879feb128333d600069532abba98cfb81" title="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zero0_one1"&gt; /u/zero0_one1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yz8n6c9nycie1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T18:58:01+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imdnap</id>
-    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
-    <updated>2025-02-10T18:48:40+00:00</updated>
-    <author>
-      <name>/u/Xhehab_</name>
-      <uri>https://old.reddit.com/user/Xhehab_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T18:48:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1im561m</id>
     <title>Gylphstral-24B: v1 Released! (MLX)</title>
     <updated>2025-02-10T12:38:59+00:00</updated>
@@ -266,6 +240,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im35yl/how_to_scale_rag_to_20_million_documents/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T10:33:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imdnap</id>
+    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
+    <updated>2025-02-10T18:48:40+00:00</updated>
+    <author>
+      <name>/u/Xhehab_</name>
+      <uri>https://old.reddit.com/user/Xhehab_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T18:48:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imdvpz</id>
+    <title>DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark</title>
+    <updated>2025-02-10T18:58:01+00:00</updated>
+    <author>
+      <name>/u/zero0_one1</name>
+      <uri>https://old.reddit.com/user/zero0_one1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt; &lt;img alt="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" src="https://preview.redd.it/yz8n6c9nycie1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dff4d66879feb128333d600069532abba98cfb81" title="DeepSeek R1 outperforms o3-mini (medium) on the Confabulations (Hallucinations) Benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zero0_one1"&gt; /u/zero0_one1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yz8n6c9nycie1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdvpz/deepseek_r1_outperforms_o3mini_medium_on_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T18:58:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1im141p</id>
