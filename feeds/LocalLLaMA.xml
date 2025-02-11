@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-11T03:11:38+00:00</updated>
+  <updated>2025-02-11T03:25:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilsfb1/tldr_of_andrej_karpathys_latest_deep_dive_on_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-09T23:28:38+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imlxji</id>
-    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
-    <updated>2025-02-11T00:37:20+00:00</updated>
-    <author>
-      <name>/u/paranoidray</name>
-      <uri>https://old.reddit.com/user/paranoidray</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T00:37:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1im4d3y</id>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im24eg/superlightweight_local_chat_ui_aiaio/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T09:17:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imlxji</id>
+    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
+    <updated>2025-02-11T00:37:20+00:00</updated>
+    <author>
+      <name>/u/paranoidray</name>
+      <uri>https://old.reddit.com/user/paranoidray</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T00:37:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1ilw2p9</id>
@@ -281,19 +281,6 @@
     <published>2025-02-10T17:54:21+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imnaj2</id>
-    <title>Elon's bid for OpenAI is about making the for-profit transition as painful as possible for Altman, not about actually purchasing it (explanation in comments).</title>
-    <updated>2025-02-11T01:55:14+00:00</updated>
-    <author>
-      <name>/u/jd_3d</name>
-      <uri>https://old.reddit.com/user/jd_3d</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From @ phill__1 on twitter:&lt;/p&gt; &lt;p&gt;OpenAI Inc. (the non-profit) wants to convert to a for-profit company. But you &lt;strong&gt;cannot&lt;/strong&gt; just turn a non-profit into a for-profit – that would be an incredible tax loophole. Instead, the new for-profit OpenAI company would need to &lt;strong&gt;pay out&lt;/strong&gt; OpenAI Inc.'s technology and IP (likely in equity in the new for-profit company). &lt;/p&gt; &lt;p&gt;The valuation is tricky since OpenAI Inc. is theoretically the sole controlling shareholder of the capped-profit subsidiary, OpenAI LP. But there have been some numbers floating around. Since the rumored SoftBank investment at a $260B valuation is dependent on the for-profit move, we're using the current ~$150B valuation. &lt;/p&gt; &lt;p&gt;&lt;em&gt;Control premiums&lt;/em&gt; in market transactions typically range between 20-30% of enterprise value; experts have predicted something around $30B-$40B. &lt;strong&gt;The key is&lt;/strong&gt;, this valuation is ultimately signed off on by the California and Delaware Attorneys General. &lt;/p&gt; &lt;p&gt;Now, if you want to &lt;strong&gt;block&lt;/strong&gt; OpenAI from the for-profit transition, but have yet to be successful in court, what do you do? &lt;em&gt;Make it as painful as possible.&lt;/em&gt; Elon Musk just gave regulators a &lt;strong&gt;perfect&lt;/strong&gt; argument for why the non-profit should get $97B for selling their technology and IP. This would instantly make the non-profit the majority stakeholder at &lt;em&gt;62%&lt;/em&gt;. &lt;/p&gt; &lt;p&gt;It's a clever move that throws a major wrench into the for-profit transition, potentially even stopping it dead in its tracks. Whether OpenAI accepts the offer or not (they won't), the mere existence of this valuation benchmark will be hard for regulators to ignore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T01:55:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imi9zz</id>
     <title>Altman Says ‘No Thank You’ to Reported Musk Bid for OpenAI</title>
     <updated>2025-02-10T21:54:45+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imi9zz/altman_says_no_thank_you_to_reported_musk_bid_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T21:54:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imnaj2</id>
+    <title>Elon's bid for OpenAI is about making the for-profit transition as painful as possible for Altman, not about actually purchasing it (explanation in comments).</title>
+    <updated>2025-02-11T01:55:14+00:00</updated>
+    <author>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From @ phill__1 on twitter:&lt;/p&gt; &lt;p&gt;OpenAI Inc. (the non-profit) wants to convert to a for-profit company. But you &lt;strong&gt;cannot&lt;/strong&gt; just turn a non-profit into a for-profit – that would be an incredible tax loophole. Instead, the new for-profit OpenAI company would need to &lt;strong&gt;pay out&lt;/strong&gt; OpenAI Inc.'s technology and IP (likely in equity in the new for-profit company). &lt;/p&gt; &lt;p&gt;The valuation is tricky since OpenAI Inc. is theoretically the sole controlling shareholder of the capped-profit subsidiary, OpenAI LP. But there have been some numbers floating around. Since the rumored SoftBank investment at a $260B valuation is dependent on the for-profit move, we're using the current ~$150B valuation. &lt;/p&gt; &lt;p&gt;&lt;em&gt;Control premiums&lt;/em&gt; in market transactions typically range between 20-30% of enterprise value; experts have predicted something around $30B-$40B. &lt;strong&gt;The key is&lt;/strong&gt;, this valuation is ultimately signed off on by the California and Delaware Attorneys General. &lt;/p&gt; &lt;p&gt;Now, if you want to &lt;strong&gt;block&lt;/strong&gt; OpenAI from the for-profit transition, but have yet to be successful in court, what do you do? &lt;em&gt;Make it as painful as possible.&lt;/em&gt; Elon Musk just gave regulators a &lt;strong&gt;perfect&lt;/strong&gt; argument for why the non-profit should get $97B for selling their technology and IP. This would instantly make the non-profit the majority stakeholder at &lt;em&gt;62%&lt;/em&gt;. &lt;/p&gt; &lt;p&gt;It's a clever move that throws a major wrench into the for-profit transition, potentially even stopping it dead in its tracks. Whether OpenAI accepts the offer or not (they won't), the mere existence of this valuation benchmark will be hard for regulators to ignore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T01:55:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1imlkim</id>
