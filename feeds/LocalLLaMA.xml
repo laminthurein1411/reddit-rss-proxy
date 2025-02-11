@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-11T05:48:38+00:00</updated>
+  <updated>2025-02-11T06:07:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -86,19 +86,6 @@
     <published>2025-02-10T02:49:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imlxji</id>
-    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
-    <updated>2025-02-11T00:37:20+00:00</updated>
-    <author>
-      <name>/u/paranoidray</name>
-      <uri>https://old.reddit.com/user/paranoidray</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T00:37:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imgyw9</id>
     <title>How to create a knowledge graph from 1000s of unstructured documents?</title>
     <updated>2025-02-10T21:01:21+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imgyw9/how_to_create_a_knowledge_graph_from_1000s_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T21:01:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imlxji</id>
+    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
+    <updated>2025-02-11T00:37:20+00:00</updated>
+    <author>
+      <name>/u/paranoidray</name>
+      <uri>https://old.reddit.com/user/paranoidray</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T00:37:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1im7393</id>
@@ -138,19 +138,6 @@
     <published>2025-02-10T12:38:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imqgug</id>
-    <title>LLM Reasoning via Inference Scaling - Open Source Research and Live Blog</title>
-    <updated>2025-02-11T04:33:42+00:00</updated>
-    <author>
-      <name>/u/maxusmusti</name>
-      <uri>https://old.reddit.com/user/maxusmusti</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt; &lt;img alt="LLM Reasoning via Inference Scaling - Open Source Research and Live Blog" src="https://a.thumbs.redditmedia.com/YbxuxSuU4JLNKesBFiOKoWqFa5rFj1YIejsVgzzIWu4.jpg" title="LLM Reasoning via Inference Scaling - Open Source Research and Live Blog" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all, as someone currently on the hunt for all LLM reasoning resources myself these past weeks, I figured some people out there might actually be interested in a cool resource from my team, for people looking to dive deeper into LLM reasoning research! The AI Innovation team at Red Hat has been sharing and updating a live public blog on their experiments to better understand reasoning with small language models. What's especially interesting in the latest update, though, is how we are achieving improved reasoning via inference-time scaling techniques, rather than the SFT+GRPO combo being heavily explored currently.&lt;/p&gt; &lt;p&gt;Using what we call &amp;quot;particle filtering-based inference-time scaling&amp;quot;, we are achieving improvements on Math 500 and AIME 2024 across Llama, Qwen, and Granite models. We are able to use all three models to beat 4o and Claude, and can get Qwen to outperform o1 as well! For people interested in learning more about the inference-scaling space, theres a write-up and video available &lt;a href="https://probabilistic-inference-scaling.github.io"&gt;here&lt;/a&gt;, and for those interested in more details on the other experiments we've tried and our future plans to train on custom reasoning trajectories, all &lt;em&gt;without&lt;/em&gt; distilling from R1 or its derivatives, feel free to check out the live blog &lt;a href="https://red-hat-ai-innovation-team.github.io/posts/r1-like-reasoning"&gt;here&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;And of course if anyone has any questions, thoughts, etc. I'd be more than happy to reply directly in the thread, as well as connect you all to the researchers working on all the avenues of reasoning we are exploring!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/iufnqb08tfie1.png?width=800&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d2bfe318f5b17a30af0a9b27782fa838f94f4997"&gt;https://preview.redd.it/iufnqb08tfie1.png?width=800&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d2bfe318f5b17a30af0a9b27782fa838f94f4997&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/maxusmusti"&gt; /u/maxusmusti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T04:33:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1im35yl</id>
     <title>How to scale RAG to 20 million documents ?</title>
     <updated>2025-02-10T10:33:39+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im35yl/how_to_scale_rag_to_20_million_documents/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T10:33:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imqgug</id>
+    <title>LLM Reasoning via Inference Scaling - Open Source Research and Live Blog</title>
+    <updated>2025-02-11T04:33:42+00:00</updated>
+    <author>
+      <name>/u/maxusmusti</name>
+      <uri>https://old.reddit.com/user/maxusmusti</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt; &lt;img alt="LLM Reasoning via Inference Scaling - Open Source Research and Live Blog" src="https://a.thumbs.redditmedia.com/YbxuxSuU4JLNKesBFiOKoWqFa5rFj1YIejsVgzzIWu4.jpg" title="LLM Reasoning via Inference Scaling - Open Source Research and Live Blog" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all, as someone currently on the hunt for all LLM reasoning resources myself these past weeks, I figured some people out there might actually be interested in a cool resource from my team, for people looking to dive deeper into LLM reasoning research! The AI Innovation team at Red Hat has been sharing and updating a live public blog on their experiments to better understand reasoning with small language models. What's especially interesting in the latest update, though, is how we are achieving improved reasoning via inference-time scaling techniques, rather than the SFT+GRPO combo being heavily explored currently.&lt;/p&gt; &lt;p&gt;Using what we call &amp;quot;particle filtering-based inference-time scaling&amp;quot;, we are achieving improvements on Math 500 and AIME 2024 across Llama, Qwen, and Granite models. We are able to use all three models to beat 4o and Claude, and can get Qwen to outperform o1 as well! For people interested in learning more about the inference-scaling space, theres a write-up and video available &lt;a href="https://probabilistic-inference-scaling.github.io"&gt;here&lt;/a&gt;, and for those interested in more details on the other experiments we've tried and our future plans to train on custom reasoning trajectories, all &lt;em&gt;without&lt;/em&gt; distilling from R1 or its derivatives, feel free to check out the live blog &lt;a href="https://red-hat-ai-innovation-team.github.io/posts/r1-like-reasoning"&gt;here&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;And of course if anyone has any questions, thoughts, etc. I'd be more than happy to reply directly in the thread, as well as connect you all to the researchers working on all the avenues of reasoning we are exploring!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/iufnqb08tfie1.png?width=800&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d2bfe318f5b17a30af0a9b27782fa838f94f4997"&gt;https://preview.redd.it/iufnqb08tfie1.png?width=800&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d2bfe318f5b17a30af0a9b27782fa838f94f4997&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/maxusmusti"&gt; /u/maxusmusti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T04:33:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1im141p</id>
@@ -307,19 +307,6 @@
     <published>2025-02-10T21:54:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imnaj2</id>
-    <title>Elon's bid for OpenAI is about making the for-profit transition as painful as possible for Altman, not about actually purchasing it (explanation in comments).</title>
-    <updated>2025-02-11T01:55:14+00:00</updated>
-    <author>
-      <name>/u/jd_3d</name>
-      <uri>https://old.reddit.com/user/jd_3d</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From @ phill__1 on twitter:&lt;/p&gt; &lt;p&gt;OpenAI Inc. (the non-profit) wants to convert to a for-profit company. But you &lt;strong&gt;cannot&lt;/strong&gt; just turn a non-profit into a for-profit – that would be an incredible tax loophole. Instead, the new for-profit OpenAI company would need to &lt;strong&gt;pay out&lt;/strong&gt; OpenAI Inc.'s technology and IP (likely in equity in the new for-profit company). &lt;/p&gt; &lt;p&gt;The valuation is tricky since OpenAI Inc. is theoretically the sole controlling shareholder of the capped-profit subsidiary, OpenAI LP. But there have been some numbers floating around. Since the rumored SoftBank investment at a $260B valuation is dependent on the for-profit move, we're using the current ~$150B valuation. &lt;/p&gt; &lt;p&gt;&lt;em&gt;Control premiums&lt;/em&gt; in market transactions typically range between 20-30% of enterprise value; experts have predicted something around $30B-$40B. &lt;strong&gt;The key is&lt;/strong&gt;, this valuation is ultimately signed off on by the California and Delaware Attorneys General. &lt;/p&gt; &lt;p&gt;Now, if you want to &lt;strong&gt;block&lt;/strong&gt; OpenAI from the for-profit transition, but have yet to be successful in court, what do you do? &lt;em&gt;Make it as painful as possible.&lt;/em&gt; Elon Musk just gave regulators a &lt;strong&gt;perfect&lt;/strong&gt; argument for why the non-profit should get $97B for selling their technology and IP. This would instantly make the non-profit the majority stakeholder at &lt;em&gt;62%&lt;/em&gt;. &lt;/p&gt; &lt;p&gt;It's a clever move that throws a major wrench into the for-profit transition, potentially even stopping it dead in its tracks. Whether OpenAI accepts the offer or not (they won't), the mere existence of this valuation benchmark will be hard for regulators to ignore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T01:55:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imenfa</id>
     <title>fair use vs stealing data</title>
     <updated>2025-02-10T19:28:00+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imenfa/fair_use_vs_stealing_data/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T19:28:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imnaj2</id>
+    <title>Elon's bid for OpenAI is about making the for-profit transition as painful as possible for Altman, not about actually purchasing it (explanation in comments).</title>
+    <updated>2025-02-11T01:55:14+00:00</updated>
+    <author>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From @ phill__1 on twitter:&lt;/p&gt; &lt;p&gt;OpenAI Inc. (the non-profit) wants to convert to a for-profit company. But you &lt;strong&gt;cannot&lt;/strong&gt; just turn a non-profit into a for-profit – that would be an incredible tax loophole. Instead, the new for-profit OpenAI company would need to &lt;strong&gt;pay out&lt;/strong&gt; OpenAI Inc.'s technology and IP (likely in equity in the new for-profit company). &lt;/p&gt; &lt;p&gt;The valuation is tricky since OpenAI Inc. is theoretically the sole controlling shareholder of the capped-profit subsidiary, OpenAI LP. But there have been some numbers floating around. Since the rumored SoftBank investment at a $260B valuation is dependent on the for-profit move, we're using the current ~$150B valuation. &lt;/p&gt; &lt;p&gt;&lt;em&gt;Control premiums&lt;/em&gt; in market transactions typically range between 20-30% of enterprise value; experts have predicted something around $30B-$40B. &lt;strong&gt;The key is&lt;/strong&gt;, this valuation is ultimately signed off on by the California and Delaware Attorneys General. &lt;/p&gt; &lt;p&gt;Now, if you want to &lt;strong&gt;block&lt;/strong&gt; OpenAI from the for-profit transition, but have yet to be successful in court, what do you do? &lt;em&gt;Make it as painful as possible.&lt;/em&gt; Elon Musk just gave regulators a &lt;strong&gt;perfect&lt;/strong&gt; argument for why the non-profit should get $97B for selling their technology and IP. This would instantly make the non-profit the majority stakeholder at &lt;em&gt;62%&lt;/em&gt;. &lt;/p&gt; &lt;p&gt;It's a clever move that throws a major wrench into the for-profit transition, potentially even stopping it dead in its tracks. Whether OpenAI accepts the offer or not (they won't), the mere existence of this valuation benchmark will be hard for regulators to ignore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imnaj2/elons_bid_for_openai_is_about_making_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T01:55:14+00:00</published>
   </entry>
 </feed>
