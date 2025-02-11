@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-02-11T15:06:18+00:00</updated>
+  <updated>2025-02-11T15:24:30+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -238,19 +238,6 @@
     <published>2025-02-10T21:43:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imqb05</id>
-    <title>Newbie question about context sizes.</title>
-    <updated>2025-02-11T04:24:47+00:00</updated>
-    <author>
-      <name>/u/Private-Citizen</name>
-      <uri>https://old.reddit.com/user/Private-Citizen</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Im writing my own thing to use the API &lt;code&gt;/api/chat&lt;/code&gt; end point.&lt;/p&gt; &lt;p&gt;I am managing the context window by pruning older prompts as the tokens get near full.&lt;/p&gt; &lt;p&gt;The question is, when i prune the oldest prompt, which naturally the first time will be a &amp;quot;user&amp;quot; prompt, should i also automatically equally prune the corresponding &amp;quot;assistant&amp;quot; prompt? Will it trip up the model to see an &amp;quot;assistant&amp;quot; prompt after the &amp;quot;system&amp;quot; prompt? Or is it safe to go [&amp;quot;system&amp;quot;, &amp;quot;assistant&amp;quot;, &amp;quot;user&amp;quot;, &amp;quot;assistant&amp;quot;, &amp;quot;user&amp;quot;] so the model has that little extra context?&lt;/p&gt; &lt;h1&gt;Follow up questions...&lt;/h1&gt; &lt;p&gt;ollama (&lt;em&gt;or system under ollama&lt;/em&gt;) seems to be using some kind of caching in the GPU vram storing your last prompt/context window. The responses are smooth until you change the context history by pruning one. I image something in cached memory is being re-juggled because anytime i need to prune the history the model delays responding. Same as the waiting when you first load/run the model up. I can also see during this waiting the GPU is pegged out to the max which is why i assume its re-caching.&lt;/p&gt; &lt;p&gt;I assume no way around this? I couldn't find in settings using the cli or API to disable this caching feature for testing. Any performance tweaks around this issue?&lt;/p&gt; &lt;p&gt;Do i even need to do manual pruning? Can i just keep stuffing oversized context history into the API and let the API / model do what it does to ignore too much context? Or will that create other issues like response accuracy?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Private-Citizen"&gt; /u/Private-Citizen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-02-11T04:24:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imtm8z</id>
     <title>Ollama won't start</title>
     <updated>2025-02-11T07:56:41+00:00</updated>
@@ -262,6 +249,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1imtm8z/ollama_wont_start/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-02-11T07:56:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imqb05</id>
+    <title>Newbie question about context sizes.</title>
+    <updated>2025-02-11T04:24:47+00:00</updated>
+    <author>
+      <name>/u/Private-Citizen</name>
+      <uri>https://old.reddit.com/user/Private-Citizen</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Im writing my own thing to use the API &lt;code&gt;/api/chat&lt;/code&gt; end point.&lt;/p&gt; &lt;p&gt;I am managing the context window by pruning older prompts as the tokens get near full.&lt;/p&gt; &lt;p&gt;The question is, when i prune the oldest prompt, which naturally the first time will be a &amp;quot;user&amp;quot; prompt, should i also automatically equally prune the corresponding &amp;quot;assistant&amp;quot; prompt? Will it trip up the model to see an &amp;quot;assistant&amp;quot; prompt after the &amp;quot;system&amp;quot; prompt? Or is it safe to go [&amp;quot;system&amp;quot;, &amp;quot;assistant&amp;quot;, &amp;quot;user&amp;quot;, &amp;quot;assistant&amp;quot;, &amp;quot;user&amp;quot;] so the model has that little extra context?&lt;/p&gt; &lt;h1&gt;Follow up questions...&lt;/h1&gt; &lt;p&gt;ollama (&lt;em&gt;or system under ollama&lt;/em&gt;) seems to be using some kind of caching in the GPU vram storing your last prompt/context window. The responses are smooth until you change the context history by pruning one. I image something in cached memory is being re-juggled because anytime i need to prune the history the model delays responding. Same as the waiting when you first load/run the model up. I can also see during this waiting the GPU is pegged out to the max which is why i assume its re-caching.&lt;/p&gt; &lt;p&gt;I assume no way around this? I couldn't find in settings using the cli or API to disable this caching feature for testing. Any performance tweaks around this issue?&lt;/p&gt; &lt;p&gt;Do i even need to do manual pruning? Can i just keep stuffing oversized context history into the API and let the API / model do what it does to ignore too much context? Or will that create other issues like response accuracy?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Private-Citizen"&gt; /u/Private-Citizen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1imqb05/newbie_question_about_context_sizes/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-02-11T04:24:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1imwsd5</id>
