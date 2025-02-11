@@ -2,49 +2,62 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-11T13:09:53+00:00</updated>
+  <updated>2025-02-11T13:24:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1im7393</id>
-    <title>Audiblez v4.0 is out: Generate Audiobooks from Ebooks</title>
-    <updated>2025-02-10T14:16:46+00:00</updated>
+    <id>t3_1im141p</id>
+    <title>Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth</title>
+    <updated>2025-02-10T08:00:39+00:00</updated>
     <author>
-      <name>/u/inkompatible</name>
-      <uri>https://old.reddit.com/user/inkompatible</uri>
+      <name>/u/michaeljchou</name>
+      <uri>https://old.reddit.com/user/michaeljchou</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/inkompatible"&gt; /u/inkompatible &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://claudio.uk/posts/audiblez-v4.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im7393/audiblez_v40_is_out_generate_audiobooks_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im7393/audiblez_v40_is_out_generate_audiobooks_from/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"&gt; &lt;img alt="Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth" src="https://b.thumbs.redditmedia.com/4-1ai0qkO5Xa7dtRGbvrlqdk94A166Fd8-qidSmu1eY.jpg" title="Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/michaeljchou"&gt; /u/michaeljchou &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1im141p"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T14:16:46+00:00</published>
+    <published>2025-02-10T08:00:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imlxji</id>
-    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
-    <updated>2025-02-11T00:37:20+00:00</updated>
+    <id>t3_1imy5qj</id>
+    <title>Best models for 7900XTX?</title>
+    <updated>2025-02-11T13:07:48+00:00</updated>
     <author>
-      <name>/u/paranoidray</name>
-      <uri>https://old.reddit.com/user/paranoidray</uri>
+      <name>/u/everardproudfoot</name>
+      <uri>https://old.reddit.com/user/everardproudfoot</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Running on ollama open webui and just letting it idle for the most part. Can be a couple specific ones for different reasons &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/everardproudfoot"&gt; /u/everardproudfoot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy5qj/best_models_for_7900xtx/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy5qj/best_models_for_7900xtx/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imy5qj/best_models_for_7900xtx/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T00:37:20+00:00</published>
+    <published>2025-02-11T13:07:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1im35yl</id>
-    <title>How to scale RAG to 20 million documents ?</title>
-    <updated>2025-02-10T10:33:39+00:00</updated>
+    <id>t3_1imsoyk</id>
+    <title>Really Fast TTS for Low-Performance Devices?</title>
+    <updated>2025-02-11T06:50:42+00:00</updated>
     <author>
-      <name>/u/Sarcinismo</name>
-      <uri>https://old.reddit.com/user/Sarcinismo</uri>
+      <name>/u/i_am_vsj</name>
+      <uri>https://old.reddit.com/user/i_am_vsj</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi All,&lt;/p&gt; &lt;p&gt;Curious to hear if you worked on RAG use cases with 20+ million documents and how you handled such scale from latency, embedding and indexing perspectives.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sarcinismo"&gt; /u/Sarcinismo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im35yl/how_to_scale_rag_to_20_million_documents/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im35yl/how_to_scale_rag_to_20_million_documents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im35yl/how_to_scale_rag_to_20_million_documents/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there any TTS that can generate speech in seconds on low-end devices (CPU-based)? I can compromise on quality—just needs to be better than gTTS.&lt;/p&gt; &lt;p&gt;I tried Edge TTS, but the response time is around 5-10 seconds, which isn't real-time enough. I need something much faster.&lt;/p&gt; &lt;p&gt;I know my requirements are a bit high, but if you know any solution, please share. Also, I heard OpenVoice can reduce latency—does that actually work like that?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/i_am_vsj"&gt; /u/i_am_vsj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T10:33:39+00:00</published>
+    <published>2025-02-11T06:50:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ilzcwm</id>
+    <title>671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp; 14 tokens/s Decode</title>
+    <updated>2025-02-10T05:58:47+00:00</updated>
+    <author>
+      <name>/u/CombinationNo780</name>
+      <uri>https://old.reddit.com/user/CombinationNo780</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt; &lt;img alt="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" src="https://external-preview.redd.it/HTxOk-pm59cMNSNVg9McK5hbABS7kz3K65hC8Z_V08I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f46113aaee323590b36c46395dcf62eb9140f297" title="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, we're the KTransformers team (formerly known for &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1edbue3/local_deepseekv2_inference_120_ts_for_prefill_and/"&gt;our local CPU/GPU hybrid inference open source project with DeepSeek-V2&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;We've heard your requests for DeepSeek-R1/V3 support—and we're excited to finally deliver!&lt;/p&gt; &lt;p&gt;Apologies for the wait, but we've been cooking up something truly amazing.&lt;/p&gt; &lt;p&gt;Today, we're proud to announce that we not only support DeepSeek-R1/V3, as showcased in the video at &lt;a href="https://github.com/kvcache-ai/ktransformers"&gt;https://github.com/kvcache-ai/ktransformers&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401"&gt;https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But we're also previewing our upcoming optimizations, including an Intel AMX-accelerated kernel and a selective expert activation method, which will significantly enhance performance.&lt;/p&gt; &lt;p&gt;With v0.3-preview, &lt;strong&gt;we achieve up to 286 tokens/s for prefill, making it up to 28× faster than llama.cpp&lt;/strong&gt; for local inference.&lt;/p&gt; &lt;p&gt;The binary distribution is available now and the source code will come ASAP! Check out the details here: &lt;a href="https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md"&gt;https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Some rationale behind this:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why CPU/GPU Hybrid Inference?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;DeepSeek's MLA operators are highly computationally intensive. While running everything on CPU is possible, offloading the heavy computations to the GPU results in a massive performance boost.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Where Does the Speedup Come From?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;- Expert Offload: Unlike traditional layer-based or KVCache offloading (as seen in llama.cpp), we offload the expert computation to the CPU and MLA/KVCache to GPU, aligning perfectly with DeepSeek’s architecture for optimal efficiency.&lt;/p&gt; &lt;p&gt;- Intel AMX Optimization – Our AMX-accelerated kernel is meticulously tuned, running several times faster than existing llama.cpp implementations. We plan to open-source this kernel after cleansing and are considering upstream contributions to llama.cpp.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why Intel CPUs?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Intel is currently the only CPU vendor that supports AMX-like instructions, which delivers significantly better performance compared to AVX-only alternatives. BUT, we also support AMD CPUs and due to the Expert Offload it will also be faster than the current llama.cpp&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CombinationNo780"&gt; /u/CombinationNo780 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T05:58:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1imxhr2</id>
@@ -73,45 +86,6 @@
     <published>2025-02-11T12:40:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imsoyk</id>
-    <title>Really Fast TTS for Low-Performance Devices?</title>
-    <updated>2025-02-11T06:50:42+00:00</updated>
-    <author>
-      <name>/u/i_am_vsj</name>
-      <uri>https://old.reddit.com/user/i_am_vsj</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there any TTS that can generate speech in seconds on low-end devices (CPU-based)? I can compromise on quality—just needs to be better than gTTS.&lt;/p&gt; &lt;p&gt;I tried Edge TTS, but the response time is around 5-10 seconds, which isn't real-time enough. I need something much faster.&lt;/p&gt; &lt;p&gt;I know my requirements are a bit high, but if you know any solution, please share. Also, I heard OpenVoice can reduce latency—does that actually work like that?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/i_am_vsj"&gt; /u/i_am_vsj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imsoyk/really_fast_tts_for_lowperformance_devices/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T06:50:42+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1im141p</id>
-    <title>Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth</title>
-    <updated>2025-02-10T08:00:39+00:00</updated>
-    <author>
-      <name>/u/michaeljchou</name>
-      <uri>https://old.reddit.com/user/michaeljchou</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"&gt; &lt;img alt="Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth" src="https://b.thumbs.redditmedia.com/4-1ai0qkO5Xa7dtRGbvrlqdk94A166Fd8-qidSmu1eY.jpg" title="Orange Pi AI Studio Pro mini PC with 408GB/s bandwidth" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/michaeljchou"&gt; /u/michaeljchou &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1im141p"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1im141p/orange_pi_ai_studio_pro_mini_pc_with_408gbs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T08:00:39+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ilzcwm</id>
-    <title>671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp; 14 tokens/s Decode</title>
-    <updated>2025-02-10T05:58:47+00:00</updated>
-    <author>
-      <name>/u/CombinationNo780</name>
-      <uri>https://old.reddit.com/user/CombinationNo780</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt; &lt;img alt="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" src="https://external-preview.redd.it/HTxOk-pm59cMNSNVg9McK5hbABS7kz3K65hC8Z_V08I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f46113aaee323590b36c46395dcf62eb9140f297" title="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, we're the KTransformers team (formerly known for &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1edbue3/local_deepseekv2_inference_120_ts_for_prefill_and/"&gt;our local CPU/GPU hybrid inference open source project with DeepSeek-V2&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;We've heard your requests for DeepSeek-R1/V3 support—and we're excited to finally deliver!&lt;/p&gt; &lt;p&gt;Apologies for the wait, but we've been cooking up something truly amazing.&lt;/p&gt; &lt;p&gt;Today, we're proud to announce that we not only support DeepSeek-R1/V3, as showcased in the video at &lt;a href="https://github.com/kvcache-ai/ktransformers"&gt;https://github.com/kvcache-ai/ktransformers&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401"&gt;https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But we're also previewing our upcoming optimizations, including an Intel AMX-accelerated kernel and a selective expert activation method, which will significantly enhance performance.&lt;/p&gt; &lt;p&gt;With v0.3-preview, &lt;strong&gt;we achieve up to 286 tokens/s for prefill, making it up to 28× faster than llama.cpp&lt;/strong&gt; for local inference.&lt;/p&gt; &lt;p&gt;The binary distribution is available now and the source code will come ASAP! Check out the details here: &lt;a href="https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md"&gt;https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Some rationale behind this:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why CPU/GPU Hybrid Inference?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;DeepSeek's MLA operators are highly computationally intensive. While running everything on CPU is possible, offloading the heavy computations to the GPU results in a massive performance boost.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Where Does the Speedup Come From?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;- Expert Offload: Unlike traditional layer-based or KVCache offloading (as seen in llama.cpp), we offload the expert computation to the CPU and MLA/KVCache to GPU, aligning perfectly with DeepSeek’s architecture for optimal efficiency.&lt;/p&gt; &lt;p&gt;- Intel AMX Optimization – Our AMX-accelerated kernel is meticulously tuned, running several times faster than existing llama.cpp implementations. We plan to open-source this kernel after cleansing and are considering upstream contributions to llama.cpp.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why Intel CPUs?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Intel is currently the only CPU vendor that supports AMX-like instructions, which delivers significantly better performance compared to AVX-only alternatives. BUT, we also support AMD CPUs and due to the Expert Offload it will also be faster than the current llama.cpp&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CombinationNo780"&gt; /u/CombinationNo780 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T05:58:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imu9nx</id>
     <title>Have you found issues on which LLMs does better without reasoning?</title>
     <updated>2025-02-11T08:46:59+00:00</updated>
@@ -136,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imqgug/llm_reasoning_via_inference_scaling_open_source/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-11T04:33:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imy754</id>
+    <title>[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator</title>
+    <updated>2025-02-11T13:09:57+00:00</updated>
+    <author>
+      <name>/u/Sorry_Transition_599</name>
+      <uri>https://old.reddit.com/user/Sorry_Transition_599</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt; &lt;img alt="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" src="https://b.thumbs.redditmedia.com/idyw0pmCSC4s13toxY2DsBIQKn8nJnwDHDXfYi-skNE.jpg" title="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sorry_Transition_599"&gt; /u/Sorry_Transition_599 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1imy754"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T13:09:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1imdvpz</id>
@@ -242,6 +229,19 @@
     <published>2025-02-10T17:54:21+00:00</published>
   </entry>
   <entry>
+    <id>t3_1imy7gs</id>
+    <title>Android NPU prompt processing ~16k tokens using llama 8B!</title>
+    <updated>2025-02-11T13:10:22+00:00</updated>
+    <author>
+      <name>/u/Aaaaaaaaaeeeee</name>
+      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy7gs/android_npu_prompt_processing_16k_tokens_using/"&gt; &lt;img alt="Android NPU prompt processing ~16k tokens using llama 8B!" src="https://external-preview.redd.it/bHR4Mzh3eHBjaWllMcHEeWWDxXtRsAlZuyHnXPHYA8F-o65beS5TU-PcpoQ-.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=271efc0a7cf13784adc6a1a4b5f128c1609db55d" title="Android NPU prompt processing ~16k tokens using llama 8B!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/83sbjwxpciie1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy7gs/android_npu_prompt_processing_16k_tokens_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imy7gs/android_npu_prompt_processing_16k_tokens_using/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T13:10:22+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1imi9zz</id>
     <title>Altman Says ‘No Thank You’ to Reported Musk Bid for OpenAI</title>
     <updated>2025-02-10T21:54:45+00:00</updated>
@@ -253,19 +253,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imi9zz/altman_says_no_thank_you_to_reported_musk_bid_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T21:54:45+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imxthq</id>
-    <title>I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)</title>
-    <updated>2025-02-11T12:49:40+00:00</updated>
-    <author>
-      <name>/u/JakeAndAI</name>
-      <uri>https://old.reddit.com/user/JakeAndAI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"&gt; &lt;img alt="I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)" src="https://external-preview.redd.it/Y2NpeDU4eXVhaWllMXfHHmD6JzwUZ6Bm0WYsf1XL3J4yUspRtDfHF7Qk2Xoa.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e4df278042d4308f102ad830d111c5117d2eea27" title="I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JakeAndAI"&gt; /u/JakeAndAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/9howo9yuaiie1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T12:49:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1imv1jo</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-11T00:47:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imxthq</id>
+    <title>I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)</title>
+    <updated>2025-02-11T12:49:40+00:00</updated>
+    <author>
+      <name>/u/JakeAndAI</name>
+      <uri>https://old.reddit.com/user/JakeAndAI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"&gt; &lt;img alt="I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)" src="https://external-preview.redd.it/Y2NpeDU4eXVhaWllMXfHHmD6JzwUZ6Bm0WYsf1XL3J4yUspRtDfHF7Qk2Xoa.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e4df278042d4308f102ad830d111c5117d2eea27" title="I built and open-sourced a model-agnostic architecture that applies R1-inspired reasoning onto (in theory) any LLM. (More details in the comments.)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JakeAndAI"&gt; /u/JakeAndAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/9howo9yuaiie1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imxthq/i_built_and_opensourced_a_modelagnostic/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T12:49:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1imud7e</id>
