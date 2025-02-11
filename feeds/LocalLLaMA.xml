@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-11T14:23:40+00:00</updated>
+  <updated>2025-02-11T14:36:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ilzcwm</id>
-    <title>671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp; 14 tokens/s Decode</title>
-    <updated>2025-02-10T05:58:47+00:00</updated>
-    <author>
-      <name>/u/CombinationNo780</name>
-      <uri>https://old.reddit.com/user/CombinationNo780</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt; &lt;img alt="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" src="https://external-preview.redd.it/HTxOk-pm59cMNSNVg9McK5hbABS7kz3K65hC8Z_V08I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f46113aaee323590b36c46395dcf62eb9140f297" title="671B DeepSeek-R1/V3-q4 on a Single Machine (2× Xeon + 24GB GPU) – Up to 286 tokens/s Prefill &amp;amp; 14 tokens/s Decode" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, we're the KTransformers team (formerly known for &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1edbue3/local_deepseekv2_inference_120_ts_for_prefill_and/"&gt;our local CPU/GPU hybrid inference open source project with DeepSeek-V2&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;We've heard your requests for DeepSeek-R1/V3 support—and we're excited to finally deliver!&lt;/p&gt; &lt;p&gt;Apologies for the wait, but we've been cooking up something truly amazing.&lt;/p&gt; &lt;p&gt;Today, we're proud to announce that we not only support DeepSeek-R1/V3, as showcased in the video at &lt;a href="https://github.com/kvcache-ai/ktransformers"&gt;https://github.com/kvcache-ai/ktransformers&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401"&gt;https://preview.redd.it/o0x777ie49ie1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=23cd7dad22d211277f1787bd1f993c7c22200401&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But we're also previewing our upcoming optimizations, including an Intel AMX-accelerated kernel and a selective expert activation method, which will significantly enhance performance.&lt;/p&gt; &lt;p&gt;With v0.3-preview, &lt;strong&gt;we achieve up to 286 tokens/s for prefill, making it up to 28× faster than llama.cpp&lt;/strong&gt; for local inference.&lt;/p&gt; &lt;p&gt;The binary distribution is available now and the source code will come ASAP! Check out the details here: &lt;a href="https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md"&gt;https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/DeepseekR1_V3_tutorial.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Some rationale behind this:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why CPU/GPU Hybrid Inference?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;DeepSeek's MLA operators are highly computationally intensive. While running everything on CPU is possible, offloading the heavy computations to the GPU results in a massive performance boost.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Where Does the Speedup Come From?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;- Expert Offload: Unlike traditional layer-based or KVCache offloading (as seen in llama.cpp), we offload the expert computation to the CPU and MLA/KVCache to GPU, aligning perfectly with DeepSeek’s architecture for optimal efficiency.&lt;/p&gt; &lt;p&gt;- Intel AMX Optimization – Our AMX-accelerated kernel is meticulously tuned, running several times faster than existing llama.cpp implementations. We plan to open-source this kernel after cleansing and are considering upstream contributions to llama.cpp.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Why Intel CPUs?&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Intel is currently the only CPU vendor that supports AMX-like instructions, which delivers significantly better performance compared to AVX-only alternatives. BUT, we also support AMD CPUs and due to the Expert Offload it will also be faster than the current llama.cpp&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CombinationNo780"&gt; /u/CombinationNo780 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilzcwm/671b_deepseekr1v3q4_on_a_single_machine_2_xeon/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T05:58:47+00:00</published>
-  </entry>
   <entry>
     <id>t3_1imsoyk</id>
     <title>Really Fast TTS for Low-Performance Devices?</title>
@@ -60,17 +47,17 @@
     <published>2025-02-11T08:46:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imzkvu</id>
-    <title>I built a Healbot to save my own life using Open WebUI and Deepseek R1</title>
-    <updated>2025-02-11T14:18:27+00:00</updated>
+    <id>t3_1imxvz3</id>
+    <title>What’s the Coolest Deepseek R1 Integration You’ve Seen?</title>
+    <updated>2025-02-11T12:53:29+00:00</updated>
     <author>
-      <name>/u/IversusAI</name>
-      <uri>https://old.reddit.com/user/IversusAI</uri>
+      <name>/u/iamnotdeadnuts</name>
+      <uri>https://old.reddit.com/user/iamnotdeadnuts</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey there, I'm an addict and things have gotten &lt;strong&gt;pretty severe&lt;/strong&gt;, so in desperation, I decided to learn about local large language models and Open WebUI to create a healbot that I could talk to, learn from and hopefully, help me heal this damned addiction.&lt;/p&gt; &lt;p&gt;I spent a week doing nothing but learning, first about interfaces and looked at every one I could find but Open WebUI had the features I was looking for (especially the good voice input, love the conversation feature) and then decided on LM Studio (I did not like Ollama as much even though it is good server, I just hate the command line).&lt;/p&gt; &lt;p&gt;Once I got it all setup, I started using it to talk to when I was craving, usually in the middle of night, or to help me when I felt like acting out, or was stressed, upset, or otherwise triggered. I added a lot of recovery literature, got my knowledge base settings all dialed in (took some time) and then started add each previous day's conversation to an archives knowledge base.&lt;/p&gt; &lt;p&gt;I even got a folder in my Obsidian vault hooked up to a knowledge base so &lt;strong&gt;I just dropped a file into the folder in my vault and the knowledge base is automatically updated&lt;/strong&gt;. I love that feature in Open WebUI!&lt;/p&gt; &lt;p&gt;So is it working? Well, so far YES. I am feeling better, stronger and more at peace because I have this tool that is helping me through each day of recovery. It is a day by day thing but I feel hopeful.&lt;/p&gt; &lt;p&gt;If you'd like to know how I set this all up, &lt;a href="https://www.youtube.com/watch?v=I6vVaAygFbU"&gt;I've got a video for you, right here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/IversusAI"&gt; /u/IversusAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imzkvu/i_built_a_healbot_to_save_my_own_life_using_open/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imzkvu/i_built_a_healbot_to_save_my_own_life_using_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imzkvu/i_built_a_healbot_to_save_my_own_life_using_open/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxvz3/whats_the_coolest_deepseek_r1_integration_youve/"&gt; &lt;img alt="What’s the Coolest Deepseek R1 Integration You’ve Seen?" src="https://preview.redd.it/ku5oeadobiie1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=58c6df5e56d6ad7cb89e751751a290ec57c1e029" title="What’s the Coolest Deepseek R1 Integration You’ve Seen?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Deepsee R1 dropped recently, and I’m curious to see what are the wildest, most creative, or downright useful applications you’ve seen so far.&lt;/p&gt; &lt;p&gt;Bonus points if you’ve built something yourself, please put out here!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iamnotdeadnuts"&gt; /u/iamnotdeadnuts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ku5oeadobiie1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imxvz3/whats_the_coolest_deepseek_r1_integration_youve/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imxvz3/whats_the_coolest_deepseek_r1_integration_youve/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T14:18:27+00:00</published>
+    <published>2025-02-11T12:53:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1imqgug</id>
@@ -99,6 +86,19 @@
     <published>2025-02-10T18:58:01+00:00</published>
   </entry>
   <entry>
+    <id>t3_1imzn0b</id>
+    <title>Who Delivers the Fastest? A Video Comparison of Mistral AI, ChatGPT, and DeepSeek</title>
+    <updated>2025-02-11T14:21:12+00:00</updated>
+    <author>
+      <name>/u/Touch105</name>
+      <uri>https://old.reddit.com/user/Touch105</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imzn0b/who_delivers_the_fastest_a_video_comparison_of/"&gt; &lt;img alt="Who Delivers the Fastest? A Video Comparison of Mistral AI, ChatGPT, and DeepSeek" src="https://external-preview.redd.it/ZGh1N3N0dWJyaWllMQjRYblCSuCZmrNsOdpnoLHS5SBRZJwQHDEkl9CptkJC.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d94dc60a579ed84fee2e3e90d5c7de2813008b18" title="Who Delivers the Fastest? A Video Comparison of Mistral AI, ChatGPT, and DeepSeek" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tests done on the free versions of each company’s mobile app&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Touch105"&gt; /u/Touch105 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0d4nerxbriie1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imzn0b/who_delivers_the_fastest_a_video_comparison_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imzn0b/who_delivers_the_fastest_a_video_comparison_of/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T14:21:12+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1imsx0k</id>
     <title>[2502.06772] ReasonFlux: Hierarchical LLM Reasoning via Scaling Thought Templates</title>
     <updated>2025-02-11T07:06:04+00:00</updated>
@@ -110,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imsx0k/250206772_reasonflux_hierarchical_llm_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-11T07:06:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imz30d</id>
-    <title>Audiobook Creator – My New Open-Source Project</title>
-    <updated>2025-02-11T13:54:54+00:00</updated>
-    <author>
-      <name>/u/prakharsr</name>
-      <uri>https://old.reddit.com/user/prakharsr</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’m excited to share &lt;strong&gt;Audiobook Creator&lt;/strong&gt;, a tool that transforms books (EPUB, PDF, TXT) into fully voiced audiobooks with &lt;strong&gt;intelligent character voice attribution&lt;/strong&gt;! Using &lt;strong&gt;NLP, LLMs, and Kokoro TTS&lt;/strong&gt;, it creates immersive multi-voice audiobooks automatically.&lt;/p&gt; &lt;p&gt;🔹 &lt;strong&gt;Key Features:&lt;/strong&gt;&lt;br /&gt; ✅ Text extraction &amp;amp; cleaning&lt;br /&gt; ✅ Character identification &amp;amp; metadata generation&lt;br /&gt; ✅ Single &amp;amp; multi-voice narration&lt;br /&gt; ✅ Open-source &amp;amp; fully customizable&lt;/p&gt; &lt;p&gt;This project is licensed under &lt;strong&gt;GPL-3.0&lt;/strong&gt; and is free for everyone to use, modify, and improve! 🚀&lt;/p&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/prakharsr/audiobook-creator/"&gt;&lt;strong&gt;https://github.com/prakharsr/audiobook-creator/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prakharsr"&gt; /u/prakharsr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T13:54:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1im4wxs</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imf1s0/first_large_scale_open_source_math_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T19:43:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imz30d</id>
+    <title>Audiobook Creator – My New Open-Source Project</title>
+    <updated>2025-02-11T13:54:54+00:00</updated>
+    <author>
+      <name>/u/prakharsr</name>
+      <uri>https://old.reddit.com/user/prakharsr</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’m excited to share &lt;strong&gt;Audiobook Creator&lt;/strong&gt;, a tool that transforms books (EPUB, PDF, TXT) into fully voiced audiobooks with &lt;strong&gt;intelligent character voice attribution&lt;/strong&gt;! Using &lt;strong&gt;NLP, LLMs, and Kokoro TTS&lt;/strong&gt;, it creates immersive multi-voice audiobooks automatically.&lt;/p&gt; &lt;p&gt;🔹 &lt;strong&gt;Key Features:&lt;/strong&gt;&lt;br /&gt; ✅ Text extraction &amp;amp; cleaning&lt;br /&gt; ✅ Character identification &amp;amp; metadata generation&lt;br /&gt; ✅ Single &amp;amp; multi-voice narration&lt;br /&gt; ✅ Open-source &amp;amp; fully customizable&lt;/p&gt; &lt;p&gt;This project is licensed under &lt;strong&gt;GPL-3.0&lt;/strong&gt; and is free for everyone to use, modify, and improve! 🚀&lt;/p&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/prakharsr/audiobook-creator/"&gt;&lt;strong&gt;https://github.com/prakharsr/audiobook-creator/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prakharsr"&gt; /u/prakharsr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imz30d/audiobook_creator_my_new_opensource_project/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T13:54:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1imdnap</id>
@@ -216,19 +216,6 @@
     <published>2025-02-10T21:54:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imy754</id>
-    <title>[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator</title>
-    <updated>2025-02-11T13:09:57+00:00</updated>
-    <author>
-      <name>/u/Sorry_Transition_599</name>
-      <uri>https://old.reddit.com/user/Sorry_Transition_599</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt; &lt;img alt="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" src="https://b.thumbs.redditmedia.com/idyw0pmCSC4s13toxY2DsBIQKn8nJnwDHDXfYi-skNE.jpg" title="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sorry_Transition_599"&gt; /u/Sorry_Transition_599 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1imy754"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T13:09:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imv1jo</id>
     <title>DeepSeekV3 with web search and function calling available as API</title>
     <updated>2025-02-11T09:47:26+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imv1jo/deepseekv3_with_web_search_and_function_calling/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-11T09:47:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imy754</id>
+    <title>[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator</title>
+    <updated>2025-02-11T13:09:57+00:00</updated>
+    <author>
+      <name>/u/Sorry_Transition_599</name>
+      <uri>https://old.reddit.com/user/Sorry_Transition_599</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt; &lt;img alt="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" src="https://b.thumbs.redditmedia.com/idyw0pmCSC4s13toxY2DsBIQKn8nJnwDHDXfYi-skNE.jpg" title="[Update] Building a Fully Open-Source Local LLM-Based Ai for Meeting Minutes Recording and Analysis : Meeting note taker / Ai meeting minutes generator" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sorry_Transition_599"&gt; /u/Sorry_Transition_599 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1imy754"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imy754/update_building_a_fully_opensource_local_llmbased/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T13:09:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1imm4wc</id>
