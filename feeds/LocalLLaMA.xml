@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-11T04:24:38+00:00</updated>
+  <updated>2025-02-11T04:36:22+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -73,19 +73,6 @@
     <published>2025-02-10T09:17:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imlxji</id>
-    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
-    <updated>2025-02-11T00:37:20+00:00</updated>
-    <author>
-      <name>/u/paranoidray</name>
-      <uri>https://old.reddit.com/user/paranoidray</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T00:37:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1imf0x4</id>
     <title>Mistral 24B, or something else?</title>
     <updated>2025-02-10T19:42:48+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ilw2p9/talk_me_out_of_buying_this_512gbs_gen_5_nvme_raid/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T02:49:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imlxji</id>
+    <title>Here is a little Python script that detects clipboard text and plays it using Kokoro TTS. I use it to play on fables.gg and get voice lines.</title>
+    <updated>2025-02-11T00:37:20+00:00</updated>
+    <author>
+      <name>/u/paranoidray</name>
+      <uri>https://old.reddit.com/user/paranoidray</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import os os.environ[&amp;quot;PHONEMIZER_ESPEAK_LIBRARY&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\libespeak-ng.dll&amp;quot; os.environ[&amp;quot;PHONEMIZER_ESPEAK_PATH&amp;quot;] = &amp;quot;C:\\Program Files\\eSpeak NG\\espeak-ng.exe&amp;quot; import sounddevice as sd import pyperclip import time import torch, re from models import build_model from kokoro import generate device = 'cuda' if torch.cuda.is_available() else 'cpu' MODEL = build_model('pth/kokoro-v0_19.pth', device) VOICE_NAME = 'af' VOICEPACK = torch.load(f'voices/{VOICE_NAME}.pt', weights_only=True).to(device) print(f'Loaded voice: {VOICE_NAME}') def play_audio_from_text(text): sentences = re.split(r'[.\n]+', text) for sentence in sentences: if sentence.strip() == '': continue audio, out_ps = generate(MODEL, sentence, VOICEPACK, lang=VOICE_NAME[0]) sd.play(audio, samplerate=24000) sd.wait() def monitor_clipboard(): last_clipboard = pyperclip.paste() while True: time.sleep(0.5) # Reduce CPU usage current_clipboard = pyperclip.paste() if current_clipboard and current_clipboard != last_clipboard: play_audio_from_text(current_clipboard) last_clipboard = current_clipboard if __name__ == &amp;quot;__main__&amp;quot;: print(&amp;quot;Monitoring clipboard for text changes...&amp;quot;) monitor_clipboard() &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I saved the file as monitor.py I used uv to install the dependencies:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;uv venv&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This creates a .venv folder in the project. No need to activate it manually.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;gt; uv pip install torch --index-url https://download.pytorch.org/whl/cu124 &amp;gt; uv pip install requests &amp;gt; uv pip install numpy &amp;gt; uv pip install scipy &amp;gt; uv pip install phonemizer &amp;gt; uv pip install munch &amp;gt; uv pip install transformers &amp;gt; uv pip install soundfile &amp;gt; uv pip install pyperclip &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And then you can run the code like this:&lt;/p&gt; &lt;p&gt;uv run monitor.py&lt;/p&gt; &lt;p&gt;And now inside fables.gg copy the text from the story and enjoy the TTS.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imlxji/here_is_a_little_python_script_that_detects/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T00:37:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1imgyw9</id>
@@ -216,32 +216,6 @@
     <published>2025-02-10T19:43:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1imdnap</id>
-    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
-    <updated>2025-02-10T18:48:40+00:00</updated>
-    <author>
-      <name>/u/Xhehab_</name>
-      <uri>https://old.reddit.com/user/Xhehab_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-10T18:48:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1imm4wc</id>
-    <title>DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL</title>
-    <updated>2025-02-11T00:47:15+00:00</updated>
-    <author>
-      <name>/u/PC_Screen</name>
-      <uri>https://old.reddit.com/user/PC_Screen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"&gt; &lt;img alt="DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL" src="https://preview.redd.it/ud7gdv14qeie1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d7b7d6f21c5fbf0cb8924b813a909ff2ca372820" title="DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview"&gt;https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PC_Screen"&gt; /u/PC_Screen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ud7gdv14qeie1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-11T00:47:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1im4wxs</id>
     <title>They got the scent now..</title>
     <updated>2025-02-10T12:23:58+00:00</updated>
@@ -255,6 +229,19 @@
     <published>2025-02-10T12:23:58+00:00</published>
   </entry>
   <entry>
+    <id>t3_1imdnap</id>
+    <title>Zonos-v0.1 beta by Zyphra, featuring two expressive and real-time text-to-speech (TTS) models with high-fidelity voice cloning. 1.6B transformer and 1.6B hybrid under an Apache 2.0 license.</title>
+    <updated>2025-02-10T18:48:40+00:00</updated>
+    <author>
+      <name>/u/Xhehab_</name>
+      <uri>https://old.reddit.com/user/Xhehab_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;&amp;quot;Today, we're excited to announce a beta release of Zonos, a highly expressive TTS model with high fidelity voice cloning.&lt;/p&gt; &lt;p&gt;We release both transformer and SSM-hybrid models under an Apache 2.0 license.&lt;/p&gt; &lt;p&gt;Zonos performs well vs leading TTS providers in quality and expressiveness.&lt;/p&gt; &lt;p&gt;Zonos offers flexible control of vocal speed, emotion, tone, and audio quality as well as instant unlimited high quality voice cloning. Zonos natively generates speech at 44Khz. Our hybrid is the first open-source SSM hybrid audio model.&lt;/p&gt; &lt;p&gt;Tech report to be released soon.&lt;/p&gt; &lt;p&gt;Currently Zonos is a beta preview. While highly expressive, Zonos is sometimes unreliable in generations leading to interesting bloopers.&lt;/p&gt; &lt;p&gt;We are excited to continue pushing the frontiers of conversational agent performance, reliability, and efficiency over the coming months.&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;Details (+model comparisons with proprietary &amp;amp; OS SOTAs)&lt;/strong&gt;: &lt;a href="https://www.zyphra.com/post/beta-release-of-zonos-v0-1"&gt;https://www.zyphra.com/post/beta-release-of-zonos-v0-1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Get the weights on Huggingface&lt;/strong&gt;: &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-hybrid&lt;/a&gt; and &lt;a href="http://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;http://huggingface.co/Zyphra/Zonos-v0.1-transformer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Download the inference code: &lt;a href="http://github.com/Zyphra/Zonos"&gt;http://github.com/Zyphra/Zonos&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imdnap/zonosv01_beta_by_zyphra_featuring_two_expressive/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-10T18:48:40+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1imevcc</id>
     <title>Zonos: Incredible new TTS model from Zyphra</title>
     <updated>2025-02-10T19:36:34+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imevcc/zonos_incredible_new_tts_model_from_zyphra/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-10T19:36:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1imm4wc</id>
+    <title>DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL</title>
+    <updated>2025-02-11T00:47:15+00:00</updated>
+    <author>
+      <name>/u/PC_Screen</name>
+      <uri>https://old.reddit.com/user/PC_Screen</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"&gt; &lt;img alt="DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL" src="https://preview.redd.it/ud7gdv14qeie1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d7b7d6f21c5fbf0cb8924b813a909ff2ca372820" title="DeepScaleR-1.5B-Preview: Further training R1-Distill-Qwen-1.5B using RL" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview"&gt;https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PC_Screen"&gt; /u/PC_Screen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ud7gdv14qeie1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1imm4wc/deepscaler15bpreview_further_training/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-11T00:47:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1im7un9</id>
