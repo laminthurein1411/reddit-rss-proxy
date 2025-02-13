@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-13T07:22:43+00:00</updated>
+  <updated>2025-02-13T07:34:09+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1inrhd9</id>
+    <title>The light based computer that supports pytorch</title>
+    <updated>2025-02-12T14:02:29+00:00</updated>
+    <author>
+      <name>/u/No_Afternoon_4260</name>
+      <uri>https://old.reddit.com/user/No_Afternoon_4260</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey a funny one today! A pick at light-based computer with a startup called Q.ANT They refactor 90's CMOS foundery to make ai chips using light. Their chips are already on there ways to datacenter. &lt;a href="https://youtu.be/2xE4bopeXhw?feature=shared"&gt;https://youtu.be/2xE4bopeXhw?feature=shared&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Afternoon_4260"&gt; /u/No_Afternoon_4260 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1inrhd9/the_light_based_computer_that_supports_pytorch/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1inrhd9/the_light_based_computer_that_supports_pytorch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1inrhd9/the_light_based_computer_that_supports_pytorch/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-12T14:02:29+00:00</published>
+  </entry>
   <entry>
     <id>t3_1io8pt8</id>
     <title>Best Model for Assisting with Novel Writing</title>
@@ -19,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1io8pt8/best_model_for_assisting_with_novel_writing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-13T02:23:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iod2wx</id>
-    <title>Release: Local RAG-agent, enables LLMs to "study" web pages</title>
-    <updated>2025-02-13T06:36:28+00:00</updated>
-    <author>
-      <name>/u/raul3820</name>
-      <uri>https://old.reddit.com/user/raul3820</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;This [&lt;a href="https://github.com/raul3820/rag-agent"&gt;github&lt;/a&gt;] service enables LLMs to &amp;quot;study&amp;quot; web pages.&lt;/p&gt; &lt;p&gt;It's a docker service, by routing your OpenAI API chat completion requests through this service, you can enable the following workflow:&lt;/p&gt; &lt;p&gt;* From your chat interface, type `#study site.com`, which allows you to crawl and process web pages.&lt;/p&gt; &lt;p&gt;* In subsequent chat conversations, relevant context from the studied pages will be automatically incorporated into your prompts before they are sent to the OpenAI API (Ollama or whichever service you are using).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I learned building this:&lt;/strong&gt; Small models are good for simple tasks like tool calling or parsing. The ground is moving, flexibility is important. Frameworks like pydantic-ai and local engines like Ollama can help.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;General notes:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Large models are better off on servers.&lt;/li&gt; &lt;li&gt;Combining models and tools makes small models more useful in specialized applications.&lt;/li&gt; &lt;li&gt;Small models are well suited for single-tool calling or parsing data. Don't expect them to perform like bigger LLMs.&lt;/li&gt; &lt;li&gt;The SOTA in language models is constantly evolving, flexibility is crucial.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Technical notes:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Many components adhere to the OpenAI API standard.&lt;/li&gt; &lt;li&gt;Frameworks like pydantic-ai simplify development.&lt;/li&gt; &lt;li&gt;While Python might not be the fastest language, its performance is often sufficient if model inference is the primary bottleneck.&lt;/li&gt; &lt;li&gt;Pydantic-ai expects conversation state management to occur upstream (backend), not downstream (UI app like open webui).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;VLLM test:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Focuses on performance and stability, for production environments serving multiple users.&lt;/li&gt; &lt;li&gt;Features: Speculative decoding, tensor parallelism (multi-GPU), efficient batching.&lt;/li&gt; &lt;li&gt;Uses AWQ quantization (fewer models/quants available, higher VRAM requirements).&lt;/li&gt; &lt;li&gt;One model per VLLM instance, all models loaded into VRAM.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Ollama test:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Highly flexible, suitable for testing and personal use, but less stable. A couple times it decided to use CPU instead of GPU until I restarted it.&lt;/li&gt; &lt;li&gt;Limited multi-GPU support. Uses fixed batching, dividing context/batches.&lt;/li&gt; &lt;li&gt;Uses GGUF quantization (more models/quants available, lower VRAM requirements).&lt;/li&gt; &lt;li&gt;Dynamic model loading. Can load some layers to CPU if VRAM is insufficient.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/raul3820"&gt; /u/raul3820 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iod2wx/release_local_ragagent_enables_llms_to_study_web/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iod2wx/release_local_ragagent_enables_llms_to_study_web/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iod2wx/release_local_ragagent_enables_llms_to_study_web/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-13T06:36:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1ino284</id>
