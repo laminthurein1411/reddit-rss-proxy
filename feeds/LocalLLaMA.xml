@@ -2,23 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-14T08:07:42+00:00</updated>
+  <updated>2025-02-14T08:24:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1io4s4s</id>
-    <title>This paper might be a breakthrough Google doesn't know they have</title>
-    <updated>2025-02-12T23:14:52+00:00</updated>
+    <id>t3_1ip5wm4</id>
+    <title>Structured compareson of hardware -&gt; T/s (Tokens per Second)</title>
+    <updated>2025-02-14T08:14:02+00:00</updated>
     <author>
-      <name>/u/Ok-Possibility-5586</name>
-      <uri>https://old.reddit.com/user/Ok-Possibility-5586</uri>
+      <name>/u/FrederikSchack</name>
+      <uri>https://old.reddit.com/user/FrederikSchack</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/pdf/2105.03824"&gt;2105.03824&lt;/a&gt;&lt;/p&gt; &lt;p&gt;FNet: Mixing Tokens with Fourier Transforms&lt;/p&gt; &lt;p&gt;^^^ this paper is from 2022 before LLMs blew up in the public imagination.&lt;/p&gt; &lt;p&gt;If someone is able to replicate this, maybe by training a smaller model and cutting out the layers and splicing into a bigger model (or something else, I'm winging it here) then maybe we get some big speedups. According to the paper (from Google) it's looking at a 90% speedup and memory reduction.&lt;/p&gt; &lt;p&gt;&lt;a href="/u/danielhanchen"&gt;u/danielhanchen&lt;/a&gt; have you seen this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Possibility-5586"&gt; /u/Ok-Possibility-5586 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1io4s4s/this_paper_might_be_a_breakthrough_google_doesnt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1io4s4s/this_paper_might_be_a_breakthrough_google_doesnt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1io4s4s/this_paper_might_be_a_breakthrough_google_doesnt/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi,&lt;/p&gt; &lt;p&gt;How about doing a structured hardware to T/s (Tokens per Second) comparison?&lt;/p&gt; &lt;p&gt;Maybe we can get an understanding of how different parts of the hardware affect the T/s.&lt;/p&gt; &lt;p&gt;I'm no expert, but my understanding so far is that:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The high end consumer GPUs have roughly the same level of processing power as high end enterprise GPUs, the major difference is the infrastructure around the GPUs (HBM RAM, nvlink, nvswitch, enterprise software e.t.c.), that can increase their perfomance many times over their consumer equivalent.&lt;/li&gt; &lt;li&gt;VRAM transfer can be many times faster than system memory, so fitting a model onto VRAM can be crucial for T/s.&lt;/li&gt; &lt;li&gt;Transfer over the PCIe bus can easily become a bottleneck for larger models that are not fully loaded onto VRAM.&lt;/li&gt; &lt;li&gt;Memory channel count can be important when part of the model resides in system memory.&lt;/li&gt; &lt;li&gt;Increased context window/length can significantly slow down generation on multi-GPU setups, because of increased token size over PCIe.&lt;/li&gt; &lt;li&gt;PCIe lane count is important in multi-GPU systems.&lt;/li&gt; &lt;li&gt;NO GPU, sufficient RAM, many memory channels and a powerful CPU, can be more effective for super large models, because you avoid shutteling data around on a relatively thin bus.&lt;/li&gt; &lt;li&gt;Software optimizations can increase TP/s significantly.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;What we would need to know to be able to put together more efficient hardware is how hardware (GPU, CPU, Motherboard) and software translates into T/s. The PCIe version, PCIe lane count, memory channels e.t.c. can be deduced from GPU/CPU/Motherboard.&lt;/p&gt; &lt;p&gt;So, how about everyone just plotting in their data in the template below and everybody are more clever :) I'll do my best to aggregate the data and present them and everybody else can do their take on it too.&lt;/p&gt; &lt;p&gt;Template&lt;/p&gt; &lt;p&gt;--------------&lt;/p&gt; &lt;p&gt;GPUs:&lt;/p&gt; &lt;p&gt;CPUs:&lt;/p&gt; &lt;p&gt;Motherboard:&lt;/p&gt; &lt;p&gt;Software (and if you made specific optimizations):&lt;/p&gt; &lt;p&gt;AI Model:&lt;/p&gt; &lt;p&gt;Quantization:&lt;/p&gt; &lt;p&gt;Context length:&lt;/p&gt; &lt;p&gt;Tokens per Second (output):&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FrederikSchack"&gt; /u/FrederikSchack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5wm4/structured_compareson_of_hardware_ts_tokens_per/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5wm4/structured_compareson_of_hardware_ts_tokens_per/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5wm4/structured_compareson_of_hardware_ts_tokens_per/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-12T23:14:52+00:00</published>
+    <published>2025-02-14T08:14:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ip60li</id>
+    <title>To all those who are leveraging Knowledge Graph in production, for what task are you using it for?</title>
+    <updated>2025-02-14T08:22:19+00:00</updated>
+    <author>
+      <name>/u/Existing-Pay7076</name>
+      <uri>https://old.reddit.com/user/Existing-Pay7076</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am trying to get a gist of how this concept is helping in the AI/ML industry &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Existing-Pay7076"&gt; /u/Existing-Pay7076 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip60li/to_all_those_who_are_leveraging_knowledge_graph/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip60li/to_all_those_who_are_leveraging_knowledge_graph/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip60li/to_all_those_who_are_leveraging_knowledge_graph/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-14T08:22:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1ip38vv</id>
@@ -60,45 +73,6 @@
     <published>2025-02-14T01:52:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ioxxb5</id>
-    <title>LM2: Large Memeory Models</title>
-    <updated>2025-02-14T00:24:03+00:00</updated>
-    <author>
-      <name>/u/hedgehog0</name>
-      <uri>https://old.reddit.com/user/hedgehog0</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hedgehog0"&gt; /u/hedgehog0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.06049"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ioxxb5/lm2_large_memeory_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ioxxb5/lm2_large_memeory_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-14T00:24:03+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ip5f90</id>
-    <title>How to calculate GPU RAM needed?</title>
-    <updated>2025-02-14T07:38:11+00:00</updated>
-    <author>
-      <name>/u/UnusualAgency2744</name>
-      <uri>https://old.reddit.com/user/UnusualAgency2744</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Newbie here. I am trying to understand how to estiamte how much RAM is required.&lt;/p&gt; &lt;p&gt;For example, using deepseekr1, it is 671B, according to some articles I can just multiply b2 , in this case around 1,342GB of ram? How about the context window?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/UnusualAgency2744"&gt; /u/UnusualAgency2744 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5f90/how_to_calculate_gpu_ram_needed/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5f90/how_to_calculate_gpu_ram_needed/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5f90/how_to_calculate_gpu_ram_needed/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-14T07:38:11+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ip5n0u</id>
-    <title>How to disable small concepts in the model?</title>
-    <updated>2025-02-14T07:54:42+00:00</updated>
-    <author>
-      <name>/u/yukiarimo</name>
-      <uri>https://old.reddit.com/user/yukiarimo</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello. I have heard about obliteration. But it probably hurts LLM's performance, is it? I need something where I can disable certain concepts in LLM. For example, it will always think that it is a human and will never talk about AI, or instead of liking green color like blue color.&lt;/p&gt; &lt;p&gt;As you can see, it is not about enabling NSFW, it's just small adjustments. Do you know how to do that? Any code would be appreciated! For LLaMA 3.1 8B running on Google Colab A100. Better raw text. I tried to do it with just fine-tuning and DPO, but it still sometimes fails!&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-14T07:54:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iouhbo</id>
     <title>Running Deepseek R1 discussion on level 1 techs</title>
     <updated>2025-02-13T21:45:39+00:00</updated>
@@ -110,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iouhbo/running_deepseek_r1_discussion_on_level_1_techs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-13T21:45:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ioxxb5</id>
+    <title>LM2: Large Memeory Models</title>
+    <updated>2025-02-14T00:24:03+00:00</updated>
+    <author>
+      <name>/u/hedgehog0</name>
+      <uri>https://old.reddit.com/user/hedgehog0</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hedgehog0"&gt; /u/hedgehog0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.06049"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ioxxb5/lm2_large_memeory_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ioxxb5/lm2_large_memeory_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-14T00:24:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1io5o9a</id>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ion5at/i_built_a_free_opensource_video_transcription/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-13T16:35:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ip5n0u</id>
+    <title>How to disable small concepts in the model?</title>
+    <updated>2025-02-14T07:54:42+00:00</updated>
+    <author>
+      <name>/u/yukiarimo</name>
+      <uri>https://old.reddit.com/user/yukiarimo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello. I have heard about obliteration. But it probably hurts LLM's performance, is it? I need something where I can disable certain concepts in LLM. For example, it will always think that it is a human and will never talk about AI, or instead of liking green color like blue color.&lt;/p&gt; &lt;p&gt;As you can see, it is not about enabling NSFW, it's just small adjustments. Do you know how to do that? Any code would be appreciated! For LLaMA 3.1 8B running on Google Colab A100. Better raw text. I tried to do it with just fine-tuning and DPO, but it still sometimes fails!&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip5n0u/how_to_disable_small_concepts_in_the_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-14T07:54:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1iolo5o</id>
@@ -268,6 +268,19 @@
     <published>2025-02-13T21:52:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iou563</id>
+    <title>Nous DeepHermes-3 8B</title>
+    <updated>2025-02-13T21:30:54+00:00</updated>
+    <author>
+      <name>/u/No_Afternoon_4260</name>
+      <uri>https://old.reddit.com/user/No_Afternoon_4260</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;Introducing DeepHermes-3 Preview, a new LLM that unifies reasoning and intuitive language model capabilities.&lt;/p&gt; &lt;p&gt;HF Model: &lt;a href="https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview"&gt;https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview&lt;/a&gt; GGUF Quants: &lt;a href="https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview-GGUF"&gt;https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;DeepHermes 3 is built from the Hermes 3 datamix, with new reasoning data, creating a model that can toggle on and off long chains of thought for improved accuracy at the cost of more test time compute!&lt;/p&gt; &lt;p&gt;This is our first work on reasoning models, and hope our unique approach to user controlled, toggleable reasoning mode furthers our mission of giving those who use DeepHermes more steerability for whatever need they have.&lt;/p&gt; &lt;p&gt;These early benchmarks show extreme improvement in Mathematical reasoning capabilities when enabled, as well as a modest improvement in GPQA (Google Proof Question Answering) benchmarks&lt;/p&gt; &lt;p&gt;As this is an experimental preview, there is much work to discover the full extent of reasoning generalization, quirks or issues, and much more. &lt;/p&gt; &lt;p&gt;We hope the community will help us in exploring the model and new reasoning paradigm on all sorts of tasks and usecases. We looking forward to hearing your feedback on how we can improve the deep reasoning models we make in the future!&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;em&gt;FYI, I'm not from Hermes, just copied this message.&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Afternoon_4260"&gt; /u/No_Afternoon_4260 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-13T21:30:54+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ip4jpx</id>
     <title>This is why we need open weights reasoning models (response from o1)</title>
     <updated>2025-02-14T06:36:10+00:00</updated>
@@ -292,19 +305,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip53bj/sambanova_launches_the_fastest_deepseekr1_671b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-14T07:14:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iou563</id>
-    <title>Nous DeepHermes-3 8B</title>
-    <updated>2025-02-13T21:30:54+00:00</updated>
-    <author>
-      <name>/u/No_Afternoon_4260</name>
-      <uri>https://old.reddit.com/user/No_Afternoon_4260</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;Introducing DeepHermes-3 Preview, a new LLM that unifies reasoning and intuitive language model capabilities.&lt;/p&gt; &lt;p&gt;HF Model: &lt;a href="https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview"&gt;https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview&lt;/a&gt; GGUF Quants: &lt;a href="https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview-GGUF"&gt;https://huggingface.co/NousResearch/DeepHermes-3-Llama-3-8B-Preview-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;DeepHermes 3 is built from the Hermes 3 datamix, with new reasoning data, creating a model that can toggle on and off long chains of thought for improved accuracy at the cost of more test time compute!&lt;/p&gt; &lt;p&gt;This is our first work on reasoning models, and hope our unique approach to user controlled, toggleable reasoning mode furthers our mission of giving those who use DeepHermes more steerability for whatever need they have.&lt;/p&gt; &lt;p&gt;These early benchmarks show extreme improvement in Mathematical reasoning capabilities when enabled, as well as a modest improvement in GPQA (Google Proof Question Answering) benchmarks&lt;/p&gt; &lt;p&gt;As this is an experimental preview, there is much work to discover the full extent of reasoning generalization, quirks or issues, and much more. &lt;/p&gt; &lt;p&gt;We hope the community will help us in exploring the model and new reasoning paradigm on all sorts of tasks and usecases. We looking forward to hearing your feedback on how we can improve the deep reasoning models we make in the future!&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;em&gt;FYI, I'm not from Hermes, just copied this message.&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Afternoon_4260"&gt; /u/No_Afternoon_4260 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iou563/nous_deephermes3_8b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-13T21:30:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1ioybsf</id>
