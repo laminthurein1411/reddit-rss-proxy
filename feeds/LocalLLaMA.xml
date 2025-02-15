@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-15T19:20:27+00:00</updated>
+  <updated>2025-02-15T19:34:04+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -112,19 +112,6 @@
     <published>2025-02-15T17:43:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iq0n6g</id>
-    <title>DeepSeek-R1-Distill tokenization mess</title>
-    <updated>2025-02-15T12:48:48+00:00</updated>
-    <author>
-      <name>/u/remixer_dec</name>
-      <uri>https://old.reddit.com/user/remixer_dec</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just wanted to discuss the tokenization issues with the DeepSeek-R1-Distill-Qwen-32B model. This may be relevant towards other R1-Distill family models (or at least qwen-based, as pointed out in one of the issues linked), I only tested it on 32B.&lt;/p&gt; &lt;p&gt;Its tokenizer config was &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/commits/main/tokenizer_config.json"&gt;changed&lt;/a&gt; multiple times. They changed &lt;strong&gt;add_bos_token&lt;/strong&gt; parameter and the template. Last two revisions have both &amp;quot;&lt;strong&gt;add_bos_token&amp;quot;: true&lt;/strong&gt; in the config and &lt;code&gt;{{bos_token}}&lt;/code&gt; in the chat template. vLLM renders both of these tokens, so chat completions requests end up with &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/discussions/31"&gt;2 bos tokens&lt;/a&gt;, as mentioned in this issue. Llama.cpp for some reason does not render the bos token inside chat template, possibly because it is used as a variable.&lt;/p&gt; &lt;p&gt;They also changed qwen's tokenizer.json, and the markup formatting tokens used for instruction tuning / chat-completions are set as &lt;code&gt;special:false&lt;/code&gt; which causes .GGUF converted models (in &lt;a href="https://github.com/vllm-project/vllm/issues/12985"&gt;vllm&lt;/a&gt; and &lt;a href="https://github.com/sgl-project/sglang/issues/3427"&gt;sglang&lt;/a&gt;; llama.cpp does not have such problem) to behave poorly due to incorrect tokenization.&lt;/p&gt; &lt;p&gt;Apparently, they also &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/discussions/28"&gt;messed up&lt;/a&gt; the bos_token_id in config.json&lt;/p&gt; &lt;p&gt;Just wanted to bring more attention to this issue to maybe get some clarity whether this model really requires two BOS tokens or is it just currently in a buggy state.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remixer_dec"&gt; /u/remixer_dec &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-15T12:48:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iq51ep</id>
     <title>Work just got me a shiny new m4 macbook pro with 48gb ram. What's the best coding llm I can reasonably run on it?</title>
     <updated>2025-02-15T16:27:52+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq51ep/work_just_got_me_a_shiny_new_m4_macbook_pro_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-15T16:27:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iq0n6g</id>
+    <title>DeepSeek-R1-Distill tokenization mess</title>
+    <updated>2025-02-15T12:48:48+00:00</updated>
+    <author>
+      <name>/u/remixer_dec</name>
+      <uri>https://old.reddit.com/user/remixer_dec</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just wanted to discuss the tokenization issues with the DeepSeek-R1-Distill-Qwen-32B model. This may be relevant towards other R1-Distill family models (or at least qwen-based, as pointed out in one of the issues linked), I only tested it on 32B.&lt;/p&gt; &lt;p&gt;Its tokenizer config was &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/commits/main/tokenizer_config.json"&gt;changed&lt;/a&gt; multiple times. They changed &lt;strong&gt;add_bos_token&lt;/strong&gt; parameter and the template. Last two revisions have both &amp;quot;&lt;strong&gt;add_bos_token&amp;quot;: true&lt;/strong&gt; in the config and &lt;code&gt;{{bos_token}}&lt;/code&gt; in the chat template. vLLM renders both of these tokens, so chat completions requests end up with &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/discussions/31"&gt;2 bos tokens&lt;/a&gt;, as mentioned in this issue. Llama.cpp for some reason does not render the bos token inside chat template, possibly because it is used as a variable.&lt;/p&gt; &lt;p&gt;They also changed qwen's tokenizer.json, and the markup formatting tokens used for instruction tuning / chat-completions are set as &lt;code&gt;special:false&lt;/code&gt; which causes .GGUF converted models (in &lt;a href="https://github.com/vllm-project/vllm/issues/12985"&gt;vllm&lt;/a&gt; and &lt;a href="https://github.com/sgl-project/sglang/issues/3427"&gt;sglang&lt;/a&gt;; llama.cpp does not have such problem) to behave poorly due to incorrect tokenization.&lt;/p&gt; &lt;p&gt;Apparently, they also &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/discussions/28"&gt;messed up&lt;/a&gt; the bos_token_id in config.json&lt;/p&gt; &lt;p&gt;Just wanted to bring more attention to this issue to maybe get some clarity whether this model really requires two BOS tokens or is it just currently in a buggy state.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remixer_dec"&gt; /u/remixer_dec &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq0n6g/deepseekr1distill_tokenization_mess/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-15T12:48:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1iq0mj5</id>
@@ -164,19 +164,6 @@
     <published>2025-02-15T03:30:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iq7yea</id>
-    <title>Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!</title>
-    <updated>2025-02-15T18:36:22+00:00</updated>
-    <author>
-      <name>/u/taylorwilsdon</name>
-      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"&gt; &lt;img alt="Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!" src="https://external-preview.redd.it/yabl__4Ab0fX56Bb4wbP-vpdHxIRx-xXjgB7Jvk4-sU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7d1e1f2fe159585b0d0e6b897ae3b1557ad44856" title="Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/taylorwilsdon/llm-context-limits"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-15T18:36:22+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ipzjs6</id>
     <title>We need a Chatbot Arena for Deep Research</title>
     <updated>2025-02-15T11:36:09+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipzjs6/we_need_a_chatbot_arena_for_deep_research/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-15T11:36:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iq7yea</id>
+    <title>Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!</title>
+    <updated>2025-02-15T18:36:22+00:00</updated>
+    <author>
+      <name>/u/taylorwilsdon</name>
+      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"&gt; &lt;img alt="Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!" src="https://external-preview.redd.it/yabl__4Ab0fX56Bb4wbP-vpdHxIRx-xXjgB7Jvk4-sU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7d1e1f2fe159585b0d0e6b897ae3b1557ad44856" title="Since it's so hard to find max context windows all in one place, I started a table - contributions welcome!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/taylorwilsdon/llm-context-limits"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq7yea/since_its_so_hard_to_find_max_context_windows_all/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-15T18:36:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1ipfv03</id>
