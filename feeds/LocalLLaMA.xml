@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-15T07:34:08+00:00</updated>
+  <updated>2025-02-15T07:48:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -86,19 +86,6 @@
     <published>2025-02-14T11:44:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ipvp2h</id>
-    <title>LLMs make flying 1000x better</title>
-    <updated>2025-02-15T06:45:17+00:00</updated>
-    <author>
-      <name>/u/Vegetable_Sun_9225</name>
-      <uri>https://old.reddit.com/user/Vegetable_Sun_9225</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Normally I hate flying, internet is flaky and it's hard to get things done. I've found that i can get a lot of what I want the internet for on a local model and with the internet gone I don't get pinged and I can actually head down and focus. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vegetable_Sun_9225"&gt; /u/Vegetable_Sun_9225 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-15T06:45:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ipm0mw</id>
     <title>[15b] Hamanasu</title>
     <updated>2025-02-14T21:51:53+00:00</updated>
@@ -138,19 +125,6 @@
     <published>2025-02-14T18:32:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ipji1f</id>
-    <title>Open WebUI quietly releases 0.5.11, adding one of the best dev-focused features ever: Jupyter notebook support</title>
-    <updated>2025-02-14T20:01:21+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you’ve been wanting to run Python programs directly in Open WebUI but found that the limited libraries provided in the Pyodide sandbox were too limiting, good news: Open WebUI just added support for Jupyter Notebook. Why is this so cool? The big deal (for me at least) is that connecting Open WebUI to Jupyter lets you load whatever Python libraries you want in your local Python environment so that the code your LLM writes in response to your prompt will execute (if you have the “code interpreter” feature in Open WebUI turned on and pointed to your Jupyter instance.) Of course, this is also hugely dangerous because it bypasses the Pyodide sandbox, and executes via the Jupyter instance that you point it to in the configuration settings. So be careful what you ask it to write. Anyways, don’t sleep on this release. I got it running and was able to have it one-shot the creation of a synthetic dataset using the Python Faker tool, writing the records to both the console and also saving a .TXT file sent to the current working directory on my local computer. As with most new Open WebUI features, there is pretty much no documentation yet on how to set it up.&lt;/p&gt; &lt;p&gt;Here’s the basics on how I got it running:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Make sure you have Anaconda and Jupyter setup and Jupyter running on your host computer.&lt;/li&gt; &lt;li&gt;In Open WebUI, got to Admin Settings &amp;gt; Code Interpreter &amp;gt; change from “Pyodide” to “Jupyter” &lt;/li&gt; &lt;li&gt;For the host, if you’re running Open WebUI via Docker, it’s probably going to be:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;a href="http://host.docker.internal:8888"&gt;http://host.docker.internal:8888&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Note: By default Jupyter uses token based authentication. &lt;/p&gt; &lt;ol&gt; &lt;li&gt;Choose “token” for authentication and copy your token from the running Jupyter terminal window (this token changes every time you restart Jupyter btw (unless you set it otherwise.)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If you are using Docker to host Open WebUI, you’ll probably need to add the part below to get it to work. Note: there are obvious security risks for changing this setting &lt;/p&gt; &lt;ol&gt; &lt;li&gt;From an Anaconda terminal type:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;jupyter notebook --generate-config&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Go to the jupyter_notebook_config.py that was just created and edit it.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Look for the &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;NotebookApp.allow_remote_access&lt;/p&gt; &lt;p&gt;setting and change it to “True” and also remove the “#” to uncomment the setting. &lt;/p&gt; &lt;p&gt;That’s it. Now you can load whatever Python libraries you want in your host environment and they can be called and run in conjunction with the code that the LLM is writing in the chat in Open WebUI. Again, this could be very dangerous since it’s executed in the context of wherever Jupyter is running, but it’s still pretty badass to watch an LLM one-shot and run the code instantly in the chat. &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/open-webui/open-webui/releases"&gt;https://github.com/open-webui/open-webui/releases&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-14T20:01:21+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ippmb2</id>
     <title>Speculative decoding with LMStudio beta works great!</title>
     <updated>2025-02-15T00:43:39+00:00</updated>
@@ -164,17 +138,17 @@
     <published>2025-02-15T00:43:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ipqdo1</id>
-    <title>Reasoning models overthink</title>
-    <updated>2025-02-15T01:23:41+00:00</updated>
+    <id>t3_1ipji1f</id>
+    <title>Open WebUI quietly releases 0.5.11, adding one of the best dev-focused features ever: Jupyter notebook support</title>
+    <updated>2025-02-14T20:01:21+00:00</updated>
     <author>
-      <name>/u/frivolousfidget</name>
-      <uri>https://old.reddit.com/user/frivolousfidget</uri>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"&gt; &lt;img alt="Reasoning models overthink" src="https://preview.redd.it/wx4ddvf9g7je1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4398d41d9da28b71e72c333db8d9217c6ba3fcef" title="Reasoning models overthink" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.arxiv.org/pdf/2502.08235"&gt;https://www.arxiv.org/pdf/2502.08235&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://x.com/Alex_Cuadron/status/1890533660434321873"&gt;https://x.com/Alex_Cuadron/status/1890533660434321873&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Reasoning models tend to overthink hurting the results, using low reasoning effort can actually increase cost effectiveness.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frivolousfidget"&gt; /u/frivolousfidget &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wx4ddvf9g7je1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you’ve been wanting to run Python programs directly in Open WebUI but found that the limited libraries provided in the Pyodide sandbox were too limiting, good news: Open WebUI just added support for Jupyter Notebook. Why is this so cool? The big deal (for me at least) is that connecting Open WebUI to Jupyter lets you load whatever Python libraries you want in your local Python environment so that the code your LLM writes in response to your prompt will execute (if you have the “code interpreter” feature in Open WebUI turned on and pointed to your Jupyter instance.) Of course, this is also hugely dangerous because it bypasses the Pyodide sandbox, and executes via the Jupyter instance that you point it to in the configuration settings. So be careful what you ask it to write. Anyways, don’t sleep on this release. I got it running and was able to have it one-shot the creation of a synthetic dataset using the Python Faker tool, writing the records to both the console and also saving a .TXT file sent to the current working directory on my local computer. As with most new Open WebUI features, there is pretty much no documentation yet on how to set it up.&lt;/p&gt; &lt;p&gt;Here’s the basics on how I got it running:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Make sure you have Anaconda and Jupyter setup and Jupyter running on your host computer.&lt;/li&gt; &lt;li&gt;In Open WebUI, got to Admin Settings &amp;gt; Code Interpreter &amp;gt; change from “Pyodide” to “Jupyter” &lt;/li&gt; &lt;li&gt;For the host, if you’re running Open WebUI via Docker, it’s probably going to be:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;a href="http://host.docker.internal:8888"&gt;http://host.docker.internal:8888&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Note: By default Jupyter uses token based authentication. &lt;/p&gt; &lt;ol&gt; &lt;li&gt;Choose “token” for authentication and copy your token from the running Jupyter terminal window (this token changes every time you restart Jupyter btw (unless you set it otherwise.)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If you are using Docker to host Open WebUI, you’ll probably need to add the part below to get it to work. Note: there are obvious security risks for changing this setting &lt;/p&gt; &lt;ol&gt; &lt;li&gt;From an Anaconda terminal type:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;jupyter notebook --generate-config&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Go to the jupyter_notebook_config.py that was just created and edit it.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Look for the &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;NotebookApp.allow_remote_access&lt;/p&gt; &lt;p&gt;setting and change it to “True” and also remove the “#” to uncomment the setting. &lt;/p&gt; &lt;p&gt;That’s it. Now you can load whatever Python libraries you want in your host environment and they can be called and run in conjunction with the code that the LLM is writing in the chat in Open WebUI. Again, this could be very dangerous since it’s executed in the context of wherever Jupyter is running, but it’s still pretty badass to watch an LLM one-shot and run the code instantly in the chat. &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/open-webui/open-webui/releases"&gt;https://github.com/open-webui/open-webui/releases&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipji1f/open_webui_quietly_releases_0511_adding_one_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-15T01:23:41+00:00</published>
+    <published>2025-02-14T20:01:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1iplaz9</id>
@@ -201,6 +175,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ip73bq/deepseek_drops_recommended_r1_deployment_settings/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-14T09:44:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ipvp2h</id>
+    <title>LLMs make flying 1000x better</title>
+    <updated>2025-02-15T06:45:17+00:00</updated>
+    <author>
+      <name>/u/Vegetable_Sun_9225</name>
+      <uri>https://old.reddit.com/user/Vegetable_Sun_9225</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Normally I hate flying, internet is flaky and it's hard to get things done. I've found that i can get a lot of what I want the internet for on a local model and with the internet gone I don't get pinged and I can actually head down and focus. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vegetable_Sun_9225"&gt; /u/Vegetable_Sun_9225 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipvp2h/llms_make_flying_1000x_better/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-15T06:45:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ipqdo1</id>
+    <title>Reasoning models overthink</title>
+    <updated>2025-02-15T01:23:41+00:00</updated>
+    <author>
+      <name>/u/frivolousfidget</name>
+      <uri>https://old.reddit.com/user/frivolousfidget</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"&gt; &lt;img alt="Reasoning models overthink" src="https://preview.redd.it/wx4ddvf9g7je1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4398d41d9da28b71e72c333db8d9217c6ba3fcef" title="Reasoning models overthink" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.arxiv.org/pdf/2502.08235"&gt;https://www.arxiv.org/pdf/2502.08235&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://x.com/Alex_Cuadron/status/1890533660434321873"&gt;https://x.com/Alex_Cuadron/status/1890533660434321873&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Reasoning models tend to overthink hurting the results, using low reasoning effort can actually increase cost effectiveness.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frivolousfidget"&gt; /u/frivolousfidget &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wx4ddvf9g7je1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipqdo1/reasoning_models_overthink/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-15T01:23:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1ipg3cq</id>
