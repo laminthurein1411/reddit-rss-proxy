@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-16T15:33:58+00:00</updated>
+  <updated>2025-02-16T15:48:53+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iq6ngx</id>
-    <title>KTransformers 2.1 and llama.cpp Comparison with DeepSeek V3</title>
-    <updated>2025-02-15T17:39:26+00:00</updated>
-    <author>
-      <name>/u/CockBrother</name>
-      <uri>https://old.reddit.com/user/CockBrother</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Everyone Loves a Graph, Right?&lt;/p&gt; &lt;p&gt;If not, then tables are the next best thing.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Software Used&lt;/th&gt; &lt;th align="left"&gt;Virtual Memory&lt;/th&gt; &lt;th align="left"&gt;Resident Memory&lt;/th&gt; &lt;th align="left"&gt;Model Quantization&lt;/th&gt; &lt;th align="left"&gt;Prompt Eval Rate (tokens/s)&lt;/th&gt; &lt;th align="left"&gt;Eval Rate (tokens/s)&lt;/th&gt; &lt;th align="left"&gt;Relative Performance&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;KTransformers&lt;/td&gt; &lt;td align="left"&gt;714GB&lt;/td&gt; &lt;td align="left"&gt;670GB&lt;/td&gt; &lt;td align="left"&gt;Q8_0&lt;/td&gt; &lt;td align="left"&gt;57.41&lt;/td&gt; &lt;td align="left"&gt;5.80&lt;/td&gt; &lt;td align="left"&gt;1.946&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;KTransformers&lt;/td&gt; &lt;td align="left"&gt;426GB&lt;/td&gt; &lt;td align="left"&gt;380GB&lt;/td&gt; &lt;td align="left"&gt;Q4_K_M&lt;/td&gt; &lt;td align="left"&gt;83.02&lt;/td&gt; &lt;td align="left"&gt;8.66&lt;/td&gt; &lt;td align="left"&gt;1.986&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;llama.cpp&lt;/td&gt; &lt;td align="left"&gt;976GB&lt;/td&gt; &lt;td align="left"&gt;970GB&lt;/td&gt; &lt;td align="left"&gt;Q8_0&lt;/td&gt; &lt;td align="left"&gt;24.40&lt;/td&gt; &lt;td align="left"&gt;2.98&lt;/td&gt; &lt;td align="left"&gt;1.000&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;llama.cpp&lt;/td&gt; &lt;td align="left"&gt;716GB&lt;/td&gt; &lt;td align="left"&gt;682GB&lt;/td&gt; &lt;td align="left"&gt;Q4_K_M&lt;/td&gt; &lt;td align="left"&gt;25.58&lt;/td&gt; &lt;td align="left"&gt;4.36&lt;/td&gt; &lt;td align="left"&gt;1.000&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;A summary of some controlled tests and comparisons between &lt;code&gt;llama.cpp&lt;/code&gt; and &lt;code&gt;KTransformers&lt;/code&gt; for 8-bit and 4-bit quantization on DeepSeek v3. The versions tested were the latest from each project's &lt;code&gt;main&lt;/code&gt; branch as of a few hours before benchmarking.&lt;/p&gt; &lt;h1&gt;Configuration&lt;/h1&gt; &lt;p&gt;Hardware:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;AMD EPYC 7773X CPU&lt;/li&gt; &lt;li&gt;Nvidia 3090 Ti GPU&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Software:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Ubuntu 24.04.1&lt;/li&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; build: 4722 (68ff663a)&lt;/li&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt; main/&amp;quot;2.1&amp;quot;&lt;/li&gt; &lt;li&gt;CUDA 12.8&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Framework-Specific Settings:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt;: Partial GPU acceleration using a single 3090 Ti GPU. Claims &amp;quot;8K context support&amp;quot; from the 2.1 release notes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt;: CPU-only, 64K context.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Benchmarking Setup&lt;/h1&gt; &lt;p&gt;A significant, but not overly long, prompt of just over 500 tokens was used to ensure it fit within &lt;code&gt;KTransformers&lt;/code&gt;' processing limits. This length was sufficient to benchmark prefill performance.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The default &lt;code&gt;KTransformers&lt;/code&gt; output length of 300 tokens was used for benchmarking generation.&lt;/li&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; output length was set to 300 tokens for consistency.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Tuning and Adjustments&lt;/h1&gt; &lt;p&gt;&lt;code&gt;KTransformers&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The model was prompted twice to &amp;quot;warm up&amp;quot; as it does not appear to lock memory to prevent CPU memory from paging out. Letting &lt;code&gt;KTransformers&lt;/code&gt; sit idle for a while caused a ~4x slowdown in prompt evaluation and a ~1.5x slowdown in token evaluation.&lt;/li&gt; &lt;li&gt;Re-prompting restored expected performance.&lt;/li&gt; &lt;li&gt;Other settings were left at their defaults.&lt;/li&gt; &lt;li&gt;The number of CPU threads was set according to the documentation recommendations, not determined by manual tuning.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;llama.cpp&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Used the default &amp;quot;warm-up&amp;quot; setting before prompting.&lt;/li&gt; &lt;li&gt;Block and user block sizes were optimized at 1024 for the best balance between prefill and generation performance.&lt;/li&gt; &lt;li&gt;The number of threads was determined through experimentation and set to optimal values for the test system.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Observations&lt;/h1&gt; &lt;h1&gt;Memory Requirements and Context Handling&lt;/h1&gt; &lt;p&gt;The DeepSeek V3/R1 models are large, requiring significant memory. Even with 8-bit quantization, a 671B parameter model will not fit on systems with 512GB RAM.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; requires 300GB of RAM for 65K context, which is substantial.&lt;/li&gt; &lt;li&gt;If memory is available, &lt;code&gt;llama.cpp&lt;/code&gt; can handle contexts over 8× longer than &lt;code&gt;KTransformers&lt;/code&gt;.&lt;/li&gt; &lt;li&gt;With 4-bit quantization, &lt;code&gt;llama.cpp&lt;/code&gt; can process up to 128K context.&lt;/li&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt;' memory scaling efficiency is unclear since it does not yet support significantly larger contexts.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Performance&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt; significantly outperforms &lt;code&gt;llama.cpp&lt;/code&gt; in both prefill and generation, leveraging GPU acceleration.&lt;/li&gt; &lt;li&gt;However, the observed 2× performance gain is lower than expected given &lt;code&gt;KTransformers&lt;/code&gt;' claims.&lt;/li&gt; &lt;li&gt;This suggests potential over-optimization for specific hardware in &lt;code&gt;KTransformers&lt;/code&gt;, rather than broad performance improvements.&lt;/li&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; is not optimized for MoE (Mixture of Experts) models, affecting its performance in this test.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Features&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; is a mature, feature-rich project with robust parameter control and a stable web API.&lt;/li&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt; lacks many parameter controls but has unique MoE-focused features, including: &lt;ul&gt; &lt;li&gt;The ability to reduce the number of experts used in generation.&lt;/li&gt; &lt;li&gt;Detailed MoE configuration for placing different layers across CPU and GPU resources.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Usage and API Support&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Both frameworks were tested using their command-line &amp;quot;chat&amp;quot; interfaces.&lt;/li&gt; &lt;li&gt;Both provide Python APIs.&lt;/li&gt; &lt;li&gt;&lt;code&gt;llama.cpp&lt;/code&gt; has a stable, fully compatible web API.&lt;/li&gt; &lt;li&gt;&lt;code&gt;KTransformers&lt;/code&gt;' web interface is currently unavailable due to unspecified bugs.&lt;/li&gt; &lt;li&gt;Prior attempts to use &lt;code&gt;KTransformers&lt;/code&gt; with Open WebUI indicated missing API support, making it incompatible.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Final Thoughts&lt;/h1&gt; &lt;p&gt;The growing popularity of DeepSeek V3/R1 may encourage better MoE model support in &lt;code&gt;llama.cpp&lt;/code&gt;. Implementing &lt;code&gt;KTransformers&lt;/code&gt;' innovations in &lt;code&gt;llama.cpp&lt;/code&gt; could improve performance significantly.&lt;/p&gt; &lt;p&gt;However, &lt;code&gt;KTransformers&lt;/code&gt; was designed from the ground up for DeepSeek-like models, and its performance benefits reflect this. Yet, limitations in context length, stability, and configurability make it less compelling for users who need greater flexibility.&lt;/p&gt; &lt;p&gt;At present, &lt;code&gt;KTransformers&lt;/code&gt; feels more like a technology demonstrator than a full replacement for &lt;code&gt;llama.cpp&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Both projects are fast-moving, and performance and features may change dramatically in just a few months.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CockBrother"&gt; /u/CockBrother &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq6ngx/ktransformers_21_and_llamacpp_comparison_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iq6ngx/ktransformers_21_and_llamacpp_comparison_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iq6ngx/ktransformers_21_and_llamacpp_comparison_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-15T17:39:26+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iqtrgf</id>
-    <title>Best way to handle GPU</title>
-    <updated>2025-02-16T14:49:45+00:00</updated>
-    <author>
-      <name>/u/_A_Lost_Cat_</name>
-      <uri>https://old.reddit.com/user/_A_Lost_Cat_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I want to start a small ai startup ( not a hip one) now I'm looking for different sources for GPU. I found several options, AWS Google some server less ones and... In your experience which one is the best? I already googled, I want your personal experience. Love! Cat😺&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_A_Lost_Cat_"&gt; /u/_A_Lost_Cat_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqtrgf/best_way_to_handle_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqtrgf/best_way_to_handle_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iqtrgf/best_way_to_handle_gpu/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-16T14:49:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iqts4r</id>
     <title>GoLU - better than GELU?</title>
@@ -84,6 +58,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iquigb/long_context_trainingfinetuning_through/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-16T15:24:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iquq5p</id>
+    <title>Local Copilot-like integration with JetBrains software?</title>
+    <updated>2025-02-16T15:34:29+00:00</updated>
+    <author>
+      <name>/u/Gallardo994</name>
+      <uri>https://old.reddit.com/user/Gallardo994</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm looking for a solution to replace my Copilot in JetBrains software (Rider/CLion), and preferably use models in my LM-Studio or Ollama. The reason is, I have unstable network in my area so Copilot becomes mega annoyingly slow and/or unreliable in such scenarios. Also, privacy, yeah. I wasn't using Copilot chat at all so I'm not interested in a chat in IDE, but rather just code completion.&lt;/p&gt; &lt;p&gt;What would you recommend for a setup? All I've found was Proxy AI plugin for JetBrains IDEs, but I'm not sure if this is a good or a &amp;quot;recommended&amp;quot; way. Also, what models have you found to work best as inline code completion? I've got an M4 Max with 128GB unified memory to spare.&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Gallardo994"&gt; /u/Gallardo994 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iquq5p/local_copilotlike_integration_with_jetbrains/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iquq5p/local_copilotlike_integration_with_jetbrains/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iquq5p/local_copilotlike_integration_with_jetbrains/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-16T15:34:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iquxvy</id>
+    <title>GRPO reward functions</title>
+    <updated>2025-02-16T15:44:21+00:00</updated>
+    <author>
+      <name>/u/Affectionate-Cap-600</name>
+      <uri>https://old.reddit.com/user/Affectionate-Cap-600</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;hi everyone. I see lots of discussions about GRPO in the context of training 'reasoning' models (probably also due to the amazing work done by the unsloth guys)&lt;/p&gt; &lt;p&gt;Anyway, I still don't understand what functions are you guys using as reward (other than simple functions for questions where a 'ground truth' exist and is easily verifiable). I've seen using cosine similarity but I still can't understand how that can work (other than understanding if the model is talking of the right topic, the granularity is not enough Imo) &lt;/p&gt; &lt;p&gt;have anyone here tried some training using that RL strategy? what about results? &lt;/p&gt; &lt;p&gt;thanks in advance for any reply! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Affectionate-Cap-600"&gt; /u/Affectionate-Cap-600 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iquxvy/grpo_reward_functions/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iquxvy/grpo_reward_functions/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iquxvy/grpo_reward_functions/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-16T15:44:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1iqehm9</id>
@@ -190,19 +190,6 @@
     <published>2025-02-16T14:29:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iqugti</id>
-    <title>Kernel refinement via LLM</title>
-    <updated>2025-02-16T15:22:39+00:00</updated>
-    <author>
-      <name>/u/BreakIt-Boris</name>
-      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"&gt; &lt;img alt="Kernel refinement via LLM" src="https://external-preview.redd.it/Ud40tCnkvgrTgsbDjMTILGOg7G9SqNJ-hrdg_SDxvWo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8b1994afccbdb6a19230f6779589edce8ca823a5" title="Kernel refinement via LLM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I honestly haven't seen this mentioned as of yet. Has left me quite speechless tbh. &lt;/p&gt; &lt;p&gt;&amp;quot;This closed-loop approach makes the code generation process better by guiding it in a different way each time. The team found that by letting this process continue for 15 minutes resulted in an improved attention kernel. &lt;/p&gt; &lt;p&gt;A bar chart showing averaged attention kernel speedup on Hopper GPU, compares the speedup of different attention kernel types between two approaches: 'PyTorch API (Flex Attention)' in orange and 'NVIDIA Workflow with DeepSeek-R1' in green. The PyTorch API maintains a baseline of 1x for all kernels, while the NVIDIA Workflow with DeepSeek-R1 achieves speedups of 1.1x for Causal Mask and Document Mask, 1.5x for Relative Positional, 1.6x for Alibi Bias and Full Mask, and 2.1x for Softcap. Figure 3. Performance of automatically generated optimized attention kernels with flex attention This workflow produced numerically correct kernels for 100% of Level-1 problems and 96% of Level-2 problems, as tested by Stanford’s KernelBench benchmark. ‌&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://developer.nvidia.com/blog/automating-gpu-kernel-generation-with-deepseek-r1-and-inference-time-scaling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-16T15:22:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ipz13t</id>
     <title>Deepseek R1 just became the most liked model ever on Hugging Face just a few weeks after release - with thousands of variants downloaded over 10 million times now</title>
     <updated>2025-02-15T10:58:27+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ipxszq/ridiculous/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-15T09:25:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iqugti</id>
+    <title>Kernel refinement via LLM</title>
+    <updated>2025-02-16T15:22:39+00:00</updated>
+    <author>
+      <name>/u/BreakIt-Boris</name>
+      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"&gt; &lt;img alt="Kernel refinement via LLM" src="https://external-preview.redd.it/Ud40tCnkvgrTgsbDjMTILGOg7G9SqNJ-hrdg_SDxvWo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8b1994afccbdb6a19230f6779589edce8ca823a5" title="Kernel refinement via LLM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I honestly haven't seen this mentioned as of yet. Has left me quite speechless tbh. &lt;/p&gt; &lt;p&gt;&amp;quot;This closed-loop approach makes the code generation process better by guiding it in a different way each time. The team found that by letting this process continue for 15 minutes resulted in an improved attention kernel. &lt;/p&gt; &lt;p&gt;A bar chart showing averaged attention kernel speedup on Hopper GPU, compares the speedup of different attention kernel types between two approaches: 'PyTorch API (Flex Attention)' in orange and 'NVIDIA Workflow with DeepSeek-R1' in green. The PyTorch API maintains a baseline of 1x for all kernels, while the NVIDIA Workflow with DeepSeek-R1 achieves speedups of 1.1x for Causal Mask and Document Mask, 1.5x for Relative Positional, 1.6x for Alibi Bias and Full Mask, and 2.1x for Softcap. Figure 3. Performance of automatically generated optimized attention kernels with flex attention This workflow produced numerically correct kernels for 100% of Level-1 problems and 96% of Level-2 problems, as tested by Stanford’s KernelBench benchmark. ‌&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://developer.nvidia.com/blog/automating-gpu-kernel-generation-with-deepseek-r1-and-inference-time-scaling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iqugti/kernel_refinement_via_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-16T15:22:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1iqmwsl</id>
