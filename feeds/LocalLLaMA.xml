@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-17T23:22:16+00:00</updated>
+  <updated>2025-02-17T23:34:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ir6ha6</id>
-    <title>DeepSeek-R1 CPU-only performances (671B , Unsloth 2.51bit, UD-Q2_K_XL)</title>
-    <updated>2025-02-17T00:00:53+00:00</updated>
-    <author>
-      <name>/u/smflx</name>
-      <uri>https://old.reddit.com/user/smflx</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Many of us here like to run locally DeepSeek R1 (671B, not distill). Thanks to MoE nature of DeepSeek, CPU inference looks promising.&lt;/p&gt; &lt;p&gt;I'm testing on CPUs I have. Not completed yet, but would like to share &amp;amp; hear about other CPUs too.&lt;/p&gt; &lt;p&gt;Xeon w5-3435X has 195GB/s memory bandwidth (measured by stream)&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Function Best Rate MB/s Avg time Copy: 195455.5 0.082330 Scale: 161245.0 0.100906 Add: 183597.3 0.131566 Triad: 181895.4 0.132163 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;The active parameter of R1/V2 is 37B. So if Q4 used, theoretically 195 / 37 * 2 = 10.5 tok/s is possible.&lt;/p&gt; &lt;p&gt;Unsloth provided great quantizations from 1.58 ~ 2.51 bit. The generation speed could be more or less. (Actually less yet)&lt;/p&gt; &lt;p&gt;&lt;a href="https://unsloth.ai/blog/deepseekr1-dynamic"&gt;https://unsloth.ai/blog/deepseekr1-dynamic&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tested both of 1.58 bit &amp;amp; 2.51 bit on few CPUs, now I stick to 2.51 bit. 2.51bit is better quality, surprisingly faster too.&lt;/p&gt; &lt;p&gt;I got 4.86 tok/s with 2.51bit, while 3.27 tok/s with 1.58bit, on Xeon w5-3435X (1570 total tokens). Also, 3.53 tok/s with 2.51bit, while 2.28 tok/s with 1.58bit, on TR pro 5955wx.&lt;/p&gt; &lt;p&gt;It means compute performance of CPU matters too, and slower with 1.58bit. So, use 2.51bit unless you don't have enough RAM. 256G RAM was enough to run 2.51 bit.&lt;/p&gt; &lt;p&gt;I have tested generation speed with llama.cpp using (1) prompt &amp;quot;hi&amp;quot;, and (2) &amp;quot;Write a python program to print the prime numbers under 100&amp;quot;. Number of tokens generated were (1) about 100, (2) 1500~5000.&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama.cpp/build/bin/llama-cli --model DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf --cache-type-k q4_0 --threads 16 --prio 2 --temp 0.6 --ctx-size 8192 --seed 3407&lt;/code&gt;&lt;/p&gt; &lt;p&gt;For &amp;quot;--threads 16&amp;quot;, I have used the core counts of each CPUs. The sweet spot could be less for the CPUs with many cores / ccd.&lt;/p&gt; &lt;p&gt;OK, here is Table.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;CPU&lt;/th&gt; &lt;th align="left"&gt;Cores (CCD)&lt;/th&gt; &lt;th align="left"&gt;COPY (GB/s)&lt;/th&gt; &lt;th align="left"&gt;TRIAD (GB/s)&lt;/th&gt; &lt;th align="left"&gt;llama.cpp prmpt 1k (tok/s)&lt;/th&gt; &lt;th align="left"&gt;llama.cpp &amp;quot;hi&amp;quot; (tok/s)&lt;/th&gt; &lt;th align="left"&gt;llama.cpp &amp;quot;coding&amp;quot; (tok/s)&lt;/th&gt; &lt;th align="left"&gt;kTrans prmpt (tok/s)&lt;/th&gt; &lt;th align="left"&gt;kTrans-former (tok/s)&lt;/th&gt; &lt;th align="left"&gt;Source&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;w5-3435X&lt;/td&gt; &lt;td align="left"&gt;16&lt;/td&gt; &lt;td align="left"&gt;195&lt;/td&gt; &lt;td align="left"&gt;181&lt;/td&gt; &lt;td align="left"&gt;15.53&lt;/td&gt; &lt;td align="left"&gt;5.17&lt;/td&gt; &lt;td align="left"&gt;4.86&lt;/td&gt; &lt;td align="left"&gt;40.77&lt;/td&gt; &lt;td align="left"&gt;8.80&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;5955wx&lt;/td&gt; &lt;td align="left"&gt;16 (2)&lt;/td&gt; &lt;td align="left"&gt;96&lt;/td&gt; &lt;td align="left"&gt;70&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;4.29&lt;/td&gt; &lt;td align="left"&gt;3.53&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;7.45&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;7F32&lt;/td&gt; &lt;td align="left"&gt;8 (4)&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;86&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;3.39&lt;/td&gt; &lt;td align="left"&gt;3.24&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9184X&lt;/td&gt; &lt;td align="left"&gt;16 (8)&lt;/td&gt; &lt;td align="left"&gt;298&lt;/td&gt; &lt;td align="left"&gt;261&lt;/td&gt; &lt;td align="left"&gt;45.32&lt;/td&gt; &lt;td align="left"&gt;7.52&lt;/td&gt; &lt;td align="left"&gt;4.82&lt;/td&gt; &lt;td align="left"&gt;40.13&lt;/td&gt; &lt;td align="left"&gt;11.3&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9534&lt;/td&gt; &lt;td align="left"&gt;64 (8)&lt;/td&gt; &lt;td align="left"&gt;351&lt;/td&gt; &lt;td align="left"&gt;276&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;7.26&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;6426Y (2P)&lt;/td&gt; &lt;td align="left"&gt;16+16&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;coming...&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;6980P (2P)&lt;/td&gt; &lt;td align="left"&gt;128+128&lt;/td&gt; &lt;td align="left"&gt;314&lt;/td&gt; &lt;td align="left"&gt;311&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="/u/VoidAlchemy"&gt;u/VoidAlchemy&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;i5 13600K&lt;/td&gt; &lt;td align="left"&gt;6&lt;/td&gt; &lt;td align="left"&gt;65&lt;/td&gt; &lt;td align="left"&gt;60&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;1.69&lt;/td&gt; &lt;td align="left"&gt;1.66&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="/u/napkinolympics"&gt;u/napkinolympics&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;I separate table for setup with GPUs.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;CPU&lt;/th&gt; &lt;th align="left"&gt;GPU&lt;/th&gt; &lt;th align="left"&gt;llama.cpp &amp;quot;hi&amp;quot; (tok/s)&lt;/th&gt; &lt;th align="left"&gt;llama.cpp &amp;quot;coding&amp;quot; (tok/s)&lt;/th&gt; &lt;th align="left"&gt;Source&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;7960X&lt;/td&gt; &lt;td align="left"&gt;4x 3090, 2x 3090 (via RPC)&lt;/td&gt; &lt;td align="left"&gt;7.68&lt;/td&gt; &lt;td align="left"&gt;6.37&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="/u/CheatCodesOfLife"&gt;u/CheatCodesOfLife&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;I expected a poor performance of 5955wx, because it has only two CCDs. We can see low memory bandwidth in the table. But, not much difference of performance compared to w5-3435X. Perhaps, compute matters too &amp;amp; memory bandwidth is not saturated in Xeon w5-3435X.&lt;/p&gt; &lt;p&gt;I have checked performance of kTransformer too. It's CPU inference with 1 GPU for compute bound process. While it is not pure CPU inference, the performance gain is almost 2x. I didn't tested for all CPU yet, you can assume 2x performances over CPU-only llama.cpp.&lt;/p&gt; &lt;p&gt;With kTransformer, GPU usage was not saturated but CPU was all busy. I guess one 3090 or 4090 will be enough. One downside of kTransformer is that the context length is limited by VRAM.&lt;/p&gt; &lt;p&gt;The blanks in Table are &amp;quot;not tested yet&amp;quot;. It takes time... Well, I'm testing two Genoa CPUs with only one mainboard.&lt;/p&gt; &lt;p&gt;I would like to hear about other CPUs. Maybe, I will update the table.&lt;/p&gt; &lt;p&gt;Note: I will update &amp;quot;how I checked memory bandwidth using stream&amp;quot;, if you want to check with the same setup. I couldn't get the memory bandwidth numbers I have seen here. My test numbers are lower.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 1) STREAM memory bandwidth benchmark&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/jeffhammond/STREAM/blob/master/stream.c"&gt;https://github.com/jeffhammond/STREAM/blob/master/stream.c&lt;/a&gt;&lt;/p&gt; &lt;p&gt;gcc -Ofast -fopenmp -DSTREAM_ARRAY_SIZE=1000000000 -DSTREAM_TYPE=double -mcmodel=large stream.c -o stream&lt;/p&gt; &lt;p&gt;gcc -march=znver4 -march=native -Ofast -fopenmp -DSTREAM_ARRAY_SIZE=1000000000 -DSTREAM_TYPE=double -mcmodel=large stream.c -o stream (for Genoa, but it seems not different)&lt;/p&gt; &lt;p&gt;I have compiled stream.c with a big array size. Total memory required = 22888.2 MiB (= 22.4 GiB).&lt;/p&gt; &lt;p&gt;If somebody know about how to get STREAM benchmark score about 400GB TRIAD, please let me know. I couldn't get such number.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 2) kTransformer numbers in Table are v0.2. I will add v0.3 numbers later.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;They showed v0.3 binary only for Xeon 2P. I didn't check yet, because my Xeon w5-3435X is 1P setup. They say AMX support (Xeon only) will improve performance. I hope to see my Xeon gets better too.&lt;/p&gt; &lt;p&gt;More interesting thing is to reduce # of active experts. I was going to try with llama.cpp, but Oh.. kTransformer v0.3 already did it! This will improve the performance considerably upon some penalty on quality.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 3) kTransformer command line parameter&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;python -m ktransformers.local_chat --model_path deepseek-ai/DeepSeek-R1 --gguf_path DeepSeek-R1-UD-Q2_K_XL --cpu_infer 16 --max_new_tokens 8192&lt;/p&gt; &lt;p&gt;&amp;quot;--model_path&amp;quot; is only for tokenizer and configs. The weights will be loaded from &amp;quot;--gguf_path&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 4) why kTransformer is faster?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Selective experts are in CPU, KV cache &amp;amp; common shared experts are in GPU. It's not split by layer nor by tensor split. It's specially good mix of CPU + GPU for MoE model. A downside is context length is limited by VRAM.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 5) Added prompt processing rate for 1k token&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;./llama.cpp/build/bin/llama-bench --model DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf -p 1000 -n 0 -t 16 -ngl 0 -r 1 --cache-type-k q4_0&lt;/p&gt; &lt;p&gt;It's slow. I'm disappointed. Not so useful in practice.&lt;/p&gt; &lt;p&gt;I'm not sure it's correct numbers. Strange. CPU are not fully utilized. Somebody let me know if my llma-bench commend line is wrong.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;(Update 5) Added prompt processing rate for kTransformer (919 token)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;kTransformer doesn't have a bench tool. I made a summary prompt about 1k tokens. It's not so fast. GPU was not busy during prompt computation. We really need a way of fast CPU prompt processing.&lt;/p&gt; &lt;p&gt;(Edit 1) # of CCD for 7F32 in Table was wrong. &amp;quot;8&amp;quot; is too good to true ^^; Fixed to &amp;quot;4&amp;quot;.&lt;/p&gt; &lt;p&gt;(Edit 2) Added numbers from comments. Thanks a lot!&lt;/p&gt; &lt;p&gt;(Edit 3) Added notes on &amp;quot;--threads&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/smflx"&gt; /u/smflx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ir6ha6/deepseekr1_cpuonly_performances_671b_unsloth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ir6ha6/deepseekr1_cpuonly_performances_671b_unsloth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ir6ha6/deepseekr1_cpuonly_performances_671b_unsloth/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T00:00:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iqpzpk</id>
-    <title>8x RTX 3090 open rig</title>
-    <updated>2025-02-16T11:04:58+00:00</updated>
-    <author>
-      <name>/u/Armym</name>
-      <uri>https://old.reddit.com/user/Armym</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqpzpk/8x_rtx_3090_open_rig/"&gt; &lt;img alt="8x RTX 3090 open rig" src="https://preview.redd.it/sx3t2omvghje1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c8156846c180a3c1bdf1f4c1dceba69bdbf7a6a6" title="8x RTX 3090 open rig" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The whole length is about 65 cm. Two PSUs 1600W and 2000W 8x RTX 3090, all repasted with copper pads Amd epyc 7th gen 512 gb ram Supermicro mobo&lt;/p&gt; &lt;p&gt;Had to design and 3D print a few things. To raise the GPUs so they wouldn't touch the heatsink of the cpu or PSU. It's not a bug, it's a feature, the airflow is better! Temperatures are maximum at 80C when full load and the fans don't even run full speed.&lt;/p&gt; &lt;p&gt;4 cards connected with risers and 4 with oculink. So far the oculink connection is better, but I am not sure if it's optimal. Only pcie 4x connection to each. &lt;/p&gt; &lt;p&gt;Maybe SlimSAS for all of them would be better? &lt;/p&gt; &lt;p&gt;It runs 70B models very fast. Training is very slow.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Armym"&gt; /u/Armym &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/sx3t2omvghje1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iqpzpk/8x_rtx_3090_open_rig/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iqpzpk/8x_rtx_3090_open_rig/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-16T11:04:58+00:00</published>
-  </entry>
   <entry>
     <id>t3_1irv77p</id>
     <title>Did anyone have to deal with system freezes when running multiple GPUs?</title>
@@ -45,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irv77p/did_anyone_have_to_deal_with_system_freezes_when/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-17T21:19:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1irva7y</id>
+    <title>Gemini 2.0 Thinking responding in Chinese</title>
+    <updated>2025-02-17T21:23:06+00:00</updated>
+    <author>
+      <name>/u/Thedudely1</name>
+      <uri>https://old.reddit.com/user/Thedudely1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irva7y/gemini_20_thinking_responding_in_chinese/"&gt; &lt;img alt="Gemini 2.0 Thinking responding in Chinese" src="https://preview.redd.it/aqn2ctr2orje1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5869c46246eb1a5b9534f8322c8f9eefcf1ddab5" title="Gemini 2.0 Thinking responding in Chinese" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was just discussing GPU architectures with &amp;quot;Gemini 2.0 Flash Thinking with apps&amp;quot; in the Gemini app. I didn't enter any Chinese characters or anything but in the response section it seems to have written the word &amp;quot;acceleration&amp;quot; in Chinese and then clarifies itself in English? There doesn't appear to be any Chinese in the &amp;quot;thinking&amp;quot; section... strange&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Thedudely1"&gt; /u/Thedudely1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/aqn2ctr2orje1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irva7y/gemini_20_thinking_responding_in_chinese/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irva7y/gemini_20_thinking_responding_in_chinese/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-17T21:23:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1irvswt</id>
@@ -99,17 +86,17 @@
     <published>2025-02-16T21:56:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1irvmhv</id>
-    <title>What are the odds these are legit?</title>
-    <updated>2025-02-17T21:36:53+00:00</updated>
+    <id>t3_1irbtc4</id>
+    <title>ZeroBench: An Impossible Visual Benchmark for Contemporary Large Multimodal Models</title>
+    <updated>2025-02-17T04:42:47+00:00</updated>
     <author>
-      <name>/u/jwil00</name>
-      <uri>https://old.reddit.com/user/jwil00</uri>
+      <name>/u/taesiri</name>
+      <uri>https://old.reddit.com/user/taesiri</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"&gt; &lt;img alt="What are the odds these are legit?" src="https://b.thumbs.redditmedia.com/nwPSVmSRhkBTlmLfEnbl7r1VJW_spzxnNyBtXwxYWlY.jpg" title="What are the odds these are legit?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Obviously I’m thinking not great, but the deal was too good to pass up for all that VRAM.&lt;/p&gt; &lt;p&gt;Also, how would I go about confirming their legitimacy once they arrive?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jwil00"&gt; /u/jwil00 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1irvmhv"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taesiri"&gt; /u/taesiri &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.09696"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irbtc4/zerobench_an_impossible_visual_benchmark_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irbtc4/zerobench_an_impossible_visual_benchmark_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T21:36:53+00:00</published>
+    <published>2025-02-17T04:42:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1irp09f</id>
@@ -125,56 +112,17 @@
     <published>2025-02-17T17:15:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1irbtc4</id>
-    <title>ZeroBench: An Impossible Visual Benchmark for Contemporary Large Multimodal Models</title>
-    <updated>2025-02-17T04:42:47+00:00</updated>
+    <id>t3_1irvmhv</id>
+    <title>What are the odds these are legit?</title>
+    <updated>2025-02-17T21:36:53+00:00</updated>
     <author>
-      <name>/u/taesiri</name>
-      <uri>https://old.reddit.com/user/taesiri</uri>
+      <name>/u/jwil00</name>
+      <uri>https://old.reddit.com/user/jwil00</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taesiri"&gt; /u/taesiri &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.09696"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irbtc4/zerobench_an_impossible_visual_benchmark_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irbtc4/zerobench_an_impossible_visual_benchmark_for/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"&gt; &lt;img alt="What are the odds these are legit?" src="https://b.thumbs.redditmedia.com/nwPSVmSRhkBTlmLfEnbl7r1VJW_spzxnNyBtXwxYWlY.jpg" title="What are the odds these are legit?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Obviously I’m thinking not great, but the deal was too good to pass up for all that VRAM.&lt;/p&gt; &lt;p&gt;Also, how would I go about confirming their legitimacy once they arrive?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jwil00"&gt; /u/jwil00 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1irvmhv"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irvmhv/what_are_the_odds_these_are_legit/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T04:42:47+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1irwhkz</id>
-    <title>Mistral Saba</title>
-    <updated>2025-02-17T22:12:21+00:00</updated>
-    <author>
-      <name>/u/Pleasant-PolarBear</name>
-      <uri>https://old.reddit.com/user/Pleasant-PolarBear</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"&gt; &lt;img alt="Mistral Saba" src="https://b.thumbs.redditmedia.com/Y-zL84O1MHPzF3H4PHjtXzbGVQMTeskg-HRUs4R7LEk.jpg" title="Mistral Saba" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Pleasant-PolarBear"&gt; /u/Pleasant-PolarBear &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1irwhkz"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T22:12:21+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1irwx6q</id>
-    <title>DeepSeek-v2.5 dynamic quants anyone?</title>
-    <updated>2025-02-17T22:30:13+00:00</updated>
-    <author>
-      <name>/u/Enturbulated</name>
-      <uri>https://old.reddit.com/user/Enturbulated</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The unsloth dynamic quants of DeepSeek-R1 made some waves recently.&lt;br /&gt; &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;There has been some interest expressed in giving other models the same treatment. Weeks later, not seen much done about it. Maybe I've been looking in the wrong places? Maybe nobody has because DSR1 is particularly amenable to this treatment and there's little real payoff for other models?&lt;/p&gt; &lt;p&gt;Regardless, looking at what other MoE models might benefit, one very easy answer is the DeepSeek v2 model series. Mainly because unsloth's llama.cpp fork for this requires fairly little effort to modify for this use.&lt;/p&gt; &lt;p&gt;So, what the hell.&lt;br /&gt; &lt;a href="https://huggingface.co/Enturbulate/DeepSeek-v2.5-1210-UD-gguf"&gt;https://huggingface.co/Enturbulate/DeepSeek-v2.5-1210-UD-gguf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Five quants posted, iq1_s through iq3_m, ~49GB through ~97GB. imatrix data klepped from bartowski. Thanks!&lt;/p&gt; &lt;p&gt;The quantization strategy is pretty simple-minded, basically just don't let the attention/output layers drop below q4_k. Is this optimal? LOL. Should still perform better than standard llama.cpp low-bit quants.&lt;/p&gt; &lt;p&gt;Anyone want to share thoughts on what other models, if any, might be worth some effort?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Enturbulated"&gt; /u/Enturbulated &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T22:30:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1irklio</id>
-    <title>Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)</title>
-    <updated>2025-02-17T14:06:47+00:00</updated>
-    <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"&gt; &lt;img alt="Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)" src="https://external-preview.redd.it/phQl7qnxBNwj9zS7K_vfIQhmHll-NjLQgZ0PIR30DxA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=623bc922d387ff0d98a441576fd2df6e097cc4a6" title="Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/stepfun-ai/step-audio-67b33accf45735bb21131b0b"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-17T14:06:47+00:00</published>
+    <published>2025-02-17T21:36:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1ir9mcw</id>
@@ -190,6 +138,32 @@
     <published>2025-02-17T02:40:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1irklio</id>
+    <title>Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)</title>
+    <updated>2025-02-17T14:06:47+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"&gt; &lt;img alt="Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)" src="https://external-preview.redd.it/phQl7qnxBNwj9zS7K_vfIQhmHll-NjLQgZ0PIR30DxA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=623bc922d387ff0d98a441576fd2df6e097cc4a6" title="Step-Audio - a stepfun-ai Collection (Apache 2 Audio Models)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/stepfun-ai/step-audio-67b33accf45735bb21131b0b"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irklio/stepaudio_a_stepfunai_collection_apache_2_audio/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-17T14:06:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1irwx6q</id>
+    <title>DeepSeek-v2.5 dynamic quants anyone?</title>
+    <updated>2025-02-17T22:30:13+00:00</updated>
+    <author>
+      <name>/u/Enturbulated</name>
+      <uri>https://old.reddit.com/user/Enturbulated</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The unsloth dynamic quants of DeepSeek-R1 made some waves recently.&lt;br /&gt; &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;There has been some interest expressed in giving other models the same treatment. Weeks later, not seen much done about it. Maybe I've been looking in the wrong places? Maybe nobody has because DSR1 is particularly amenable to this treatment and there's little real payoff for other models?&lt;/p&gt; &lt;p&gt;Regardless, looking at what other MoE models might benefit, one very easy answer is the DeepSeek v2 model series. Mainly because unsloth's llama.cpp fork for this requires fairly little effort to modify for this use.&lt;/p&gt; &lt;p&gt;So, what the hell.&lt;br /&gt; &lt;a href="https://huggingface.co/Enturbulate/DeepSeek-v2.5-1210-UD-gguf"&gt;https://huggingface.co/Enturbulate/DeepSeek-v2.5-1210-UD-gguf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Five quants posted, iq1_s through iq3_m, ~49GB through ~97GB. imatrix data klepped from bartowski. Thanks!&lt;/p&gt; &lt;p&gt;The quantization strategy is pretty simple-minded, basically just don't let the attention/output layers drop below q4_k. Is this optimal? LOL. Should still perform better than standard llama.cpp low-bit quants.&lt;/p&gt; &lt;p&gt;Anyone want to share thoughts on what other models, if any, might be worth some effort?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Enturbulated"&gt; /u/Enturbulated &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irwx6q/deepseekv25_dynamic_quants_anyone/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-17T22:30:13+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1irfbxp</id>
     <title>OLLAMA + OPEN-WEBUI + TERMUX = The best ollama inference in Android.</title>
     <updated>2025-02-17T08:35:08+00:00</updated>
@@ -203,6 +177,19 @@
     <published>2025-02-17T08:35:08+00:00</published>
   </entry>
   <entry>
+    <id>t3_1irwhkz</id>
+    <title>Mistral Saba</title>
+    <updated>2025-02-17T22:12:21+00:00</updated>
+    <author>
+      <name>/u/Pleasant-PolarBear</name>
+      <uri>https://old.reddit.com/user/Pleasant-PolarBear</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"&gt; &lt;img alt="Mistral Saba" src="https://b.thumbs.redditmedia.com/Y-zL84O1MHPzF3H4PHjtXzbGVQMTeskg-HRUs4R7LEk.jpg" title="Mistral Saba" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Pleasant-PolarBear"&gt; /u/Pleasant-PolarBear &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1irwhkz"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irwhkz/mistral_saba/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-17T22:12:21+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1irk7vq</id>
     <title>What to expect in 2025 for running big LLMs</title>
     <updated>2025-02-17T13:48:12+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1irk7vq/what_to_expect_in_2025_for_running_big_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-17T13:48:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iry4lu</id>
+    <title>How can I optimize my 1.000.000B MoE Reasoning LLM?</title>
+    <updated>2025-02-17T23:21:26+00:00</updated>
+    <author>
+      <name>/u/sebastianmicu24</name>
+      <uri>https://old.reddit.com/user/sebastianmicu24</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So, my mum built this LLM for me called Brain, it has a weird architecture that resembles MoE but its called MoL (Mixture of Lobes), it has around 1 000 000B parameters (synapses) but it's not performing that well on MMLU pro, it gives me a lot of errors with complicated tasks, and I'm struggling to activate the frontal &lt;del&gt;Expert&lt;/del&gt; lobe, it also hallucinates 1/3 of the time, especially at night. It might be some hardware issue since I had no money for an RTX 5090 and I'm instead running it on frozen food and coke. At least it is truly multimodal since it works well with audio and images.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sebastianmicu24"&gt; /u/sebastianmicu24 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iry4lu/how_can_i_optimize_my_1000000b_moe_reasoning_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iry4lu/how_can_i_optimize_my_1000000b_moe_reasoning_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iry4lu/how_can_i_optimize_my_1000000b_moe_reasoning_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-17T23:21:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1irkkeo</id>
