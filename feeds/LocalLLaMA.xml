@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-21T18:38:15+00:00</updated>
+  <updated>2025-02-21T18:49:11+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iuqw03</id>
-    <title>Clarification on Transformer Scaling: Is My Understanding Correct?</title>
-    <updated>2025-02-21T13:28:34+00:00</updated>
-    <author>
-      <name>/u/Standing_Appa8</name>
-      <uri>https://old.reddit.com/user/Standing_Appa8</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I've been researching how transformer models scale in terms of memory (VRAM) and compute, and I've come across some information from both ChatGPT and Perplexity that left me a bit confused. Here’s the summary I gathered:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;VRAM (Memory) Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;KV-Cache:&lt;/strong&gt; For every token processed, a key-value pair is stored in each attention layer. This causes a linear increase in memory usage as the token count grows.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model Weights &amp;amp; Intermediate Results:&lt;/strong&gt; These remain constant regardless of the sequence length when processing a single inference request.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Self-Attention:&lt;/strong&gt; The transformer calculates interactions between every pair of tokens. This results in a quadratic scaling of compute cost as the sequence length increases.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Training Overheads:&lt;/strong&gt; During training, additional costs such as activations, gradients, and optimizer states further boost the compute requirements.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM vs. Compute Trade-off:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;The total VRAM needed is a sum of the model weights, the KV-cache (which grows linearly with tokens), and other temporary buffers. If this sum exceeds the available VRAM, it leads to an Out-of-Memory (OOM) error.&lt;/li&gt; &lt;li&gt;In contrast, while the VRAM requirement grows linearly, the compute cost (especially for self-attention) grows quadratically with the number of tokens.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Other Considerations:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Number of Parameters:&lt;/strong&gt; A higher number of parameters increases the baseline memory and compute requirements.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Precision (e.g., FP16, 8-bit, 4-bit):&lt;/strong&gt; Using lower precision can reduce memory usage but may affect compute performance.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Measuring Inference Speed:&lt;/strong&gt; Inference speed can be measured in terms of FPS (frames per second) or FLOPS (floating point operations per second).&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Short Summary:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Memory (VRAM):&lt;/strong&gt; Grows linearly with token count (due to the KV-cache).&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute:&lt;/strong&gt; Grows quadratically with token count (due to self-attention computations).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m a bit confused about whether this summary is completely accurate. Has anyone delved into the specifics of transformer scaling and can confirm or correct this understanding? Are there any nuances or important details I might be missing regarding inference vs. training costs?&lt;/p&gt; &lt;p&gt;Thanks in advance for your insights!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Standing_Appa8"&gt; /u/Standing_Appa8 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T13:28:34+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iufbmy</id>
-    <title>Deepseek R1 671b minimum hardware to get 20TPS running only in RAM</title>
-    <updated>2025-02-21T01:47:06+00:00</updated>
-    <author>
-      <name>/u/therebrith</name>
-      <uri>https://old.reddit.com/user/therebrith</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looking into full chatgpt replacement and shopping for hardware. I've seen the digital spaceport's $2k &lt;a href="https://digitalspaceport.com/how-to-run-deepseek-r1-671b-fully-locally-on-2000-epyc-rig/"&gt;build&lt;/a&gt; that gives 5ish TPS using an 7002/7003 EPYC and 512GB of DDR4 2400. It's a good experiment, but 5 token/s is not gonna replace chatgpt from day to day use. So I wonder what would be the minimum hardwares like to get minimum 20 token/s with 3~4s or less first token wait time, running only on RAM? &lt;/p&gt; &lt;p&gt;I'm sure not a lot of folks have tried this, but just throwing out there, that a setup with 1TB DDR5 at 4800 with dual EPYC 9005(192c/384t), would that be enough for the 20TPS ask?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/therebrith"&gt; /u/therebrith &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iufbmy/deepseek_r1_671b_minimum_hardware_to_get_20tps/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iufbmy/deepseek_r1_671b_minimum_hardware_to_get_20tps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iufbmy/deepseek_r1_671b_minimum_hardware_to_get_20tps/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T01:47:06+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iuq86e</id>
     <title>SOCAMM analysis</title>
@@ -73,6 +47,32 @@
     <published>2025-02-21T10:00:49+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iuvdzf</id>
+    <title>Building homemade AI/ML rig - guide me</title>
+    <updated>2025-02-21T16:47:15+00:00</updated>
+    <author>
+      <name>/u/Stochastic_berserker</name>
+      <uri>https://old.reddit.com/user/Stochastic_berserker</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I finally saved up enough resources to build a new PC focused on local finetuning, computer vision etc. It has taken its time to actually find below parts that also makes me stay on budget. I did not buy all at once and they are all second hand/used parts - nothing new.&lt;/p&gt; &lt;p&gt;Budget: $10k (spent about $6k so far)&lt;/p&gt; &lt;p&gt;Bought so far:&lt;/p&gt; &lt;p&gt;• ⁠CPU: Threadripper Pro 5965WX&lt;/p&gt; &lt;p&gt;• ⁠MOBO: WRX80&lt;/p&gt; &lt;p&gt;• ⁠GPU: x4 RTX 3090 (no Nvlink)&lt;/p&gt; &lt;p&gt;• ⁠RAM: 256GB&lt;/p&gt; &lt;p&gt;• ⁠PSU: I have x2 1650W and one 1200W&lt;/p&gt; &lt;p&gt;• ⁠Storage: 4TB NVMe SSD&lt;/p&gt; &lt;p&gt;• ⁠Case: mining rig&lt;/p&gt; &lt;p&gt;• ⁠Cooling: nothing&lt;/p&gt; &lt;p&gt;I don’t know what type of cooling to use here. I also don’t know if it is possible to add other 30 series GPUs like 3060/70/80 without bottlenecks or load balancing issues.&lt;/p&gt; &lt;p&gt;The remaining budget is reserved for 3090 failures and electricity usage.&lt;/p&gt; &lt;p&gt;Anyone with any tips/advice or guidance on how to continue with the build given that I need cooling and looking to add more budget option GPUs?&lt;/p&gt; &lt;p&gt;EDIT: I live in Sweden and it is not easy to get your hands on an RTX 3090 or 4090 that is also reasonably priced. 4090s as of 21st of February sells for about $2000 for used ones.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Stochastic_berserker"&gt; /u/Stochastic_berserker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T16:47:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iuxxsg</id>
+    <title>Any recommended guides for setting up local llm + OpenWebUI + Database On Ubuntu</title>
+    <updated>2025-02-21T18:29:49+00:00</updated>
+    <author>
+      <name>/u/BigBearChaseMe</name>
+      <uri>https://old.reddit.com/user/BigBearChaseMe</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Google search is all over the place, and with the pace of things moving so fast, seems like many guides are out of date. I am running ubuntu 24.4, and am looking to run ollama + OpenWebUI + database, as I believe that this is the setup I need to store training data. Specifically I want to use RAG to &amp;quot;train&amp;quot; a model. Also looking for recommendations on tooling to train a model. &lt;/p&gt; &lt;p&gt;Do I run containerized, or as a service, or does it matter if I want to have data persist across reboots. What tools are recommended for training a model. I basically want to build a full stack from front to back for learning purposes. &lt;/p&gt; &lt;p&gt;Thanks,. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BigBearChaseMe"&gt; /u/BigBearChaseMe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuxxsg/any_recommended_guides_for_setting_up_local_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuxxsg/any_recommended_guides_for_setting_up_local_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuxxsg/any_recommended_guides_for_setting_up_local_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T18:29:49+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iutymf</id>
     <title>Why do we want a one fits all model anyway?</title>
     <updated>2025-02-21T15:47:43+00:00</updated>
@@ -84,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-21T15:47:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iusq48</id>
+    <title>Downloaded Ollama models to GGUF</title>
+    <updated>2025-02-21T14:54:16+00:00</updated>
+    <author>
+      <name>/u/YTeslam777</name>
+      <uri>https://old.reddit.com/user/YTeslam777</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, for those seeking a utility to convert models downloaded from Ollama to GGUF, I've discovered this tool on GitHub: &lt;a href="https://github.com/mattjamo/OllamaToGGUF"&gt;https://github.com/mattjamo/OllamaToGGUF&lt;/a&gt;. I hope it proves useful.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YTeslam777"&gt; /u/YTeslam777 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T14:54:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1iu4bc0</id>
@@ -110,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iu56o1/10x_longer_contexts_for_reasoning_training_90/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-20T18:15:26+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iusq48</id>
-    <title>Downloaded Ollama models to GGUF</title>
-    <updated>2025-02-21T14:54:16+00:00</updated>
-    <author>
-      <name>/u/YTeslam777</name>
-      <uri>https://old.reddit.com/user/YTeslam777</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, for those seeking a utility to convert models downloaded from Ollama to GGUF, I've discovered this tool on GitHub: &lt;a href="https://github.com/mattjamo/OllamaToGGUF"&gt;https://github.com/mattjamo/OllamaToGGUF&lt;/a&gt;. I hope it proves useful.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YTeslam777"&gt; /u/YTeslam777 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T14:54:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1iue6n1</id>
@@ -164,19 +164,6 @@
     <published>2025-02-20T19:04:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iudao8</id>
-    <title>langchain is still a rabbit hole in 2025</title>
-    <updated>2025-02-20T23:56:22+00:00</updated>
-    <author>
-      <name>/u/henryclw</name>
-      <uri>https://old.reddit.com/user/henryclw</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;langchain is still a rabbit hole in 2025 And the langgraph framework as well&lt;/p&gt; &lt;p&gt;Is it just me or other people think this is the case as well?&lt;/p&gt; &lt;p&gt;Instead of spending hours going through the rabbit holes in these frameworks , I found out an ugly hard coded way is faster to implement. Yeah I know hard coed things are hard to maintain. But consider the break changes in langchain through 0.1, 0.2, 0.3. Things are hard to maintain in either way.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;&lt;em&gt;Edit&lt;/em&gt;&lt;/p&gt; &lt;p&gt;Sorry my language might not be very friendly when I posted this, but I had a bad day. So here is what happened: I tried to build a automatic workflow to do something for me. Like everyone said, agent x LLM is the future blah blah blah... &lt;/p&gt; &lt;p&gt;Anyway, I start looking, for a workflow framework. There are dify, langflow, flowise, pyspur, Laminar, comfyui_LLM_party... But I picked langgraph since they are more or less codebased, doesn't require to setup things like clickhouse for a simple demo, and I could write custom nodes. &lt;/p&gt; &lt;p&gt;So I run in, into the rabbit holes. Like everyone in &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; , I don't like OpenAI or other LLM provider, I like to host my own instance and make sure my data is mine. So I go with llama.cpp (which I've played with for a while) Then my bad day came:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;llama.cpp: The OpenAI compatible API doesn't work well with the tool calling &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11988"&gt;https://github.com/ggml-org/llama.cpp/issues/11988&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11847"&gt;https://github.com/ggml-org/llama.cpp/issues/11847&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;llama.cpp: the jinja template is still buggy &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11938"&gt;https://github.com/ggml-org/llama.cpp/issues/11938&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;llama.cpp: the tool calls doesn't return tool call id &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11992"&gt;https://github.com/ggml-org/llama.cpp/issues/11992&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I just want to build a custom workflow that has tool calling with my llama.cpp, with custom node / function that could intergate with my current projects, why is it so hard...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/henryclw"&gt; /u/henryclw &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-20T23:56:22+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iu8f7s</id>
     <title>Speculative decoding can identify broken quants?</title>
     <updated>2025-02-20T20:26:14+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iu8f7s/speculative_decoding_can_identify_broken_quants/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-20T20:26:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iudao8</id>
+    <title>langchain is still a rabbit hole in 2025</title>
+    <updated>2025-02-20T23:56:22+00:00</updated>
+    <author>
+      <name>/u/henryclw</name>
+      <uri>https://old.reddit.com/user/henryclw</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;langchain is still a rabbit hole in 2025 And the langgraph framework as well&lt;/p&gt; &lt;p&gt;Is it just me or other people think this is the case as well?&lt;/p&gt; &lt;p&gt;Instead of spending hours going through the rabbit holes in these frameworks , I found out an ugly hard coded way is faster to implement. Yeah I know hard coed things are hard to maintain. But consider the break changes in langchain through 0.1, 0.2, 0.3. Things are hard to maintain in either way.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;&lt;em&gt;Edit&lt;/em&gt;&lt;/p&gt; &lt;p&gt;Sorry my language might not be very friendly when I posted this, but I had a bad day. So here is what happened: I tried to build a automatic workflow to do something for me. Like everyone said, agent x LLM is the future blah blah blah... &lt;/p&gt; &lt;p&gt;Anyway, I start looking, for a workflow framework. There are dify, langflow, flowise, pyspur, Laminar, comfyui_LLM_party... But I picked langgraph since they are more or less codebased, doesn't require to setup things like clickhouse for a simple demo, and I could write custom nodes. &lt;/p&gt; &lt;p&gt;So I run in, into the rabbit holes. Like everyone in &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; , I don't like OpenAI or other LLM provider, I like to host my own instance and make sure my data is mine. So I go with llama.cpp (which I've played with for a while) Then my bad day came:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;llama.cpp: The OpenAI compatible API doesn't work well with the tool calling &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11988"&gt;https://github.com/ggml-org/llama.cpp/issues/11988&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11847"&gt;https://github.com/ggml-org/llama.cpp/issues/11847&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;llama.cpp: the jinja template is still buggy &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11938"&gt;https://github.com/ggml-org/llama.cpp/issues/11938&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;llama.cpp: the tool calls doesn't return tool call id &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/11992"&gt;https://github.com/ggml-org/llama.cpp/issues/11992&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I just want to build a custom workflow that has tool calling with my llama.cpp, with custom node / function that could intergate with my current projects, why is it so hard...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/henryclw"&gt; /u/henryclw &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iudao8/langchain_is_still_a_rabbit_hole_in_2025/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-20T23:56:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1iustfq</id>
