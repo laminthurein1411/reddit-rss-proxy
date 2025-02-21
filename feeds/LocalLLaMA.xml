@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-21T16:49:08+00:00</updated>
+  <updated>2025-02-21T17:05:25+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iuqw03</id>
-    <title>Clarification on Transformer Scaling: Is My Understanding Correct?</title>
-    <updated>2025-02-21T13:28:34+00:00</updated>
-    <author>
-      <name>/u/Standing_Appa8</name>
-      <uri>https://old.reddit.com/user/Standing_Appa8</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I've been researching how transformer models scale in terms of memory (VRAM) and compute, and I've come across some information from both ChatGPT and Perplexity that left me a bit confused. Here’s the summary I gathered:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;VRAM (Memory) Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;KV-Cache:&lt;/strong&gt; For every token processed, a key-value pair is stored in each attention layer. This causes a linear increase in memory usage as the token count grows.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model Weights &amp;amp; Intermediate Results:&lt;/strong&gt; These remain constant regardless of the sequence length when processing a single inference request.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Self-Attention:&lt;/strong&gt; The transformer calculates interactions between every pair of tokens. This results in a quadratic scaling of compute cost as the sequence length increases.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Training Overheads:&lt;/strong&gt; During training, additional costs such as activations, gradients, and optimizer states further boost the compute requirements.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM vs. Compute Trade-off:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;The total VRAM needed is a sum of the model weights, the KV-cache (which grows linearly with tokens), and other temporary buffers. If this sum exceeds the available VRAM, it leads to an Out-of-Memory (OOM) error.&lt;/li&gt; &lt;li&gt;In contrast, while the VRAM requirement grows linearly, the compute cost (especially for self-attention) grows quadratically with the number of tokens.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Other Considerations:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Number of Parameters:&lt;/strong&gt; A higher number of parameters increases the baseline memory and compute requirements.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Precision (e.g., FP16, 8-bit, 4-bit):&lt;/strong&gt; Using lower precision can reduce memory usage but may affect compute performance.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Measuring Inference Speed:&lt;/strong&gt; Inference speed can be measured in terms of FPS (frames per second) or FLOPS (floating point operations per second).&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Short Summary:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Memory (VRAM):&lt;/strong&gt; Grows linearly with token count (due to the KV-cache).&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute:&lt;/strong&gt; Grows quadratically with token count (due to self-attention computations).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m a bit confused about whether this summary is completely accurate. Has anyone delved into the specifics of transformer scaling and can confirm or correct this understanding? Are there any nuances or important details I might be missing regarding inference vs. training costs?&lt;/p&gt; &lt;p&gt;Thanks in advance for your insights!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Standing_Appa8"&gt; /u/Standing_Appa8 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T13:28:34+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iunuyg</id>
     <title>VimLM: Bringing LLM Assistance to Vim, Locally</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iufbmy/deepseek_r1_671b_minimum_hardware_to_get_20tps/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-21T01:47:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iutymf</id>
+    <title>Why do we want a one fits all model anyway?</title>
+    <updated>2025-02-21T15:47:43+00:00</updated>
+    <author>
+      <name>/u/ivari</name>
+      <uri>https://old.reddit.com/user/ivari</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As a human being we are all fientuned to our own domain of expertise, and when we ask someone who's smart at one thing about something they're not smart about, they will either lie to get rewarded, hallucinate with conspiracy theory or just plain stupidity, answer wrong but still very confident anyway (Dunning Kruger)...&lt;/p&gt; &lt;p&gt;Even in SD scene we separate models for separate tasks: anime models, nsfw models, realistic models... Because it's silly to ask a photographer to draw anime characters, and vice versa.&lt;/p&gt; &lt;p&gt;Then why does SOTAness is derived from one fits all criteria?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ivari"&gt; /u/ivari &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T15:47:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1iuq86e</id>
@@ -151,19 +151,6 @@
     <published>2025-02-21T00:53:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iuut9n</id>
-    <title>Quad GPU setup</title>
-    <updated>2025-02-21T16:23:14+00:00</updated>
-    <author>
-      <name>/u/outsider787</name>
-      <uri>https://old.reddit.com/user/outsider787</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt; &lt;img alt="Quad GPU setup" src="https://b.thumbs.redditmedia.com/5lmUdrb6pszzusF6Vnd-M4HTLRH7g1a-eHvWdqRx_AM.jpg" title="Quad GPU setup" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Someone mentioned that there's not many quad gpu rigs posted, so here's mine.&lt;/p&gt; &lt;p&gt;Running 4 X RTX A5000 GPUs, on a x399 motherboard and a Threadripper 1950x CPU.&lt;br /&gt; All powered by a 1300W EVGA PSU.&lt;/p&gt; &lt;p&gt;The GPUs are using x16 pcie riser cables to connect to the mobo.&lt;/p&gt; &lt;p&gt;The case is custom designed and 3d printed. (let me know if you want the design, and I can post it)&lt;br /&gt; Can fit 8 GPUs. Currently only 4 are populated.&lt;/p&gt; &lt;p&gt;Running inference on 70b q8 models gets me around 10 tokens/s &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1"&gt;https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc"&gt;https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/outsider787"&gt; /u/outsider787 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T16:23:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iu6egg</id>
     <title>Even AI has some personality :)</title>
     <updated>2025-02-20T19:04:20+00:00</updated>
@@ -177,17 +164,17 @@
     <published>2025-02-20T19:04:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iutvpe</id>
-    <title>New SOTA on OpenAI's SimpleQA</title>
-    <updated>2025-02-21T15:44:08+00:00</updated>
+    <id>t3_1iuut9n</id>
+    <title>Quad GPU setup</title>
+    <updated>2025-02-21T16:23:14+00:00</updated>
     <author>
-      <name>/u/pcamiz</name>
-      <uri>https://old.reddit.com/user/pcamiz</uri>
+      <name>/u/outsider787</name>
+      <uri>https://old.reddit.com/user/outsider787</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;French lab beats Perplexity on SimpleQA &lt;a href="https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa"&gt;https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Apparently can be plugged to Llama to improve factuality by a lot. Will be trying it out this weekend. LMK if you integrate it as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pcamiz"&gt; /u/pcamiz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt; &lt;img alt="Quad GPU setup" src="https://b.thumbs.redditmedia.com/5lmUdrb6pszzusF6Vnd-M4HTLRH7g1a-eHvWdqRx_AM.jpg" title="Quad GPU setup" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Someone mentioned that there's not many quad gpu rigs posted, so here's mine.&lt;/p&gt; &lt;p&gt;Running 4 X RTX A5000 GPUs, on a x399 motherboard and a Threadripper 1950x CPU.&lt;br /&gt; All powered by a 1300W EVGA PSU.&lt;/p&gt; &lt;p&gt;The GPUs are using x16 pcie riser cables to connect to the mobo.&lt;/p&gt; &lt;p&gt;The case is custom designed and 3d printed. (let me know if you want the design, and I can post it)&lt;br /&gt; Can fit 8 GPUs. Currently only 4 are populated.&lt;/p&gt; &lt;p&gt;Running inference on 70b q8 models gets me around 10 tokens/s &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1"&gt;https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc"&gt;https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/outsider787"&gt; /u/outsider787 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T15:44:08+00:00</published>
+    <published>2025-02-21T16:23:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1iudao8</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iu8f7s/speculative_decoding_can_identify_broken_quants/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-20T20:26:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iutvpe</id>
+    <title>New SOTA on OpenAI's SimpleQA</title>
+    <updated>2025-02-21T15:44:08+00:00</updated>
+    <author>
+      <name>/u/pcamiz</name>
+      <uri>https://old.reddit.com/user/pcamiz</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;French lab beats Perplexity on SimpleQA &lt;a href="https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa"&gt;https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Apparently can be plugged to Llama to improve factuality by a lot. Will be trying it out this weekend. LMK if you integrate it as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pcamiz"&gt; /u/pcamiz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T15:44:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1iustfq</id>
