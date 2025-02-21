@@ -2,36 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-21T19:34:09+00:00</updated>
+  <updated>2025-02-21T19:48:51+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1iuqw03</id>
-    <title>Clarification on Transformer Scaling: Is My Understanding Correct?</title>
-    <updated>2025-02-21T13:28:34+00:00</updated>
+    <id>t3_1iuq86e</id>
+    <title>SOCAMM analysis</title>
+    <updated>2025-02-21T12:55:02+00:00</updated>
     <author>
-      <name>/u/Standing_Appa8</name>
-      <uri>https://old.reddit.com/user/Standing_Appa8</uri>
+      <name>/u/Cane_P</name>
+      <uri>https://old.reddit.com/user/Cane_P</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I've been researching how transformer models scale in terms of memory (VRAM) and compute, and I've come across some information from both ChatGPT and Perplexity that left me a bit confused. Here’s the summary I gathered:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;VRAM (Memory) Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;KV-Cache:&lt;/strong&gt; For every token processed, a key-value pair is stored in each attention layer. This causes a linear increase in memory usage as the token count grows.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model Weights &amp;amp; Intermediate Results:&lt;/strong&gt; These remain constant regardless of the sequence length when processing a single inference request.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute Requirements:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Self-Attention:&lt;/strong&gt; The transformer calculates interactions between every pair of tokens. This results in a quadratic scaling of compute cost as the sequence length increases.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Training Overheads:&lt;/strong&gt; During training, additional costs such as activations, gradients, and optimizer states further boost the compute requirements.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM vs. Compute Trade-off:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;The total VRAM needed is a sum of the model weights, the KV-cache (which grows linearly with tokens), and other temporary buffers. If this sum exceeds the available VRAM, it leads to an Out-of-Memory (OOM) error.&lt;/li&gt; &lt;li&gt;In contrast, while the VRAM requirement grows linearly, the compute cost (especially for self-attention) grows quadratically with the number of tokens.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Other Considerations:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Number of Parameters:&lt;/strong&gt; A higher number of parameters increases the baseline memory and compute requirements.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Precision (e.g., FP16, 8-bit, 4-bit):&lt;/strong&gt; Using lower precision can reduce memory usage but may affect compute performance.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Measuring Inference Speed:&lt;/strong&gt; Inference speed can be measured in terms of FPS (frames per second) or FLOPS (floating point operations per second).&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Short Summary:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Memory (VRAM):&lt;/strong&gt; Grows linearly with token count (due to the KV-cache).&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compute:&lt;/strong&gt; Grows quadratically with token count (due to self-attention computations).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m a bit confused about whether this summary is completely accurate. Has anyone delved into the specifics of transformer scaling and can confirm or correct this understanding? Are there any nuances or important details I might be missing regarding inference vs. training costs?&lt;/p&gt; &lt;p&gt;Thanks in advance for your insights!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Standing_Appa8"&gt; /u/Standing_Appa8 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuqw03/clarification_on_transformer_scaling_is_my/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What is SOCAMM?&lt;/p&gt; &lt;p&gt;SOCAMM: Next-Generation Memory for On-Device AI&lt;/p&gt; &lt;p&gt;• Interest in SOCAMM (System On Chip with Advanced Memory Module) has been growing within the AI industry.&lt;/p&gt; &lt;p&gt;• In particular, with the unveiling of NVIDIA’s personal supercomputer “Digits” at CES this past January, there has been active discussion about the potential use of new types of memory modules in next-generation AI devices.&lt;/p&gt; &lt;p&gt;• While SOCAMM currently draws the most attention among next-generation memory modules, other varieties such as LLW (Low Latency Wide I/O) and LPCAMM (Low Power Compression Attached Memory Module) are also being considered for AI device memory.&lt;/p&gt; &lt;p&gt;• SOCAMM is a module that integrates an SoC (System on Chip), commonly used in smartphones and laptops, together with memory in a single package. It has garnered attention because AI devices require high bandwidth, low power consumption, and smaller form factors.&lt;/p&gt; &lt;p&gt;• AI computing demands high-bandwidth memory. However, in the conventional DIMM approach, the SoC and memory are relatively far apart, resulting in lower bandwidth and higher latency.&lt;/p&gt; &lt;p&gt;• Because SOCAMM places the SoC and memory in close physical proximity, it improves communication efficiency between the logic and the memory, enabling high bandwidth and low latency.&lt;/p&gt; &lt;p&gt;• For AI devices running on batteries, AI computation can consume significant power, so low-power operation is crucial. Under the conventional method (DIMM, MCP, etc.), the SoC and memory are connected through a PCB (Printed Circuit Board), requiring a complex communication path—SoC → memory controller → PCB traces → memory module.&lt;/p&gt; &lt;p&gt;• Such a long communication path demands higher voltage, which negatively impacts battery life.&lt;/p&gt; &lt;p&gt;• In contrast, SOCAMM allows the SoC and memory to communicate directly via the memory controller inside the SoC, enabling lower-voltage operation and reducing battery consumption.&lt;/p&gt; &lt;p&gt;• Under the conventional method, additional wiring space is needed on the PCB to connect the memory and SoC, causing unnecessary increases in form factor.&lt;/p&gt; &lt;p&gt;• By integrating the SoC and memory in a single package, PCB design is simplified, making a smaller form factor possible.&lt;/p&gt; &lt;p&gt;• SOCAMM is not yet in full-scale adoption, but preliminary steps toward its future implementation appear to be underway.&lt;/p&gt; &lt;p&gt;• As the AI industry continues to develop rapidly and AI devices become more widespread, SOCAMM, LPCAMM, and LLW are expected to serve as next-generation memory solutions.&lt;/p&gt; &lt;p&gt;Source: Hyundai Motor Securities via Jukanlosreve&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cane_P"&gt; /u/Cane_P &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuq86e/socamm_analysis/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuq86e/socamm_analysis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuq86e/socamm_analysis/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T13:28:34+00:00</published>
+    <published>2025-02-21T12:55:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iuvdzf</id>
-    <title>Building homemade AI/ML rig - guide me</title>
-    <updated>2025-02-21T16:47:15+00:00</updated>
+    <id>t3_1iutmxy</id>
+    <title>I made Agentic AI framework utilizing LLM Function Calling and TypeScript Compiler skills</title>
+    <updated>2025-02-21T15:33:45+00:00</updated>
     <author>
-      <name>/u/Stochastic_berserker</name>
-      <uri>https://old.reddit.com/user/Stochastic_berserker</uri>
+      <name>/u/SamchonFramework</name>
+      <uri>https://old.reddit.com/user/SamchonFramework</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I finally saved up enough resources to build a new PC focused on local finetuning, computer vision etc. It has taken its time to actually find below parts that also makes me stay on budget. I did not buy all at once and they are all second hand/used parts - nothing new.&lt;/p&gt; &lt;p&gt;Budget: $10k (spent about $6k so far)&lt;/p&gt; &lt;p&gt;Bought so far:&lt;/p&gt; &lt;p&gt;• ⁠CPU: Threadripper Pro 5965WX&lt;/p&gt; &lt;p&gt;• ⁠MOBO: WRX80&lt;/p&gt; &lt;p&gt;• ⁠GPU: x4 RTX 3090 (no Nvlink)&lt;/p&gt; &lt;p&gt;• ⁠RAM: 256GB&lt;/p&gt; &lt;p&gt;• ⁠PSU: I have x2 1650W and one 1200W&lt;/p&gt; &lt;p&gt;• ⁠Storage: 4TB NVMe SSD&lt;/p&gt; &lt;p&gt;• ⁠Case: mining rig&lt;/p&gt; &lt;p&gt;• ⁠Cooling: nothing&lt;/p&gt; &lt;p&gt;I don’t know what type of cooling to use here. I also don’t know if it is possible to add other 30 series GPUs like 3060/70/80 without bottlenecks or load balancing issues.&lt;/p&gt; &lt;p&gt;The remaining budget is reserved for 3090 failures and electricity usage.&lt;/p&gt; &lt;p&gt;Anyone with any tips/advice or guidance on how to continue with the build given that I need cooling and looking to add more budget option GPUs?&lt;/p&gt; &lt;p&gt;EDIT: I live in Sweden and it is not easy to get your hands on an RTX 3090 or 4090 that is also reasonably priced. 4090s as of 21st of February sells for about $2000 for used ones.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Stochastic_berserker"&gt; /u/Stochastic_berserker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutmxy/i_made_agentic_ai_framework_utilizing_llm/"&gt; &lt;img alt="I made Agentic AI framework utilizing LLM Function Calling and TypeScript Compiler skills" src="https://external-preview.redd.it/ik4Jd580qkEeSmD0_m3FXsLxdou9_VrYcg6RydYdyZA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b6974daa2f18a15d4b8084f6dddb206d598f90f6" title="I made Agentic AI framework utilizing LLM Function Calling and TypeScript Compiler skills" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SamchonFramework"&gt; /u/SamchonFramework &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/wrtnlabs/agent"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutmxy/i_made_agentic_ai_framework_utilizing_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutmxy/i_made_agentic_ai_framework_utilizing_llm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T16:47:15+00:00</published>
+    <published>2025-02-21T15:33:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1iungbr</id>
@@ -60,19 +60,6 @@
     <published>2025-02-21T18:29:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iutymf</id>
-    <title>Why do we want a one fits all model anyway?</title>
-    <updated>2025-02-21T15:47:43+00:00</updated>
-    <author>
-      <name>/u/ivari</name>
-      <uri>https://old.reddit.com/user/ivari</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As a human being we are all fientuned to our own domain of expertise, and when we ask someone who's smart at one thing about something they're not smart about, they will either lie to get rewarded, hallucinate with conspiracy theory or just plain stupidity, answer wrong but still very confident anyway (Dunning Kruger)...&lt;/p&gt; &lt;p&gt;Even in SD scene we separate models for separate tasks: anime models, nsfw models, realistic models... Because it's silly to ask a photographer to draw anime characters, and vice versa.&lt;/p&gt; &lt;p&gt;Then why does SOTAness is derived from one fits all criteria?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ivari"&gt; /u/ivari &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutymf/why_do_we_want_a_one_fits_all_model_anyway/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T15:47:43+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iu4bc0</id>
     <title>New QwQ Confirmed to be in the works “no hurries”</title>
     <updated>2025-02-20T17:40:30+00:00</updated>
@@ -84,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iu4bc0/new_qwq_confirmed_to_be_in_the_works_no_hurries/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-20T17:40:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iuwcpc</id>
-    <title>Mi50/Mi60 x2 for 70B model (homelab)</title>
-    <updated>2025-02-21T17:26:17+00:00</updated>
-    <author>
-      <name>/u/shakespear94</name>
-      <uri>https://old.reddit.com/user/shakespear94</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys. I have a 3060 12 GB right now with 16GB ram. I am able to run 32B DeepSeek (2 TPS). But i want to run 70B and my budget isn’t that high. Max 1500 to 2000. I was wondering, would Mi60 x2 (64 GB) + 64 GB of RAM be good enough to run 70B model?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shakespear94"&gt; /u/shakespear94 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T17:26:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1iu56o1</id>
@@ -112,6 +86,19 @@
     <published>2025-02-20T18:15:26+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iuvdzf</id>
+    <title>Building homemade AI/ML rig - guide me</title>
+    <updated>2025-02-21T16:47:15+00:00</updated>
+    <author>
+      <name>/u/Stochastic_berserker</name>
+      <uri>https://old.reddit.com/user/Stochastic_berserker</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I finally saved up enough resources to build a new PC focused on local finetuning, computer vision etc. It has taken its time to actually find below parts that also makes me stay on budget. I did not buy all at once and they are all second hand/used parts - nothing new.&lt;/p&gt; &lt;p&gt;Budget: $10k (spent about $6k so far)&lt;/p&gt; &lt;p&gt;Bought so far:&lt;/p&gt; &lt;p&gt;• ⁠CPU: Threadripper Pro 5965WX&lt;/p&gt; &lt;p&gt;• ⁠MOBO: WRX80&lt;/p&gt; &lt;p&gt;• ⁠GPU: x4 RTX 3090 (no Nvlink)&lt;/p&gt; &lt;p&gt;• ⁠RAM: 256GB&lt;/p&gt; &lt;p&gt;• ⁠PSU: I have x2 1650W and one 1200W&lt;/p&gt; &lt;p&gt;• ⁠Storage: 4TB NVMe SSD&lt;/p&gt; &lt;p&gt;• ⁠Case: mining rig&lt;/p&gt; &lt;p&gt;• ⁠Cooling: nothing&lt;/p&gt; &lt;p&gt;I don’t know what type of cooling to use here. I also don’t know if it is possible to add other 30 series GPUs like 3060/70/80 without bottlenecks or load balancing issues.&lt;/p&gt; &lt;p&gt;The remaining budget is reserved for 3090 failures and electricity usage.&lt;/p&gt; &lt;p&gt;Anyone with any tips/advice or guidance on how to continue with the build given that I need cooling and looking to add more budget option GPUs?&lt;/p&gt; &lt;p&gt;EDIT: I live in Sweden and it is not easy to get your hands on an RTX 3090 or 4090 that is also reasonably priced. 4090s as of 21st of February sells for about $2000 for used ones.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Stochastic_berserker"&gt; /u/Stochastic_berserker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuvdzf/building_homemade_aiml_rig_guide_me/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T16:47:15+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iue6n1</id>
     <title>OpenThinker is a decensored 32B reasoning deepseek distilled model</title>
     <updated>2025-02-21T00:53:25+00:00</updated>
@@ -125,17 +112,17 @@
     <published>2025-02-21T00:53:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iusq48</id>
-    <title>Downloaded Ollama models to GGUF</title>
-    <updated>2025-02-21T14:54:16+00:00</updated>
+    <id>t3_1iuwcpc</id>
+    <title>Mi50/Mi60 x2 for 70B model (homelab)</title>
+    <updated>2025-02-21T17:26:17+00:00</updated>
     <author>
-      <name>/u/YTeslam777</name>
-      <uri>https://old.reddit.com/user/YTeslam777</uri>
+      <name>/u/shakespear94</name>
+      <uri>https://old.reddit.com/user/shakespear94</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, for those seeking a utility to convert models downloaded from Ollama to GGUF, I've discovered this tool on GitHub: &lt;a href="https://github.com/mattjamo/OllamaToGGUF"&gt;https://github.com/mattjamo/OllamaToGGUF&lt;/a&gt;. I hope it proves useful.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YTeslam777"&gt; /u/YTeslam777 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys. I have a 3060 12 GB right now with 16GB ram. I am able to run 32B DeepSeek (2 TPS). But i want to run 70B and my budget isn’t that high. Max 1500 to 2000. I was wondering, would Mi60 x2 (64 GB) + 64 GB of RAM be good enough to run 70B model?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shakespear94"&gt; /u/shakespear94 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuwcpc/mi50mi60_x2_for_70b_model_homelab/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T14:54:16+00:00</published>
+    <published>2025-02-21T17:26:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1iun173</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iu6egg/even_ai_has_some_personality/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-20T19:04:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iusq48</id>
+    <title>Downloaded Ollama models to GGUF</title>
+    <updated>2025-02-21T14:54:16+00:00</updated>
+    <author>
+      <name>/u/YTeslam777</name>
+      <uri>https://old.reddit.com/user/YTeslam777</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, for those seeking a utility to convert models downloaded from Ollama to GGUF, I've discovered this tool on GitHub: &lt;a href="https://github.com/mattjamo/OllamaToGGUF"&gt;https://github.com/mattjamo/OllamaToGGUF&lt;/a&gt;. I hope it proves useful.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YTeslam777"&gt; /u/YTeslam777 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iusq48/downloaded_ollama_models_to_gguf/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T14:54:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1iu8f7s</id>
@@ -203,19 +203,6 @@
     <published>2025-02-21T05:16:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iuut9n</id>
-    <title>Quad GPU setup</title>
-    <updated>2025-02-21T16:23:14+00:00</updated>
-    <author>
-      <name>/u/outsider787</name>
-      <uri>https://old.reddit.com/user/outsider787</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt; &lt;img alt="Quad GPU setup" src="https://b.thumbs.redditmedia.com/5lmUdrb6pszzusF6Vnd-M4HTLRH7g1a-eHvWdqRx_AM.jpg" title="Quad GPU setup" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Someone mentioned that there's not many quad gpu rigs posted, so here's mine.&lt;/p&gt; &lt;p&gt;Running 4 X RTX A5000 GPUs, on a x399 motherboard and a Threadripper 1950x CPU.&lt;br /&gt; All powered by a 1300W EVGA PSU.&lt;/p&gt; &lt;p&gt;The GPUs are using x16 pcie riser cables to connect to the mobo.&lt;/p&gt; &lt;p&gt;The case is custom designed and 3d printed. (let me know if you want the design, and I can post it)&lt;br /&gt; Can fit 8 GPUs. Currently only 4 are populated.&lt;/p&gt; &lt;p&gt;Running inference on 70b q8 models gets me around 10 tokens/s &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1"&gt;https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc"&gt;https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/outsider787"&gt; /u/outsider787 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T16:23:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iustfq</id>
     <title>When it comes to roleplaying chatbots, wouldn't it be better to have two AI instances instead of one?</title>
     <updated>2025-02-21T14:58:34+00:00</updated>
@@ -229,17 +216,17 @@
     <published>2025-02-21T14:58:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iutvpe</id>
-    <title>New SOTA on OpenAI's SimpleQA</title>
-    <updated>2025-02-21T15:44:08+00:00</updated>
+    <id>t3_1iuut9n</id>
+    <title>Quad GPU setup</title>
+    <updated>2025-02-21T16:23:14+00:00</updated>
     <author>
-      <name>/u/pcamiz</name>
-      <uri>https://old.reddit.com/user/pcamiz</uri>
+      <name>/u/outsider787</name>
+      <uri>https://old.reddit.com/user/outsider787</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;French lab beats Perplexity on SimpleQA &lt;a href="https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa"&gt;https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Apparently can be plugged to Llama to improve factuality by a lot. Will be trying it out this weekend. LMK if you integrate it as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pcamiz"&gt; /u/pcamiz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt; &lt;img alt="Quad GPU setup" src="https://b.thumbs.redditmedia.com/5lmUdrb6pszzusF6Vnd-M4HTLRH7g1a-eHvWdqRx_AM.jpg" title="Quad GPU setup" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Someone mentioned that there's not many quad gpu rigs posted, so here's mine.&lt;/p&gt; &lt;p&gt;Running 4 X RTX A5000 GPUs, on a x399 motherboard and a Threadripper 1950x CPU.&lt;br /&gt; All powered by a 1300W EVGA PSU.&lt;/p&gt; &lt;p&gt;The GPUs are using x16 pcie riser cables to connect to the mobo.&lt;/p&gt; &lt;p&gt;The case is custom designed and 3d printed. (let me know if you want the design, and I can post it)&lt;br /&gt; Can fit 8 GPUs. Currently only 4 are populated.&lt;/p&gt; &lt;p&gt;Running inference on 70b q8 models gets me around 10 tokens/s &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1"&gt;https://preview.redd.it/eeg9r1jrpike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=414597e191990bea2a4a7f6622fe039bb6d177a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc"&gt;https://preview.redd.it/953aefbspike1.jpg?width=1024&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=3073d712f178a775b7391e6ad45f3d92a8524ccc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/outsider787"&gt; /u/outsider787 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iuut9n/quad_gpu_setup/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-21T15:44:08+00:00</published>
+    <published>2025-02-21T16:23:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1iunu3j</id>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iunu3j/whats_with_the_toogoodtobetrue_cheap_gpus_from/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-21T10:27:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iutvpe</id>
+    <title>New SOTA on OpenAI's SimpleQA</title>
+    <updated>2025-02-21T15:44:08+00:00</updated>
+    <author>
+      <name>/u/pcamiz</name>
+      <uri>https://old.reddit.com/user/pcamiz</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;French lab beats Perplexity on SimpleQA &lt;a href="https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa"&gt;https://www.linkup.so/blog/linkup-establishes-sota-performance-on-simpleqa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Apparently can be plugged to Llama to improve factuality by a lot. Will be trying it out this weekend. LMK if you integrate it as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pcamiz"&gt; /u/pcamiz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iutvpe/new_sota_on_openais_simpleqa/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-21T15:44:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1iu19zy</id>
