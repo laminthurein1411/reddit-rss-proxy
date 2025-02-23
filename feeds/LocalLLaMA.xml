@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-23T00:52:51+00:00</updated>
+  <updated>2025-02-23T01:33:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,17 +21,17 @@
     <published>2025-02-21T22:50:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ivsbjc</id>
-    <title>Getting 0 response from Llama 3.2 1B with this prompt</title>
-    <updated>2025-02-22T20:32:31+00:00</updated>
+    <id>t3_1ivr2l1</id>
+    <title>llm-commit: Auto-Generate Git Commit Messages with LLMs!</title>
+    <updated>2025-02-22T19:37:39+00:00</updated>
     <author>
-      <name>/u/mayodoctur</name>
-      <uri>https://old.reddit.com/user/mayodoctur</uri>
+      <name>/u/Argetos96</name>
+      <uri>https://old.reddit.com/user/Argetos96</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So Im using Llama to classify news articles by an impact score, this impact score is decided by reading the content and giving it a score on how much impact it has on humanity&lt;/p&gt; &lt;p&gt;This is what my prompt looks like, I wont post the whole prompt but something like this &lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;quot;content&amp;quot; : &amp;quot;Return a score of each factor for the news article I have attached at the end (0-10 for each factor&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;and then I have the post message which is the format I want it returned, I'd like the LLM to decide on some scores based on the news article provided&lt;/p&gt; &lt;pre&gt;&lt;code&gt;POST_MESSAGE = { &amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: json.dumps({ &amp;quot;scale&amp;quot;: 0, &amp;quot;impact&amp;quot;: 0, &amp;quot;potential&amp;quot;: 0, &amp;quot;legacy&amp;quot;: 0, &amp;quot;novelty&amp;quot;: 0, &amp;quot;credibility&amp;quot;:0, &amp;quot;positivity&amp;quot;: 0 }) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;and then my user message&lt;/p&gt; &lt;pre&gt;&lt;code&gt;user_messages = [ { &amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: f&amp;quot;URL: {row['url']}\nHeadline: {row['title']}\nContent: {NSC.extract_article_content(row['url']).get('text', '')}&amp;quot; } for _, row in df.iloc[:5].iterrows() ] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;So extract_article_content takes all the content from the newsarticle and attaches it onto the user prompt&lt;br /&gt; I then combine all the prompts &lt;/p&gt; &lt;pre&gt;&lt;code&gt;PROMPTS = [ [SYSTEM_PROMPT, user_message, POST_MESSAGE] for user_message in user_messages ] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;After generating an output &lt;/p&gt; &lt;pre&gt;&lt;code&gt;out = model.generate(input_ids=input_ids, attention_mask=attention_mask, max_new_tokens=25) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;all the outputs are like this&lt;br /&gt; ['{&amp;quot;scale&amp;quot;: 0, &amp;quot;impact&amp;quot;: 0, &amp;quot;potential&amp;quot;: 0, &amp;quot;legacy&amp;quot;: 0, &amp;quot;novelty&amp;quot;: 0, &amp;quot;credibility&amp;quot;: 0, &amp;quot;positivity&amp;quot;: 0}',&lt;br /&gt; '{&amp;quot;scale&amp;quot;: 0, &amp;quot;impact&amp;quot;: 0, &amp;quot;potential&amp;quot;: 0, &amp;quot;legacy&amp;quot;: 0, &amp;quot;novelty&amp;quot;: 0, &amp;quot;credibility&amp;quot;: 0, &amp;quot;positivity&amp;quot;: 0}',&lt;br /&gt; '{&amp;quot;scale&amp;quot;: 0, &amp;quot;impact&amp;quot;: 0, &amp;quot;potential&amp;quot;: 0, &amp;quot;legacy&amp;quot;: 0, &amp;quot;novelty&amp;quot;: 0, &amp;quot;credibility&amp;quot;: 0, &amp;quot;positivity&amp;quot;: 0}',&lt;br /&gt; '{&amp;quot;scale&amp;quot;: 0, &amp;quot;impact&amp;quot;: 0, &amp;quot;potential&amp;quot;: 0, &amp;quot;legacy&amp;quot;: 0, &amp;quot;novelty&amp;quot;: 0, &amp;quot;credibility&amp;quot;: 0, &amp;quot;positivity&amp;quot;: 0}', &lt;/p&gt; &lt;p&gt;For the 5 news articles I did, Im wondering why didnt it score any of the news articles ?&lt;br /&gt; Is this too complicated for this model ? &lt;/p&gt; &lt;p&gt;I can provide some more code as well to clarify&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mayodoctur"&gt; /u/mayodoctur &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivsbjc/getting_0_response_from_llama_32_1b_with_this/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivsbjc/getting_0_response_from_llama_32_1b_with_this/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivsbjc/getting_0_response_from_llama_32_1b_with_this/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;llm-commit: Auto-Generate Git Commit Messages with LLMs!&lt;/h1&gt; &lt;p&gt;Are you bored of writing commit messages? Here’s the solution: I built &lt;code&gt;llm-commit&lt;/code&gt;, a small plugin for Simon Willison’s &lt;code&gt;llm&lt;/code&gt; utility that uses staged Git changes to generate commit messages with a language model. It’s simple and saves time.&lt;/p&gt; &lt;p&gt;How it works:&lt;br /&gt; - Stage your changes: &lt;code&gt;git add .&lt;/code&gt;&lt;br /&gt; - Run: &lt;code&gt;llm commit&lt;/code&gt;&lt;br /&gt; And boom—a commit message based on your diff! Want to tweak it? Try:&lt;br /&gt; - &lt;code&gt;llm commit --model gpt-4 --max-tokens 150 --temperature 0.8 --yes&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/gntousakis/llm-commit"&gt;https://github.com/gntousakis/llm-commit&lt;/a&gt;. It’s a lightweight tool I hacked together to make Git life easier.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Argetos96"&gt; /u/Argetos96 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-22T20:32:31+00:00</published>
+    <published>2025-02-22T19:37:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1ivj7xz</id>
@@ -47,32 +47,6 @@
     <published>2025-02-22T13:54:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ivxjzj</id>
-    <title>Phi 3.5 with Reasoning???</title>
-    <updated>2025-02-23T00:35:35+00:00</updated>
-    <author>
-      <name>/u/Ordinary_Mud7430</name>
-      <uri>https://old.reddit.com/user/Ordinary_Mud7430</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I would like to see a version of Phi 3-5 with Deep Reasoning or something similar to DS-R1. Does it exist? 🤔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ordinary_Mud7430"&gt; /u/Ordinary_Mud7430 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-23T00:35:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ivr2l1</id>
-    <title>llm-commit: Auto-Generate Git Commit Messages with LLMs!</title>
-    <updated>2025-02-22T19:37:39+00:00</updated>
-    <author>
-      <name>/u/Argetos96</name>
-      <uri>https://old.reddit.com/user/Argetos96</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;llm-commit: Auto-Generate Git Commit Messages with LLMs!&lt;/h1&gt; &lt;p&gt;Are you bored of writing commit messages? Here’s the solution: I built &lt;code&gt;llm-commit&lt;/code&gt;, a small plugin for Simon Willison’s &lt;code&gt;llm&lt;/code&gt; utility that uses staged Git changes to generate commit messages with a language model. It’s simple and saves time.&lt;/p&gt; &lt;p&gt;How it works:&lt;br /&gt; - Stage your changes: &lt;code&gt;git add .&lt;/code&gt;&lt;br /&gt; - Run: &lt;code&gt;llm commit&lt;/code&gt;&lt;br /&gt; And boom—a commit message based on your diff! Want to tweak it? Try:&lt;br /&gt; - &lt;code&gt;llm commit --model gpt-4 --max-tokens 150 --temperature 0.8 --yes&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/gntousakis/llm-commit"&gt;https://github.com/gntousakis/llm-commit&lt;/a&gt;. It’s a lightweight tool I hacked together to make Git life easier.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Argetos96"&gt; /u/Argetos96 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivr2l1/llmcommit_autogenerate_git_commit_messages_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-22T19:37:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iv72vu</id>
     <title>Are there any LLMs with less than 1m parameters?</title>
     <updated>2025-02-22T01:24:28+00:00</updated>
@@ -86,19 +60,6 @@
     <published>2025-02-22T01:24:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ivo0gv</id>
-    <title>DarkRapids, Local GPU rig build with style (water cooling)</title>
-    <updated>2025-02-22T17:28:50+00:00</updated>
-    <author>
-      <name>/u/berni8k</name>
-      <uri>https://old.reddit.com/user/berni8k</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt; &lt;img alt="DarkRapids, Local GPU rig build with style (water cooling)" src="https://b.thumbs.redditmedia.com/k7wIbfmhIPkjHny_WwxeIVUQKpigJzDbZhExxg-v5To.jpg" title="DarkRapids, Local GPU rig build with style (water cooling)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It started off as a PC build but then progressed into a local GPU rig.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/9z2qwggz1qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e0c9836a1cbacbc4a2d3ee492ca1cdebe88ff89e"&gt;https://preview.redd.it/9z2qwggz1qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e0c9836a1cbacbc4a2d3ee492ca1cdebe88ff89e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Its main feature are its quad RTX 3090 that were collected overtime off the used market in various states of disrepair. All of them upgraded to watercoolng with AlphaCool waterblocks (that went for cheap because they are clearing stock). Most of these GPUs are also the higher power 420W TDP third party variants making this a lot of heat to deal with.&lt;/p&gt; &lt;p&gt;The 3 radiators packed into the case are all sitting on exhaust vents to keep the interior cool. This is important because the water temperature is ran very high at ~55°C making for rather hot exhaust air. This is the only way this amount of radiators can deal with dissipating the ~1700W of heat and still have fans run at reasonable speeds so that it doesn't sound like a server taking off.&lt;/p&gt; &lt;p&gt;CPU Cooling is done using a separate AIO on the front intake. This is because the TIM under the heat spreader of AMD Threadripper CPUs is still not very good, so even such a low core count chip can't deal with high ambient temperature, so the water that is cooling the GPUs is too hot. For this reason the CPU radiator is taking in fresh cold air and doing it at a rate that even the radiator exhaust is barely warm. This air can then still cool the GPU radiators.&lt;/p&gt; &lt;p&gt;For running LLM inference many of you on this reddit will know that you do not hit very high power usage per card. So running LLMs this rig can stay pretty quiet, even long prompt processing wont bother it since there is a lot of thermal mass to heat up. However other things like StableDifusion or training will make it pull some serious power and require the fans to ramp up a fair bit.&lt;/p&gt; &lt;p&gt;Total weight of this computer is 32kg ~70lb so i ended up adding a pair of handles to the top in order to make moving it a bit easier.&lt;/p&gt; &lt;p&gt;As for performance. Well it performs like a 4x RTX 3090 rig, plenty of LLM benchmarks for that on this corner of reddit.&lt;/p&gt; &lt;p&gt;Specs:&lt;br /&gt; - AMD Threadripper Pro 3945WX 12 core&lt;br /&gt; - ASRock WRX80 Creator R2.0 board&lt;br /&gt; - 256GB of DDR4 3200 (8 sticks)&lt;br /&gt; - 4x GPUs: RTX 3090 (all on PCIe 16x 4.0)&lt;br /&gt; - 2x PSUs: 1500W Silverstone SST-ST1500 + 1000W Corsair HX1000&lt;br /&gt; - Thermaltake Core X71 case&lt;br /&gt; - AIO CPU cooler Enermax Liqtech II 240mm&lt;br /&gt; - GPU cooling custom loop with 360mm + 360mm + 240mm radiators&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/mhtue5q02qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7661e688704dce04b4d31e659ddc3dd357bce917"&gt;https://preview.redd.it/mhtue5q02qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7661e688704dce04b4d31e659ddc3dd357bce917&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/dp0p0qh12qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e66aa50b217c088d9926f95659d5e78d54a4fbbf"&gt;https://preview.redd.it/dp0p0qh12qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e66aa50b217c088d9926f95659d5e78d54a4fbbf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qsls22u14qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=2dacfcd4fcfe078a29ffbc93fb81b251da7fc474"&gt;https://preview.redd.it/qsls22u14qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=2dacfcd4fcfe078a29ffbc93fb81b251da7fc474&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/berni8k"&gt; /u/berni8k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-22T17:28:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ivx8ed</id>
     <title>What should I build with this?</title>
     <updated>2025-02-23T00:19:56+00:00</updated>
@@ -110,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivx8ed/what_should_i_build_with_this/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T00:19:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ivxjzj</id>
+    <title>Phi 3.5 with Reasoning???</title>
+    <updated>2025-02-23T00:35:35+00:00</updated>
+    <author>
+      <name>/u/Ordinary_Mud7430</name>
+      <uri>https://old.reddit.com/user/Ordinary_Mud7430</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I would like to see a version of Phi 3-5 with Deep Reasoning or something similar to DS-R1. Does it exist? 🤔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ordinary_Mud7430"&gt; /u/Ordinary_Mud7430 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivxjzj/phi_35_with_reasoning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-23T00:35:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1iv6zou</id>
@@ -136,6 +110,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivn6pj/google_ai_studio_free_whats_the_daily_limits/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-22T16:55:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ivo0gv</id>
+    <title>DarkRapids, Local GPU rig build with style (water cooling)</title>
+    <updated>2025-02-22T17:28:50+00:00</updated>
+    <author>
+      <name>/u/berni8k</name>
+      <uri>https://old.reddit.com/user/berni8k</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt; &lt;img alt="DarkRapids, Local GPU rig build with style (water cooling)" src="https://b.thumbs.redditmedia.com/k7wIbfmhIPkjHny_WwxeIVUQKpigJzDbZhExxg-v5To.jpg" title="DarkRapids, Local GPU rig build with style (water cooling)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It started off as a PC build but then progressed into a local GPU rig.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/9z2qwggz1qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e0c9836a1cbacbc4a2d3ee492ca1cdebe88ff89e"&gt;https://preview.redd.it/9z2qwggz1qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e0c9836a1cbacbc4a2d3ee492ca1cdebe88ff89e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Its main feature are its quad RTX 3090 that were collected overtime off the used market in various states of disrepair. All of them upgraded to watercoolng with AlphaCool waterblocks (that went for cheap because they are clearing stock). Most of these GPUs are also the higher power 420W TDP third party variants making this a lot of heat to deal with.&lt;/p&gt; &lt;p&gt;The 3 radiators packed into the case are all sitting on exhaust vents to keep the interior cool. This is important because the water temperature is ran very high at ~55°C making for rather hot exhaust air. This is the only way this amount of radiators can deal with dissipating the ~1700W of heat and still have fans run at reasonable speeds so that it doesn't sound like a server taking off.&lt;/p&gt; &lt;p&gt;CPU Cooling is done using a separate AIO on the front intake. This is because the TIM under the heat spreader of AMD Threadripper CPUs is still not very good, so even such a low core count chip can't deal with high ambient temperature, so the water that is cooling the GPUs is too hot. For this reason the CPU radiator is taking in fresh cold air and doing it at a rate that even the radiator exhaust is barely warm. This air can then still cool the GPU radiators.&lt;/p&gt; &lt;p&gt;For running LLM inference many of you on this reddit will know that you do not hit very high power usage per card. So running LLMs this rig can stay pretty quiet, even long prompt processing wont bother it since there is a lot of thermal mass to heat up. However other things like StableDifusion or training will make it pull some serious power and require the fans to ramp up a fair bit.&lt;/p&gt; &lt;p&gt;Total weight of this computer is 32kg ~70lb so i ended up adding a pair of handles to the top in order to make moving it a bit easier.&lt;/p&gt; &lt;p&gt;As for performance. Well it performs like a 4x RTX 3090 rig, plenty of LLM benchmarks for that on this corner of reddit.&lt;/p&gt; &lt;p&gt;Specs:&lt;br /&gt; - AMD Threadripper Pro 3945WX 12 core&lt;br /&gt; - ASRock WRX80 Creator R2.0 board&lt;br /&gt; - 256GB of DDR4 3200 (8 sticks)&lt;br /&gt; - 4x GPUs: RTX 3090 (all on PCIe 16x 4.0)&lt;br /&gt; - 2x PSUs: 1500W Silverstone SST-ST1500 + 1000W Corsair HX1000&lt;br /&gt; - Thermaltake Core X71 case&lt;br /&gt; - AIO CPU cooler Enermax Liqtech II 240mm&lt;br /&gt; - GPU cooling custom loop with 360mm + 360mm + 240mm radiators&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/mhtue5q02qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7661e688704dce04b4d31e659ddc3dd357bce917"&gt;https://preview.redd.it/mhtue5q02qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7661e688704dce04b4d31e659ddc3dd357bce917&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/dp0p0qh12qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e66aa50b217c088d9926f95659d5e78d54a4fbbf"&gt;https://preview.redd.it/dp0p0qh12qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=e66aa50b217c088d9926f95659d5e78d54a4fbbf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qsls22u14qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=2dacfcd4fcfe078a29ffbc93fb81b251da7fc474"&gt;https://preview.redd.it/qsls22u14qke1.jpg?width=3468&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=2dacfcd4fcfe078a29ffbc93fb81b251da7fc474&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/berni8k"&gt; /u/berni8k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivo0gv/darkrapids_local_gpu_rig_build_with_style_water/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-22T17:28:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ivy3kj</id>
+    <title>Unlock deepseek mode on phi 3 mini.</title>
+    <updated>2025-02-23T01:02:53+00:00</updated>
+    <author>
+      <name>/u/thebadslime</name>
+      <uri>https://old.reddit.com/user/thebadslime</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Getting good results with the following prompt&lt;/p&gt; &lt;p&gt;You are a multi stage AI, known as PHI. Each time you are asked a question, think out loud with the &amp;lt;think&amp;gt; tag about what the user wants before you answer.&lt;/p&gt; &lt;p&gt;Weird how trivial it was, IDK if this will make the model any better at reasoning, it's already my favorite small model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thebadslime"&gt; /u/thebadslime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivy3kj/unlock_deepseek_mode_on_phi_3_mini/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivy3kj/unlock_deepseek_mode_on_phi_3_mini/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivy3kj/unlock_deepseek_mode_on_phi_3_mini/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-23T01:02:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1ivrtrq</id>
@@ -255,19 +255,6 @@
     <published>2025-02-22T10:30:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ivvoto</id>
-    <title>Qwen2.5 VL 7B Instruct GGUF + Benchmarks</title>
-    <updated>2025-02-22T23:05:11+00:00</updated>
-    <author>
-      <name>/u/Ragecommie</name>
-      <uri>https://old.reddit.com/user/Ragecommie</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;We were able to get Qwen2.5 VL working on llama.cpp!&lt;br /&gt; It is not official yet, but it's pretty easy to get going with a custom build.&lt;br /&gt; Instructions &lt;a href="https://github.com/ggml-org/llama.cpp/issues/11483#issuecomment-2676422772"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Over the next couple of days, we'll upload quants, along with tests / performance evals here:&lt;br /&gt; &lt;a href="https://huggingface.co/IAILabs/Qwen2.5-VL-7b-Instruct-GGUF/tree/main"&gt;https://huggingface.co/IAILabs/Qwen2.5-VL-7b-Instruct-GGUF/tree/main&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Original 16-bit and Q8_0 are up along with the mmproj model.&lt;/p&gt; &lt;p&gt;First impressions are pretty good, not only in terms of quality, but speed as well.&lt;/p&gt; &lt;p&gt;Will post updates and more info as we go!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ragecommie"&gt; /u/Ragecommie &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-22T23:05:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ivpa6r</id>
     <title>Abusing WebUI Artifacts (Again)</title>
     <updated>2025-02-22T18:21:42+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivpa6r/abusing_webui_artifacts_again/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-22T18:21:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ivvoto</id>
+    <title>Qwen2.5 VL 7B Instruct GGUF + Benchmarks</title>
+    <updated>2025-02-22T23:05:11+00:00</updated>
+    <author>
+      <name>/u/Ragecommie</name>
+      <uri>https://old.reddit.com/user/Ragecommie</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;We were able to get Qwen2.5 VL working on llama.cpp!&lt;br /&gt; It is not official yet, but it's pretty easy to get going with a custom build.&lt;br /&gt; Instructions &lt;a href="https://github.com/ggml-org/llama.cpp/issues/11483#issuecomment-2676422772"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Over the next couple of days, we'll upload quants, along with tests / performance evals here:&lt;br /&gt; &lt;a href="https://huggingface.co/IAILabs/Qwen2.5-VL-7b-Instruct-GGUF/tree/main"&gt;https://huggingface.co/IAILabs/Qwen2.5-VL-7b-Instruct-GGUF/tree/main&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Original 16-bit and Q8_0 are up along with the mmproj model.&lt;/p&gt; &lt;p&gt;First impressions are pretty good, not only in terms of quality, but speed as well.&lt;/p&gt; &lt;p&gt;Will post updates and more info as we go!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ragecommie"&gt; /u/Ragecommie &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ivvoto/qwen25_vl_7b_instruct_gguf_benchmarks/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-22T23:05:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1ivtten</id>
