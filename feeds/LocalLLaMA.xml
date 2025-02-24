@@ -2,76 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T21:05:39+00:00</updated>
+  <updated>2025-02-24T21:22:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iwyv0c</id>
-    <title>Creative Reasoning Assistants: An other Fine-Tuned LLMs for Storytelling</title>
-    <updated>2025-02-24T10:17:23+00:00</updated>
-    <author>
-      <name>/u/molbal</name>
-      <uri>https://old.reddit.com/user/molbal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TLDR: I combined reasoning with creative writing. I like the outcome. Models on HF:&lt;/strong&gt; &lt;a href="https://huggingface.co/collections/molbal/creative-reasoning-assistant-67bb91ba4a1e1803da997c5f"&gt;&lt;strong&gt;https://huggingface.co/collections/molbal/creative-reasoning-assistant-67bb91ba4a1e1803da997c5f&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Abstract&lt;/h1&gt; &lt;p&gt;This post presents a methodology for fine-tuning large language models to improve context-aware story continuation by incorporating reasoning steps. The approach leverages publicly available books from the Project Gutenberg corpus, processes them into structured training data, and fine-tunes models like Qwen2.5 Instruct (7B and 32B) using a cost-effective pipeline (qLoRA). The resulting models demonstrate improved story continuation capabilities, generating a few sentences at a time while maintaining narrative coherence. The fine-tuned models are made available in GGUF format for accessibility and experimentation. This work is planned to be part of writer-assistant tools (to be developer and published later) and encourages community feedback for further refinement.&lt;/p&gt; &lt;h1&gt;Introduction&lt;/h1&gt; &lt;p&gt;While text continuation is literally the main purpose of LLMs, story continuation is still a challenging task, as it requires understanding narrative context, characters' motivations, and plot progression. While existing models can generate text, they often lack the ability to progress the story's flow just in the correct amount when continuing it, they often do nothing to progress to plot, or too much in a short amount of time. This post introduces a fine-tuning methodology that combines reasoning steps with story continuation, enabling models to better understand context and produce more coherent outputs. The approach is designed to be cost-effective, leveraging free and low-cost resources while only using public domain or synthetic training data.&lt;/p&gt; &lt;h1&gt;Methodology&lt;/h1&gt; &lt;h1&gt;1. Data Collection and Preprocessing&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Source Data:&lt;/strong&gt; Public domain books from the Project Gutenberg corpus, written before the advent of LLMs were used to make avoid contamination from modern AI-generated text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Chunking:&lt;/strong&gt; Each book was split into chunks of ~100 sentences, where 80 sentences were used as context and the subsequent 20 sentences as the continuation target.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;2. Thought Process Generation&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Prompt Design:&lt;/strong&gt; Two prompt templates were used: &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Thought Process Template:&lt;/strong&gt; Encourages the model to reason about the story's flow, character motivations, and interactions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Continuation Template:&lt;/strong&gt; Combines the generated reasoning with the original continuation to create a structured training example. This becomes the final training data, which is built from 4 parts: &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Static part:&lt;/strong&gt; System prompt and Task parts are fix.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context:&lt;/strong&gt; Context is the first 80 sentences of the chunk (Human-written data)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reasoning:&lt;/strong&gt; Synthetic reasoning part, written DeepSeek v3 model on OpenRouter was used to generate thought processes for each chunk, because it follows instructions very well and it is cheap.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Response:&lt;/strong&gt; The last 20 sentences of the training data&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ol&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;3. Fine-Tuning&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Model Selection:&lt;/strong&gt; Qwen2.5 Instruct (7B and 32B) was chosen for fine-tuning due to its already strong performance and permissive licensing.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Training Pipeline:&lt;/strong&gt; LoRA (Low-Rank Adaptation) training was performed on &lt;a href="http://Fireworks.ai"&gt;Fireworks.ai&lt;/a&gt;, as currently their new fine-tuning service is free.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Note:&lt;/strong&gt; Please note that GRPO (Used for reasoning models like DeepSeek R1) was not used for this experiment.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;4. Model Deployment&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Quantization:&lt;/strong&gt; Fireworks' output are safetensor adapters, these were first converted to GGUF adapters, then merged into the base model. For the 7B variant, the adapter was merged into the F16 base model, then quantized into Q4, with the 32B model, the adapter was directly merged into Q4 base model. Conversion and merging was done with llama.cpp.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Distribution:&lt;/strong&gt; Models were uploaded to Ollama and Hugging Face for easy access and experimentation.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;p&gt;The fine-tuned models demonstrated improvements in story continuation tasks:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Contextual Understanding:&lt;/strong&gt; The models effectively used reasoning steps to understand narrative context before generating continuations.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Coherence:&lt;/strong&gt; Generated continuations were more coherent and aligned with the story's flow compared to baseline models.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Efficiency:&lt;/strong&gt; The 7B model with 16k context fully offloads to my laptop's GPU (RTX 3080 8GB) and manages ~50 tokens/sec, which I am satisfied with.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Using the model&lt;/h1&gt; &lt;p&gt;I invite the community to try the fine-tuned models and provide feedback. The models are available on Ollama Hub (&lt;a href="https://ollama.com/molbal/cra-v1-7b"&gt;7B&lt;/a&gt;, &lt;a href="https://ollama.com/molbal/cra-v1-32b"&gt;32B&lt;/a&gt;) and Hugging Face (&lt;a href="https://huggingface.co/molbal/CRA-v1-7B"&gt;7B&lt;/a&gt;, &lt;a href="https://huggingface.co/molbal/CRA-v1-32B"&gt;32B&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;For best results, please keep the following prompt format. Do not omit the System part either.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;### System: You are a writer’s assistant. ### Task: Understand how the story flows, what motivations the characters have and how they will interact with each other and the world as a step by step thought process before continuing the story. ### Context: {context} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;The model will reliably respond in the following format&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;reasoning&amp;gt; Chain of thought. &amp;lt;/reasoning&amp;gt; &amp;lt;answer&amp;gt; Text completion &amp;lt;/answer&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Using the model with the following parameters work:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;num_ctx: 16384,&lt;/li&gt; &lt;li&gt;repeat_penalty: 1.05,&lt;/li&gt; &lt;li&gt;temperature: 0.7,&lt;/li&gt; &lt;li&gt;top_p: 0.8&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Scripts used during the pipeline are uploaded to GitHub: &lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1"&gt;molbal/creative-reasoning-assistant-v1: Fine-Tuning LLMs for Context-Aware Story Continuation with Reasoning&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Examples&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1/blob/master/examples/example-1.md"&gt;Example 1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1/blob/master/examples/example-2.md"&gt;Example 2&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1/blob/master/examples/example-3.md"&gt;Example 3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1/blob/master/examples/example-4.md"&gt;Example 4&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1/blob/master/examples/example-5.md"&gt;Example 5&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/molbal"&gt; /u/molbal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T10:17:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixb1u2</id>
-    <title>Hardware recommendation - AMD FX and mi50</title>
-    <updated>2025-02-24T19:47:52+00:00</updated>
-    <author>
-      <name>/u/SirTwitchALot</name>
-      <uri>https://old.reddit.com/user/SirTwitchALot</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been trying to come up to speed on LLMs, just playing around to develop my skills. I've done some experimentation writing some simple assistants in python. I have an old PC collecting dust on the shelf that I'm thinking of repurposing to rum llama instead of my laptop. It has&lt;/p&gt; &lt;p&gt;AMD fx-8350&lt;/p&gt; &lt;p&gt;32GB ddr3&lt;/p&gt; &lt;p&gt;RTX 960 (only 2GB)&lt;/p&gt; &lt;p&gt;I was thinking about throwing an ebay mi50 into this system. I can get a 16gb card used for $125 right now. I'm thinking that's a good way to get my feet wet without a big investment. I read something about the mi cards not working with CPUs prior to Zen though? &lt;/p&gt; &lt;p&gt;Are there any caveats to what I'm considering that I'm missing? &lt;/p&gt; &lt;p&gt;I know I'm not going to get amazing performance out of this setup, but will it be usable for experimentation (maybe in the tens of tokens a second on say an 8b model?)&lt;/p&gt; &lt;p&gt;Are there better low cost options I might want to look at instead? I know Jetson starts at $250, but with only 8gb of memory it seems like it might be worse than this setup since I would have 32gb of system ram and 16gb GPU&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SirTwitchALot"&gt; /u/SirTwitchALot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T19:47:52+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwn617</id>
-    <title>Benchmarks are a lie, and I have some examples</title>
-    <updated>2025-02-23T23:00:15+00:00</updated>
-    <author>
-      <name>/u/Sicarius_The_First</name>
-      <uri>https://old.reddit.com/user/Sicarius_The_First</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This was talked about a lot, but the recent HuggingFace eval results still took me by surprise.&lt;/p&gt; &lt;p&gt;My favorite RP model- &lt;strong&gt;Midnight Miqu 1.5&lt;/strong&gt; got &lt;strong&gt;LOWER&lt;/strong&gt; benchmarks all across the board than my own &lt;strong&gt;Wingless_Imp_8B&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;As much as I'd like to say &amp;quot;Yeah guys, my 8B model &lt;strong&gt;outperforms the legendary Miqu&lt;/strong&gt;&amp;quot;, &lt;strong&gt;no&lt;/strong&gt;, it &lt;strong&gt;does not&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;It's not even close. &lt;strong&gt;Midnight Miqu&lt;/strong&gt; (1.5) is orders of magnitude &lt;strong&gt;better than ANY 8B&lt;/strong&gt; model, it's not even remotely close.&lt;/p&gt; &lt;p&gt;Now, I know exactly what went into &lt;strong&gt;Wingless_Imp_8B&lt;/strong&gt;, and &lt;strong&gt;I did NOT benchmaxxed&lt;/strong&gt;, as I simply do not care for these things, I started doing the evals only recently, and solely because people asked for it. What I am saying is:&lt;/p&gt; &lt;p&gt;1) Wingless_Imp_8B high benchmarks results were &lt;strong&gt;NOT cooked&lt;/strong&gt; (not on purpose anyway)&lt;br /&gt; 2) Even despite it was not benchmaxxed, and the results are &amp;quot;&lt;strong&gt;organic&lt;/strong&gt;&amp;quot;, they &lt;strong&gt;still do not reflect actual smarts&lt;/strong&gt;&lt;br /&gt; 2) The high benchmarks are &lt;strong&gt;randomly high&lt;/strong&gt;, while in practice have &lt;strong&gt;ALMOST no correlation to actual &amp;quot;organic&amp;quot; smarts&lt;/strong&gt; vs ANY 70B model, especially midnight miqu&lt;/p&gt; &lt;p&gt;Now, this case above is sus in itself, but the following case should settle it once and for all, the case of &lt;strong&gt;Phi-Lthy&lt;/strong&gt; and &lt;strong&gt;Phi-Line_14B&lt;/strong&gt; (TL;DR 1 is lobotomized, the other is not, the lobotmized is better at following instructions):&lt;/p&gt; &lt;p&gt;I used the &lt;strong&gt;exact same dataset for both&lt;/strong&gt;, but for Phi-Lthy, &lt;strong&gt;I literally lobotomized it by yeeting 8 layers&lt;/strong&gt; out of its brain, &lt;strong&gt;yet&lt;/strong&gt; its IFeval is &lt;strong&gt;significantly higher than the unlobotomized model&lt;/strong&gt;. How does &lt;strong&gt;removing 8 layers&lt;/strong&gt; out of 40 make it follow instructions &lt;strong&gt;better&lt;/strong&gt;?&lt;/p&gt; &lt;p&gt;I believe we should have a serious discussion about whether benchmarks for LLMs even hold any weight anymore, because I am straight up doubting their accuracy to reflect model capabilities alltogether at this point. A model can be in practice almost orders of magnitude smarter than the rest, yet people will ignore it because of low benchmarks. There might be somewhere in hugging face a real SOTA model, yet we might just dismiss it due to mediocre benchmarks.&lt;/p&gt; &lt;p&gt;What if I told you last year that I have &lt;strong&gt;the best roleplay model in the world&lt;/strong&gt;, but when you'd look at its benchmarks, you would see that the &amp;quot;best roleplay model in the world, of 70B size, &lt;strong&gt;has worst benchmarks than a shitty 8B model&lt;/strong&gt;&amp;quot;, most would have called BS. &lt;/p&gt; &lt;p&gt;That model was &lt;strong&gt;Midnight Miqu&lt;/strong&gt; (1.5) 70B, and I still think it blows away many 'modern' models even today.&lt;/p&gt; &lt;p&gt;The unlobtomized Phi-4:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/SicariusSicariiStuff/Phi-Line_14B"&gt;https://huggingface.co/SicariusSicariiStuff/Phi-Line_14B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The lobtomized Phi-4:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/SicariusSicariiStuff/Phi-lthy4"&gt;https://huggingface.co/SicariusSicariiStuff/Phi-lthy4&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sicarius_The_First"&gt; /u/Sicarius_The_First &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwn617/benchmarks_are_a_lie_and_i_have_some_examples/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwn617/benchmarks_are_a_lie_and_i_have_some_examples/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwn617/benchmarks_are_a_lie_and_i_have_some_examples/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-23T23:00:15+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix5ofd</id>
-    <title>Has anyone ran the 1.58 and 2.51bit quants of DeepSeek R1 using KTransformers?</title>
-    <updated>2025-02-24T16:11:14+00:00</updated>
-    <author>
-      <name>/u/tim1234525</name>
-      <uri>https://old.reddit.com/user/tim1234525</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Also is there any data of comparisons of the pp and tg using different CPUs?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tim1234525"&gt; /u/tim1234525 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5ofd/has_anyone_ran_the_158_and_251bit_quants_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5ofd/has_anyone_ran_the_158_and_251bit_quants_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5ofd/has_anyone_ran_the_158_and_251bit_quants_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:11:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix3lsw</id>
-    <title>Tutorial: 100 Lines to Let Cursor AI Build Agents for You</title>
-    <updated>2025-02-24T14:42:36+00:00</updated>
-    <author>
-      <name>/u/Willing-Site-8137</name>
-      <uri>https://old.reddit.com/user/Willing-Site-8137</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3lsw/tutorial_100_lines_to_let_cursor_ai_build_agents/"&gt; &lt;img alt="Tutorial: 100 Lines to Let Cursor AI Build Agents for You" src="https://external-preview.redd.it/owYpiYxzMbFoIy2mEgwHQu4HBDMye8iivJkM1wZ1bsE.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fff8bc2c79be0acb98d587fba0d423ac51045588" title="Tutorial: 100 Lines to Let Cursor AI Build Agents for You" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Willing-Site-8137"&gt; /u/Willing-Site-8137 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=0Pv5HVoVBYE"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3lsw/tutorial_100_lines_to_let_cursor_ai_build_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3lsw/tutorial_100_lines_to_let_cursor_ai_build_agents/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T14:42:36+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ix3cxy</id>
     <title>I updated my personal open source Chat UI to support reasoning models.</title>
@@ -99,6 +34,19 @@
     <published>2025-02-24T19:41:01+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ixd0er</id>
+    <title>QwQ Max Preview Published</title>
+    <updated>2025-02-24T21:06:52+00:00</updated>
+    <author>
+      <name>/u/ortegaalfredo</name>
+      <uri>https://old.reddit.com/user/ortegaalfredo</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ortegaalfredo"&gt; /u/ortegaalfredo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qwenlm.github.io/blog/qwq-max-preview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T21:06:52+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ix3xn4</id>
     <title>200 Combinatorial Identities and Theorems Dataset for LLM finetuning [Dataset]</title>
     <updated>2025-02-24T14:57:24+00:00</updated>
@@ -110,6 +58,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3xn4/200_combinatorial_identities_and_theorems_dataset/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T14:57:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixcaur</id>
+    <title>New Deepseek integation repo</title>
+    <updated>2025-02-24T20:37:59+00:00</updated>
+    <author>
+      <name>/u/lucitatecapacita</name>
+      <uri>https://old.reddit.com/user/lucitatecapacita</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looks like DeepSeek has released a repo with new integrations with several frameworks:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/deepseek-ai/awesome-deepseek-integration"&gt;https://github.com/deepseek-ai/awesome-deepseek-integration&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lucitatecapacita"&gt; /u/lucitatecapacita &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcaur/new_deepseek_integation_repo/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcaur/new_deepseek_integation_repo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcaur/new_deepseek_integation_repo/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T20:37:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixd0wa</id>
+    <title>LLMs are "just" a new programming language</title>
+    <updated>2025-02-24T21:07:28+00:00</updated>
+    <author>
+      <name>/u/bidet_enthusiast</name>
+      <uri>https://old.reddit.com/user/bidet_enthusiast</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0wa/llms_are_just_a_new_programming_language/"&gt; &lt;img alt="LLMs are &amp;quot;just&amp;quot; a new programming language" src="https://external-preview.redd.it/H9wW8SVsaddMtafwuWMwJuBDR3dl3bGxseirx0GaU3w.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1ed4afe8bdab09d2c2be156cac911dfc7d2e0ccb" title="LLMs are &amp;quot;just&amp;quot; a new programming language" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bidet_enthusiast"&gt; /u/bidet_enthusiast &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://open.substack.com/pub/ctsmyth/p/the-generative-ai-revolution-is-just"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0wa/llms_are_just_a_new_programming_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0wa/llms_are_just_a_new_programming_language/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T21:07:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix11go</id>
@@ -138,19 +112,6 @@
     <published>2025-02-24T15:08:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixckba</id>
-    <title>Making older LLMs (Llama 2 and Gemma 1) reason</title>
-    <updated>2025-02-24T20:48:42+00:00</updated>
-    <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"&gt; &lt;img alt="Making older LLMs (Llama 2 and Gemma 1) reason" src="https://external-preview.redd.it/Y21xb3pldThnNWxlMe68FKKrQSi1VIWXGB4I0FX2lDdJRybemxt5jwSyAisL.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2fc17b1b05cbeed10c64cb4b0ff38aed9587d31e" title="Making older LLMs (Llama 2 and Gemma 1) reason" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/frk5teu8g5le1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T20:48:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwhfl5</id>
     <title>96GB modded RTX 4090 for $4.5k</title>
     <updated>2025-02-23T18:55:09+00:00</updated>
@@ -162,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwhfl5/96gb_modded_rtx_4090_for_45k/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T18:55:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix6bjw</id>
+    <title>Is there any image models coming out?</title>
+    <updated>2025-02-24T16:37:38+00:00</updated>
+    <author>
+      <name>/u/hoja_nasredin</name>
+      <uri>https://old.reddit.com/user/hoja_nasredin</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We were extremely spoiled this summer with Flux and SD3.1 coming out. But was anything else have been released since? Flux cannot be trained in a serious way apparently since it is distilled, and SD3 is hated by the community (or it might have some other issues I'm not aware). &lt;/p&gt; &lt;p&gt;What is happening with the image models right now? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoja_nasredin"&gt; /u/hoja_nasredin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T16:37:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix5vgm</id>
@@ -177,17 +151,17 @@
     <published>2025-02-24T16:19:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix6bjw</id>
-    <title>Is there any image models coming out?</title>
-    <updated>2025-02-24T16:37:38+00:00</updated>
+    <id>t3_1ixcygz</id>
+    <title>Qwq max preview released</title>
+    <updated>2025-02-24T21:04:42+00:00</updated>
     <author>
-      <name>/u/hoja_nasredin</name>
-      <uri>https://old.reddit.com/user/hoja_nasredin</uri>
+      <name>/u/MrMrsPotts</name>
+      <uri>https://old.reddit.com/user/MrMrsPotts</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We were extremely spoiled this summer with Flux and SD3.1 coming out. But was anything else have been released since? Flux cannot be trained in a serious way apparently since it is distilled, and SD3 is hated by the community (or it might have some other issues I'm not aware). &lt;/p&gt; &lt;p&gt;What is happening with the image models right now? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoja_nasredin"&gt; /u/hoja_nasredin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/Alibaba_Qwen/status/1894130603513319842"&gt;https://x.com/Alibaba_Qwen/status/1894130603513319842&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MrMrsPotts"&gt; /u/MrMrsPotts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcygz/qwq_max_preview_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcygz/qwq_max_preview_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixcygz/qwq_max_preview_released/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:37:38+00:00</published>
+    <published>2025-02-24T21:04:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwvo4b</id>
@@ -214,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3gao/nvidia_evo_2_protein_design/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T14:35:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixckba</id>
+    <title>Making older LLMs (Llama 2 and Gemma 1) reason</title>
+    <updated>2025-02-24T20:48:42+00:00</updated>
+    <author>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"&gt; &lt;img alt="Making older LLMs (Llama 2 and Gemma 1) reason" src="https://external-preview.redd.it/Y21xb3pldThnNWxlMe68FKKrQSi1VIWXGB4I0FX2lDdJRybemxt5jwSyAisL.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2fc17b1b05cbeed10c64cb4b0ff38aed9587d31e" title="Making older LLMs (Llama 2 and Gemma 1) reason" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/frk5teu8g5le1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T20:48:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix1ddj</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T01:37:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixczae</id>
+    <title>QwQ-Max Preview is here...</title>
+    <updated>2025-02-24T21:05:36+00:00</updated>
+    <author>
+      <name>/u/mlon_eusk-_-</name>
+      <uri>https://old.reddit.com/user/mlon_eusk-_-</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixczae/qwqmax_preview_is_here/"&gt; &lt;img alt="QwQ-Max Preview is here..." src="https://external-preview.redd.it/bQFl5DBj7QNi2--7cYMNDWqUV0PSTT-usX89HeDXsMM.jpg?width=108&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1084b413b6f8c22df7000f62d2cf3888172ab3eb" title="QwQ-Max Preview is here..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mlon_eusk-_-"&gt; /u/mlon_eusk-_- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://twitter.com/Alibaba_Qwen/status/1894130603513319842"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixczae/qwqmax_preview_is_here/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixczae/qwqmax_preview_is_here/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T21:05:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixamd9</id>
