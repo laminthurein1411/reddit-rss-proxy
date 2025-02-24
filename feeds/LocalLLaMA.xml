@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T20:24:18+00:00</updated>
+  <updated>2025-02-24T20:35:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ix5rj9</id>
-    <title>Dockerfile for running Unsloth GGUF Deepseek R1 quants on 4xL40S</title>
-    <updated>2025-02-24T16:14:53+00:00</updated>
-    <author>
-      <name>/u/tempNull</name>
-      <uri>https://old.reddit.com/user/tempNull</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Works for &lt;strong&gt;g6e.12xlarge&lt;/strong&gt; instances and above with a &lt;strong&gt;context size of 5k&lt;/strong&gt; and single request throughput of &lt;strong&gt;25tok/seconds.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;--------Dockerfile ---------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ghcr.io/ggerganov/llama.cpp:full-cuda # Set environment variables ENV CUDA_VISIBLE_DEVICES=0,1,2,3 ENV GGML_CUDA_MAX_STREAMS=16 ENV GGML_CUDA_MMQ_Y=1 ENV HF_HUB_ENABLE_HF_TRANSFER=1 WORKDIR /app # Install dependencies RUN apt-get update &amp;amp;&amp;amp; \ apt-get install -y python3-pip &amp;amp;&amp;amp; \ pip3 install huggingface_hub hf-transfer # Copy and set permissions COPY entrypoint.sh . RUN chmod +x /app/entrypoint.sh EXPOSE 8080 ENTRYPOINT [&amp;quot;/app/entrypoint.sh&amp;quot;] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;-----------------------------entrypoint.sh--------------------------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;#!/bin/bash set -e # Download model shards if missing if [ ! -d &amp;quot;/app/DeepSeek-R1-GGUF&amp;quot; ]; then echo &amp;quot;Downloading model...&amp;quot; python3 -c &amp;quot; from huggingface_hub import snapshot_download snapshot_download( repo_id='unsloth/DeepSeek-R1-GGUF', local_dir='DeepSeek-R1-GGUF', allow_patterns=['*UD-IQ1_S*'] )&amp;quot; fi echo &amp;quot;Downloading model finished. Now waiting to start the llama server with optimisations for one batch latency&amp;quot; # Start server with single-request optimizations ./llama-server \ --model DeepSeek-R1-GGUF/DeepSeek-R1-UD-IQ1_S/DeepSeek-R1-UD-IQ1_S-00001-of-00003.gguf\ --host 0.0.0.0 \ --port 8080 \ --n-gpu-layers 62 \ --parallel 4 \ --ctx-size 5120 \ --mlock \ --threads 42 \ --tensor-split 1,1,1,1 \ --no-mmap \ --rope-freq-base 1000000 \ --rope-freq-scale 0.25 \ --metrics &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Originally posted here: &lt;a href="https://tensorfuse.io/docs/guides/integrations/llama_cpp"&gt;https://tensorfuse.io/docs/guides/integrations/llama_cpp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tempNull"&gt; /u/tempNull &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:14:53+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iwyv0c</id>
     <title>Creative Reasoning Assistants: An other Fine-Tuned LLMs for Storytelling</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T10:17:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixb1u2</id>
+    <title>Hardware recommendation - AMD FX and mi50</title>
+    <updated>2025-02-24T19:47:52+00:00</updated>
+    <author>
+      <name>/u/SirTwitchALot</name>
+      <uri>https://old.reddit.com/user/SirTwitchALot</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been trying to come up to speed on LLMs, just playing around to develop my skills. I've done some experimentation writing some simple assistants in python. I have an old PC collecting dust on the shelf that I'm thinking of repurposing to rum llama instead of my laptop. It has&lt;/p&gt; &lt;p&gt;AMD fx-8350&lt;/p&gt; &lt;p&gt;32GB ddr3&lt;/p&gt; &lt;p&gt;RTX 960 (only 2GB)&lt;/p&gt; &lt;p&gt;I was thinking about throwing an ebay mi50 into this system. I can get a 16gb card used for $125 right now. I'm thinking that's a good way to get my feet wet without a big investment. I read something about the mi cards not working with CPUs prior to Zen though? &lt;/p&gt; &lt;p&gt;Are there any caveats to what I'm considering that I'm missing? &lt;/p&gt; &lt;p&gt;I know I'm not going to get amazing performance out of this setup, but will it be usable for experimentation (maybe in the tens of tokens a second on say an 8b model?)&lt;/p&gt; &lt;p&gt;Are there better low cost options I might want to look at instead? I know Jetson starts at $250, but with only 8gb of memory it seems like it might be worse than this setup since I would have 32gb of system ram and 16gb GPU&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SirTwitchALot"&gt; /u/SirTwitchALot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixb1u2/hardware_recommendation_amd_fx_and_mi50/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T19:47:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix5ofd</id>
@@ -112,19 +112,6 @@
     <published>2025-02-24T14:57:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix46wr</id>
-    <title>R1 for Spatial Reasoning</title>
-    <updated>2025-02-24T15:08:13+00:00</updated>
-    <author>
-      <name>/u/remyxai</name>
-      <uri>https://old.reddit.com/user/remyxai</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt; &lt;img alt="R1 for Spatial Reasoning" src="https://b.thumbs.redditmedia.com/jyqIGUOvKtGUJMPde7zV_1b5qWCF6lHqv8cfpN-Wi_Q.jpg" title="R1 for Spatial Reasoning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sharing an experiment in data synthesis for R1-style reasoning in my VLM, fine-tuned for enhanced spatial reasoning, more in &lt;a href="https://huggingface.co/spaces/open-r1/README/discussions/10"&gt;this discussion&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;After finding &lt;a href="https://spatial-vlm.github.io/"&gt;SpatialVLM&lt;/a&gt; last year, we open-sourced a similar 3D scene reconstruction pipeline: &lt;a href="https://github.com/remyxai/VQASynth"&gt;VQASynth&lt;/a&gt; to generate instruction following data for spatial reasoning.&lt;/p&gt; &lt;p&gt;Inspired by &lt;a href="https://typefly.github.io/"&gt;TypeFly&lt;/a&gt;, we tried applying &lt;a href="https://x.com/smellslikeml/status/1790069289413914956"&gt;this idea to VLMs&lt;/a&gt;, but it wasn't robust enough to fly our drone.&lt;/p&gt; &lt;p&gt;With R1-style reasoning, can't we ground our response on a set of observations from the VQASynth pipeline to train a VLM for better scene understanding and planning?&lt;/p&gt; &lt;p&gt;That's the goal for an upcoming VLM release &lt;a href="https://colab.research.google.com/drive/1R64daHgR50GnxH3yn7mcs8rnldWL1ZxF"&gt;based on this&lt;/a&gt; colab.&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts on making a dataset and VLM which could power the next generation of more reliable embodied AI applications, join us on &lt;a href="https://github.com/remyxai/VQASynth/issues/36"&gt;github&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rwcajdccv3le1.png?width=500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d924f00d5dd56b8bb5c6900799071783993fe1a4"&gt;https://preview.redd.it/rwcajdccv3le1.png?width=500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d924f00d5dd56b8bb5c6900799071783993fe1a4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gzs74o4dv3le1.png?width=754&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d20c61ca9f0cb8e8f3d97b21be473c6002abdc3a"&gt;https://preview.redd.it/gzs74o4dv3le1.png?width=754&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d20c61ca9f0cb8e8f3d97b21be473c6002abdc3a&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remyxai"&gt; /u/remyxai &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T15:08:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ix11go</id>
     <title>aspen - Open-source voice assistant you can call, at only $0.01025/min!</title>
     <updated>2025-02-24T12:37:28+00:00</updated>
@@ -138,17 +125,17 @@
     <published>2025-02-24T12:37:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix5vgm</id>
-    <title>TIP: Open WebUI "Overview" mode</title>
-    <updated>2025-02-24T16:19:18+00:00</updated>
+    <id>t3_1ix46wr</id>
+    <title>R1 for Spatial Reasoning</title>
+    <updated>2025-02-24T15:08:13+00:00</updated>
     <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
+      <name>/u/remyxai</name>
+      <uri>https://old.reddit.com/user/remyxai</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt; &lt;img alt="TIP: Open WebUI &amp;quot;Overview&amp;quot; mode" src="https://a.thumbs.redditmedia.com/xhTnipJlQp9kwvDNpjx8F2VXJDkn8RgN7RNScLB8_00.jpg" title="TIP: Open WebUI &amp;quot;Overview&amp;quot; mode" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As Google added &lt;a href="https://nitter.net/OfficialLoganK/status/1894049802557456669"&gt;branching support&lt;/a&gt; for its AI Studio product, I think the crown in terms of implementation is still held by the Open WebUI.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/nfdla1lq34le1.png?width=2492&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=70419e34b5c6474913c5d005bf6a5125561d8302"&gt;Overview mode&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;To activate: click &amp;quot;...&amp;quot; at the top right and select &amp;quot;Overview&amp;quot; in the menu&lt;/li&gt; &lt;li&gt;Clicking any leaf node in the graph will update the chat state accordingly&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt; &lt;img alt="R1 for Spatial Reasoning" src="https://b.thumbs.redditmedia.com/jyqIGUOvKtGUJMPde7zV_1b5qWCF6lHqv8cfpN-Wi_Q.jpg" title="R1 for Spatial Reasoning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sharing an experiment in data synthesis for R1-style reasoning in my VLM, fine-tuned for enhanced spatial reasoning, more in &lt;a href="https://huggingface.co/spaces/open-r1/README/discussions/10"&gt;this discussion&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;After finding &lt;a href="https://spatial-vlm.github.io/"&gt;SpatialVLM&lt;/a&gt; last year, we open-sourced a similar 3D scene reconstruction pipeline: &lt;a href="https://github.com/remyxai/VQASynth"&gt;VQASynth&lt;/a&gt; to generate instruction following data for spatial reasoning.&lt;/p&gt; &lt;p&gt;Inspired by &lt;a href="https://typefly.github.io/"&gt;TypeFly&lt;/a&gt;, we tried applying &lt;a href="https://x.com/smellslikeml/status/1790069289413914956"&gt;this idea to VLMs&lt;/a&gt;, but it wasn't robust enough to fly our drone.&lt;/p&gt; &lt;p&gt;With R1-style reasoning, can't we ground our response on a set of observations from the VQASynth pipeline to train a VLM for better scene understanding and planning?&lt;/p&gt; &lt;p&gt;That's the goal for an upcoming VLM release &lt;a href="https://colab.research.google.com/drive/1R64daHgR50GnxH3yn7mcs8rnldWL1ZxF"&gt;based on this&lt;/a&gt; colab.&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts on making a dataset and VLM which could power the next generation of more reliable embodied AI applications, join us on &lt;a href="https://github.com/remyxai/VQASynth/issues/36"&gt;github&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rwcajdccv3le1.png?width=500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d924f00d5dd56b8bb5c6900799071783993fe1a4"&gt;https://preview.redd.it/rwcajdccv3le1.png?width=500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d924f00d5dd56b8bb5c6900799071783993fe1a4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gzs74o4dv3le1.png?width=754&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d20c61ca9f0cb8e8f3d97b21be473c6002abdc3a"&gt;https://preview.redd.it/gzs74o4dv3le1.png?width=754&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d20c61ca9f0cb8e8f3d97b21be473c6002abdc3a&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remyxai"&gt; /u/remyxai &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix46wr/r1_for_spatial_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:19:18+00:00</published>
+    <published>2025-02-24T15:08:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwhfl5</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwhfl5/96gb_modded_rtx_4090_for_45k/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T18:55:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix5vgm</id>
+    <title>TIP: Open WebUI "Overview" mode</title>
+    <updated>2025-02-24T16:19:18+00:00</updated>
+    <author>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt; &lt;img alt="TIP: Open WebUI &amp;quot;Overview&amp;quot; mode" src="https://a.thumbs.redditmedia.com/xhTnipJlQp9kwvDNpjx8F2VXJDkn8RgN7RNScLB8_00.jpg" title="TIP: Open WebUI &amp;quot;Overview&amp;quot; mode" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As Google added &lt;a href="https://nitter.net/OfficialLoganK/status/1894049802557456669"&gt;branching support&lt;/a&gt; for its AI Studio product, I think the crown in terms of implementation is still held by the Open WebUI.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/nfdla1lq34le1.png?width=2492&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=70419e34b5c6474913c5d005bf6a5125561d8302"&gt;Overview mode&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;To activate: click &amp;quot;...&amp;quot; at the top right and select &amp;quot;Overview&amp;quot; in the menu&lt;/li&gt; &lt;li&gt;Clicking any leaf node in the graph will update the chat state accordingly&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T16:19:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix6bjw</id>
