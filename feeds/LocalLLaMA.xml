@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T10:06:54+00:00</updated>
+  <updated>2025-02-24T10:24:21+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwr579/gpt4o_vs_claude_35_sonnet_vs_gemini_flash_20_vs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T02:13:43+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwuyxl</id>
-    <title>V-JEPA, unsupervised video learning</title>
-    <updated>2025-02-24T05:47:24+00:00</updated>
-    <author>
-      <name>/u/GodComplecs</name>
-      <uri>https://old.reddit.com/user/GodComplecs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;Abstract This paper explores feature prediction as a stand-alone objective for unsupervised learning from video and introduces V-JEPA, a collection of vision models trained solely using a feature prediction objective, without the use of pretrained image encoders, text, negative examples, reconstruction, or other sources of supervision. The models are trained on 2 million videos collected from public datasets and are evaluated on downstream image and video tasks. Our results show that learning by predicting video features leads to versatile visual representations that perform well on both motion and appearance-based tasks, without adaption of the model’s parameters; e.g., using a frozen backbone, our largest model, a ViT-H/16 trained only on videos, obtains 81.9% on Kinetics-400, 72.2% on Something-Something-v2, and 77.9% on ImageNet1K.&amp;quot;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://ai.meta.com/research/publications/revisiting-feature-prediction-for-learning-visual-representations-from-video/"&gt;https://ai.meta.com/research/publications/revisiting-feature-prediction-for-learning-visual-representations-from-video/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GodComplecs"&gt; /u/GodComplecs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwuyxl/vjepa_unsupervised_video_learning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwuyxl/vjepa_unsupervised_video_learning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwuyxl/vjepa_unsupervised_video_learning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T05:47:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwqee5</id>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iww9k1/whats_the_smallest_llm_that_can_do_well_in_both/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T07:12:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwyv8h</id>
+    <title>How to Reduce SLM Latency When Using Tool Calling in LLamaAndroid?</title>
+    <updated>2025-02-24T10:17:51+00:00</updated>
+    <author>
+      <name>/u/filipedrm</name>
+      <uri>https://old.reddit.com/user/filipedrm</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Hi everyone!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I’m currently working on my thesis, which focuses on running a &lt;strong&gt;local small language model (SLM) with function calling&lt;/strong&gt; on a &lt;strong&gt;resource-limited Android device&lt;/strong&gt;. I have an Android app using &lt;strong&gt;LLamaAndroid&lt;/strong&gt;, which runs a &lt;strong&gt;Qwen2.5 0.5B model&lt;/strong&gt; via &lt;strong&gt;llama.cpp with Vulkan&lt;/strong&gt;, achieving an average speed of &lt;strong&gt;34 tokens per second&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;To enable &lt;strong&gt;tool calling&lt;/strong&gt;, I’m using &lt;strong&gt;ChatML&lt;/strong&gt; in the system prompt. This allows me to inject the necessary tools alongside a system prompt that defines the model’s behavior. The SLM then generates a tool response, which I interpret in my Android app to determine which function to call.&lt;/p&gt; &lt;h1&gt;The Issue&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Baseline performance&lt;/strong&gt;: Without tool calling, inference latency is &lt;strong&gt;1–1.5 seconds&lt;/strong&gt;, which is acceptable.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Increased latency with tools&lt;/strong&gt;: As I add more functions to the system prompt, inference time &lt;strong&gt;increases significantly&lt;/strong&gt; (as expected 😅). Right now, with tool calling enabled, and multiple functions defined, inference takes around &lt;strong&gt;10 seconds per reques&lt;/strong&gt;t.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;My Question&lt;/h1&gt; &lt;p&gt;Is there a way to &lt;strong&gt;persist the tool definitions/system message across multiple inferences&lt;/strong&gt;? Ideally, I’d like to avoid &lt;strong&gt;re-injecting&lt;/strong&gt; the tool definitions and system prompt on every request to reduce latency.&lt;/p&gt; &lt;p&gt;I’ve been exploring &lt;strong&gt;caching mechanisms&lt;/strong&gt; (KV cache, etc.), but I haven’t had success implementing them in &lt;strong&gt;LLamaAndroid&lt;/strong&gt;. Is this behavior even possible to achieve in another way?&lt;/p&gt; &lt;p&gt;Does anyone have suggestions on how to handle this efficiently? I’m kinda stuck 😅. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/filipedrm"&gt; /u/filipedrm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T10:17:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwwt1i</id>
@@ -242,19 +242,6 @@
     <published>2025-02-23T23:00:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iwyasu</id>
-    <title>xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results</title>
-    <updated>2025-02-24T09:38:46+00:00</updated>
-    <author>
-      <name>/u/onil_gova</name>
-      <uri>https://old.reddit.com/user/onil_gova</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"&gt; &lt;img alt="xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results" src="https://b.thumbs.redditmedia.com/k-DAoi6LE24UkEkfRRqkJbx16MahYREOEyksNiDMFws.jpg" title="xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/ibab/status/1893774017376485466?s=19"&gt;https://x.com/ibab/status/1893774017376485466?s=19&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/onil_gova"&gt; /u/onil_gova &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iwyasu"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T09:38:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwvo4b</id>
     <title>An Open-Source Implementation of Deep Research using Gemini Flash 2.0</title>
     <updated>2025-02-24T06:32:56+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwvo4b/an_opensource_implementation_of_deep_research/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T06:32:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwyasu</id>
+    <title>xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results</title>
+    <updated>2025-02-24T09:38:46+00:00</updated>
+    <author>
+      <name>/u/onil_gova</name>
+      <uri>https://old.reddit.com/user/onil_gova</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"&gt; &lt;img alt="xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results" src="https://b.thumbs.redditmedia.com/k-DAoi6LE24UkEkfRRqkJbx16MahYREOEyksNiDMFws.jpg" title="xAI engineer blames ex-OpenAI employee for system prompt that excludes Trump and Elon in misinformation results" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/ibab/status/1893774017376485466?s=19"&gt;https://x.com/ibab/status/1893774017376485466?s=19&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/onil_gova"&gt; /u/onil_gova &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iwyasu"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyasu/xai_engineer_blames_exopenai_employee_for_system/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T09:38:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwhfl5</id>
