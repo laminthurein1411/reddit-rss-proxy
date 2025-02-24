@@ -2,49 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T12:48:16+00:00</updated>
+  <updated>2025-02-24T13:10:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1iw9m8r</id>
-    <title>AMD inference using AMDVLK driver is 40% faster than RADV on pp, ~15% faster than ROCm inference performance*</title>
-    <updated>2025-02-23T13:00:35+00:00</updated>
+    <id>t3_1iwzblx</id>
+    <title>Do LLMs include very rarely used words or characters in the token set?</title>
+    <updated>2025-02-24T10:49:34+00:00</updated>
     <author>
-      <name>/u/ashirviskas</name>
-      <uri>https://old.reddit.com/user/ashirviskas</uri>
+      <name>/u/kid_learning_c</name>
+      <uri>https://old.reddit.com/user/kid_learning_c</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm using 7900 XTX and decided to do some testing after getting intrigued by &lt;a href="/u/fallingdowndizzyvr"&gt;/u/fallingdowndizzyvr&lt;/a&gt; &lt;/p&gt; &lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: AMDVLK is 45% faster than RADV (default Vulkan driver supplied by mesa) on PP (Prompt Processing), but still slower than ROCm. BUT faster than ROCM at TG (Text Generation) by 12-20% (*- though slower on IQ2_XS by 15%). To use, I just installed amdvlk and ran &lt;code&gt;VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json ./build/bin/llama-bench ...&lt;/code&gt; (Arch Linux, might be different on other OSes)&lt;/p&gt; &lt;p&gt;Here are some results done on AMD RX 7900 XTX, arch linux, llama.cpp commit &lt;code&gt;51f311e0&lt;/code&gt;, using bartowski GGUFs. I wanted to test different quants and after testing it all it seems like AMDVLK is a much better option for Q4-Q8 quants for tg speed. ROCm still wins on more exotic quants.&lt;/p&gt; &lt;h3&gt;on ROCm, linux&lt;/h3&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;model&lt;/th&gt; &lt;th align="right"&gt;size&lt;/th&gt; &lt;th align="right"&gt;params&lt;/th&gt; &lt;th&gt;backend&lt;/th&gt; &lt;th align="right"&gt;ngl&lt;/th&gt; &lt;th align="right"&gt;test&lt;/th&gt; &lt;th align="right"&gt;t/s&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;1414.84 ± 3.87&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;36.33 ± 0.15&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;672.70 ± 1.75&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;22.80 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;1407.50 ± 4.94&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;39.88 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;671.31 ± 1.39&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;ROCm&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;28.65 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h3&gt;Vulkan, default mesa driver, RADV&lt;/h3&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;model&lt;/th&gt; &lt;th align="right"&gt;size&lt;/th&gt; &lt;th align="right"&gt;params&lt;/th&gt; &lt;th&gt;backend&lt;/th&gt; &lt;th align="right"&gt;ngl&lt;/th&gt; &lt;th align="right"&gt;test&lt;/th&gt; &lt;th align="right"&gt;t/s&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;798.98 ± 3.35&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;39.72 ± 0.07&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;279.68 ± 0.44&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;28.96 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;779.84 ± 2.48&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;41.42 ± 0.04&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;331.11 ± 0.82&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;25.74 ± 0.03&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h3&gt;Vulkan, AMDVLK open source&lt;/h3&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;model&lt;/th&gt; &lt;th align="right"&gt;size&lt;/th&gt; &lt;th align="right"&gt;params&lt;/th&gt; &lt;th&gt;backend&lt;/th&gt; &lt;th align="right"&gt;ngl&lt;/th&gt; &lt;th align="right"&gt;test&lt;/th&gt; &lt;th align="right"&gt;t/s&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;1239.63 ± 4.94&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;14.62 GiB&lt;/td&gt; &lt;td align="right"&gt;14.77 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;43.73 ± 0.04&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;394.89 ± 0.43&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B Q4_K - Medium&lt;/td&gt; &lt;td align="right"&gt;18.48 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;25.60 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;1110.21 ± 10.95&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;phi3 14B Q8_0&lt;/td&gt; &lt;td align="right"&gt;13.82 GiB&lt;/td&gt; &lt;td align="right"&gt;13.96 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;46.16 ± 0.04&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;pp512&lt;/td&gt; &lt;td align="right"&gt;463.22 ± 1.05&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;qwen2 32B IQ2_XS - 2.3125 bpw&lt;/td&gt; &lt;td align="right"&gt;9.27 GiB&lt;/td&gt; &lt;td align="right"&gt;32.76 B&lt;/td&gt; &lt;td&gt;Vulkan&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="right"&gt;tg128&lt;/td&gt; &lt;td align="right"&gt;24.38 ± 0.02&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ashirviskas"&gt; /u/ashirviskas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iw9m8r/amd_inference_using_amdvlk_driver_is_40_faster/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iw9m8r/amd_inference_using_amdvlk_driver_is_40_faster/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iw9m8r/amd_inference_using_amdvlk_driver_is_40_faster/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I see that LLMs are give answers in almost all languages and I have seen very rarely used english vocabulary as well as very rarely used Chinese characters (i myself as a native chinese speaker don't even use the character).&lt;/p&gt; &lt;p&gt;my question is:&lt;/p&gt; &lt;p&gt;when the model is predicting the next token, it calculates a probability distribution. But it is a distribution of how many tokens? What is the dimension of that probability distribution? if it includes all possible words or characters in many languages, the length of the array would just be too huge.&lt;/p&gt; &lt;p&gt;If they use a relatively small token set, how can those rare words and chinese characters pop up in the answer? in this sense, even a token set size of 100k is considered small given the amount of vocabularies and characters there are in many languages.&lt;/p&gt; &lt;p&gt;what is the technical method they use to tackle this ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kid_learning_c"&gt; /u/kid_learning_c &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwzblx/do_llms_include_very_rarely_used_words_or/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwzblx/do_llms_include_very_rarely_used_words_or/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwzblx/do_llms_include_very_rarely_used_words_or/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-23T13:00:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwyv8h</id>
-    <title>How to Reduce SLM Latency When Using Tool Calling in LLamaAndroid?</title>
-    <updated>2025-02-24T10:17:51+00:00</updated>
-    <author>
-      <name>/u/filipedrm</name>
-      <uri>https://old.reddit.com/user/filipedrm</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Hi everyone!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I’m currently working on my thesis, which focuses on running a &lt;strong&gt;SLM with function calling&lt;/strong&gt; on a &lt;strong&gt;resource-limited Android device&lt;/strong&gt;. I have an Android app using &lt;strong&gt;LLamaAndroid&lt;/strong&gt;, which runs a &lt;strong&gt;Qwen2.5 0.5B model&lt;/strong&gt; via &lt;strong&gt;llama.cpp with Vulkan&lt;/strong&gt;, achieving an average speed of &lt;strong&gt;34 tokens per second&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;To enable &lt;strong&gt;tool calling&lt;/strong&gt;, I’m using &lt;strong&gt;ChatML&lt;/strong&gt; in the system prompt. This allows me to inject the necessary tools alongside a system prompt that defines the model’s behavior. The SLM then generates a tool response, which I interpret in my Android app to determine which function to call.&lt;/p&gt; &lt;h1&gt;The Issue&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Baseline performance&lt;/strong&gt;: Without tool calling, inference latency is &lt;strong&gt;1–1.5 seconds&lt;/strong&gt;, which is acceptable.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Increased latency with tools&lt;/strong&gt;: As I add more functions to the system prompt, inference time &lt;strong&gt;increases significantly&lt;/strong&gt; (as expected 😅). Right now, with tool calling enabled, and multiple functions defined, inference takes around &lt;strong&gt;10 seconds per reques&lt;/strong&gt;t.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;My Question&lt;/h1&gt; &lt;p&gt;Is there a way to &lt;strong&gt;persist the tool definitions/system message across multiple inferences&lt;/strong&gt;? Ideally, I’d like to avoid &lt;strong&gt;re-injecting&lt;/strong&gt; the tool definitions and system prompt on every request to reduce latency.&lt;/p&gt; &lt;p&gt;I’ve been exploring &lt;strong&gt;caching mechanisms&lt;/strong&gt; (KV cache, etc.), but I haven’t had success implementing them in &lt;strong&gt;LLamaAndroid&lt;/strong&gt;. Is this behavior even possible to achieve in another way?&lt;/p&gt; &lt;p&gt;Does anyone have suggestions on how to handle this efficiently? I’m kinda stuck 😅. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/filipedrm"&gt; /u/filipedrm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T10:17:51+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwan9c</id>
-    <title>What is software is this supposed to be?</title>
-    <updated>2025-02-23T13:54:36+00:00</updated>
-    <author>
-      <name>/u/bitdotben</name>
-      <uri>https://old.reddit.com/user/bitdotben</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwan9c/what_is_software_is_this_supposed_to_be/"&gt; &lt;img alt="What is software is this supposed to be?" src="https://preview.redd.it/vn7bkdvi9wke1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=14f6a6667a13b78acdc3b2f3329bb92ef7150bc3" title="What is software is this supposed to be?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi there, &lt;/p&gt; &lt;p&gt;Don’t know whether this is the right place to ask this question but I thought a lot of people in here are interested in the NVIDIAs project digits. &lt;/p&gt; &lt;p&gt;This image is from the NVIDIA CES keynote (I found a high quality version in NVIDIAs newsroom, &lt;a href="https://nvidianews.nvidia.com/news/nvidia-puts-grace-blackwell-on-every-desk-and-at-every-ai-developers-fingertips"&gt;https://nvidianews.nvidia.com/news/nvidia-puts-grace-blackwell-on-every-desk-and-at-every-ai-developers-fingertips&lt;/a&gt;). It‘s clearly an AI generated screenshot with in the render. &lt;/p&gt; &lt;p&gt;But is the software in the AI screenshot meant to represent something specific? What kind of workload / analysis would look like this? Right-hand-side looks like code but what’s going on in the middle? I guess there is no one right answer but maybe some of you „recognise“ this?&lt;/p&gt; &lt;p&gt;Cheers&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bitdotben"&gt; /u/bitdotben &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/vn7bkdvi9wke1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwan9c/what_is_software_is_this_supposed_to_be/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwan9c/what_is_software_is_this_supposed_to_be/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-23T13:54:36+00:00</published>
+    <published>2025-02-24T10:49:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwq3fm</id>
@@ -60,6 +34,32 @@
     <published>2025-02-24T01:20:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iwyv0c</id>
+    <title>Creative Reasoning Assistants: An other Fine-Tuned LLMs for Storytelling</title>
+    <updated>2025-02-24T10:17:23+00:00</updated>
+    <author>
+      <name>/u/molbal</name>
+      <uri>https://old.reddit.com/user/molbal</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TLDR: I combined reasoning with creative writing. I like the outcome. Models on HF:&lt;/strong&gt; &lt;a href="https://huggingface.co/collections/molbal/creative-reasoning-assistant-67bb91ba4a1e1803da997c5f"&gt;&lt;strong&gt;https://huggingface.co/collections/molbal/creative-reasoning-assistant-67bb91ba4a1e1803da997c5f&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Abstract&lt;/h1&gt; &lt;p&gt;This post presents a methodology for fine-tuning large language models to improve context-aware story continuation by incorporating reasoning steps. The approach leverages publicly available books from the Project Gutenberg corpus, processes them into structured training data, and fine-tunes models like Qwen2.5 Instruct (7B and 32B) using a cost-effective pipeline (qLoRA). The resulting models demonstrate improved story continuation capabilities, generating a few sentences at a time while maintaining narrative coherence. The fine-tuned models are made available in GGUF format for accessibility and experimentation. This work is planned to be part of writer-assistant tools (to be developer and published later) and encourages community feedback for further refinement.&lt;/p&gt; &lt;h1&gt;Introduction&lt;/h1&gt; &lt;p&gt;While text continuation is literally the main purpose of LLMs, story continuation is still a challenging task, as it requires understanding narrative context, characters' motivations, and plot progression. While existing models can generate text, they often lack the ability to progress the story's flow just in the correct amount when continuing it, they often do nothing to progress to plot, or too much in a short amount of time. This post introduces a fine-tuning methodology that combines reasoning steps with story continuation, enabling models to better understand context and produce more coherent outputs. The approach is designed to be cost-effective, leveraging free and low-cost resources while only using public domain or synthetic training data.&lt;/p&gt; &lt;h1&gt;Methodology&lt;/h1&gt; &lt;h1&gt;1. Data Collection and Preprocessing&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Source Data:&lt;/strong&gt; Public domain books from the Project Gutenberg corpus, written before the advent of LLMs were used to make avoid contamination from modern AI-generated text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Chunking:&lt;/strong&gt; Each book was split into chunks of ~100 sentences, where 80 sentences were used as context and the subsequent 20 sentences as the continuation target.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;2. Thought Process Generation&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Prompt Design:&lt;/strong&gt; Two prompt templates were used: &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Thought Process Template:&lt;/strong&gt; Encourages the model to reason about the story's flow, character motivations, and interactions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Continuation Template:&lt;/strong&gt; Combines the generated reasoning with the original continuation to create a structured training example. This becomes the final training data, which is built from 4 parts: &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Static part:&lt;/strong&gt; System prompt and Task parts are fix.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context:&lt;/strong&gt; Context is the first 80 sentences of the chunk (Human-written data)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reasoning:&lt;/strong&gt; Synthetic reasoning part, written DeepSeek v3 model on OpenRouter was used to generate thought processes for each chunk, because it follows instructions very well and it is cheap.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Response:&lt;/strong&gt; The last 20 sentences of the training data&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ol&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;3. Fine-Tuning&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Model Selection:&lt;/strong&gt; Qwen2.5 Instruct (7B and 32B) was chosen for fine-tuning due to its already strong performance and permissive licensing.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Training Pipeline:&lt;/strong&gt; LoRA (Low-Rank Adaptation) training was performed on &lt;a href="http://Fireworks.ai"&gt;Fireworks.ai&lt;/a&gt;, as currently their new fine-tuning service is free.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Note:&lt;/strong&gt; Please note that GRPO (Used for reasoning models like DeepSeek R1) was not used for this experiment.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;4. Model Deployment&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Quantization:&lt;/strong&gt; Fireworks' output are safetensor adapters, these were first converted to GGUF adapters, then merged into the base model. For the 7B variant, the adapter was merged into the F16 base model, then quantized into Q4, with the 32B model, the adapter was directly merged into Q4 base model. Conversion and merging was done with llama.cpp.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Distribution:&lt;/strong&gt; Models were uploaded to Ollama and Hugging Face for easy access and experimentation.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;p&gt;The fine-tuned models demonstrated improvements in story continuation tasks:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Contextual Understanding:&lt;/strong&gt; The models effectively used reasoning steps to understand narrative context before generating continuations.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Coherence:&lt;/strong&gt; Generated continuations were more coherent and aligned with the story's flow compared to baseline models.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Efficiency:&lt;/strong&gt; The 7B model with 16k context fully offloads to my laptop's GPU (RTX 3080 8GB) and manages ~50 tokens/sec, which I am satisfied with.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Using the model&lt;/h1&gt; &lt;p&gt;I invite the community to try the fine-tuned models and provide feedback. The models are available on Ollama Hub (&lt;a href="https://ollama.com/molbal/cra-v1-7b"&gt;7B&lt;/a&gt;, &lt;a href="https://ollama.com/molbal/cra-v1-32b"&gt;32B&lt;/a&gt;) and Hugging Face (&lt;a href="https://huggingface.co/molbal/CRA-v1-7B"&gt;7B&lt;/a&gt;, &lt;a href="https://huggingface.co/molbal/CRA-v1-32B"&gt;32B&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;For best results, please keep the following prompt format. Do not omit the System part either.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;### System: You are a writer’s assistant. ### Task: Understand how the story flows, what motivations the characters have and how they will interact with each other and the world as a step by step thought process before continuing the story. ### Context: {context} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;The model will reliably respond in the following format&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;reasoning&amp;gt; Chain of thought. &amp;lt;/reasoning&amp;gt; &amp;lt;answer&amp;gt; Text completion &amp;lt;/answer&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Using the model with the following parameters work:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;num_ctx: 16384,&lt;/li&gt; &lt;li&gt;repeat_penalty: 1.05,&lt;/li&gt; &lt;li&gt;temperature: 0.7,&lt;/li&gt; &lt;li&gt;top_p: 0.8&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Scripts used during the pipeline are uploaded to GitHub: &lt;a href="https://github.com/molbal/creative-reasoning-assistant-v1"&gt;molbal/creative-reasoning-assistant-v1: Fine-Tuning LLMs for Context-Aware Story Continuation with Reasoning&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/molbal"&gt; /u/molbal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T10:17:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwyv8h</id>
+    <title>How to Reduce SLM Latency When Using Tool Calling in LLamaAndroid?</title>
+    <updated>2025-02-24T10:17:51+00:00</updated>
+    <author>
+      <name>/u/filipedrm</name>
+      <uri>https://old.reddit.com/user/filipedrm</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Hi everyone!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I’m currently working on my thesis, which focuses on running a &lt;strong&gt;SLM with function calling&lt;/strong&gt; on a &lt;strong&gt;resource-limited Android device&lt;/strong&gt;. I have an Android app using &lt;strong&gt;LLamaAndroid&lt;/strong&gt;, which runs a &lt;strong&gt;Qwen2.5 0.5B model&lt;/strong&gt; via &lt;strong&gt;llama.cpp with Vulkan&lt;/strong&gt;, achieving an average speed of &lt;strong&gt;34 tokens per second&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;To enable &lt;strong&gt;tool calling&lt;/strong&gt;, I’m using &lt;strong&gt;ChatML&lt;/strong&gt; in the system prompt. This allows me to inject the necessary tools alongside a system prompt that defines the model’s behavior. The SLM then generates a tool response, which I interpret in my Android app to determine which function to call.&lt;/p&gt; &lt;h1&gt;The Issue&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Baseline performance&lt;/strong&gt;: Without tool calling, inference latency is &lt;strong&gt;1–1.5 seconds&lt;/strong&gt;, which is acceptable.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Increased latency with tools&lt;/strong&gt;: As I add more functions to the system prompt, inference time &lt;strong&gt;increases significantly&lt;/strong&gt; (as expected 😅). Right now, with tool calling enabled, and multiple functions defined, inference takes around &lt;strong&gt;10 seconds per reques&lt;/strong&gt;t.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;My Question&lt;/h1&gt; &lt;p&gt;Is there a way to &lt;strong&gt;persist the tool definitions/system message across multiple inferences&lt;/strong&gt;? Ideally, I’d like to avoid &lt;strong&gt;re-injecting&lt;/strong&gt; the tool definitions and system prompt on every request to reduce latency.&lt;/p&gt; &lt;p&gt;I’ve been exploring &lt;strong&gt;caching mechanisms&lt;/strong&gt; (KV cache, etc.), but I haven’t had success implementing them in &lt;strong&gt;LLamaAndroid&lt;/strong&gt;. Is this behavior even possible to achieve in another way?&lt;/p&gt; &lt;p&gt;Does anyone have suggestions on how to handle this efficiently? I’m kinda stuck 😅. Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/filipedrm"&gt; /u/filipedrm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv8h/how_to_reduce_slm_latency_when_using_tool_calling/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T10:17:51+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iww9k1</id>
     <title>What’s the smallest LLM that can do well in both chat and coding tasks (e.g., fill-in-the-middle)?</title>
     <updated>2025-02-24T07:12:43+00:00</updated>
@@ -71,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iww9k1/whats_the_smallest_llm_that_can_do_well_in_both/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T07:12:43+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix11go</id>
-    <title>aspen - Open-source voice assistant you can call, at only $0.01025/min!</title>
-    <updated>2025-02-24T12:37:28+00:00</updated>
-    <author>
-      <name>/u/thooton</name>
-      <uri>https://old.reddit.com/user/thooton</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt; &lt;img alt="aspen - Open-source voice assistant you can call, at only $0.01025/min!" src="https://external-preview.redd.it/Y8cU497M8VmMsSvykiiACmZpJ9cu5NkYzryYit_2lHY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8b00ce71267ae00f4c36a6263a4dd0cc5d7b9aee" title="aspen - Open-source voice assistant you can call, at only $0.01025/min!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://reddit.com/link/1ix11go/video/ohkvv8g9z2le1/player"&gt;https://reddit.com/link/1ix11go/video/ohkvv8g9z2le1/player&lt;/a&gt;&lt;/p&gt; &lt;p&gt;hi everyone, hope you're all doing great :) I thought I'd share a little project that I've been working on for the past few days. It's a voice assistant that uses Twilio's API to be accessible through a real phone number, so you can call it just like a person!&lt;/p&gt; &lt;p&gt;Using Groq's STT free tier and Google's TTS free tier, the only costs come from Twilio and Anthropic and add up to about $0.01025/min, which is a lot cheaper than the conversational agents from ElevenLabs or PlayAI which approach $0.10/min or $0.18/min respectively.&lt;/p&gt; &lt;p&gt;I wrote the code to be as modular as possible so it should be easy to modify it to use your own local LLM or whatever you like! all PRs are welcome :)&lt;/p&gt; &lt;p&gt;have an awesome day!!!&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/thooton/aspen"&gt;https://github.com/thooton/aspen&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thooton"&gt; /u/thooton &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T12:37:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwzwb2</id>
@@ -99,19 +86,6 @@
     <published>2025-02-24T11:27:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iww1ny</id>
-    <title>LLM Comparison/Test: Complex Coding Animation Challenge</title>
-    <updated>2025-02-24T06:58:18+00:00</updated>
-    <author>
-      <name>/u/1BlueSpork</name>
-      <uri>https://old.reddit.com/user/1BlueSpork</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"&gt; &lt;img alt="LLM Comparison/Test: Complex Coding Animation Challenge" src="https://external-preview.redd.it/7cPfi8eVm79RT7qaibnuFb1fwJeE8CTXgHOmD93N1Gc.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=451054ed7468862e570b80f20ea8fb05a5a3805c" title="LLM Comparison/Test: Complex Coding Animation Challenge" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/hVXWP_toBfk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T06:58:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwfs2z</id>
     <title>[R] Unlocking Long-Context LLM Inference on Consumer GPUs with HeadInfer (Million-level Tokens)</title>
     <updated>2025-02-23T17:45:33+00:00</updated>
@@ -125,6 +99,19 @@
     <published>2025-02-23T17:45:33+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iww1ny</id>
+    <title>LLM Comparison/Test: Complex Coding Animation Challenge</title>
+    <updated>2025-02-24T06:58:18+00:00</updated>
+    <author>
+      <name>/u/1BlueSpork</name>
+      <uri>https://old.reddit.com/user/1BlueSpork</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"&gt; &lt;img alt="LLM Comparison/Test: Complex Coding Animation Challenge" src="https://external-preview.redd.it/7cPfi8eVm79RT7qaibnuFb1fwJeE8CTXgHOmD93N1Gc.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=451054ed7468862e570b80f20ea8fb05a5a3805c" title="LLM Comparison/Test: Complex Coding Animation Challenge" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/hVXWP_toBfk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iww1ny/llm_comparisontest_complex_coding_animation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T06:58:18+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iw35xy</id>
     <title>SanDisk's new High Bandwidth Flash memory enables 4TB of VRAM on GPUs, matches HBM bandwidth at higher capacity</title>
     <updated>2025-02-23T05:43:36+00:00</updated>
@@ -136,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iw35xy/sandisks_new_high_bandwidth_flash_memory_enables/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T05:43:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwwt1i</id>
-    <title>Vulkan oddness with llama.cpp and how to get best tokens/second with my setup</title>
-    <updated>2025-02-24T07:50:30+00:00</updated>
-    <author>
-      <name>/u/billblake2018</name>
-      <uri>https://old.reddit.com/user/billblake2018</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was trying to decide if using the Intel Graphics for its GPU would be worthwhile. My machine is an HP ProBook with 32G running FreeBSD 14.1. When llama-bench is run with Vulkan, it says:&lt;/p&gt; &lt;p&gt;ggml_vulkan: 0 = Intel(R) UHD Graphics 620 (WHL GT2) (Intel open-source Mesa driver) | uma: 1 | fp16: 1 | warp size: 32 | shared memory: 65536 | matrix cores: none&lt;/p&gt; &lt;p&gt;Results from earlier versions of llama.cpp were inconsistent and confusing, including various abort()s from llama.cpp after a certain number of layers in the GPU had been specified. I grabbed b4762, compiled it, and had a go. The model I'm using is llama 3B Q8_0, says llama-bench. I ran with 7 threads, as that was a bit faster than running with 8, the system number. (Later results suggest that, if I'm using Vulkan, a smaller number of threads work as well, but I'll ignore that for this post.)&lt;/p&gt; &lt;p&gt;The first oddity is that llama.cpp compiled without Vulkan support is faster than llama.cpp compiled with Vulkan support and -ngl 0 (all numbers are token/second).&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Vulkan pp512 tg128&lt;/li&gt; &lt;li&gt;w/o 20.30 7.06&lt;/li&gt; &lt;li&gt;with 17.76 6.45&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The next oddity is that, as I increased -ngl, the pp512 numbers stayed more or less constant until around 15 layers, when they started increasing, ending up about 40% larger than -ngl 0. By contrast, the tg128 numbers &lt;em&gt;decreased&lt;/em&gt; to about 40% of the -ngl 0 value. Here's some of the results (these are with -r 1, since I was only interested in the general trend):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ngl pp512 tg128&lt;/li&gt; &lt;li&gt; 1 18.07 6.52&lt;/li&gt; &lt;li&gt;23 20.39 2.80&lt;/li&gt; &lt;li&gt;28 25.43 2.68&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If I understand this correctly, I get faster prompt processing the more layers I offload to the GPU but slower token generation the more layers I offload to the GPU.&lt;/p&gt; &lt;p&gt;My first question is, is that the correct interpretation? My second question is, how might I tune or hack llama.cpp so that I get that high tg128 figure that I got with no Vulkan support but also that high pp512 figure that I got with offloading all layers to the GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/billblake2018"&gt; /u/billblake2018 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T07:50:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwm4zo</id>
@@ -175,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwna33/i_found_this_mysterious_rrd259b_model_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T23:05:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwwt1i</id>
+    <title>Vulkan oddness with llama.cpp and how to get best tokens/second with my setup</title>
+    <updated>2025-02-24T07:50:30+00:00</updated>
+    <author>
+      <name>/u/billblake2018</name>
+      <uri>https://old.reddit.com/user/billblake2018</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was trying to decide if using the Intel Graphics for its GPU would be worthwhile. My machine is an HP ProBook with 32G running FreeBSD 14.1. When llama-bench is run with Vulkan, it says:&lt;/p&gt; &lt;p&gt;ggml_vulkan: 0 = Intel(R) UHD Graphics 620 (WHL GT2) (Intel open-source Mesa driver) | uma: 1 | fp16: 1 | warp size: 32 | shared memory: 65536 | matrix cores: none&lt;/p&gt; &lt;p&gt;Results from earlier versions of llama.cpp were inconsistent and confusing, including various abort()s from llama.cpp after a certain number of layers in the GPU had been specified. I grabbed b4762, compiled it, and had a go. The model I'm using is llama 3B Q8_0, says llama-bench. I ran with 7 threads, as that was a bit faster than running with 8, the system number. (Later results suggest that, if I'm using Vulkan, a smaller number of threads work as well, but I'll ignore that for this post.)&lt;/p&gt; &lt;p&gt;The first oddity is that llama.cpp compiled without Vulkan support is faster than llama.cpp compiled with Vulkan support and -ngl 0 (all numbers are token/second).&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Vulkan pp512 tg128&lt;/li&gt; &lt;li&gt;w/o 20.30 7.06&lt;/li&gt; &lt;li&gt;with 17.76 6.45&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The next oddity is that, as I increased -ngl, the pp512 numbers stayed more or less constant until around 15 layers, when they started increasing, ending up about 40% larger than -ngl 0. By contrast, the tg128 numbers &lt;em&gt;decreased&lt;/em&gt; to about 40% of the -ngl 0 value. Here's some of the results (these are with -r 1, since I was only interested in the general trend):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ngl pp512 tg128&lt;/li&gt; &lt;li&gt; 1 18.07 6.52&lt;/li&gt; &lt;li&gt;23 20.39 2.80&lt;/li&gt; &lt;li&gt;28 25.43 2.68&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If I understand this correctly, I get faster prompt processing the more layers I offload to the GPU but slower token generation the more layers I offload to the GPU.&lt;/p&gt; &lt;p&gt;My first question is, is that the correct interpretation? My second question is, how might I tune or hack llama.cpp so that I get that high tg128 figure that I got with no Vulkan support but also that high pp512 figure that I got with offloading all layers to the GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/billblake2018"&gt; /u/billblake2018 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T07:50:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1iw9rt1</id>
@@ -216,6 +203,19 @@
     <published>2025-02-24T00:07:00+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ix1ddj</id>
+    <title>ragit 0.3.0 released</title>
+    <updated>2025-02-24T12:55:49+00:00</updated>
+    <author>
+      <name>/u/baehyunsol</name>
+      <uri>https://old.reddit.com/user/baehyunsol</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix1ddj/ragit_030_released/"&gt; &lt;img alt="ragit 0.3.0 released" src="https://external-preview.redd.it/TipJWadkvg51FCh2k5yn7L-J4VOuk7fkeumbFTDL_OM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=91ff6bfc615eb15181fb1437f1d20a7a4e5656c6" title="ragit 0.3.0 released" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working on this open source RAG solution for a while.&lt;/p&gt; &lt;p&gt;It gives you a simple CLI for local rag, without any need for writing code!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/baehyunsol"&gt; /u/baehyunsol &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/baehyunsol/ragit"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix1ddj/ragit_030_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix1ddj/ragit_030_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T12:55:49+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1iwn617</id>
     <title>Benchmarks are a lie, and I have some examples</title>
     <updated>2025-02-23T23:00:15+00:00</updated>
@@ -227,19 +227,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwn617/benchmarks_are_a_lie_and_i_have_some_examples/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T23:00:15+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix0d4z</id>
-    <title>Polish Ministry of Digital Affairs shared PLLuM model family on HF</title>
-    <updated>2025-02-24T11:57:56+00:00</updated>
-    <author>
-      <name>/u/fairydreaming</name>
-      <uri>https://old.reddit.com/user/fairydreaming</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/CYFRAGOVPL"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix0d4z/polish_ministry_of_digital_affairs_shared_pllum/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix0d4z/polish_ministry_of_digital_affairs_shared_pllum/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T11:57:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwvo4b</id>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwhfl5/96gb_modded_rtx_4090_for_45k/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-23T18:55:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix0d4z</id>
+    <title>Polish Ministry of Digital Affairs shared PLLuM model family on HF</title>
+    <updated>2025-02-24T11:57:56+00:00</updated>
+    <author>
+      <name>/u/fairydreaming</name>
+      <uri>https://old.reddit.com/user/fairydreaming</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/CYFRAGOVPL"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix0d4z/polish_ministry_of_digital_affairs_shared_pllum/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix0d4z/polish_ministry_of_digital_affairs_shared_pllum/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T11:57:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwtl7f</id>
