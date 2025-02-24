@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T19:05:30+00:00</updated>
+  <updated>2025-02-24T19:20:44+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1ix40jp</id>
+    <title>Best local (reliable) LLM/RAG agent on a MacBook M3pro 18GB RAM?</title>
+    <updated>2025-02-24T15:00:48+00:00</updated>
+    <author>
+      <name>/u/Onetimehelper</name>
+      <uri>https://old.reddit.com/user/Onetimehelper</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Have local sensitive documents that I want summarized locally, any best fits? Would like something simple, the document would probably be one time use only (other programs I would use would keep the documents in a database and refer back to them, messing up summaries for specific documents). I also have another PC with a 7900XTX, but obviously not as portable for work. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Onetimehelper"&gt; /u/Onetimehelper &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix40jp/best_local_reliable_llmrag_agent_on_a_macbook/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix40jp/best_local_reliable_llmrag_agent_on_a_macbook/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix40jp/best_local_reliable_llmrag_agent_on_a_macbook/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T15:00:48+00:00</published>
+  </entry>
   <entry>
     <id>t3_1iwwt1i</id>
     <title>Vulkan oddness with llama.cpp and how to get best tokens/second with my setup</title>
@@ -19,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T07:50:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix5rj9</id>
-    <title>Dockerfile for running Unsloth GGUF Deepseek R1 quants on 4xL40S</title>
-    <updated>2025-02-24T16:14:53+00:00</updated>
-    <author>
-      <name>/u/tempNull</name>
-      <uri>https://old.reddit.com/user/tempNull</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Works for &lt;strong&gt;g6e.12xlarge&lt;/strong&gt; instances and above with a &lt;strong&gt;context size of 5k&lt;/strong&gt; and single request throughput of &lt;strong&gt;25tok/seconds.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;--------Dockerfile ---------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ghcr.io/ggerganov/llama.cpp:full-cuda # Set environment variables ENV CUDA_VISIBLE_DEVICES=0,1,2,3 ENV GGML_CUDA_MAX_STREAMS=16 ENV GGML_CUDA_MMQ_Y=1 ENV HF_HUB_ENABLE_HF_TRANSFER=1 WORKDIR /app # Install dependencies RUN apt-get update &amp;amp;&amp;amp; \ apt-get install -y python3-pip &amp;amp;&amp;amp; \ pip3 install huggingface_hub hf-transfer # Copy and set permissions COPY entrypoint.sh . RUN chmod +x /app/entrypoint.sh EXPOSE 8080 ENTRYPOINT [&amp;quot;/app/entrypoint.sh&amp;quot;] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;-----------------------------entrypoint.sh--------------------------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;#!/bin/bash set -e # Download model shards if missing if [ ! -d &amp;quot;/app/DeepSeek-R1-GGUF&amp;quot; ]; then echo &amp;quot;Downloading model...&amp;quot; python3 -c &amp;quot; from huggingface_hub import snapshot_download snapshot_download( repo_id='unsloth/DeepSeek-R1-GGUF', local_dir='DeepSeek-R1-GGUF', allow_patterns=['*UD-IQ1_S*'] )&amp;quot; fi echo &amp;quot;Downloading model finished. Now waiting to start the llama server with optimisations for one batch latency&amp;quot; # Start server with single-request optimizations ./llama-server \ --model DeepSeek-R1-GGUF/DeepSeek-R1-UD-IQ1_S/DeepSeek-R1-UD-IQ1_S-00001-of-00003.gguf\ --host 0.0.0.0 \ --port 8080 \ --n-gpu-layers 62 \ --parallel 4 \ --ctx-size 5120 \ --mlock \ --threads 42 \ --tensor-split 1,1,1,1 \ --no-mmap \ --rope-freq-base 1000000 \ --rope-freq-scale 0.25 \ --metrics &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Originally posted here: &lt;a href="https://tensorfuse.io/docs/guides/integrations/llama_cpp"&gt;https://tensorfuse.io/docs/guides/integrations/llama_cpp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tempNull"&gt; /u/tempNull &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:14:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwolln</id>
@@ -47,19 +47,6 @@
     <published>2025-02-24T00:07:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix3cxy</id>
-    <title>I updated my personal open source Chat UI to support reasoning models.</title>
-    <updated>2025-02-24T14:31:27+00:00</updated>
-    <author>
-      <name>/u/DivineAscension</name>
-      <uri>https://old.reddit.com/user/DivineAscension</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt; &lt;img alt="I updated my personal open source Chat UI to support reasoning models." src="https://external-preview.redd.it/hrIhTomEzBpvg6FqJVsML_mUgvpVbATgJKk-LAnZKxE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=97f0ff1022e7b1bac913b25515c4392fafa4d943" title="I updated my personal open source Chat UI to support reasoning models." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/Toy-97/Chat-WebUI"&gt;Here is the link to the open source repos&lt;/a&gt;. I've posted about my personal Chat UI before, and now I've updated it to support reasoning models. I use this personally because this has built-in tools to summarize YouTube videos and perform online web searches. There have been tons of improvements made too, so this version should be extremely stable. I hope you guys find it useful!)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DivineAscension"&gt; /u/DivineAscension &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T14:31:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwyv0c</id>
     <title>Creative Reasoning Assistants: An other Fine-Tuned LLMs for Storytelling</title>
     <updated>2025-02-24T10:17:23+00:00</updated>
@@ -71,6 +58,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwyv0c/creative_reasoning_assistants_an_other_finetuned/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T10:17:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix5rj9</id>
+    <title>Dockerfile for running Unsloth GGUF Deepseek R1 quants on 4xL40S</title>
+    <updated>2025-02-24T16:14:53+00:00</updated>
+    <author>
+      <name>/u/tempNull</name>
+      <uri>https://old.reddit.com/user/tempNull</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Works for &lt;strong&gt;g6e.12xlarge&lt;/strong&gt; instances and above with a &lt;strong&gt;context size of 5k&lt;/strong&gt; and single request throughput of &lt;strong&gt;25tok/seconds.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;--------Dockerfile ---------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ghcr.io/ggerganov/llama.cpp:full-cuda # Set environment variables ENV CUDA_VISIBLE_DEVICES=0,1,2,3 ENV GGML_CUDA_MAX_STREAMS=16 ENV GGML_CUDA_MMQ_Y=1 ENV HF_HUB_ENABLE_HF_TRANSFER=1 WORKDIR /app # Install dependencies RUN apt-get update &amp;amp;&amp;amp; \ apt-get install -y python3-pip &amp;amp;&amp;amp; \ pip3 install huggingface_hub hf-transfer # Copy and set permissions COPY entrypoint.sh . RUN chmod +x /app/entrypoint.sh EXPOSE 8080 ENTRYPOINT [&amp;quot;/app/entrypoint.sh&amp;quot;] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;-----------------------------entrypoint.sh--------------------------&lt;/p&gt; &lt;pre&gt;&lt;code&gt;#!/bin/bash set -e # Download model shards if missing if [ ! -d &amp;quot;/app/DeepSeek-R1-GGUF&amp;quot; ]; then echo &amp;quot;Downloading model...&amp;quot; python3 -c &amp;quot; from huggingface_hub import snapshot_download snapshot_download( repo_id='unsloth/DeepSeek-R1-GGUF', local_dir='DeepSeek-R1-GGUF', allow_patterns=['*UD-IQ1_S*'] )&amp;quot; fi echo &amp;quot;Downloading model finished. Now waiting to start the llama server with optimisations for one batch latency&amp;quot; # Start server with single-request optimizations ./llama-server \ --model DeepSeek-R1-GGUF/DeepSeek-R1-UD-IQ1_S/DeepSeek-R1-UD-IQ1_S-00001-of-00003.gguf\ --host 0.0.0.0 \ --port 8080 \ --n-gpu-layers 62 \ --parallel 4 \ --ctx-size 5120 \ --mlock \ --threads 42 \ --tensor-split 1,1,1,1 \ --no-mmap \ --rope-freq-base 1000000 \ --rope-freq-scale 0.25 \ --metrics &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Originally posted here: &lt;a href="https://tensorfuse.io/docs/guides/integrations/llama_cpp"&gt;https://tensorfuse.io/docs/guides/integrations/llama_cpp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tempNull"&gt; /u/tempNull &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5rj9/dockerfile_for_running_unsloth_gguf_deepseek_r1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T16:14:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix3cxy</id>
+    <title>I updated my personal open source Chat UI to support reasoning models.</title>
+    <updated>2025-02-24T14:31:27+00:00</updated>
+    <author>
+      <name>/u/DivineAscension</name>
+      <uri>https://old.reddit.com/user/DivineAscension</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt; &lt;img alt="I updated my personal open source Chat UI to support reasoning models." src="https://external-preview.redd.it/hrIhTomEzBpvg6FqJVsML_mUgvpVbATgJKk-LAnZKxE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=97f0ff1022e7b1bac913b25515c4392fafa4d943" title="I updated my personal open source Chat UI to support reasoning models." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/Toy-97/Chat-WebUI"&gt;Here is the link to the open source repos&lt;/a&gt;. I've posted about my personal Chat UI before, and now I've updated it to support reasoning models. I use this personally because this has built-in tools to summarize YouTube videos and perform online web searches. There have been tons of improvements made too, so this version should be extremely stable. I hope you guys find it useful!)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DivineAscension"&gt; /u/DivineAscension &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix3cxy/i_updated_my_personal_open_source_chat_ui_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T14:31:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwn617</id>
@@ -203,19 +216,6 @@
     <published>2025-02-24T06:32:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix9fi1</id>
-    <title>Its official! Sonnet 3.7 out</title>
-    <updated>2025-02-24T18:42:34+00:00</updated>
-    <author>
-      <name>/u/Ok-Contribution9043</name>
-      <uri>https://old.reddit.com/user/Ok-Contribution9043</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix9fi1/its_official_sonnet_37_out/"&gt; &lt;img alt="Its official! Sonnet 3.7 out" src="https://b.thumbs.redditmedia.com/QUP82vRmR4GZQvyQA9ETGMubTuwMyISBBt4LtW35xGs.jpg" title="Its official! Sonnet 3.7 out" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.anthropic.com/news/claude-3-7-sonnet"&gt;https://www.anthropic.com/news/claude-3-7-sonnet&lt;/a&gt;&lt;/p&gt; &lt;p&gt;available in the console. Comparison video coming soon!&lt;/p&gt; &lt;p&gt;Here is the one we did for 3.5 - &lt;a href="https://www.youtube.com/watch?v=bxiIk8TW9og"&gt;https://www.youtube.com/watch?v=bxiIk8TW9og&lt;/a&gt; in the mean time!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gv88kctkt4le1.png?width=2878&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=151a977a0d30f5f34a5fee034aa54b3e080c7eb1"&gt;https://preview.redd.it/gv88kctkt4le1.png?width=2878&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=151a977a0d30f5f34a5fee034aa54b3e080c7eb1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Contribution9043"&gt; /u/Ok-Contribution9043 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix9fi1/its_official_sonnet_37_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix9fi1/its_official_sonnet_37_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix9fi1/its_official_sonnet_37_out/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T18:42:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ix1ddj</id>
     <title>ragit 0.3.0 released</title>
     <updated>2025-02-24T12:55:49+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-02-24T04:24:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix98kq</id>
-    <title>Claude 3.7 Sonnet and Claude Code</title>
-    <updated>2025-02-24T18:34:27+00:00</updated>
-    <author>
-      <name>/u/cpldcpu</name>
-      <uri>https://old.reddit.com/user/cpldcpu</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"&gt; &lt;img alt="Claude 3.7 Sonnet and Claude Code" src="https://external-preview.redd.it/V8JG-mmrlkT02vKigktdXzK2PH-CSO-CrYueRmf_OX0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8beabe2cc993eb0a304f0f44ee00c9b8eb681095" title="Claude 3.7 Sonnet and Claude Code" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.anthropic.com/news/claude-3-7-sonnet"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T18:34:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ix0d4z</id>
     <title>Polish Ministry of Digital Affairs shared PLLuM model family on HF</title>
     <updated>2025-02-24T11:57:56+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix0d4z/polish_ministry_of_digital_affairs_shared_pllum/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T11:57:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix98kq</id>
+    <title>Claude 3.7 Sonnet and Claude Code</title>
+    <updated>2025-02-24T18:34:27+00:00</updated>
+    <author>
+      <name>/u/cpldcpu</name>
+      <uri>https://old.reddit.com/user/cpldcpu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"&gt; &lt;img alt="Claude 3.7 Sonnet and Claude Code" src="https://external-preview.redd.it/V8JG-mmrlkT02vKigktdXzK2PH-CSO-CrYueRmf_OX0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8beabe2cc993eb0a304f0f44ee00c9b8eb681095" title="Claude 3.7 Sonnet and Claude Code" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.anthropic.com/news/claude-3-7-sonnet"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix98kq/claude_37_sonnet_and_claude_code/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T18:34:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwvvmy</id>
@@ -307,19 +307,6 @@
     <published>2025-02-24T01:37:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix96pq</id>
-    <title>Claude 3.7 is real</title>
-    <updated>2025-02-24T18:32:00+00:00</updated>
-    <author>
-      <name>/u/ApprehensiveAd3629</name>
-      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"&gt; &lt;img alt="Claude 3.7 is real" src="https://preview.redd.it/2qkaymexr4le1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0bf2edcabf3c5b2063f0fb29bc1b4f7da023acfe" title="Claude 3.7 is real" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Its show time folks&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2qkaymexr4le1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T18:32:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwzuqb</id>
     <title>Claude Sonnet 3.7 soon</title>
     <updated>2025-02-24T11:24:48+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwzuqb/claude_sonnet_37_soon/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T11:24:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix96pq</id>
+    <title>Claude 3.7 is real</title>
+    <updated>2025-02-24T18:32:00+00:00</updated>
+    <author>
+      <name>/u/ApprehensiveAd3629</name>
+      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"&gt; &lt;img alt="Claude 3.7 is real" src="https://preview.redd.it/2qkaymexr4le1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0bf2edcabf3c5b2063f0fb29bc1b4f7da023acfe" title="Claude 3.7 is real" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Its show time folks&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2qkaymexr4le1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix96pq/claude_37_is_real/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T18:32:00+00:00</published>
   </entry>
 </feed>
