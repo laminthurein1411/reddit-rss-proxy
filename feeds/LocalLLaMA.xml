@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T14:06:16+00:00</updated>
+  <updated>2025-02-24T14:23:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -32,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwzwb2/i_want_to_extract_a_json_from_unstructured/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T11:27:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ix2ey5</id>
-    <title>What about combining two RTX 4060 TI with 16 GB VRAM (each)?</title>
-    <updated>2025-02-24T13:47:51+00:00</updated>
-    <author>
-      <name>/u/Repsol_Honda_PL</name>
-      <uri>https://old.reddit.com/user/Repsol_Honda_PL</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What do you think about combining two RTX 4060TI cards with 16 GB VRAM each, together I would get a memory the size of one RTX 5090, which is quite decent. I already have one 4060 TI (Gigabyte Gaming OC arrived today) and I'm slowly thinking about the second one - good direction?&lt;/p&gt; &lt;p&gt;The other option is to stay with one card and in, say, half a year when the GPU market stabilizes (if it happens at all ;) ) I would swap the 4060 Ti for the 5090.&lt;/p&gt; &lt;p&gt;For simple work on small models with unsloth 16 GB should be enough, but it is also tempting to expand the memory.&lt;/p&gt; &lt;p&gt;Another thing, does the CPU (number of cores), RAM (frequency) and SSD performance matter very much here - or does it not matter much? (I know that sometimes some calculations are delegated to the CPU, not everything can be computed on the GPU).&lt;/p&gt; &lt;p&gt;I am on &lt;strong&gt;AMD AM4 platform.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Thank you for the hints!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Repsol_Honda_PL"&gt; /u/Repsol_Honda_PL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T13:47:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwfs2z</id>
@@ -151,19 +138,6 @@
     <published>2025-02-23T13:09:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iwwt1i</id>
-    <title>Vulkan oddness with llama.cpp and how to get best tokens/second with my setup</title>
-    <updated>2025-02-24T07:50:30+00:00</updated>
-    <author>
-      <name>/u/billblake2018</name>
-      <uri>https://old.reddit.com/user/billblake2018</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was trying to decide if using the Intel Graphics for its GPU would be worthwhile. My machine is an HP ProBook with 32G running FreeBSD 14.1. When llama-bench is run with Vulkan, it says:&lt;/p&gt; &lt;p&gt;ggml_vulkan: 0 = Intel(R) UHD Graphics 620 (WHL GT2) (Intel open-source Mesa driver) | uma: 1 | fp16: 1 | warp size: 32 | shared memory: 65536 | matrix cores: none&lt;/p&gt; &lt;p&gt;Results from earlier versions of llama.cpp were inconsistent and confusing, including various abort()s from llama.cpp after a certain number of layers in the GPU had been specified. I grabbed b4762, compiled it, and had a go. The model I'm using is llama 3B Q8_0, says llama-bench. I ran with 7 threads, as that was a bit faster than running with 8, the system number. (Later results suggest that, if I'm using Vulkan, a smaller number of threads work as well, but I'll ignore that for this post.)&lt;/p&gt; &lt;p&gt;The first oddity is that llama.cpp compiled without Vulkan support is faster than llama.cpp compiled with Vulkan support and -ngl 0 (all numbers are token/second).&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Vulkan pp512 tg128&lt;/li&gt; &lt;li&gt;w/o 20.30 7.06&lt;/li&gt; &lt;li&gt;with 17.76 6.45&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The next oddity is that, as I increased -ngl, the pp512 numbers stayed more or less constant until around 15 layers, when they started increasing, ending up about 40% larger than -ngl 0. By contrast, the tg128 numbers &lt;em&gt;decreased&lt;/em&gt; to about 40% of the -ngl 0 value. Here's some of the results (these are with -r 1, since I was only interested in the general trend):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ngl pp512 tg128&lt;/li&gt; &lt;li&gt; 1 18.07 6.52&lt;/li&gt; &lt;li&gt;23 20.39 2.80&lt;/li&gt; &lt;li&gt;28 25.43 2.68&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If I understand this correctly, I get faster prompt processing the more layers I offload to the GPU but slower token generation the more layers I offload to the GPU.&lt;/p&gt; &lt;p&gt;My first question is, is that the correct interpretation? My second question is, how might I tune or hack llama.cpp so that I get that high tg128 figure that I got with no Vulkan support but also that high pp512 figure that I got with offloading all layers to the GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/billblake2018"&gt; /u/billblake2018 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T07:50:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwowsz</id>
     <title>Quick &amp; Clean Web Data for Your Local LLMs? 👋 Introducing LexiCrawler (Binaries Inside!)</title>
     <updated>2025-02-24T00:22:08+00:00</updated>
@@ -175,6 +149,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwowsz/quick_clean_web_data_for_your_local_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T00:22:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix2ey5</id>
+    <title>What about combining two RTX 4060 TI with 16 GB VRAM (each)?</title>
+    <updated>2025-02-24T13:47:51+00:00</updated>
+    <author>
+      <name>/u/Repsol_Honda_PL</name>
+      <uri>https://old.reddit.com/user/Repsol_Honda_PL</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What do you think about combining two RTX 4060TI cards with 16 GB VRAM each, together I would get a memory the size of one RTX 5090, which is quite decent. I already have one 4060 TI (Gigabyte Gaming OC arrived today) and I'm slowly thinking about the second one - good direction?&lt;/p&gt; &lt;p&gt;The other option is to stay with one card and in, say, half a year when the GPU market stabilizes (if it happens at all ;) ) I would swap the 4060 Ti for the 5090.&lt;/p&gt; &lt;p&gt;For simple work on small models with unsloth 16 GB should be enough, but it is also tempting to expand the memory.&lt;/p&gt; &lt;p&gt;Another thing, does the CPU (number of cores), RAM (frequency) and SSD performance matter very much here - or does it not matter much? (I know that sometimes some calculations are delegated to the CPU, not everything can be computed on the GPU).&lt;/p&gt; &lt;p&gt;I am on &lt;strong&gt;AMD AM4 platform.&lt;/strong&gt; But might upgrade to AM5 with 7900 if it is recommended.&lt;/p&gt; &lt;p&gt;Thank you for the hints!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Repsol_Honda_PL"&gt; /u/Repsol_Honda_PL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix2ey5/what_about_combining_two_rtx_4060_ti_with_16_gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T13:47:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwwt1i</id>
+    <title>Vulkan oddness with llama.cpp and how to get best tokens/second with my setup</title>
+    <updated>2025-02-24T07:50:30+00:00</updated>
+    <author>
+      <name>/u/billblake2018</name>
+      <uri>https://old.reddit.com/user/billblake2018</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was trying to decide if using the Intel Graphics for its GPU would be worthwhile. My machine is an HP ProBook with 32G running FreeBSD 14.1. When llama-bench is run with Vulkan, it says:&lt;/p&gt; &lt;p&gt;ggml_vulkan: 0 = Intel(R) UHD Graphics 620 (WHL GT2) (Intel open-source Mesa driver) | uma: 1 | fp16: 1 | warp size: 32 | shared memory: 65536 | matrix cores: none&lt;/p&gt; &lt;p&gt;Results from earlier versions of llama.cpp were inconsistent and confusing, including various abort()s from llama.cpp after a certain number of layers in the GPU had been specified. I grabbed b4762, compiled it, and had a go. The model I'm using is llama 3B Q8_0, says llama-bench. I ran with 7 threads, as that was a bit faster than running with 8, the system number. (Later results suggest that, if I'm using Vulkan, a smaller number of threads work as well, but I'll ignore that for this post.)&lt;/p&gt; &lt;p&gt;The first oddity is that llama.cpp compiled without Vulkan support is faster than llama.cpp compiled with Vulkan support and -ngl 0 (all numbers are token/second).&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Vulkan pp512 tg128&lt;/li&gt; &lt;li&gt;w/o 20.30 7.06&lt;/li&gt; &lt;li&gt;with 17.76 6.45&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The next oddity is that, as I increased -ngl, the pp512 numbers stayed more or less constant until around 15 layers, when they started increasing, ending up about 40% larger than -ngl 0. By contrast, the tg128 numbers &lt;em&gt;decreased&lt;/em&gt; to about 40% of the -ngl 0 value. Here's some of the results (these are with -r 1, since I was only interested in the general trend):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ngl pp512 tg128&lt;/li&gt; &lt;li&gt; 1 18.07 6.52&lt;/li&gt; &lt;li&gt;23 20.39 2.80&lt;/li&gt; &lt;li&gt;28 25.43 2.68&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If I understand this correctly, I get faster prompt processing the more layers I offload to the GPU but slower token generation the more layers I offload to the GPU.&lt;/p&gt; &lt;p&gt;My first question is, is that the correct interpretation? My second question is, how might I tune or hack llama.cpp so that I get that high tg128 figure that I got with no Vulkan support but also that high pp512 figure that I got with offloading all layers to the GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/billblake2018"&gt; /u/billblake2018 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwwt1i/vulkan_oddness_with_llamacpp_and_how_to_get_best/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T07:50:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix11go</id>
