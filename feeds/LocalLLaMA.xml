@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-25T19:48:54+00:00</updated>
+  <updated>2025-02-25T20:06:44+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy0w6v/qwen_video_gen_anyone_know_any_good_open_model_i/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T17:43:42+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixy5kf</id>
-    <title>If you are using Linux, an AMD iGPU for running LLMs (Vulkan), and the amdgpu driver, you may want to check your GTT size</title>
-    <updated>2025-02-25T15:51:25+00:00</updated>
-    <author>
-      <name>/u/toazd</name>
-      <uri>https://old.reddit.com/user/toazd</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran into a &amp;quot;problem&amp;quot; when I couldn't load Qwen2.5-7b-instruct-Q4_K_M with a context size of 32768 (using llama-cli Vulkan, insufficient memory error). Normally, you might think &amp;quot;Oh I just need different hardware for this task&amp;quot; but AMD iGPUs use system RAM for their memory and I have 16GB of that which is plenty to run that model at that context size. So, how can we &amp;quot;fix&amp;quot; this, I wondered.&lt;/p&gt; &lt;p&gt;By running &lt;code&gt;amdgpu_top&lt;/code&gt; (or &lt;code&gt;radeontop&lt;/code&gt;) you can see in the &amp;quot;Memory usage&amp;quot; section what is allocated VRAM (RAM that is dedicated to the GPU, inaccessible to the CPU/system) and what is allocated as GTT (RAM that the CPU/system can use when the GPU is not using it). It's important to know the difference between those two and when you need more of one or the other. For my use cases which are largely limited to just llama.cpp, minimum VRAM and maximum GTT is best.&lt;/p&gt; &lt;p&gt;On Arch Linux the GTT was set to 8GB by default (of 16GB available). That was my limiting factor until I did a little research. And the result of that is what I wanted to share in case it helps anyone as it did me.&lt;/p&gt; &lt;p&gt;Checking the &lt;a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html"&gt;kernel docs for amdgpu&lt;/a&gt; shows that the kernel parameter &lt;code&gt;amdgpu.gttsize=X&lt;/code&gt; (where X is the size in &lt;strong&gt;MiB&lt;/strong&gt;) allows one to give the iGPU access to more (or less) system memory. I changed that number, updated grub, and rebooted and now &lt;code&gt;amdgpu_top&lt;/code&gt; shows the new GTT size and now I can load and run larger models and/or larger context sizes no problem!&lt;/p&gt; &lt;p&gt;For reference I am using an &lt;a href="https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-7-7730u.html"&gt;AMD Ryzen 7 7730U&lt;/a&gt; (&lt;code&gt;gfx90c&lt;/code&gt;) 16GB RAM, 512MB VRAM, 12GB GTT.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/toazd"&gt; /u/toazd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T15:51:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixkfcb</id>
@@ -60,6 +47,19 @@
     <published>2025-02-25T16:49:40+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ixy5kf</id>
+    <title>If you are using Linux, an AMD iGPU for running LLMs (Vulkan), and the amdgpu driver, you may want to check your GTT size</title>
+    <updated>2025-02-25T15:51:25+00:00</updated>
+    <author>
+      <name>/u/toazd</name>
+      <uri>https://old.reddit.com/user/toazd</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran into a &amp;quot;problem&amp;quot; when I couldn't load Qwen2.5-7b-instruct-Q4_K_M with a context size of 32768 (using llama-cli Vulkan, insufficient memory error). Normally, you might think &amp;quot;Oh I just need different hardware for this task&amp;quot; but AMD iGPUs use system RAM for their memory and I have 16GB of that which is plenty to run that model at that context size. So, how can we &amp;quot;fix&amp;quot; this, I wondered.&lt;/p&gt; &lt;p&gt;By running &lt;code&gt;amdgpu_top&lt;/code&gt; (or &lt;code&gt;radeontop&lt;/code&gt;) you can see in the &amp;quot;Memory usage&amp;quot; section what is allocated VRAM (RAM that is dedicated to the GPU, inaccessible to the CPU/system) and what is allocated as GTT (RAM that the CPU/system can use when the GPU is not using it). It's important to know the difference between those two and when you need more of one or the other. For my use cases which are largely limited to just llama.cpp, minimum VRAM and maximum GTT is best.&lt;/p&gt; &lt;p&gt;On Arch Linux the GTT was set to 8GB by default (of 16GB available). That was my limiting factor until I did a little research. And the result of that is what I wanted to share in case it helps anyone as it did me.&lt;/p&gt; &lt;p&gt;Checking the &lt;a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html"&gt;kernel docs for amdgpu&lt;/a&gt; shows that the kernel parameter &lt;code&gt;amdgpu.gttsize=X&lt;/code&gt; (where X is the size in &lt;strong&gt;MiB&lt;/strong&gt;) allows one to give the iGPU access to more (or less) system memory. I changed that number, updated grub, and rebooted and now &lt;code&gt;amdgpu_top&lt;/code&gt; shows the new GTT size and now I can load and run larger models and/or larger context sizes no problem!&lt;/p&gt; &lt;p&gt;For reference I am using an &lt;a href="https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-7-7730u.html"&gt;AMD Ryzen 7 7730U&lt;/a&gt; (&lt;code&gt;gfx90c&lt;/code&gt;) 16GB RAM, 512MB VRAM, 12GB GTT.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/toazd"&gt; /u/toazd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T15:51:25+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ixyfn7</id>
     <title>Alibaba Wan 2.1 SOTA open source video + image2video</title>
     <updated>2025-02-25T16:03:07+00:00</updated>
@@ -84,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy0pia/minions_embracing_small_lms_shifting_compute/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T17:36:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixefsf</id>
+    <title>I created a new structured output method and it works really well</title>
+    <updated>2025-02-24T22:04:49+00:00</updated>
+    <author>
+      <name>/u/jckwind11</name>
+      <uri>https://old.reddit.com/user/jckwind11</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"&gt; &lt;img alt="I created a new structured output method and it works really well" src="https://preview.redd.it/i55e55gkt5le1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=88fc258672a6dae100b76e5c3df682bffb3f9b2a" title="I created a new structured output method and it works really well" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jckwind11"&gt; /u/jckwind11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/i55e55gkt5le1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T22:04:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixzrn2</id>
@@ -112,19 +125,6 @@
     <published>2025-02-25T17:51:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixefsf</id>
-    <title>I created a new structured output method and it works really well</title>
-    <updated>2025-02-24T22:04:49+00:00</updated>
-    <author>
-      <name>/u/jckwind11</name>
-      <uri>https://old.reddit.com/user/jckwind11</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"&gt; &lt;img alt="I created a new structured output method and it works really well" src="https://preview.redd.it/i55e55gkt5le1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=88fc258672a6dae100b76e5c3df682bffb3f9b2a" title="I created a new structured output method and it works really well" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jckwind11"&gt; /u/jckwind11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/i55e55gkt5le1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixefsf/i_created_a_new_structured_output_method_and_it/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T22:04:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixj4bp</id>
     <title>New LiveBench results just released. Sonnet 3.7 reasoning now tops the charts and Sonnet 3.7 is also top non-reasoning model</title>
     <updated>2025-02-25T01:33:13+00:00</updated>
@@ -151,19 +151,6 @@
     <published>2025-02-25T07:05:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixyfwk</id>
-    <title>Look out for the Xeon 6 6521P... 24 cores, 136 PCIe 5.0 lanes for $1250</title>
-    <updated>2025-02-25T16:03:25+00:00</updated>
-    <author>
-      <name>/u/Relevant-Audience441</name>
-      <uri>https://old.reddit.com/user/Relevant-Audience441</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Might be the best next platform for local AI builds. (And I say this as an AMD investor).&lt;br /&gt; Intel truly found the gap between Sienna and the other larger Epyc offerings.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.intel.com/content/www/us/en/products/sku/242634/intel-xeon-6521p-processor-144m-cache-2-60-ghz/specifications.html"&gt;https://www.intel.com/content/www/us/en/products/sku/242634/intel-xeon-6521p-processor-144m-cache-2-60-ghz/specifications.html&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Relevant-Audience441"&gt; /u/Relevant-Audience441 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T16:03:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixrrqb</id>
     <title>Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh.</title>
     <updated>2025-02-25T10:16:35+00:00</updated>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T10:16:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixyfwk</id>
+    <title>Look out for the Xeon 6 6521P... 24 cores, 136 PCIe 5.0 lanes for $1250</title>
+    <updated>2025-02-25T16:03:25+00:00</updated>
+    <author>
+      <name>/u/Relevant-Audience441</name>
+      <uri>https://old.reddit.com/user/Relevant-Audience441</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Might be the best next platform for local AI builds. (And I say this as an AMD investor).&lt;br /&gt; Intel truly found the gap between Sienna and the other larger Epyc offerings.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.intel.com/content/www/us/en/products/sku/242634/intel-xeon-6521p-processor-144m-cache-2-60-ghz/specifications.html"&gt;https://www.intel.com/content/www/us/en/products/sku/242634/intel-xeon-6521p-processor-144m-cache-2-60-ghz/specifications.html&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Relevant-Audience441"&gt; /u/Relevant-Audience441 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixyfwk/look_out_for_the_xeon_6_6521p_24_cores_136_pcie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T16:03:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixkg22</id>
@@ -190,19 +190,6 @@
     <published>2025-02-25T02:37:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iy2qhm</id>
-    <title>New form factor announced for AMD MAX cpu from Framework</title>
-    <updated>2025-02-25T18:58:09+00:00</updated>
-    <author>
-      <name>/u/takuonline</name>
-      <uri>https://old.reddit.com/user/takuonline</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Framework just announced a mini desktop version of the AMD MAX CPU chip featuring up to 128GB of unified memory with up to 96GB available for graphics.&lt;/p&gt; &lt;p&gt;Edit: So apparently, this new CPU Strix CPU from AMD requires a new motherboard and device redesign for laptops which makes the products more expensive.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;This thing has a massive integrated GP that boasts performance that is similar to an RTX 4060 on integrated graphics and It even allows you to allocate up to 96 GB of its maximum 128 gigs of lpddr 5x to that GPU making it awesome for gamers creative professionals and AI developers no the disappointing thing was that this sick processor barely made it into any products all I saw at the show was one admittedly awesome laptop from HP and One gaming tablet from Asus &lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Talking to those Brands they said the issue was that Strix Halo requires a complete motherboard and device redesign making its implementation in mobile devices really costly so I guess framework said screw it we're a small company and can't afford all that but what if we just made it into a desktop is that really how it went down that is literally how it went down&lt;/p&gt; &lt;p&gt;source: &lt;a href="https://youtu.be/-lErGZZgUbY?t=158"&gt;https://youtu.be/-lErGZZgUbY?t=158&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/takuonline"&gt; /u/takuonline &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T18:58:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iy1fbe</id>
     <title>Gemini 2.0 suddenly started thinking in Chinese 😅</title>
     <updated>2025-02-25T18:05:09+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy1fbe/gemini_20_suddenly_started_thinking_in_chinese/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T18:05:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iy2qhm</id>
+    <title>New form factor announced for AMD MAX cpu from Framework</title>
+    <updated>2025-02-25T18:58:09+00:00</updated>
+    <author>
+      <name>/u/takuonline</name>
+      <uri>https://old.reddit.com/user/takuonline</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Framework just announced a mini desktop version of the AMD MAX CPU chip featuring up to 128GB of unified memory with up to 96GB available for graphics.&lt;/p&gt; &lt;p&gt;Edit: So apparently, this new CPU Strix CPU from AMD requires a new motherboard and device redesign for laptops which makes the products more expensive.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;This thing has a massive integrated GP that boasts performance that is similar to an RTX 4060 on integrated graphics and It even allows you to allocate up to 96 GB of its maximum 128 gigs of lpddr 5x to that GPU making it awesome for gamers creative professionals and AI developers no the disappointing thing was that this sick processor barely made it into any products all I saw at the show was one admittedly awesome laptop from HP and One gaming tablet from Asus &lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Talking to those Brands they said the issue was that Strix Halo requires a complete motherboard and device redesign making its implementation in mobile devices really costly so I guess framework said screw it we're a small company and can't afford all that but what if we just made it into a desktop is that really how it went down that is literally how it went down&lt;/p&gt; &lt;p&gt;source: &lt;a href="https://youtu.be/-lErGZZgUbY?t=158"&gt;https://youtu.be/-lErGZZgUbY?t=158&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/takuonline"&gt; /u/takuonline &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2qhm/new_form_factor_announced_for_amd_max_cpu_from/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T18:58:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixzd4p</id>
@@ -307,19 +307,6 @@
     <published>2025-02-25T12:56:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iy2t7c</id>
-    <title>Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990</title>
-    <updated>2025-02-25T19:01:07+00:00</updated>
-    <author>
-      <name>/u/sobe3249</name>
-      <uri>https://old.reddit.com/user/sobe3249</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"&gt; &lt;img alt="Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990" src="https://preview.redd.it/erki80wv1cle1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ada9d2780ffd78b32f14450c762f69f014324845" title="Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sobe3249"&gt; /u/sobe3249 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/erki80wv1cle1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T19:01:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixtxbw</id>
     <title>😂😂 someone made a "touch grass" app with a vLLM, you gotta go and actually touch grass to unlock your phone</title>
     <updated>2025-02-25T12:33:46+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtxbw/someone_made_a_touch_grass_app_with_a_vllm_you/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T12:33:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iy2t7c</id>
+    <title>Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990</title>
+    <updated>2025-02-25T19:01:07+00:00</updated>
+    <author>
+      <name>/u/sobe3249</name>
+      <uri>https://old.reddit.com/user/sobe3249</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"&gt; &lt;img alt="Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990" src="https://preview.redd.it/erki80wv1cle1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ada9d2780ffd78b32f14450c762f69f014324845" title="Framework's new Ryzen Max desktop with 128gb 256gb/s memory is $1990" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sobe3249"&gt; /u/sobe3249 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/erki80wv1cle1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy2t7c/frameworks_new_ryzen_max_desktop_with_128gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T19:01:07+00:00</published>
   </entry>
 </feed>
