@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-25T14:23:50+00:00</updated>
+  <updated>2025-02-25T14:37:08+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ixj21d</id>
-    <title>Designing a Reward Function for GRPO: Moving Beyond Single-Answer Tasks to Long-Form Responses</title>
-    <updated>2025-02-25T01:30:15+00:00</updated>
-    <author>
-      <name>/u/aadityaura</name>
-      <uri>https://old.reddit.com/user/aadityaura</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello folks! &lt;/p&gt; &lt;p&gt;I’ve been fine-tuning a small LLM with GRPO for tasks with single correct answers (e.g., math problems like Solve 3x + 5 = 20). Here, I used a straightforward reward function: &lt;/p&gt; &lt;p&gt;If the final answer matched the ground truth, 0 otherwise. This worked well, but now I’m stuck on generalizing this to open-ended, long-form questions in other domains, where there’s no single &amp;quot;correct&amp;quot; answer. &lt;/p&gt; &lt;p&gt;What are robust strategies for designing rewards in this case? &lt;/p&gt; &lt;ul&gt; &lt;li&gt;I’ve looked into metrics like BERTScore and LLM-as-a-judge (e.g., GPT-4 scoring coherence), but I’m unsure how to balance automated metrics with potential biases.&lt;br /&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Papers, tools, or lessons from your experiments would be hugely appreciated! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aadityaura"&gt; /u/aadityaura &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj21d/designing_a_reward_function_for_grpo_moving/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj21d/designing_a_reward_function_for_grpo_moving/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj21d/designing_a_reward_function_for_grpo_moving/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T01:30:15+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ixrtt8</id>
     <title>Transformer converted to RWKV: Qwerky-72B-Preview</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrtt8/transformer_converted_to_rwkv_qwerky72bpreview/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T10:20:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixu9v8</id>
+    <title>Vulkan backend on Kaggle</title>
+    <updated>2025-02-25T12:53:13+00:00</updated>
+    <author>
+      <name>/u/GrennKren</name>
+      <uri>https://old.reddit.com/user/GrennKren</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been using Kaggle Notebooks for a while and always wanted to try Vulkan as a backend for KoboldCPP. But every time I tried, it would only detect &lt;strong&gt;llvmpipe (CPU)&lt;/strong&gt;, even though the runtime was actually &lt;strong&gt;2x T4 GPUs&lt;/strong&gt;. Super frustrating.&lt;/p&gt; &lt;p&gt;The reason I want to use Vulkan is to ensure that the output remains exactly the same when regenerating multiple times with the same seed using a GGUF model. But when I used CUDA (Cublas), the seed setting did nothing. I also tried CLBlast, It worked but I had no clue how to make it use multi GPU.&lt;/p&gt; &lt;p&gt;Now, for &lt;strong&gt;Chat Completion&lt;/strong&gt;, I don’t really mind if the output changes. But for &lt;strong&gt;Text Completion&lt;/strong&gt;, like storytelling or roleplaying, inconsistent outputs just feel... off. That’s why I switched to &lt;strong&gt;Bitsandbytes on Transformers&lt;/strong&gt;. It worked great, outputs were consistent, even with CUDA.&lt;/p&gt; &lt;p&gt;But the downside: massive memory usage.&lt;br /&gt; I’m not an expert, just a regular user, so I can’t really explain the details. But running a 24B 4-bit Bitsandbytes model on 2x T4 GPU in Kaggle already hit OOM, even with a context length under 8K.&lt;/p&gt; &lt;p&gt;Then today, I randomly stumbled upon this GitHub issue: &lt;a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/16"&gt;https://github.com/NVIDIA/nvidia-container-toolkit/issues/16&lt;/a&gt;&lt;br /&gt; Turns out, installing the right NVIDIA driver finally made Vulkan recognize my 2x T4 GPU!&lt;/p&gt; &lt;p&gt;So I tested the same model, this time in &lt;strong&gt;Q4_K_L.GGUF&lt;/strong&gt; with Vulkan in KoboldCPP. And guess what?&lt;br /&gt; ✅ No OOM&lt;br /&gt; ✅ Low memory usage (no sudden spikes like in Bitsandbytes)&lt;br /&gt; ✅ 100% consistent output, even when regenerating text multiple times&lt;/p&gt; &lt;p&gt;Honestly, I think I’m sticking with GGUF + Vulkan from now on. Hopefully, I don’t run into any downsides&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrennKren"&gt; /u/GrennKren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T12:53:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixd0er</id>
@@ -73,19 +73,6 @@
     <published>2025-02-24T21:04:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixu9v8</id>
-    <title>Vulkan backend on Kaggle</title>
-    <updated>2025-02-25T12:53:13+00:00</updated>
-    <author>
-      <name>/u/GrennKren</name>
-      <uri>https://old.reddit.com/user/GrennKren</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been using Kaggle Notebooks for a while and always wanted to try Vulkan as a backend for KoboldCPP. But every time I tried, it would only detect &lt;strong&gt;llvmpipe (CPU)&lt;/strong&gt;, even though the runtime was actually &lt;strong&gt;2x T4 GPUs&lt;/strong&gt;. Super frustrating.&lt;/p&gt; &lt;p&gt;The reason I want to use Vulkan is to ensure that the output remains exactly the same when regenerating multiple times with the same seed using a GGUF model. But when I used CUDA (Cublas), the seed setting did nothing. I also tried CLBlast, It worked but I had no clue how to make it use multi GPU.&lt;/p&gt; &lt;p&gt;Now, for &lt;strong&gt;Chat Completion&lt;/strong&gt;, I don’t really mind if the output changes. But for &lt;strong&gt;Text Completion&lt;/strong&gt;, like storytelling or roleplaying, inconsistent outputs just feel... off. That’s why I switched to &lt;strong&gt;Bitsandbytes on Transformers&lt;/strong&gt;. It worked great, outputs were consistent, even with CUDA.&lt;/p&gt; &lt;p&gt;But the downside: massive memory usage.&lt;br /&gt; I’m not an expert, just a regular user, so I can’t really explain the details. But running a 24B 4-bit Bitsandbytes model on 2x T4 GPU in Kaggle already hit OOM, even with a context length under 8K.&lt;/p&gt; &lt;p&gt;Then today, I randomly stumbled upon this GitHub issue: &lt;a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/16"&gt;https://github.com/NVIDIA/nvidia-container-toolkit/issues/16&lt;/a&gt;&lt;br /&gt; Turns out, installing the right NVIDIA driver finally made Vulkan recognize my 2x T4 GPU!&lt;/p&gt; &lt;p&gt;So I tested the same model, this time in &lt;strong&gt;Q4_K_L.GGUF&lt;/strong&gt; with Vulkan in KoboldCPP. And guess what?&lt;br /&gt; ✅ No OOM&lt;br /&gt; ✅ Low memory usage (no sudden spikes like in Bitsandbytes)&lt;br /&gt; ✅ 100% consistent output, even when regenerating text multiple times&lt;/p&gt; &lt;p&gt;Honestly, I think I’m sticking with GGUF + Vulkan from now on. Hopefully, I don’t run into any downsides&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrennKren"&gt; /u/GrennKren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T12:53:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixuk6h</id>
     <title>I'm looking for resources to go from zero to hero for understanding LLM, transformers.</title>
     <updated>2025-02-25T13:07:56+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixckba/making_older_llms_llama_2_and_gemma_1_reason/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T20:48:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixwb1p</id>
+    <title>Simple text conversation AI on a Raspberry PI</title>
+    <updated>2025-02-25T14:31:03+00:00</updated>
+    <author>
+      <name>/u/malaksyan64</name>
+      <uri>https://old.reddit.com/user/malaksyan64</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all,&lt;/p&gt; &lt;p&gt;Me and a couple of friends from my university want to create a joke machine as a fun project. The idea will be that the user asks questions to the ai like a magic 8ball toy and the ai answers in a funny way that is relevant to the context of the question. For example if the user says Hi or What's up the AI shouldn't answer something totally irrelevant. The questions will be small and simple and so will be the answers. The hardware is a bit limited, a Raspberry PI 3B+ with 1GB of RAM, no Internet access and a fast 128GB SD Card. I've already built the hardware (a booth with screen and keyboard that houses the PI) and the software (Chat frontend in a Wayland Cage) but I have no idea when it comes to AI. Which AI do I choose for this very low RAM, how do I train it to understand and write in Greek text, how do I train it to Greek humour and memes?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/malaksyan64"&gt; /u/malaksyan64 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixwb1p/simple_text_conversation_ai_on_a_raspberry_pi/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixwb1p/simple_text_conversation_ai_on_a_raspberry_pi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixwb1p/simple_text_conversation_ai_on_a_raspberry_pi/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T14:31:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixfbzd</id>
@@ -199,19 +199,6 @@
     <published>2025-02-25T02:36:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixupja</id>
-    <title>Sonnet 3.7 near clean sweep of EQ-Bench benchmarks</title>
-    <updated>2025-02-25T13:15:35+00:00</updated>
-    <author>
-      <name>/u/_sqrkl</name>
-      <uri>https://old.reddit.com/user/_sqrkl</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt; &lt;img alt="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" src="https://a.thumbs.redditmedia.com/6fUZh9Gsn1Cvb5T20dNRVamWAjNPiP5h-5Kb76ovqf0.jpg" title="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixupja"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T13:15:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixefsf</id>
     <title>I created a new structured output method and it works really well</title>
     <updated>2025-02-24T22:04:49+00:00</updated>
@@ -251,17 +238,17 @@
     <published>2025-02-25T10:16:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixtug3</id>
-    <title>WAN Video model launched</title>
-    <updated>2025-02-25T12:29:36+00:00</updated>
+    <id>t3_1ixupja</id>
+    <title>Sonnet 3.7 near clean sweep of EQ-Bench benchmarks</title>
+    <updated>2025-02-25T13:15:35+00:00</updated>
     <author>
-      <name>/u/BreakIt-Boris</name>
-      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
+      <name>/u/_sqrkl</name>
+      <uri>https://old.reddit.com/user/_sqrkl</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Doesn't seem to be announced yet however the huggingface space is live and model weighs are released!!! Realise this isn't technically LLM however believe possibly of interest to many here.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-T2V-14B"&gt;https://huggingface.co/Wan-AI/Wan2.1-T2V-14B&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt; &lt;img alt="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" src="https://a.thumbs.redditmedia.com/6fUZh9Gsn1Cvb5T20dNRVamWAjNPiP5h-5Kb76ovqf0.jpg" title="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixupja"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T12:29:36+00:00</published>
+    <published>2025-02-25T13:15:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixp4du</id>
@@ -275,6 +262,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixp4du/qwqmaxpreview_on_livecodebench_where_it_performs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T07:05:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixtug3</id>
+    <title>WAN Video model launched</title>
+    <updated>2025-02-25T12:29:36+00:00</updated>
+    <author>
+      <name>/u/BreakIt-Boris</name>
+      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Doesn't seem to be announced yet however the huggingface space is live and model weighs are released!!! Realise this isn't technically LLM however believe possibly of interest to many here.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-T2V-14B"&gt;https://huggingface.co/Wan-AI/Wan2.1-T2V-14B&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T12:29:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixkg22</id>
