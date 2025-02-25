@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-25T14:06:04+00:00</updated>
+  <updated>2025-02-25T14:23:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iwqf3z</id>
-    <title>FlashMLA - Day 1 of OpenSourceWeek</title>
-    <updated>2025-02-24T01:37:17+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt; &lt;img alt="FlashMLA - Day 1 of OpenSourceWeek" src="https://preview.redd.it/to631nzvqzke1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3551b21c98cfb01ba242529b337443a5c85b4481" title="FlashMLA - Day 1 of OpenSourceWeek" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/deepseek-ai/FlashMLA"&gt;https://github.com/deepseek-ai/FlashMLA&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/to631nzvqzke1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T01:37:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ixj21d</id>
     <title>Designing a Reward Function for GRPO: Moving Beyond Single-Answer Tasks to Long-Form Responses</title>
@@ -34,30 +21,17 @@
     <published>2025-02-25T01:30:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixu9v8</id>
-    <title>Vulkan backend on Kaggle</title>
-    <updated>2025-02-25T12:53:13+00:00</updated>
+    <id>t3_1ixrtt8</id>
+    <title>Transformer converted to RWKV: Qwerky-72B-Preview</title>
+    <updated>2025-02-25T10:20:36+00:00</updated>
     <author>
-      <name>/u/GrennKren</name>
-      <uri>https://old.reddit.com/user/GrennKren</uri>
+      <name>/u/SoullessMonarch</name>
+      <uri>https://old.reddit.com/user/SoullessMonarch</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been using Kaggle Notebooks for a while and always wanted to try Vulkan as a backend for KoboldCPP. But every time I tried, it would only detect &lt;strong&gt;llvmpipe (CPU)&lt;/strong&gt;, even though the runtime was actually &lt;strong&gt;2x T4 GPUs&lt;/strong&gt;. Super frustrating.&lt;/p&gt; &lt;p&gt;The reason I want to use Vulkan is to ensure that the output remains exactly the same when regenerating multiple times with the same seed using a GGUF model. But when I used CUDA (Cublas), the seed setting did nothing. I also tried CLBlast, It worked but I had no clue how to make it use multi GPU.&lt;/p&gt; &lt;p&gt;Now, for &lt;strong&gt;Chat Completion&lt;/strong&gt;, I don’t really mind if the output changes. But for &lt;strong&gt;Text Completion&lt;/strong&gt;, like storytelling or roleplaying, inconsistent outputs just feel... off. That’s why I switched to &lt;strong&gt;Bitsandbytes on Transformers&lt;/strong&gt;. It worked great, outputs were consistent, even with CUDA.&lt;/p&gt; &lt;p&gt;But the downside: massive memory usage.&lt;br /&gt; I’m not an expert, just a regular user, so I can’t really explain the details. But running a 24B 4-bit Bitsandbytes model on 2x T4 GPU in Kaggle already hit OOM, even with a context length under 8K.&lt;/p&gt; &lt;p&gt;Then today, I randomly stumbled upon this GitHub issue: &lt;a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/16"&gt;https://github.com/NVIDIA/nvidia-container-toolkit/issues/16&lt;/a&gt;&lt;br /&gt; Turns out, installing the right NVIDIA driver finally made Vulkan recognize my 2x T4 GPU!&lt;/p&gt; &lt;p&gt;So I tested the same model, this time in &lt;strong&gt;Q4_K_L.GGUF&lt;/strong&gt; with Vulkan in KoboldCPP. And guess what?&lt;br /&gt; ✅ No OOM&lt;br /&gt; ✅ Low memory usage (no sudden spikes like in Bitsandbytes)&lt;br /&gt; ✅ 100% consistent output, even when regenerating text multiple times&lt;/p&gt; &lt;p&gt;Honestly, I think I’m sticking with GGUF + Vulkan from now on. Hopefully, I don’t run into any downsides&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrennKren"&gt; /u/GrennKren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Architecture:&lt;/h1&gt; &lt;p&gt;The model is a linear attention model, meaning it takes the same amount of time for each newly generated token. This is unlike softmax attention in regular Transformers, which has to look back at all previous tokens for each new token. Mamba is one such linear attention architecture.&lt;br /&gt; This model is based on the RWKV-7 architecture, also called Goose. On longer sequences its much faster than Transformers. However, as the state size is limited, at some point the model will start to forget (relevant) information.&lt;/p&gt; &lt;h1&gt;Model:&lt;/h1&gt; &lt;p&gt;The model is actually based on Qwen2.5-72b, a Transformer based model. However, softmax attention is removed and replaced with RWKV's linear attention. Thus converting it to a linear time model. After retraining for only a fraction of the original tokens, most of the original performance is retained. Trained on 16k ctx length, but RWKV still works beyond its training length. RWKV-7 0.4B model trained on 4k ctx passes NIAH up to 16k+ for example. (If you think it isn't long enough, there are repo's to train RWKV to handle longer contexts, but you might have to add v7 support first ;) )&lt;/p&gt; &lt;p&gt;Note: While other RWKV models are trained to support 100+ languages, this one supports only those from Qwen2.5, since this model inherits its tokenizer and its knowledge from Qwen.&lt;/p&gt; &lt;h1&gt;Significance?&lt;/h1&gt; &lt;p&gt;From HF page:&lt;br /&gt; &amp;quot;&amp;quot;&amp;quot;We are able to convert many previously trained softmax Attention-based models, such as Qwen and LLaMA, into an RWKV variant without &lt;strong&gt;requiring retraining from scratch&lt;/strong&gt;. This enables us to rapidly test and validate the significantly more efficient RWKV Linear attention mechanism at a larger scale with a much smaller budget, bypassing the need for training from scratch.&amp;quot;&amp;quot;&amp;quot;&lt;br /&gt; Faster and cheaper tests means they can iterate more and worry less about costs, so keep an eye out for further releases as I'm sure they'll release more.&lt;/p&gt; &lt;h1&gt;Links &amp;amp; Info:&lt;/h1&gt; &lt;p&gt;HF model: &lt;a href="https://huggingface.co/featherless-ai/Qwerky-72B-Preview"&gt;https://huggingface.co/featherless-ai/Qwerky-72B-Preview&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I heard there will be a paper later for how the conversion exactly works, but it's not out currently. Also the paper for RWKV 7 is currently being written. More info about RWKV (7): &lt;a href="https://github.com/BlinkDL/RWKV-LM"&gt;https://github.com/BlinkDL/RWKV-LM&lt;/a&gt;, &lt;a href="https://github.com/SmerkyG/RWKV_Explained"&gt;https://github.com/SmerkyG/RWKV_Explained&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Llamacpp RWKV-7 support is being worked on, but its waiting on another PR. This might take some time.&lt;/p&gt; &lt;p&gt;P.S. Yes this is like QRWKV6-32B, if you've seen that one, but with 72B and the next generation of the RWKV architecture.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SoullessMonarch"&gt; /u/SoullessMonarch &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrtt8/transformer_converted_to_rwkv_qwerky72bpreview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrtt8/transformer_converted_to_rwkv_qwerky72bpreview/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrtt8/transformer_converted_to_rwkv_qwerky72bpreview/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T12:53:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixuk6h</id>
-    <title>I'm looking for resources to go from zero to hero for understanding LLM, transformers.</title>
-    <updated>2025-02-25T13:07:56+00:00</updated>
-    <author>
-      <name>/u/Erdeem</name>
-      <uri>https://old.reddit.com/user/Erdeem</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Can you recommend some online courses or resources for leaning about LLMs, transformers, etc. I'd like to not only be able to keep up in a conversation about technical side of things, but develop enough knowledge to also contribute to projects on GitHub. &lt;/p&gt; &lt;p&gt;I know things are developing quickly and there are new acronyms for new tech being made every day, but I'd like to at least get the foundation down then move forward from there. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Erdeem"&gt; /u/Erdeem &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T13:07:56+00:00</published>
+    <published>2025-02-25T10:20:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixd0er</id>
@@ -99,17 +73,30 @@
     <published>2025-02-24T21:04:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixvlop</id>
-    <title>Do you think that Mistral worked to develop Saba due to fewer AI ACT restrictions and regulatory pressures? How does this apply emergent efforts in the EU?</title>
-    <updated>2025-02-25T13:58:30+00:00</updated>
+    <id>t3_1ixu9v8</id>
+    <title>Vulkan backend on Kaggle</title>
+    <updated>2025-02-25T12:53:13+00:00</updated>
     <author>
-      <name>/u/RMCPhoto</name>
-      <uri>https://old.reddit.com/user/RMCPhoto</uri>
+      <name>/u/GrennKren</name>
+      <uri>https://old.reddit.com/user/GrennKren</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Mistral AI’s recent release of &lt;strong&gt;Mistral Saba&lt;/strong&gt;—a 24B-parameter model specialized in Middle Eastern and South Asian languages.&lt;/p&gt; &lt;p&gt;Saba’s launch (&lt;a href="https://mistral.ai/news/mistral-saba"&gt;official announcement&lt;/a&gt;) follows years of vocal criticism from Mistral about the EU AI Act’s potential to stifle innovation. Cédric O, Mistral co-founder, warned that the EU AI Act could “kill” European startups by imposing burdensome compliance requirements on foundation models. The Act’s strictest rules target models trained with &amp;gt;10²⁵ FLOPs (e.g., GPT-4), but smaller models like Saba (24B params) fall under lighter transparency obligations and new oversight regarding copywritten material.&lt;/p&gt; &lt;p&gt;Saba can be deployed on-premises, potentially sidestepping EU data governance rules.&lt;/p&gt; &lt;p&gt;Independent evaluations (e.g., COMPL-AI) found Mistral’s earlier models non-compliant with EU AI Act cybersecurity and fairness standards.&lt;/p&gt; &lt;p&gt;By focusing on non-EU markets, could Mistral avoid similar scrutiny for Saba?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RMCPhoto"&gt; /u/RMCPhoto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been using Kaggle Notebooks for a while and always wanted to try Vulkan as a backend for KoboldCPP. But every time I tried, it would only detect &lt;strong&gt;llvmpipe (CPU)&lt;/strong&gt;, even though the runtime was actually &lt;strong&gt;2x T4 GPUs&lt;/strong&gt;. Super frustrating.&lt;/p&gt; &lt;p&gt;The reason I want to use Vulkan is to ensure that the output remains exactly the same when regenerating multiple times with the same seed using a GGUF model. But when I used CUDA (Cublas), the seed setting did nothing. I also tried CLBlast, It worked but I had no clue how to make it use multi GPU.&lt;/p&gt; &lt;p&gt;Now, for &lt;strong&gt;Chat Completion&lt;/strong&gt;, I don’t really mind if the output changes. But for &lt;strong&gt;Text Completion&lt;/strong&gt;, like storytelling or roleplaying, inconsistent outputs just feel... off. That’s why I switched to &lt;strong&gt;Bitsandbytes on Transformers&lt;/strong&gt;. It worked great, outputs were consistent, even with CUDA.&lt;/p&gt; &lt;p&gt;But the downside: massive memory usage.&lt;br /&gt; I’m not an expert, just a regular user, so I can’t really explain the details. But running a 24B 4-bit Bitsandbytes model on 2x T4 GPU in Kaggle already hit OOM, even with a context length under 8K.&lt;/p&gt; &lt;p&gt;Then today, I randomly stumbled upon this GitHub issue: &lt;a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/16"&gt;https://github.com/NVIDIA/nvidia-container-toolkit/issues/16&lt;/a&gt;&lt;br /&gt; Turns out, installing the right NVIDIA driver finally made Vulkan recognize my 2x T4 GPU!&lt;/p&gt; &lt;p&gt;So I tested the same model, this time in &lt;strong&gt;Q4_K_L.GGUF&lt;/strong&gt; with Vulkan in KoboldCPP. And guess what?&lt;br /&gt; ✅ No OOM&lt;br /&gt; ✅ Low memory usage (no sudden spikes like in Bitsandbytes)&lt;br /&gt; ✅ 100% consistent output, even when regenerating text multiple times&lt;/p&gt; &lt;p&gt;Honestly, I think I’m sticking with GGUF + Vulkan from now on. Hopefully, I don’t run into any downsides&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrennKren"&gt; /u/GrennKren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixu9v8/vulkan_backend_on_kaggle/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T13:58:30+00:00</published>
+    <published>2025-02-25T12:53:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixuk6h</id>
+    <title>I'm looking for resources to go from zero to hero for understanding LLM, transformers.</title>
+    <updated>2025-02-25T13:07:56+00:00</updated>
+    <author>
+      <name>/u/Erdeem</name>
+      <uri>https://old.reddit.com/user/Erdeem</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Can you recommend some online courses or resources for leaning about LLMs, transformers, etc. I'd like to not only be able to keep up in a conversation about technical side of things, but develop enough knowledge to also contribute to projects on GitHub. &lt;/p&gt; &lt;p&gt;I know things are developing quickly and there are new acronyms for new tech being made every day, but I'd like to at least get the foundation down then move forward from there. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Erdeem"&gt; /u/Erdeem &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixuk6h/im_looking_for_resources_to_go_from_zero_to_hero/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T13:07:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixckba</id>
@@ -164,6 +151,19 @@
     <published>2025-02-24T19:30:38+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ixvlop</id>
+    <title>Do you think that Mistral worked to develop Saba due to fewer AI ACT restrictions and regulatory pressures? How does this apply emergent efforts in the EU?</title>
+    <updated>2025-02-25T13:58:30+00:00</updated>
+    <author>
+      <name>/u/RMCPhoto</name>
+      <uri>https://old.reddit.com/user/RMCPhoto</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Mistral AI’s recent release of &lt;strong&gt;Mistral Saba&lt;/strong&gt;—a 24B-parameter model specialized in Middle Eastern and South Asian languages.&lt;/p&gt; &lt;p&gt;Saba’s launch (&lt;a href="https://mistral.ai/news/mistral-saba"&gt;official announcement&lt;/a&gt;) follows years of vocal criticism from Mistral about the EU AI Act’s potential to stifle innovation. Cédric O, Mistral co-founder, warned that the EU AI Act could “kill” European startups by imposing burdensome compliance requirements on foundation models. The Act’s strictest rules target models trained with &amp;gt;10²⁵ FLOPs (e.g., GPT-4), but smaller models like Saba (24B params) fall under lighter transparency obligations and new oversight regarding copywritten material.&lt;/p&gt; &lt;p&gt;Saba can be deployed on-premises, potentially sidestepping EU data governance rules. &lt;/p&gt; &lt;p&gt;Independent evaluations (e.g., COMPL-AI) found Mistral’s earlier models non-compliant with EU AI Act cybersecurity and fairness standards.&lt;/p&gt; &lt;p&gt;By focusing on non-EU markets and training data, could Mistral avoid similar scrutiny for Saba?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RMCPhoto"&gt; /u/RMCPhoto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixvlop/do_you_think_that_mistral_worked_to_develop_saba/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T13:58:30+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ixl2w3</id>
     <title>Looks like Apple is not staying with Local AI in the future - they are committed to spend $500 billion (same as Stargate) on an AI farm in Texas</title>
     <updated>2025-02-25T03:09:29+00:00</updated>
@@ -186,19 +186,6 @@
     <published>2025-02-24T21:05:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixupja</id>
-    <title>Sonnet 3.7 near clean sweep of EQ-Bench benchmarks</title>
-    <updated>2025-02-25T13:15:35+00:00</updated>
-    <author>
-      <name>/u/_sqrkl</name>
-      <uri>https://old.reddit.com/user/_sqrkl</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt; &lt;img alt="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" src="https://a.thumbs.redditmedia.com/6fUZh9Gsn1Cvb5T20dNRVamWAjNPiP5h-5Kb76ovqf0.jpg" title="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixupja"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T13:15:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixkfcb</id>
     <title>DeepSeek 2nd OSS package - DeepEP - Expert parallel FP8 MOE kernels</title>
     <updated>2025-02-25T02:36:58+00:00</updated>
@@ -212,30 +199,17 @@
     <published>2025-02-25T02:36:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixtug3</id>
-    <title>WAN Video model launched</title>
-    <updated>2025-02-25T12:29:36+00:00</updated>
+    <id>t3_1ixupja</id>
+    <title>Sonnet 3.7 near clean sweep of EQ-Bench benchmarks</title>
+    <updated>2025-02-25T13:15:35+00:00</updated>
     <author>
-      <name>/u/BreakIt-Boris</name>
-      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
+      <name>/u/_sqrkl</name>
+      <uri>https://old.reddit.com/user/_sqrkl</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Doesn't seem to be announced yet however the huggingface space is live and model weighs are released!!! Realise this isn't technically LLM however believe possibly of interest to many here.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-T2V-14B"&gt;https://huggingface.co/Wan-AI/Wan2.1-T2V-14B&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt; &lt;img alt="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" src="https://a.thumbs.redditmedia.com/6fUZh9Gsn1Cvb5T20dNRVamWAjNPiP5h-5Kb76ovqf0.jpg" title="Sonnet 3.7 near clean sweep of EQ-Bench benchmarks" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_sqrkl"&gt; /u/_sqrkl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixupja"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T12:29:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixrrqb</id>
-    <title>Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh.</title>
-    <updated>2025-02-25T10:16:35+00:00</updated>
-    <author>
-      <name>/u/ChopSticksPlease</name>
-      <uri>https://old.reddit.com/user/ChopSticksPlease</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"&gt; &lt;img alt="Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh." src="https://b.thumbs.redditmedia.com/8WCwxe9biwOo4FpMYhstKuEdg_TspXpq-0hhQ6qPLXs.jpg" title="Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ChopSticksPlease"&gt; /u/ChopSticksPlease &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixrrqb"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T10:16:35+00:00</published>
+    <published>2025-02-25T13:15:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixefsf</id>
@@ -262,6 +236,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj4bp/new_livebench_results_just_released_sonnet_37/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T01:33:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixrrqb</id>
+    <title>Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh.</title>
+    <updated>2025-02-25T10:16:35+00:00</updated>
+    <author>
+      <name>/u/ChopSticksPlease</name>
+      <uri>https://old.reddit.com/user/ChopSticksPlease</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"&gt; &lt;img alt="Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh." src="https://b.thumbs.redditmedia.com/8WCwxe9biwOo4FpMYhstKuEdg_TspXpq-0hhQ6qPLXs.jpg" title="Joined the 48GB Vram Dual Hairdryer club. Frankly a bit of disappointment, deepseek-r1:70b works fine, qwen2.5:72b seems to be too big still. The 32b models apparently provide almost the same code quality and for general questions the online big LLMs are better. Meh." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ChopSticksPlease"&gt; /u/ChopSticksPlease &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ixrrqb"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixrrqb/joined_the_48gb_vram_dual_hairdryer_club_frankly/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T10:16:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixtug3</id>
+    <title>WAN Video model launched</title>
+    <updated>2025-02-25T12:29:36+00:00</updated>
+    <author>
+      <name>/u/BreakIt-Boris</name>
+      <uri>https://old.reddit.com/user/BreakIt-Boris</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Doesn't seem to be announced yet however the huggingface space is live and model weighs are released!!! Realise this isn't technically LLM however believe possibly of interest to many here.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-T2V-14B"&gt;https://huggingface.co/Wan-AI/Wan2.1-T2V-14B&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BreakIt-Boris"&gt; /u/BreakIt-Boris &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixtug3/wan_video_model_launched/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T12:29:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixp4du</id>
