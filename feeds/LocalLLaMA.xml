@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-25T01:33:41+00:00</updated>
+  <updated>2025-02-25T02:12:44+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ix11go</id>
-    <title>aspen - Open-source voice assistant you can call, at only $0.01025/min!</title>
-    <updated>2025-02-24T12:37:28+00:00</updated>
-    <author>
-      <name>/u/thooton</name>
-      <uri>https://old.reddit.com/user/thooton</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt; &lt;img alt="aspen - Open-source voice assistant you can call, at only $0.01025/min!" src="https://external-preview.redd.it/Y8cU497M8VmMsSvykiiACmZpJ9cu5NkYzryYit_2lHY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8b00ce71267ae00f4c36a6263a4dd0cc5d7b9aee" title="aspen - Open-source voice assistant you can call, at only $0.01025/min!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://reddit.com/link/1ix11go/video/ohkvv8g9z2le1/player"&gt;https://reddit.com/link/1ix11go/video/ohkvv8g9z2le1/player&lt;/a&gt;&lt;/p&gt; &lt;p&gt;hi everyone, hope you're all doing great :) I thought I'd share a little project that I've been working on for the past few days. It's a voice assistant that uses Twilio's API to be accessible through a real phone number, so you can call it just like a person!&lt;/p&gt; &lt;p&gt;Using Groq's STT free tier and Google's TTS free tier, the only costs come from Twilio and Anthropic and add up to about $0.01025/min, which is a lot cheaper than the conversational agents from ElevenLabs or PlayAI which approach $0.10/min or $0.18/min respectively.&lt;/p&gt; &lt;p&gt;I wrote the code to be as modular as possible so it should be easy to modify it to use your own local LLM or whatever you like! all PRs are welcome :)&lt;/p&gt; &lt;p&gt;have an awesome day!!!&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/thooton/aspen"&gt;https://github.com/thooton/aspen&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thooton"&gt; /u/thooton &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix11go/aspen_opensource_voice_assistant_you_can_call_at/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T12:37:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixflw6</id>
-    <title>Model Tips &amp; Tricks - Instruct Formatting</title>
-    <updated>2025-02-24T22:53:28+00:00</updated>
-    <author>
-      <name>/u/ParasiticRogue</name>
-      <uri>https://old.reddit.com/user/ParasiticRogue</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Greetings! I've decided to share some insight that I've accumulated over the few years I've been toying around with LLMs, and the intricacies of how to potentially make them run better for creative writing or roleplay as the focus, but it might also help with technical jobs too.&lt;/p&gt; &lt;p&gt;This is the first part of my general musings on what I've found, focusing more on the technical aspects, with more potentially coming soon in regards to model merging and system prompting, along with character and story prompting later, if people found this useful. These might not be applicable with every model or user case, nor would it guarantee the best possible response with every single swipe, but it should help increase the odds of getting better mileage out of your model and experience, even if slightly, and help you avoid some bad or misled advice, which I personally have had to put up with. Some of this will be retreading old ground if you are already privy, but I will try to include less obvious stuff as well. Remember, I still consider myself a novice in some areas, and am always open to improvement.&lt;/p&gt; &lt;p&gt;### What is the Instruct Template?&lt;/p&gt; &lt;p&gt;The Instruct Template/Format is probably the most important when it comes to getting a model to work properly, as it is what encloses the training data with token that were used for the model, and your chat with said model. Some of them are used in a more general sense and are not brand specific, such as ChatML or Alpaca, while others are stick to said brand, like Llama3 Instruct or Mistral Instruct. However not all models that are brand specific with their formatting will be trained with their own personal template.&lt;/p&gt; &lt;p&gt;Its important to find out what format/template a model uses before booting it up, and you can usually check to see which it is on the model page. If a format isn't directly listed on said page, then there is ways to check internally with the local files. Each model has a tokenizer_config file, and sometimes even a special_tokens file, inside the main folder. As an example of what to look for, If you see something like a Mistral brand model that has im_start/im_end inside those files, then chances are that the person who finetuned it used ChatML tokens in their training data. Familiarizing yourself with the popular tokens used in training will help you navigate models better internally, especially if a creator forgets to post a readme on how it's suppose to function.&lt;/p&gt; &lt;p&gt;### Is there any reason not to use the prescribed format/template?&lt;/p&gt; &lt;p&gt;Sticking to the prescribed format will give your model better odds of getting things correct, or even better prose quality. But there are *some* small benefits when straying from the model's original format, such as supposedly being less censored. However the trade-off when it comes to maximizing a model's intelligence is never really worth it, and there are better ways to get uncensored responses with better prompting, or even tricking the model by editing their response slightly and continuing from there.&lt;/p&gt; &lt;p&gt;From what I've found when testing models, if someone finetunes a model over the company's official Instruct focused model, instead of a base model, and doesn't use the underlining format that it was made with (such as ChatML over Mistral's 22B model as an example) then performance dips will kick in, giving less optimal responses then if it was instead using a unified format.&lt;/p&gt; &lt;p&gt;This does not factor other occurrences of poor performance or context degradation when choosing to train on top of official Instruct models which may occur, but if it uses the correct format, and/or is trained with DPO or one of its variance (this one is more anecdotal, but DPO/ORPO/Whatever-O seems moreto be a more stable method when it comes to training on top of per-existing Instruct models) then the model will perform better overall.&lt;/p&gt; &lt;p&gt;### What about models that list multiple formats/templates?&lt;/p&gt; &lt;p&gt;This one is more due to model merging or choosing to forgo an Instruct model's format in training, although some people will choose to train their models like this, for whatever reason. In such an instance, you kinda just have to pick one and see what works best, but the merging of formats, and possibly even models, might provide interesting results, but only if its agreeable with the clutter on how you prompt it yourself. What do I mean by this? Well, perhaps its better if I give you a couple anecdotes on how this might work in practice...&lt;/p&gt; &lt;p&gt;Nous-Capybara-limarpv3-34B is an older model at this point, but it has a unique feature that many models don't seem to implement; a Message Length Modifier. By adding small/medium/long at the end of the Assistant's Message Prefix, it will allow you to control how long the Bot's response is, which can be useful in curbing rambling, or enforcing more detail. Since Capybara, the underling model, uses the Vicuna format, its prompt typically looks like this:&lt;/p&gt; &lt;p&gt;System:&lt;/p&gt; &lt;p&gt;User:&lt;/p&gt; &lt;p&gt;Assistant:&lt;/p&gt; &lt;p&gt;Meanwhile, the limarpv3 lora, which has the Message Length Modifier, was used on top of Capybara and chose to use Alpaca as its format:&lt;/p&gt; &lt;p&gt;### Instruction:&lt;/p&gt; &lt;p&gt;### Input:&lt;/p&gt; &lt;p&gt;### Response: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;Seems to be quite different, right? Well, it is, but we can also combine these two formats in a meaningful way and actually see tangible results. When using Nous-Capybara-limarpv3-34B with its underling Vicuna format and the Message Length Modifier together, the results don't come together, and you have basically 0 control on its length:&lt;/p&gt; &lt;p&gt;System:&lt;/p&gt; &lt;p&gt;User:&lt;/p&gt; &lt;p&gt;Assistant: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;The above example with Vicuna doesn't seem to work. However, by adding triple hashes to it, the modifier actually will take effect, making the messages shorter or longer on average depending on how you prompt it.&lt;/p&gt; &lt;p&gt;### System:&lt;/p&gt; &lt;p&gt;### User:&lt;/p&gt; &lt;p&gt;### Assistant: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;This is an example of where both formats can work together in a meaningful way.&lt;/p&gt; &lt;p&gt;Another example is merging a Vicuna model with a ChatML one and incorporating the stop tokens from it, like with RP-Stew-v4. For reference, ChatML looks like this:&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;system&lt;/p&gt; &lt;p&gt;System prompt&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;user&lt;/p&gt; &lt;p&gt;User prompt&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;assistant&lt;/p&gt; &lt;p&gt;Bot response&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;One thing to note is that, unlike Alpaca, the ChatML template has System/User/Assistant inside it, making it vaguely similar to Vicuna. Vicuna itself doesn't have stop tokens, but if we add them like so:&lt;/p&gt; &lt;p&gt;SYSTEM: system prompt&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;USER: user prompt&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;ASSISTANT: assistant output&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;Then it will actually help prevent RP-Stew from rambling or repeating itself within the same message, and also lowering the chances of your bot speaking as the user. When merging models I find it best to keep to one format in order to keep its performance high, but there can be rare cases where mixing them could work.&lt;/p&gt; &lt;p&gt;### Are stop tokens necessary?&lt;/p&gt; &lt;p&gt;In my opinion, models work best when it has stop tokens built into them. Like with RP-Stew, the decrease in repetitive message length was about 25~33% on average, give or take from what I remember, when these &amp;lt;|end|&amp;gt; tokens are added. That's one case where the usefulness is obvious. Formats that use stop tokens tend to be more stable on average when it comes to creative back-and-forths with the bot, since it gives it a structure that's easier for it to understand when to end things, and inform better on who is talking.&lt;/p&gt; &lt;p&gt;If you like your models to be unhinged and ramble on forever (aka; bad) then by all means, experiment by not using them. It might surprise you if you tweak it. But as like before, the intelligence hit is usually never worth it. Remember to make separate instances when experimenting with prompts, or be sure to put your tokens back in their original place. Otherwise you might end up with something dumb, like putting the stop token before the User in the User prefix.&lt;/p&gt; &lt;p&gt;I will leave that here for now. Next time I might talk about how to merge models, or creative prompting, idk. Let me know if you found this useful and if there is anything you'd like to see next, or if there is anything you'd like expanded on.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParasiticRogue"&gt; /u/ParasiticRogue &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T22:53:28+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ixen3e</id>
     <title>When do we get o3-mini level model locally from Sam A?</title>
@@ -125,19 +99,6 @@
     <published>2025-02-24T12:55:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixf88r</id>
-    <title>New QwQ-max is great but not SOTA on livecodebench</title>
-    <updated>2025-02-24T22:37:29+00:00</updated>
-    <author>
-      <name>/u/Charuru</name>
-      <uri>https://old.reddit.com/user/Charuru</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://livecodebench.github.io/leaderboard.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T22:37:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwtl7f</id>
     <title>Most people are worried about LLM's executing code. Then theres me...... 😂</title>
     <updated>2025-02-24T04:24:24+00:00</updated>
@@ -149,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwtl7f/most_people_are_worried_about_llms_executing_code/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T04:24:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixf88r</id>
+    <title>New QwQ-max is great but not SOTA on livecodebench</title>
+    <updated>2025-02-24T22:37:29+00:00</updated>
+    <author>
+      <name>/u/Charuru</name>
+      <uri>https://old.reddit.com/user/Charuru</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://livecodebench.github.io/leaderboard.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T22:37:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1ix5np0</id>
@@ -164,6 +138,19 @@
     <published>2025-02-24T16:10:21+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ixjmqs</id>
+    <title>Kindle Store banning all downloads in 2 days + Backup and DRM removal instructions</title>
+    <updated>2025-02-25T01:58:24+00:00</updated>
+    <author>
+      <name>/u/Aaaaaaaaaeeeee</name>
+      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Kindle Store will ban downloading and removal of DRM of &lt;strong&gt;all&lt;/strong&gt; books in less than 2 days. If there are kindle unlimited or kindle exclusive books you want for RAG or fine-tuning purposes, then you should backup your library in a DRM-free manner. &lt;/p&gt; &lt;p&gt;Here's a way on Windows to preserve your book purchases. &lt;/p&gt; &lt;p&gt;Download: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://kindle-for-pc.en.uptodown.com/windows/download/1016990853"&gt;https://kindle-for-pc.en.uptodown.com/windows/download/1016990853&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h3&gt;Download calibre, then install these plugins (Click on preferences &amp;gt; Plugins &amp;gt; Load Plugin from file):&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/noDRM/DeDRM_tools/releases/download/v10.0.9/DeDRM_tools_10.0.9.zip"&gt;https://github.com/noDRM/DeDRM_tools/releases/download/v10.0.9/DeDRM_tools_10.0.9.zip&lt;/a&gt; (this needs to be unzipped, and select only the the DeDRM_plugin.zip) &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;a href="https://www.mobileread.com/forums/attachment.php?s=ce3565e82f26f1a85b82e6dba7f56850&amp;amp;attachmentid=213770&amp;amp;d=1740055683"&gt;https://www.mobileread.com/forums/attachment.php?s=ce3565e82f26f1a85b82e6dba7f56850&amp;amp;attachmentid=213770&amp;amp;d=1740055683&lt;/a&gt; &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Open kindle pc, sign in, and click: Tools &amp;gt; Options &amp;gt; Untick Automatically install updates&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Download your books from 3 dots menu beside the book. They are saved in Documents\My Kindle Content, as DRM protected azw files&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;open calibre, then click add books &amp;gt; add from folders and subfolders, and pick Documents\My Kindle Content&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Once added, test converting them to epub to ensure they are DRM-free by selecting them all and clicking convert ebooks &amp;gt; OK&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This information is from this video, which is working right now. - &lt;a href="https://www.youtube.com/watch?v=TIjvNB2Ojk0"&gt;https://www.youtube.com/watch?v=TIjvNB2Ojk0&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixjmqs/kindle_store_banning_all_downloads_in_2_days/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixjmqs/kindle_store_banning_all_downloads_in_2_days/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixjmqs/kindle_store_banning_all_downloads_in_2_days/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T01:58:24+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ix0d4z</id>
     <title>Polish Ministry of Digital Affairs shared PLLuM model family on HF</title>
     <updated>2025-02-24T11:57:56+00:00</updated>
@@ -177,19 +164,6 @@
     <published>2025-02-24T11:57:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixd0er</id>
-    <title>QwQ Max Preview Published</title>
-    <updated>2025-02-24T21:06:52+00:00</updated>
-    <author>
-      <name>/u/ortegaalfredo</name>
-      <uri>https://old.reddit.com/user/ortegaalfredo</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ortegaalfredo"&gt; /u/ortegaalfredo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qwenlm.github.io/blog/qwq-max-preview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T21:06:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwvvmy</id>
     <title>Qwen is releasing something tonight!</title>
     <updated>2025-02-24T06:46:53+00:00</updated>
@@ -201,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwvvmy/qwen_is_releasing_something_tonight/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T06:46:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixd0er</id>
+    <title>QwQ Max Preview Published</title>
+    <updated>2025-02-24T21:06:52+00:00</updated>
+    <author>
+      <name>/u/ortegaalfredo</name>
+      <uri>https://old.reddit.com/user/ortegaalfredo</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ortegaalfredo"&gt; /u/ortegaalfredo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qwenlm.github.io/blog/qwq-max-preview/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixd0er/qwq_max_preview_published/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T21:06:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwqf3z</id>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T22:41:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixj4bp</id>
+    <title>New LiveBench results just released. Sonnet 3.7 reasoning now tops the charts and Sonnet 3.7 is also top non-reasoning model</title>
+    <updated>2025-02-25T01:33:13+00:00</updated>
+    <author>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj4bp/new_livebench_results_just_released_sonnet_37/"&gt; &lt;img alt="New LiveBench results just released. Sonnet 3.7 reasoning now tops the charts and Sonnet 3.7 is also top non-reasoning model" src="https://preview.redd.it/ys8y5ndtu6le1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a842efc09f827b67552f624088ddf764f73b1a5" title="New LiveBench results just released. Sonnet 3.7 reasoning now tops the charts and Sonnet 3.7 is also top non-reasoning model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ys8y5ndtu6le1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj4bp/new_livebench_results_just_released_sonnet_37/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixj4bp/new_livebench_results_just_released_sonnet_37/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T01:33:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixamd9</id>
