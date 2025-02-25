@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-24T23:48:34+00:00</updated>
+  <updated>2025-02-25T00:25:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ixf88r</id>
-    <title>New QwQ-max is great but not SOTA on livecodebench</title>
-    <updated>2025-02-24T22:37:29+00:00</updated>
-    <author>
-      <name>/u/Charuru</name>
-      <uri>https://old.reddit.com/user/Charuru</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://livecodebench.github.io/leaderboard.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixf88r/new_qwqmax_is_great_but_not_sota_on_livecodebench/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T22:37:29+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ix46wr</id>
     <title>R1 for Spatial Reasoning</title>
@@ -60,17 +47,17 @@
     <published>2025-02-24T12:37:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ix6bjw</id>
-    <title>Is there any image models coming out?</title>
-    <updated>2025-02-24T16:37:38+00:00</updated>
+    <id>t3_1ixflw6</id>
+    <title>Model Tips &amp; Tricks - Instruct Formatting</title>
+    <updated>2025-02-24T22:53:28+00:00</updated>
     <author>
-      <name>/u/hoja_nasredin</name>
-      <uri>https://old.reddit.com/user/hoja_nasredin</uri>
+      <name>/u/ParasiticRogue</name>
+      <uri>https://old.reddit.com/user/ParasiticRogue</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We were extremely spoiled this summer with Flux and SD3.1 coming out. But was anything else have been released since? Flux cannot be trained in a serious way apparently since it is distilled, and SD3 is hated by the community (or it might have some other issues I'm not aware). &lt;/p&gt; &lt;p&gt;What is happening with the image models right now? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoja_nasredin"&gt; /u/hoja_nasredin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Greetings! I've decided to share some insight that I've accumulated over the few years I've been toying around with LLMs, and the intricacies of how to potentially make them run better for creative writing or roleplay as the focus, but it might also help with technical jobs too.&lt;/p&gt; &lt;p&gt;This is the first part of my general musings on what I've found, focusing more on the technical aspects, with more potentially coming soon in regards to model merging and system prompting, along with character and story prompting later, if people found this useful. These might not be applicable with every model or user case, nor would it guarantee the best possible response with every single swipe, but it should help increase the odds of getting better mileage out of your model and experience, even if slightly, and help you avoid some bad or misled advice, which I personally have had to put up with. Some of this will be retreading old ground if you are already privy, but I will try to include less obvious stuff as well. Remember, I still consider myself a novice in some areas, and am always open to improvement.&lt;/p&gt; &lt;p&gt;### What is the Instruct Template?&lt;/p&gt; &lt;p&gt;The Instruct Template/Format is probably the most important when it comes to getting a model to work properly, as it is what encloses the training data with token that were used for the model, and your chat with said model. Some of them are used in a more general sense and are not brand specific, such as ChatML or Alpaca, while others are stick to said brand, like Llama3 Instruct or Mistral Instruct. However not all models that are brand specific with their formatting will be trained with their own personal template.&lt;/p&gt; &lt;p&gt;Its important to find out what format/template a model uses before booting it up, and you can usually check to see which it is on the model page. If a format isn't directly listed on said page, then there is ways to check internally with the local files. Each model has a tokenizer_config file, and sometimes even a special_tokens file, inside the main folder. As an example of what to look for, If you see something like a Mistral brand model that has im_start/im_end inside those files, then chances are that the person who finetuned it used ChatML tokens in their training data. Familiarizing yourself with the popular tokens used in training will help you navigate models better internally, especially if a creator forgets to post a readme on how it's suppose to function.&lt;/p&gt; &lt;p&gt;### Is there any reason not to use the prescribed format/template?&lt;/p&gt; &lt;p&gt;Sticking to the prescribed format will give your model better odds of getting things correct, or even better prose quality. But there are *some* small benefits when straying from the model's original format, such as supposedly being less censored. However the trade-off when it comes to maximizing a model's intelligence is never really worth it, and there are better ways to get uncensored responses with better prompting, or even tricking the model by editing their response slightly and continuing from there.&lt;/p&gt; &lt;p&gt;From what I've found when testing models, if someone finetunes a model over the company's official Instruct focused model, instead of a base model, and doesn't use the underlining format that it was made with (such as ChatML over Mistral's 22B model as an example) then performance dips will kick in, giving less optimal responses then if it was instead using a unified format.&lt;/p&gt; &lt;p&gt;This does not factor other occurrences of poor performance or context degradation when choosing to train on top of official Instruct models which may occur, but if it uses the correct format, and/or is trained with DPO or one of its variance (this one is more anecdotal, but DPO/ORPO/Whatever-O seems moreto be a more stable method when it comes to training on top of per-existing Instruct models) then the model will perform better overall.&lt;/p&gt; &lt;p&gt;### What about models that list multiple formats/templates?&lt;/p&gt; &lt;p&gt;This one is more due to model merging or choosing to forgo an Instruct model's format in training, although some people will choose to train their models like this, for whatever reason. In such an instance, you kinda just have to pick one and see what works best, but the merging of formats, and possibly even models, might provide interesting results, but only if its agreeable with the clutter on how you prompt it yourself. What do I mean by this? Well, perhaps its better if I give you a couple anecdotes on how this might work in practice...&lt;/p&gt; &lt;p&gt;Nous-Capybara-limarpv3-34B is an older model at this point, but it has a unique feature that many models don't seem to implement; a Message Length Modifier. By adding small/medium/long at the end of the Assistant's Message Prefix, it will allow you to control how long the Bot's response is, which can be useful in curbing rambling, or enforcing more detail. Since Capybara, the underling model, uses the Vicuna format, its prompt typically looks like this:&lt;/p&gt; &lt;p&gt;System:&lt;/p&gt; &lt;p&gt;User:&lt;/p&gt; &lt;p&gt;Assistant:&lt;/p&gt; &lt;p&gt;Meanwhile, the limarpv3 lora, which has the Message Length Modifier, was used on top of Capybara and chose to use Alpaca as its format:&lt;/p&gt; &lt;p&gt;### Instruction:&lt;/p&gt; &lt;p&gt;### Input:&lt;/p&gt; &lt;p&gt;### Response: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;Seems to be quite different, right? Well, it is, but we can also combine these two formats in a meaningful way and actually see tangible results. When using Nous-Capybara-limarpv3-34B with its underling Vicuna format and the Message Length Modifier together, the results don't come together, and you have basically 0 control on its length:&lt;/p&gt; &lt;p&gt;System:&lt;/p&gt; &lt;p&gt;User:&lt;/p&gt; &lt;p&gt;Assistant: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;The above example with Vicuna doesn't seem to work. However, by adding triple hashes to it, the modifier actually will take effect, making the messages shorter or longer on average depending on how you prompt it.&lt;/p&gt; &lt;p&gt;### System:&lt;/p&gt; &lt;p&gt;### User:&lt;/p&gt; &lt;p&gt;### Assistant: (length = short/medium/long/etc)&lt;/p&gt; &lt;p&gt;This is an example of where both formats can work together in a meaningful way.&lt;/p&gt; &lt;p&gt;Another example is merging a Vicuna model with a ChatML one and incorporating the stop tokens from it, like with RP-Stew-v4. For reference, ChatML looks like this:&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;system&lt;/p&gt; &lt;p&gt;System prompt&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;user&lt;/p&gt; &lt;p&gt;User prompt&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;&amp;lt;|im_start|&amp;gt;assistant&lt;/p&gt; &lt;p&gt;Bot response&amp;lt;|im_end|&amp;gt;&lt;/p&gt; &lt;p&gt;One thing to note is that, unlike Alpaca, the ChatML template has System/User/Assistant inside it, making it vaguely similar to Vicuna. Vicuna itself doesn't have stop tokens, but if we add them like so:&lt;/p&gt; &lt;p&gt;SYSTEM: system prompt&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;USER: user prompt&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;ASSISTANT: assistant output&amp;lt;|end|&amp;gt;&lt;/p&gt; &lt;p&gt;Then it will actually help prevent RP-Stew from rambling or repeating itself within the same message, and also lowering the chances of your bot speaking as the user. When merging models I find it best to keep to one format in order to keep its performance high, but there can be rare cases where mixing them could work.&lt;/p&gt; &lt;p&gt;### Are stop tokens necessary?&lt;/p&gt; &lt;p&gt;In my opinion, models work best when it has stop tokens built into them. Like with RP-Stew, the decrease in repetitive message length was about 25~33% on average, give or take from what I remember, when these &amp;lt;|end|&amp;gt; tokens are added. That's one case where the usefulness is obvious. Formats that use stop tokens tend to be more stable on average when it comes to creative back-and-forths with the bot, since it gives it a structure that's easier for it to understand when to end things, and inform better on who is talking.&lt;/p&gt; &lt;p&gt;If you like your models to be unhinged and ramble on forever (aka; bad) then by all means, experiment by not using them. It might surprise you if you tweak it. But as like before, the intelligence hit is usually never worth it. Remember to make separate instances when experimenting with prompts, or be sure to put your tokens back in their original place. Otherwise you might end up with something dumb, like putting the stop token before the User in the User prefix.&lt;/p&gt; &lt;p&gt;I will leave that here for now. Next time I might talk about how to merge models, or creative prompting, idk. Let me know if you found this useful and if there is anything you'd like to see next, or if there is anything you'd like expanded on.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParasiticRogue"&gt; /u/ParasiticRogue &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixflw6/model_tips_tricks_instruct_formatting/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T16:37:38+00:00</published>
+    <published>2025-02-24T22:53:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixcaur</id>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix5vgm/tip_open_webui_overview_mode/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T16:19:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ix6bjw</id>
+    <title>Is there any image models coming out?</title>
+    <updated>2025-02-24T16:37:38+00:00</updated>
+    <author>
+      <name>/u/hoja_nasredin</name>
+      <uri>https://old.reddit.com/user/hoja_nasredin</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We were extremely spoiled this summer with Flux and SD3.1 coming out. But was anything else have been released since? Flux cannot be trained in a serious way apparently since it is distilled, and SD3 is hated by the community (or it might have some other issues I'm not aware). &lt;/p&gt; &lt;p&gt;What is happening with the image models right now? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoja_nasredin"&gt; /u/hoja_nasredin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ix6bjw/is_there_any_image_models_coming_out/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T16:37:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1iwvo4b</id>
@@ -190,19 +190,6 @@
     <published>2025-02-24T21:06:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixfbzd</id>
-    <title>Sonnet-3.7 is best non-thinking model in the Misguided Attention eval.</title>
-    <updated>2025-02-24T22:41:46+00:00</updated>
-    <author>
-      <name>/u/cpldcpu</name>
-      <uri>https://old.reddit.com/user/cpldcpu</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt; &lt;img alt="Sonnet-3.7 is best non-thinking model in the Misguided Attention eval." src="https://external-preview.redd.it/3Xlrhru-DocPv1ONkF-Le04N8KrkOyM1Ydkeb2ft68s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8afcf14938726714cc9d549d6ef3ea05fd4f2b3c" title="Sonnet-3.7 is best non-thinking model in the Misguided Attention eval." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/cpldcpu/MisguidedAttention"&gt;Misguided Attention&lt;/a&gt; is a collection of prompts to challenge the reasoning abilities of large language models in presence of misguiding information. It consists of slightly modified well known logical problems and riddles. Many model are overfit to these problems and will therefore report a response to the unmodified problem. &lt;/p&gt; &lt;p&gt;Claude-3.7-Sonnet was evaluated in the non-thinking mode in the long eval with 52 prompt. It almost beats o3-mini despite not using the thinking mode. This is a very impressive result. &lt;/p&gt; &lt;p&gt;I will benchmark the thinking mode once I have figured out how to activate it in the openrouter API...&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/sui6i1l4z5le1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2d11d6a08386a45914660a0f576b2c4c58ae88d4"&gt;https://preview.redd.it/sui6i1l4z5le1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2d11d6a08386a45914660a0f576b2c4c58ae88d4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/e1p7r416z5le1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a2cd9467c077b18212e70943d731009ff62430a6"&gt;https://preview.redd.it/e1p7r416z5le1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a2cd9467c077b18212e70943d731009ff62430a6&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T22:41:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iwvvmy</id>
     <title>Qwen is releasing something tonight!</title>
     <updated>2025-02-24T06:46:53+00:00</updated>
@@ -214,6 +201,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwvvmy/qwen_is_releasing_something_tonight/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T06:46:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iwqf3z</id>
+    <title>FlashMLA - Day 1 of OpenSourceWeek</title>
+    <updated>2025-02-24T01:37:17+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt; &lt;img alt="FlashMLA - Day 1 of OpenSourceWeek" src="https://preview.redd.it/to631nzvqzke1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3551b21c98cfb01ba242529b337443a5c85b4481" title="FlashMLA - Day 1 of OpenSourceWeek" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/deepseek-ai/FlashMLA"&gt;https://github.com/deepseek-ai/FlashMLA&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/to631nzvqzke1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T01:37:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixfbzd</id>
+    <title>Sonnet-3.7 is best non-thinking model in the Misguided Attention eval.</title>
+    <updated>2025-02-24T22:41:46+00:00</updated>
+    <author>
+      <name>/u/cpldcpu</name>
+      <uri>https://old.reddit.com/user/cpldcpu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt; &lt;img alt="Sonnet-3.7 is best non-thinking model in the Misguided Attention eval." src="https://external-preview.redd.it/3Xlrhru-DocPv1ONkF-Le04N8KrkOyM1Ydkeb2ft68s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8afcf14938726714cc9d549d6ef3ea05fd4f2b3c" title="Sonnet-3.7 is best non-thinking model in the Misguided Attention eval." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/cpldcpu/MisguidedAttention"&gt;Misguided Attention&lt;/a&gt; is a collection of prompts to challenge the reasoning abilities of large language models in presence of misguiding information. It consists of slightly modified well known logical problems and riddles. Many model are overfit to these problems and will therefore report a response to the unmodified problem. &lt;/p&gt; &lt;p&gt;Claude-3.7-Sonnet was evaluated in the non-thinking mode in the long eval with 52 prompt. It almost beats o3-mini despite not using the thinking mode. This is a very impressive result. &lt;/p&gt; &lt;p&gt;I will benchmark the thinking mode once I have figured out how to activate it in the openrouter API...&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/sui6i1l4z5le1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2d11d6a08386a45914660a0f576b2c4c58ae88d4"&gt;https://preview.redd.it/sui6i1l4z5le1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2d11d6a08386a45914660a0f576b2c4c58ae88d4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/e1p7r416z5le1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a2cd9467c077b18212e70943d731009ff62430a6"&gt;https://preview.redd.it/e1p7r416z5le1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a2cd9467c077b18212e70943d731009ff62430a6&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixfbzd/sonnet37_is_best_nonthinking_model_in_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-24T22:41:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixcygz</id>
@@ -240,19 +253,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixe6yo/great_announcement_today_heres_how_we_already/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-24T21:55:08+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iwqf3z</id>
-    <title>FlashMLA - Day 1 of OpenSourceWeek</title>
-    <updated>2025-02-24T01:37:17+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt; &lt;img alt="FlashMLA - Day 1 of OpenSourceWeek" src="https://preview.redd.it/to631nzvqzke1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3551b21c98cfb01ba242529b337443a5c85b4481" title="FlashMLA - Day 1 of OpenSourceWeek" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/deepseek-ai/FlashMLA"&gt;https://github.com/deepseek-ai/FlashMLA&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/to631nzvqzke1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iwqf3z/flashmla_day_1_of_opensourceweek/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-24T01:37:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixckba</id>
