@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-25T22:35:57+00:00</updated>
+  <updated>2025-02-25T22:48:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iy1sjk</id>
-    <title>650k+ R1 responses, and code to train a 1.5B math model</title>
-    <updated>2025-02-25T18:19:50+00:00</updated>
-    <author>
-      <name>/u/jeremy_oumi</name>
-      <uri>https://old.reddit.com/user/jeremy_oumi</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all, recently gathered R1 inference data on a couple interesting datasets from HF, MetaMathQA and lmsys_chat_1m_clean.&lt;/p&gt; &lt;p&gt;Turns out training the model on 25k of the math samples got me &amp;quot;for its size&amp;quot; SOTA performance (best of any model with &amp;lt;= 1.5B params) on MMLU-Math-Pro. Admittedly, the SOTA for that model size is not very high (I hit 44.4%, highest on leaderboard is 43.0%), but still, thought I'd share with you all!&lt;/p&gt; &lt;p&gt;All data, the model, and code, are all Apache 2.0 licensed, hope it's useful :)&lt;/p&gt; &lt;p&gt;Data&lt;br /&gt; &lt;a href="https://huggingface.co/datasets/oumi-ai/MetaMathQA-R1"&gt;https://huggingface.co/datasets/oumi-ai/MetaMathQA-R1&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/datasets/oumi-ai/lmsys_chat_1m_clean_R1"&gt;https://huggingface.co/datasets/oumi-ai/lmsys_chat_1m_clean_R1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Model&lt;br /&gt; &lt;a href="https://huggingface.co/oumi-ai/MiniMath-R1-1.5B"&gt;https://huggingface.co/oumi-ai/MiniMath-R1-1.5B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Code&lt;br /&gt; &lt;a href="https://github.com/oumi-ai/oumi/blob/307436bd98706cb9ce7b0bbf31204770af2b7c8c/notebooks/Oumi%20-%20MiniMath-R1-1.5B.ipynb"&gt;https://github.com/oumi-ai/oumi/blob/307436bd98706cb9ce7b0bbf31204770af2b7c8c/notebooks/Oumi%20-%20MiniMath-R1-1.5B.ipynb&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jeremy_oumi"&gt; /u/jeremy_oumi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy1sjk/650k_r1_responses_and_code_to_train_a_15b_math/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy1sjk/650k_r1_responses_and_code_to_train_a_15b_math/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy1sjk/650k_r1_responses_and_code_to_train_a_15b_math/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T18:19:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ixy5kf</id>
-    <title>If you are using Linux, an AMD iGPU for running LLMs (Vulkan), and the amdgpu driver, you may want to check your GTT size</title>
-    <updated>2025-02-25T15:51:25+00:00</updated>
-    <author>
-      <name>/u/toazd</name>
-      <uri>https://old.reddit.com/user/toazd</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran into a &amp;quot;problem&amp;quot; when I couldn't load Qwen2.5-7b-instruct-Q4_K_M with a context size of 32768 (using llama-cli Vulkan, insufficient memory error). Normally, you might think &amp;quot;Oh I just need different hardware for this task&amp;quot; but AMD iGPUs use system RAM for their memory and I have 16GB of that which is plenty to run that model at that context size. So, how can we &amp;quot;fix&amp;quot; this, I wondered.&lt;/p&gt; &lt;p&gt;By running &lt;code&gt;amdgpu_top&lt;/code&gt; (or &lt;code&gt;radeontop&lt;/code&gt;) you can see in the &amp;quot;Memory usage&amp;quot; section what is allocated VRAM (RAM that is dedicated to the GPU, inaccessible to the CPU/system) and what is allocated as GTT (RAM that the CPU/system can use when the GPU is not using it). It's important to know the difference between those two and when you need more of one or the other. For my use cases which are largely limited to just llama.cpp, minimum VRAM and maximum GTT is best.&lt;/p&gt; &lt;p&gt;On Arch Linux the GTT was set to 8GB by default (of 16GB available). That was my limiting factor until I did a little research. And the result of that is what I wanted to share in case it helps anyone as it did me.&lt;/p&gt; &lt;p&gt;Checking the &lt;a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html"&gt;kernel docs for amdgpu&lt;/a&gt; shows that the kernel parameter &lt;code&gt;amdgpu.gttsize=X&lt;/code&gt; (where X is the size in &lt;strong&gt;MiB&lt;/strong&gt;) allows one to give the iGPU access to more (or less) system memory. I changed that number, updated grub, and rebooted and now &lt;code&gt;amdgpu_top&lt;/code&gt; shows the new GTT size and now I can load and run larger models and/or larger context sizes no problem!&lt;/p&gt; &lt;p&gt;For reference I am using an &lt;a href="https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-7-7730u.html"&gt;AMD Ryzen 7 7730U&lt;/a&gt; (&lt;code&gt;gfx90c&lt;/code&gt;) 16GB RAM, 512MB VRAM, 12GB GTT.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/toazd"&gt; /u/toazd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixy5kf/if_you_are_using_linux_an_amd_igpu_for_running/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T15:51:25+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ixj4bp</id>
     <title>New LiveBench results just released. Sonnet 3.7 reasoning now tops the charts and Sonnet 3.7 is also top non-reasoning model</title>
@@ -47,6 +21,19 @@
     <published>2025-02-25T01:33:13+00:00</published>
   </entry>
   <entry>
+    <id>t3_1iy7mco</id>
+    <title>Magma: A Foundation Model for Multimodal AI Agents</title>
+    <updated>2025-02-25T22:20:01+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7mco/magma_a_foundation_model_for_multimodal_ai_agents/"&gt; &lt;img alt="Magma: A Foundation Model for Multimodal AI Agents" src="https://external-preview.redd.it/3TcBPHiZT0ehLG7Chhf6Tcy2t-RW9H63I2r1U0-0qWg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=73e9bb2225d928aa47a08c9bedee0f7751c754d0" title="Magma: A Foundation Model for Multimodal AI Agents" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/microsoft/Magma-8B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7mco/magma_a_foundation_model_for_multimodal_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7mco/magma_a_foundation_model_for_multimodal_ai_agents/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T22:20:01+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ixzrn2</id>
     <title>A multi-player tournament benchmark that tests LLMs in social reasoning, strategy, and deception. Players engage in public and private conversations, form alliances, and vote to eliminate each other</title>
     <updated>2025-02-25T16:58:21+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixzrn2/a_multiplayer_tournament_benchmark_that_tests/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T16:58:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iy7k6b</id>
+    <title>Nvidia gaming GPUs modded with 2X VRAM for AI workloads — RTX 4090D 48GB and RTX 4080 Super 32GB go up for rent at Chinese cloud computing provider</title>
+    <updated>2025-02-25T22:17:32+00:00</updated>
+    <author>
+      <name>/u/DeltaSqueezer</name>
+      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7k6b/nvidia_gaming_gpus_modded_with_2x_vram_for_ai/"&gt; &lt;img alt="Nvidia gaming GPUs modded with 2X VRAM for AI workloads — RTX 4090D 48GB and RTX 4080 Super 32GB go up for rent at Chinese cloud computing provider" src="https://external-preview.redd.it/LHkWl_VkJgCRA11Syl07lcXlc5oC-0ZjNEgwTTmbGnM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=309552b833882287b79a1c8f0cb6385eb21a5228" title="Nvidia gaming GPUs modded with 2X VRAM for AI workloads — RTX 4090D 48GB and RTX 4080 Super 32GB go up for rent at Chinese cloud computing provider" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.tomshardware.com/pc-components/gpus/nvidia-gaming-gpus-modded-with-2x-vram-for-ai-workloads"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7k6b/nvidia_gaming_gpus_modded_with_2x_vram_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7k6b/nvidia_gaming_gpus_modded_with_2x_vram_for_ai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T22:17:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixp4du</id>
@@ -203,19 +203,6 @@
     <published>2025-02-25T16:41:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iy7e4x</id>
-    <title>RTX 4090 48GB</title>
-    <updated>2025-02-25T22:10:28+00:00</updated>
-    <author>
-      <name>/u/xg357</name>
-      <uri>https://old.reddit.com/user/xg357</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"&gt; &lt;img alt="RTX 4090 48GB" src="https://b.thumbs.redditmedia.com/i7dCpIN6G-2UgPHgeJaiSWC47liBasG9PHIrLoSF1kw.jpg" title="RTX 4090 48GB" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just got one of these legendary 4090 with 48gb of ram from eBay. I am from Canada. &lt;/p&gt; &lt;p&gt;What do you want me to test? And any questions? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/xg357"&gt; /u/xg357 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iy7e4x"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T22:10:28+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ixupja</id>
     <title>Sonnet 3.7 near clean sweep of EQ-Bench benchmarks</title>
     <updated>2025-02-25T13:15:35+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixupja/sonnet_37_near_clean_sweep_of_eqbench_benchmarks/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T13:15:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ixporw</id>
+    <title>Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!</title>
+    <updated>2025-02-25T07:46:26+00:00</updated>
+    <author>
+      <name>/u/adrgrondin</name>
+      <uri>https://old.reddit.com/user/adrgrondin</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"&gt; &lt;img alt="Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!" src="https://preview.redd.it/amle9h0op8le1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e5133d782a13f9379a9568553fde27608d4fe653" title="Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Nice to have open source. So excited for this one.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/adrgrondin"&gt; /u/adrgrondin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/amle9h0op8le1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T07:46:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1iy2qhm</id>
@@ -255,30 +255,17 @@
     <published>2025-02-25T16:38:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ixporw</id>
-    <title>Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!</title>
-    <updated>2025-02-25T07:46:26+00:00</updated>
+    <id>t3_1iy7e4x</id>
+    <title>RTX 4090 48GB</title>
+    <updated>2025-02-25T22:10:28+00:00</updated>
     <author>
-      <name>/u/adrgrondin</name>
-      <uri>https://old.reddit.com/user/adrgrondin</uri>
+      <name>/u/xg357</name>
+      <uri>https://old.reddit.com/user/xg357</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"&gt; &lt;img alt="Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!" src="https://preview.redd.it/amle9h0op8le1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e5133d782a13f9379a9568553fde27608d4fe653" title="Alibaba video model Wan 2.1 will be released Feb 25th,2025 and is open source!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Nice to have open source. So excited for this one.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/adrgrondin"&gt; /u/adrgrondin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/amle9h0op8le1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixporw/alibaba_video_model_wan_21_will_be_released_feb/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"&gt; &lt;img alt="RTX 4090 48GB" src="https://b.thumbs.redditmedia.com/i7dCpIN6G-2UgPHgeJaiSWC47liBasG9PHIrLoSF1kw.jpg" title="RTX 4090 48GB" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just got one of these legendary 4090 with 48gb of ram from eBay. I am from Canada. &lt;/p&gt; &lt;p&gt;What do you want me to test? And any questions? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/xg357"&gt; /u/xg357 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iy7e4x"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy7e4x/rtx_4090_48gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T07:46:26+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1iy6rid</id>
-    <title>Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together</title>
-    <updated>2025-02-25T21:44:22+00:00</updated>
-    <author>
-      <name>/u/Noble00_</name>
-      <uri>https://old.reddit.com/user/Noble00_</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"&gt; &lt;img alt="Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together" src="https://b.thumbs.redditmedia.com/p-QWrsvBVwjKiJeQsp_Oo8L1SYP2Wqt_48i9b9Kgics.jpg" title="Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Noble00_"&gt; /u/Noble00_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iy6rid"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-25T21:44:22+00:00</published>
+    <published>2025-02-25T22:10:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1ixubts</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ixubts/sources_deepseek_is_speeding_up_the_release_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-25T12:56:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iy6rid</id>
+    <title>Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together</title>
+    <updated>2025-02-25T21:44:22+00:00</updated>
+    <author>
+      <name>/u/Noble00_</name>
+      <uri>https://old.reddit.com/user/Noble00_</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"&gt; &lt;img alt="Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together" src="https://b.thumbs.redditmedia.com/p-QWrsvBVwjKiJeQsp_Oo8L1SYP2Wqt_48i9b9Kgics.jpg" title="Framework Desktop 128gb Mainboard Only Costs $1,699 And Can Networked Together" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Noble00_"&gt; /u/Noble00_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1iy6rid"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iy6rid/framework_desktop_128gb_mainboard_only_costs_1699/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-25T21:44:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1iy22ux</id>
