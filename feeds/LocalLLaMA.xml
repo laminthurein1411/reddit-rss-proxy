@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-27T02:42:40+00:00</updated>
+  <updated>2025-02-27T03:02:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1iyylr3</id>
-    <title>CRA-V1-Guided-7B Released: Reasoning + Creative + Guided model</title>
-    <updated>2025-02-26T21:19:17+00:00</updated>
-    <author>
-      <name>/u/molbal</name>
-      <uri>https://old.reddit.com/user/molbal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TLDR: Creative reasoning model is here: molbal/CRA-V1-Guided-7B on&lt;/strong&gt; &lt;a href="https://ollama.com/molbal/cra-v1-7b"&gt;&lt;strong&gt;Ollama Hub&lt;/strong&gt;&lt;/a&gt; &lt;strong&gt;and&lt;/strong&gt; &lt;a href="https://huggingface.co/molbal/CRA-v1-Guided-7B"&gt;&lt;strong&gt;Hugging Face&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;. It lets you&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;guide&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;the story continuation with a prompt.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I received actionable feedback on the CRA-V1 7B and 32B (Unguided) Story Continuation models released earlier for the model to take instructions along with the context on how to continue the story. This fine-tune is a response to that. I share GGUFs, examples, instructions on use and the scripts I used to generate training data.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How to Use It (CRA-V1-Guided-7B):&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The model is available on Ollama Hub (&lt;a href="https://ollama.com/molbal/cra-v1-7b"&gt;7B&lt;/a&gt;) and Hugging Face (&lt;a href="https://huggingface.co/molbal/CRA-v1-Guided-7B"&gt;7B&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;This version takes a Guidance prompt &lt;em&gt;along&lt;/em&gt; with the context. The guidance &lt;em&gt;directly influences&lt;/em&gt; the reasoning process and thus, the final generated text.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Prompt Format (Keep 'Task:' Static!):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;### Task: Understand how the story flows, what motivations the characters have and how they will interact with each other and the world as a step by step thought process before continuing the story. Keep the guidance in mind when writing the story. ### Guidance: {Here's where you put a 1-2 sentence summary of where you want the stroy to go} ### Context: {The text of the story so far} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;Expected Output:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;reasoning&amp;gt; Chain of thought. &amp;lt;/reasoning&amp;gt; &amp;lt;answer&amp;gt; Text completion &amp;lt;/answer&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;More Details on the Model &amp;amp; Process:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;(For those who want the nitty-gritty of the model)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What is this model anyways?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This model is fine-tuned against context-aware story with reasoning. I leveraged publicly available books from the Project Gutenberg corpus, processed them into structured training data, and fine-tuned Qwen2.5 Instruct using qLoRA. Resulting models demonstrate better story continuation capabilities, generating a few sentences and maintaining narrative coherence.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Methodology Highlights for Guided Model:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Source Data:&lt;/strong&gt; Public domain books from the Project Gutenberg corpus, written before the advent of LLMs were used to make avoid contamination from modern AI-generated text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Chunking:&lt;/strong&gt; Each book was split into chunks of ~100 sentences, where 80 sentences were used as context and the subsequent 20 sentences as the continuation target.&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Training data&lt;/strong&gt; methodology:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Summarization&lt;/strong&gt;: Summarizes the continuation part of the data chunk into one or two sentences. This will serve as the Guidance part of the training data. It was done locally on my workstation with Qwen2.5 7B Instruct.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Thought Process Template:&lt;/strong&gt; Prompts the model to generate an internal thought process based on the context, guidance and the continuation of the story to reason about the story's flow, character motivations, and interactions. The output of this is reasoning.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Continuation Template:&lt;/strong&gt; Combines the generated reasoning with the original continuation to create a structured training example. This becomes the final training data, which is built from 4 parts: &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Static part:&lt;/strong&gt; The task part of the prompt is fix.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Guidance:&lt;/strong&gt; Guidance is generated from the summarization of the continuation. (Synthetic data)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context:&lt;/strong&gt; Context is the first 80 sentences of the chunk (Human-written data)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reasoning:&lt;/strong&gt; Synthetic reasoning part, written DeepSeek v3 model on OpenRouter was used to generate thought processes for each chunk, because it follows instructions very well and it is cheap.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Response:&lt;/strong&gt; The last 20 sentences of the training data&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ol&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Fine-Tuning:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen2.5 Instruct (7B) fine-tuned (2 epochs, rank 8, alpha 64, 32k context)&lt;/li&gt; &lt;li&gt;LoRA training on &lt;a href="http://Fireworks.ai"&gt;Fireworks.ai&lt;/a&gt; (currently they are free).&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Limitations (Still Things to Improve):&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Dataset Bias:&lt;/strong&gt; Using pre-LLM-era books can introduce biases.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reasoning Quality:&lt;/strong&gt; The quality of the reasoning is affected by the model doing the reasoning.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Future Work&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Guided generation:&lt;/strong&gt; Experiment with ways to better guide the direction of the model's output. (Guided model released just now✅)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dataset Expansion:&lt;/strong&gt; Incorporate more diverse and modern texts to reduce bias and improve generalization.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reasoning Enhancement:&lt;/strong&gt; Explore alternative methods for generating higher-quality reasoning steps.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Set generation length:&lt;/strong&gt; Add some mechanic to control generation length.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;User Feedback:&lt;/strong&gt; Integrate the models into a writer-assistant tool and gather user feedback for iterative improvements.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'd love to get your feedback! Try it out, share your experiences, and let me know what you think. Especially interested in hearing about how well the Guidance prompt works.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/molbal"&gt; /u/molbal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iyylr3/crav1guided7b_released_reasoning_creative_guided/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iyylr3/crav1guided7b_released_reasoning_creative_guided/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iyylr3/crav1guided7b_released_reasoning_creative_guided/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-26T21:19:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1iyz3qa</id>
     <title>Fine tuning on an embedding model</title>
@@ -67,10 +54,23 @@
       <name>/u/Dry_Parfait2606</name>
       <uri>https://old.reddit.com/user/Dry_Parfait2606</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It would be pretty cool to find the right combo between GPU and CPU performance...Does someone know the math about that? I mean will a 150-200GB/s single 7002 CPU bottleneck a/multiple 1TB/s GPUs? (Looking to run the full 671B 16fp - currently running 70b 16fp on cpu and quantized models on 3x 3090) &lt;/p&gt; &lt;p&gt;As I understand it 3x 3090 will not be enough, I will need a 4th one I think...&lt;/p&gt; &lt;p&gt;I'm checking out the hardware to get to see if DeepSeek-R1 is all it should be....Sounds promising to me, lets see...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dry_Parfait2606"&gt; /u/Dry_Parfait2606 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz4yem/deepseekr1_what_is_the_cpu_to_gpu_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz4yem/deepseekr1_what_is_the_cpu_to_gpu_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It would be pretty cool to find the right combo between GPU and CPU performance...Does someone know the math about that? I mean will a 150-200GB/s single 7002 CPU bottleneck a/multiple 1TB/s GPUs? (Looking to run the full 671B FP8 - currently running 70b 16fp on cpu and quantized models on 3x 3090)&lt;/p&gt; &lt;p&gt;As I understand it 3x 3090 will not be enough, I will need a 4th one I think...&lt;/p&gt; &lt;p&gt;I'm checking out the hardware to get to see if DeepSeek-R1 is all it should be....Sounds promising to me, lets see...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dry_Parfait2606"&gt; /u/Dry_Parfait2606 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz4yem/deepseekr1_what_is_the_cpu_to_gpu_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz4yem/deepseekr1_what_is_the_cpu_to_gpu_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iz4yem/deepseekr1_what_is_the_cpu_to_gpu_performance/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-27T02:12:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iz5kln</id>
+    <title>Is 4060ti with 16gb vram is good choice?</title>
+    <updated>2025-02-27T02:43:52+00:00</updated>
+    <author>
+      <name>/u/cznyx</name>
+      <uri>https://old.reddit.com/user/cznyx</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking budget GPU with large vram for my localLLM project, 4060ti with 16gb vram at my area is about $500 USD(¥76800 JPY), is this a good choice?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cznyx"&gt; /u/cznyx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz5kln/is_4060ti_with_16gb_vram_is_good_choice/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz5kln/is_4060ti_with_16gb_vram_is_good_choice/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iz5kln/is_4060ti_with_16gb_vram_is_good_choice/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-27T02:43:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1iz50mm</id>
@@ -229,19 +229,6 @@
     <published>2025-02-26T19:42:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1iz54du</id>
-    <title>DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm</title>
-    <updated>2025-02-27T02:20:47+00:00</updated>
-    <author>
-      <name>/u/Dr_Karminski</name>
-      <uri>https://old.reddit.com/user/Dr_Karminski</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt; &lt;img alt="DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm" src="https://external-preview.redd.it/8TUylBdHG6G-RlVpDiMU8uIUEktXyGwSKK-R9XNOIZE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1de464dc178abc09c8c46cb861ec265373d57c26" title="DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DualPipe is an innovative bidirectional pipeline parallism algorithm introduced in the DeepSeek-V3 Technical Report. It achieves full overlap of forward and backward computation-communication phases, also reducing pipeline bubbles. For detailed information on computation-communication overlap, please refer to the profile data.&lt;/p&gt; &lt;p&gt;link: &lt;a href="https://github.com/deepseek-ai/DualPipe"&gt;https://github.com/deepseek-ai/DualPipe&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qzu9ol3cdlle1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=69a9c17d6008c619f5b01ce6d145949f0ebe675b"&gt;https://preview.redd.it/qzu9ol3cdlle1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=69a9c17d6008c619f5b01ce6d145949f0ebe675b&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dr_Karminski"&gt; /u/Dr_Karminski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-27T02:20:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1iyxdoj</id>
     <title>Wan2.1 Video Model Native Support in ComfyUI!</title>
     <updated>2025-02-26T20:28:27+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iyxdoj/wan21_video_model_native_support_in_comfyui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-26T20:28:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1iz54du</id>
+    <title>DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm</title>
+    <updated>2025-02-27T02:20:47+00:00</updated>
+    <author>
+      <name>/u/Dr_Karminski</name>
+      <uri>https://old.reddit.com/user/Dr_Karminski</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt; &lt;img alt="DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm" src="https://external-preview.redd.it/8TUylBdHG6G-RlVpDiMU8uIUEktXyGwSKK-R9XNOIZE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1de464dc178abc09c8c46cb861ec265373d57c26" title="DeepSeek Realse 4th Bomb! DualPipe an innovative bidirectional pipeline parallism algorithm" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DualPipe is an innovative bidirectional pipeline parallism algorithm introduced in the DeepSeek-V3 Technical Report. It achieves full overlap of forward and backward computation-communication phases, also reducing pipeline bubbles. For detailed information on computation-communication overlap, please refer to the profile data.&lt;/p&gt; &lt;p&gt;link: &lt;a href="https://github.com/deepseek-ai/DualPipe"&gt;https://github.com/deepseek-ai/DualPipe&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qzu9ol3cdlle1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=69a9c17d6008c619f5b01ce6d145949f0ebe675b"&gt;https://preview.redd.it/qzu9ol3cdlle1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=69a9c17d6008c619f5b01ce6d145949f0ebe675b&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dr_Karminski"&gt; /u/Dr_Karminski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1iz54du/deepseek_realse_4th_bomb_dualpipe_an_innovative/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-27T02:20:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1iz19bz</id>
