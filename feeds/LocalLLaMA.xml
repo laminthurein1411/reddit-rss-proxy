@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-02-28T14:05:52+00:00</updated>
+  <updated>2025-02-28T14:23:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1j088yg</id>
-    <title>RX 9070 XT Potential performance discussion</title>
-    <updated>2025-02-28T13:57:36+00:00</updated>
+    <id>t3_1izbmbb</id>
+    <title>Perplexity R1 1776 performs worse than DeepSeek R1 for complex problems.</title>
+    <updated>2025-02-27T09:06:25+00:00</updated>
     <author>
-      <name>/u/ashirviskas</name>
-      <uri>https://old.reddit.com/user/ashirviskas</uri>
+      <name>/u/fairydreaming</name>
+      <uri>https://old.reddit.com/user/fairydreaming</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As some of you might have seen, AMD just revealed the new RDNA 4 GPUS. RX 9070 XT for $599 and RX 9070 for $549&lt;/p&gt; &lt;p&gt;Looking at the numbers, 9070 XT offers &amp;quot;2x&amp;quot; in FP16 per compute unit compared to 7900 XTX [&lt;a href="https://www.youtube.com/live/GZfFPI8LJrc?si=V1ApBTDRCrkInqqR&amp;amp;t=661"&gt;source&lt;/a&gt;], so at 64U vs 96U that means RX 9070 XT would have 33% compute uplift.&lt;/p&gt; &lt;p&gt;The issue is the bandwitdh - at 256bit GDDR6 we get ~630GB/s compared to 960GB/s on a 7900 XTX.&lt;/p&gt; &lt;p&gt;BUT! According to the same presentation [&lt;a href="https://www.youtube.com/live/GZfFPI8LJrc?si=V1ApBTDRCrkInqqR&amp;amp;t=661"&gt;source&lt;/a&gt;] they mention they've added INT8 and INT8 &lt;em&gt;with sparsity&lt;/em&gt; computations to RDNA 4, which make it 4x and 8x faster than RDNA 3 &lt;em&gt;per unit&lt;/em&gt;, which would make it 2.67x and 5.33x times faster than RX 7900 XTX.&lt;/p&gt; &lt;p&gt;I wonder if newer model architectures that are less limited by memory bandwidth could use these computations and make new AMD GPUs great inference cards. What are your thoughts?&lt;/p&gt; &lt;p&gt;EDIT: Updated links after they cut the video. Both are now the same, originallly I quoted two different parts of the video.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ashirviskas"&gt; /u/ashirviskas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Perplexity claims the reasoning abilities of R1 1776 are not affected by the decensoring process, but after testing it in &lt;a href="https://github.com/fairydreaming/lineage-bench/"&gt;lineage-bench&lt;/a&gt; I found that for very complex problems there are significant differences in the model performance.&lt;/p&gt; &lt;p&gt;Below you can see benchmark results for different problem sizes:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;model&lt;/th&gt; &lt;th align="left"&gt;lineage-8&lt;/th&gt; &lt;th align="left"&gt;lineage-16&lt;/th&gt; &lt;th align="left"&gt;lineage-32&lt;/th&gt; &lt;th align="left"&gt;lineage-64&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek R1&lt;/td&gt; &lt;td align="left"&gt;0.965&lt;/td&gt; &lt;td align="left"&gt;0.980&lt;/td&gt; &lt;td align="left"&gt;0.945&lt;/td&gt; &lt;td align="left"&gt;0.780&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;R1 1776&lt;/td&gt; &lt;td align="left"&gt;0.980&lt;/td&gt; &lt;td align="left"&gt;0.975&lt;/td&gt; &lt;td align="left"&gt;0.675&lt;/td&gt; &lt;td align="left"&gt;0.205&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;While for lineage-8 and lineage-16 problem sizes the model performance matches or even exceeds the original DeepSeek R1, for lineage-32 we can already observe difference in scores, while for lineage-64 R1 1776 score reached random guessing level.&lt;/p&gt; &lt;p&gt;So it looks like Perplexity claims about reasoning abilities not being affected by the decensoring process are not true.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;We also ensured that the model’s math and reasoning abilities remained intact after the decensoring process. Evaluations on multiple benchmarks showed that our post-trained model performed on par with the base R1 model, indicating that the decensoring had no impact on its core reasoning capabilities.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Edit: here's one example prompt for lineage-64 and the model output generated in Perplexity Labs playground in case anyone is interested: &lt;a href="https://pastebin.com/EPy06bqp"&gt;https://pastebin.com/EPy06bqp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Also Perplexity staff noticed my findings and are looking into the problem.&lt;/p&gt; &lt;p&gt;Update: Apparently it's a problem with the model serving stack and not with the model itself (it scored similar to DeepSeek R1 on lineage-64 in Perplexity internal test). Still waiting for the solution.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-28T13:57:36+00:00</published>
+    <published>2025-02-27T09:06:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1izsmu7</id>
@@ -60,19 +60,6 @@
     <published>2025-02-27T18:09:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1izy2l1</id>
-    <title>Web Search using Local LLMs/We have Perplexity at home.</title>
-    <updated>2025-02-28T03:09:45+00:00</updated>
-    <author>
-      <name>/u/Tokamakium</name>
-      <uri>https://old.reddit.com/user/Tokamakium</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Results:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use the Page Assist browser plugin as frontend, it has Web Search built-in.&lt;/li&gt; &lt;li&gt;Any model good at following instructions will be good at web search.&lt;/li&gt; &lt;li&gt;The number of pages and the search engine used will be more important. For my testing, I searched 10 pages and used Google. You can change those in the Page Assist settings.&lt;/li&gt; &lt;li&gt;Keep it brief. Ask only one question. Be as specific as possible.&lt;/li&gt; &lt;li&gt;Hallucinations/Incomplete information is to be expected.&lt;/li&gt; &lt;li&gt;Always start a new chat for a new question.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Uses:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;When you want to know about something new but don't have the time to dig in.&lt;/li&gt; &lt;li&gt;Quickly checking the news.&lt;/li&gt; &lt;li&gt;That's pretty much it.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Testing Parameters:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;4k context length. Rest of the Ollama settings at default.&lt;/li&gt; &lt;li&gt;Models: Llama 3.1 8b q6_k, Gemma 9b, Phi 4 14b, Qwen 2.5-Coder 14b, DeepSeek r1 14b. Default quantizations available on Ollama, except for the Llama model.&lt;/li&gt; &lt;li&gt;3060 12GB with 16 GB RAM. Naturally, Llama 3.1 is the quickest and I can use up to 16k context length without using the CPU.&lt;/li&gt; &lt;li&gt;Tested with 2 pages/DDG and then 10 pages/Google. Made the largest difference.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Questions Asked:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;What are the latest gameplay changes and events in Helldivers 2?&lt;/li&gt; &lt;li&gt;Summarize the latest Rust in Linux drama.&lt;/li&gt; &lt;li&gt;What is the best LLM I can run on a 3060 12GB?&lt;/li&gt; &lt;li&gt;What is the new Minion protocol for LLMs?&lt;/li&gt; &lt;li&gt;Give me a detailed summary of the latest Framework Company launch, including their specs.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Summary of the replies:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Llama 3.1 8b is the quickest and performs almost at par with the other top models, so this will be my go-to.&lt;/li&gt; &lt;li&gt;Other models that performed well were DeepSeek and Qwen. After that was Phi and lastly Gemma.&lt;/li&gt; &lt;li&gt;No model recommended a specific model to run on my GPU.&lt;/li&gt; &lt;li&gt;The Framework question was the trickiest. Unless I mentioned that Framework is a company, models didn't know what to do with the question. Almost no model mentioned the new desktop launch, so I had to edit the question to get the answer I was seeking.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tokamakium"&gt; /u/Tokamakium &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-28T03:09:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1izztgk</id>
     <title>Ollama-VIC-20: A private Javascript based Ollama frontend weighing less than 20 kilobytes in size</title>
     <updated>2025-02-28T04:48:14+00:00</updated>
@@ -86,17 +73,17 @@
     <published>2025-02-28T04:48:14+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j07guv</id>
-    <title>Does anyone else feel like AI chat is great… until you actually try to use it for real work?</title>
-    <updated>2025-02-28T13:19:13+00:00</updated>
+    <id>t3_1izy2l1</id>
+    <title>Web Search using Local LLMs/We have Perplexity at home.</title>
+    <updated>2025-02-28T03:09:45+00:00</updated>
     <author>
-      <name>/u/Educational_Age2352</name>
-      <uri>https://old.reddit.com/user/Educational_Age2352</uri>
+      <name>/u/Tokamakium</name>
+      <uri>https://old.reddit.com/user/Tokamakium</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I love gpt :) and I use it daily for brainstorming, research, and planning, but every single time, I run into the same problem:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Every new chat is a memory wipe. You ask something, get an amazing answer, then boom, start fresh, and all context is gone.&lt;/li&gt; &lt;li&gt;There’s no way to explore multiple ideas at once. You go down one path, but what if you want to test a different approach without losing your main thread? You just... can’t.&lt;/li&gt; &lt;li&gt;AI should help structure thinking, but it actually makes it messier. I find myself copy-pasting responses into Notion haha, just to keep track of things. That feels stupid.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It makes me wonder: AI is supposed to make thinking easier... so why does it feel like it forces you into a never-ending scroll?&lt;/p&gt; &lt;p&gt;Am I the only one struggling with this? Or do you guys have workarounds for keeping track of AI chats and ideas?&lt;/p&gt; &lt;p&gt;I’ve been thinking about this a lot, and I might be onto something. If this is a pain in a** for you would love to see you on the other side, Wednesday release.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Educational_Age2352"&gt; /u/Educational_Age2352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j07guv/does_anyone_else_feel_like_ai_chat_is_great_until/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j07guv/does_anyone_else_feel_like_ai_chat_is_great_until/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j07guv/does_anyone_else_feel_like_ai_chat_is_great_until/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Results:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use the Page Assist browser plugin as frontend, it has Web Search built-in.&lt;/li&gt; &lt;li&gt;Any model good at following instructions will be good at web search.&lt;/li&gt; &lt;li&gt;The number of pages and the search engine used will be more important. For my testing, I searched 10 pages and used Google. You can change those in the Page Assist settings.&lt;/li&gt; &lt;li&gt;Keep it brief. Ask only one question. Be as specific as possible.&lt;/li&gt; &lt;li&gt;Hallucinations/Incomplete information is to be expected.&lt;/li&gt; &lt;li&gt;Always start a new chat for a new question.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Uses:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;When you want to know about something new but don't have the time to dig in.&lt;/li&gt; &lt;li&gt;Quickly checking the news.&lt;/li&gt; &lt;li&gt;That's pretty much it.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Testing Parameters:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;4k context length. Rest of the Ollama settings at default.&lt;/li&gt; &lt;li&gt;Models: Llama 3.1 8b q6_k, Gemma 9b, Phi 4 14b, Qwen 2.5-Coder 14b, DeepSeek r1 14b. Default quantizations available on Ollama, except for the Llama model.&lt;/li&gt; &lt;li&gt;3060 12GB with 16 GB RAM. Naturally, Llama 3.1 is the quickest and I can use up to 16k context length without using the CPU.&lt;/li&gt; &lt;li&gt;Tested with 2 pages/DDG and then 10 pages/Google. Made the largest difference.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Questions Asked:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;What are the latest gameplay changes and events in Helldivers 2?&lt;/li&gt; &lt;li&gt;Summarize the latest Rust in Linux drama.&lt;/li&gt; &lt;li&gt;What is the best LLM I can run on a 3060 12GB?&lt;/li&gt; &lt;li&gt;What is the new Minion protocol for LLMs?&lt;/li&gt; &lt;li&gt;Give me a detailed summary of the latest Framework Company launch, including their specs.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Summary of the replies:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Llama 3.1 8b is the quickest and performs almost at par with the other top models, so this will be my go-to.&lt;/li&gt; &lt;li&gt;Other models that performed well were DeepSeek and Qwen. After that was Phi and lastly Gemma.&lt;/li&gt; &lt;li&gt;No model recommended a specific model to run on my GPU.&lt;/li&gt; &lt;li&gt;The Framework question was the trickiest. Unless I mentioned that Framework is a company, models didn't know what to do with the question. Almost no model mentioned the new desktop launch, so I had to edit the question to get the answer I was seeking.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tokamakium"&gt; /u/Tokamakium &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1izy2l1/web_search_using_local_llmswe_have_perplexity_at/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-28T13:19:13+00:00</published>
+    <published>2025-02-28T03:09:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1izfy2d</id>
@@ -112,6 +99,19 @@
     <published>2025-02-27T13:36:28+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j088yg</id>
+    <title>RX 9070 XT Potential performance discussion</title>
+    <updated>2025-02-28T13:57:36+00:00</updated>
+    <author>
+      <name>/u/ashirviskas</name>
+      <uri>https://old.reddit.com/user/ashirviskas</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As some of you might have seen, AMD just revealed the new RDNA 4 GPUS. RX 9070 XT for $599 and RX 9070 for $549&lt;/p&gt; &lt;p&gt;Looking at the numbers, 9070 XT offers &amp;quot;2x&amp;quot; in FP16 per compute unit compared to 7900 XTX [&lt;a href="https://www.youtube.com/live/GZfFPI8LJrc?si=V1ApBTDRCrkInqqR&amp;amp;t=661"&gt;source&lt;/a&gt;], so at 64U vs 96U that means RX 9070 XT would have 33% compute uplift.&lt;/p&gt; &lt;p&gt;The issue is the bandwitdh - at 256bit GDDR6 we get ~630GB/s compared to 960GB/s on a 7900 XTX.&lt;/p&gt; &lt;p&gt;BUT! According to the same presentation [&lt;a href="https://www.youtube.com/live/GZfFPI8LJrc?si=V1ApBTDRCrkInqqR&amp;amp;t=661"&gt;source&lt;/a&gt;] they mention they've added INT8 and INT8 &lt;em&gt;with sparsity&lt;/em&gt; computations to RDNA 4, which make it 4x and 8x faster than RDNA 3 &lt;em&gt;per unit&lt;/em&gt;, which would make it 2.67x and 5.33x times faster than RX 7900 XTX.&lt;/p&gt; &lt;p&gt;I wonder if newer model architectures that are less limited by memory bandwidth could use these computations and make new AMD GPUs great inference cards. What are your thoughts?&lt;/p&gt; &lt;p&gt;EDIT: Updated links after they cut the video. Both are now the same, originallly I quoted two different parts of the video.&lt;/p&gt; &lt;p&gt;EDIT2: I missed it, but hey also mention 4-bit tensor types!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ashirviskas"&gt; /u/ashirviskas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j088yg/rx_9070_xt_potential_performance_discussion/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-28T13:57:36+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1izm42j</id>
     <title>What is Aider?</title>
     <updated>2025-02-27T18:03:05+00:00</updated>
@@ -123,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1izm42j/what_is_aider/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-27T18:03:05+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j037ib</id>
-    <title>Overview of best LLMs for each use-case</title>
-    <updated>2025-02-28T08:38:45+00:00</updated>
-    <author>
-      <name>/u/Bitter-College8786</name>
-      <uri>https://old.reddit.com/user/Bitter-College8786</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I often read posts about people asking &amp;quot;what is the current best model for XY?&amp;quot; which is a fair question since there are new models every week. Maybe to make life easier, is there an overview site containing the best models for various categories sorted by size (best 3B for roleplay, best 7B for roleplay etc.)? which is curated regularly? &lt;/p&gt; &lt;p&gt;I was about to ask which LLM fits 6GB VRAM is good for an agent that can summarize E-mails and call functions. And then I thought maybe it can be generalized.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Bitter-College8786"&gt; /u/Bitter-College8786 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-28T08:38:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1ize4n0</id>
@@ -177,6 +164,19 @@
     <published>2025-02-27T23:25:34+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j037ib</id>
+    <title>Overview of best LLMs for each use-case</title>
+    <updated>2025-02-28T08:38:45+00:00</updated>
+    <author>
+      <name>/u/Bitter-College8786</name>
+      <uri>https://old.reddit.com/user/Bitter-College8786</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I often read posts about people asking &amp;quot;what is the current best model for XY?&amp;quot; which is a fair question since there are new models every week. Maybe to make life easier, is there an overview site containing the best models for various categories sorted by size (best 3B for roleplay, best 7B for roleplay etc.)? which is curated regularly? &lt;/p&gt; &lt;p&gt;I was about to ask which LLM fits 6GB VRAM is good for an agent that can summarize E-mails and call functions. And then I thought maybe it can be generalized.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Bitter-College8786"&gt; /u/Bitter-College8786 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j037ib/overview_of_best_llms_for_each_usecase/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-28T08:38:45+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1izqu52</id>
     <title>Its ARC-AGI | DeepSeek R1 is better than GPT 4.5</title>
     <updated>2025-02-27T21:20:59+00:00</updated>
@@ -190,19 +190,6 @@
     <published>2025-02-27T21:20:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j00wiz</id>
-    <title>LongRoPE2: Near-Lossless LLM Context Window Scaling</title>
-    <updated>2025-02-28T05:55:04+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.20082"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j00wiz/longrope2_nearlossless_llm_context_window_scaling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j00wiz/longrope2_nearlossless_llm_context_window_scaling/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-02-28T05:55:04+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j00pjp</id>
     <title>Is it not possible for NVIDIA to make VRAM extensions for other PCIE slots? Or other dedicated AI hardware?</title>
     <updated>2025-02-28T05:42:32+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j00pjp/is_it_not_possible_for_nvidia_to_make_vram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-02-28T05:42:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j00wiz</id>
+    <title>LongRoPE2: Near-Lossless LLM Context Window Scaling</title>
+    <updated>2025-02-28T05:55:04+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2502.20082"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j00wiz/longrope2_nearlossless_llm_context_window_scaling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j00wiz/longrope2_nearlossless_llm_context_window_scaling/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-02-28T05:55:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1izmsrl</id>
