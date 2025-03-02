@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-02T06:49:01+00:00</updated>
+  <updated>2025-03-02T07:05:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -71,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1h1j3/dual_rtx_6000_ada_or_swap_one_for_a_5090/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T02:59:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j1k2uz</id>
-    <title>Tensor Parallel bottlenecks: CPU? Resizable BAR?</title>
-    <updated>2025-03-02T05:57:20+00:00</updated>
-    <author>
-      <name>/u/Zidrewndacht</name>
-      <uri>https://old.reddit.com/user/Zidrewndacht</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running a pair of RTX 3090 on a chinese Huananzhi X99-T8 with a Xeon E5-2696v3 and 128GB (8x16GB) DDR3 1866. &lt;/p&gt; &lt;p&gt;Each card is installed on a full PCIe 3.0 x16 slot. AIDA64 GPU test gives about 12 GB/s transfer speed from each card to CPU, which is as expected for PCIe 3.0 x16.&lt;/p&gt; &lt;p&gt;However, using TabbyAPI and enabling tensor parallel makes token generation substantially &lt;em&gt;slower&lt;/em&gt; on all my tests with different models and settings. By a &lt;em&gt;long&lt;/em&gt; shot. And both GPUs stay almost idle (about 100W each). Bus load seems to stay as 1%. A single CPU core stays pegged at 3.8GHz with 100% load, during the whole inference time.&lt;/p&gt; &lt;p&gt;For example: prompting &amp;quot;Count from 1 to 100 separated by commas&amp;quot; to Qwen 14B 6.5bpw (FP16 KV cache):&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;on&lt;/strong&gt;:&lt;br /&gt; PP 207.03 T/s, TG: &lt;strong&gt;10.01 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;0%/100% split&lt;/strong&gt; so it uses only the 2nd GPU - which has no display attached or anything else running at all):&lt;br /&gt; PP 987.58 T/s, TG: &lt;strong&gt;44.38 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;50%/50% split&lt;/strong&gt; so both GPUs have work to do alternately):&lt;br /&gt; PP 167.99 T/s, TG: &lt;strong&gt;36.45 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Those results are &lt;strong&gt;not&lt;/strong&gt; using speculative decoding. &lt;/p&gt; &lt;p&gt;Most results I find online give tensor parallel a performance increase from zero to almost double, but nothing like such a substantial &lt;em&gt;decrease&lt;/em&gt; in performance. Sure, a Haswell Xeon is no Epyc Rome or anything, but... it's the fastest Haswell E5 Xeon, shouldn't have &amp;gt;4x slower single-threaded performance than modern hardware by itself, surely? Typical CPU benchmarks show single-threaded performance about half of modern Raptor Lake stuff, for example.&lt;/p&gt; &lt;p&gt;Other considerations:&lt;/p&gt; &lt;p&gt;The motherboard doesn't have support for Resizable BAR. &lt;strong&gt;xCuri0/ReBarUEFI&lt;/strong&gt; can patch that but I don't have enough evidence that it'd work without issues on this board with a dual-GPU situation (in fact I've once found someone mentioning that adding a second GPU explicitly made it &lt;em&gt;not&lt;/em&gt; work because a single card used all BAR space available or something, preventing booting with a second card installed entirely... so I'm wary).&lt;/p&gt; &lt;p&gt;This is my main desktop, running Windows 11 LTSC. I can't move to Linux or dedicate this hardware to a Linux server at all, so I didn't even test it with Linux. I can't use Hyper-V/WSL as well (as that forces VMware Workstation, which I need, to run at a snail pace over Hyper-V itself).&lt;/p&gt; &lt;p&gt;So, here's the question: &lt;strong&gt;What's the bottleneck for tensor parallel in&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;TabbyAPI/exl2&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt;, really?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Has anyone tested this on ancient Haswell Xeons?&lt;/p&gt; &lt;p&gt;Does tensor parallelism &lt;em&gt;require&lt;/em&gt; Resizable BAR (possibly to prevent the CPU having to move the BAR constantly or something)? Is it a known issue?&lt;/p&gt; &lt;p&gt;Or... am I missing something else entirely? What gives?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; sloooow tensor parallel performance on a Haswell CPU, single CPU core bottleneck, no resizable BAR available, Windows. Looking for other experiences, opinions, suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zidrewndacht"&gt; /u/Zidrewndacht &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T05:57:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1btrr</id>
@@ -164,19 +151,6 @@
     <published>2025-03-01T13:01:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1kj9b</id>
-    <title>I want to train AI to intimately understand an entire regulations booklet for my work- how do I do that, and cheaply?</title>
-    <updated>2025-03-02T06:26:37+00:00</updated>
-    <author>
-      <name>/u/10c70377</name>
-      <uri>https://old.reddit.com/user/10c70377</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As the title says pretty much. I work in engineering and we have an 600 page booklet of regulations we must adhere to. &lt;/p&gt; &lt;p&gt;ChatGPT can kinda answer questions, but it isnt genuinely smart like an engineer in the field would be - &lt;/p&gt; &lt;p&gt;I am wondering, is there a way I can get an AI to understand it and cheaply?&lt;/p&gt; &lt;p&gt;One solution I thought of, was to go through the booklet myself and rewrite it in another document that is more easily text-consumable for an AI, and teach them page-wise. Then I think - well it can't be done in a chat - how do I make it keep the memory of what it's learnt and then call upon it when I need to via API call if it was used in an app?&lt;/p&gt; &lt;p&gt;Thanks for those reading the post so far .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/10c70377"&gt; /u/10c70377 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T06:26:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j1axwy</id>
     <title>5090(32GB vRAM) vs 4090d(48GB vRAM) Did anyone get a 5090? I saw they are out for 2300-2400$ (but not yet in EU)</title>
     <updated>2025-03-01T21:58:59+00:00</updated>
@@ -203,6 +177,19 @@
     <published>2025-03-01T19:58:10+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j1k2uz</id>
+    <title>Tensor Parallel bottlenecks: CPU? Resizable BAR?</title>
+    <updated>2025-03-02T05:57:20+00:00</updated>
+    <author>
+      <name>/u/Zidrewndacht</name>
+      <uri>https://old.reddit.com/user/Zidrewndacht</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running a pair of RTX 3090 on a chinese Huananzhi X99-T8 with a Xeon E5-2696v3 and 128GB (8x16GB) DDR3 1866. &lt;/p&gt; &lt;p&gt;Each card is installed on a full PCIe 3.0 x16 slot. AIDA64 GPU test gives about 12 GB/s transfer speed from each card to CPU, which is as expected for PCIe 3.0 x16.&lt;/p&gt; &lt;p&gt;However, using TabbyAPI and enabling tensor parallel makes token generation substantially &lt;em&gt;slower&lt;/em&gt; on all my tests with different models and settings. By a &lt;em&gt;long&lt;/em&gt; shot. And both GPUs stay almost idle (about 100W each). Bus load seems to stay as 1%. A single CPU core stays pegged at 3.8GHz with 100% load, during the whole inference time.&lt;/p&gt; &lt;p&gt;For example: prompting &amp;quot;Count from 1 to 100 separated by commas&amp;quot; to Qwen 14B 6.5bpw (FP16 KV cache):&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;on&lt;/strong&gt;:&lt;br /&gt; PP 207.03 T/s, TG: &lt;strong&gt;10.01 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;0%/100% split&lt;/strong&gt; so it uses only the 2nd GPU - which has no display attached or anything else running at all):&lt;br /&gt; PP 987.58 T/s, TG: &lt;strong&gt;44.38 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;50%/50% split&lt;/strong&gt; so both GPUs have work to do alternately):&lt;br /&gt; PP 167.99 T/s, TG: &lt;strong&gt;36.45 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Those results are &lt;strong&gt;not&lt;/strong&gt; using speculative decoding. &lt;/p&gt; &lt;p&gt;Most results I find online give tensor parallel a performance increase from zero to almost double, but nothing like such a substantial &lt;em&gt;decrease&lt;/em&gt; in performance. Sure, a Haswell Xeon is no Epyc Rome or anything, but... it's the fastest Haswell E5 Xeon, shouldn't have &amp;gt;4x slower single-threaded performance than modern hardware by itself, surely? Typical CPU benchmarks show single-threaded performance about half of modern Raptor Lake stuff, for example.&lt;/p&gt; &lt;p&gt;Other considerations:&lt;/p&gt; &lt;p&gt;The motherboard doesn't have support for Resizable BAR. &lt;strong&gt;xCuri0/ReBarUEFI&lt;/strong&gt; can patch that but I don't have enough evidence that it'd work without issues on this board with a dual-GPU situation (in fact I've once found someone mentioning that adding a second GPU explicitly made it &lt;em&gt;not&lt;/em&gt; work because a single card used all BAR space available or something, preventing booting with a second card installed entirely... so I'm wary).&lt;/p&gt; &lt;p&gt;This is my main desktop, running Windows 11 LTSC. I can't move to Linux or dedicate this hardware to a Linux server at all, so I didn't even test it with Linux. I can't use Hyper-V/WSL as well (as that forces VMware Workstation, which I need, to run at a snail pace over Hyper-V itself).&lt;/p&gt; &lt;p&gt;So, here's the question: &lt;strong&gt;What's the bottleneck for tensor parallel in&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;TabbyAPI/exl2&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt;, really?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Has anyone tested this on ancient Haswell Xeons?&lt;/p&gt; &lt;p&gt;Does tensor parallelism &lt;em&gt;require&lt;/em&gt; Resizable BAR (possibly to prevent the CPU having to move the BAR constantly or something)? Is it a known issue?&lt;/p&gt; &lt;p&gt;Or... am I missing something else entirely? What gives?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; sloooow tensor parallel performance on a Haswell CPU, single CPU core bottleneck, no resizable BAR available, Windows. Looking for other experiences, opinions, suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zidrewndacht"&gt; /u/Zidrewndacht &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T05:57:20+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j13hf5</id>
     <title>How are people deploying apps with AI functionality and it not costing them an absolute fortune?</title>
     <updated>2025-03-01T16:35:17+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j17d93/gmk_confirms_evox2_minipc_with_ryzen_ai_max_pro/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-01T19:19:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1kj9b</id>
+    <title>I want to train AI to intimately understand an entire regulations booklet for my work- how do I do that, and cheaply?</title>
+    <updated>2025-03-02T06:26:37+00:00</updated>
+    <author>
+      <name>/u/10c70377</name>
+      <uri>https://old.reddit.com/user/10c70377</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As the title says pretty much. I work in engineering and we have an 600 page booklet of regulations we must adhere to. &lt;/p&gt; &lt;p&gt;ChatGPT can kinda answer questions, but it isnt genuinely smart like an engineer in the field would be - &lt;/p&gt; &lt;p&gt;I am wondering, is there a way I can get an AI to understand it and cheaply?&lt;/p&gt; &lt;p&gt;One solution I thought of, was to go through the booklet myself and rewrite it in another document that is more easily text-consumable for an AI, and teach them page-wise. Then I think - well it can't be done in a chat - how do I make it keep the memory of what it's learnt and then call upon it when I need to via API call if it was used in an app?&lt;/p&gt; &lt;p&gt;Thanks for those reading the post so far .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/10c70377"&gt; /u/10c70377 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1kj9b/i_want_to_train_ai_to_intimately_understand_an/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T06:26:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1j12jh4</id>
@@ -268,19 +268,6 @@
     <published>2025-03-01T00:47:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1idpv</id>
-    <title>Is This a Good Deal for $1000? (RTX 3090 24GB, Ryzen 5 5600 X, X570 Aorus Elitei7 + 16GB DDR4)</title>
-    <updated>2025-03-02T04:14:32+00:00</updated>
-    <author>
-      <name>/u/givingupeveryd4y</name>
-      <uri>https://old.reddit.com/user/givingupeveryd4y</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I found this used gaming PC, I would use it as software development machine (currently stuck on i7-4770k based PC):&lt;/p&gt; &lt;p&gt;- RTX 3090 24Gb Gigabyte Gaming PC&lt;br /&gt; - Ryzen 5 5600x(4.6GHz, 35MB, 65W, AM4)&lt;br /&gt; - Gigabyte X570 Aorus Elite, AMD X570, DDR4, ATX&lt;br /&gt; - Kingston 16GB 3200MHz DDR4&lt;br /&gt; - 750W Corsair RM750i, 80+ Gold&lt;br /&gt; - Thermaltake Commander C31 TG Snow&lt;/p&gt; &lt;p&gt;I'm wondering if it's worth the price ($1k). I would get more ram down the line, and perhaps even extra 3090. I was thinking about running qwen 2.5 32B , Q4 with 32k context for local dev (haven't run anything over 1B atm, looking for recommendations on this as well). WDYT&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/givingupeveryd4y"&gt; /u/givingupeveryd4y &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T04:14:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j1dqou</id>
     <title>Looks like NVIDIA will show off N1X on Gomputex</title>
     <updated>2025-03-02T00:08:35+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1dqou/looks_like_nvidia_will_show_off_n1x_on_gomputex/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T00:08:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1idpv</id>
+    <title>Is This a Good Deal for $1000? (RTX 3090 24GB, Ryzen 5 5600 X, X570 Aorus Elitei7 + 16GB DDR4)</title>
+    <updated>2025-03-02T04:14:32+00:00</updated>
+    <author>
+      <name>/u/givingupeveryd4y</name>
+      <uri>https://old.reddit.com/user/givingupeveryd4y</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I found this used gaming PC, I would use it as software development machine (currently stuck on i7-4770k based PC):&lt;/p&gt; &lt;p&gt;- RTX 3090 24Gb Gigabyte Gaming PC&lt;br /&gt; - Ryzen 5 5600x(4.6GHz, 35MB, 65W, AM4)&lt;br /&gt; - Gigabyte X570 Aorus Elite, AMD X570, DDR4, ATX&lt;br /&gt; - Kingston 16GB 3200MHz DDR4&lt;br /&gt; - 750W Corsair RM750i, 80+ Gold&lt;br /&gt; - Thermaltake Commander C31 TG Snow&lt;/p&gt; &lt;p&gt;I'm wondering if it's worth the price ($1k). I would get more ram down the line, and perhaps even extra 3090. I was thinking about running qwen 2.5 32B , Q4 with 32k context for local dev (haven't run anything over 1B atm, looking for recommendations on this as well). WDYT&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/givingupeveryd4y"&gt; /u/givingupeveryd4y &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1idpv/is_this_a_good_deal_for_1000_rtx_3090_24gb_ryzen/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T04:14:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1j11js6</id>
