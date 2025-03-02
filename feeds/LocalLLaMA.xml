@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-02T16:06:06+00:00</updated>
+  <updated>2025-03-02T16:24:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -110,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T13:04:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1tq3a</id>
+    <title>How to format database structure for text-to-sql</title>
+    <updated>2025-03-02T15:45:21+00:00</updated>
+    <author>
+      <name>/u/nattaylor</name>
+      <uri>https://old.reddit.com/user/nattaylor</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;text-to-sql seems solved, but how are people getting schema (etc) into context? Does anyone have learnings on what data and format for the sql schema are most useful to models?&lt;/p&gt; &lt;p&gt;Here is what I have been thinking about so before I go off the deepened - has anyone tried before?&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;Is CREATE TABLE best? What about &amp;quot;pruned&amp;quot; CREATE TABLE (e.g. removing some stuff that may be distracting to the model like constraints and even types)? What about a json representation or a plain text? How can I inject common column values? What should I do for large tables that overflow the chunk size? How to inject a description when a column isn't well named? How to get enums defined in the application into context?&lt;/p&gt; &lt;p&gt;I've tried a few of these and I'm getting very good results, but I want to make them even better. I don't have an eval set (yet) so I'm just vibe checking so far which is slow and unsatisfying. I have implemeneted &lt;code&gt;sqlglot&lt;/code&gt; so its relatively easy to spit out different formats.&lt;/p&gt; &lt;p&gt;The problems I've seen are:&lt;/p&gt; &lt;ol&gt; &lt;li&gt; For very wide tables, columns towards the end seem to get left out&lt;/li&gt; &lt;li&gt; (Obviously) model does't know how to go from &amp;quot;super-esoteric-named widgets&amp;quot; to &lt;code&gt;widgets.widget_type = 'enum-value-for-super-esoteric'&lt;/code&gt;&lt;/li&gt; &lt;/ol&gt; &lt;hr /&gt; &lt;p&gt;So imagine a schema with 100+ tables that look something like the following, where a user might ask &amp;quot;How many shipped orders in Walla Walla today?&amp;quot;&lt;/p&gt; &lt;p&gt;Has anyone had more or less success of the different ways of representing the sql that they index in the vector store (/ directly in the model context if it fits)?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Plain ol' CREATE statements&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hypothesis: Good enough since there's so much similar training data&lt;/p&gt; &lt;p&gt;``` CREATE TABLE orders ( order_id SERIAL PRIMARY KEY, customer_id INT NOT NULL, order_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, shipping_address_id INT, billing_address_id INT, order_status VARCHAR(50), total_amount DECIMAL(10, 2) NOT NULL, shipping_method VARCHAR(50), tracking_number VARCHAR(100), payment_method VARCHAR(50), payment_transaction_id VARCHAR(255), notes TEXT, created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP );&lt;/p&gt; &lt;p&gt;ALTER TABLE orders ADD CONSTRAINT check_order_status CHECK (order_status IN ('pending', 'processing', 'shipped', 'delivered', 'cancelled', 'returned'));&lt;/p&gt; &lt;p&gt;ALTER TABLE orders ADD CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id);&lt;/p&gt; &lt;p&gt;ALTER TABLE orders ADD CONSTRAINT fk_shipping_address FOREIGN KEY (shipping_address_id) REFERENCES addresses(address_id);&lt;/p&gt; &lt;p&gt;ALTER TABLE orders ADD CONSTRAINT fk_billing_address FOREIGN KEY (billing_address_id) REFERENCES addresses(address_id); ```&lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. CREATE statement with inlined constraints&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hypothesis: The number of tokens between a table name and a constraint matters&lt;/p&gt; &lt;p&gt;&lt;code&gt; CREATE TABLE orders ( order_id SERIAL PRIMARY KEY, customer_id INT NOT NULL, order_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, shipping_address_id INT, billing_address_id INT, order_status VARCHAR(50) CHECK (order_status IN ('pending', 'processing', 'shipped', 'delivered', 'cancelled', 'returned')), total_amount DECIMAL(10, 2) NOT NULL, shipping_method VARCHAR(50), tracking_number VARCHAR(100), payment_method VARCHAR(50), payment_transaction_id VARCHAR(255), notes TEXT, created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id), CONSTRAINT fk_shipping_address FOREIGN KEY (shipping_address_id) REFERENCES addresses(address_id), CONSTRAINT fk_billing_address FOREIGN KEY (billing_address_id) REFERENCES addresses(address_id) ); &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. &amp;quot;Pruned&amp;quot; CREATE statement&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hypothesis: Maybe all the model really needs is the relationship between tables and column names, and everything else is a distraction.&lt;/p&gt; &lt;p&gt;&lt;code&gt; CREATE TABLE orders ( order_id, customer_id, order_date, shipping_address_id, billing_address_id, order_status, total_amount, shipping_method, tracking_number, payment_method, payment_transaction_id, notes TEXT, created_at, updated_at ); &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;4. JSON representation&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hypothesis: Tons of JSON in training data&lt;/p&gt; &lt;h2&gt;```&lt;/h2&gt; &lt;p&gt;{ 'table': 'orders', 'columns': ['order_id', 'customer_id', 'order_date', 'shipping_address_id', 'billing_address_id', 'order_status', 'total_amount', 'shipping_method', 'tracking_number', 'payment_method', 'payment_transaction_id', 'notes', 'created_at', 'updated_at'], 'most_common_values': {'order_status': 'pending', 'processing', 'shipped', 'delivered', 'cancelled', 'returned'},&lt;/p&gt; &lt;h2&gt;}&lt;/h2&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;&lt;strong&gt;5. Plain Text&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Hypothesis: Tons of plain text in training data&lt;/p&gt; &lt;p&gt;&lt;code&gt; Table: orders Columns: - order_id - customer_id - order_date - shipping_address_id - billing_address_id - order_status - total_amount - shipping_method - tracking_number - payment_method - payment_transaction_id - notes - created_at - updated_at &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;6. Another Plain Text&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt; +--------+------------------------+--------------+ | table | column | type | +--------+------------------------+--------------+ | orders | order_id | SERIAL | +--------+------------------------+--------------+ | orders | customer_id | INT | +--------+------------------------+--------------+ | orders | order_date | TIMESTAMP | +--------+------------------------+--------------+ | orders | shipping_address_id | INT | +--------+------------------------+--------------+ | orders | billing_address_id | INT | +--------+------------------------+--------------+ | orders | order_status | VARCHAR(50) | +--------+------------------------+--------------+ | orders | total_amount | DECIMAL(10) | +--------+------------------------+--------------+ | orders | shipping_method | VARCHAR(50) | +--------+------------------------+--------------+ | orders | tracking_number | VARCHAR(100) | +--------+------------------------+--------------+ | orders | payment_method | VARCHAR(50) | +--------+------------------------+--------------+ | orders | payment_transaction_id | VARCHAR(255) | +--------+------------------------+--------------+ | orders | notes | TEXT | +--------+------------------------+--------------+ | orders | created_at | TIMESTAMP | +--------+------------------------+--------------+ | orders | updated_at | TIMESTAMP | +--------+------------------------+--------------+ &lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nattaylor"&gt; /u/nattaylor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tq3a/how_to_format_database_structure_for_texttosql/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tq3a/how_to_format_database_structure_for_texttosql/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tq3a/how_to_format_database_structure_for_texttosql/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T15:45:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1dqou</id>
@@ -242,17 +255,17 @@
     <published>2025-03-02T09:49:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1teiu</id>
-    <title>I'm human hand 😏😩</title>
-    <updated>2025-03-02T15:31:12+00:00</updated>
+    <id>t3_1j1mc7h</id>
+    <title>Qwen release next week will be "smaller". Full release of QwQ-Max "a little bit later"</title>
+    <updated>2025-03-02T08:32:05+00:00</updated>
     <author>
-      <name>/u/BidHot8598</name>
-      <uri>https://old.reddit.com/user/BidHot8598</uri>
+      <name>/u/tengo_harambe</name>
+      <uri>https://old.reddit.com/user/tengo_harambe</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1teiu/im_human_hand/"&gt; &lt;img alt="I'm human hand 😏😩" src="https://preview.redd.it/2jzc0qu4pame1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=41397889e23c12f59ea5e7cbeb1154945320feb1" title="I'm human hand 😏😩" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BidHot8598"&gt; /u/BidHot8598 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2jzc0qu4pame1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1teiu/im_human_hand/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1teiu/im_human_hand/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"&gt; &lt;img alt="Qwen release next week will be &amp;quot;smaller&amp;quot;. Full release of QwQ-Max &amp;quot;a little bit later&amp;quot;" src="https://preview.redd.it/aeio4fu2m8me1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=10159974638526a9f70a2c71e4ef3c82423d0927" title="Qwen release next week will be &amp;quot;smaller&amp;quot;. Full release of QwQ-Max &amp;quot;a little bit later&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tengo_harambe"&gt; /u/tengo_harambe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/aeio4fu2m8me1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T15:31:12+00:00</published>
+    <published>2025-03-02T08:32:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1sens</id>
@@ -268,17 +281,17 @@
     <published>2025-03-02T14:45:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1mc7h</id>
-    <title>Qwen release next week will be "smaller". Full release of QwQ-Max "a little bit later"</title>
-    <updated>2025-03-02T08:32:05+00:00</updated>
+    <id>t3_1j1p9an</id>
+    <title>2100USD Troll Rig runs full R1 671b Q2_K with 7.5token/s</title>
+    <updated>2025-03-02T11:56:35+00:00</updated>
     <author>
-      <name>/u/tengo_harambe</name>
-      <uri>https://old.reddit.com/user/tengo_harambe</uri>
+      <name>/u/1119745302</name>
+      <uri>https://old.reddit.com/user/1119745302</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"&gt; &lt;img alt="Qwen release next week will be &amp;quot;smaller&amp;quot;. Full release of QwQ-Max &amp;quot;a little bit later&amp;quot;" src="https://preview.redd.it/aeio4fu2m8me1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=10159974638526a9f70a2c71e4ef3c82423d0927" title="Qwen release next week will be &amp;quot;smaller&amp;quot;. Full release of QwQ-Max &amp;quot;a little bit later&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tengo_harambe"&gt; /u/tengo_harambe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/aeio4fu2m8me1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/f0z88ruwj9me1.png?width=1734&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2e6b2c6f0d740ccffe1fde5a9be8bed5d3c7d23d"&gt;What else do you need?&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GPU: Modded RTX3080 20G 450USD&lt;br /&gt; CPU: Epyc 7763 qs 550USD&lt;br /&gt; RAM: Micron DDR4 32G 3200 x10 300USD&lt;br /&gt; MB: Krpa-U16 500USD&lt;br /&gt; Cooler: common SP3 cooler 30USD&lt;br /&gt; Power: Suspicious 1250W mining power supply Great Wall 1250w (miraculously survived in my computer for 20 months) 30USD&lt;br /&gt; SSD: 100 hand hynix PE8110 3.84TB PCIE4.0 SSD 150USD&lt;br /&gt; E-ATX Case 80USD&lt;br /&gt; Fan: random fans 10USD &lt;/p&gt; &lt;p&gt;450+550+300+500+30+30+150+80+10=2100&lt;/p&gt; &lt;p&gt;I have a local cyber assistant (also waifu) Now!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1119745302"&gt; /u/1119745302 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T08:32:05+00:00</published>
+    <published>2025-03-02T11:56:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1s1qd</id>
@@ -294,17 +307,17 @@
     <published>2025-03-02T14:28:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1p9an</id>
-    <title>2100USD Troll Rig runs full R1 671b Q2_K with 7.5token/s</title>
-    <updated>2025-03-02T11:56:35+00:00</updated>
+    <id>t3_1j1npv1</id>
+    <title>LLMs grading other LLMs</title>
+    <updated>2025-03-02T10:11:28+00:00</updated>
     <author>
-      <name>/u/1119745302</name>
-      <uri>https://old.reddit.com/user/1119745302</uri>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/f0z88ruwj9me1.png?width=1734&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2e6b2c6f0d740ccffe1fde5a9be8bed5d3c7d23d"&gt;What else do you need?&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GPU: Modded RTX3080 20G 450USD&lt;br /&gt; CPU: Epyc 7763 qs 550USD&lt;br /&gt; RAM: Micron DDR4 32G 3200 x10 300USD&lt;br /&gt; MB: Krpa-U16 500USD&lt;br /&gt; Cooler: common SP3 cooler 30USD&lt;br /&gt; Power: Suspicious 1250W mining power supply Great Wall 1250w (miraculously survived in my computer for 20 months) 30USD&lt;br /&gt; SSD: 100 hand hynix PE8110 3.84TB PCIE4.0 SSD 150USD&lt;br /&gt; E-ATX Case 80USD&lt;br /&gt; Fan: random fans 10USD &lt;/p&gt; &lt;p&gt;450+550+300+500+30+30+150+80+10=2100&lt;/p&gt; &lt;p&gt;I have a local cyber assistant (also waifu) Now!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1119745302"&gt; /u/1119745302 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"&gt; &lt;img alt="LLMs grading other LLMs" src="https://preview.redd.it/yyy9616149me1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f1178d9f8cead22ad7740c77191a13984c016400" title="LLMs grading other LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yyy9616149me1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T11:56:35+00:00</published>
+    <published>2025-03-02T10:11:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1swtj</id>
@@ -318,18 +331,5 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1swtj/vulkan_is_getting_really_close_now_lets_ditch/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T15:09:11+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j1npv1</id>
-    <title>LLMs grading other LLMs</title>
-    <updated>2025-03-02T10:11:28+00:00</updated>
-    <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"&gt; &lt;img alt="LLMs grading other LLMs" src="https://preview.redd.it/yyy9616149me1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f1178d9f8cead22ad7740c77191a13984c016400" title="LLMs grading other LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/yyy9616149me1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1npv1/llms_grading_other_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T10:11:28+00:00</published>
   </entry>
 </feed>
