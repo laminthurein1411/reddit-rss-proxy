@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-02T16:48:49+00:00</updated>
+  <updated>2025-03-02T17:05:20+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j1k2uz</id>
-    <title>Tensor Parallel bottlenecks: CPU? Resizable BAR?</title>
-    <updated>2025-03-02T05:57:20+00:00</updated>
-    <author>
-      <name>/u/Zidrewndacht</name>
-      <uri>https://old.reddit.com/user/Zidrewndacht</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running a pair of RTX 3090 on a chinese Huananzhi X99-T8 with a Xeon E5-2696v3 and 128GB (8x16GB) DDR3 1866.&lt;/p&gt; &lt;p&gt;Each card is installed on a full PCIe 3.0 x16 slot. AIDA64 GPU test gives about 12 GB/s transfer speed from each card to CPU, which is as expected for PCIe 3.0 x16.&lt;/p&gt; &lt;p&gt;However, using TabbyAPI and enabling tensor parallel makes token generation substantially &lt;em&gt;slower&lt;/em&gt; on all my tests with different models and settings. By a &lt;em&gt;long&lt;/em&gt; shot. And both GPUs stay almost idle (about 100W each). Bus load seems to stay as 1%. A single CPU core stays pegged at 3.8GHz with 100% load, during the whole inference time.&lt;/p&gt; &lt;p&gt;For example: prompting &amp;quot;Count from 1 to 100 separated by commas&amp;quot; to Qwen &lt;strong&gt;14B 6.5bpw&lt;/strong&gt; (FP16 KV cache):&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;on&lt;/strong&gt;:&lt;br /&gt; PP 207.03 T/s, TG: &lt;strong&gt;10.01 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;0%/100% split&lt;/strong&gt; so it uses only the 2nd GPU - which has no display attached or anything else running at all):&lt;br /&gt; PP 987.58 T/s, TG: &lt;strong&gt;44.38 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;50%/50% split&lt;/strong&gt; so both GPUs have work to do alternately):&lt;br /&gt; PP 167.99 T/s, TG: &lt;strong&gt;36.45 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; tested Qwen &lt;strong&gt;72B 4.0bpw&lt;/strong&gt; (Q4 KV cache), issue is less pronounced but persists:&lt;/p&gt; &lt;p&gt;Tensor parallel on:&lt;br /&gt; PP: 93.9 T/s, TG: &lt;strong&gt;5.86 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel off (manual 15GB/24GB split, to fit):&lt;br /&gt; PP: 66.8 T/s, TG: &lt;strong&gt;11.92 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;All those results are &lt;strong&gt;not&lt;/strong&gt; using speculative decoding.&lt;/p&gt; &lt;p&gt;Most results I find online give tensor parallel a performance increase from zero to almost double, but nothing like such a substantial &lt;em&gt;decrease&lt;/em&gt; in performance. Sure, a Haswell Xeon is no Epyc Rome or anything, but... it's the fastest Haswell E5 Xeon, shouldn't have &amp;gt;4x slower single-threaded performance than modern hardware by itself, surely? Typical CPU benchmarks show single-threaded performance about half of modern Raptor Lake stuff, for example.&lt;/p&gt; &lt;p&gt;Other considerations:&lt;/p&gt; &lt;p&gt;The motherboard doesn't have support for Resizable BAR. &lt;strong&gt;xCuri0/ReBarUEFI&lt;/strong&gt; can patch that but I don't have enough evidence that it'd work without issues on this board with a dual-GPU situation (in fact I've once found someone mentioning that adding a second GPU explicitly made it &lt;em&gt;not&lt;/em&gt; work because a single card used all BAR space available or something, preventing booting with a second card installed entirely... so I'm wary).&lt;/p&gt; &lt;p&gt;This is my main desktop, running Windows 11 LTSC. I can't move to Linux or dedicate this hardware to a Linux server at all, so I didn't even test it with Linux. I can't use Hyper-V/WSL as well (as that forces VMware Workstation, which I need, to run at a snail pace over Hyper-V itself).&lt;/p&gt; &lt;p&gt;So, here's the question: &lt;strong&gt;What's the bottleneck for tensor parallel in&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;TabbyAPI/exl2&lt;/em&gt;&lt;/strong&gt;, really?&lt;/p&gt; &lt;p&gt;Has anyone tested this on ancient Haswell Xeons?&lt;/p&gt; &lt;p&gt;Does tensor parallelism &lt;em&gt;require&lt;/em&gt; Resizable BAR (possibly to prevent the CPU having to move the BAR constantly or something)? Is it a known issue?&lt;/p&gt; &lt;p&gt;Or... am I missing something else entirely? What gives?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; sloooow tensor parallel performance on a Haswell CPU, single CPU core bottleneck, no resizable BAR available, Windows. Looking for other experiences, opinions, suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zidrewndacht"&gt; /u/Zidrewndacht &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T05:57:20+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j1ocg4</id>
     <title>Phi4-Multimodal-Instruct Server</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1ocg4/phi4multimodalinstruct_server/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T10:54:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j1qh9k</id>
-    <title>Lightweight alternative to OpenWebUI?</title>
-    <updated>2025-03-02T13:09:13+00:00</updated>
-    <author>
-      <name>/u/Vaddieg</name>
-      <uri>https://old.reddit.com/user/Vaddieg</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community!&lt;br /&gt; I'm running mlx.server locally but it provides only OpenAI-compatible API. I need a simple web UI for chat with markdown support and OpenWebUI is apparently an overkill that pulls tons of dependencies including Docker and requires its own setup for LLM.&lt;br /&gt; The computer allocates nearly all of its RAM for LLM, so I need something really lightweight that communicates with localhost LLM server over OpenAI API&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vaddieg"&gt; /u/Vaddieg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qh9k/lightweight_alternative_to_openwebui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qh9k/lightweight_alternative_to_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qh9k/lightweight_alternative_to_openwebui/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T13:09:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1oe2d</id>
@@ -73,19 +47,6 @@
     <published>2025-03-01T00:47:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j10d5g</id>
-    <title>Can you ELI5 why a temp of 0 is bad?</title>
-    <updated>2025-03-01T14:14:16+00:00</updated>
-    <author>
-      <name>/u/ParaboloidalCrest</name>
-      <uri>https://old.reddit.com/user/ParaboloidalCrest</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems like common knowledge that &amp;quot;you almost always need temp &amp;gt; 0&amp;quot; but I find this less authoritative than everyone believes. I understand if one is writing creatively, he'd use higher temps to arrive at less boring ideas, but what if the prompts are for STEM topics or just factual information? Wouldn't higher temps force the llm to wonder away from the more likely correct answer, into a maze of more likely wrong answers, and effectively hallucinate more?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParaboloidalCrest"&gt; /u/ParaboloidalCrest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-01T14:14:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j1out5</id>
     <title>For what applications will x8/x8 PCIe bifurcation for dual GPU setups be useful? Is NVLink still important in 2025?</title>
     <updated>2025-03-02T11:29:26+00:00</updated>
@@ -99,6 +60,19 @@
     <published>2025-03-02T11:29:26+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j10d5g</id>
+    <title>Can you ELI5 why a temp of 0 is bad?</title>
+    <updated>2025-03-01T14:14:16+00:00</updated>
+    <author>
+      <name>/u/ParaboloidalCrest</name>
+      <uri>https://old.reddit.com/user/ParaboloidalCrest</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems like common knowledge that &amp;quot;you almost always need temp &amp;gt; 0&amp;quot; but I find this less authoritative than everyone believes. I understand if one is writing creatively, he'd use higher temps to arrive at less boring ideas, but what if the prompts are for STEM topics or just factual information? Wouldn't higher temps force the llm to wonder away from the more likely correct answer, into a maze of more likely wrong answers, and effectively hallucinate more?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParaboloidalCrest"&gt; /u/ParaboloidalCrest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j10d5g/can_you_eli5_why_a_temp_of_0_is_bad/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-01T14:14:16+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j12jh4</id>
     <title>Drummer's Fallen Llama 3.3 R1 70B v1 - Experience a totally unhinged R1 at home!</title>
     <updated>2025-03-01T15:54:30+00:00</updated>
@@ -110,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j12jh4/drummers_fallen_llama_33_r1_70b_v1_experience_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-01T15:54:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1tyol</id>
+    <title>Is there a way to connect your locally ran LLM to Jan.ai?</title>
+    <updated>2025-03-02T15:55:45+00:00</updated>
+    <author>
+      <name>/u/Mammoth_Nature1508</name>
+      <uri>https://old.reddit.com/user/Mammoth_Nature1508</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been trying this for days but don't know how. Is there a way to do this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mammoth_Nature1508"&gt; /u/Mammoth_Nature1508 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tyol/is_there_a_way_to_connect_your_locally_ran_llm_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tyol/is_there_a_way_to_connect_your_locally_ran_llm_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1tyol/is_there_a_way_to_connect_your_locally_ran_llm_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T15:55:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1dqou</id>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T13:04:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1vhr4</id>
+    <title>Three sisters [llama 3.3 70B]</title>
+    <updated>2025-03-02T17:00:19+00:00</updated>
+    <author>
+      <name>/u/mentallyburnt</name>
+      <uri>https://old.reddit.com/user/mentallyburnt</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;San-Mai (Original Release) Named after the traditional Japanese blade smithing technique of creating three-layer laminated composite metals, San-Mai represents the foundational model in the series. Like its namesake that combines a hard cutting edge with a tougher spine, this model offers a balanced approach to AI capabilities, providing reliability and precision.&lt;/p&gt; &lt;p&gt;Cu-Mai (Version A) Cu-Mai, a play on &amp;quot;San-Mai&amp;quot; specifically referencing Copper-Steel Damascus, represents an evolution from the original model. While maintaining the grounded and reliable nature of San-Mai, Cu-Mai introduces its own distinct &amp;quot;flavor&amp;quot; in terms of prose style and overall interaction experience. It demonstrates strong adherence to prompts while offering unique creative expression.&lt;/p&gt; &lt;p&gt;Mokume-Gane (Version C) Named after the Japanese metalworking technique 'Mokume-gane' (木目金), meaning 'wood grain metal', this model represents the most creative version in the series. Just as Mokume-gane craftsmen blend various metals to create distinctive layered patterns, this model generates more creative and unexpected outputs but tends to be unruly.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Steelskull/L3.3-San-Mai-R1-70b"&gt;https://huggingface.co/Steelskull/L3.3-San-Mai-R1-70b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Steelskull/L3.3-Cu-Mai-R1-70b"&gt;https://huggingface.co/Steelskull/L3.3-Cu-Mai-R1-70b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Steelskull/L3.3-Mokume-Gane-R1-70b-v1.1"&gt;https://huggingface.co/Steelskull/L3.3-Mokume-Gane-R1-70b-v1.1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;At their core, the three models utilize an entirely custom base model. The SCE merge method, with settings finely tuned based on community feedback from evaluations of Experiment-Model-Ver-0.5, Experiment-Model-Ver-0.5.A, Experiment-Model-Ver-0.5.B, Experiment-Model-Ver-0.5.C, Experiment-Model-Ver-0.5.D, L3.3-Nevoria-R1-70b, L3.3-Damascus-R1-70b and L3.3-Exp-Nevoria-70b-v0.1, enables precise and effective component integration while maintaining model coherence and reliability.&lt;/p&gt; &lt;p&gt;Have fun! -steel&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mentallyburnt"&gt; /u/mentallyburnt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1vhr4/three_sisters_llama_33_70b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1vhr4/three_sisters_llama_33_70b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1vhr4/three_sisters_llama_33_70b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T17:00:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1j0tnsr</id>
