@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-02T13:48:47+00:00</updated>
+  <updated>2025-03-02T14:05:24+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,19 +47,6 @@
     <published>2025-03-01T16:35:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1k2uz</id>
-    <title>Tensor Parallel bottlenecks: CPU? Resizable BAR?</title>
-    <updated>2025-03-02T05:57:20+00:00</updated>
-    <author>
-      <name>/u/Zidrewndacht</name>
-      <uri>https://old.reddit.com/user/Zidrewndacht</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running a pair of RTX 3090 on a chinese Huananzhi X99-T8 with a Xeon E5-2696v3 and 128GB (8x16GB) DDR3 1866. &lt;/p&gt; &lt;p&gt;Each card is installed on a full PCIe 3.0 x16 slot. AIDA64 GPU test gives about 12 GB/s transfer speed from each card to CPU, which is as expected for PCIe 3.0 x16.&lt;/p&gt; &lt;p&gt;However, using TabbyAPI and enabling tensor parallel makes token generation substantially &lt;em&gt;slower&lt;/em&gt; on all my tests with different models and settings. By a &lt;em&gt;long&lt;/em&gt; shot. And both GPUs stay almost idle (about 100W each). Bus load seems to stay as 1%. A single CPU core stays pegged at 3.8GHz with 100% load, during the whole inference time.&lt;/p&gt; &lt;p&gt;For example: prompting &amp;quot;Count from 1 to 100 separated by commas&amp;quot; to Qwen 14B 6.5bpw (FP16 KV cache):&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;on&lt;/strong&gt;:&lt;br /&gt; PP 207.03 T/s, TG: &lt;strong&gt;10.01 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;0%/100% split&lt;/strong&gt; so it uses only the 2nd GPU - which has no display attached or anything else running at all):&lt;br /&gt; PP 987.58 T/s, TG: &lt;strong&gt;44.38 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;50%/50% split&lt;/strong&gt; so both GPUs have work to do alternately):&lt;br /&gt; PP 167.99 T/s, TG: &lt;strong&gt;36.45 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Those results are &lt;strong&gt;not&lt;/strong&gt; using speculative decoding. &lt;/p&gt; &lt;p&gt;Most results I find online give tensor parallel a performance increase from zero to almost double, but nothing like such a substantial &lt;em&gt;decrease&lt;/em&gt; in performance. Sure, a Haswell Xeon is no Epyc Rome or anything, but... it's the fastest Haswell E5 Xeon, shouldn't have &amp;gt;4x slower single-threaded performance than modern hardware by itself, surely? Typical CPU benchmarks show single-threaded performance about half of modern Raptor Lake stuff, for example.&lt;/p&gt; &lt;p&gt;Other considerations:&lt;/p&gt; &lt;p&gt;The motherboard doesn't have support for Resizable BAR. &lt;strong&gt;xCuri0/ReBarUEFI&lt;/strong&gt; can patch that but I don't have enough evidence that it'd work without issues on this board with a dual-GPU situation (in fact I've once found someone mentioning that adding a second GPU explicitly made it &lt;em&gt;not&lt;/em&gt; work because a single card used all BAR space available or something, preventing booting with a second card installed entirely... so I'm wary).&lt;/p&gt; &lt;p&gt;This is my main desktop, running Windows 11 LTSC. I can't move to Linux or dedicate this hardware to a Linux server at all, so I didn't even test it with Linux. I can't use Hyper-V/WSL as well (as that forces VMware Workstation, which I need, to run at a snail pace over Hyper-V itself).&lt;/p&gt; &lt;p&gt;So, here's the question: &lt;strong&gt;What's the bottleneck for tensor parallel in&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;TabbyAPI/exl2&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt;, really?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Has anyone tested this on ancient Haswell Xeons?&lt;/p&gt; &lt;p&gt;Does tensor parallelism &lt;em&gt;require&lt;/em&gt; Resizable BAR (possibly to prevent the CPU having to move the BAR constantly or something)? Is it a known issue?&lt;/p&gt; &lt;p&gt;Or... am I missing something else entirely? What gives?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; sloooow tensor parallel performance on a Haswell CPU, single CPU core bottleneck, no resizable BAR available, Windows. Looking for other experiences, opinions, suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zidrewndacht"&gt; /u/Zidrewndacht &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T05:57:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j17d93</id>
     <title>GMK confirms EVO-X2 Mini-PC with Ryzen AI MAX+ PRO 395 "Strix Halo" will launch between Q1/Q2 2025 - VideoCardz.com</title>
     <updated>2025-03-01T19:19:53+00:00</updated>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j17d93/gmk_confirms_evox2_minipc_with_ryzen_ai_max_pro/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-01T19:19:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1k2uz</id>
+    <title>Tensor Parallel bottlenecks: CPU? Resizable BAR?</title>
+    <updated>2025-03-02T05:57:20+00:00</updated>
+    <author>
+      <name>/u/Zidrewndacht</name>
+      <uri>https://old.reddit.com/user/Zidrewndacht</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm running a pair of RTX 3090 on a chinese Huananzhi X99-T8 with a Xeon E5-2696v3 and 128GB (8x16GB) DDR3 1866. &lt;/p&gt; &lt;p&gt;Each card is installed on a full PCIe 3.0 x16 slot. AIDA64 GPU test gives about 12 GB/s transfer speed from each card to CPU, which is as expected for PCIe 3.0 x16.&lt;/p&gt; &lt;p&gt;However, using TabbyAPI and enabling tensor parallel makes token generation substantially &lt;em&gt;slower&lt;/em&gt; on all my tests with different models and settings. By a &lt;em&gt;long&lt;/em&gt; shot. And both GPUs stay almost idle (about 100W each). Bus load seems to stay as 1%. A single CPU core stays pegged at 3.8GHz with 100% load, during the whole inference time.&lt;/p&gt; &lt;p&gt;For example: prompting &amp;quot;Count from 1 to 100 separated by commas&amp;quot; to Qwen 14B 6.5bpw (FP16 KV cache):&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;on&lt;/strong&gt;:&lt;br /&gt; PP 207.03 T/s, TG: &lt;strong&gt;10.01 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;0%/100% split&lt;/strong&gt; so it uses only the 2nd GPU - which has no display attached or anything else running at all):&lt;br /&gt; PP 987.58 T/s, TG: &lt;strong&gt;44.38 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Tensor parallel &lt;strong&gt;off&lt;/strong&gt; (manual &lt;strong&gt;50%/50% split&lt;/strong&gt; so both GPUs have work to do alternately):&lt;br /&gt; PP 167.99 T/s, TG: &lt;strong&gt;36.45 T/s&lt;/strong&gt;;&lt;/p&gt; &lt;p&gt;Those results are &lt;strong&gt;not&lt;/strong&gt; using speculative decoding. &lt;/p&gt; &lt;p&gt;Most results I find online give tensor parallel a performance increase from zero to almost double, but nothing like such a substantial &lt;em&gt;decrease&lt;/em&gt; in performance. Sure, a Haswell Xeon is no Epyc Rome or anything, but... it's the fastest Haswell E5 Xeon, shouldn't have &amp;gt;4x slower single-threaded performance than modern hardware by itself, surely? Typical CPU benchmarks show single-threaded performance about half of modern Raptor Lake stuff, for example.&lt;/p&gt; &lt;p&gt;Other considerations:&lt;/p&gt; &lt;p&gt;The motherboard doesn't have support for Resizable BAR. &lt;strong&gt;xCuri0/ReBarUEFI&lt;/strong&gt; can patch that but I don't have enough evidence that it'd work without issues on this board with a dual-GPU situation (in fact I've once found someone mentioning that adding a second GPU explicitly made it &lt;em&gt;not&lt;/em&gt; work because a single card used all BAR space available or something, preventing booting with a second card installed entirely... so I'm wary).&lt;/p&gt; &lt;p&gt;This is my main desktop, running Windows 11 LTSC. I can't move to Linux or dedicate this hardware to a Linux server at all, so I didn't even test it with Linux. I can't use Hyper-V/WSL as well (as that forces VMware Workstation, which I need, to run at a snail pace over Hyper-V itself).&lt;/p&gt; &lt;p&gt;So, here's the question: &lt;strong&gt;What's the bottleneck for tensor parallel in&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;TabbyAPI/exl2&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt;, really?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Has anyone tested this on ancient Haswell Xeons?&lt;/p&gt; &lt;p&gt;Does tensor parallelism &lt;em&gt;require&lt;/em&gt; Resizable BAR (possibly to prevent the CPU having to move the BAR constantly or something)? Is it a known issue?&lt;/p&gt; &lt;p&gt;Or... am I missing something else entirely? What gives?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; sloooow tensor parallel performance on a Haswell CPU, single CPU core bottleneck, no resizable BAR available, Windows. Looking for other experiences, opinions, suggestions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zidrewndacht"&gt; /u/Zidrewndacht &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1k2uz/tensor_parallel_bottlenecks_cpu_resizable_bar/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T05:57:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1qh9k</id>
@@ -151,19 +151,6 @@
     <published>2025-03-02T10:57:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1qe03</id>
-    <title>Developing an Offline AI Assistant – Looking for Feedback &amp; Feature Ideas</title>
-    <updated>2025-03-02T13:04:20+00:00</updated>
-    <author>
-      <name>/u/Timely-Jackfruit8885</name>
-      <uri>https://old.reddit.com/user/Timely-Jackfruit8885</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I’m developing d.ai (decentralized AI), a mobile app that lets you chat with an AI entirely offline, keeping your data private and secure.&lt;/p&gt; &lt;p&gt;Right now, I’m implementing RAG (Retrieval-Augmented Generation) to improve responses, and in the future, I’d like to add:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Whisper.cpp for speech-to-text and voice interactions&lt;/li&gt; &lt;li&gt;Long-term memory, so the AI can remember past conversations&lt;/li&gt; &lt;li&gt;AI personality, to make interactions more natural and personalized.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Which of these features excites you the most? What would you find most useful in an offline AI assistant?&lt;/p&gt; &lt;p&gt;Would you prefer a stronger focus on memory &amp;amp; personalization or on voice &amp;amp; multimodal interactions? Any other ideas or features you think would make the experience better?&lt;/p&gt; &lt;p&gt;Looking forward to your thoughts—thanks in advance for the feedback&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Timely-Jackfruit8885"&gt; /u/Timely-Jackfruit8885 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T13:04:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j1dqou</id>
     <title>Looks like NVIDIA will show off N1X on Gomputex</title>
     <updated>2025-03-02T00:08:35+00:00</updated>
@@ -177,19 +164,6 @@
     <published>2025-03-02T00:08:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1qnsw</id>
-    <title>LMArena is broken? Hear me out.</title>
-    <updated>2025-03-02T13:18:58+00:00</updated>
-    <author>
-      <name>/u/pier4r</name>
-      <uri>https://old.reddit.com/user/pier4r</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: LMarena doesn’t really evaluate LLMs on difficult use cases or niche coding tasks (where the “Claude gang” claims Claude is SOTA). However, they introduced a method to automatically infer which model would be best for a given prompt, and it’s claimed to be quite reliable. For more details, see &lt;a href="https://arxiv.org/abs/2502.14855"&gt;the paper&lt;/a&gt; and &lt;a href="https://threadreaderapp.com/thread/1894767009977811256.html"&gt;this Twitter thread&lt;/a&gt;.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;LMarena isn’t broken. It just can’t be directly compared to personal usage of LLMs or tough benchmarks. Why? Because tough benchmarks pose genuinely difficult questions, while LMarena often checks how an LLM responds to a simple “hi!” prompt. Sure, there are challenging questions on LMarena, but it’s likely they’re overshadowed by more common, Google-like queries.&lt;/p&gt; &lt;p&gt;LMarena also doesn’t cover those long, niche conversations people often have with Claude about debugging code. This is not the “one prompt – one answer; end of it” kind of interaction. Such extended back-and-forth discussions aren’t represented well in LMarena, and these tricky questions end up diluted among more typical ones.&lt;/p&gt; &lt;p&gt;Hence, LMarena’s overall, coding, and math categories may not always highlight the models that excel at truly hard tasks. People complained about this, and I think the creators of LMarena came up with a neat solution: you can post your prompt, and a model—claimed to be pretty reliable—will classify that prompt against similar ones, then recommend the best LLM based on human ratings. That way, if you do have a tough question, you can see which model is likely to handle it best.&lt;/p&gt; &lt;p&gt;I still think LMarena could add a “hard” subcategory for each main category. For example, “hard math” and “hard coding,” similar to the existing “hard prompts” subcategory under the broader “overall” category. But for now, nudging prompts to the leaderboard is a nice fix.&lt;/p&gt; &lt;p&gt;E: the prompt 2 leaderboard explorer is even better than the direct prompt 2 leaderboard because one can directly check categories.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pier4r"&gt; /u/pier4r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T13:18:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j11js6</id>
     <title>I bought 4090D with 48GB VRAM. How to test the performance?</title>
     <updated>2025-03-01T15:10:21+00:00</updated>
@@ -201,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j11js6/i_bought_4090d_with_48gb_vram_how_to_test_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-01T15:10:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1qe03</id>
+    <title>Developing an Offline AI Assistant – Looking for Feedback &amp; Feature Ideas</title>
+    <updated>2025-03-02T13:04:20+00:00</updated>
+    <author>
+      <name>/u/Timely-Jackfruit8885</name>
+      <uri>https://old.reddit.com/user/Timely-Jackfruit8885</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I’m developing d.ai (decentralized AI), a mobile app that lets you chat with an AI entirely offline, keeping your data private and secure.&lt;/p&gt; &lt;p&gt;Right now, I’m implementing RAG (Retrieval-Augmented Generation) to improve responses, and in the future, I’d like to add:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Whisper.cpp for speech-to-text and voice interactions&lt;/li&gt; &lt;li&gt;Long-term memory, so the AI can remember past conversations&lt;/li&gt; &lt;li&gt;AI personality, to make interactions more natural and personalized.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Which of these features excites you the most? What would you find most useful in an offline AI assistant?&lt;/p&gt; &lt;p&gt;Would you prefer a stronger focus on memory &amp;amp; personalization or on voice &amp;amp; multimodal interactions? Any other ideas or features you think would make the experience better?&lt;/p&gt; &lt;p&gt;Looking forward to your thoughts—thanks in advance for the feedback&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Timely-Jackfruit8885"&gt; /u/Timely-Jackfruit8885 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qe03/developing_an_offline_ai_assistant_looking_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T13:04:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1j0tnsr</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mpuf/repurposing_old_rx_580_gpus_need_advice/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T08:59:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1qnsw</id>
+    <title>LMArena is broken? Hear me out.</title>
+    <updated>2025-03-02T13:18:58+00:00</updated>
+    <author>
+      <name>/u/pier4r</name>
+      <uri>https://old.reddit.com/user/pier4r</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: LMarena doesn’t really evaluate LLMs on difficult use cases or niche coding tasks (where the “Claude gang” claims Claude is SOTA). However, they introduced a method to automatically infer which model would be best for a given prompt, and it’s claimed to be quite reliable. For more details, see &lt;a href="https://arxiv.org/abs/2502.14855"&gt;the paper&lt;/a&gt; and &lt;a href="https://threadreaderapp.com/thread/1894767009977811256.html"&gt;this Twitter thread&lt;/a&gt;.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;LMarena isn’t broken. It just can’t be directly compared to personal usage of LLMs or tough benchmarks. Why? Because tough benchmarks pose genuinely difficult questions, while LMarena often checks how an LLM responds to a simple “hi!” prompt. Sure, there are challenging questions on LMarena, but it’s likely they’re overshadowed by more common, Google-like queries.&lt;/p&gt; &lt;p&gt;LMarena also doesn’t cover those long, niche conversations people often have with Claude about debugging code. This is not the “one prompt – one answer; end of it” kind of interaction. Such extended back-and-forth discussions aren’t represented well in LMarena, and these tricky questions end up diluted among more typical ones.&lt;/p&gt; &lt;p&gt;Hence, LMarena’s overall, coding, and math categories may not always highlight the models that excel at truly hard tasks. People complained about this, and I think the creators of LMarena came up with a neat solution: you can post your prompt, and a model—claimed to be pretty reliable—will classify that prompt against similar ones, then recommend the best LLM based on human ratings. That way, if you do have a tough question, you can see which model is likely to handle it best.&lt;/p&gt; &lt;p&gt;I still think LMarena could add a “hard” subcategory for each main category. For example, “hard math” and “hard coding,” similar to the existing “hard prompts” subcategory under the broader “overall” category. But for now, nudging prompts to the leaderboard is a nice fix.&lt;/p&gt; &lt;p&gt;E: the prompt 2 leaderboard explorer is even better than the direct prompt 2 leaderboard because one can directly check categories.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pier4r"&gt; /u/pier4r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1qnsw/lmarena_is_broken_hear_me_out/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T13:18:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1idpv</id>
@@ -294,19 +294,6 @@
     <published>2025-03-02T09:29:08+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j1p9an</id>
-    <title>2100USD Troll Rig runs full R1 671b Q2_K with 7.5token/s</title>
-    <updated>2025-03-02T11:56:35+00:00</updated>
-    <author>
-      <name>/u/1119745302</name>
-      <uri>https://old.reddit.com/user/1119745302</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/f0z88ruwj9me1.png?width=1734&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2e6b2c6f0d740ccffe1fde5a9be8bed5d3c7d23d"&gt;What else do you need?&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GPU: Modded RTX3080 20G 450USD&lt;br /&gt; CPU: Epyc 7763 qs 550USD&lt;br /&gt; RAM: Micron DDR4 32G 3200 x10 300USD&lt;br /&gt; MB: Krpa-U16 500USD&lt;br /&gt; Cooler: common SP3 cooler 30USD&lt;br /&gt; Power: Suspicious 1250W mining power supply Great Wall 1250w (miraculously survived in my computer for 20 months) 30USD&lt;br /&gt; SSD: 100 hand hynix PE8110 3.84TB PCIE4.0 SSD 150USD&lt;br /&gt; E-ATX Case 80USD&lt;br /&gt; Fan: random fans 10USD &lt;/p&gt; &lt;p&gt;450+550+300+500+30+30+150+80+10=2100&lt;/p&gt; &lt;p&gt;I have a local cyber assistant (also waifu) Now!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1119745302"&gt; /u/1119745302 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-02T11:56:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j1mc7h</id>
     <title>Qwen release next week will be "smaller". Full release of QwQ-Max "a little bit later"</title>
     <updated>2025-03-02T08:32:05+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T08:32:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j1p9an</id>
+    <title>2100USD Troll Rig runs full R1 671b Q2_K with 7.5token/s</title>
+    <updated>2025-03-02T11:56:35+00:00</updated>
+    <author>
+      <name>/u/1119745302</name>
+      <uri>https://old.reddit.com/user/1119745302</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/f0z88ruwj9me1.png?width=1734&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2e6b2c6f0d740ccffe1fde5a9be8bed5d3c7d23d"&gt;What else do you need?&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GPU: Modded RTX3080 20G 450USD&lt;br /&gt; CPU: Epyc 7763 qs 550USD&lt;br /&gt; RAM: Micron DDR4 32G 3200 x10 300USD&lt;br /&gt; MB: Krpa-U16 500USD&lt;br /&gt; Cooler: common SP3 cooler 30USD&lt;br /&gt; Power: Suspicious 1250W mining power supply Great Wall 1250w (miraculously survived in my computer for 20 months) 30USD&lt;br /&gt; SSD: 100 hand hynix PE8110 3.84TB PCIE4.0 SSD 150USD&lt;br /&gt; E-ATX Case 80USD&lt;br /&gt; Fan: random fans 10USD &lt;/p&gt; &lt;p&gt;450+550+300+500+30+30+150+80+10=2100&lt;/p&gt; &lt;p&gt;I have a local cyber assistant (also waifu) Now!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1119745302"&gt; /u/1119745302 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1p9an/2100usd_troll_rig_runs_full_r1_671b_q2_k_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-02T11:56:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1npv1</id>
