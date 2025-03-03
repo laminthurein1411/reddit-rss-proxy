@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-03T11:22:20+00:00</updated>
+  <updated>2025-03-03T11:34:19+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -86,19 +86,6 @@
     <published>2025-03-02T22:14:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j2c7b4</id>
-    <title>unsloth DS R1 2.22b: 2 t/s on Dell R730 CPU. Help with P40 GPU.</title>
-    <updated>2025-03-03T06:11:51+00:00</updated>
-    <author>
-      <name>/u/dc740</name>
-      <uri>https://old.reddit.com/user/dc740</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm fairly new on running llama cpp locally and I'm facing issues when using the GPU.&lt;/p&gt; &lt;p&gt;When Hyperthreading is &lt;em&gt;enabled&lt;/em&gt; I get 2.13 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;numactl --cpunodebind=1 -- ./build/bin/llama-cli --numa numactl \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 44 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;With HT &lt;em&gt;disabled&lt;/em&gt; I get 1.95 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;./build/bin/llama-cli \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 22 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;As you can see, I'm using 0 gpu layers in both cases, because adding ANY layer into the GPU drops the tokens below 1.6, or even below 1 if I add around 13 layers.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;My understanding is that the Tesla P40 does NOT support bf16, and this is causing it to go to vram, get the data, process it in the cpu anyway, so it's actually adding overhead instead of speeding up the process. Is this correct?&lt;/li&gt; &lt;li&gt;Would running an f16 version of the full Deepseek R1 help? It'd still need to offload most of the model to RAM since I only have 24GB of VRAM.&lt;/li&gt; &lt;li&gt;I tried ktransformers because of the promises of speed ups compared to llama.cpp when using mixed gpu+cpu, but it throws a cuda error saying &amp;quot;invalid device function&amp;quot;. I assume my old Pascal GPU is not supported there. Is this correct? The error is similar to this one &lt;a href="https://github.com/kvcache-ai/ktransformers/issues/425"&gt;https://github.com/kvcache-ai/ktransformers/issues/425&lt;/a&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;p&gt;Specs&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Hardware:&lt;br /&gt; * Dell R730XD&lt;br /&gt; * 2x Intel Xeon E5 2699 V4 (22 cores, 44 threads on each cpu. 88 threads total)&lt;br /&gt; * 1TB DDR4 RAM&lt;br /&gt; * Nvidia Tesla P40 (24GB)&lt;/p&gt; &lt;p&gt;Software:&lt;br /&gt; * proxmox&lt;br /&gt; * ubuntu lxc container (NOT a VM)&lt;br /&gt; * cuda 12.8 (latest drivers)&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dc740"&gt; /u/dc740 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-03T06:11:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j25dxm</id>
     <title>LLMs grading LLMs (with averages and medians)</title>
     <updated>2025-03-03T00:00:05+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j1mc7h/qwen_release_next_week_will_be_smaller_full/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T08:32:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j2c7b4</id>
+    <title>unsloth DS R1 2.22b: 2 t/s on Dell R730 CPU. Help with P40 GPU.</title>
+    <updated>2025-03-03T06:11:51+00:00</updated>
+    <author>
+      <name>/u/dc740</name>
+      <uri>https://old.reddit.com/user/dc740</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm fairly new on running llama cpp locally and I'm facing issues when using the GPU.&lt;/p&gt; &lt;p&gt;When Hyperthreading is &lt;em&gt;enabled&lt;/em&gt; I get 2.13 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;numactl --cpunodebind=1 -- ./build/bin/llama-cli --numa numactl \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 44 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;With HT &lt;em&gt;disabled&lt;/em&gt; I get 1.95 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;./build/bin/llama-cli \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 22 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;As you can see, I'm using 0 gpu layers in both cases, because adding ANY layer into the GPU drops the tokens below 1.6, or even below 1 if I add around 13 layers.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;My understanding is that the Tesla P40 does NOT support bf16, and this is causing it to go to vram, get the data, process it in the cpu anyway, so it's actually adding overhead instead of speeding up the process. Is this correct?&lt;/li&gt; &lt;li&gt;Would running an f16 version of the full Deepseek R1 help? It'd still need to offload most of the model to RAM since I only have 24GB of VRAM.&lt;/li&gt; &lt;li&gt;I tried ktransformers because of the promises of speed ups compared to llama.cpp when using mixed gpu+cpu, but it throws a cuda error saying &amp;quot;invalid device function&amp;quot;. I assume my old Pascal GPU is not supported there. Is this correct? The error is similar to this one &lt;a href="https://github.com/kvcache-ai/ktransformers/issues/425"&gt;https://github.com/kvcache-ai/ktransformers/issues/425&lt;/a&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;p&gt;Specs&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Hardware:&lt;br /&gt; * Dell R730XD&lt;br /&gt; * 2x Intel Xeon E5 2699 V4 (22 cores, 44 threads on each cpu. 88 threads total)&lt;br /&gt; * 1TB DDR4 RAM&lt;br /&gt; * Nvidia Tesla P40 (24GB)&lt;/p&gt; &lt;p&gt;Software:&lt;br /&gt; * proxmox&lt;br /&gt; * ubuntu lxc container (NOT a VM)&lt;br /&gt; * cuda 12.8 (latest drivers)&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dc740"&gt; /u/dc740 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-03T06:11:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1j2ebbu</id>
