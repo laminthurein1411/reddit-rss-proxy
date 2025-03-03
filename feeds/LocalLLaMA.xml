@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-03T06:09:08+00:00</updated>
+  <updated>2025-03-03T06:25:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j2b8pl</id>
-    <title>New MacBook or new AI rig</title>
-    <updated>2025-03-03T05:11:11+00:00</updated>
-    <author>
-      <name>/u/No_Palpitation7740</name>
-      <uri>https://old.reddit.com/user/No_Palpitation7740</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have 4000€ budget to buy a new computer for semi pro hobby. But I can't choose. &lt;/p&gt; &lt;p&gt;My main goal is to learn 1). A bit of low level GPU programming 2) how to distribute AI inference over at least 2 GPU.&lt;/p&gt; &lt;p&gt;What I already own: - MacBook pro 15&amp;quot; 2015 16 GB / 256 GB - ipad pro 1 TB - Turing pi 2 &amp;amp; 4*32 GB commute modules&lt;/p&gt; &lt;p&gt;The buying options I see: - MacBook pro 16&amp;quot; M4 pro 48Gb / 2 TB 4049€ -- pros: happy to own a beautiful and portable hardware, can learn GPU programming With MLX - pc rig with 2 3090 128 GB /2tb second hand 3200€ -- pris: can learn cuda, and distribute workload over the two GPU &lt;/p&gt; &lt;p&gt;I don't know which one is better for my goals. Are there better alternatives? Should I consider buy 2 Mac mini? Wait for the mac studio M4?&lt;/p&gt; &lt;p&gt;I already used colab but I am fed up to redownload the models at every session.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Palpitation7740"&gt; /u/No_Palpitation7740 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2b8pl/new_macbook_or_new_ai_rig/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2b8pl/new_macbook_or_new_ai_rig/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2b8pl/new_macbook_or_new_ai_rig/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-03T05:11:11+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j2bfeq</id>
     <title>Selective Decision Optimization through self evaluation and reward/penalty</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j27nik/are_llava34b_or_llama32vision90b_any_good/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-03T01:53:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j2c7b4</id>
+    <title>unsloth DS R1 2.22b: 2 t/s on Dell R730 CPU. Help with P40 GPU.</title>
+    <updated>2025-03-03T06:11:51+00:00</updated>
+    <author>
+      <name>/u/dc740</name>
+      <uri>https://old.reddit.com/user/dc740</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm fairly new on running llama cpp locally and I'm facing issues when using the GPU.&lt;/p&gt; &lt;p&gt;When Hyperthreading is &lt;em&gt;enabled&lt;/em&gt; I get 2.13 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;numactl --cpunodebind=1 -- ./build/bin/llama-cli --numa numactl \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 44 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;With HT &lt;em&gt;disabled&lt;/em&gt; I get 1.95 tokens/s with these CPU only settings:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;./build/bin/llama-cli \&lt;br /&gt; --model /mnt/ai/models/DeepSeek-R1-GGUF-unsloth/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf \&lt;br /&gt; --cache-type-k q4_0 \&lt;br /&gt; --threads 22 -no-cnv --prio 2 \&lt;br /&gt; --split-mode none \&lt;br /&gt; --n-gpu-layers 0 \&lt;br /&gt; --temp 0.6 \&lt;br /&gt; --min-p 0.05 \&lt;br /&gt; --ctx-size 8192 \&lt;br /&gt; --seed 3407 \&lt;br /&gt; --prompt &amp;quot;&amp;lt;｜User｜&amp;gt;Create a Flappy Bird game in Python &amp;lt;｜Assistant｜&amp;gt;&amp;quot;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;As you can see, I'm using 0 gpu layers in both cases, because adding ANY layer into the GPU drops the tokens below 1.6, or even below 1 if I add around 13 layers.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;My understanding is that the Tesla P40 does NOT support bf16, and this is causing it to go to vram, get the data, process it in the cpu anyway, so it's actually adding overhead instead of speeding up the process. Is this correct?&lt;/li&gt; &lt;li&gt;Would running an f16 version of the full Deepseek R1 help? It'd still need to offload most of the model to RAM since I only have 24GB of VRAM.&lt;/li&gt; &lt;li&gt;I tried ktransformers because of the promises of speed ups compared to llama.cpp when using mixed gpu+cpu, but it throws a cuda error saying &amp;quot;invalid device function&amp;quot;. I assume my old Pascal GPU is not supported there. Is this correct? The error is similar to this one &lt;a href="https://github.com/kvcache-ai/ktransformers/issues/425"&gt;https://github.com/kvcache-ai/ktransformers/issues/425&lt;/a&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;p&gt;Specs&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Hardware:&lt;br /&gt; * Dell R730XD&lt;br /&gt; * 2x Intel Xeon E5 2699 V4 (22 cores, 44 threads on each cpu. 88 threads total)&lt;br /&gt; * 1TB DDR4 RAM&lt;br /&gt; * Nvidia Tesla P40 (24GB)&lt;/p&gt; &lt;p&gt;Software:&lt;br /&gt; * proxmox&lt;br /&gt; * ubuntu lxc container (NOT a VM)&lt;br /&gt; * cuda 12.8 (latest drivers)&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dc740"&gt; /u/dc740 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2c7b4/unsloth_ds_r1_222b_2_ts_on_dell_r730_cpu_help/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-03T06:11:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1kj9b</id>
@@ -125,6 +125,19 @@
     <published>2025-03-02T22:14:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j2bc47</id>
+    <title>Any image labeling (multimodal) that would fit in 10gb? Not phi-4</title>
+    <updated>2025-03-03T05:16:47+00:00</updated>
+    <author>
+      <name>/u/firesalamander</name>
+      <uri>https://old.reddit.com/user/firesalamander</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was quite proud of getting all the dependencies installed for phi-4-instruct on my 1080ti. Lots of fancy customized install steps with custom parameters in just the right order. Yay!&lt;/p&gt; &lt;ul&gt; &lt;li&gt;flash_attn==2.7.4.post1&lt;/li&gt; &lt;li&gt;torch==2.6.0&lt;/li&gt; &lt;li&gt;transformers==4.48.2&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;But then... it didn't fit in memory. 🫤 Drat. I'd really like to have a way to draw boxes around objects in an image. &lt;/p&gt; &lt;p&gt;Yolo (maybe v5?) looks like it needs a trained dataset? Which isn't great because I don't have one. I need something generic and pre-trained. &lt;/p&gt; &lt;p&gt;If I described stuff to an average sized 8B quantized LLM (microscopic, round, football shaped, flagella, freshwater) most of the locally runnable ones will happily say &amp;quot;oh that's a dinoflagellate!&amp;quot; And that runs locally. &lt;/p&gt; &lt;p&gt;Which would be exactly what I need from a multimodal LLM: Drawing a box around a blob in the upper right of a microscope's image and making the same guess. &lt;/p&gt; &lt;p&gt;Impossible with the hardware I've got currently? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/firesalamander"&gt; /u/firesalamander &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-03T05:16:47+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j1n4gm</id>
     <title>Gemini 2.0 PRO Too Weak? Here’s a &lt;SystemPrompt&gt; to make it think like R1.</title>
     <updated>2025-03-02T09:29:08+00:00</updated>
@@ -149,19 +162,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j23070/delivery_coming_in_wish_me_luck/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-02T22:12:26+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j2bc47</id>
-    <title>Any image labeling (multimodal) that would fit in 10gb? Not phi-4</title>
-    <updated>2025-03-03T05:16:47+00:00</updated>
-    <author>
-      <name>/u/firesalamander</name>
-      <uri>https://old.reddit.com/user/firesalamander</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was quite proud of getting all the dependencies installed for phi-4-instruct on my 1080ti. Lots of fancy customized install steps with custom parameters in just the right order. Yay!&lt;/p&gt; &lt;ul&gt; &lt;li&gt;flash_attn==2.7.4.post1&lt;/li&gt; &lt;li&gt;torch==2.6.0&lt;/li&gt; &lt;li&gt;transformers==4.48.2&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;But then... it didn't fit in memory. 🫤 Drat. I'd really like to have a way to draw boxes around objects in an image. &lt;/p&gt; &lt;p&gt;Yolo (maybe v5?) looks like it needs a trained dataset? Which isn't great because I don't have one. I need something generic and pre-trained. &lt;/p&gt; &lt;p&gt;If I described stuff to an average sized 8B quantized LLM (microscopic, round, football shaped, flagella, freshwater) most of the locally runnable ones will happily say &amp;quot;oh that's a dinoflagellate!&amp;quot; And that runs locally. &lt;/p&gt; &lt;p&gt;Which would be exactly what I need from a multimodal LLM: Drawing a box around a blob in the upper right of a microscope's image and making the same guess. &lt;/p&gt; &lt;p&gt;Impossible with the hardware I've got currently? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/firesalamander"&gt; /u/firesalamander &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2bc47/any_image_labeling_multimodal_that_would_fit_in/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-03T05:16:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1j25dxm</id>
@@ -216,19 +216,6 @@
     <published>2025-03-02T21:57:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j2az7t</id>
-    <title>How Are You Using LM Studio's Local Server?</title>
-    <updated>2025-03-03T04:56:02+00:00</updated>
-    <author>
-      <name>/u/GnanaSreekar</name>
-      <uri>https://old.reddit.com/user/GnanaSreekar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I've been really enjoying LM Studio for a while now, but I'm still struggling to wrap my head around the local server functionality. I get that it's meant to replace the OpenAI API, but I'm curious how people are actually using it in their workflows. What are some cool or practical ways you've found to leverage the local server? Any examples would be super helpful! Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GnanaSreekar"&gt; /u/GnanaSreekar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-03T04:56:02+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j25trj</id>
     <title>Zen CPUs for LLM: Is higher CCD count better than running 2 CPUs?</title>
     <updated>2025-03-03T00:21:01+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j25trj/zen_cpus_for_llm_is_higher_ccd_count_better_than/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-03T00:21:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j2az7t</id>
+    <title>How Are You Using LM Studio's Local Server?</title>
+    <updated>2025-03-03T04:56:02+00:00</updated>
+    <author>
+      <name>/u/GnanaSreekar</name>
+      <uri>https://old.reddit.com/user/GnanaSreekar</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I've been really enjoying LM Studio for a while now, but I'm still struggling to wrap my head around the local server functionality. I get that it's meant to replace the OpenAI API, but I'm curious how people are actually using it in their workflows. What are some cool or practical ways you've found to leverage the local server? Any examples would be super helpful! Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GnanaSreekar"&gt; /u/GnanaSreekar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2az7t/how_are_you_using_lm_studios_local_server/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-03T04:56:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1j1p9an</id>
