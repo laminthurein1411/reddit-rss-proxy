@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-04T10:38:09+00:00</updated>
+  <updated>2025-03-04T10:48:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j3621h</id>
-    <title>What prompt template should be used for finetuning on Unsloth ?</title>
-    <updated>2025-03-04T08:13:02+00:00</updated>
-    <author>
-      <name>/u/Prior-Blood5979</name>
-      <uri>https://old.reddit.com/user/Prior-Blood5979</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm trying to finetune an llama-3b on Unsloth. I used the given alpaca format and it's training is good. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Then I thought I can improve it by using llama prompt template instead of alpaca.&lt;/strong&gt; But It's not even as good as using Alpaca format. &lt;/p&gt; &lt;p&gt;Why is this happening. Am I doing something wrong here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Prior-Blood5979"&gt; /u/Prior-Blood5979 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3621h/what_prompt_template_should_be_used_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3621h/what_prompt_template_should_be_used_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j3621h/what_prompt_template_should_be_used_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-04T08:13:02+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j3789k</id>
-    <title>How to run hardware accelerated Ollama on integrated GPU, like Radeon 780M on Linux.</title>
-    <updated>2025-03-04T09:44:57+00:00</updated>
-    <author>
-      <name>/u/Sensitive-Leather-32</name>
-      <uri>https://old.reddit.com/user/Sensitive-Leather-32</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For hardware acceleration you could use either &lt;strong&gt;ROCm&lt;/strong&gt; or &lt;strong&gt;Vulkan&lt;/strong&gt;. Ollama devs &lt;strong&gt;don't want to merge Vulkan&lt;/strong&gt; integration, so better use ROCm if you can. It has slightly worse performance, but is easier to run.&lt;/p&gt; &lt;p&gt;If you still need Vulkan, you can &lt;a href="https://github.com/whyvl/ollama-vulkan"&gt;find a fork here&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Installation&lt;/h1&gt; &lt;p&gt;I am running Archlinux, so installed ollama and ollama-rocm. Rocm dependencies are installed automatically.&lt;/p&gt; &lt;p&gt;You can also follow &lt;a href="https://github.com/ollama/ollama/blob/ddb6dc81c26721a08453f1db7f2727076e97dabc/docs/tutorials/amd-igpu-780m.md"&gt;this guide for other distributions&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Override env&lt;/h1&gt; &lt;p&gt;If you have &amp;quot;unsupported&amp;quot; GPU, set &lt;code&gt;HSA_OVERRIDE_GFX_VERSION=11.0.2&lt;/code&gt; in &lt;code&gt;/etc/systemd/system/ollama.service.d/override.conf&lt;/code&gt; this way:&lt;/p&gt; &lt;p&gt;&lt;code&gt;[Service]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;your env value&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;then run &lt;code&gt;sudo systemctl daemon-reload &amp;amp;&amp;amp; sudo systemctl restart ollama.service&lt;/code&gt;&lt;/p&gt; &lt;p&gt;For different GPUs you may need to try different override values like 9.0.0, 9.4.6. Google them.)&lt;/p&gt; &lt;h1&gt;APU fix patch&lt;/h1&gt; &lt;p&gt;You probably need &lt;a href="https://github.com/ollama/ollama/pull/6282"&gt;this &lt;/a&gt;&lt;a href="https://github.com/ollama/ollama/pull/6282"&gt;patch&lt;/a&gt; until it gets merged. There is a &lt;a href="https://gitlab.com/zhaose233/ollama-rocm-package/-/jobs/9282301273/artifacts/browse"&gt;repo with CI with patched packages&lt;/a&gt; for Archlinux.&lt;/p&gt; &lt;h1&gt;Increase GTT size&lt;/h1&gt; &lt;p&gt;If you want to run big models with a bigger context, you have to &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ixy5kf/comment/mfoptfw/?context=3"&gt;set GTT size according to this guide&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Amdgpu kernel bug&lt;/h1&gt; &lt;p&gt;Later during high GPU load I got freezes and graphics restarts with the &lt;a href="https://gist.github.com/AntonIXO/3f49ce8453766a4c07c8920c4c9d2b01"&gt;following logs in dmesg&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The only way to fix it is to build a &lt;a href="https://lore.kernel.org/lkml/20241127114638.11216-1-lamikr@gmail.com/T/"&gt;kernel with this patch&lt;/a&gt;.(&lt;/p&gt; &lt;h1&gt;Performance tips&lt;/h1&gt; &lt;p&gt;You can also set these env valuables to get better generation speed:&lt;/p&gt; &lt;p&gt;HSA_ENABLE_SDMA=0&lt;br /&gt; HSA_ENABLE_COMPRESSION=1&lt;br /&gt; &lt;a href="https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-enable-flash-attention"&gt;OLLAMA_FLASH_ATTENTION=1&lt;/a&gt;&lt;br /&gt; &lt;a href="https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-set-the-quantization-type-for-the-kv-cache"&gt;OLLAMA_KV_CACHE_TYPE=q8_0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Specify max context with: OLLAMA_CONTEXT_LENGTH=16382 # 16k (move context - more ram)&lt;/p&gt; &lt;p&gt;OLLAMA_NEW_ENGINE - does not work for me.&lt;/p&gt; &lt;p&gt;Now you got HW accelerated LLMs on your APUs🎉 Check it with &lt;strong&gt;ollama ps&lt;/strong&gt; and &lt;strong&gt;amdgpu_top&lt;/strong&gt; utility.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sensitive-Leather-32"&gt; /u/Sensitive-Leather-32 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-04T09:44:57+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j2wzky</id>
     <title>Which do you think is better: Deepseek-R1-32B vs QWQ-32b-preview?</title>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j37eto/are_there_prompt_reducers_that_reduce_the_size_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-04T09:58:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j38265</id>
+    <title>16Gb GPU around $300 mark, low idle power. Does it exist?</title>
+    <updated>2025-03-04T10:45:25+00:00</updated>
+    <author>
+      <name>/u/Rxunique</name>
+      <uri>https://old.reddit.com/user/Rxunique</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got a 4x V100 16gb rig on during the day only, now looking for a low power GPU to keep on 24/7. needing to run 14B model on ollama and immich image recognition.&lt;/p&gt; &lt;p&gt;It for 2U server, so ideally blower cards, but capable of modifying a RTX FAN as well.&lt;/p&gt; &lt;p&gt;P100 idles 40W which is too much for 24/7, P4 only has 8gb. Most RTX with 16gb ram are not that cheap. 12GB card will struggle with 14B model.&lt;/p&gt; &lt;p&gt;Basically something like a half price Tesla T4 or A2 but doesn't have to be as good, or as small. Because for similar budget I might as well add a bit more and wait for brand new RTX50xx or new RX9070 which in theory should idel around 10w ish&lt;/p&gt; &lt;p&gt;I've been searching a while, does such GPU existing or am I searching for unobtanium &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Rxunique"&gt; /u/Rxunique &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j38265/16gb_gpu_around_300_mark_low_idle_power_does_it/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j38265/16gb_gpu_around_300_mark_low_idle_power_does_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j38265/16gb_gpu_around_300_mark_low_idle_power_does_it/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-04T10:45:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1j2horr</id>
@@ -138,19 +125,6 @@
     <published>2025-03-04T04:35:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j37ns6</id>
-    <title>Future of Phi-4-multimodal</title>
-    <updated>2025-03-04T10:16:18+00:00</updated>
-    <author>
-      <name>/u/Bitter-College8786</name>
-      <uri>https://old.reddit.com/user/Bitter-College8786</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am looking for a good multilingual model for summarizing texts, writing answer e-mails that can run on a consumer laptop with 6-8GB VRAM.&lt;/p&gt; &lt;p&gt;Phi-4-multimodal looked very promising to me and I was excited to see a multimodal LLM with such capacities and such a small size.&lt;/p&gt; &lt;p&gt;But it seems like implementing a llama.cpp support is more complicated than expected: &lt;a href="https://github.com/ggml-org/llama.cpp/pull/11292#issuecomment-2692445044"&gt;https://github.com/ggml-org/llama.cpp/pull/11292#issuecomment-2692445044&lt;/a&gt;&lt;/p&gt; &lt;p&gt;What will this mean for support, tools, fine-tunes etc. Will using this model lead to having a niche LLM where I have to implement solutuons (e.g. work with agents) all by myself (like using Rocm a few years ago) or is it not a big thing that there is no llama.cpp support?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Bitter-College8786"&gt; /u/Bitter-College8786 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-04T10:16:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j2kdeb</id>
     <title>OpenBenchTable is great for trying out different compute hardware configurations. Does anyone have benchmarking tips?</title>
     <updated>2025-03-03T14:52:19+00:00</updated>
@@ -216,6 +190,19 @@
     <published>2025-03-03T22:32:38+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j37ns6</id>
+    <title>Future of Phi-4-multimodal</title>
+    <updated>2025-03-04T10:16:18+00:00</updated>
+    <author>
+      <name>/u/Bitter-College8786</name>
+      <uri>https://old.reddit.com/user/Bitter-College8786</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am looking for a good multilingual model for summarizing texts, writing answer e-mails that can run on a consumer laptop with 6-8GB VRAM.&lt;/p&gt; &lt;p&gt;Phi-4-multimodal looked very promising to me and I was excited to see a multimodal LLM with such capacities and such a small size.&lt;/p&gt; &lt;p&gt;But it seems like implementing a llama.cpp support is more complicated than expected: &lt;a href="https://github.com/ggml-org/llama.cpp/pull/11292#issuecomment-2692445044"&gt;https://github.com/ggml-org/llama.cpp/pull/11292#issuecomment-2692445044&lt;/a&gt;&lt;/p&gt; &lt;p&gt;What will this mean for support, tools, fine-tunes etc. Will using this model lead to having a niche LLM where I have to implement solutuons (e.g. work with agents) all by myself (like using Rocm a few years ago) or is it not a big thing that there is no llama.cpp support?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Bitter-College8786"&gt; /u/Bitter-College8786 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j37ns6/future_of_phi4multimodal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-04T10:16:18+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j329e9</id>
     <title>ktransformers troll rig R1 671B UD-Q2_K_XL on 96GB RAM in the wild</title>
     <updated>2025-03-04T04:07:23+00:00</updated>
@@ -268,6 +255,19 @@
     <published>2025-03-04T06:40:45+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j37yhi</id>
+    <title>Just 2B R1 like model achieved "aha" moment in vision task!!!</title>
+    <updated>2025-03-04T10:38:05+00:00</updated>
+    <author>
+      <name>/u/Different-Olive-8745</name>
+      <uri>https://old.reddit.com/user/Different-Olive-8745</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37yhi/just_2b_r1_like_model_achieved_aha_moment_in/"&gt; &lt;img alt="Just 2B R1 like model achieved &amp;quot;aha&amp;quot; moment in vision task!!!" src="https://external-preview.redd.it/FrHOpKWMdqORPFSxLwpGvRx_uoQMNXcCJsvQiFYTNWw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b2604aa322cfdf8200f3a6d6f9f972bb244dac34" title="Just 2B R1 like model achieved &amp;quot;aha&amp;quot; moment in vision task!!!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Different-Olive-8745"&gt; /u/Different-Olive-8745 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/turningpoint-ai/VisualThinker-R1-Zero"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j37yhi/just_2b_r1_like_model_achieved_aha_moment_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j37yhi/just_2b_r1_like_model_achieved_aha_moment_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-04T10:38:05+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j345eq</id>
     <title>AMD Rocm User Forum</title>
     <updated>2025-03-04T05:57:04+00:00</updated>
@@ -294,19 +294,6 @@
     <published>2025-03-03T22:02:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j32y7c</id>
-    <title>Split brain (Update) - What I've learned and will improve</title>
-    <updated>2025-03-04T04:43:51+00:00</updated>
-    <author>
-      <name>/u/Alienanthony</name>
-      <uri>https://old.reddit.com/user/Alienanthony</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt; &lt;img alt="Split brain (Update) - What I've learned and will improve" src="https://external-preview.redd.it/UWvmtQPs4ScGH0IthYKdfU1hrMW7JnkAzdMKFse7jL0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c740e7b82c11757b66468f76734733c2aa704f1c" title="Split brain (Update) - What I've learned and will improve" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a update post to the last one &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j25luw/split_brain_deepseekr1distillqwen15b_and/"&gt;Here&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have uploaded a inference page to the code I had previously discussed. &lt;a href="https://github.com/alientony/Split-brain/blob/main/inference-app.py"&gt;Inference&lt;/a&gt;&lt;/p&gt; &lt;p&gt;You can download the fusion layer here. &lt;a href="https://huggingface.co/Alienanthony/Splitbrain_Fusion_model"&gt;Fusion layer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The original models can be found here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"&gt;https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/meta-llama/Llama-3.2-1B"&gt;https://huggingface.co/meta-llama/Llama-3.2-1B&lt;/a&gt; &lt;/p&gt; &lt;p&gt;So far the inference has been fascinating. Unfortunately I have only had the original gpt4all dataset on hand for training. (800mb) &lt;/p&gt; &lt;p&gt;Including I have learned that if you're doing to use a fused layer for differentiation for one model output you should probably make another. So moving forward I will update the training and attempt again. &lt;/p&gt; &lt;p&gt;BUT I am extremely fascinated by this new crazy system.&lt;/p&gt; &lt;p&gt;As you can see below. While we did not give the model on the left &amp;quot;Describe the history of chocolate chip cookies.&amp;quot; it does begin to think in that direction within it's &amp;quot;Think&amp;quot; space. &lt;/p&gt; &lt;p&gt;I have been able to replicate this sort of &amp;quot;thought directions&amp;quot; multiple times but it is very erratic. As both models are actually not on the same playing field due to the dependency in the way the architecture functions and it is asymmetrical rather than mirrored.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/m19l6vxpklme1.png?width=1428&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fdbd8edda0fb1b9a6b03d5922cf233fa462911a1"&gt;https://preview.redd.it/m19l6vxpklme1.png?width=1428&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fdbd8edda0fb1b9a6b03d5922cf233fa462911a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;One major issue I need to fix is the fused layer to realign the model on the right to produce usable tokens.&lt;/p&gt; &lt;p&gt;I also need a larger dataset as this will give more of a wider branch of training for the &amp;quot;sharing of info&amp;quot; across models but I find these results majorly agreeable!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ckwixc26rlme1.png?width=1164&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4164c7d255c32c1c00275f121437c96a65eef5b4"&gt;https://preview.redd.it/ckwixc26rlme1.png?width=1164&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4164c7d255c32c1c00275f121437c96a65eef5b4&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Alienanthony"&gt; /u/Alienanthony &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-04T04:43:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j2j7su</id>
     <title>I open-sourced Klee today, a desktop app designed to run LLMs locally with ZERO data collection. It also includes built-in RAG knowledge base and note-taking capabilities.</title>
     <updated>2025-03-03T13:57:34+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j2j7su/i_opensourced_klee_today_a_desktop_app_designed/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-03T13:57:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j32y7c</id>
+    <title>Split brain (Update) - What I've learned and will improve</title>
+    <updated>2025-03-04T04:43:51+00:00</updated>
+    <author>
+      <name>/u/Alienanthony</name>
+      <uri>https://old.reddit.com/user/Alienanthony</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt; &lt;img alt="Split brain (Update) - What I've learned and will improve" src="https://external-preview.redd.it/UWvmtQPs4ScGH0IthYKdfU1hrMW7JnkAzdMKFse7jL0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c740e7b82c11757b66468f76734733c2aa704f1c" title="Split brain (Update) - What I've learned and will improve" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a update post to the last one &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j25luw/split_brain_deepseekr1distillqwen15b_and/"&gt;Here&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have uploaded a inference page to the code I had previously discussed. &lt;a href="https://github.com/alientony/Split-brain/blob/main/inference-app.py"&gt;Inference&lt;/a&gt;&lt;/p&gt; &lt;p&gt;You can download the fusion layer here. &lt;a href="https://huggingface.co/Alienanthony/Splitbrain_Fusion_model"&gt;Fusion layer&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The original models can be found here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"&gt;https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/meta-llama/Llama-3.2-1B"&gt;https://huggingface.co/meta-llama/Llama-3.2-1B&lt;/a&gt; &lt;/p&gt; &lt;p&gt;So far the inference has been fascinating. Unfortunately I have only had the original gpt4all dataset on hand for training. (800mb) &lt;/p&gt; &lt;p&gt;Including I have learned that if you're doing to use a fused layer for differentiation for one model output you should probably make another. So moving forward I will update the training and attempt again. &lt;/p&gt; &lt;p&gt;BUT I am extremely fascinated by this new crazy system.&lt;/p&gt; &lt;p&gt;As you can see below. While we did not give the model on the left &amp;quot;Describe the history of chocolate chip cookies.&amp;quot; it does begin to think in that direction within it's &amp;quot;Think&amp;quot; space. &lt;/p&gt; &lt;p&gt;I have been able to replicate this sort of &amp;quot;thought directions&amp;quot; multiple times but it is very erratic. As both models are actually not on the same playing field due to the dependency in the way the architecture functions and it is asymmetrical rather than mirrored.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/m19l6vxpklme1.png?width=1428&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fdbd8edda0fb1b9a6b03d5922cf233fa462911a1"&gt;https://preview.redd.it/m19l6vxpklme1.png?width=1428&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fdbd8edda0fb1b9a6b03d5922cf233fa462911a1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;One major issue I need to fix is the fused layer to realign the model on the right to produce usable tokens.&lt;/p&gt; &lt;p&gt;I also need a larger dataset as this will give more of a wider branch of training for the &amp;quot;sharing of info&amp;quot; across models but I find these results majorly agreeable!&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ckwixc26rlme1.png?width=1164&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4164c7d255c32c1c00275f121437c96a65eef5b4"&gt;https://preview.redd.it/ckwixc26rlme1.png?width=1164&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4164c7d255c32c1c00275f121437c96a65eef5b4&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Alienanthony"&gt; /u/Alienanthony &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j32y7c/split_brain_update_what_ive_learned_and_will/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-04T04:43:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1j32p97</id>
