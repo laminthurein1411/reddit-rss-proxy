@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-04T09:35:32+00:00</updated>
+  <updated>2025-03-04T09:48:46+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j31jqr</id>
-    <title>What is the best multi-modal or llm for tax table PDF/image?</title>
-    <updated>2025-03-04T03:29:37+00:00</updated>
-    <author>
-      <name>/u/caphohotain</name>
-      <uri>https://old.reddit.com/user/caphohotain</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Reading tax tables and reports is painful. I wonder if there are some good models can help. &lt;/p&gt; &lt;p&gt;Edit:typo&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/caphohotain"&gt; /u/caphohotain &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j31jqr/what_is_the_best_multimodal_or_llm_for_tax_table/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j31jqr/what_is_the_best_multimodal_or_llm_for_tax_table/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j31jqr/what_is_the_best_multimodal_or_llm_for_tax_table/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-04T03:29:37+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j372f1</id>
     <title>Budget local Setup recommendation.</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j372f1/budget_local_setup_recommendation/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-04T09:32:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j3789k</id>
+    <title>How to run hardware accelerated Ollama on integrated GPU, like Radeon 780M on Linux.</title>
+    <updated>2025-03-04T09:44:57+00:00</updated>
+    <author>
+      <name>/u/Sensitive-Leather-32</name>
+      <uri>https://old.reddit.com/user/Sensitive-Leather-32</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For hardware acceleration you could use either &lt;strong&gt;ROCm&lt;/strong&gt; or &lt;strong&gt;Vulkan&lt;/strong&gt;. Ollama devs &lt;strong&gt;don't want to merge Vulkan&lt;/strong&gt; integration, so better use ROCm if you can. It has slightly worse performance, but is easier to run.&lt;/p&gt; &lt;p&gt;If you still need Vulkan, you can &lt;a href="https://github.com/whyvl/ollama-vulkan"&gt;find a fork here&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Installation&lt;/h1&gt; &lt;p&gt;I am running Archlinux, so installed ollama and ollama-rocm. Rocm dependencies are installed automatically.&lt;/p&gt; &lt;p&gt;You can also follow &lt;a href="https://github.com/ollama/ollama/blob/ddb6dc81c26721a08453f1db7f2727076e97dabc/docs/tutorials/amd-igpu-780m.md"&gt;this guide for other distributions&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Override env&lt;/h1&gt; &lt;p&gt;If you have &amp;quot;unsupported&amp;quot; GPU, set &lt;code&gt;HSA_OVERRIDE_GFX_VERSION=11.0.2&lt;/code&gt; in &lt;code&gt;/etc/systemd/system/ollama.service.d/override.conf&lt;/code&gt; this way:&lt;/p&gt; &lt;p&gt;&lt;code&gt;[Service]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;your env value&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;then run &lt;code&gt;sudo systemctl daemon-reload &amp;amp;&amp;amp; sudo systemctl restart ollama.service&lt;/code&gt;&lt;/p&gt; &lt;p&gt;For different GPUs you may need to try different override values like 9.0.0, 9.4.6. Google them.)&lt;/p&gt; &lt;h1&gt;APU fix patch&lt;/h1&gt; &lt;p&gt;You probably need &lt;a href="https://github.com/ollama/ollama/pull/6282"&gt;this &lt;/a&gt;&lt;a href="https://github.com/ollama/ollama/pull/6282"&gt;patch&lt;/a&gt; until it gets merged. There is a &lt;a href="https://gitlab.com/zhaose233/ollama-rocm-package/-/jobs/9282301273/artifacts/browse"&gt;repo with CI with patched packages&lt;/a&gt; for Archlinux.&lt;/p&gt; &lt;h1&gt;Increase GTT size&lt;/h1&gt; &lt;p&gt;If you want to run big models with a bigger context, you have to &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ixy5kf/comment/mfoptfw/?context=3"&gt;set GTT size according to this guide&lt;/a&gt;.&lt;/p&gt; &lt;h1&gt;Amdgpu kernel bug&lt;/h1&gt; &lt;p&gt;Later during high GPU load I got freezes and graphics restarts with the &lt;a href="https://gist.github.com/AntonIXO/3f49ce8453766a4c07c8920c4c9d2b01"&gt;following logs in dmesg&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The only way to fix it is to build a &lt;a href="https://lore.kernel.org/lkml/20241127114638.11216-1-lamikr@gmail.com/T/"&gt;kernel with this patch&lt;/a&gt;.(&lt;/p&gt; &lt;h1&gt;Performance tips&lt;/h1&gt; &lt;p&gt;You can also set these env valuables to get better generation speed:&lt;/p&gt; &lt;p&gt;HSA_ENABLE_SDMA=0&lt;br /&gt; HSA_ENABLE_COMPRESSION=1&lt;br /&gt; &lt;a href="https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-enable-flash-attention"&gt;OLLAMA_FLASH_ATTENTION=1&lt;/a&gt;&lt;br /&gt; &lt;a href="https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-set-the-quantization-type-for-the-kv-cache"&gt;OLLAMA_KV_CACHE_TYPE=q8_0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Specify max context with: OLLAMA_CONTEXT_LENGTH=16382 # 16k (move context - more ram)&lt;/p&gt; &lt;p&gt;OLLAMA_NEW_ENGINE - does not work for me.&lt;/p&gt; &lt;p&gt;Now you got HW accelerated LLMs on your APUs🎉 Check it with &lt;strong&gt;ollama ps&lt;/strong&gt; and &lt;strong&gt;amdgpu_top&lt;/strong&gt; utility.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sensitive-Leather-32"&gt; /u/Sensitive-Leather-32 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j3789k/how_to_run_hardware_accelerated_ollama_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-04T09:44:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1j2tdtt</id>
