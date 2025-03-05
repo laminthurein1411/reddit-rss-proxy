@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-05T18:39:55+00:00</updated>
+  <updated>2025-03-05T18:50:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1j47yei</id>
-    <title>FULL LEAKED v0 by Vercel System Prompts (100% Real)</title>
-    <updated>2025-03-05T17:05:47+00:00</updated>
+    <id>t3_1j49sbd</id>
+    <title>Is there a statistically significant difference in logical reasoning performance between DeepSeek R1 and Perplexity R1 1776?</title>
+    <updated>2025-03-05T18:18:23+00:00</updated>
     <author>
-      <name>/u/Independent-Box-898</name>
-      <uri>https://old.reddit.com/user/Independent-Box-898</uri>
+      <name>/u/fairydreaming</name>
+      <uri>https://old.reddit.com/user/fairydreaming</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;(Latest system prompt: 05/03/2025)&lt;/p&gt; &lt;p&gt;I managed to get the system prompts from v0 by Vercel. OVER 1.4K LINES.&lt;/p&gt; &lt;p&gt;There is some interesting stuff you should go and check.&lt;/p&gt; &lt;p&gt;This is 100% real, got it by myself. I managed to extract the prompts with all the tags included, like &amp;lt;thinking&amp;gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/x1xhlol/v0-system-prompts"&gt;https://github.com/x1xhlol/v0-system-prompts&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Box-898"&gt; /u/Independent-Box-898 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: After running a McNemar’s statistical test on &lt;a href="https://github.com/fairydreaming/lineage-bench"&gt;lineage-bench&lt;/a&gt; benchmark results (lineage-128), there’s no statistically significant difference between DeepSeek R1 and Perplexity R1 1776 logical reasoning performance. They both perform similarly well.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;You may have seen my recent posts containing benchmark results of DeepSeek R1 and Perplexity R1 1776 models:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j3hjxb/perplexity_r1_1776_climbed_to_first_place_after/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1j3hjxb/perplexity_r1_1776_climbed_to_first_place_after/&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If not, a quick summary: I tested both models in my logical reasoning &lt;a href="https://github.com/fairydreaming/lineage-bench"&gt;lineage-bench&lt;/a&gt; benchmark. Initially R1 1776 performed much worse compared to the original DeepSeek R1. After Perplexity fixed the problem with the serving stack both models started performing equally well when tested via OpenRouter (R1 1776 appears to be slightly better, but the difference is very small).&lt;/p&gt; &lt;p&gt;It kept bugging me if there is really a meaningful difference between the two models, so I decided to put my remaining OpenRouter credits to some good use and cooked a statistical hypothesis test that would answer this question.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Initial plan&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;After a quick research I decided to use McNemar’s test to see if there is a statistically significant difference in the performance of both models. It's commonly used in machine learning to compare the performance of classifier models. My case is similar enough.&lt;/p&gt; &lt;p&gt;&lt;a href="https://machinelearningmastery.com/mcnemars-test-for-machine-learning/"&gt;https://machinelearningmastery.com/mcnemars-test-for-machine-learning/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Since both models have almost perfect accuracy for smaller lineage-bench problem sizes, I decided to generate additional set of 400 lineage-128 quizzes and test both models on this new set. The logic behind this is that the increased difficulty will make the difference between the performance of both models (if there is any) more pronounced.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Benchmark results&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;First a quick look at the lineage-128 results:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Nr&lt;/th&gt; &lt;th align="left"&gt;model_name&lt;/th&gt; &lt;th align="left"&gt;lineage-128&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;1&lt;/td&gt; &lt;td align="left"&gt;deepseek/deepseek-r1&lt;/td&gt; &lt;td align="left"&gt;0.688&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;perplexity/r1-1776&lt;/td&gt; &lt;td align="left"&gt;0.685&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;As you can observe the accuracy is almost equal in both models. Also with this problem size my benchmark is still far from being saturated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Contingency table&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Next step was to create a contingency table based on the answers to lineage-128 quizzes generated by both models.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;...&lt;/th&gt; &lt;th align="left"&gt;DeepSeek R1 correct&lt;/th&gt; &lt;th align="left"&gt;DeepSeek R1 incorrect&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;R1 1776 correct&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;203&lt;/td&gt; &lt;td align="left"&gt;71&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;R1 1776 incorrect&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;73&lt;/td&gt; &lt;td align="left"&gt;53&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;McNemar's test&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;McNemar’s test in our case checks whether one model is more likely than the other to be correct on items where the other is wrong.&lt;/p&gt; &lt;p&gt;The null hypothesis here is that there is no difference in the the proportion of questions on which Model A answers correctly while Model B answers incorrectly and the proportion of questions on which Model B answers correctly while Model A answers incorrectly.&lt;/p&gt; &lt;p&gt;We can already see that it's almost the same value, but let's calculate the test statistics anyway.&lt;/p&gt; &lt;p&gt;X&lt;sup&gt;2&lt;/sup&gt; = (71-73)&lt;sup&gt;2&lt;/sup&gt; / (71+73) = 0.027(7)&lt;/p&gt; &lt;p&gt;This test statistics value corresponds to pvalue of around 0.868. Since p &amp;gt; 0.05, we can't reject the null hypothesis. Therefore the difference in performance between both models is not statistically significant.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;There is no statistically significant difference in performance of DeepSeek R1 and Perplexity R1 1776 in lineage-128. But maybe for some reason there is a statistically significant difference only in lineage-64? I could generate more samples and... oh no, I'm almost out of OpenRouter credits.&lt;/p&gt; &lt;p&gt;PS. While searching for the DeepSeek R1 provider in OpenRouter I checked Nebius AI, Minimax and Parasail in 200 lineage-128 quizzes. Nebius scored 0.595, Minimax 0.575 and Parasail 0.680. I had no problems with Parasail - it's quite fast and cheaper than alternatives, definitely recommended.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T17:05:47+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j3yc4l</id>
-    <title>Apple Notes + Ollama</title>
-    <updated>2025-03-05T08:14:06+00:00</updated>
-    <author>
-      <name>/u/arne226</name>
-      <uri>https://old.reddit.com/user/arne226</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I built a desktop app to converse with Apple Notes using Ollama. Could be interesting to add other Notes sources like Obsidian for example. &lt;/p&gt; &lt;p&gt;Theres a version that only supports local processing &lt;a href="https://github.com/arnestrickmann/Notechat"&gt;https://github.com/arnestrickmann/Notechat&lt;/a&gt; but also one that offers processing with Gemini. &lt;/p&gt; &lt;p&gt;Would be happy about your feedback.&lt;br /&gt; Arne &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/arne226"&gt; /u/arne226 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3yc4l/apple_notes_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j3yc4l/apple_notes_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j3yc4l/apple_notes_ollama/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T08:14:06+00:00</published>
+    <published>2025-03-05T18:18:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1j455pp</id>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j3hjxb/perplexity_r1_1776_climbed_to_first_place_after/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-04T18:21:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j47yei</id>
+    <title>FULL LEAKED v0 by Vercel System Prompts (100% Real)</title>
+    <updated>2025-03-05T17:05:47+00:00</updated>
+    <author>
+      <name>/u/Independent-Box-898</name>
+      <uri>https://old.reddit.com/user/Independent-Box-898</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;(Latest system prompt: 05/03/2025)&lt;/p&gt; &lt;p&gt;I managed to get the system prompts from v0 by Vercel. OVER 1.4K LINES.&lt;/p&gt; &lt;p&gt;There is some interesting stuff you should go and check.&lt;/p&gt; &lt;p&gt;This is 100% real, got it by myself. I managed to extract the prompts with all the tags included, like &amp;lt;thinking&amp;gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/x1xhlol/v0-system-prompts"&gt;https://github.com/x1xhlol/v0-system-prompts&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Box-898"&gt; /u/Independent-Box-898 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-05T17:05:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1j43tcd</id>
@@ -138,19 +138,6 @@
     <published>2025-03-05T13:50:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j45zg7</id>
-    <title>AMD Medusa Halo, coming after Strix Halo in H1/2026 with (optional) 384bit memory bus</title>
-    <updated>2025-03-05T15:43:40+00:00</updated>
-    <author>
-      <name>/u/Zyj</name>
-      <uri>https://old.reddit.com/user/Zyj</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here are the latest rumors: &lt;a href="https://www.notebookcheck.net/Powerful-Zen-6-Medusa-Halo-iGPU-could-challenge-desktop-GPUs-with-20-more-CUs-and-50-wider-bus.971869.0.html"&gt;https://www.notebookcheck.net/Powerful-Zen-6-Medusa-Halo-iGPU-could-challenge-desktop-GPUs-with-20-more-CUs-and-50-wider-bus.971869.0.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We can expect a 50% memory speed increase, that should provide a 50% boost in tokens per second. I hope they also offer beyond 128GB RAM, perhaps 192GB or 256GB?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zyj"&gt; /u/Zyj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T15:43:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j429et</id>
     <title>Why is Qwen 2.5 32b Coder the best local text analysis LLM?</title>
     <updated>2025-03-05T12:46:48+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j429et/why_is_qwen_25_32b_coder_the_best_local_text/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T12:46:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j45zg7</id>
+    <title>AMD Medusa Halo, coming after Strix Halo in H1/2026 with (optional) 384bit memory bus</title>
+    <updated>2025-03-05T15:43:40+00:00</updated>
+    <author>
+      <name>/u/Zyj</name>
+      <uri>https://old.reddit.com/user/Zyj</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here are the latest rumors: &lt;a href="https://www.notebookcheck.net/Powerful-Zen-6-Medusa-Halo-iGPU-could-challenge-desktop-GPUs-with-20-more-CUs-and-50-wider-bus.971869.0.html"&gt;https://www.notebookcheck.net/Powerful-Zen-6-Medusa-Halo-iGPU-could-challenge-desktop-GPUs-with-20-more-CUs-and-50-wider-bus.971869.0.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We can expect a 50% memory speed increase, that should provide a 50% boost in tokens per second. I hope they also offer beyond 128GB RAM, perhaps 192GB or 256GB?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zyj"&gt; /u/Zyj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j45zg7/amd_medusa_halo_coming_after_strix_halo_in_h12026/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-05T15:43:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1j3gahy</id>
