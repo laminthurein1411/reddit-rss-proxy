@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-06T18:25:18+00:00</updated>
+  <updated>2025-03-06T18:39:18+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j4bi0g</id>
-    <title>brainless Ollama naming about to strike again</title>
-    <updated>2025-03-05T19:26:23+00:00</updated>
-    <author>
-      <name>/u/gpupoor</name>
-      <uri>https://old.reddit.com/user/gpupoor</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt; &lt;img alt="brainless Ollama naming about to strike again" src="https://preview.redd.it/hnw7tvbo9xme1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ff02886ac4815c2bc162e157351ae6d100b824d0" title="brainless Ollama naming about to strike again" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gpupoor"&gt; /u/gpupoor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/hnw7tvbo9xme1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T19:26:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j50doz</id>
     <title>Compatible draft models for QwQ speculative decoding with Llama CPP?</title>
@@ -34,6 +21,19 @@
     <published>2025-03-06T17:08:13+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j4xvu9</id>
+    <title>Beyond Compute: The Desperate Need for Better Training Data in Open-Source LLM Development</title>
+    <updated>2025-03-06T15:23:26+00:00</updated>
+    <author>
+      <name>/u/nekofneko</name>
+      <uri>https://old.reddit.com/user/nekofneko</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I want to spark a discussion on an increasingly urgent issue in our field: the scarcity of high-quality training data for large language models. As model sizes continue to grow, research consistently demonstrates that merely scaling up computational power isn't sufficient—data quality and quantity are equally critical.&lt;/p&gt; &lt;p&gt;For instance, in &lt;a href="https://arxiv.org/abs/2203.15556"&gt;&amp;quot;Training Compute-Optimal Large Language Models&amp;quot;&lt;/a&gt; (Hoffmann et al., 2022) from DeepMind, the authors illustrate that an optimal training regime is achieved when the total number of training tokens (D_opt) is roughly 20 times the number of model parameters (N). Given that the overall compute budget scales approximately as:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;C ≈ N × D_opt ≈ 20 × N² &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;This relationship implies that both the optimal model size and the ideal number of training tokens scale with the square root of the compute budget. Consequently, a 5× increase in compute results in approximately sqrt(5) (around 2.24×) more optimal training tokens, while a 10× increase in compute yields roughly sqrt(10) (around 3.16×) more.&lt;/p&gt; &lt;p&gt;Further emphasizing this point, Andrej Karpathy recently &lt;a href="https://x.com/karpathy/status/1895213020982472863"&gt;tweeted&lt;/a&gt; after the release of GPT-4.5:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&amp;quot;Each 0.5 in the version is roughly 10X pretraining compute.&amp;quot;&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This statement highlights not just the exponential growth in computational resources leveraged by OpenAI but also implicitly underscores their capability to procure vast amounts of high-quality training data that can match these substantial computational investments. The ability to consistently source such extensive data gives closed-source models like ChatGPT a significant compounding advantage. According to scaling laws, efficiently utilizing a 10× increase in computational power necessitates a proportional increase in high-quality data—a requirement OpenAI appears uniquely equipped to fulfill.&lt;/p&gt; &lt;p&gt;This poses a considerable challenge for the open-source community. Without access to vast, high-quality datasets, open-source models find it increasingly difficult to remain competitive. Unlike their closed-source counterparts, which benefit from millions of users continuously generating valuable interaction data, open-source initiatives lack this vital feedback loop. As a result, the gap between closed-source providers and open-source alternatives is continually widening.&lt;/p&gt; &lt;p&gt;I've experienced this challenge firsthand. As a major contributor to the simplified Chinese portion of &lt;a href="https://huggingface.co/spaces/data-is-better-together/fineweb-c"&gt;Hugging Face's FineWeb-C&lt;/a&gt; project, I've spent significant time annotating and filtering web-scraped content. Alarmingly, I discovered that less than 5% of the open internet-sourced data could be classified as high-quality, educationally valuable content. The vast majority consisted of repetitive, low-informational, or even misleading material. This raises a crucial question: If our training data predominantly lacks quality, how can we expect our models to achieve their theoretical performance potential? Aren't we severely restricting both training efficiency and capability development?&lt;/p&gt; &lt;p&gt;Given these insights, I believe it's crucial for our community to directly address this data bottleneck. What strategies or collaborative efforts can we implement to source or create higher-quality datasets for open-source LLMs? I'm eager to hear your thoughts and ideas on how we can collectively bridge this gap and drive meaningful progress.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nekofneko"&gt; /u/nekofneko &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4xvu9/beyond_compute_the_desperate_need_for_better/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4xvu9/beyond_compute_the_desperate_need_for_better/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4xvu9/beyond_compute_the_desperate_need_for_better/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T15:23:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j4d5fr</id>
     <title>Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎</title>
     <updated>2025-03-05T20:33:03+00:00</updated>
@@ -45,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T20:33:03+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j51m68</id>
-    <title>[JotItNow] I built a 100% offline AI note-taking app that respects your privacy</title>
-    <updated>2025-03-06T17:59:19+00:00</updated>
-    <author>
-      <name>/u/Ssjultrainstnict</name>
-      <uri>https://old.reddit.com/user/Ssjultrainstnict</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey Reddit!After months of work, I'm excited to share JotItNow - a completely offline AI-powered note-taking app for iOS I built to solve my own frustrations with existing solutions.What makes JotItNow different?&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;100% Offline &amp;amp; Private: Everything happens on your device. No internet connection needed, no data tracking, no cloud storage. Your thoughts stay yours.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Voice + Text Together: Record voice notes while simultaneously typing text notes - perfect for lectures, meetings, or when inspiration strikes.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;AI Summaries: Instantly generate concise summaries of your long voice memos or text notes with one tap - all processed locally on your device.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Chat With Your Notes: After summarizing, you can actually have a conversation with your notes! Ask questions, explore connections, or dig deeper into specific topics - the AI understands your content.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Completely Free &amp;amp; Open Source: No subscriptions, no in-app purchases, no ads. Check out the code on GitHub &lt;a href="https://github.com/navedmerchant/JotItNow"&gt;https://github.com/navedmerchant/JotItNow&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I built this because I was tired of note-taking apps that either lacked AI features or required sending all my data to the cloud. JotItNow runs PARM2(LLM) and BGE (Embedding) models directly on your device, so you get powerful AI without sacrificing privacy. &lt;/p&gt; &lt;p&gt;Coming Soon: Global chat with all your notes at once! This will let you search and interact with your entire knowledge base through natural conversation.&lt;/p&gt; &lt;p&gt;If you're interested in trying it out, JotItNow is available on the App Store &lt;a href="https://apps.apple.com/us/app/jotitnow/id6742083186"&gt;https://apps.apple.com/us/app/jotitnow/id6742083186&lt;/a&gt; for iOS (15.0+).I'd love to hear your feedback or answer any questions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ssjultrainstnict"&gt; /u/Ssjultrainstnict &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-06T17:59:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1j4jrnl</id>
@@ -99,6 +86,19 @@
     <published>2025-03-06T08:35:04+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j51m68</id>
+    <title>[JotItNow] I built a 100% offline AI note-taking app that respects your privacy</title>
+    <updated>2025-03-06T17:59:19+00:00</updated>
+    <author>
+      <name>/u/Ssjultrainstnict</name>
+      <uri>https://old.reddit.com/user/Ssjultrainstnict</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey Reddit!After months of work, I'm excited to share JotItNow - a completely offline AI-powered note-taking app for iOS I built to solve my own frustrations with existing solutions.What makes JotItNow different?&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;100% Offline &amp;amp; Private: Everything happens on your device. No internet connection needed, no data tracking, no cloud storage. Your thoughts stay yours.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Voice + Text Together: Record voice notes while simultaneously typing text notes - perfect for lectures, meetings, or when inspiration strikes.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;AI Summaries: Instantly generate concise summaries of your long voice memos or text notes with one tap - all processed locally on your device.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Chat With Your Notes: After summarizing, you can actually have a conversation with your notes! Ask questions, explore connections, or dig deeper into specific topics - the AI understands your content.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Completely Free &amp;amp; Open Source: No subscriptions, no in-app purchases, no ads. Check out the code on GitHub &lt;a href="https://github.com/navedmerchant/JotItNow"&gt;https://github.com/navedmerchant/JotItNow&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I built this because I was tired of note-taking apps that either lacked AI features or required sending all my data to the cloud. JotItNow runs PARM2(LLM) and BGE (Embedding) models directly on your device, so you get powerful AI without sacrificing privacy. &lt;/p&gt; &lt;p&gt;Coming Soon: Global chat with all your notes at once! This will let you search and interact with your entire knowledge base through natural conversation.&lt;/p&gt; &lt;p&gt;If you're interested in trying it out, JotItNow is available on the App Store &lt;a href="https://apps.apple.com/us/app/jotitnow/id6742083186"&gt;https://apps.apple.com/us/app/jotitnow/id6742083186&lt;/a&gt; for iOS (15.0+).I'd love to hear your feedback or answer any questions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ssjultrainstnict"&gt; /u/Ssjultrainstnict &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j51m68/jotitnow_i_built_a_100_offline_ai_notetaking_app/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T17:59:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j4gw91</id>
     <title>QwQ-32B seems to get the same quality final answer as R1 while reasoning much more concisely and efficiently</title>
     <updated>2025-03-05T23:04:05+00:00</updated>
@@ -138,19 +138,6 @@
     <published>2025-03-05T19:05:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j4s0o4</id>
-    <title>QwQ-32B solves the o1-preview Cipher problem!</title>
-    <updated>2025-03-06T09:50:28+00:00</updated>
-    <author>
-      <name>/u/sunpazed</name>
-      <uri>https://old.reddit.com/user/sunpazed</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qwen QwQ 32B solves the Cipher problem first showcased in the &lt;a href="https://openai.com/index/learning-to-reason-with-llms/"&gt;OpenAI o1-preview Technical Paper&lt;/a&gt;. No other local model so far (at least on my 48Gb MacBook) has been able to solve this. Amazing performance from a 32B model (6-bit quantised too!). Now for the sad bit — it did take over 9000 tokens, and at 4t/s this took 33 minutes to complete.&lt;/p&gt; &lt;p&gt;Here's the full output, including prompt from llama.cpp:&lt;br /&gt; &lt;a href="https://gist.github.com/sunpazed/497cf8ab11fa7659aab037771d27af57"&gt;https://gist.github.com/sunpazed/497cf8ab11fa7659aab037771d27af57&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sunpazed"&gt; /u/sunpazed &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-06T09:50:28+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j4wsmc</id>
     <title>QwQ-32B running on a 4 years old 32GB M1 Max</title>
     <updated>2025-03-06T14:34:13+00:00</updated>
@@ -164,17 +151,17 @@
     <published>2025-03-06T14:34:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j51eya</id>
-    <title>QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops.</title>
-    <updated>2025-03-06T17:50:59+00:00</updated>
+    <id>t3_1j4s0o4</id>
+    <title>QwQ-32B solves the o1-preview Cipher problem!</title>
+    <updated>2025-03-06T09:50:28+00:00</updated>
     <author>
-      <name>/u/cpldcpu</name>
-      <uri>https://old.reddit.com/user/cpldcpu</uri>
+      <name>/u/sunpazed</name>
+      <uri>https://old.reddit.com/user/sunpazed</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt; &lt;img alt="QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops." src="https://external-preview.redd.it/26jMr10jXXi4_I0JRPJzD_hB-aHllHxX-6HDNT9cHEo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0cfaa353996bc37c1479ca2028e44e2f676f0569" title="QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I evaluated QwQ-32b with 32k max tokens and the parameters provided in the QwQ model card. This was crucial to stabilize the issues a bit. I used openrouter with the paid model, which mostly defaulted to Groq.&lt;/p&gt; &lt;p&gt;Still, in several cases, QwQ entired infinite loops of &amp;quot;Hmm...&amp;quot; or simply would not stop the CoT despite the long evaluation window. In that case no result was returned and the prompt failed. I observed this behavior especially for logical problems without a solution. (Expected answer would have been to explain that the problem is unsolvable). Many other reasoning models have issues with these questions, but they usually terminate and return an answer.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/4l2n02q4x3ne1.png?width=1205&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e2c299937e6c3f5f4b46b41dcb007086be66e9d8"&gt;https://preview.redd.it/4l2n02q4x3ne1.png?width=1205&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e2c299937e6c3f5f4b46b41dcb007086be66e9d8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Despite these issues, QwQ managed to beat o3-mini and is approaching the score of R1.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/cpldcpu/MisguidedAttention"&gt;Misguided Attention&lt;/a&gt; is a collection of prompts to challenge the reasoning abilities of large language models in presence of misguiding information. It consists of slightly modified well known logical problems and riddles. Many model are overfit to these problems and will therefore report a response to the unmodified problem.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/37j1ogpdw3ne1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c8b21a3c2d9dbb3187acbab33e17af49d2953a51"&gt;https://preview.redd.it/37j1ogpdw3ne1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c8b21a3c2d9dbb3187acbab33e17af49d2953a51&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qstmcqpew3ne1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=09254a0b0485b1b176a2cf08ce68e8d9524328a8"&gt;https://preview.redd.it/qstmcqpew3ne1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=09254a0b0485b1b176a2cf08ce68e8d9524328a8&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qwen QwQ 32B solves the Cipher problem first showcased in the &lt;a href="https://openai.com/index/learning-to-reason-with-llms/"&gt;OpenAI o1-preview Technical Paper&lt;/a&gt;. No other local model so far (at least on my 48Gb MacBook) has been able to solve this. Amazing performance from a 32B model (6-bit quantised too!). Now for the sad bit — it did take over 9000 tokens, and at 4t/s this took 33 minutes to complete.&lt;/p&gt; &lt;p&gt;Here's the full output, including prompt from llama.cpp:&lt;br /&gt; &lt;a href="https://gist.github.com/sunpazed/497cf8ab11fa7659aab037771d27af57"&gt;https://gist.github.com/sunpazed/497cf8ab11fa7659aab037771d27af57&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sunpazed"&gt; /u/sunpazed &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4s0o4/qwq32b_solves_the_o1preview_cipher_problem/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-06T17:50:59+00:00</published>
+    <published>2025-03-06T09:50:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1j4x8sq</id>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4b1t9/qwq32b_released_equivalent_or_surpassing_full/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T19:08:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j51eya</id>
+    <title>QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops.</title>
+    <updated>2025-03-06T17:50:59+00:00</updated>
+    <author>
+      <name>/u/cpldcpu</name>
+      <uri>https://old.reddit.com/user/cpldcpu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt; &lt;img alt="QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops." src="https://external-preview.redd.it/26jMr10jXXi4_I0JRPJzD_hB-aHllHxX-6HDNT9cHEo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0cfaa353996bc37c1479ca2028e44e2f676f0569" title="QwQ-32B is close to DeepSeek-R1 in Misguided Attention Benchmark, but there are issues with endless loops." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I evaluated QwQ-32b with 32k max tokens and the parameters provided in the QwQ model card. This was crucial to stabilize the issues a bit. I used openrouter with the paid model, which mostly defaulted to Groq.&lt;/p&gt; &lt;p&gt;Still, in several cases, QwQ entired infinite loops of &amp;quot;Hmm...&amp;quot; or simply would not stop the CoT despite the long evaluation window. In that case no result was returned and the prompt failed. I observed this behavior especially for logical problems without a solution. (Expected answer would have been to explain that the problem is unsolvable). Many other reasoning models have issues with these questions, but they usually terminate and return an answer.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/4l2n02q4x3ne1.png?width=1205&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e2c299937e6c3f5f4b46b41dcb007086be66e9d8"&gt;https://preview.redd.it/4l2n02q4x3ne1.png?width=1205&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e2c299937e6c3f5f4b46b41dcb007086be66e9d8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Despite these issues, QwQ managed to beat o3-mini and is approaching the score of R1.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/cpldcpu/MisguidedAttention"&gt;Misguided Attention&lt;/a&gt; is a collection of prompts to challenge the reasoning abilities of large language models in presence of misguiding information. It consists of slightly modified well known logical problems and riddles. Many model are overfit to these problems and will therefore report a response to the unmodified problem.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/37j1ogpdw3ne1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c8b21a3c2d9dbb3187acbab33e17af49d2953a51"&gt;https://preview.redd.it/37j1ogpdw3ne1.png?width=2391&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c8b21a3c2d9dbb3187acbab33e17af49d2953a51&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qstmcqpew3ne1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=09254a0b0485b1b176a2cf08ce68e8d9524328a8"&gt;https://preview.redd.it/qstmcqpew3ne1.png?width=4170&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=09254a0b0485b1b176a2cf08ce68e8d9524328a8&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j51eya/qwq32b_is_close_to_deepseekr1_in_misguided/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T17:50:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1j4w3hz</id>
