@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-06T01:33:47+00:00</updated>
+  <updated>2025-03-06T02:13:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j4cc6y</id>
-    <title>Try QwQ-32B on Hugging Face</title>
-    <updated>2025-03-05T20:00:15+00:00</updated>
-    <author>
-      <name>/u/paf1138</name>
-      <uri>https://old.reddit.com/user/paf1138</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4cc6y/try_qwq32b_on_hugging_face/"&gt; &lt;img alt="Try QwQ-32B on Hugging Face" src="https://external-preview.redd.it/lBZs0Q7c65_lYRXO4ivgUAuYiqvkD7hvWkRogLEWXvw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=85d8af51e17945c43660cee6e1f3aae2b98b5f55" title="Try QwQ-32B on Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paf1138"&gt; /u/paf1138 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/spaces/Qwen/QwQ-32B-Demo"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4cc6y/try_qwq32b_on_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4cc6y/try_qwq32b_on_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T20:00:15+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j49sbd</id>
-    <title>Is there a statistically significant difference in logical reasoning performance between DeepSeek R1 and Perplexity R1 1776?</title>
-    <updated>2025-03-05T18:18:23+00:00</updated>
-    <author>
-      <name>/u/fairydreaming</name>
-      <uri>https://old.reddit.com/user/fairydreaming</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: After running a McNemar’s statistical test on &lt;a href="https://github.com/fairydreaming/lineage-bench"&gt;lineage-bench&lt;/a&gt; benchmark results (lineage-128), there’s no statistically significant difference between DeepSeek R1 and Perplexity R1 1776 logical reasoning performance. They both perform similarly well.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;You may have seen my recent posts containing benchmark results of DeepSeek R1 and Perplexity R1 1776 models:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1izbmbb/perplexity_r1_1776_performs_worse_than_deepseek/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j3hjxb/perplexity_r1_1776_climbed_to_first_place_after/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1j3hjxb/perplexity_r1_1776_climbed_to_first_place_after/&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If not, a quick summary: I tested both models in my logical reasoning &lt;a href="https://github.com/fairydreaming/lineage-bench"&gt;lineage-bench&lt;/a&gt; benchmark. Initially R1 1776 performed much worse compared to the original DeepSeek R1. After Perplexity fixed the problem with the serving stack both models started performing equally well when tested via OpenRouter (R1 1776 appears to be slightly better, but the difference is very small).&lt;/p&gt; &lt;p&gt;It kept bugging me if there is really a meaningful difference between the two models, so I decided to put my remaining OpenRouter credits to some good use and cooked a statistical hypothesis test that would answer this question.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Initial plan&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;After a quick research I decided to use McNemar’s test to see if there is a statistically significant difference in the performance of both models. It's commonly used in machine learning to compare the performance of classifier models. My case is similar enough.&lt;/p&gt; &lt;p&gt;&lt;a href="https://machinelearningmastery.com/mcnemars-test-for-machine-learning/"&gt;https://machinelearningmastery.com/mcnemars-test-for-machine-learning/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Since both models have almost perfect accuracy for smaller lineage-bench problem sizes, I decided to generate additional set of 400 lineage-128 quizzes and test both models on this new set. The logic behind this is that the increased difficulty will make the difference between the performance of both models (if there is any) more pronounced.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Benchmark results&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;First a quick look at the lineage-128 results:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Nr&lt;/th&gt; &lt;th align="left"&gt;model_name&lt;/th&gt; &lt;th align="left"&gt;lineage-128&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;1&lt;/td&gt; &lt;td align="left"&gt;deepseek/deepseek-r1&lt;/td&gt; &lt;td align="left"&gt;0.688&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;perplexity/r1-1776&lt;/td&gt; &lt;td align="left"&gt;0.685&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;As you can observe the accuracy is almost equal in both models. Also with this problem size my benchmark is still far from being saturated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Contingency table&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Next step was to create a contingency table based on the answers to lineage-128 quizzes generated by both models.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;...&lt;/th&gt; &lt;th align="left"&gt;DeepSeek R1 correct&lt;/th&gt; &lt;th align="left"&gt;DeepSeek R1 incorrect&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;R1 1776 correct&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;203&lt;/td&gt; &lt;td align="left"&gt;71&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;R1 1776 incorrect&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;73&lt;/td&gt; &lt;td align="left"&gt;53&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;McNemar's test&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;McNemar’s test in our case checks whether one model is more likely than the other to be correct on items where the other is wrong.&lt;/p&gt; &lt;p&gt;The null hypothesis here is that there is no difference in the the proportion of questions on which Model A answers correctly while Model B answers incorrectly and the proportion of questions on which Model B answers correctly while Model A answers incorrectly.&lt;/p&gt; &lt;p&gt;We can already see that it's almost the same value, but let's calculate the test statistics anyway.&lt;/p&gt; &lt;p&gt;X&lt;sup&gt;2&lt;/sup&gt; = (71-73)&lt;sup&gt;2&lt;/sup&gt; / (71+73) = 0.027(7)&lt;/p&gt; &lt;p&gt;This test statistics value corresponds to pvalue of around 0.868. Since p &amp;gt; 0.05, we can't reject the null hypothesis. Therefore the difference in performance between both models is not statistically significant.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;There is no statistically significant difference in performance of DeepSeek R1 and Perplexity R1 1776 in lineage-128. But maybe for some reason there is a statistically significant difference only in lineage-64? I could generate more samples and... oh no, I'm almost out of OpenRouter credits.&lt;/p&gt; &lt;p&gt;PS. While searching for the DeepSeek R1 provider in OpenRouter I checked Nebius AI, Minimax and Parasail in 200 lineage-128 quizzes. Nebius scored 0.595, Minimax 0.575 and Parasail 0.680. I had no problems with Parasail - it's quite fast and cheaper than alternatives, definitely recommended.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j49sbd/is_there_a_statistically_significant_difference/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T18:18:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j46odf</id>
-    <title>AI moderates movies so editors don't have to: Automatic Smoking Disclaimer Tool (open source, runs 100% locally)</title>
-    <updated>2025-03-05T16:13:28+00:00</updated>
-    <author>
-      <name>/u/ParsaKhaz</name>
-      <uri>https://old.reddit.com/user/ParsaKhaz</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j46odf/ai_moderates_movies_so_editors_dont_have_to/"&gt; &lt;img alt="AI moderates movies so editors don't have to: Automatic Smoking Disclaimer Tool (open source, runs 100% locally)" src="https://external-preview.redd.it/cWQweG1yeGRid21lMYil-mvvsBaemYDUlRSkvBniidK7oobmA4FpXb-7Z2sJ.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e4525abd7367f7b0c28bd3fca735471fdb17fa34" title="AI moderates movies so editors don't have to: Automatic Smoking Disclaimer Tool (open source, runs 100% locally)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParsaKhaz"&gt; /u/ParsaKhaz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/h1mv5sxdbwme1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j46odf/ai_moderates_movies_so_editors_dont_have_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j46odf/ai_moderates_movies_so_editors_dont_have_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T16:13:28+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j4dk36</id>
     <title>QWQ-32B Out now on Ollama!</title>
@@ -58,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4dk36/qwq32b_out_now_on_ollama/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T20:49:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j4hrgt</id>
-    <title>Honest question - what is QwQ actually useful for?</title>
-    <updated>2025-03-05T23:41:43+00:00</updated>
-    <author>
-      <name>/u/taylorwilsdon</name>
-      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recognizing wholeheartedly that the title may come off as a smidge provocative, I really am genuinely curious if anyone has a real world example of something that QwQ actually does better than its peers at. I got all excited by the updated benchmarks showing what appeared to be a significant gain over the QwQ preview, and after seeing encouraging scores in coding-adjacent tasks I thought a good test would be having it do something I often have R1 do, which is operate in architect mode and create a plan for a change in Aider or Roo. One of the top posts on &lt;a href="/r/localllama"&gt;r/localllama&lt;/a&gt; right now reads &amp;quot;QwQ-32B released, equivalent or surpassing full Deepseek-R1!&amp;quot; &lt;/p&gt; &lt;p&gt;If that's the case, then it should be at least moderately competent at coding given they purport to match full fat R1 on coding benchmarks. So, I asked it to implement python logging in a ~105 line file based on the existing implementation in another 110 line file.&lt;/p&gt; &lt;p&gt;In both cases, it literally couldn't do it. In Roo, it just kept talking in circles and proposing Mermaid diagrams showing how files relate to each other, despite specifically attaching only the two files in question. After it runs around going crazy for too long, Roo actually force stops the model and writes back &lt;em&gt;&amp;quot;Roo Code uses complex prompts and iterative task execution that may be challenging for less capable models. For best results, it's recommended to use Claude 3.7 Sonnet for its advanced agentic coding capabilities.&amp;quot;&lt;/em&gt;&lt;/p&gt; &lt;p&gt;Now, there are always nuances to agentic tools like Roo, so I went straight to the chat interface and fed it an even simpler file and asked it to perform a code review on a 90 line python script that’s already in good shape. In return, I waited ten minutes while it generated &lt;strong&gt;25,000&lt;/strong&gt; tokens in total (combined thinking and actual response) to suggest I implement an exception handler on a single function. Feeding the identical prompt to Claude took roughly 3 seconds to generate 6 useful suggestions with accompanying code change snippets.&lt;/p&gt; &lt;p&gt;So this brings me back to exactly where I was when I deleted QwQ-Preview after a week. What the hell is this thing actually for? What is it good at? I feel like it’s way more useful as a proof of concept than as a practical model for anything but the least performance sensitive possible tasks. So my question is this - can anyone provide an example (prompt and response) where QwQ was able to answer your question or prompt better than qwen2.5:32b (coder or instruct)?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T23:41:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1j4g8un</id>
@@ -99,6 +47,32 @@
     <published>2025-03-05T17:30:01+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j4hrgt</id>
+    <title>Honest question - what is QwQ actually useful for?</title>
+    <updated>2025-03-05T23:41:43+00:00</updated>
+    <author>
+      <name>/u/taylorwilsdon</name>
+      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recognizing wholeheartedly that the title may come off as a smidge provocative, I really am genuinely curious if anyone has a real world example of something that QwQ actually does better than its peers at. I got all excited by the updated benchmarks showing what appeared to be a significant gain over the QwQ preview, and after seeing encouraging scores in coding-adjacent tasks I thought a good test would be having it do something I often have R1 do, which is operate in architect mode and create a plan for a change in Aider or Roo. One of the top posts on &lt;a href="/r/localllama"&gt;r/localllama&lt;/a&gt; right now reads &amp;quot;QwQ-32B released, equivalent or surpassing full Deepseek-R1!&amp;quot; &lt;/p&gt; &lt;p&gt;If that's the case, then it should be at least moderately competent at coding given they purport to match full fat R1 on coding benchmarks. So, I asked it to implement python logging in a ~105 line file based on the existing implementation in another 110 line file.&lt;/p&gt; &lt;p&gt;In both cases, it literally couldn't do it. In Roo, it just kept talking in circles and proposing Mermaid diagrams showing how files relate to each other, despite specifically attaching only the two files in question. After it runs around going crazy for too long, Roo actually force stops the model and writes back &lt;em&gt;&amp;quot;Roo Code uses complex prompts and iterative task execution that may be challenging for less capable models. For best results, it's recommended to use Claude 3.7 Sonnet for its advanced agentic coding capabilities.&amp;quot;&lt;/em&gt;&lt;/p&gt; &lt;p&gt;Now, there are always nuances to agentic tools like Roo, so I went straight to the chat interface and fed it an even simpler file and asked it to perform a code review on a 90 line python script that’s already in good shape. In return, I waited ten minutes while it generated &lt;strong&gt;25,000&lt;/strong&gt; tokens in total (combined thinking and actual response) to suggest I implement an exception handler on a single function. Feeding the identical prompt to Claude took roughly 3 seconds to generate 6 useful suggestions with accompanying code change snippets.&lt;/p&gt; &lt;p&gt;So this brings me back to exactly where I was when I deleted QwQ-Preview after a week. What the hell is this thing actually for? What is it good at? I feel like it’s way more useful as a proof of concept than as a practical model for anything but the least performance sensitive possible tasks. So my question is this - can anyone provide an example (prompt and response) where QwQ was able to answer your question or prompt better than qwen2.5:32b (coder or instruct)?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4hrgt/honest_question_what_is_qwq_actually_useful_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-05T23:41:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j4jxyq</id>
+    <title>The Reason why open source models should be in the lead.</title>
+    <updated>2025-03-06T01:30:21+00:00</updated>
+    <author>
+      <name>/u/Feisty-Pineapple7879</name>
+      <uri>https://old.reddit.com/user/Feisty-Pineapple7879</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;OpenAI is doubling down on its application business. Execs have spoken with investors about three classes of future agent launches, ranging from $2K to $20K/month to do tasks like automating coding and PhD-level research:&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Feisty-Pineapple7879"&gt; /u/Feisty-Pineapple7879 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jxyq/the_reason_why_open_source_models_should_be_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jxyq/the_reason_why_open_source_models_should_be_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jxyq/the_reason_why_open_source_models_should_be_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T01:30:21+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j4dk98</id>
     <title>Open-Source Multi-turn Slack Agent with LangGraph + Arcade</title>
     <updated>2025-03-05T20:49:55+00:00</updated>
@@ -125,6 +99,19 @@
     <published>2025-03-05T16:24:26+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j4jpij</id>
+    <title>M3 Ultra is a slightly weakened 3090 w/ 512GB</title>
+    <updated>2025-03-06T01:19:01+00:00</updated>
+    <author>
+      <name>/u/Ok_Warning2146</name>
+      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;To conclude, you are getting a slightly weakened 3090 with 512GB at max config as it gets 114.688TFLOPS FP16 vs 142.32TFLOPS FP16 for 3090 and memory bandwidth of 819.2GB/s vs 936GB/s.&lt;/p&gt; &lt;p&gt;The only place I can find about M3 Ultra spec is:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.apple.com/newsroom/2025/03/apple-reveals-m3-ultra-taking-apple-silicon-to-a-new-extreme/"&gt;https://www.apple.com/newsroom/2025/03/apple-reveals-m3-ultra-taking-apple-silicon-to-a-new-extreme/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;However, it is highly vague about the spec. So I made an educated guess on the exact spec of M3 Ultra based on this article.&lt;/p&gt; &lt;p&gt;To achieve a GPU of 2x performance of M2 Ultra and 2.6x of M1 Ultra, you need to double the shaders per core from 128 to 256. That's what I guess is happening here for such big improvement.&lt;/p&gt; &lt;p&gt;I also made a guesstimate on what a M4 Ultra can be.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Chip&lt;/th&gt; &lt;th align="left"&gt;M3 Ultra&lt;/th&gt; &lt;th align="left"&gt;M2 Ultra&lt;/th&gt; &lt;th align="left"&gt;M1 Ultra&lt;/th&gt; &lt;th align="left"&gt;M4 Ultra?&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;GPU Core&lt;/td&gt; &lt;td align="left"&gt;80&lt;/td&gt; &lt;td align="left"&gt;76&lt;/td&gt; &lt;td align="left"&gt;80&lt;/td&gt; &lt;td align="left"&gt;80&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GPU Shader&lt;/td&gt; &lt;td align="left"&gt;20480&lt;/td&gt; &lt;td align="left"&gt;9728&lt;/td&gt; &lt;td align="left"&gt;8192&lt;/td&gt; &lt;td align="left"&gt;20480&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GPU GHz&lt;/td&gt; &lt;td align="left"&gt;1.4&lt;/td&gt; &lt;td align="left"&gt;1.4&lt;/td&gt; &lt;td align="left"&gt;1.3&lt;/td&gt; &lt;td align="left"&gt;1.68&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GPU FP16&lt;/td&gt; &lt;td align="left"&gt;114.688&lt;/td&gt; &lt;td align="left"&gt;54.4768&lt;/td&gt; &lt;td align="left"&gt;42.5984&lt;/td&gt; &lt;td align="left"&gt;137.6256&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;RAM Type&lt;/td&gt; &lt;td align="left"&gt;LPDDR5&lt;/td&gt; &lt;td align="left"&gt;LPDDR5&lt;/td&gt; &lt;td align="left"&gt;LPDDR5&lt;/td&gt; &lt;td align="left"&gt;LPDDR5X&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;RAM Speed&lt;/td&gt; &lt;td align="left"&gt;6400&lt;/td&gt; &lt;td align="left"&gt;6400&lt;/td&gt; &lt;td align="left"&gt;6400&lt;/td&gt; &lt;td align="left"&gt;8533&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;RAM Controller&lt;/td&gt; &lt;td align="left"&gt;64&lt;/td&gt; &lt;td align="left"&gt;64&lt;/td&gt; &lt;td align="left"&gt;64&lt;/td&gt; &lt;td align="left"&gt;64&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;RAM Bandwidth&lt;/td&gt; &lt;td align="left"&gt;819.2&lt;/td&gt; &lt;td align="left"&gt;819.2&lt;/td&gt; &lt;td align="left"&gt;819.2&lt;/td&gt; &lt;td align="left"&gt;1092.22&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;CPU P-Core&lt;/td&gt; &lt;td align="left"&gt;24&lt;/td&gt; &lt;td align="left"&gt;16&lt;/td&gt; &lt;td align="left"&gt;16&lt;/td&gt; &lt;td align="left"&gt;24&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;CPU GHz&lt;/td&gt; &lt;td align="left"&gt;3.5&lt;/td&gt; &lt;td align="left"&gt;3.5&lt;/td&gt; &lt;td align="left"&gt;3.2&lt;/td&gt; &lt;td align="left"&gt;4.5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;CPU FP16&lt;/td&gt; &lt;td align="left"&gt;2.688&lt;/td&gt; &lt;td align="left"&gt;1.792&lt;/td&gt; &lt;td align="left"&gt;1.6384&lt;/td&gt; &lt;td align="left"&gt;3.456&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Apple is likely to be selling it at 10-15k. If 10k, I think it is quite a good deal as its performance is about 4xDIGITS and RAM is much faster. 15k is still not a bad deal either in that perspective.&lt;/p&gt; &lt;p&gt;There is also a possibility that there is no doubling of shader density and Apple is just playing with words. That would be a huge bummer. In that case, it is better to wait for M4 Ultra.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jpij/m3_ultra_is_a_slightly_weakened_3090_w_512gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jpij/m3_ultra_is_a_slightly_weakened_3090_w_512gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jpij/m3_ultra_is_a_slightly_weakened_3090_w_512gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T01:19:01+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j47yei</id>
     <title>FULL LEAKED v0 by Vercel System Prompts (100% Real)</title>
     <updated>2025-03-05T17:05:47+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j47yei/full_leaked_v0_by_vercel_system_prompts_100_real/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T17:05:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j4jrnl</id>
+    <title>AMD new Fully Open Instella 3B model</title>
+    <updated>2025-03-06T01:21:49+00:00</updated>
+    <author>
+      <name>/u/blazerx</name>
+      <uri>https://old.reddit.com/user/blazerx</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/blazerx"&gt; /u/blazerx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://rocm.blogs.amd.com/artificial-intelligence/introducing-instella-3B/README.html#additional-resources"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jrnl/amd_new_fully_open_instella_3b_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4jrnl/amd_new_fully_open_instella_3b_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-06T01:21:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1j4914s</id>
@@ -216,19 +216,6 @@
     <published>2025-03-05T14:55:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j4d5fr</id>
-    <title>Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎</title>
-    <updated>2025-03-05T20:33:03+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"&gt; &lt;img alt="Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎" src="https://preview.redd.it/ye3dq51qlxme1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4849458d901ac4ba1ba6d60edc9a283317fab5bc" title="Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This thing is friggin sweet!! Can’t wait to fire it up and load up full DeepSeek 671b on this monster! It does look slightly different than the promotional photos I saw online which is a little concerning, but for $800 🤷‍♂️. They’ve got it mounted in some kind of acrylic case or something, it’s in there pretty good, can’t seem to remove it easily. As soon as I figure out how to plug it up to my monitor, I’ll give you guys a report. Seems to be missing DisplayPort and no HDMI either. Must be some new type of port that I might need an adapter for. That’s what I get for being on the bleeding edge I guess. 🤓&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ye3dq51qlxme1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T20:33:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j417qh</id>
     <title>llama.cpp is all you need</title>
     <updated>2025-03-05T11:45:16+00:00</updated>
@@ -242,30 +229,17 @@
     <published>2025-03-05T11:45:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j4bi0g</id>
-    <title>brainless Ollama naming about to strike again</title>
-    <updated>2025-03-05T19:26:23+00:00</updated>
+    <id>t3_1j4d5fr</id>
+    <title>Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎</title>
+    <updated>2025-03-05T20:33:03+00:00</updated>
     <author>
-      <name>/u/gpupoor</name>
-      <uri>https://old.reddit.com/user/gpupoor</uri>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt; &lt;img alt="brainless Ollama naming about to strike again" src="https://preview.redd.it/hnw7tvbo9xme1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ff02886ac4815c2bc162e157351ae6d100b824d0" title="brainless Ollama naming about to strike again" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gpupoor"&gt; /u/gpupoor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/hnw7tvbo9xme1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"&gt; &lt;img alt="Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎" src="https://preview.redd.it/ye3dq51qlxme1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4849458d901ac4ba1ba6d60edc9a283317fab5bc" title="Saw this “New Mac Studio” on Marketplace for $800 and was like SOLD!! Hyped to try out DeepSeek R1 on it. LFG!! Don’t be jealous 😎" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This thing is friggin sweet!! Can’t wait to fire it up and load up full DeepSeek 671b on this monster! It does look slightly different than the promotional photos I saw online which is a little concerning, but for $800 🤷‍♂️. They’ve got it mounted in some kind of acrylic case or something, it’s in there pretty good, can’t seem to remove it easily. As soon as I figure out how to plug it up to my monitor, I’ll give you guys a report. Seems to be missing DisplayPort and no HDMI either. Must be some new type of port that I might need an adapter for. That’s what I get for being on the bleeding edge I guess. 🤓&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ye3dq51qlxme1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4d5fr/saw_this_new_mac_studio_on_marketplace_for_800/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T19:26:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j4gw91</id>
-    <title>QwQ-32B seems to get the same quality final answer as R1 while reasoning much more concisely and efficiently</title>
-    <updated>2025-03-05T23:04:05+00:00</updated>
-    <author>
-      <name>/u/pigeon57434</name>
-      <uri>https://old.reddit.com/user/pigeon57434</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I think I will now switch over to using QwQ as my primary reasoning model instead of R1. In all my testing, it gets the same or superior quality answers as R1 does, while having its chain of thought be much more efficient, much more concise, and much more confident. In contrast, R1 feels like a bumbling idiot who happens to be really smart only because he tries every possible solution. And It's not particularly close either, QwQ takes like 4x fewer tokens than R1 on the same problem while both arriving at the same answer.&lt;/p&gt; &lt;p&gt;Adam was right when he said not all CoTs are equal, and in this case, I think Qwen trained their model to be more efficient without degrading quality at all.&lt;/p&gt; &lt;p&gt;But I'm curious to hear what everyone here thinks, because I'm sure others are more experienced than I am.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pigeon57434"&gt; /u/pigeon57434 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-05T23:04:05+00:00</published>
+    <published>2025-03-05T20:33:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1j3zxwn</id>
@@ -281,6 +255,19 @@
     <published>2025-03-05T10:16:41+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j4bi0g</id>
+    <title>brainless Ollama naming about to strike again</title>
+    <updated>2025-03-05T19:26:23+00:00</updated>
+    <author>
+      <name>/u/gpupoor</name>
+      <uri>https://old.reddit.com/user/gpupoor</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt; &lt;img alt="brainless Ollama naming about to strike again" src="https://preview.redd.it/hnw7tvbo9xme1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ff02886ac4815c2bc162e157351ae6d100b824d0" title="brainless Ollama naming about to strike again" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gpupoor"&gt; /u/gpupoor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/hnw7tvbo9xme1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4bi0g/brainless_ollama_naming_about_to_strike_again/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-05T19:26:23+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j43ziq</id>
     <title>The new king? M3 Ultra, 80 Core GPU, 512GB Memory</title>
     <updated>2025-03-05T14:13:32+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j43ziq/the_new_king_m3_ultra_80_core_gpu_512gb_memory/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-05T14:13:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j4gw91</id>
+    <title>QwQ-32B seems to get the same quality final answer as R1 while reasoning much more concisely and efficiently</title>
+    <updated>2025-03-05T23:04:05+00:00</updated>
+    <author>
+      <name>/u/pigeon57434</name>
+      <uri>https://old.reddit.com/user/pigeon57434</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I think I will now switch over to using QwQ as my primary reasoning model instead of R1. In all my testing, it gets the same or superior quality answers as R1 does, while having its chain of thought be much more efficient, much more concise, and much more confident. In contrast, R1 feels like a bumbling idiot who happens to be really smart only because he tries every possible solution. And It's not particularly close either, QwQ takes like 4x fewer tokens than R1 on the same problem while both arriving at the same answer.&lt;/p&gt; &lt;p&gt;Adam was right when he said not all CoTs are equal, and in this case, I think Qwen trained their model to be more efficient without degrading quality at all.&lt;/p&gt; &lt;p&gt;But I'm curious to hear what everyone here thinks, because I'm sure others are more experienced than I am.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pigeon57434"&gt; /u/pigeon57434 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j4gw91/qwq32b_seems_to_get_the_same_quality_final_answer/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-05T23:04:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1j43us5</id>
