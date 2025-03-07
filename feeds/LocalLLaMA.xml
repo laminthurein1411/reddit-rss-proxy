@@ -2,36 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-07T16:38:29+00:00</updated>
+  <updated>2025-03-07T16:49:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1j5hn2v</id>
-    <title>The mystery of Apple M3 Ultra GPU performance</title>
-    <updated>2025-03-07T06:59:02+00:00</updated>
+    <id>t3_1j5rxjz</id>
+    <title>Llama-factory FP8 fine tuning?</title>
+    <updated>2025-03-07T16:04:24+00:00</updated>
     <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+      <name>/u/Wonderful_Alfalfa115</name>
+      <uri>https://old.reddit.com/user/Wonderful_Alfalfa115</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The press release of M3 Ultra claimed that its GPU performance is 2.6x of M1 Ultra.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j4jpij/comment/mgg62l5/?context=3"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1j4jpij/comment/mgg62l5/?context=3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I thought the 2.6x gain was due to doubling of shader per core. But some people pointed out that the gain can be attributed to the existence of ray tracing cores in M3 that is not in M1/M2.&lt;/p&gt; &lt;p&gt;To investigate the impact of ray tracing, I looked up the previous press release for M3.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.apple.com/hk/en/newsroom/2023/10/apple-unveils-m3-m3-pro-and-m3-max-the-most-advanced-chips-for-a-personal-computer/"&gt;https://www.apple.com/hk/en/newsroom/2023/10/apple-unveils-m3-m3-pro-and-m3-max-the-most-advanced-chips-for-a-personal-computer/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It says M3 Max is 1.5x M1 Max, M3 Pro is 1.4x M1 Pro and M3 is 1.65x M1. Then constructed this table:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;M3 vs M1&lt;/th&gt; &lt;th align="left"&gt;Ultra&lt;/th&gt; &lt;th align="left"&gt;Max&lt;/th&gt; &lt;th align="left"&gt;Pro&lt;/th&gt; &lt;th align="left"&gt;Vanilla&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;GPU Gain&lt;/td&gt; &lt;td align="left"&gt;2.6x&lt;/td&gt; &lt;td align="left"&gt;1.5x&lt;/td&gt; &lt;td align="left"&gt;1.4x&lt;/td&gt; &lt;td align="left"&gt;1.65x&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;M3 FP16&lt;/td&gt; &lt;td align="left"&gt;57.344&lt;/td&gt; &lt;td align="left"&gt;28.672&lt;/td&gt; &lt;td align="left"&gt;12.9024&lt;/td&gt; &lt;td align="left"&gt;7.168&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;M1 FP16&lt;/td&gt; &lt;td align="left"&gt;42.5984&lt;/td&gt; &lt;td align="left"&gt;21.2992&lt;/td&gt; &lt;td align="left"&gt;10.6496&lt;/td&gt; &lt;td align="left"&gt;5.3248&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;FP16 Gain&lt;/td&gt; &lt;td align="left"&gt;1.3462x&lt;/td&gt; &lt;td align="left"&gt;1.3462x&lt;/td&gt; &lt;td align="left"&gt;1.2132x&lt;/td&gt; &lt;td align="left"&gt;1.3462x&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;RT Gain&lt;/td&gt; &lt;td align="left"&gt;1.9314x&lt;/td&gt; &lt;td align="left"&gt;1.1142x&lt;/td&gt; &lt;td align="left"&gt;1.154x&lt;/td&gt; &lt;td align="left"&gt;1.2257x&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;If I assume no doubling of shader per core, then M3 Ultra FP16 is 57.344. I assume the overall GPU gain is the product of FP16 and RT. Then I calculated the RT Gain and noticed that M3 Ultra's RT Gain is very different from the others. If I assume M3 Ultra FP16 is 114.688, then RT Gain is 0.9657x. This is closer to the other RT Gain but still a bit off.&lt;/p&gt; &lt;p&gt;So the conclusion is that RT cores probably doesn't explain this 2.6x gain fully. Any ray tracing experts here that can share their opinion?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5hn2v/the_mystery_of_apple_m3_ultra_gpu_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5hn2v/the_mystery_of_apple_m3_ultra_gpu_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5hn2v/the_mystery_of_apple_m3_ultra_gpu_performance/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is it possible to directly fine tune on a FP8 w8a8 quantized model?&lt;/p&gt; &lt;p&gt;Will it stay as FP8 after the fine tuning is completed?&lt;/p&gt; &lt;p&gt;What configuration do I need to use to make this possible and is there anything else I should know?&lt;/p&gt; &lt;p&gt;Thanks for the help in advanced&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Wonderful_Alfalfa115"&gt; /u/Wonderful_Alfalfa115 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5rxjz/llamafactory_fp8_fine_tuning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5rxjz/llamafactory_fp8_fine_tuning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5rxjz/llamafactory_fp8_fine_tuning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T06:59:02+00:00</published>
+    <published>2025-03-07T16:04:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j5s7cu</id>
-    <title>Time to Level Up LLM Pruning – QwQ-32B Needs Some Love! imagine making smaller QWQ_14B !</title>
-    <updated>2025-03-07T16:14:01+00:00</updated>
+    <id>t3_1j5s629</id>
+    <title>The Genius of DeepSeek’s 57X Efficiency Boost [MLA]</title>
+    <updated>2025-03-07T16:12:48+00:00</updated>
     <author>
-      <name>/u/solomars3</name>
-      <uri>https://old.reddit.com/user/solomars3</uri>
+      <name>/u/Different-Olive-8745</name>
+      <uri>https://old.reddit.com/user/Different-Olive-8745</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I’ve been diving into the latest LLMs and one thing’s clear: while models like QwQ-32B are seriously impressive with their reasoning skills, their parameter count is still a bottleneck. Traditional pruning methods just don’t cut it here—every tiny weight can carry subtle but crucial info.&lt;/p&gt; &lt;p&gt;There are some cool new approaches like Wanda and LLM-Pruner showing promise, but we need to push harder on innovative pruning tech specifically tailored for these reasoning-heavy models. Making QwQ-32B leaner without sacrificing its smarts could seriously cut inference costs and open up more deployment options.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/solomars3"&gt; /u/solomars3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s7cu/time_to_level_up_llm_pruning_qwq32b_needs_some/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s7cu/time_to_level_up_llm_pruning_qwq32b_needs_some/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s7cu/time_to_level_up_llm_pruning_qwq32b_needs_some/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s629/the_genius_of_deepseeks_57x_efficiency_boost_mla/"&gt; &lt;img alt="The Genius of DeepSeek’s 57X Efficiency Boost [MLA]" src="https://external-preview.redd.it/cNA68CfuuchA-pKjC19aWS3fLxcXM9n1EmEaCjksBPI.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7e6d61fc0d91e37ef5748cd5797b5f122d3ab207" title="The Genius of DeepSeek’s 57X Efficiency Boost [MLA]" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Different-Olive-8745"&gt; /u/Different-Olive-8745 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/0VLAoVGf_74?si=OSwMMKsz9EpLOISJ"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s629/the_genius_of_deepseeks_57x_efficiency_boost_mla/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5s629/the_genius_of_deepseeks_57x_efficiency_boost_mla/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T16:14:01+00:00</published>
+    <published>2025-03-07T16:12:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1j5sikh</id>
@@ -229,19 +229,6 @@
     <published>2025-03-06T19:32:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j5ievy</id>
-    <title>FT: Llama 4 w/ voice expected in coming weeks</title>
-    <updated>2025-03-07T07:55:53+00:00</updated>
-    <author>
-      <name>/u/Zyj</name>
-      <uri>https://old.reddit.com/user/Zyj</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looks like good self-hosted voice chat that isn't tacked on will soon be available from both Sesame and Meta! Can't wait!&lt;/p&gt; &lt;p&gt;P.S. Is anyone working on an iOS app with CarPlay that lets me talk to my private AI server?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zyj"&gt; /u/Zyj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.ft.com/content/a1014427-c2ce-4204-b41a-001277309cea"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5ievy/ft_llama_4_w_voice_expected_in_coming_weeks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5ievy/ft_llama_4_w_voice_expected_in_coming_weeks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T07:55:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j5hb4p</id>
     <title>Ensure you use the appropriate temperature of 0.6 with QwQ-32B</title>
     <updated>2025-03-07T06:35:39+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5hb4p/ensure_you_use_the_appropriate_temperature_of_06/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-07T06:35:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j5ievy</id>
+    <title>FT: Llama 4 w/ voice expected in coming weeks</title>
+    <updated>2025-03-07T07:55:53+00:00</updated>
+    <author>
+      <name>/u/Zyj</name>
+      <uri>https://old.reddit.com/user/Zyj</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looks like good self-hosted voice chat that isn't tacked on will soon be available from both Sesame and Meta! Can't wait!&lt;/p&gt; &lt;p&gt;P.S. Is anyone working on an iOS app with CarPlay that lets me talk to my private AI server?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zyj"&gt; /u/Zyj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.ft.com/content/a1014427-c2ce-4204-b41a-001277309cea"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5ievy/ft_llama_4_w_voice_expected_in_coming_weeks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5ievy/ft_llama_4_w_voice_expected_in_coming_weeks/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-07T07:55:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1j55tnf</id>
