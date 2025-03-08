@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-08T16:34:03+00:00</updated>
+  <updated>2025-03-08T16:48:33+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1j4z0ei</id>
-    <title>Why does my process keep running in the background?</title>
-    <updated>2025-03-06T16:11:36+00:00</updated>
-    <author>
-      <name>/u/drred97</name>
-      <uri>https://old.reddit.com/user/drred97</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, this week I tried setting up an LLM using Ollama for work. I was testing stuff without any bad intentions, terminating each process properly, but now our admins sent me a list of the gpu usage of the machine I tested on (Linux), it was full of running ollama processes from me... Is this known? Why does this happen?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/drred97"&gt; /u/drred97 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j4z0ei/why_does_my_process_keep_running_in_the_background/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j4z0ei/why_does_my_process_keep_running_in_the_background/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1j4z0ei/why_does_my_process_keep_running_in_the_background/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-06T16:11:36+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j4nl15</id>
     <title>LLM Inference Hardware Calculator</title>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1j5wd4b/feature_found_in_llama3170bq2_k/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-07T18:41:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j6l37b</id>
+    <title>Ollama somehow utilizes CPU although GPU VRAM is not fully utilized</title>
+    <updated>2025-03-08T16:41:50+00:00</updated>
+    <author>
+      <name>/u/PFGSnoopy</name>
+      <uri>https://old.reddit.com/user/PFGSnoopy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm currently experimenting with Ollama as the AI Backend for the HomeAssistant Voicee Assistant.&lt;/p&gt; &lt;p&gt;My Setup is as this:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Minisforum 795S7 &lt;ul&gt; &lt;li&gt;AMD Ryzen 9 7945HX&lt;/li&gt; &lt;li&gt;64GB DDR5 RAM&lt;/li&gt; &lt;li&gt;2x 2TB NVMe SSD in a RAID1 configuration&lt;/li&gt; &lt;li&gt;NVIDIA RTX 2000 Ada, 16 VRAM&lt;/li&gt; &lt;li&gt;Proxmox 8.3&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Ollama is running in a VM on Proxmox &lt;ul&gt; &lt;li&gt;Ubuntu Server&lt;/li&gt; &lt;li&gt;8 CPU cores desdicated to the VM&lt;/li&gt; &lt;li&gt;20GB RAM desicated to the VM&lt;/li&gt; &lt;li&gt;GPU passed trough to the VM&lt;/li&gt; &lt;li&gt;LLM: Qwen2.5:7B&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Raspberry Pi 5B &lt;ul&gt; &lt;li&gt;8GB RAM&lt;/li&gt; &lt;li&gt;HAOS on a 256GB NVMe SSD&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Currently I'm just testing text queries from the HA web frontend to the Ollama backend.&lt;/p&gt; &lt;p&gt;One thing is that Ollama takes forever to come up with a reply, although it is very responsive when queried directly in a command shell on the server (SSH).&lt;/p&gt; &lt;p&gt;The other strange thing is that Ollama is utilizing 100% of the GPUs compute power and 50% of its VRAM and additionally almost 100% of 2 CPU cores (as you can see in the image above).&lt;/p&gt; &lt;p&gt;I was under the impression that Ollama would only utilize the CPU if there wasn't enough VRAM on the GPU. Am I wrong?&lt;/p&gt; &lt;p&gt;The other thing that puzzles me, is that I have seen videos of people that got near instant replies while using a Tesla P4, which is about half as fast as my RTX 2000 Ada (and it has only half the VRAM, too).&lt;/p&gt; &lt;p&gt;Without the Speech-to-Text part queries already take 10+ seconds. If I add Speech-to-Text, I estimate response times on every query via the HomeAssistant Voice Assistant will take 30 sekonds or more. That way I won't be able to retire Alexa any time soon.&lt;/p&gt; &lt;p&gt;I'm pretty sure I'm doing something wrong (probably both on the Ollama and the HomeAssistent end of things. But at the moment I feel way over my head and don't know where to start looking for the cause(s) for the bad performance.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PFGSnoopy"&gt; /u/PFGSnoopy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j6l37b/ollama_somehow_utilizes_cpu_although_gpu_vram_is/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j6l37b/ollama_somehow_utilizes_cpu_although_gpu_vram_is/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1j6l37b/ollama_somehow_utilizes_cpu_although_gpu_vram_is/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-08T16:41:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1j66pg3</id>
