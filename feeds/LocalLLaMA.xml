@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-08T09:05:55+00:00</updated>
+  <updated>2025-03-08T09:21:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j5lym7</id>
-    <title>Lightweight Hallucination Detector for Local RAG Setups - No Extra LLM Calls Required</title>
-    <updated>2025-03-07T12:05:37+00:00</updated>
-    <author>
-      <name>/u/asankhs</name>
-      <uri>https://old.reddit.com/user/asankhs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I've been working on solving a common problem many of us face when running RAG systems with our local models - hallucinations. While our locally-hosted LLMs are impressive, they still tend to make things up when using RAG, especially when running smaller models with limited context windows.&lt;/p&gt; &lt;p&gt;I've released an &lt;strong&gt;open-source hallucination detector&lt;/strong&gt; that's specifically designed to be efficient enough to run on consumer hardware alongside your local LLMs. Unlike other solutions that require additional LLM API calls (which add latency and often external dependencies), this is a lightweight transformer-based classifier.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Technical details:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Based on modernBERT architecture&lt;/li&gt; &lt;li&gt;Inference speed: ~1 example/second on CPU, ~10-20 examples/second on modest GPU&lt;/li&gt; &lt;li&gt;Zero external API dependencies - runs completely local&lt;/li&gt; &lt;li&gt;Works with any LLM output, including Llama-2, Llama-3, Mistral, Phi-3, etc.&lt;/li&gt; &lt;li&gt;Integrates easily with LlamaIndex, LangChain, or your custom RAG pipeline&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;How it works:&lt;/strong&gt; The detector evaluates your LLM's response against the retrieved context to identify when the model generates information not present in the source material. It achieves 80.7% recall on the RAGTruth benchmark, with particularly strong performance on data-to-text tasks.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Example integration with your local setup:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;from adaptive_classifier import AdaptiveClassifier # Load the hallucination detector (downloads once, runs locally after) detector = AdaptiveClassifier.from_pretrained(&amp;quot;adaptive-classifier/llm-hallucination-detector&amp;quot;) # Your existing RAG pipeline context = retriever.get_relevant_documents(query) response = your_local_llm.generate(context, query) # Format for the detector input_text = f&amp;quot;Context: {context}\nQuestion: {query}\nAnswer: {response}&amp;quot; # Check for hallucinations prediction = detector.predict(input_text) if prediction[0][0] == 'HALLUCINATED' and prediction[0][1] &amp;gt; 0.6: print(&amp;quot;⚠️ Warning: Response appears to contain information not in the context&amp;quot;) # Maybe re-generate or add a disclaimer &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;The detector is part of the adaptive-classifier library which also has tools for routing between different local models based on query complexity.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Questions for the community:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How have you been addressing hallucinations in your local RAG setups?&lt;/li&gt; &lt;li&gt;Would a token-level detector (highlighting exactly which parts are hallucinated) be useful?&lt;/li&gt; &lt;li&gt;What's your typical resource budget for this kind of auxiliary model in your stack?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;br /&gt; Docs: &lt;a href="https://github.com/codelion/adaptive-classifier#hallucination-detector"&gt;https://github.com/codelion/adaptive-classifier#hallucination-detector&lt;/a&gt;&lt;br /&gt; Installation: &lt;code&gt;pip install adaptive-classifier&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5lym7/lightweight_hallucination_detector_for_local_rag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5lym7/lightweight_hallucination_detector_for_local_rag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5lym7/lightweight_hallucination_detector_for_local_rag/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T12:05:37+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j6cz5o</id>
     <title>UPDATE THIS WEEK: Tool Calling for DeepSeek-R1 671B is now available on Microsoft Azure</title>
@@ -47,17 +34,30 @@
     <published>2025-03-07T22:47:37+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j66udm</id>
-    <title>How does OpenAI do their scraping for search?</title>
-    <updated>2025-03-08T02:17:04+00:00</updated>
+    <id>t3_1j6de4e</id>
+    <title>Big Rig, Small Budget Build: Finally pulled the trigger on some serious VRAM</title>
+    <updated>2025-03-08T09:12:02+00:00</updated>
     <author>
-      <name>/u/Ok_Coyote_8904</name>
-      <uri>https://old.reddit.com/user/Ok_Coyote_8904</uri>
+      <name>/u/gaspoweredcat</name>
+      <uri>https://old.reddit.com/user/gaspoweredcat</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with the search functionality in ChatGPT and it's honestly impressive. I'm particularly wondering how they scrape the internet in such a fast and accurate manner while retrieving high quality content from their sources. &lt;/p&gt; &lt;p&gt;Anyone have an idea? They're obviously caching and scraping at intervals, but anyone have a clue how or what their method is? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Coyote_8904"&gt; /u/Ok_Coyote_8904 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Warning long post ahead&lt;/p&gt; &lt;p&gt;Last year I started the build on my super budget local rig, I'm just a regular working Joe, by no means am I rich but I wanted a good rig to play around with, I rented instances online etc but it was often troublesome, it was much nicer having a proper local machine I had full control over.&lt;/p&gt; &lt;p&gt;I managed to get two of my chosen GPUs (the CMP 100-210, a 16gb HBM2 mining card that's effectively a V100 limited to a pcie 1x) in my big cheap server (gigabyte g431-mm0, a 10 GPU rack server that cost 120 quid with 3 1600w PSUs, an epic embedded and 16gb ram)&lt;/p&gt; &lt;p&gt;I did at one point have a 3090 too but compatibility with the other cards, the fact it was too big to properly fit in the server and a slightly unexpected house move meant I sold it and had to put buying more on hold, then disaster struck and the cards I was using ran out and I couldn't find them anywhere leaving me stuck at 32gb&lt;/p&gt; &lt;p&gt;So now I'm all finally moved I decided to search for cards, at first I couldn't find anything, at one point I thought I'd just give AI a chance and asked perplexity to find them, it found a seller in the US who had a bunch of them but didn't ship to the UK, I asked them and they said sure as long as I pay the shipping &lt;/p&gt; &lt;p&gt;I asked how many they had, the reply came back &amp;quot;8&amp;quot; as I happened to have a little left from the move I asked how much for all 8, after a bit of discussion we settled at $145 per card or around £112 each&lt;/p&gt; &lt;p&gt;So in a week or so I should have a stonking 160GB of VRAM at my disposal! If you include the cost of the other 2 cards and the server it ran to around £1400 all in, I could technically rack all 10 in my current chassis but I probably won't &lt;/p&gt; &lt;p&gt;I did go a bit over the top there I know but with reason, I'm likely not keeping all of them, my plan was to have an 80gb machine so I was able to run up to 70b models locally at Q6/8, I grabbed the other cards mostly because I have a friend who may want a rig and those cards don't come around often, if not I can always sell it I'm sure&lt;/p&gt; &lt;p&gt;I may however upgrade my server chassis to something like a DL580 G9 (about £500) or the 8 GPU gigabyte 2u (about 750) that's about at the mo but even factoring in that cost it's still less than 2k per 80gb rig&lt;/p&gt; &lt;p&gt;Sure there are some very slight caveats, the cards run on pcie 1x so model load speed is slower than it would be on a v100 (actual inference speed is about the same) the other slight downside is they're Volta core so there no support for flash attention but aside from those 2 issues they're incredible value, far better than the likes of P100s, P40s or even 2080ti's&lt;/p&gt; &lt;p&gt;Sure they're loud but mine is in the loft so that's not a worry and yes they suck a lot of juice but that's also not a worry as I'm on an unlimited energy plan, hopefully with the new models that are coming about I can largely ditch the big providers&lt;/p&gt; &lt;p&gt;Once I have the cards here and all setup I'll post some info on the performance in case anyone else out there is looking to build a super budget big rig but I'd argue it's hard to beat for the price I paid&lt;/p&gt; &lt;p&gt;For others looking at such rigs, if you can't find the CMP 100-210 the CMP 90HX is also a good choice, it only packs 10GB of VRAM, it's GDDR6 but runs pretty close to the 800gb/s the 100-210 but it is running on ampere so you get flash attention support, these are effectively 3080s and can be found for around £150 if you keep your eyes out&lt;/p&gt; &lt;p&gt;I guess the main takeaway here is you dont have to be super rich to get your hands on a huge stack of VRAM, shop smart and even us mere mortals can manage it&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gaspoweredcat"&gt; /u/gaspoweredcat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6de4e/big_rig_small_budget_build_finally_pulled_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6de4e/big_rig_small_budget_build_finally_pulled_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6de4e/big_rig_small_budget_build_finally_pulled_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T02:17:04+00:00</published>
+    <published>2025-03-08T09:12:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j61cbx</id>
+    <title>I just tried out a model and it blew me away: llama3.2 1b</title>
+    <updated>2025-03-07T21:51:53+00:00</updated>
+    <author>
+      <name>/u/Firm_Newspaper3370</name>
+      <uri>https://old.reddit.com/user/Firm_Newspaper3370</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been thoroughly enjoying both llama3.3 70b and qwq 32b recently. Both are very impressive for their size, and these are the first models that a poor boy like me can run locally that I feel can give Chat got and Claude a run for their money.&lt;/p&gt; &lt;p&gt;But about an hour ago I had a thought.&lt;/p&gt; &lt;p&gt;If really good models are getting down to medium model sizes, how good are super tiny models getting?&lt;/p&gt; &lt;p&gt;So I downloaded llama3.3 1b.&lt;/p&gt; &lt;p&gt;Having run it through my normal phthon writing prompts, I am truly blown away. It's obviously not a 70b replacement, nor an 8b replacement. But I can hardly fathom that you can fit so much intelligence into 1.3gb.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Firm_Newspaper3370"&gt; /u/Firm_Newspaper3370 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-07T21:51:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6bz0o</id>
@@ -99,17 +99,17 @@
     <published>2025-03-08T03:48:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j61cbx</id>
-    <title>I just tried out a model and it blew me away: llama3.2 1b</title>
-    <updated>2025-03-07T21:51:53+00:00</updated>
+    <id>t3_1j66udm</id>
+    <title>How does OpenAI do their scraping for search?</title>
+    <updated>2025-03-08T02:17:04+00:00</updated>
     <author>
-      <name>/u/Firm_Newspaper3370</name>
-      <uri>https://old.reddit.com/user/Firm_Newspaper3370</uri>
+      <name>/u/Ok_Coyote_8904</name>
+      <uri>https://old.reddit.com/user/Ok_Coyote_8904</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been thoroughly enjoying both llama3.3 70b and qwq 32b recently. Both are very impressive for their size, and these are the first models that a poor boy like me can run locally that I feel can give Chat got and Claude a run for their money.&lt;/p&gt; &lt;p&gt;But about an hour ago I had a thought.&lt;/p&gt; &lt;p&gt;If really good models are getting down to medium model sizes, how good are super tiny models getting?&lt;/p&gt; &lt;p&gt;So I downloaded llama3.3 1b.&lt;/p&gt; &lt;p&gt;Having run it through my normal phthon writing prompts, I am truly blown away. It's obviously not a 70b replacement, nor an 8b replacement. But I can hardly fathom that you can fit so much intelligence into 1.3gb.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Firm_Newspaper3370"&gt; /u/Firm_Newspaper3370 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j61cbx/i_just_tried_out_a_model_and_it_blew_me_away/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around with the search functionality in ChatGPT and it's honestly impressive. I'm particularly wondering how they scrape the internet in such a fast and accurate manner while retrieving high quality content from their sources. &lt;/p&gt; &lt;p&gt;Anyone have an idea? They're obviously caching and scraping at intervals, but anyone have a clue how or what their method is? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Coyote_8904"&gt; /u/Ok_Coyote_8904 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j66udm/how_does_openai_do_their_scraping_for_search/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T21:51:53+00:00</published>
+    <published>2025-03-08T02:17:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6c556</id>
