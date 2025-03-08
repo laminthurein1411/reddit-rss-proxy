@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-08T20:05:33+00:00</updated>
+  <updated>2025-03-08T20:21:03+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j5qo7q</id>
-    <title>QwQ-32B infinite generations fixes + best practices, bug fixes</title>
-    <updated>2025-03-07T15:20:03+00:00</updated>
-    <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt; &lt;img alt="QwQ-32B infinite generations fixes + best practices, bug fixes" src="https://external-preview.redd.it/C8aU2vS5rsrlIktUq8a_5r42ZGVY34rKstBbebj3EEA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=09742bfb9b718b50a05ce6019bcbb8a232d8e890" title="QwQ-32B infinite generations fixes + best practices, bug fixes" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;! If you're having &lt;strong&gt;infinite repetitions with QwQ-32B&lt;/strong&gt;, you're not alone! I made a guide to help debug stuff! I also uploaded dynamic 4bit quants &amp;amp; other GGUFs! Link to guide: &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively"&gt;https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively&lt;/a&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;When using &lt;strong&gt;repetition penalties&lt;/strong&gt; to counteract looping, it rather causes looping!&lt;/li&gt; &lt;li&gt;The Qwen team confirmed for long context (128K), you should use YaRN.&lt;/li&gt; &lt;li&gt;When using repetition penalties, add &lt;code&gt;--samplers &amp;quot;top_k;top_p;min_p;temperature;dry;typ_p;xtc&amp;quot;&lt;/code&gt; to stop infinite generations.&lt;/li&gt; &lt;li&gt;Using &lt;code&gt;min_p = 0.1&lt;/code&gt; helps remove low probability tokens.&lt;/li&gt; &lt;li&gt;Try using &lt;code&gt;--repeat-penalty 1.1 --dry-multiplier 0.5&lt;/code&gt; to reduce repetitions.&lt;/li&gt; &lt;li&gt;Please use &lt;code&gt;--temp 0.6 --top-k 40 --top-p 0.95&lt;/code&gt; as suggested by the Qwen team.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;For example my settings in llama.cpp which work great - uses the DeepSeek R1 1.58bit Flappy Bird test I introduced back here: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/&lt;/a&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama.cpp/llama-cli \ --model unsloth-QwQ-32B-GGUF/QwQ-32B-Q4_K_M.gguf \ --threads 32 \ --ctx-size 16384 \ --n-gpu-layers 99 \ --seed 3407 \ --prio 2 \ --temp 0.6 \ --repeat-penalty 1.1 \ --dry-multiplier 0.5 \ --min-p 0.1 \ --top-k 40 \ --top-p 0.95 \ -no-cnv \ --samplers &amp;quot;top_k;top_p;min_p;temperature;dry;typ_p;xtc&amp;quot; \ --prompt &amp;quot;&amp;lt;|im_start|&amp;gt;user\nCreate a Flappy Bird game in Python. You must include these things:\n1. You must use pygame.\n2. The background color should be randomly chosen and is a light shade. Start with a light blue color.\n3. Pressing SPACE multiple times will accelerate the bird.\n4. The bird's shape should be randomly chosen as a square, circle or triangle. The color should be randomly chosen as a dark color.\n5. Place on the bottom some land colored as dark brown or yellow chosen randomly.\n6. Make a score shown on the top right side. Increment if you pass pipes and don't hit them.\n7. Make randomly spaced pipes with enough space. Color them randomly as dark green or light brown or a dark gray shade.\n8. When you lose, show the best score. Make the text inside the screen. Pressing q or Esc will quit the game. Restarting is pressing SPACE again.\nThe final game should be inside a markdown section in Python. Check your code for errors and fix them before the final markdown section.&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\n&amp;lt;think&amp;gt;\n&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I also uploaded dynamic 4bit quants for QwQ to &lt;a href="https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit"&gt;https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit&lt;/a&gt; which are directly vLLM compatible since 0.7.3&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/w65lgkmh5ane1.png?width=1000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f77f68e9639bbd8dccdb51c1314d084802b7b213"&gt;Quantization errors for QwQ&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Links to models:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-GGUF"&gt;QwQ-32B GGUFs&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit"&gt;QwQ-32B dynamic 4bit&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-bnb-4bit"&gt;QwQ-32B bitsandbytes 4bit&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B"&gt;QwQ-32B 16bit&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I wrote more details on my findings, and made a guide here: &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively"&gt;https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T15:20:03+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j6mwz5</id>
     <title>Is there an implementation to have a server-hosted web app (e.g. LLM) that uses client GPU?</title>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j60wt1/nvidia_rtx_pro_6000_x_blackwell_gpu_spotted_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-07T21:34:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j6pnpj</id>
+    <title>Old dual xeon servers for llm inference?</title>
+    <updated>2025-03-08T20:05:13+00:00</updated>
+    <author>
+      <name>/u/JohnnyLiverman</name>
+      <uri>https://old.reddit.com/user/JohnnyLiverman</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;On ebay there are a lot of those used servers with two decent xeons and like 128gb 8 channel ddr4 ram for cheap (at least here in the UK). How much tokens per second could u expect with NUMA and llama.cpp on these systems?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JohnnyLiverman"&gt; /u/JohnnyLiverman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-08T20:05:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1j66mpo</id>
@@ -255,19 +255,6 @@
     <published>2025-03-08T09:41:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j6nzrk</id>
-    <title>New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s</title>
-    <updated>2025-03-08T18:51:00+00:00</updated>
-    <author>
-      <name>/u/jd_3d</name>
-      <uri>https://old.reddit.com/user/jd_3d</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"&gt; &lt;img alt="New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s" src="https://preview.redd.it/wfkxh0q5iine1.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f63ab35ce1aa6589c56196d048a5e4231e07749f" title="New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wfkxh0q5iine1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T18:51:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j6iuyf</id>
     <title>NVIDIA RTX PRO 6000 Blackwell GPU Packs 11% More Cores Than RTX 5090: 24,064 In Total With 96 GB GDDR7 Memory &amp;amp; 600W TBP</title>
     <updated>2025-03-08T14:56:53+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6iuyf/nvidia_rtx_pro_6000_blackwell_gpu_packs_11_more/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-08T14:56:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j6nzrk</id>
+    <title>New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s</title>
+    <updated>2025-03-08T18:51:00+00:00</updated>
+    <author>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"&gt; &lt;img alt="New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s" src="https://preview.redd.it/wfkxh0q5iine1.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f63ab35ce1aa6589c56196d048a5e4231e07749f" title="New GPU startup Bolt Graphics detailed their upcoming GPUs. The Bolt Zeus 4c26-256 looks like it could be really good for LLMs. 256GB @ 1.45TB/s" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wfkxh0q5iine1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nzrk/new_gpu_startup_bolt_graphics_detailed_their/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-08T18:51:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6f61q</id>
