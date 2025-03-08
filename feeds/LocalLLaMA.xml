@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-08T20:48:46+00:00</updated>
+  <updated>2025-03-08T21:05:09+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1j6mwz5</id>
-    <title>Is there an implementation to have a server-hosted web app (e.g. LLM) that uses client GPU?</title>
-    <updated>2025-03-08T18:03:31+00:00</updated>
+    <id>t3_1j5qo7q</id>
+    <title>QwQ-32B infinite generations fixes + best practices, bug fixes</title>
+    <updated>2025-03-07T15:20:03+00:00</updated>
     <author>
-      <name>/u/DahakaMVl</name>
-      <uri>https://old.reddit.com/user/DahakaMVl</uri>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The setup would essentially be:&lt;/p&gt; &lt;p&gt;- Server running web application with backend and database but without GPU&lt;/p&gt; &lt;p&gt;- Client with GPU accesses web application&lt;/p&gt; &lt;p&gt;Is there any implementation for such a case? I don't care about downloading models or anything, just about not installing a GPU on my server.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DahakaMVl"&gt; /u/DahakaMVl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mwz5/is_there_an_implementation_to_have_a_serverhosted/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mwz5/is_there_an_implementation_to_have_a_serverhosted/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mwz5/is_there_an_implementation_to_have_a_serverhosted/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt; &lt;img alt="QwQ-32B infinite generations fixes + best practices, bug fixes" src="https://external-preview.redd.it/C8aU2vS5rsrlIktUq8a_5r42ZGVY34rKstBbebj3EEA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=09742bfb9b718b50a05ce6019bcbb8a232d8e890" title="QwQ-32B infinite generations fixes + best practices, bug fixes" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;! If you're having &lt;strong&gt;infinite repetitions with QwQ-32B&lt;/strong&gt;, you're not alone! I made a guide to help debug stuff! I also uploaded dynamic 4bit quants &amp;amp; other GGUFs! Link to guide: &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively"&gt;https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively&lt;/a&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;When using &lt;strong&gt;repetition penalties&lt;/strong&gt; to counteract looping, it rather causes looping!&lt;/li&gt; &lt;li&gt;The Qwen team confirmed for long context (128K), you should use YaRN.&lt;/li&gt; &lt;li&gt;When using repetition penalties, add &lt;code&gt;--samplers &amp;quot;top_k;top_p;min_p;temperature;dry;typ_p;xtc&amp;quot;&lt;/code&gt; to stop infinite generations.&lt;/li&gt; &lt;li&gt;Using &lt;code&gt;min_p = 0.1&lt;/code&gt; helps remove low probability tokens.&lt;/li&gt; &lt;li&gt;Try using &lt;code&gt;--repeat-penalty 1.1 --dry-multiplier 0.5&lt;/code&gt; to reduce repetitions.&lt;/li&gt; &lt;li&gt;Please use &lt;code&gt;--temp 0.6 --top-k 40 --top-p 0.95&lt;/code&gt; as suggested by the Qwen team.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;For example my settings in llama.cpp which work great - uses the DeepSeek R1 1.58bit Flappy Bird test I introduced back here: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ibbloy/158bit_deepseek_r1_131gb_dynamic_gguf/&lt;/a&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama.cpp/llama-cli \ --model unsloth-QwQ-32B-GGUF/QwQ-32B-Q4_K_M.gguf \ --threads 32 \ --ctx-size 16384 \ --n-gpu-layers 99 \ --seed 3407 \ --prio 2 \ --temp 0.6 \ --repeat-penalty 1.1 \ --dry-multiplier 0.5 \ --min-p 0.1 \ --top-k 40 \ --top-p 0.95 \ -no-cnv \ --samplers &amp;quot;top_k;top_p;min_p;temperature;dry;typ_p;xtc&amp;quot; \ --prompt &amp;quot;&amp;lt;|im_start|&amp;gt;user\nCreate a Flappy Bird game in Python. You must include these things:\n1. You must use pygame.\n2. The background color should be randomly chosen and is a light shade. Start with a light blue color.\n3. Pressing SPACE multiple times will accelerate the bird.\n4. The bird's shape should be randomly chosen as a square, circle or triangle. The color should be randomly chosen as a dark color.\n5. Place on the bottom some land colored as dark brown or yellow chosen randomly.\n6. Make a score shown on the top right side. Increment if you pass pipes and don't hit them.\n7. Make randomly spaced pipes with enough space. Color them randomly as dark green or light brown or a dark gray shade.\n8. When you lose, show the best score. Make the text inside the screen. Pressing q or Esc will quit the game. Restarting is pressing SPACE again.\nThe final game should be inside a markdown section in Python. Check your code for errors and fix them before the final markdown section.&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\n&amp;lt;think&amp;gt;\n&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I also uploaded dynamic 4bit quants for QwQ to &lt;a href="https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit"&gt;https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit&lt;/a&gt; which are directly vLLM compatible since 0.7.3&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/w65lgkmh5ane1.png?width=1000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f77f68e9639bbd8dccdb51c1314d084802b7b213"&gt;Quantization errors for QwQ&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Links to models:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-GGUF"&gt;QwQ-32B GGUFs&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-unsloth-bnb-4bit"&gt;QwQ-32B dynamic 4bit&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B-bnb-4bit"&gt;QwQ-32B bitsandbytes 4bit&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/unsloth/QwQ-32B"&gt;QwQ-32B 16bit&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I wrote more details on my findings, and made a guide here: &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively"&gt;https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5qo7q/qwq32b_infinite_generations_fixes_best_practices/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T18:03:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j5wzea</id>
-    <title>New AMD Driver Yields Up To 11% Performance Increase In koboldcpp</title>
-    <updated>2025-03-07T19:02:32+00:00</updated>
-    <author>
-      <name>/u/WokeCapitalist</name>
-      <uri>https://old.reddit.com/user/WokeCapitalist</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.amd.com/en/support/downloads/drivers.html/graphics/radeon-rx/radeon-rx-7000-series/amd-radeon-rx-7900-xt.html"&gt;AMD's Adrenalin 25.3.1 driver&lt;/a&gt; release mentioned &lt;strong&gt;&lt;em&gt;&amp;quot;AI Performance Improvements on AMD Radeon™ RX 7000 Series&amp;quot;&lt;/em&gt;&lt;/strong&gt; in the release notes along with some large percentage increases for applications like Adobe Lightroom Denoise or DaVinci Resolve. As I had their previous WHQL recommended driver already installed, I decided to test it out in koboldcpp. It turns out there was a nice performance bump there, too. Worth a download if you haven't done so already!&lt;/p&gt; &lt;h1&gt;Hardware Test Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Microsoft Windows 11 Professional (x64) Build 26100.3194 (24H2)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;CPU:&lt;/strong&gt; Intel Core Ultra 7 265K&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; AMD Radeon RX 7900 XT (20GB)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Motherboard:&lt;/strong&gt; ASRock Z890I Nova WiFi (BIOS 2.22)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Disk:&lt;/strong&gt; Lexar SSD NM800PRO 2TB&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Memory:&lt;/strong&gt; 64GB (2×32GB DDR5 6400 CL32)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Secure Boot, BitLocker &amp;amp; HVCI Enabled&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Software Test Setup:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Software:&lt;/strong&gt; koboldcpp 1.83.1&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; phi-4-q4,&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context Size&lt;/strong&gt;: 16384&lt;/li&gt; &lt;li&gt;&lt;strong&gt;BLAS Batch Size&lt;/strong&gt;: 512&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Threads&lt;/strong&gt;: 8&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU Layers&lt;/strong&gt;: 43/43&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Backend: Vulkan&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Metric&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 24.12.1&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 25.3.1&lt;/th&gt; &lt;th align="left"&gt;% Change&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Time&lt;/td&gt; &lt;td align="left"&gt;30.312 s&lt;/td&gt; &lt;td align="left"&gt;27.607 s&lt;/td&gt; &lt;td align="left"&gt;8.95% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Speed&lt;/td&gt; &lt;td align="left"&gt;537.21 T/s&lt;/td&gt; &lt;td align="left"&gt;589.85 T/s&lt;/td&gt; &lt;td align="left"&gt;9.84% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Time&lt;/td&gt; &lt;td align="left"&gt;5.203 s&lt;/td&gt; &lt;td align="left"&gt;5.301 s&lt;/td&gt; &lt;td align="left"&gt;1.87% slower&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Speed&lt;/td&gt; &lt;td align="left"&gt;19.22 T/s&lt;/td&gt; &lt;td align="left"&gt;18.86 T/s&lt;/td&gt; &lt;td align="left"&gt;1.88% lower&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Total Time&lt;/td&gt; &lt;td align="left"&gt;35.515 s&lt;/td&gt; &lt;td align="left"&gt;32.908 s&lt;/td&gt; &lt;td align="left"&gt;7.35% faster&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Backend: ROCm&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Metric&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 24.12.1&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 25.3.1&lt;/th&gt; &lt;th align="left"&gt;% Change&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Time&lt;/td&gt; &lt;td align="left"&gt;24.861 s&lt;/td&gt; &lt;td align="left"&gt;22.370 s&lt;/td&gt; &lt;td align="left"&gt;10.06% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Speed&lt;/td&gt; &lt;td align="left"&gt;655.00 T/s&lt;/td&gt; &lt;td align="left"&gt;727.94 T/s&lt;/td&gt; &lt;td align="left"&gt;11.15% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Time&lt;/td&gt; &lt;td align="left"&gt;5.831 s&lt;/td&gt; &lt;td align="left"&gt;5.586 s&lt;/td&gt; &lt;td align="left"&gt;4.20% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Speed&lt;/td&gt; &lt;td align="left"&gt;17.15 T/s&lt;/td&gt; &lt;td align="left"&gt;17.90 T/s&lt;/td&gt; &lt;td align="left"&gt;4.32% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Total Time&lt;/td&gt; &lt;td align="left"&gt;30.692 s&lt;/td&gt; &lt;td align="left"&gt;27.956 s&lt;/td&gt; &lt;td align="left"&gt;8.97% faster&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WokeCapitalist"&gt; /u/WokeCapitalist &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-07T19:02:32+00:00</published>
+    <published>2025-03-07T15:20:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6i5u2</id>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6i5u2/what_is_the_current_status_of_apple_silicon_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-08T14:21:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j5wzea</id>
+    <title>New AMD Driver Yields Up To 11% Performance Increase In koboldcpp</title>
+    <updated>2025-03-07T19:02:32+00:00</updated>
+    <author>
+      <name>/u/WokeCapitalist</name>
+      <uri>https://old.reddit.com/user/WokeCapitalist</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.amd.com/en/support/downloads/drivers.html/graphics/radeon-rx/radeon-rx-7000-series/amd-radeon-rx-7900-xt.html"&gt;AMD's Adrenalin 25.3.1 driver&lt;/a&gt; release mentioned &lt;strong&gt;&lt;em&gt;&amp;quot;AI Performance Improvements on AMD Radeon™ RX 7000 Series&amp;quot;&lt;/em&gt;&lt;/strong&gt; in the release notes along with some large percentage increases for applications like Adobe Lightroom Denoise or DaVinci Resolve. As I had their previous WHQL recommended driver already installed, I decided to test it out in koboldcpp. It turns out there was a nice performance bump there, too. Worth a download if you haven't done so already!&lt;/p&gt; &lt;h1&gt;Hardware Test Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Microsoft Windows 11 Professional (x64) Build 26100.3194 (24H2)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;CPU:&lt;/strong&gt; Intel Core Ultra 7 265K&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; AMD Radeon RX 7900 XT (20GB)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Motherboard:&lt;/strong&gt; ASRock Z890I Nova WiFi (BIOS 2.22)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Disk:&lt;/strong&gt; Lexar SSD NM800PRO 2TB&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Memory:&lt;/strong&gt; 64GB (2×32GB DDR5 6400 CL32)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Secure Boot, BitLocker &amp;amp; HVCI Enabled&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Software Test Setup:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Software:&lt;/strong&gt; koboldcpp 1.83.1&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; phi-4-q4,&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context Size&lt;/strong&gt;: 16384&lt;/li&gt; &lt;li&gt;&lt;strong&gt;BLAS Batch Size&lt;/strong&gt;: 512&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Threads&lt;/strong&gt;: 8&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU Layers&lt;/strong&gt;: 43/43&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Backend: Vulkan&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Metric&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 24.12.1&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 25.3.1&lt;/th&gt; &lt;th align="left"&gt;% Change&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Time&lt;/td&gt; &lt;td align="left"&gt;30.312 s&lt;/td&gt; &lt;td align="left"&gt;27.607 s&lt;/td&gt; &lt;td align="left"&gt;8.95% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Speed&lt;/td&gt; &lt;td align="left"&gt;537.21 T/s&lt;/td&gt; &lt;td align="left"&gt;589.85 T/s&lt;/td&gt; &lt;td align="left"&gt;9.84% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Time&lt;/td&gt; &lt;td align="left"&gt;5.203 s&lt;/td&gt; &lt;td align="left"&gt;5.301 s&lt;/td&gt; &lt;td align="left"&gt;1.87% slower&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Speed&lt;/td&gt; &lt;td align="left"&gt;19.22 T/s&lt;/td&gt; &lt;td align="left"&gt;18.86 T/s&lt;/td&gt; &lt;td align="left"&gt;1.88% lower&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Total Time&lt;/td&gt; &lt;td align="left"&gt;35.515 s&lt;/td&gt; &lt;td align="left"&gt;32.908 s&lt;/td&gt; &lt;td align="left"&gt;7.35% faster&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Backend: ROCm&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Metric&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 24.12.1&lt;/th&gt; &lt;th align="left"&gt;Adrenalin 25.3.1&lt;/th&gt; &lt;th align="left"&gt;% Change&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Time&lt;/td&gt; &lt;td align="left"&gt;24.861 s&lt;/td&gt; &lt;td align="left"&gt;22.370 s&lt;/td&gt; &lt;td align="left"&gt;10.06% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Processing Speed&lt;/td&gt; &lt;td align="left"&gt;655.00 T/s&lt;/td&gt; &lt;td align="left"&gt;727.94 T/s&lt;/td&gt; &lt;td align="left"&gt;11.15% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Time&lt;/td&gt; &lt;td align="left"&gt;5.831 s&lt;/td&gt; &lt;td align="left"&gt;5.586 s&lt;/td&gt; &lt;td align="left"&gt;4.20% faster&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Generation Speed&lt;/td&gt; &lt;td align="left"&gt;17.15 T/s&lt;/td&gt; &lt;td align="left"&gt;17.90 T/s&lt;/td&gt; &lt;td align="left"&gt;4.32% higher&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Total Time&lt;/td&gt; &lt;td align="left"&gt;30.692 s&lt;/td&gt; &lt;td align="left"&gt;27.956 s&lt;/td&gt; &lt;td align="left"&gt;8.97% faster&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WokeCapitalist"&gt; /u/WokeCapitalist &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j5wzea/new_amd_driver_yields_up_to_11_performance/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-07T19:02:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6kkyv</id>
@@ -73,17 +73,17 @@
     <published>2025-03-07T21:34:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j6pnpj</id>
-    <title>Old dual xeon servers for llm inference?</title>
-    <updated>2025-03-08T20:05:13+00:00</updated>
+    <id>t3_1j6mcrd</id>
+    <title>Before I try... has someone already done it? (Ordered Retrieval Content - ORC)</title>
+    <updated>2025-03-08T17:38:56+00:00</updated>
     <author>
-      <name>/u/JohnnyLiverman</name>
-      <uri>https://old.reddit.com/user/JohnnyLiverman</uri>
+      <name>/u/silenceimpaired</name>
+      <uri>https://old.reddit.com/user/silenceimpaired</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;On ebay there are a lot of those used servers with two decent xeons and like 128gb 8 channel ddr4 ram for cheap (at least here in the UK). How much tokens per second could u expect with NUMA and llama.cpp on these systems?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JohnnyLiverman"&gt; /u/JohnnyLiverman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Orcs aren't so smart... I learned this in Warcraft... but if you tell them to do a simple task they can get it done. So I thought... what if I broke down a giant context into digestible bits? Provide splitting characters(s) and a prompt and you immediately have multiple outputs run based on the splits. You could choose to provide the previous outputs along with the new section, or you could output each individually with no mixture. This idea is a rough approximation of RAG, but it's ordered and holistic.&lt;/p&gt; &lt;p&gt;For example, I want a book summary, but pasting the whole book crushes my system or I have to use a very degraded context precision and it results in extremely high level information about the entire context that doesn't consider each chapter, scene, paragraph or sentence individually. What if I could split the chapters by headings (hash tags), what if I split chapters into scenes (three asterisks ***), what if I split scenes into paragraphs, paragraphs into sentences or even sentences into words? Could I then have a list of prompts that were performed on each split! I could create a prompt that summarizes each chapter by a brief recap of scenes. I could have each paragraph in the book summarized into a sentence. I could have each sentence evaluated for passive voice. In theory I could transform an entire book sentence by sentence with the right prompt.&lt;/p&gt; &lt;p&gt;I was hoping to do something like this as an extension for Text Gen by Oobabooga. I might build off of the extension Twinbook by FartyPants. Before I even attempt it, I thought I'd ask. Has it been done before? Is there something similar like it? What would you change about this idea... what would you use it for? Love your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/silenceimpaired"&gt; /u/silenceimpaired &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T20:05:13+00:00</published>
+    <published>2025-03-08T17:38:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1j66mpo</id>
@@ -112,19 +112,6 @@
     <published>2025-03-08T03:22:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j6mcrd</id>
-    <title>Before I try... has someone already done it? (Ordered Retrieval Content - ORC)</title>
-    <updated>2025-03-08T17:38:56+00:00</updated>
-    <author>
-      <name>/u/silenceimpaired</name>
-      <uri>https://old.reddit.com/user/silenceimpaired</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Orcs aren't so smart... I learned this in Warcraft... but if you tell them to do a simple task they can get it done. So I thought... what if I broke down a giant context into digestible bits? Provide splitting characters(s) and a prompt and you immediately have multiple outputs run based on the splits. You could choose to provide the previous outputs along with the new section, or you could output each individually with no mixture. This idea is a rough approximation of RAG, but it's ordered and holistic.&lt;/p&gt; &lt;p&gt;For example, I want a book summary, but pasting the whole book crushes my system or I have to use a very degraded context precision and it results in extremely high level information about the entire context that doesn't consider each chapter, scene, paragraph or sentence individually. What if I could split the chapters by headings (hash tags), what if I split chapters into scenes (three asterisks ***), what if I split scenes into paragraphs, paragraphs into sentences or even sentences into words? Could I then have a list of prompts that were performed on each split! I could create a prompt that summarizes each chapter by a brief recap of scenes. I could have each paragraph in the book summarized into a sentence. I could have each sentence evaluated for passive voice. In theory I could transform an entire book sentence by sentence with the right prompt.&lt;/p&gt; &lt;p&gt;I was hoping to do something like this as an extension for Text Gen by Oobabooga. I might build off of the extension Twinbook by FartyPants. Before I even attempt it, I thought I'd ask. Has it been done before? Is there something similar like it? What would you change about this idea... what would you use it for? Love your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/silenceimpaired"&gt; /u/silenceimpaired &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6mcrd/before_i_try_has_someone_already_done_it_ordered/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T17:38:56+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j6hbp9</id>
     <title>Is Intel Granite Rapids-AP now the fastest CPU for Deepseek R1?</title>
     <updated>2025-03-08T13:37:42+00:00</updated>
@@ -138,17 +125,17 @@
     <published>2025-03-08T13:37:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j6noh8</id>
-    <title>Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1...</title>
-    <updated>2025-03-08T18:36:50+00:00</updated>
+    <id>t3_1j6pnpj</id>
+    <title>Old dual xeon servers for llm inference?</title>
+    <updated>2025-03-08T20:05:13+00:00</updated>
     <author>
-      <name>/u/teachersecret</name>
-      <uri>https://old.reddit.com/user/teachersecret</uri>
+      <name>/u/JohnnyLiverman</name>
+      <uri>https://old.reddit.com/user/JohnnyLiverman</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"&gt; &lt;img alt="Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1..." src="https://external-preview.redd.it/7RbGl7PqZ_sGLzEC-up6MH5b7zJrrofblGxxk0WxBC4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=132e3f4ed63e0faee796888e40ee542ef9d2a07c" title="Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/teachersecret"&gt; /u/teachersecret &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Deveraux-Parker/FlappyAI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;On ebay there are a lot of those used servers with two decent xeons and like 128gb 8 channel ddr4 ram for cheap (at least here in the UK). How much tokens per second could u expect with NUMA and llama.cpp on these systems?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JohnnyLiverman"&gt; /u/JohnnyLiverman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6pnpj/old_dual_xeon_servers_for_llm_inference/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T18:36:50+00:00</published>
+    <published>2025-03-08T20:05:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1j5zzue</id>
@@ -164,6 +151,19 @@
     <published>2025-03-07T20:48:08+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j6noh8</id>
+    <title>Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1...</title>
+    <updated>2025-03-08T18:36:50+00:00</updated>
+    <author>
+      <name>/u/teachersecret</name>
+      <uri>https://old.reddit.com/user/teachersecret</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"&gt; &lt;img alt="Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1..." src="https://external-preview.redd.it/7RbGl7PqZ_sGLzEC-up6MH5b7zJrrofblGxxk0WxBC4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=132e3f4ed63e0faee796888e40ee542ef9d2a07c" title="Flappy Bird Testing and comparison of local QwQ 32b VS O1 Pro, 4.5, o3 Mini High, Sonnet 3.7, Deepseek R1..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/teachersecret"&gt; /u/teachersecret &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Deveraux-Parker/FlappyAI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6noh8/flappy_bird_testing_and_comparison_of_local_qwq/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-08T18:36:50+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j6k84c</id>
     <title>Phi-4:mini didn't stop the inference till I force stopped it.</title>
     <updated>2025-03-08T16:02:38+00:00</updated>
@@ -175,19 +175,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6k84c/phi4mini_didnt_stop_the_inference_till_i_force/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-08T16:02:38+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j6nct7</id>
-    <title>Estimating how much the new NVIDIA RTX PRO 6000 Blackwell GPU should cost</title>
-    <updated>2025-03-08T18:22:47+00:00</updated>
-    <author>
-      <name>/u/asssuber</name>
-      <uri>https://old.reddit.com/user/asssuber</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;No price released yet, so let's figure out how much that card should cost:&lt;/p&gt; &lt;p&gt;Extra GDDR6 costs less than $8 per GB for the end consumer &lt;a href="https://arstechnica.com/gadgets/2024/01/review-radeon-7600-xt-offers-peace-of-mind-via-lots-of-ram-remains-a-midrange-gpu/"&gt;when installed in a GPU clamshell style&lt;/a&gt; like Nvidia is using here. GDDR7 chips seems to carry a &lt;a href="https://www.trendforce.com/presscenter/news/20240627-12207.html"&gt;20-30% premium&lt;/a&gt; over GDDR6 which I'm going to generalize to all other costs and margins related to putting it in a card, so we get less than $10 per GB.&lt;/p&gt; &lt;p&gt;Using the $2000 MSRP of the 32GB RTX 5090 as basis, the NVIDIA RTX PRO 6000 Blackwell with 96GB &lt;strong&gt;should cost less than $2700&lt;/strong&gt; to the end consumer. Oh, the wonders of a competitive capitalistic market, free of monopolistic practices!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; It seems my sarcasm above, the &amp;quot;Funny&amp;quot; flair and my comment bellow weren't sufficient, so I will try to repeat here:&lt;/p&gt; &lt;p&gt;I'm estimating how much it SHOULD cost, because everyone over here seems to be keen on normalizing the exorbitant prices for extra VRAM at the top end cards, and this is wrong. I know nvidia will price it much higher, but that was not the point of my post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asssuber"&gt; /u/asssuber &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-08T18:22:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6ma8i</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j68wr1/qwen_team_seems_sure_that_their_model_is_better/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-08T04:11:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j6nct7</id>
+    <title>Estimating how much the new NVIDIA RTX PRO 6000 Blackwell GPU should cost</title>
+    <updated>2025-03-08T18:22:47+00:00</updated>
+    <author>
+      <name>/u/asssuber</name>
+      <uri>https://old.reddit.com/user/asssuber</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;No price released yet, so let's figure out how much that card should cost:&lt;/p&gt; &lt;p&gt;Extra GDDR6 costs less than $8 per GB for the end consumer &lt;a href="https://arstechnica.com/gadgets/2024/01/review-radeon-7600-xt-offers-peace-of-mind-via-lots-of-ram-remains-a-midrange-gpu/"&gt;when installed in a GPU clamshell style&lt;/a&gt; like Nvidia is using here. GDDR7 chips seems to carry a &lt;a href="https://www.trendforce.com/presscenter/news/20240627-12207.html"&gt;20-30% premium&lt;/a&gt; over GDDR6 which I'm going to generalize to all other costs and margins related to putting it in a card, so we get less than $10 per GB.&lt;/p&gt; &lt;p&gt;Using the $2000 MSRP of the 32GB RTX 5090 as basis, the NVIDIA RTX PRO 6000 Blackwell with 96GB &lt;strong&gt;should cost less than $2700&lt;/strong&gt; to the end consumer. Oh, the wonders of a competitive capitalistic market, free of monopolistic practices!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; It seems my sarcasm above, the &amp;quot;Funny&amp;quot; flair and my comment bellow weren't sufficient, so I will try to repeat here:&lt;/p&gt; &lt;p&gt;I'm estimating how much it SHOULD cost, because everyone over here seems to be keen on normalizing the exorbitant prices for extra VRAM at the top end cards, and this is wrong. I know nvidia will price it much higher, but that was not the point of my post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asssuber"&gt; /u/asssuber &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j6nct7/estimating_how_much_the_new_nvidia_rtx_pro_6000/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-08T18:22:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1j6ofw8</id>
