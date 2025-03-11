@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-11T00:51:13+00:00</updated>
+  <updated>2025-03-11T01:33:49+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -34,19 +34,6 @@
     <published>2025-03-10T10:53:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j82o15</id>
-    <title>Fixed Ollama template for Mistral Small 3</title>
-    <updated>2025-03-10T16:26:52+00:00</updated>
-    <author>
-      <name>/u/logkn</name>
-      <uri>https://old.reddit.com/user/logkn</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was finding that Mistral Small 3 on Ollama (mistral-small:24b) had some trouble calling tools -- mainly, adding or dropping tokens that rendered the tool call as message content rather than an actual tool call.&lt;br /&gt; The chat template on the model's Huggingface page was actually not very helpful because it doesn't even include tool calling. I dug around a bit to find the Tekken V7 tokenizer, and sure enough the chat template for providing and calling tools didn't match up with Ollama's.&lt;/p&gt; &lt;p&gt;Here's a fixed version, and it's MUCH more consistent with tool calling:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{- range $index, $_ := .Messages }} {{- if eq .Role &amp;quot;system&amp;quot; }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT] {{- else if eq .Role &amp;quot;user&amp;quot; }} {{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS] {{- end }}[INST]{{ .Content }}[/INST] {{- else if eq .Role &amp;quot;assistant&amp;quot; }} {{- if .Content }}{{ .Content }} {{- if not (eq (len (slice $.Messages $index)) 1) }}&amp;lt;/s&amp;gt; {{- end }} {{- else if .ToolCalls }}[TOOL_CALLS] [ {{- range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments }}} {{- end }}]&amp;lt;/s&amp;gt; {{- end }} {{- else if eq .Role &amp;quot;tool&amp;quot; }}[TOOL_RESULTS] [TOOL_CONTENT] {{ .Content }}[/TOOL_RESULTS] {{- end }} {{- end }} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logkn"&gt; /u/logkn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T16:26:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j7j6cg</id>
     <title>&lt;70B models aren't ready to solo codebases yet, but we're gaining momentum and fast</title>
     <updated>2025-03-09T22:11:41+00:00</updated>
@@ -60,6 +47,19 @@
     <published>2025-03-09T22:11:41+00:00</published>
   </entry>
   <entry>
+    <id>t3_1j82o15</id>
+    <title>Fixed Ollama template for Mistral Small 3</title>
+    <updated>2025-03-10T16:26:52+00:00</updated>
+    <author>
+      <name>/u/logkn</name>
+      <uri>https://old.reddit.com/user/logkn</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was finding that Mistral Small 3 on Ollama (mistral-small:24b) had some trouble calling tools -- mainly, adding or dropping tokens that rendered the tool call as message content rather than an actual tool call.&lt;br /&gt; The chat template on the model's Huggingface page was actually not very helpful because it doesn't even include tool calling. I dug around a bit to find the Tekken V7 tokenizer, and sure enough the chat template for providing and calling tools didn't match up with Ollama's.&lt;/p&gt; &lt;p&gt;Here's a fixed version, and it's MUCH more consistent with tool calling:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{- range $index, $_ := .Messages }} {{- if eq .Role &amp;quot;system&amp;quot; }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT] {{- else if eq .Role &amp;quot;user&amp;quot; }} {{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS] {{- end }}[INST]{{ .Content }}[/INST] {{- else if eq .Role &amp;quot;assistant&amp;quot; }} {{- if .Content }}{{ .Content }} {{- if not (eq (len (slice $.Messages $index)) 1) }}&amp;lt;/s&amp;gt; {{- end }} {{- else if .ToolCalls }}[TOOL_CALLS] [ {{- range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments }}} {{- end }}]&amp;lt;/s&amp;gt; {{- end }} {{- else if eq .Role &amp;quot;tool&amp;quot; }}[TOOL_RESULTS] [TOOL_CONTENT] {{ .Content }}[/TOOL_RESULTS] {{- end }} {{- end }} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logkn"&gt; /u/logkn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T16:26:52+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1j88yr7</id>
     <title>llava seems to perform better the easier the answer is.. as do other models</title>
     <updated>2025-03-10T20:47:05+00:00</updated>
@@ -71,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j88yr7/llava_seems_to_perform_better_the_easier_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T20:47:05+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j892ii</id>
-    <title>RTX 3090 supply drying up on marketplaces in Europe</title>
-    <updated>2025-03-10T20:51:17+00:00</updated>
-    <author>
-      <name>/u/Mr_Moonsilver</name>
-      <uri>https://old.reddit.com/user/Mr_Moonsilver</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seems the flopped launches are leaving their traces in the GPU second hand markets. Even more so since the 4090 stopped production last fall already.&lt;/p&gt; &lt;p&gt;As popularity to self host models is on the rise and supply of new 24Gb+ cards stays dry, the all star for local AI models, the RTX 3090 is getting rare on marketplaces. In Switzerland they used to go for around CHF 650 - CHF 750. The lowest you find them now is 800.- if you're lucky, more likely CHF 900.-&lt;/p&gt; &lt;p&gt;Germany looks a little better at €650 the lowest but these are usually gone within three days and most supply is around €750 upwards. It's only a matter of time when sellers at the €650 mark will dry up.&lt;/p&gt; &lt;p&gt;On international Ebay the cards go for $800 upwards, used to be lower if I remember correctly.&lt;/p&gt; &lt;p&gt;What is your experience, are you looking for 3090s? What's your choice for your home servers?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mr_Moonsilver"&gt; /u/Mr_Moonsilver &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T20:51:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7uqv4</id>
@@ -112,19 +99,6 @@
     <published>2025-03-10T19:55:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j83md3</id>
-    <title>Could GEMMA-3 Be Unveiled at GDC 2025 (March 18)?</title>
-    <updated>2025-03-10T17:05:48+00:00</updated>
-    <author>
-      <name>/u/hCKstp4BtL</name>
-      <uri>https://old.reddit.com/user/hCKstp4BtL</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129"&gt;https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129&lt;/a&gt;&lt;/p&gt; &lt;p&gt;in this session description, we can read that they will talk about &amp;quot;Gemma models&amp;quot; (among other things). I think everyone knows about &amp;quot;Gemma 2&amp;quot; and there is no need to mention it because everyone knows how it works, right? Bigger chance is that they will show &amp;quot;Gemma 3&amp;quot; and they will release it shorly? because it seems to me that the deadline of May 20-21 (Google I/O) is a bit too late.&lt;/p&gt; &lt;p&gt;It looks like Google wants to focus the eyes of game developers on Gemma, so that they can combine the models with their games to create: “new AI-based game features and mechanics.”&lt;/p&gt; &lt;p&gt;... and to make it work, I think such a &amp;quot;Gemma 3&amp;quot; model should be prioritize with &amp;quot;perfect JSON generation&amp;quot; for the interface model&amp;lt;-&amp;gt;game and also improved instruction following.&lt;/p&gt; &lt;p&gt;I waiting for a small model (7b-9b) to be good enough to make a game with llm controlling npc (not only talk).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hCKstp4BtL"&gt; /u/hCKstp4BtL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T17:05:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j7vx6z</id>
     <title>Open manus</title>
     <updated>2025-03-10T10:55:02+00:00</updated>
@@ -136,6 +110,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7vx6z/open_manus/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T10:55:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j892ii</id>
+    <title>RTX 3090 supply drying up on marketplaces in Europe</title>
+    <updated>2025-03-10T20:51:17+00:00</updated>
+    <author>
+      <name>/u/Mr_Moonsilver</name>
+      <uri>https://old.reddit.com/user/Mr_Moonsilver</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seems the flopped launches are leaving their traces in the GPU second hand markets. Even more so since the 4090 stopped production last fall already.&lt;/p&gt; &lt;p&gt;As popularity to self host models is on the rise and supply of new 24Gb+ cards stays dry, the all star for local AI models, the RTX 3090 is getting rare on marketplaces. In Switzerland they used to go for around CHF 650 - CHF 750. The lowest you find them now is 800.- if you're lucky, more likely CHF 900.-&lt;/p&gt; &lt;p&gt;Germany looks a little better at €650 the lowest but these are usually gone within three days and most supply is around €750 upwards. It's only a matter of time when sellers at the €650 mark will dry up.&lt;/p&gt; &lt;p&gt;On international Ebay the cards go for $800 upwards, used to be lower if I remember correctly.&lt;/p&gt; &lt;p&gt;What is your experience, are you looking for 3090s? What's your choice for your home servers?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mr_Moonsilver"&gt; /u/Mr_Moonsilver &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T20:51:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j83md3</id>
+    <title>Could GEMMA-3 Be Unveiled at GDC 2025 (March 18)?</title>
+    <updated>2025-03-10T17:05:48+00:00</updated>
+    <author>
+      <name>/u/hCKstp4BtL</name>
+      <uri>https://old.reddit.com/user/hCKstp4BtL</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129"&gt;https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129&lt;/a&gt;&lt;/p&gt; &lt;p&gt;in this session description, we can read that they will talk about &amp;quot;Gemma models&amp;quot; (among other things). I think everyone knows about &amp;quot;Gemma 2&amp;quot; and there is no need to mention it because everyone knows how it works, right? Bigger chance is that they will show &amp;quot;Gemma 3&amp;quot; and they will release it shorly? because it seems to me that the deadline of May 20-21 (Google I/O) is a bit too late.&lt;/p&gt; &lt;p&gt;It looks like Google wants to focus the eyes of game developers on Gemma, so that they can combine the models with their games to create: “new AI-based game features and mechanics.”&lt;/p&gt; &lt;p&gt;... and to make it work, I think such a &amp;quot;Gemma 3&amp;quot; model should be prioritize with &amp;quot;perfect JSON generation&amp;quot; for the interface model&amp;lt;-&amp;gt;game and also improved instruction following.&lt;/p&gt; &lt;p&gt;I waiting for a small model (7b-9b) to be good enough to make a game with llm controlling npc (not only talk).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hCKstp4BtL"&gt; /u/hCKstp4BtL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T17:05:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7n2s5</id>
@@ -164,19 +164,6 @@
     <published>2025-03-10T14:32:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j8780s</id>
-    <title>Kokoro: Improving LLM's Emotional Intelligence [Research]</title>
-    <updated>2025-03-10T19:33:42+00:00</updated>
-    <author>
-      <name>/u/yukiarimo</name>
-      <uri>https://old.reddit.com/user/yukiarimo</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Yo community! Kokoro Research just dropped! It’s a prequel paper to upcoming research called, LOLI Trigger: Ludic Operant Learning Integration in Transcendent Emergence Triggering of LLMs’ about making AI more humane! Coming this week!&lt;/p&gt; &lt;p&gt;This one talks more about new classification approach which later can be directly merge into an LLM model!&lt;/p&gt; &lt;p&gt;Link: &lt;a href="https://www.academia.edu/128122586/Kokoro_Improving_LLMs_Emotional_Intelligence"&gt;https://www.academia.edu/128122586/Kokoro_Improving_LLMs_Emotional_Intelligence&lt;/a&gt;&lt;/p&gt; &lt;p&gt;You can check other researches, especially TaMeR (novel training approach), and ELiTA (better datasets). Hope you like them! Note: this is mostly theoretical paper, do not expect too much math!&lt;/p&gt; &lt;p&gt;[THIS IS NOT AN AD, JUST SHARING STUFF WITH THE COMMUNITY]&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T19:33:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j7usrm</id>
     <title>EuroBERT: A High-Performance Multilingual Encoder Model</title>
     <updated>2025-03-10T09:33:09+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T09:33:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j8780s</id>
+    <title>Kokoro: Improving LLM's Emotional Intelligence [Research]</title>
+    <updated>2025-03-10T19:33:42+00:00</updated>
+    <author>
+      <name>/u/yukiarimo</name>
+      <uri>https://old.reddit.com/user/yukiarimo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Yo community! Kokoro Research just dropped! It’s a prequel paper to upcoming research called, LOLI Trigger: Ludic Operant Learning Integration in Transcendent Emergence Triggering of LLMs’ about making AI more humane! Coming this week!&lt;/p&gt; &lt;p&gt;This one talks more about new classification approach which later can be directly merge into an LLM model!&lt;/p&gt; &lt;p&gt;Link: &lt;a href="https://www.academia.edu/128122586/Kokoro_Improving_LLMs_Emotional_Intelligence"&gt;https://www.academia.edu/128122586/Kokoro_Improving_LLMs_Emotional_Intelligence&lt;/a&gt;&lt;/p&gt; &lt;p&gt;You can check other researches, especially TaMeR (novel training approach), and ELiTA (better datasets). Hope you like them! Note: this is mostly theoretical paper, do not expect too much math!&lt;/p&gt; &lt;p&gt;[THIS IS NOT AN AD, JUST SHARING STUFF WITH THE COMMUNITY]&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T19:33:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7t18m</id>
@@ -203,19 +203,6 @@
     <published>2025-03-10T07:15:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j83zkt</id>
-    <title>Don't underestimate the power of RAG</title>
-    <updated>2025-03-10T17:21:09+00:00</updated>
-    <author>
-      <name>/u/SomeOddCodeGuy</name>
-      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"&gt; &lt;img alt="Don't underestimate the power of RAG" src="https://preview.redd.it/moz1h1pzbwne1.gif?width=640&amp;amp;crop=smart&amp;amp;s=adc13823a2909ba4af349f77c5405bf1ce990c2e" title="Don't underestimate the power of RAG" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/moz1h1pzbwne1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T17:21:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j85snw</id>
     <title>[Experimental] Control the 'Thinking Effort' of QwQ &amp; R1 Models with a Custom Logits Processor</title>
     <updated>2025-03-10T18:34:42+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j85snw/experimental_control_the_thinking_effort_of_qwq/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T18:34:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j83zkt</id>
+    <title>Don't underestimate the power of RAG</title>
+    <updated>2025-03-10T17:21:09+00:00</updated>
+    <author>
+      <name>/u/SomeOddCodeGuy</name>
+      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"&gt; &lt;img alt="Don't underestimate the power of RAG" src="https://preview.redd.it/moz1h1pzbwne1.gif?width=640&amp;amp;crop=smart&amp;amp;s=adc13823a2909ba4af349f77c5405bf1ce990c2e" title="Don't underestimate the power of RAG" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/moz1h1pzbwne1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83zkt/dont_underestimate_the_power_of_rag/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T17:21:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1j80hbo</id>
