@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-11T11:34:37+00:00</updated>
+  <updated>2025-03-11T11:48:53+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1j775a2</id>
-    <title>Ollama is not compatible with GPU anymore</title>
-    <updated>2025-03-09T13:01:24+00:00</updated>
-    <author>
-      <name>/u/Inevitable_Cut_1309</name>
-      <uri>https://old.reddit.com/user/Inevitable_Cut_1309</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1j775a2/ollama_is_not_compatible_with_gpu_anymore/"&gt; &lt;img alt="Ollama is not compatible with GPU anymore" src="https://b.thumbs.redditmedia.com/6l83o2IL-Lp4AkXI1iPGr_0O0PU_zT-R0iXTjYtnbgI.jpg" title="Ollama is not compatible with GPU anymore" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have recently reinstalled cuda toolkit(12.5) and torch (11.8)&lt;br /&gt; I have NVIDIA GeForce RTX 4070, and my driver version is 572.60&lt;br /&gt; I am using Cuda 12.5 for Ollama compatibility, but every time I run my Ollama instead of the GPU, it starts running on the CPU.&lt;/p&gt; &lt;p&gt;The GPU used to be utilized 100% before the reinstallation, but now it doesn't consume more than 10% of the GPU.&lt;br /&gt; I have set the GPU for Olama to RTX 4070.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/tl1naxrmsnne1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b0b3ef7f3db480b2833d82273a55bfc13c41829"&gt;https://preview.redd.it/tl1naxrmsnne1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b0b3ef7f3db480b2833d82273a55bfc13c41829&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/mpan0v4aunne1.png?width=839&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4691fc4961bc11d9fe4bd90d1007e6df23a16235"&gt;https://preview.redd.it/mpan0v4aunne1.png?width=839&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4691fc4961bc11d9fe4bd90d1007e6df23a16235&lt;/a&gt;&lt;/p&gt; &lt;p&gt;When I use the command ollama ps, it shows that it consumes 100% GPU.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/4q73hr8runne1.png?width=725&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e696b64fde7a4cd744de5a54c977dd18e2706329"&gt;The GPU while running the ollama instance &lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have tried changing my Cuda version to 11.8, 12.3 and 12.8, but it doesn't make a difference. I am using cudnn 8.9.7.&lt;/p&gt; &lt;p&gt;I am doing this on a Windows 11. The models used to run at a 100% efficiency and now don't cross the 5-10% mark.&lt;br /&gt; I have tried reinstalling ollama as well.&lt;/p&gt; &lt;p&gt;These are the issues I see in ollama log file :&lt;/p&gt; &lt;p&gt;Key not found: llama.attention.key_length&lt;/p&gt; &lt;p&gt;key not found: llama.attention.value_length&lt;/p&gt; &lt;p&gt;ggml_backend_load_best: failed to load ... ggml-cpu-alderlake.dll&lt;/p&gt; &lt;p&gt;Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address is normally permitted.&lt;/p&gt; &lt;p&gt;Can someone tell me what to do here?&lt;/p&gt; &lt;p&gt;Edit:&lt;/p&gt; &lt;p&gt;I ran a code using my torch, and it is able to use 100% of the GPU:&lt;br /&gt; The code is :&lt;/p&gt; &lt;pre&gt;&lt;code&gt;import torch import time device = torch.device(&amp;quot;cuda&amp;quot; if torch.cuda.is_available() else &amp;quot;cpu&amp;quot;) print(f&amp;quot;Using device: {device}&amp;quot;) # Large matrix size for heavy computation size = 30000 # Increase this for more load iterations = 10 # Number of multiplications a = torch.randn(size, size, device=device) b = torch.randn(size, size, device=device) print(&amp;quot;Starting matrix multiplications...&amp;quot;) start_time = time.time() for i in range(iterations): c = torch.mm(a, b) # Matrix multiplication torch.cuda.synchronize() # Ensure GPU finishes before timing end_time = time.time() print(f&amp;quot;Completed {iterations} multiplications in {end_time - start_time:.2f} seconds&amp;quot;) print(&amp;quot;Final value from matrix:&amp;quot;, c[0, 0].item()) &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Inevitable_Cut_1309"&gt; /u/Inevitable_Cut_1309 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j775a2/ollama_is_not_compatible_with_gpu_anymore/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j775a2/ollama_is_not_compatible_with_gpu_anymore/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1j775a2/ollama_is_not_compatible_with_gpu_anymore/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-09T13:01:24+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j7et4q</id>
     <title>Finetuning Llama 3.2 to Generate ASCII Cats (Full Tutorial)</title>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1j8o5lx/the_best_local_reasoning_model_for_rtx_3060_12gb/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-11T11:03:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j8ouip</id>
+    <title>Completely new to this - would love orientation</title>
+    <updated>2025-03-11T11:47:44+00:00</updated>
+    <author>
+      <name>/u/twack3r</name>
+      <uri>https://old.reddit.com/user/twack3r</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;DeepseekR1 is what finally jostled me into looking into the viability of running a local LLM and I am fascinated to eg develop a chatbot that can access a large volume of private data and have a chat with it about it.&lt;/p&gt; &lt;p&gt;I am quite tech savvy hw wise, very much into highend VR (Varjo XR4, AVP) and a system builder and overclocker as my hobby for around 30 years by now.&lt;/p&gt; &lt;p&gt;I am looking for a vector to get started on this but I’m afraid I lack the basics:&lt;/p&gt; &lt;p&gt;I understand that ollama is a GUI that enables easy rollout of local LLMs.&lt;/p&gt; &lt;p&gt;On the other hand I am aware that Linux is the preferred OS for running AI tasks? Would it be correct to assume that ollama sacrifices ease of access for finetuning and performance?&lt;/p&gt; &lt;p&gt;I am absolutely prepared to learn Linux basics and set up an OS, so that is not the issue. I’m just trying to get to grips with what OS and software suites are the ideal entry point into the ecosystem.&lt;/p&gt; &lt;p&gt;Hardware wise I‘m definitely not set up ideally but it‘s a powerful gaming PC which I would hope to at least do first steps on. It‘s a 12900k at 5.0 GHz all core, 32 GiB DDR4 6400, 8 TiB m2 SSDs, a 5090 and a 3090, on an ASUS Z690 extreme glacial.&lt;/p&gt; &lt;p&gt;I’m thankful for any pointers, advice, links to beginner level tutorials etc.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/twack3r"&gt; /u/twack3r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j8ouip/completely_new_to_this_would_love_orientation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1j8ouip/completely_new_to_this_would_love_orientation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1j8ouip/completely_new_to_this_would_love_orientation/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-11T11:47:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1j8egbd</id>
