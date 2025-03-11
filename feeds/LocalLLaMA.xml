@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-11T03:05:37+00:00</updated>
+  <updated>2025-03-11T03:25:51+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1j7j6cg</id>
+    <title>&lt;70B models aren't ready to solo codebases yet, but we're gaining momentum and fast</title>
+    <updated>2025-03-09T22:11:41+00:00</updated>
+    <author>
+      <name>/u/ForsookComparison</name>
+      <uri>https://old.reddit.com/user/ForsookComparison</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7j6cg/70b_models_arent_ready_to_solo_codebases_yet_but/"&gt; &lt;img alt="&amp;lt;70B models aren't ready to solo codebases yet, but we're gaining momentum and fast" src="https://external-preview.redd.it/ZDFiNmN0NHptcW5lMdBuqabr-hQLmYC8Qi5X9EdtbTx_2YZ-hAZhcsR_hrB1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b2014a6f010867f98da226a97f756cd7d035b3cb" title="&amp;lt;70B models aren't ready to solo codebases yet, but we're gaining momentum and fast" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ForsookComparison"&gt; /u/ForsookComparison &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/2wo0b8lqmqne1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7j6cg/70b_models_arent_ready_to_solo_codebases_yet_but/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7j6cg/70b_models_arent_ready_to_solo_codebases_yet_but/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-09T22:11:41+00:00</published>
+  </entry>
   <entry>
     <id>t3_1j7vwcr</id>
     <title>Deepseek coder v2</title>
@@ -19,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7vwcr/deepseek_coder_v2/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T10:53:20+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1j82o15</id>
-    <title>Fixed Ollama template for Mistral Small 3</title>
-    <updated>2025-03-10T16:26:52+00:00</updated>
-    <author>
-      <name>/u/logkn</name>
-      <uri>https://old.reddit.com/user/logkn</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was finding that Mistral Small 3 on Ollama (mistral-small:24b) had some trouble calling tools -- mainly, adding or dropping tokens that rendered the tool call as message content rather than an actual tool call.&lt;br /&gt; The chat template on the model's Huggingface page was actually not very helpful because it doesn't even include tool calling. I dug around a bit to find the Tekken V7 tokenizer, and sure enough the chat template for providing and calling tools didn't match up with Ollama's.&lt;/p&gt; &lt;p&gt;Here's a fixed version, and it's MUCH more consistent with tool calling:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{- range $index, $_ := .Messages }} {{- if eq .Role &amp;quot;system&amp;quot; }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT] {{- else if eq .Role &amp;quot;user&amp;quot; }} {{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS] {{- end }}[INST]{{ .Content }}[/INST] {{- else if eq .Role &amp;quot;assistant&amp;quot; }} {{- if .Content }}{{ .Content }} {{- if not (eq (len (slice $.Messages $index)) 1) }}&amp;lt;/s&amp;gt; {{- end }} {{- else if .ToolCalls }}[TOOL_CALLS] [ {{- range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments }}} {{- end }}]&amp;lt;/s&amp;gt; {{- end }} {{- else if eq .Role &amp;quot;tool&amp;quot; }}[TOOL_RESULTS] [TOOL_CONTENT] {{ .Content }}[/TOOL_RESULTS] {{- end }} {{- end }} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logkn"&gt; /u/logkn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T16:26:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1j88yr7</id>
@@ -112,17 +112,17 @@
     <published>2025-03-10T17:05:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j8f6nf</id>
-    <title>Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti</title>
-    <updated>2025-03-11T01:22:20+00:00</updated>
+    <id>t3_1j8eyxq</id>
+    <title>How to train Deepseek R1 with cases that build on top of each other?</title>
+    <updated>2025-03-11T01:11:37+00:00</updated>
     <author>
-      <name>/u/Status-Hearing-4084</name>
-      <uri>https://old.reddit.com/user/Status-Hearing-4084</uri>
+      <name>/u/Fickle-Conversation1</name>
+      <uri>https://old.reddit.com/user/Fickle-Conversation1</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt; &lt;img alt="Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti" src="https://b.thumbs.redditmedia.com/7cMOZxgSRdWpuSo77V1xrJreEKqUtJqAKTR_RaISKXw.jpg" title="Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Successfully running QwQ-32B (@Alibaba_Qwen) across M1 MacBook Pro and RTX 4060 Ti through model sharding.&lt;/p&gt; &lt;p&gt;Demo video exceeds Reddit's size limit. You can view it here: [ &lt;a href="https://x.com/tensorblock_aoi/status/1899266661888512004"&gt;https://x.com/tensorblock_aoi/status/1899266661888512004&lt;/a&gt; ]&lt;/p&gt; &lt;p&gt;Hardware:&lt;/p&gt; &lt;p&gt;- MacBook Pro 2021 (M1 Pro, 16GB RAM)&lt;/p&gt; &lt;p&gt;- RTX 4060 Ti (16GB VRAM)&lt;/p&gt; &lt;p&gt;Model:&lt;/p&gt; &lt;p&gt;- QwQ-32B (Q4_K_M quantization)&lt;/p&gt; &lt;p&gt;- Original size: 20GB&lt;/p&gt; &lt;p&gt;- Distributed across devices with 16GB limitation&lt;/p&gt; &lt;p&gt;Implementation:&lt;/p&gt; &lt;p&gt;- Cross-architecture model sharding&lt;/p&gt; &lt;p&gt;- Custom memory management&lt;/p&gt; &lt;p&gt;- Parallel inference pipeline&lt;/p&gt; &lt;p&gt;- TensorBlock orchestration&lt;/p&gt; &lt;p&gt;Current Progress:&lt;/p&gt; &lt;p&gt;- Model successfully loaded and running&lt;/p&gt; &lt;p&gt;- Stable inference achieved&lt;/p&gt; &lt;p&gt;- Optimization in progress&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ij3j83poryne1.jpg?width=3176&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4dfa6929805da97868dda9ee90bfcee19d08a011"&gt;https://preview.redd.it/ij3j83poryne1.jpg?width=3176&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4dfa6929805da97868dda9ee90bfcee19d08a011&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We're excited to announce TensorBlock, our upcoming local inference solution. The software enables efficient cross-device LLM deployment, featuring:&lt;/p&gt; &lt;p&gt;- Distributed inference across multiple hardware platforms&lt;/p&gt; &lt;p&gt;- Comprehensive support for Intel, AMD, NVIDIA, and Apple Silicon&lt;/p&gt; &lt;p&gt;- Smart memory management for resource-constrained devices&lt;/p&gt; &lt;p&gt;- Real-time performance monitoring and optimization&lt;/p&gt; &lt;p&gt;- User-friendly interface for model deployment and management&lt;/p&gt; &lt;p&gt;- Advanced parallel computing capabilities&lt;/p&gt; &lt;p&gt;We'll be releasing detailed benchmarks, comprehensive documentation, and deployment guides along with the software launch. Stay tuned for more updates on performance metrics and cross-platform compatibility testing.&lt;/p&gt; &lt;p&gt;Technical questions and feedback welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Status-Hearing-4084"&gt; /u/Status-Hearing-4084 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TITLE EDIT: How to fine tune Deepseek R1 with cases that build on the previous one?&lt;/p&gt; &lt;p&gt;I am very new to this, just thinking out loud...&lt;br /&gt; Say I want to make DeepSeek understands that I have a list of options [1, 2, 3, 4] for problem A&lt;/p&gt; &lt;p&gt;&lt;code&gt;{'question': 'what are the options available for problem A', 'cot': 'okay..........I have these options 1, 2, 3 4', 'respsonse': '...'}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;then can I have my second case based on the previous one say&lt;/p&gt; &lt;p&gt;&lt;code&gt;{'question': 'Is 6 a valid option for problem A?': 'cot': okay, 6 is not in the list of options in problem A, then it's not a valid option', 'response': '...'}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Is this even possible? Also is SFTTrainer a correct trainer to use? Thanks alot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fickle-Conversation1"&gt; /u/Fickle-Conversation1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-11T01:22:20+00:00</published>
+    <published>2025-03-11T01:11:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7zzdt</id>
@@ -151,19 +151,6 @@
     <published>2025-03-10T09:33:09+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j8eyxq</id>
-    <title>How to train Deepseek R1 with cases that build on top of each other?</title>
-    <updated>2025-03-11T01:11:37+00:00</updated>
-    <author>
-      <name>/u/Fickle-Conversation1</name>
-      <uri>https://old.reddit.com/user/Fickle-Conversation1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TITLE EDIT: How to fine tune Deepseek R1 with cases that build on the previous one?&lt;/p&gt; &lt;p&gt;I am very new to this, just thinking out loud...&lt;br /&gt; Say I want to make DeepSeek understands that I have a list of options [1, 2, 3, 4] for problem A&lt;/p&gt; &lt;p&gt;&lt;code&gt;{'question': 'what are the options available for problem A', 'cot': 'okay..........I have these options 1, 2, 3 4', 'respsonse': '...'}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;then can I have my second case based on the previous one say&lt;/p&gt; &lt;p&gt;&lt;code&gt;{'question': 'Is 6 a valid option for problem A?': 'cot': okay, 6 is not in the list of options in problem A, then it's not a valid option', 'response': '...'}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Is this even possible? Also is SFTTrainer a correct trainer to use? Thanks alot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fickle-Conversation1"&gt; /u/Fickle-Conversation1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-11T01:11:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j8780s</id>
     <title>Kokoro: Improving LLM's Emotional Intelligence [Research]</title>
     <updated>2025-03-10T19:33:42+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j892ii/rtx_3090_supply_drying_up_on_marketplaces_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T20:51:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j8f6nf</id>
+    <title>Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti</title>
+    <updated>2025-03-11T01:22:20+00:00</updated>
+    <author>
+      <name>/u/Status-Hearing-4084</name>
+      <uri>https://old.reddit.com/user/Status-Hearing-4084</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt; &lt;img alt="Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti" src="https://b.thumbs.redditmedia.com/7cMOZxgSRdWpuSo77V1xrJreEKqUtJqAKTR_RaISKXw.jpg" title="Running QwQ-32B LLM locally: Model sharding between M1 MacBook Pro + RTX 4060 Ti" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Successfully running QwQ-32B (@Alibaba_Qwen) across M1 MacBook Pro and RTX 4060 Ti through model sharding.&lt;/p&gt; &lt;p&gt;Demo video exceeds Reddit's size limit. You can view it here: [ &lt;a href="https://x.com/tensorblock_aoi/status/1899266661888512004"&gt;https://x.com/tensorblock_aoi/status/1899266661888512004&lt;/a&gt; ]&lt;/p&gt; &lt;p&gt;Hardware:&lt;/p&gt; &lt;p&gt;- MacBook Pro 2021 (M1 Pro, 16GB RAM)&lt;/p&gt; &lt;p&gt;- RTX 4060 Ti (16GB VRAM)&lt;/p&gt; &lt;p&gt;Model:&lt;/p&gt; &lt;p&gt;- QwQ-32B (Q4_K_M quantization)&lt;/p&gt; &lt;p&gt;- Original size: 20GB&lt;/p&gt; &lt;p&gt;- Distributed across devices with 16GB limitation&lt;/p&gt; &lt;p&gt;Implementation:&lt;/p&gt; &lt;p&gt;- Cross-architecture model sharding&lt;/p&gt; &lt;p&gt;- Custom memory management&lt;/p&gt; &lt;p&gt;- Parallel inference pipeline&lt;/p&gt; &lt;p&gt;- TensorBlock orchestration&lt;/p&gt; &lt;p&gt;Current Progress:&lt;/p&gt; &lt;p&gt;- Model successfully loaded and running&lt;/p&gt; &lt;p&gt;- Stable inference achieved&lt;/p&gt; &lt;p&gt;- Optimization in progress&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ij3j83poryne1.jpg?width=3176&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4dfa6929805da97868dda9ee90bfcee19d08a011"&gt;https://preview.redd.it/ij3j83poryne1.jpg?width=3176&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4dfa6929805da97868dda9ee90bfcee19d08a011&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We're excited to announce TensorBlock, our upcoming local inference solution. The software enables efficient cross-device LLM deployment, featuring:&lt;/p&gt; &lt;p&gt;- Distributed inference across multiple hardware platforms&lt;/p&gt; &lt;p&gt;- Comprehensive support for Intel, AMD, NVIDIA, and Apple Silicon&lt;/p&gt; &lt;p&gt;- Smart memory management for resource-constrained devices&lt;/p&gt; &lt;p&gt;- Real-time performance monitoring and optimization&lt;/p&gt; &lt;p&gt;- User-friendly interface for model deployment and management&lt;/p&gt; &lt;p&gt;- Advanced parallel computing capabilities&lt;/p&gt; &lt;p&gt;We'll be releasing detailed benchmarks, comprehensive documentation, and deployment guides along with the software launch. Stay tuned for more updates on performance metrics and cross-platform compatibility testing.&lt;/p&gt; &lt;p&gt;Technical questions and feedback welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Status-Hearing-4084"&gt; /u/Status-Hearing-4084 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8f6nf/running_qwq32b_llm_locally_model_sharding_between/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-11T01:22:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7t18m</id>
