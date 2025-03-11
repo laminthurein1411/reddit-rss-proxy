@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-11T03:50:38+00:00</updated>
+  <updated>2025-03-11T04:07:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1j82o15</id>
-    <title>Fixed Ollama template for Mistral Small 3</title>
-    <updated>2025-03-10T16:26:52+00:00</updated>
-    <author>
-      <name>/u/logkn</name>
-      <uri>https://old.reddit.com/user/logkn</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was finding that Mistral Small 3 on Ollama (mistral-small:24b) had some trouble calling tools -- mainly, adding or dropping tokens that rendered the tool call as message content rather than an actual tool call.&lt;br /&gt; The chat template on the model's Huggingface page was actually not very helpful because it doesn't even include tool calling. I dug around a bit to find the Tekken V7 tokenizer, and sure enough the chat template for providing and calling tools didn't match up with Ollama's.&lt;/p&gt; &lt;p&gt;Here's a fixed version, and it's MUCH more consistent with tool calling:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{- range $index, $_ := .Messages }} {{- if eq .Role &amp;quot;system&amp;quot; }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT] {{- else if eq .Role &amp;quot;user&amp;quot; }} {{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS] {{- end }}[INST]{{ .Content }}[/INST] {{- else if eq .Role &amp;quot;assistant&amp;quot; }} {{- if .Content }}{{ .Content }} {{- if not (eq (len (slice $.Messages $index)) 1) }}&amp;lt;/s&amp;gt; {{- end }} {{- else if .ToolCalls }}[TOOL_CALLS] [ {{- range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments }}} {{- end }}]&amp;lt;/s&amp;gt; {{- end }} {{- else if eq .Role &amp;quot;tool&amp;quot; }}[TOOL_RESULTS] [TOOL_CONTENT] {{ .Content }}[/TOOL_RESULTS] {{- end }} {{- end }} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logkn"&gt; /u/logkn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j82o15/fixed_ollama_template_for_mistral_small_3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T16:26:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1j7vwcr</id>
     <title>Deepseek coder v2</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j88yr7/llava_seems_to_perform_better_the_easier_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T20:47:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j8i1rf</id>
+    <title>Finetuning LLM to be an expert at an internal Python Library</title>
+    <updated>2025-03-11T03:50:38+00:00</updated>
+    <author>
+      <name>/u/JoshLikesAI</name>
+      <uri>https://old.reddit.com/user/JoshLikesAI</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all, I have a python library that I would like to finetune an LLM to be an expert at using. I have a large amount of documentation for this library as well as a small number of code examples. I'm curious what the standard practice is for this situation, I imagine there is no point directly finetuning on the documentation, as I'll just be training the model to write docs.&lt;/p&gt; &lt;p&gt;As an end result I want the LLM to be able to generate and edit code using this library.&lt;/p&gt; &lt;p&gt;Here's the approach I have in mind:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;For every item in the documentation, generate an example of it being used in code, where possible run the code and see if it raises an error&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Generate user messages like &amp;quot;how do I do X&amp;quot; that these code snippets can be responses to.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Finetune.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I'm also wondering if its worth using rag to pull relevant documentation for each query as I know finetuning isnt great at teaching the model new concepts. &lt;/p&gt; &lt;p&gt;Any pointers here or references of other people doing the same thing would be great! Thanks &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JoshLikesAI"&gt; /u/JoshLikesAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8i1rf/finetuning_llm_to_be_an_expert_at_an_internal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j8i1rf/finetuning_llm_to_be_an_expert_at_an_internal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8i1rf/finetuning_llm_to_be_an_expert_at_an_internal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-11T03:50:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7uqv4</id>
@@ -99,19 +99,6 @@
     <published>2025-03-10T01:18:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j83md3</id>
-    <title>Could GEMMA-3 Be Unveiled at GDC 2025 (March 18)?</title>
-    <updated>2025-03-10T17:05:48+00:00</updated>
-    <author>
-      <name>/u/hCKstp4BtL</name>
-      <uri>https://old.reddit.com/user/hCKstp4BtL</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129"&gt;https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129&lt;/a&gt;&lt;/p&gt; &lt;p&gt;in this session description, we can read that they will talk about &amp;quot;Gemma models&amp;quot; (among other things). I think everyone knows about &amp;quot;Gemma 2&amp;quot; and there is no need to mention it because everyone knows how it works, right? Bigger chance is that they will show &amp;quot;Gemma 3&amp;quot; and they will release it shorly? because it seems to me that the deadline of May 20-21 (Google I/O) is a bit too late.&lt;/p&gt; &lt;p&gt;It looks like Google wants to focus the eyes of game developers on Gemma, so that they can combine the models with their games to create: “new AI-based game features and mechanics.”&lt;/p&gt; &lt;p&gt;... and to make it work, I think such a &amp;quot;Gemma 3&amp;quot; model should be prioritize with &amp;quot;perfect JSON generation&amp;quot; for the interface model&amp;lt;-&amp;gt;game and also improved instruction following.&lt;/p&gt; &lt;p&gt;I waiting for a small model (7b-9b) to be good enough to make a game with llm controlling npc (not only talk).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hCKstp4BtL"&gt; /u/hCKstp4BtL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T17:05:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j8eyxq</id>
     <title>How to train Deepseek R1 with cases that build on top of each other?</title>
     <updated>2025-03-11T01:11:37+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8eyxq/how_to_train_deepseek_r1_with_cases_that_build_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-11T01:11:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j83md3</id>
+    <title>Could GEMMA-3 Be Unveiled at GDC 2025 (March 18)?</title>
+    <updated>2025-03-10T17:05:48+00:00</updated>
+    <author>
+      <name>/u/hCKstp4BtL</name>
+      <uri>https://old.reddit.com/user/hCKstp4BtL</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129"&gt;https://schedule.gdconf.com/session/beyond-the-hype-real-world-applications-of-google-ai-in-gaming-presented-by-google-play/911129&lt;/a&gt;&lt;/p&gt; &lt;p&gt;in this session description, we can read that they will talk about &amp;quot;Gemma models&amp;quot; (among other things). I think everyone knows about &amp;quot;Gemma 2&amp;quot; and there is no need to mention it because everyone knows how it works, right? Bigger chance is that they will show &amp;quot;Gemma 3&amp;quot; and they will release it shorly? because it seems to me that the deadline of May 20-21 (Google I/O) is a bit too late.&lt;/p&gt; &lt;p&gt;It looks like Google wants to focus the eyes of game developers on Gemma, so that they can combine the models with their games to create: “new AI-based game features and mechanics.”&lt;/p&gt; &lt;p&gt;... and to make it work, I think such a &amp;quot;Gemma 3&amp;quot; model should be prioritize with &amp;quot;perfect JSON generation&amp;quot; for the interface model&amp;lt;-&amp;gt;game and also improved instruction following.&lt;/p&gt; &lt;p&gt;I waiting for a small model (7b-9b) to be good enough to make a game with llm controlling npc (not only talk).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hCKstp4BtL"&gt; /u/hCKstp4BtL &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j83md3/could_gemma3_be_unveiled_at_gdc_2025_march_18/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T17:05:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1j7zzdt</id>
@@ -138,19 +138,6 @@
     <published>2025-03-10T14:32:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1j7usrm</id>
-    <title>EuroBERT: A High-Performance Multilingual Encoder Model</title>
-    <updated>2025-03-10T09:33:09+00:00</updated>
-    <author>
-      <name>/u/-Cubie-</name>
-      <uri>https://old.reddit.com/user/-Cubie-</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"&gt; &lt;img alt="EuroBERT: A High-Performance Multilingual Encoder Model" src="https://external-preview.redd.it/CnsI7xgYaguHri1_uGabuT9boB9PVspWCoeHvZsE1IM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5f747438c0575ca5fca91283bb815527cfb8627a" title="EuroBERT: A High-Performance Multilingual Encoder Model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/-Cubie-"&gt; /u/-Cubie- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/blog/EuroBERT/release"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-10T09:33:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1j8780s</id>
     <title>Kokoro: Improving LLM's Emotional Intelligence [Research]</title>
     <updated>2025-03-10T19:33:42+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j8780s/kokoro_improving_llms_emotional_intelligence/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-10T19:33:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1j7usrm</id>
+    <title>EuroBERT: A High-Performance Multilingual Encoder Model</title>
+    <updated>2025-03-10T09:33:09+00:00</updated>
+    <author>
+      <name>/u/-Cubie-</name>
+      <uri>https://old.reddit.com/user/-Cubie-</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"&gt; &lt;img alt="EuroBERT: A High-Performance Multilingual Encoder Model" src="https://external-preview.redd.it/CnsI7xgYaguHri1_uGabuT9boB9PVspWCoeHvZsE1IM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5f747438c0575ca5fca91283bb815527cfb8627a" title="EuroBERT: A High-Performance Multilingual Encoder Model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/-Cubie-"&gt; /u/-Cubie- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/blog/EuroBERT/release"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1j7usrm/eurobert_a_highperformance_multilingual_encoder/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-10T09:33:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1j892ii</id>
