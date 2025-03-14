@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-14T11:48:51+00:00</updated>
+  <updated>2025-03-14T12:09:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaykz0/looking_for_model_recomendations_for_an_epyc/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T07:44:59+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jaxcla</id>
-    <title>Speculative Decoding Not Useful On Apple Silicon?</title>
-    <updated>2025-03-14T06:14:31+00:00</updated>
-    <author>
-      <name>/u/chibop1</name>
-      <uri>https://old.reddit.com/user/chibop1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm wondering why I'm only seeing very little speed improvement using speculative decoding with llama.cpp on an M3 Max. I only get about a 2% increase—my test below shows just a 5-second improvement (from 4:18 to 4:13).&lt;/p&gt; &lt;p&gt;Also, speculative decoding seems to require significantly more memory. If I don't set --batch to match --context-size, it crashes. Without speculative decoding, I can run with 32k context, but with it, I'm limited to around 10k.&lt;/p&gt; &lt;p&gt;Is speculative decoding just not effective on Mac, or am I doing something wrong?&lt;/p&gt; &lt;p&gt;Here's my log for the test.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;time ./llama.cpp/build/bin/llama-cli -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf --ctx-size 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn -no-cnv --file prompt-test/steps/8013.txt llama_perf_sampler_print: sampling time = 40.56 ms / 8958 runs ( 0.00 ms per token, 220868.88 tokens per second) llama_perf_context_print: load time = 1310.40 ms llama_perf_context_print: prompt eval time = 124793.12 ms / 8013 tokens ( 15.57 ms per token, 64.21 tokens per second) llama_perf_context_print: eval time = 131607.76 ms / 944 runs ( 139.42 ms per token, 7.17 tokens per second) llama_perf_context_print: total time = 256578.30 ms / 8957 tokens ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-cli -m --ctx-size 10000 --n-predict 2000 --temp 1.29s user 1.22s system 0% cpu 4:17.98 total time ./llama.cpp/build/bin/llama-speculative -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf -md ./models/bartowski/Llama-3.2-3B-Instruct-Q4_K_M.gguf --ctx-size 10000 -b 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn --draft-max 8 --draft-min 1 --file prompt-test/steps/8013.txt encoded 8013 tokens in 130.314 seconds, speed: 61.490 t/s decoded 912 tokens in 120.857 seconds, speed: 7.546 t/s n_draft = 8 n_predict = 912 n_drafted = 1320 n_accept = 746 accept = 56.515% draft: llama_perf_context_print: load time = 318.02 ms llama_perf_context_print: prompt eval time = 112632.33 ms / 8342 tokens ( 13.50 ms per token, 74.06 tokens per second) llama_perf_context_print: eval time = 13570.99 ms / 1155 runs ( 11.75 ms per token, 85.11 tokens per second) llama_perf_context_print: total time = 251179.59 ms / 9497 tokens target: llama_perf_sampler_print: sampling time = 39.52 ms / 912 runs ( 0.04 ms per token, 23078.09 tokens per second) llama_perf_context_print: load time = 1313.45 ms llama_perf_context_print: prompt eval time = 233357.84 ms / 9498 tokens ( 24.57 ms per token, 40.70 tokens per second) llama_perf_context_print: eval time = 0.00 ms / 1 runs ( 0.00 ms per token, inf tokens per second) llama_perf_context_print: total time = 251497.67 ms / 9499 tokens ggml_metal_free: deallocating ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-speculative -m -md --ctx-size 10000 -b 10000 1.51s user 1.32s system 1% cpu 4:12.95 total &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/chibop1"&gt; /u/chibop1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T06:14:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaje3r</id>
@@ -203,6 +190,19 @@
     <published>2025-03-13T22:03:20+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jb1tum</id>
+    <title>HowTo: Decentralized LLM on Akash, IPFS &amp; Pocket Network, could this run LLaMA?</title>
+    <updated>2025-03-14T11:36:40+00:00</updated>
+    <author>
+      <name>/u/era_hickle</name>
+      <uri>https://old.reddit.com/user/era_hickle</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1tum/howto_decentralized_llm_on_akash_ipfs_pocket/"&gt; &lt;img alt="HowTo: Decentralized LLM on Akash, IPFS &amp;amp; Pocket Network, could this run LLaMA?" src="https://external-preview.redd.it/Hrj-dOCVDQmxgV_iRUOvs_Xsy9EB5pShvqJs-R97RdI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e6f0426a6f366fea7132175fe3881893d8a8b01b" title="HowTo: Decentralized LLM on Akash, IPFS &amp;amp; Pocket Network, could this run LLaMA?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/era_hickle"&gt; /u/era_hickle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pocket.network/case-study-building-a-decentralized-deepseek-combining-open-data-compute-and-reasoning-with-pocket-network/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1tum/howto_decentralized_llm_on_akash_ipfs_pocket/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1tum/howto_decentralized_llm_on_akash_ipfs_pocket/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T11:36:40+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jauy8d</id>
     <title>Giving "native" tool calling to Gemma 3 (or really any model)</title>
     <updated>2025-03-14T03:40:19+00:00</updated>
@@ -214,19 +214,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jauy8d/giving_native_tool_calling_to_gemma_3_or_really/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T03:40:19+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jb1sgv</id>
-    <title>Conclusion: Sesame has shown us a CSM. Then Sesame announced that it would publish... something. Sesame then released a TTS, which they obviously misleadingly and falsely called a CSM. Do I see that correctly?</title>
-    <updated>2025-03-14T11:34:28+00:00</updated>
-    <author>
-      <name>/u/muxxington</name>
-      <uri>https://old.reddit.com/user/muxxington</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It wouldn't have been a problem at all if they had simply said that it wouldn't be open source.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/muxxington"&gt; /u/muxxington &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T11:34:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaqylp</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1janmn8/sesame_is_here/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T21:43:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jb1sgv</id>
+    <title>Conclusion: Sesame has shown us a CSM. Then Sesame announced that it would publish... something. Sesame then released a TTS, which they obviously misleadingly and falsely called a CSM. Do I see that correctly?</title>
+    <updated>2025-03-14T11:34:28+00:00</updated>
+    <author>
+      <name>/u/muxxington</name>
+      <uri>https://old.reddit.com/user/muxxington</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It wouldn't have been a problem at all if they had simply said that it wouldn't be open source.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/muxxington"&gt; /u/muxxington &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb1sgv/conclusion_sesame_has_shown_us_a_csm_then_sesame/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T11:34:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaxec3</id>
