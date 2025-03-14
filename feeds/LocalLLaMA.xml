@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-14T21:35:13+00:00</updated>
+  <updated>2025-03-14T21:48:45+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1jauy8d</id>
+    <title>Giving "native" tool calling to Gemma 3 (or really any model)</title>
+    <updated>2025-03-14T03:40:19+00:00</updated>
+    <author>
+      <name>/u/logkn</name>
+      <uri>https://old.reddit.com/user/logkn</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Gemma 3 is great at following instructions, but doesn't have &amp;quot;native&amp;quot; tool/function calling. Let's change that (at least as best we can).&lt;/p&gt; &lt;p&gt;(Quick note, I'm going to be using Ollama as the example here, but this works equally well with Jinja templates, just need to change the syntax a bit.)&lt;/p&gt; &lt;h1&gt;Defining Tools&lt;/h1&gt; &lt;p&gt;Let's start by figuring out how 'native' function calling works in Ollama. Here's qwen2.5's chat template:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{- if or .System .Tools }}&amp;lt;|im_start|&amp;gt;system {{- if .System }} {{ .System }} {{- end }} {{- if .Tools }} # Tools You may call one or more functions to assist with the user query. You are provided with function signatures within &amp;lt;tools&amp;gt;&amp;lt;/tools&amp;gt; XML tags: &amp;lt;tools&amp;gt; {{- range .Tools }} {&amp;quot;type&amp;quot;: &amp;quot;function&amp;quot;, &amp;quot;function&amp;quot;: {{ .Function }}} {{- end }} &amp;lt;/tools&amp;gt; For each function call, return a json object with function name and arguments within &amp;lt;tool_call&amp;gt;&amp;lt;/tool_call&amp;gt; XML tags: &amp;lt;tool_call&amp;gt; {&amp;quot;name&amp;quot;: &amp;lt;function-name&amp;gt;, &amp;quot;arguments&amp;quot;: &amp;lt;args-json-object&amp;gt;} &amp;lt;/tool_call&amp;gt; {{- end }}&amp;lt;|im_end|&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;If you think this looks like the second half of your average homebrew tool calling system prompt, you're spot on. &lt;strong&gt;This is literally appending markdown-formatted instructions on what tools are available and how to call them to the end of the system prompt.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Already, Ollama will recognize the tools you give it in the &lt;code&gt;tools&lt;/code&gt; part of your OpenAI completions request, and inject them into the system prompt.&lt;/p&gt; &lt;h1&gt;Parsing Tools&lt;/h1&gt; &lt;p&gt;Let's scroll down a bit and see how tool call messages are handled:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{{ else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;|im_start|&amp;gt;assistant {{ if .Content }}{{ .Content }} {{- else if .ToolCalls }}&amp;lt;tool_call&amp;gt; {{ range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments }}} {{ end }}&amp;lt;/tool_call&amp;gt; {{- end }}{{ if not $last }}&amp;lt;|im_end|&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;This is the &lt;strong&gt;tool call parser&lt;/strong&gt;. If the first token (or couple tokens) that the model outputs is &lt;code&gt;&amp;lt;tool_call&amp;gt;&lt;/code&gt;, Ollama handles the parsing of the tool calls. Assuming the model is decent at following instructions, &lt;em&gt;this means the tool calls will actually populate the&lt;/em&gt; &lt;code&gt;tool_calls&lt;/code&gt; &lt;em&gt;field rather than&lt;/em&gt; &lt;code&gt;content&lt;/code&gt;.&lt;/p&gt; &lt;h1&gt;Demonstration&lt;/h1&gt; &lt;p&gt;So just for gits and shiggles, let's see if we can get Gemma 3 to call tools properly. I adapted the same concepts from qwen2.5's chat template to Gemma 3's chat template. Before I show that template, let me show you that it works.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;import ollama def add_two_numbers(a: int, b: int) -&amp;gt; int: &amp;quot;&amp;quot;&amp;quot; Add two numbers Args: a: The first integer number b: The second integer number Returns: int: The sum of the two numbers &amp;quot;&amp;quot;&amp;quot; return a + b response = ollama.chat( 'gemma3-tools', messages=[{'role': 'user', 'content': 'What is 10 + 10?'}], tools=[add_two_numbers], ) print(response) # model='gemma3-tools' created_at='2025-03-14T02:47:29.234101Z' # done=True done_reason='stop' total_duration=19211740040 # load_duration=8867467023 prompt_eval_count=79 # prompt_eval_duration=6591000000 eval_count=35 # eval_duration=3736000000 # message=Message(role='assistant', content='', images=None, # tool_calls=[ToolCall(function=Function(name='add_two_numbers', # arguments={'a': 10, 'b': 10}))]) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Booyah! Native function calling with Gemma 3.&lt;/p&gt; &lt;p&gt;It's not bullet-proof, mainly because it's not strictly enforcing a grammar. But assuming the model follows instructions, it should work *most* of the time.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;Here's the template I used. It's very much like qwen2.5 in terms of the structure and logic, but using the tags of Gemma 3. Give it a shot, and better yet adapt this pattern to other models that you wish had tools.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;TEMPLATE &amp;quot;&amp;quot;&amp;quot;{{- if .Messages }} {{- if or .System .Tools }}&amp;lt;start_of_turn&amp;gt;user {{- if .System}} {{ .System }} {{- end }} {{- if .Tools }} # Tools You may call one or more functions to assist with the user query. You are provided with function signatures within &amp;lt;tools&amp;gt;&amp;lt;/tools&amp;gt; XML tags: &amp;lt;tools&amp;gt; {{- range $.Tools }} {&amp;quot;type&amp;quot;: &amp;quot;function&amp;quot;, &amp;quot;function&amp;quot;: {{ .Function }}} {{- end }} &amp;lt;/tools&amp;gt; For each function call, return a json object with function name and arguments within &amp;lt;tool_call&amp;gt;&amp;lt;/tool_call&amp;gt; XML tags: &amp;lt;tool_call&amp;gt; {&amp;quot;name&amp;quot;: &amp;lt;function-name&amp;gt;, &amp;quot;arguments&amp;quot;: &amp;lt;args-json-object&amp;gt;} &amp;lt;/tool_call&amp;gt; {{- end }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 -}} {{- if eq .Role &amp;quot;user&amp;quot; }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ if .Content }}{{ .Content }} {{- else if .ToolCalls }}&amp;lt;tool_call&amp;gt; {{ range .ToolCalls }}{&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;arguments&amp;quot;: {{ .Function.Arguments}}} {{ end }}&amp;lt;/tool_call&amp;gt; {{- end }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- else if eq .Role &amp;quot;tool&amp;quot; }}&amp;lt;start_of_turn&amp;gt;user &amp;lt;tool_response&amp;gt; {{ .Content }} &amp;lt;/tool_response&amp;gt;&amp;lt;end_of_turn&amp;gt; {{ end }} {{- if and (ne .Role &amp;quot;assistant&amp;quot;) $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- end }} {{- else }} {{- if .System }}&amp;lt;start_of_turn&amp;gt;user {{ .System }}&amp;lt;end_of_turn&amp;gt; {{ end }}{{ if .Prompt }}&amp;lt;start_of_turn&amp;gt;user {{ .Prompt }}&amp;lt;end_of_turn&amp;gt; {{ end }}&amp;lt;start_of_turn&amp;gt;model {{ end }}{{ .Response }}{{ if .Response }}&amp;lt;end_of_turn&amp;gt;{{ end }}&amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logkn"&gt; /u/logkn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jauy8d/giving_native_tool_calling_to_gemma_3_or_really/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jauy8d/giving_native_tool_calling_to_gemma_3_or_really/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jauy8d/giving_native_tool_calling_to_gemma_3_or_really/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T03:40:19+00:00</published>
+  </entry>
   <entry>
     <id>t3_1jb93w4</id>
     <title>LLM-docs, software documentation intended for consumption by LLMs</title>
@@ -32,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb77kg/i_built_a_framework_to_train_your_own_custom/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T15:55:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jben7i</id>
-    <title>Is the M3 Ultra already a flop? It's already on sale. The 96GB model is already $600 off.</title>
-    <updated>2025-03-14T21:18:50+00:00</updated>
-    <author>
-      <name>/u/fallingdowndizzyvr</name>
-      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just saw this at a retailer. The M3 Ultra 96GB is $600 off, down to $3400. Didn't it just come out like 2 days ago? Why is it already discounted?&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.microcenter.com/product/692834/apple-mac-studio-mu973ll-a-(early-2025)-desktop-computer"&gt;https://www.microcenter.com/product/692834/apple-mac-studio-mu973ll-a-(early-2025)-desktop-computer&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jben7i/is_the_m3_ultra_already_a_flop_its_already_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jben7i/is_the_m3_ultra_already_a_flop_its_already_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jben7i/is_the_m3_ultra_already_a_flop_its_already_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T21:18:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbcpdu</id>
@@ -164,19 +164,6 @@
     <published>2025-03-14T08:48:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jbcau6</id>
-    <title>Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025</title>
-    <updated>2025-03-14T19:38:17+00:00</updated>
-    <author>
-      <name>/u/fallingdowndizzyvr</name>
-      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"&gt; &lt;img alt="Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025" src="https://external-preview.redd.it/fgsG07RfhkENrvhUxj6Tf9wZnUaizjcQ0f11neSzDnI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a885de65705817dea74206ef0fbe0b9d88413e9b" title="Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.techradar.com/pro/race-to-launch-most-powerful-ai-mini-pc-ever-heats-up-as-gmktec-confirms-ryzen-ai-max-395-product-for-may-2025"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T19:38:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jb7u4v</id>
     <title>What is the best uncensored LLM?</title>
     <updated>2025-03-14T16:21:55+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaj6gc/ai2_releases_olmo_32b_truly_open_source/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T18:35:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jbcau6</id>
+    <title>Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025</title>
+    <updated>2025-03-14T19:38:17+00:00</updated>
+    <author>
+      <name>/u/fallingdowndizzyvr</name>
+      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"&gt; &lt;img alt="Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025" src="https://external-preview.redd.it/fgsG07RfhkENrvhUxj6Tf9wZnUaizjcQ0f11neSzDnI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a885de65705817dea74206ef0fbe0b9d88413e9b" title="Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.techradar.com/pro/race-to-launch-most-powerful-ai-mini-pc-ever-heats-up-as-gmktec-confirms-ryzen-ai-max-395-product-for-may-2025"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcau6/race_to_launch_most_powerful_ai_mini_pc_ever/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T19:38:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaxec3</id>
