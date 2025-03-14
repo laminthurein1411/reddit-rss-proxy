@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-14T07:48:56+00:00</updated>
+  <updated>2025-03-14T08:08:06+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jagn5r/deephermes_a_hybrid_reasoner_model_released/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T16:52:37+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jaxcla</id>
-    <title>Speculative Decoding Not Useful On Apple Silicon?</title>
-    <updated>2025-03-14T06:14:31+00:00</updated>
-    <author>
-      <name>/u/chibop1</name>
-      <uri>https://old.reddit.com/user/chibop1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm wondering why I'm only seeing very little speed improvement using speculative decoding with llama.cpp on an M3 Max. I only get about a 2% increase—my test below shows just a 5-second improvement (from 4:18 to 4:13).&lt;/p&gt; &lt;p&gt;Also, speculative decoding seems to require significantly more memory. If I don't set --batch to match --context-size, it crashes. Without speculative decoding, I can run with 32k context, but with it, I'm limited to around 10k.&lt;/p&gt; &lt;p&gt;Is speculative decoding just not effective on Mac, or am I doing something wrong?&lt;/p&gt; &lt;p&gt;Here's my log for the test.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;time ./llama.cpp/build/bin/llama-cli -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf --ctx-size 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn -no-cnv --file prompt-test/steps/8013.txt llama_perf_sampler_print: sampling time = 40.56 ms / 8958 runs ( 0.00 ms per token, 220868.88 tokens per second) llama_perf_context_print: load time = 1310.40 ms llama_perf_context_print: prompt eval time = 124793.12 ms / 8013 tokens ( 15.57 ms per token, 64.21 tokens per second) llama_perf_context_print: eval time = 131607.76 ms / 944 runs ( 139.42 ms per token, 7.17 tokens per second) llama_perf_context_print: total time = 256578.30 ms / 8957 tokens ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-cli -m --ctx-size 10000 --n-predict 2000 --temp 1.29s user 1.22s system 0% cpu 4:17.98 total time ./llama.cpp/build/bin/llama-speculative -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf -md ./models/bartowski/Llama-3.2-3B-Instruct-Q4_K_M.gguf --ctx-size 10000 -b 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn --draft-max 8 --draft-min 1 --file prompt-test/steps/8013.txt encoded 8013 tokens in 130.314 seconds, speed: 61.490 t/s decoded 912 tokens in 120.857 seconds, speed: 7.546 t/s n_draft = 8 n_predict = 912 n_drafted = 1320 n_accept = 746 accept = 56.515% draft: llama_perf_context_print: load time = 318.02 ms llama_perf_context_print: prompt eval time = 112632.33 ms / 8342 tokens ( 13.50 ms per token, 74.06 tokens per second) llama_perf_context_print: eval time = 13570.99 ms / 1155 runs ( 11.75 ms per token, 85.11 tokens per second) llama_perf_context_print: total time = 251179.59 ms / 9497 tokens target: llama_perf_sampler_print: sampling time = 39.52 ms / 912 runs ( 0.04 ms per token, 23078.09 tokens per second) llama_perf_context_print: load time = 1313.45 ms llama_perf_context_print: prompt eval time = 233357.84 ms / 9498 tokens ( 24.57 ms per token, 40.70 tokens per second) llama_perf_context_print: eval time = 0.00 ms / 1 runs ( 0.00 ms per token, inf tokens per second) llama_perf_context_print: total time = 251497.67 ms / 9499 tokens ggml_metal_free: deallocating ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-speculative -m -md --ctx-size 10000 -b 10000 1.51s user 1.32s system 1% cpu 4:12.95 total &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/chibop1"&gt; /u/chibop1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T06:14:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1ja2ers</id>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaftxa/deephermes_a_nousresearch_collection/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T16:19:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jaxcla</id>
+    <title>Speculative Decoding Not Useful On Apple Silicon?</title>
+    <updated>2025-03-14T06:14:31+00:00</updated>
+    <author>
+      <name>/u/chibop1</name>
+      <uri>https://old.reddit.com/user/chibop1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm wondering why I'm only seeing very little speed improvement using speculative decoding with llama.cpp on an M3 Max. I only get about a 2% increase—my test below shows just a 5-second improvement (from 4:18 to 4:13).&lt;/p&gt; &lt;p&gt;Also, speculative decoding seems to require significantly more memory. If I don't set --batch to match --context-size, it crashes. Without speculative decoding, I can run with 32k context, but with it, I'm limited to around 10k.&lt;/p&gt; &lt;p&gt;Is speculative decoding just not effective on Mac, or am I doing something wrong?&lt;/p&gt; &lt;p&gt;Here's my log for the test.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;time ./llama.cpp/build/bin/llama-cli -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf --ctx-size 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn -no-cnv --file prompt-test/steps/8013.txt llama_perf_sampler_print: sampling time = 40.56 ms / 8958 runs ( 0.00 ms per token, 220868.88 tokens per second) llama_perf_context_print: load time = 1310.40 ms llama_perf_context_print: prompt eval time = 124793.12 ms / 8013 tokens ( 15.57 ms per token, 64.21 tokens per second) llama_perf_context_print: eval time = 131607.76 ms / 944 runs ( 139.42 ms per token, 7.17 tokens per second) llama_perf_context_print: total time = 256578.30 ms / 8957 tokens ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-cli -m --ctx-size 10000 --n-predict 2000 --temp 1.29s user 1.22s system 0% cpu 4:17.98 total time ./llama.cpp/build/bin/llama-speculative -m ./models/bartowski/Llama-3.3-70B-Instruct-Q4_K_M.gguf -md ./models/bartowski/Llama-3.2-3B-Instruct-Q4_K_M.gguf --ctx-size 10000 -b 10000 --n-predict 2000 --temp 0.0 --top_p 0.9 --seed 1000 --flash-attn --draft-max 8 --draft-min 1 --file prompt-test/steps/8013.txt encoded 8013 tokens in 130.314 seconds, speed: 61.490 t/s decoded 912 tokens in 120.857 seconds, speed: 7.546 t/s n_draft = 8 n_predict = 912 n_drafted = 1320 n_accept = 746 accept = 56.515% draft: llama_perf_context_print: load time = 318.02 ms llama_perf_context_print: prompt eval time = 112632.33 ms / 8342 tokens ( 13.50 ms per token, 74.06 tokens per second) llama_perf_context_print: eval time = 13570.99 ms / 1155 runs ( 11.75 ms per token, 85.11 tokens per second) llama_perf_context_print: total time = 251179.59 ms / 9497 tokens target: llama_perf_sampler_print: sampling time = 39.52 ms / 912 runs ( 0.04 ms per token, 23078.09 tokens per second) llama_perf_context_print: load time = 1313.45 ms llama_perf_context_print: prompt eval time = 233357.84 ms / 9498 tokens ( 24.57 ms per token, 40.70 tokens per second) llama_perf_context_print: eval time = 0.00 ms / 1 runs ( 0.00 ms per token, inf tokens per second) llama_perf_context_print: total time = 251497.67 ms / 9499 tokens ggml_metal_free: deallocating ggml_metal_free: deallocating ./llama.cpp/build/bin/llama-speculative -m -md --ctx-size 10000 -b 10000 1.51s user 1.32s system 1% cpu 4:12.95 total &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/chibop1"&gt; /u/chibop1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxcla/speculative_decoding_not_useful_on_apple_silicon/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T06:14:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1jacyqt</id>
@@ -125,19 +125,6 @@
     <published>2025-03-13T13:07:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jabh4m</id>
-    <title>CohereForAI/c4ai-command-a-03-2025 · Hugging Face</title>
-    <updated>2025-03-13T13:04:32+00:00</updated>
-    <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"&gt; &lt;img alt="CohereForAI/c4ai-command-a-03-2025 · Hugging Face" src="https://external-preview.redd.it/8uC-fRvLBGmT6kbHk8wyBrnHknVe8WnRlviRost1iDM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=316e90209b2b29e953d13bdd363e048d518bc1d0" title="CohereForAI/c4ai-command-a-03-2025 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/CohereForAI/c4ai-command-a-03-2025"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-13T13:04:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jaiux8</id>
     <title>The first Gemma3 finetune</title>
     <updated>2025-03-13T18:22:47+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaiux8/the_first_gemma3_finetune/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T18:22:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jabh4m</id>
+    <title>CohereForAI/c4ai-command-a-03-2025 · Hugging Face</title>
+    <updated>2025-03-13T13:04:32+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"&gt; &lt;img alt="CohereForAI/c4ai-command-a-03-2025 · Hugging Face" src="https://external-preview.redd.it/8uC-fRvLBGmT6kbHk8wyBrnHknVe8WnRlviRost1iDM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=316e90209b2b29e953d13bdd363e048d518bc1d0" title="CohereForAI/c4ai-command-a-03-2025 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/CohereForAI/c4ai-command-a-03-2025"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jabh4m/cohereforaic4aicommanda032025_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-13T13:04:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1jag07t</id>
@@ -281,19 +281,6 @@
     <published>2025-03-13T17:38:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jaxec3</id>
-    <title>Sesame CSM 1B Voice Cloning</title>
-    <updated>2025-03-14T06:18:15+00:00</updated>
-    <author>
-      <name>/u/Internal_Brain8420</name>
-      <uri>https://old.reddit.com/user/Internal_Brain8420</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"&gt; &lt;img alt="Sesame CSM 1B Voice Cloning" src="https://external-preview.redd.it/JaEGat2-q67uEqWoPpGo5Nx0tvU4ZMhHe5tLQNQxW9w.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c285788573980e7289358fbf97c0847d9b60866" title="Sesame CSM 1B Voice Cloning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Internal_Brain8420"&gt; /u/Internal_Brain8420 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/isaiahbjork/csm-voice-cloning"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T06:18:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1janmn8</id>
     <title>SESAME IS HERE</title>
     <updated>2025-03-13T21:43:12+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1janmn8/sesame_is_here/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T21:43:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jaxec3</id>
+    <title>Sesame CSM 1B Voice Cloning</title>
+    <updated>2025-03-14T06:18:15+00:00</updated>
+    <author>
+      <name>/u/Internal_Brain8420</name>
+      <uri>https://old.reddit.com/user/Internal_Brain8420</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"&gt; &lt;img alt="Sesame CSM 1B Voice Cloning" src="https://external-preview.redd.it/JaEGat2-q67uEqWoPpGo5Nx0tvU4ZMhHe5tLQNQxW9w.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c285788573980e7289358fbf97c0847d9b60866" title="Sesame CSM 1B Voice Cloning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Internal_Brain8420"&gt; /u/Internal_Brain8420 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/isaiahbjork/csm-voice-cloning"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaxec3/sesame_csm_1b_voice_cloning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T06:18:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaoy9g</id>
