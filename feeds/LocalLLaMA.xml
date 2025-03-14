@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-14T18:07:45+00:00</updated>
+  <updated>2025-03-14T18:25:12+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jaqpiu</id>
-    <title>Mac Speed Comparison: M2 Ultra vs M3 Ultra using KoboldCpp</title>
-    <updated>2025-03-14T00:01:14+00:00</updated>
-    <author>
-      <name>/u/SomeOddCodeGuy</name>
-      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaqpiu/mac_speed_comparison_m2_ultra_vs_m3_ultra_using/"&gt; &lt;img alt="Mac Speed Comparison: M2 Ultra vs M3 Ultra using KoboldCpp" src="https://a.thumbs.redditmedia.com/OTEjpiItOaaKB7vj3kGES8cMsYYXecIqD-eyJx7Qt88.jpg" title="Mac Speed Comparison: M2 Ultra vs M3 Ultra using KoboldCpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: Running ggufs in Koboldcpp, the M3 is marginally... slower? Slightly faster prompt processing, but slower prompt writing across all models&lt;/p&gt; &lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; &lt;em&gt;I added a comparison Llama.cpp run at the bottom; same speed as Kobold, give or take.&lt;/em&gt;&lt;/p&gt; &lt;h1&gt;Setup:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Inference engine: Koboldcpp 1.85.1&lt;/li&gt; &lt;li&gt;Text: Same text on ALL models. Token size differences are due to tokenizer differences&lt;/li&gt; &lt;li&gt;Temp: 0.01; all other samplers disabled&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Computers:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;M3 Ultra 512GB 80 GPU Cores&lt;/li&gt; &lt;li&gt;M2 Ultra 192GB 76 GPU Cores&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jfhw63feojoe1.png?width=464&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=792fc47a7c5a6b51d619cefa7c6f83f31a4f438a"&gt;https://preview.redd.it/jfhw63feojoe1.png?width=464&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=792fc47a7c5a6b51d619cefa7c6f83f31a4f438a&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Notes:&lt;/h1&gt; &lt;ol&gt; &lt;li&gt;Qwen2.5 Coder and Llama 3.1 8b are more sensitive to temp than Llama 3.3 70b&lt;/li&gt; &lt;li&gt;All inference was first prompt after model load&lt;/li&gt; &lt;li&gt;All models are q8, as on Mac q8 is the fastest gguf quant &lt;em&gt;(see my previous posts on Mac speeds)&lt;/em&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Llama 3.1 8b q8&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12433/32768, Amt:386/4000, Init:0.02s, Process:13.56s (1.1ms/T = 888.55T/s), Generate:14.41s (37.3ms/T = 26.79T/s), Total:27.96s (13.80T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12408/32768, Amt:361/4000, Init:0.01s, Process:12.05s (1.0ms/T = 999.75T/s), Generate:13.62s (37.7ms/T = 26.50T/s), Total:25.67s (14.06T/s) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Mistral Small 24b q8&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13300/32768, Amt:661/4000, Init:0.07s, Process:34.86s (2.8ms/T = 362.50T/s), Generate:45.43s (68.7ms/T = 14.55T/s), Total:80.29s (8.23T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13300/32768, Amt:661/4000, Init:0.04s, Process:31.97s (2.5ms/T = 395.28T/s), Generate:46.27s (70.0ms/T = 14.29T/s), Total:78.24s (8.45T/s) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Qwen2.5 32b Coder q8 with 1.5b speculative decoding&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13215/32768, Amt:473/4000, Init:0.06s, Process:59.38s (4.7ms/T = 214.59T/s), Generate:34.70s (73.4ms/T = 13.63T/s), Total:94.08s (5.03T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13271/32768, Amt:529/4000, Init:0.05s, Process:52.97s (4.2ms/T = 240.56T/s), Generate:43.58s (82.4ms/T = 12.14T/s), Total:96.55s (5.48T/s) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Qwen2.5 32b Coder q8 WITHOUT speculative decoding&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13315/32768, Amt:573/4000, Init:0.07s, Process:53.44s (4.2ms/T = 238.42T/s), Generate:64.77s (113.0ms/T = 8.85T/s), Total:118.21s (4.85T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:13285/32768, Amt:543/4000, Init:0.04s, Process:49.35s (3.9ms/T = 258.22T/s), Generate:62.51s (115.1ms/T = 8.69T/s), Total:111.85s (4.85T/s) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Llama 3.3 70b q8 with 3b speculative decoding&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12519/32768, Amt:472/4000, Init:0.04s, Process:116.18s (9.6ms/T = 103.69T/s), Generate:54.99s (116.5ms/T = 8.58T/s), Total:171.18s (2.76T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12519/32768, Amt:472/4000, Init:0.02s, Process:103.12s (8.6ms/T = 116.77T/s), Generate:63.74s (135.0ms/T = 7.40T/s), Total:166.86s (2.83T/s) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Llama 3.3 70b q8 WITHOUT speculative decoding&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12519/32768, Amt:472/4000, Init:0.03s, Process:104.74s (8.7ms/T = 115.01T/s), Generate:98.15s (207.9ms/T = 4.81T/s), Total:202.89s (2.33T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;CtxLimit:12519/32768, Amt:472/4000, Init:0.01s, Process:96.67s (8.0ms/T = 124.62T/s), Generate:103.09s (218.4ms/T = 4.58T/s), Total:199.76s (2.36T/s) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;#####&lt;/p&gt; &lt;h1&gt;Llama.cpp Server Comparison Run :: Llama 3.3 70b q8 WITHOUT Speculative Decoding&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;M2 Ultra&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;prompt eval time = 105195.24 ms / 12051 tokens ( 8.73 ms per token, 114.56 tokens per second) eval time = 78102.11 ms / 377 tokens ( 207.17 ms per token, 4.83 tokens per second) total time = 183297.35 ms / 12428 tokens &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;M3 Ultra&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;prompt eval time = 96696.48 ms / 12051 tokens ( 8.02 ms per token, 124.63 tokens per second) eval time = 82026.89 ms / 377 tokens ( 217.58 ms per token, 4.60 tokens per second) total time = 178723.36 ms / 12428 tokens &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaqpiu/mac_speed_comparison_m2_ultra_vs_m3_ultra_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jaqpiu/mac_speed_comparison_m2_ultra_vs_m3_ultra_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaqpiu/mac_speed_comparison_m2_ultra_vs_m3_ultra_using/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T00:01:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jb34lf</id>
-    <title>1080 Ti vs 3060 12gb</title>
-    <updated>2025-03-14T12:49:23+00:00</updated>
-    <author>
-      <name>/u/SirTwitchALot</name>
-      <uri>https://old.reddit.com/user/SirTwitchALot</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;No, this isn't yet another &amp;quot;which card should I get post.&amp;quot;&lt;/p&gt; &lt;p&gt;I had a 3060 12gb, which doesn't have enough vram to run QwQ fully on GPU. I found a 1080 ti with 11gb at a decent price, so I decided to add it to my setup. Performance on QwQ is much improved compared to running partially in CPU. Still, I wondered how the performance compared between the two cards. I did a quick test in Phi 4 14.7b q4_K_M. Here are the results:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1080 ti:&lt;/strong&gt;&lt;br /&gt; &lt;code&gt;total duration: 26.909615066s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;load duration: 15.119614ms&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval count: 14 token(s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval duration: 142ms&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval rate: 98.59 tokens/s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval count: 675 token(s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval duration: 26.751s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval rate: 25.23 tokens/s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3060 12gb:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;total duration: 20.234592581s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;load duration: 25.785563ms&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval count: 14 token(s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval duration: 147ms&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;prompt eval rate: 95.24 tokens/s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval count: 657 token(s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval duration: 20.06s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;eval rate: 32.75 tokens/s&lt;/code&gt;&lt;/p&gt; &lt;p&gt;So, based on this simple test, a 3060, despite being 2 generations newer, is only 30% faster than the 1080 ti in basic inference. The 3060 wins on power consumption, drawing a peak of 170w while the 1080 maxed out at 250. Still, an old 1080 could make a decent entry level card for running LLMs locally. 25 tokens/s on a 14b q4 model is quite useable. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SirTwitchALot"&gt; /u/SirTwitchALot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb34lf/1080_ti_vs_3060_12gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb34lf/1080_ti_vs_3060_12gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb34lf/1080_ti_vs_3060_12gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T12:49:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jabmwz</id>
     <title>AMA with the Gemma Team</title>
@@ -45,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jabmwz/ama_with_the_gemma_team/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T13:12:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jb97u5</id>
+    <title>Run SesameAILabs/csm locally with Gradio UI with CUDA or CPU (if no CUDA)</title>
+    <updated>2025-03-14T17:19:38+00:00</updated>
+    <author>
+      <name>/u/akashjss</name>
+      <uri>https://old.reddit.com/user/akashjss</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;ul&gt; &lt;li&gt;Choose from predefined voice prompts&lt;/li&gt; &lt;li&gt;Upload or record custom voice prompts&lt;/li&gt; &lt;li&gt;Enter multi-turn conversations&lt;/li&gt; &lt;li&gt;Generate and play audio directly in browser&lt;/li&gt; &lt;li&gt;Use your own voice as custom voice&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Use Cases:&lt;br /&gt; Give it text and create a discussion like NotebookLLM.&lt;br /&gt; Create podcast in your own voice.&lt;/p&gt; &lt;p&gt;Github Repo:- &lt;a href="https://github.com/akashjss/sesame-csm/tree/main"&gt;https://github.com/akashjss/sesame-csm/tree/main&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/akashjss"&gt; /u/akashjss &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb97u5/run_sesameailabscsm_locally_with_gradio_ui_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb97u5/run_sesameailabscsm_locally_with_gradio_ui_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb97u5/run_sesameailabscsm_locally_with_gradio_ui_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T17:19:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1janir5</id>
@@ -99,19 +86,6 @@
     <published>2025-03-14T15:55:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jb9bfb</id>
-    <title>QwQ-32B seems useless on local ollama. Anyone have luck to escape from thinking hell?</title>
-    <updated>2025-03-14T17:23:50+00:00</updated>
-    <author>
-      <name>/u/soteko</name>
-      <uri>https://old.reddit.com/user/soteko</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As title says, trying new QwQ-32B from 2 days ago &lt;a href="https://huggingface.co/Qwen/QwQ-32B-GGUF"&gt;https://huggingface.co/Qwen/QwQ-32B-GGUF&lt;/a&gt; and simply I can't get any real code out from it. It is thinking and thinking and never stops and probably will hit some limit like Context or Max Tokens and will stop before getting any real result.&lt;/p&gt; &lt;p&gt;I am running it on CPU, with temperature 0.7, Top P 0.95, Max Tokens (num_predict) 1200, Context 2048 - 8192.&lt;/p&gt; &lt;p&gt;Anyone trying it for coding?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/soteko"&gt; /u/soteko &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T17:23:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jb93w4</id>
     <title>LLM-docs, software documentation intended for consumption by LLMs</title>
     <updated>2025-03-14T17:15:14+00:00</updated>
@@ -123,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb93w4/llmdocs_software_documentation_intended_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T17:15:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jb9bfb</id>
+    <title>QwQ-32B seems useless on local ollama. Anyone have luck to escape from thinking hell?</title>
+    <updated>2025-03-14T17:23:50+00:00</updated>
+    <author>
+      <name>/u/soteko</name>
+      <uri>https://old.reddit.com/user/soteko</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As title says, trying new QwQ-32B from 2 days ago &lt;a href="https://huggingface.co/Qwen/QwQ-32B-GGUF"&gt;https://huggingface.co/Qwen/QwQ-32B-GGUF&lt;/a&gt; and simply I can't get any real code out from it. It is thinking and thinking and never stops and probably will hit some limit like Context or Max Tokens and will stop before getting any real result.&lt;/p&gt; &lt;p&gt;I am running it on CPU, with temperature 0.7, Top P 0.95, Max Tokens (num_predict) 1200, Context 2048 - 8192.&lt;/p&gt; &lt;p&gt;Anyone trying it for coding?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/soteko"&gt; /u/soteko &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb9bfb/qwq32b_seems_useless_on_local_ollama_anyone_have/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T17:23:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1jauy8d</id>
@@ -138,19 +125,6 @@
     <published>2025-03-14T03:40:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jb7u4v</id>
-    <title>What is the best uncensored LLM?</title>
-    <updated>2025-03-14T16:21:55+00:00</updated>
-    <author>
-      <name>/u/Anyusername7294</name>
-      <uri>https://old.reddit.com/user/Anyusername7294</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm not talking about &amp;quot;I will write you a erotic story&amp;quot; type of uncensored LLM, I'm talking about &amp;quot;I will tell you how to make a bomb&amp;quot; (I won't do that) type of uncensored LLM. It seems like everyone, when talking about &amp;quot;Uncensored&amp;quot; models, talks about erotic uncensored models and not about what I want. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anyusername7294"&gt; /u/Anyusername7294 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T16:21:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jaoc8n</id>
     <title>QwQ on LiveBench (update) - is better than DeepSeek R1!</title>
     <updated>2025-03-13T22:14:11+00:00</updated>
@@ -162,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaoc8n/qwq_on_livebench_update_is_better_than_deepseek_r1/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T22:14:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jb7u4v</id>
+    <title>What is the best uncensored LLM?</title>
+    <updated>2025-03-14T16:21:55+00:00</updated>
+    <author>
+      <name>/u/Anyusername7294</name>
+      <uri>https://old.reddit.com/user/Anyusername7294</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm not talking about &amp;quot;I will write you a erotic story&amp;quot; type of uncensored LLM, I'm talking about &amp;quot;I will tell you how to make a bomb&amp;quot; (I won't do that) type of uncensored LLM. It seems like everyone, when talking about &amp;quot;Uncensored&amp;quot; models, talks about erotic uncensored models and not about what I want. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anyusername7294"&gt; /u/Anyusername7294 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T16:21:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1jaqylp</id>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaoy9g/meme_i_made/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T22:41:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jba8c1</id>
+    <title>Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM</title>
+    <updated>2025-03-14T18:05:43+00:00</updated>
+    <author>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt; &lt;img alt="Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM" src="https://b.thumbs.redditmedia.com/HVn5TgokJMLlPcDoL4fVZ2_Vk4oxK6Eh7mcozu3sLRs.jpg" title="Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys! You can now fine-tune Gemma 3 (12B) up to &lt;strong&gt;6x longer context lengths&lt;/strong&gt; with Unsloth than Hugging Face + FA2 on a 24GB GPU. 27B also fits in 24GB!&lt;/p&gt; &lt;p&gt;We also saw &lt;strong&gt;infinite exploding gradients&lt;/strong&gt; when using older GPUs (Tesla T4s, RTX 2080) with float16 for Gemma 3. Newer GPUs using float16 like A100s also have the same issue - I auto fix this in Unsloth!&lt;/p&gt; &lt;ul&gt; &lt;li&gt;There are also double BOS tokens which ruin finetunes for Gemma 3 - Unsloth auto corrects for this as well!&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Unsloth now supports&lt;/strong&gt; &lt;a href="https://unsloth.ai/blog/gemma3#everything"&gt;&lt;strong&gt;everything&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt; This includes &lt;strong&gt;full fine-tuning&lt;/strong&gt;, pretraining, and support for all models (like &lt;strong&gt;Mixtral&lt;/strong&gt;, MoEs, Cohere etc. models) and algorithms like DoRA&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&amp;#8203;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;model, tokenizer = FastModel.from_pretrained( model_name = &amp;quot;unsloth/gemma-3-4B-it&amp;quot;, load_in_4bit = True, load_in_8bit = False, # [NEW!] 8bit full_finetuning = False, # [NEW!] We have full finetuning now! ) &lt;/code&gt;&lt;/pre&gt; &lt;ul&gt; &lt;li&gt;Gemma 3 (27B) fits in 22GB VRAM. You can read our in depth blog post about the new changes: &lt;a href="https://unsloth.ai/blog/gemma3"&gt;unsloth.ai/blog/gemma3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Fine-tune Gemma 3 (4B) for free using our&lt;/strong&gt; &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Gemma3_(4B"&gt;&lt;strong&gt;Colab notebook&lt;/strong&gt;&lt;/a&gt;.ipynb)&lt;/li&gt; &lt;li&gt;We uploaded Dynamic 4-bit quants, and it's even more effective due to Gemma 3's multi modality. See all Gemma 3 Uploads including GGUF, 4-bit etc: &lt;a href="https://huggingface.co/collections/unsloth/gemma-3-67d12b7e8816ec6efa7e4e5b"&gt;Models&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7xnidddi3poe1.png?width=1000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=75c2f0fad10c4e170d1455269118d0fff4c38baf"&gt;Gemma 3 27B quantization errors&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;We made a &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-gemma-3-effectively"&gt;Guide to run Gemma 3&lt;/a&gt; properly and fixed issues with GGUFs not working with vision - reminder the correct params according to the Gemma team are &lt;strong&gt;temperature = 1.0, top_p = 0.95, top_k = 64&lt;/strong&gt;. According to the Ollama team, you should use temp = 0.1 in Ollama for now due to some backend differences. Use temp = 1.0 in llama.cpp, Unsloth, and other backends!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Gemma 3 Dynamic 4-bit instruct quants:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-1b-it-unsloth-bnb-4bit"&gt;1B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-4b-it-unsloth-bnb-4bit"&gt;4B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-12b-it-unsloth-bnb-4bit"&gt;12B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-27b-it-unsloth-bnb-4bit"&gt;27B&lt;/a&gt;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Let me know if you have any questions and hope you all have a lovely Friday and weekend! :) Also to update Unsloth do:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;pip install --upgrade --force-reinstall --no-deps unsloth unsloth_zoo &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Gemma3_(4B"&gt;&lt;strong&gt;Colab Notebook&lt;/strong&gt;&lt;/a&gt;.ipynb) with free GPU to finetune, do inference, data prep on Gemma 3&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T18:05:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1jb3mpe</id>
