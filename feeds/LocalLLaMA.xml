@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-15T00:50:34+00:00</updated>
+  <updated>2025-03-15T01:33:28+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jb77kg</id>
-    <title>I built a framework to train your own custom multimodal models</title>
-    <updated>2025-03-14T15:55:44+00:00</updated>
-    <author>
-      <name>/u/insujang</name>
-      <uri>https://old.reddit.com/user/insujang</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have seen that many open source multimodal model training has been done on a manually crafted model. There is currently no unified system that provides an interface to generate a multimodal model easily with unimodal models available in HuggingFace.&lt;/p&gt; &lt;p&gt;Therefore, I implemented &lt;a href="https://github.com/cornstarch-org/Cornstarch"&gt;Cornstarch&lt;/a&gt; that provides the interface to generate &lt;em&gt;any multimodal model&lt;/em&gt; as you want; not just a vision language model, but you can also implement a multimodal model with arbitrary number of encoders, where each model is in HuggingFace transformers. I believe this should be helpful for researchers who want to build a new multimodal model.&lt;/p&gt; &lt;p&gt;If you want to attach encoders to llama (different encoders used in mllama), for example,&lt;/p&gt; &lt;pre&gt;&lt;code&gt;vision_encoder = SiglipVisionModel.from_pretrained(&amp;quot;google/siglip-so400m-patch14-384&amp;quot;) audio_encoder = WhisperEncoder.from_pretrained(&amp;quot;openai/whisper-large-v3&amp;quot;) llm = AutoModelForCausalLM.from_pretrained(&amp;quot;meta-llama/Llama-3.2-3B-Instruct&amp;quot;) mllm = MultimodalModel( encoders={ &amp;quot;vision&amp;quot;: ModalEncoderModule(vision_encoder), &amp;quot;audio&amp;quot;: ModalEncoderModule(audio_encoder), }, language_model=llm, ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Plus, Cornstarch provides distributed training of multimodal models. We have &lt;a href="https://cornstarch-org.github.io/parallelization/"&gt;tutorials&lt;/a&gt; for easy parallelization.&lt;/p&gt; &lt;p&gt;For those who wanted to train a custom multimodal model, please try and share your thought!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/insujang"&gt; /u/insujang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb77kg/i_built_a_framework_to_train_your_own_custom/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb77kg/i_built_a_framework_to_train_your_own_custom/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb77kg/i_built_a_framework_to_train_your_own_custom/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T15:55:44+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jbhpzd</id>
     <title>Recommend me a cheap CPU with +64 PCIe 4.0 lanes.</title>
@@ -60,17 +47,17 @@
     <published>2025-03-14T17:19:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jbgwly</id>
-    <title>Instructional Writeup: How to Make LLMs Reason Deep and Build Entire Projects</title>
-    <updated>2025-03-14T22:59:40+00:00</updated>
+    <id>t3_1jbcpdu</id>
+    <title>AMD's Strix Halo - Under the Hood</title>
+    <updated>2025-03-14T19:55:32+00:00</updated>
     <author>
-      <name>/u/No-Mulberry6961</name>
-      <uri>https://old.reddit.com/user/No-Mulberry6961</uri>
+      <name>/u/_SYSTEM_ADMIN_MOD_</name>
+      <uri>https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been working on a way to push LLMs beyond their limits—deeper reasoning, bigger context, self-planning, and turning one request into a full project. I built project_builder.py (see a variant of it called the breakthrough generator: &lt;a href="https://github.com/justinlietz93/breakthrough_generator"&gt;https://github.com/justinlietz93/breakthrough_generator&lt;/a&gt; I will make the project builder and all my other work open source, but not yet ), and it’s solved problems I didn’t think were possible with AI alone. Here’s how I did it and what I’ve made.&lt;/p&gt; &lt;p&gt;How I Did It&lt;/p&gt; &lt;p&gt;LLMs are boxed in by short memory and one-shot answers. I fixed that with a few steps:&lt;/p&gt; &lt;p&gt;Longer Memory: I save every output to a file. Next prompt, I summarize it and feed it back. Context grows as long as I need it. Deeper Reasoning: I make it break tasks into chunks—hypothesize, test, refine. Each step builds on the last, logged in files. Self-Planning: I tell it to write a plan, like “5 steps to finish this.” It updates the plan as we go, tracking itself. Big Projects from One Line: I start with “build X,” and it generates a structure—files, plans, code—expanding it piece by piece.&lt;/p&gt; &lt;p&gt;I’ve let this run for 6 hours before and it build me a full IDE from scratch to replace Cursor that I can put the generator in, and write code as well at the same time.&lt;/p&gt; &lt;p&gt;What I’ve Achieved&lt;/p&gt; &lt;p&gt;This setup’s produced things I never expected from single prompts:&lt;/p&gt; &lt;p&gt;A training platform for an AI architecture that’s not quite any ML domain but pulls from all of them. It works, and it’s new. Better project generators. This is version 3—each one builds the next, improving every time. Research 10x deeper than Open AI’s stuff. Full papers, no shortcuts. A memory system that acts human—keeps what matters, drops the rest, adapts over time. A custom Cursor IDE, built from scratch, just how I wanted it. All 100% AI, no human edits. One prompt each.&lt;/p&gt; &lt;p&gt;How It Works&lt;/p&gt; &lt;p&gt;The script runs the LLM in a loop. It saves outputs, plans next steps, and keeps context alive with summaries. Three monitors let me watch it unfold—prompts, memory, plan. Solutions to LLM limits are there; I just assembled them.&lt;/p&gt; &lt;p&gt;Why It Matters&lt;/p&gt; &lt;p&gt;Anything’s possible with this. Books, tools, research—it’s all in reach. The code’s straightforward; the results are huge. I’m already planning more.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Mulberry6961"&gt; /u/No-Mulberry6961 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"&gt; &lt;img alt="AMD's Strix Halo - Under the Hood" src="https://external-preview.redd.it/wEu3U_UMzA19CzyyaC-damgrs2mfoqYlCEJAaUxPsJ0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40af4eabee5b182b1ed2f738034916fc7cfcca98" title="AMD's Strix Halo - Under the Hood" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_"&gt; /u/_SYSTEM_ADMIN_MOD_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://chipsandcheese.com/p/amds-strix-halo-under-the-hood"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T22:59:40+00:00</published>
+    <published>2025-03-14T19:55:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbfdr2</id>
@@ -86,17 +73,17 @@
     <published>2025-03-14T21:50:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jbcpdu</id>
-    <title>AMD's Strix Halo - Under the Hood</title>
-    <updated>2025-03-14T19:55:32+00:00</updated>
+    <id>t3_1jbgwly</id>
+    <title>Instructional Writeup: How to Make LLMs Reason Deep and Build Entire Projects</title>
+    <updated>2025-03-14T22:59:40+00:00</updated>
     <author>
-      <name>/u/_SYSTEM_ADMIN_MOD_</name>
-      <uri>https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_</uri>
+      <name>/u/No-Mulberry6961</name>
+      <uri>https://old.reddit.com/user/No-Mulberry6961</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"&gt; &lt;img alt="AMD's Strix Halo - Under the Hood" src="https://external-preview.redd.it/wEu3U_UMzA19CzyyaC-damgrs2mfoqYlCEJAaUxPsJ0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40af4eabee5b182b1ed2f738034916fc7cfcca98" title="AMD's Strix Halo - Under the Hood" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_"&gt; /u/_SYSTEM_ADMIN_MOD_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://chipsandcheese.com/p/amds-strix-halo-under-the-hood"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbcpdu/amds_strix_halo_under_the_hood/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been working on a way to push LLMs beyond their limits—deeper reasoning, bigger context, self-planning, and turning one request into a full project. I built project_builder.py (see a variant of it called the breakthrough generator: &lt;a href="https://github.com/justinlietz93/breakthrough_generator"&gt;https://github.com/justinlietz93/breakthrough_generator&lt;/a&gt; I will make the project builder and all my other work open source, but not yet ), and it’s solved problems I didn’t think were possible with AI alone. Here’s how I did it and what I’ve made.&lt;/p&gt; &lt;p&gt;How I Did It&lt;/p&gt; &lt;p&gt;LLMs are boxed in by short memory and one-shot answers. I fixed that with a few steps:&lt;/p&gt; &lt;p&gt;Longer Memory: I save every output to a file. Next prompt, I summarize it and feed it back. Context grows as long as I need it. Deeper Reasoning: I make it break tasks into chunks—hypothesize, test, refine. Each step builds on the last, logged in files. Self-Planning: I tell it to write a plan, like “5 steps to finish this.” It updates the plan as we go, tracking itself. Big Projects from One Line: I start with “build X,” and it generates a structure—files, plans, code—expanding it piece by piece.&lt;/p&gt; &lt;p&gt;I’ve let this run for 6 hours before and it build me a full IDE from scratch to replace Cursor that I can put the generator in, and write code as well at the same time.&lt;/p&gt; &lt;p&gt;What I’ve Achieved&lt;/p&gt; &lt;p&gt;This setup’s produced things I never expected from single prompts:&lt;/p&gt; &lt;p&gt;A training platform for an AI architecture that’s not quite any ML domain but pulls from all of them. It works, and it’s new. Better project generators. This is version 3—each one builds the next, improving every time. Research 10x deeper than Open AI’s stuff. Full papers, no shortcuts. A memory system that acts human—keeps what matters, drops the rest, adapts over time. A custom Cursor IDE, built from scratch, just how I wanted it. All 100% AI, no human edits. One prompt each.&lt;/p&gt; &lt;p&gt;How It Works&lt;/p&gt; &lt;p&gt;The script runs the LLM in a loop. It saves outputs, plans next steps, and keeps context alive with summaries. Three monitors let me watch it unfold—prompts, memory, plan. Solutions to LLM limits are there; I just assembled them.&lt;/p&gt; &lt;p&gt;Why It Matters&lt;/p&gt; &lt;p&gt;Anything’s possible with this. Books, tools, research—it’s all in reach. The code’s straightforward; the results are huge. I’m already planning more.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Mulberry6961"&gt; /u/No-Mulberry6961 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbgwly/instructional_writeup_how_to_make_llms_reason/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T19:55:32+00:00</published>
+    <published>2025-03-14T22:59:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1jb4jcr</id>
@@ -164,19 +151,6 @@
     <published>2025-03-14T06:18:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jb7u4v</id>
-    <title>What is the best uncensored LLM?</title>
-    <updated>2025-03-14T16:21:55+00:00</updated>
-    <author>
-      <name>/u/Anyusername7294</name>
-      <uri>https://old.reddit.com/user/Anyusername7294</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm not talking about &amp;quot;I will write you a erotic story&amp;quot; type of uncensored LLM, I'm talking about &amp;quot;I will tell you how to make a bomb&amp;quot; (I won't do that) type of uncensored LLM. It seems like everyone, when talking about &amp;quot;Uncensored&amp;quot; models, talks about erotic uncensored models and not about what I want. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anyusername7294"&gt; /u/Anyusername7294 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T16:21:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jaoy9g</id>
     <title>Meme i made</title>
     <updated>2025-03-13T22:41:19+00:00</updated>
@@ -188,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jaoy9g/meme_i_made/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-13T22:41:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jb7u4v</id>
+    <title>What is the best uncensored LLM?</title>
+    <updated>2025-03-14T16:21:55+00:00</updated>
+    <author>
+      <name>/u/Anyusername7294</name>
+      <uri>https://old.reddit.com/user/Anyusername7294</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm not talking about &amp;quot;I will write you a erotic story&amp;quot; type of uncensored LLM, I'm talking about &amp;quot;I will tell you how to make a bomb&amp;quot; (I won't do that) type of uncensored LLM. It seems like everyone, when talking about &amp;quot;Uncensored&amp;quot; models, talks about erotic uncensored models and not about what I want. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anyusername7294"&gt; /u/Anyusername7294 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb7u4v/what_is_the_best_uncensored_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-14T16:21:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1jb3mpe</id>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb5qvy/koboldcpp_186_just_dropped_with_support_of_gemma3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T14:53:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jbjhu1</id>
+    <title>Llama 3.3 keeping you all safe from sun theft. Thank the Lord.</title>
+    <updated>2025-03-15T01:03:44+00:00</updated>
+    <author>
+      <name>/u/Ok-Application-2261</name>
+      <uri>https://old.reddit.com/user/Ok-Application-2261</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbjhu1/llama_33_keeping_you_all_safe_from_sun_theft/"&gt; &lt;img alt="Llama 3.3 keeping you all safe from sun theft. Thank the Lord." src="https://preview.redd.it/j9xfffiw5roe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=da69f10083402ccec3b64a47beaa338bc3599611" title="Llama 3.3 keeping you all safe from sun theft. Thank the Lord." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Application-2261"&gt; /u/Ok-Application-2261 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/j9xfffiw5roe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbjhu1/llama_33_keeping_you_all_safe_from_sun_theft/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbjhu1/llama_33_keeping_you_all_safe_from_sun_theft/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-15T01:03:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jb1tum</id>
