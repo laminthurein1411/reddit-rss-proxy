@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-15T16:48:49+00:00</updated>
+  <updated>2025-03-15T17:05:08+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jbywp5</id>
-    <title>DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests</title>
-    <updated>2025-03-15T16:27:20+00:00</updated>
-    <author>
-      <name>/u/ifioravanti</name>
-      <uri>https://old.reddit.com/user/ifioravanti</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt; &lt;img alt="DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests" src="https://b.thumbs.redditmedia.com/pdxqKuXMc_yWV28JSRz8JG-pNWkHOHkLaC_eNKmySkM.jpg" title="DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;WE need more large context tests on local models so here is my first attempt.&lt;/p&gt; &lt;p&gt;I used M3 Ultra 512 GB + LM Studio with:&lt;br /&gt; - GGUF Flash Attention on, 128K context&lt;br /&gt; - MLX, 128K context&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/d0soy1rnqvoe1.png?width=1580&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6552e6b08b0fb1d89418a337b312e105708bdf1e"&gt;MLX vs llama.cpp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;MLX super fast in q4! &lt;/p&gt; &lt;p&gt;Detailed data here.&lt;/p&gt; &lt;p&gt;Size,tok/sec,secs to first token&lt;br /&gt; GGUF&lt;br /&gt; - 2K,83.7,1.8&lt;br /&gt; - 16K,59.6,13.8&lt;br /&gt; - 32K,44.0,35.1&lt;br /&gt; - 64K,29.4,98.9&lt;br /&gt; - 128K,17.7,310.85&lt;br /&gt; MLX&lt;br /&gt; - 2K,116.4,1.6&lt;br /&gt; - 16K,90.6,13.0&lt;br /&gt; - 32K,68.75,35.3&lt;br /&gt; - 64K,44.5,107.5&lt;br /&gt; - 128K,26.7,364.1&lt;/p&gt; &lt;p&gt;I used first 55 chapters of Pride and Prejudice from Jane Austen for this test. Up to 32K context the quality of output is good, after that becomes worst and worst.&lt;/p&gt; &lt;p&gt;Which model should I try now? A reasoning one was not the best choice honestly, but I had it locally.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ifioravanti"&gt; /u/ifioravanti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T16:27:20+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jbs89y</id>
-    <title>CSM voice cloning without polluting the context</title>
-    <updated>2025-03-15T10:30:46+00:00</updated>
-    <author>
-      <name>/u/SignificanceFlashy50</name>
-      <uri>https://old.reddit.com/user/SignificanceFlashy50</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems that Sesame CSM, despite various issues such as excessive slowness, is quite good at voice cloning. I was wondering if it’s possible to provide a reference voice—an assigned speaker to be used in the conversation—without contaminating the context though.&lt;/p&gt; &lt;p&gt;From what I’ve seen, as of now, a speaker is “assigned” to the Segments provided in the context, and then the conversation continues. But what if I wanted to have a reference voice while starting with a completely fresh context? For example, if I had high-quality samples of the reference voice that are unrelated to the actual conversation?&lt;/p&gt; &lt;p&gt;It’s not a real solution but a workaround might be inserting these “useless” reference voice segments at the beginning of the context, and then adding a new Segment after them containing something like a user message “From now on we will have a completely new conversation, so forget everything we’ve talked about until now” and finally an assistant segment where the assistant accept this idea and invite the user to start the new conversation as he prefers”. Doing this we should be able to obtain that. Of course the last assistant audio message must be created somehow previously and put inside the context.&lt;/p&gt; &lt;p&gt;Another question, unrelated from the previous one, is if somebody knows how to speed up inference a little bit (if possible, of course).&lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SignificanceFlashy50"&gt; /u/SignificanceFlashy50 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbs89y/csm_voice_cloning_without_polluting_the_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbs89y/csm_voice_cloning_without_polluting_the_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbs89y/csm_voice_cloning_without_polluting_the_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T10:30:46+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jbcau6</id>
     <title>Race to launch most powerful AI mini PC ever heats up as GMKTec confirms Ryzen AI Max+ 395 product for May 2025</title>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jb6gk7/i_deleted_all_my_previous_models_after_using_reka/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-14T15:23:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jbz8po</id>
+    <title>Speccing a laptop for local LLM use</title>
+    <updated>2025-03-15T16:42:13+00:00</updated>
+    <author>
+      <name>/u/blundermole</name>
+      <uri>https://old.reddit.com/user/blundermole</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I hope this is the right place to ask this -- please delete if it isn't!&lt;/p&gt; &lt;p&gt;I'm looking to buy a new laptop. I'm not primarily focused on running local LLMs on it, so I'll be going for a MacBook Air M4. I'll get 32GB of RAM anyway (my day to day work can involve running VMs with relatively memory hungry apps), and in general sense 512GB of SSD space will be fine for me.&lt;/p&gt; &lt;p&gt;However, it wouldn't be impossible to pay the extra £200 (thanks, Apple) to upgrade the SSD to 1TB. I want to do what I can to future-proof this device for 5-10 years. I know basically nothing about running local LLMs, other than it is a thing that can be done and that it may become more common over the next 5-10 years.&lt;/p&gt; &lt;p&gt;Would it be worth getting the upgrade to 1TB, or would I need far more SSD space to even begin thinking about running a local LLM?&lt;/p&gt; &lt;p&gt;To put it another way: should I anticipate that something will change in my day to day computer use over the next decade that will mean that 1TB of local SSD space is possible or likely to be a good idea, when 512GB of space has been adequate over the past decade?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/blundermole"&gt; /u/blundermole &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbz8po/speccing_a_laptop_for_local_llm_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbz8po/speccing_a_laptop_for_local_llm_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbz8po/speccing_a_laptop_for_local_llm_use/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-15T16:42:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1jblufl</id>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbyolh/diffusion_language_models_in_2_minutes/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-15T16:17:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jbywp5</id>
+    <title>DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests</title>
+    <updated>2025-03-15T16:27:20+00:00</updated>
+    <author>
+      <name>/u/ifioravanti</name>
+      <uri>https://old.reddit.com/user/ifioravanti</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt; &lt;img alt="DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests" src="https://b.thumbs.redditmedia.com/pdxqKuXMc_yWV28JSRz8JG-pNWkHOHkLaC_eNKmySkM.jpg" title="DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;WE need more large context tests on local models so here is my first attempt.&lt;/p&gt; &lt;p&gt;I used M3 Ultra 512 GB + LM Studio with:&lt;br /&gt; - GGUF Flash Attention on, 128K context&lt;br /&gt; - MLX, 128K context&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/d0soy1rnqvoe1.png?width=1580&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6552e6b08b0fb1d89418a337b312e105708bdf1e"&gt;MLX vs llama.cpp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;MLX super fast in q4! &lt;/p&gt; &lt;p&gt;Detailed data here.&lt;/p&gt; &lt;p&gt;Size,tok/sec,secs to first token&lt;br /&gt; GGUF&lt;br /&gt; - 2K,83.7,1.8&lt;br /&gt; - 16K,59.6,13.8&lt;br /&gt; - 32K,44.0,35.1&lt;br /&gt; - 64K,29.4,98.9&lt;br /&gt; - 128K,17.7,310.85&lt;br /&gt; MLX&lt;br /&gt; - 2K,116.4,1.6&lt;br /&gt; - 16K,90.6,13.0&lt;br /&gt; - 32K,68.75,35.3&lt;br /&gt; - 64K,44.5,107.5&lt;br /&gt; - 128K,26.7,364.1&lt;/p&gt; &lt;p&gt;I used first 55 chapters of Pride and Prejudice from Jane Austen for this test. Up to 32K context the quality of output is good, after that becomes worst and worst.&lt;/p&gt; &lt;p&gt;Which model should I try now? A reasoning one was not the best choice honestly, but I had it locally.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ifioravanti"&gt; /u/ifioravanti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-15T16:27:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbtar1</id>
