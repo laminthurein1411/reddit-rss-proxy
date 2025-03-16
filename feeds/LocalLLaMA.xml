@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-16T00:28:39+00:00</updated>
+  <updated>2025-03-16T00:54:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jc8lem</id>
-    <title>Is there a way to paste an image into the prompt on LM Studio? I didn't find how to do it.</title>
-    <updated>2025-03-15T23:52:53+00:00</updated>
-    <author>
-      <name>/u/josehand1</name>
-      <uri>https://old.reddit.com/user/josehand1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Title.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/josehand1"&gt; /u/josehand1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc8lem/is_there_a_way_to_paste_an_image_into_the_prompt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc8lem/is_there_a_way_to_paste_an_image_into_the_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc8lem/is_there_a_way_to_paste_an_image_into_the_prompt/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T23:52:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jc94mc</id>
-    <title>Used chatgpt to create python interfaces with tts and stt for gpt4all via api.</title>
-    <updated>2025-03-16T00:19:23+00:00</updated>
-    <author>
-      <name>/u/betolley</name>
-      <uri>https://old.reddit.com/user/betolley</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import requests import sqlite3 import os import pyttsx3 import sys from vosk import Model, KaldiRecognizer import pyaudio import json # --- CONFIGURATION --- Install pyttsx3 vosk pyaudio and the vosk files url = &amp;quot;http://localhost:4891/v1/chat/completions&amp;quot; # API endpoint for GPT4All headers = {&amp;quot;Content-Type&amp;quot;: &amp;quot;application/json&amp;quot;} model_name = &amp;quot;Llama 3.2 3B Instruct&amp;quot; db_file = &amp;quot;chat_history.db&amp;quot; log_file_path = os.path.join(&amp;quot;data&amp;quot;, &amp;quot;log.txt&amp;quot;) # Path to Vosk model (ensure you have downloaded a model and adjusted this path) vosk_model_path = &amp;quot;vosk-model-small-en-us-0.15&amp;quot; # Example: &amp;quot;vosk-model-small-en-us-0.15&amp;quot; # Initial context when no history is loaded InitialContext = [{&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Your name is John Smith.&amp;quot;}] system_prompt = {&amp;quot;role&amp;quot;: &amp;quot;system&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;You are an assistant that gives short, concise answers. Avoid explanations.&amp;quot;} # --- DATABASE SETUP --- def init_db(): conn = sqlite3.connect(db_file) cursor = conn.cursor() cursor.execute(''' CREATE TABLE IF NOT EXISTS conversation ( id INTEGER PRIMARY KEY AUTOINCREMENT, role TEXT NOT NULL, content TEXT NOT NULL ) ''') conn.commit() return conn def load_conversation(conn): cursor = conn.cursor() cursor.execute(&amp;quot;SELECT role, content FROM conversation ORDER BY id ASC&amp;quot;) rows = cursor.fetchall() return [{&amp;quot;role&amp;quot;: role, &amp;quot;content&amp;quot;: content} for role, content in rows] def save_message(conn, role, content): cursor = conn.cursor() cursor.execute(&amp;quot;INSERT INTO conversation (role, content) VALUES (?, ?)&amp;quot;, (role, content)) conn.commit() def clear_history(conn): cursor = conn.cursor() cursor.execute(&amp;quot;DELETE FROM conversation&amp;quot;) conn.commit() # --- LOGGING FUNCTION --- def log_conversation(user_input, assistant_reply): os.makedirs(&amp;quot;data&amp;quot;, exist_ok=True) with open(log_file_path, &amp;quot;a&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as log_file: log_file.write(f&amp;quot;User: {user_input}\n&amp;quot;) log_file.write(f&amp;quot;Assistant: {assistant_reply}\n\n&amp;quot;) # --- API INTERACTION --- def send_message(history): data = { &amp;quot;model&amp;quot;: model_name, &amp;quot;messages&amp;quot;: [system_prompt] + history, &amp;quot;max_tokens&amp;quot;: 200, &amp;quot;temperature&amp;quot;: 0.3 } try: response = requests.post(url, headers=headers, json=data) response.raise_for_status() response_json = response.json() if &amp;quot;choices&amp;quot; in response_json and len(response_json[&amp;quot;choices&amp;quot;]) &amp;gt; 0: reply = response_json[&amp;quot;choices&amp;quot;][0][&amp;quot;message&amp;quot;][&amp;quot;content&amp;quot;] return reply.strip() else: return &amp;quot;No response.&amp;quot; except requests.RequestException as e: return f&amp;quot;Connection error: {e}&amp;quot; except Exception as e: return f&amp;quot;Unexpected error: {e}&amp;quot; # --- SPEECH SETUP --- engine = pyttsx3.init() engine.setProperty('rate', 125) def say(text): print(f&amp;quot;GPT4All: {text}&amp;quot;) engine.say(text) engine.runAndWait() # --- VOSK SETUP --- if not os.path.exists(vosk_model_path): print(&amp;quot;Please download a Vosk model and specify its path in 'vosk_model_path'&amp;quot;) sys.exit(1) model = Model(vosk_model_path) recognizer = KaldiRecognizer(model, 16000) # --- LISTEN FUNCTION USING VOSK --- def listen(): print(&amp;quot;Listening... (say 'quit' to exit or 'clear' to reset)&amp;quot;) p = pyaudio.PyAudio() stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192) stream.start_stream() result = &amp;quot;&amp;quot; try: while True: data = stream.read(4096, exception_on_overflow=False) if recognizer.AcceptWaveform(data): res = json.loads(recognizer.Result()) result = res.get(&amp;quot;text&amp;quot;, &amp;quot;&amp;quot;) if result: break except KeyboardInterrupt: print(&amp;quot;Stopped listening.&amp;quot;) finally: stream.stop_stream() stream.close() p.terminate() print(f&amp;quot;You: {result}&amp;quot;) return result.lower().strip() # --- MAIN CHAT LOGIC --- def main(): conn = init_db() conversation_history = load_conversation(conn) if not conversation_history: conversation_history = InitialContext save_message(conn, &amp;quot;user&amp;quot;, InitialContext[0][&amp;quot;content&amp;quot;]) reply = send_message(conversation_history) say(reply) save_message(conn, &amp;quot;assistant&amp;quot;, reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) log_conversation(InitialContext[0][&amp;quot;content&amp;quot;], reply) else: print(&amp;quot;Loaded previous conversation (last 5 lines):&amp;quot;) for msg in conversation_history[-5:]: print(f&amp;quot;{msg['role'].capitalize()}: {msg['content']}&amp;quot;) say(&amp;quot;Hey, how are you?&amp;quot;) while True: user_input = listen() if user_input == &amp;quot;quit&amp;quot;: print(&amp;quot;Exiting the program. Goodbye!&amp;quot;) break elif user_input == &amp;quot;clear&amp;quot;: clear_history(conn) conversation_history = InitialContext save_message(conn, &amp;quot;user&amp;quot;, InitialContext[0][&amp;quot;content&amp;quot;]) print(&amp;quot;Chat history cleared and reset to initial context.&amp;quot;) reply = send_message(conversation_history) say(reply) save_message(conn, &amp;quot;assistant&amp;quot;, reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) log_conversation(InitialContext[0][&amp;quot;content&amp;quot;], reply) elif user_input: conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: user_input}) save_message(conn, &amp;quot;user&amp;quot;, user_input) reply = send_message(conversation_history) say(reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) save_message(conn, &amp;quot;assistant&amp;quot;, reply) log_conversation(user_input, reply) conn.close() # --- ENTRY POINT --- if __name__ == &amp;quot;__main__&amp;quot;: main() &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/betolley"&gt; /u/betolley &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-16T00:19:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jbkfyq</id>
     <title>New study suggest that LLM can not bring AGI</title>
@@ -112,6 +86,19 @@
     <published>2025-03-14T19:21:22+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jc94mc</id>
+    <title>Used chatgpt to create python interfaces with tts and stt for gpt4all via api.</title>
+    <updated>2025-03-16T00:19:23+00:00</updated>
+    <author>
+      <name>/u/betolley</name>
+      <uri>https://old.reddit.com/user/betolley</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;import requests import sqlite3 import os import pyttsx3 import sys from vosk import Model, KaldiRecognizer import pyaudio import json # --- CONFIGURATION --- Install pyttsx3 vosk pyaudio and the vosk files url = &amp;quot;http://localhost:4891/v1/chat/completions&amp;quot; # API endpoint for GPT4All headers = {&amp;quot;Content-Type&amp;quot;: &amp;quot;application/json&amp;quot;} model_name = &amp;quot;Llama 3.2 3B Instruct&amp;quot; db_file = &amp;quot;chat_history.db&amp;quot; log_file_path = os.path.join(&amp;quot;data&amp;quot;, &amp;quot;log.txt&amp;quot;) # Path to Vosk model (ensure you have downloaded a model and adjusted this path) vosk_model_path = &amp;quot;vosk-model-small-en-us-0.15&amp;quot; # Example: &amp;quot;vosk-model-small-en-us-0.15&amp;quot; # Initial context when no history is loaded InitialContext = [{&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Your name is John Smith.&amp;quot;}] system_prompt = {&amp;quot;role&amp;quot;: &amp;quot;system&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;You are an assistant that gives short, concise answers. Avoid explanations.&amp;quot;} # --- DATABASE SETUP --- def init_db(): conn = sqlite3.connect(db_file) cursor = conn.cursor() cursor.execute(''' CREATE TABLE IF NOT EXISTS conversation ( id INTEGER PRIMARY KEY AUTOINCREMENT, role TEXT NOT NULL, content TEXT NOT NULL ) ''') conn.commit() return conn def load_conversation(conn): cursor = conn.cursor() cursor.execute(&amp;quot;SELECT role, content FROM conversation ORDER BY id ASC&amp;quot;) rows = cursor.fetchall() return [{&amp;quot;role&amp;quot;: role, &amp;quot;content&amp;quot;: content} for role, content in rows] def save_message(conn, role, content): cursor = conn.cursor() cursor.execute(&amp;quot;INSERT INTO conversation (role, content) VALUES (?, ?)&amp;quot;, (role, content)) conn.commit() def clear_history(conn): cursor = conn.cursor() cursor.execute(&amp;quot;DELETE FROM conversation&amp;quot;) conn.commit() # --- LOGGING FUNCTION --- def log_conversation(user_input, assistant_reply): os.makedirs(&amp;quot;data&amp;quot;, exist_ok=True) with open(log_file_path, &amp;quot;a&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as log_file: log_file.write(f&amp;quot;User: {user_input}\n&amp;quot;) log_file.write(f&amp;quot;Assistant: {assistant_reply}\n\n&amp;quot;) # --- API INTERACTION --- def send_message(history): data = { &amp;quot;model&amp;quot;: model_name, &amp;quot;messages&amp;quot;: [system_prompt] + history, &amp;quot;max_tokens&amp;quot;: 200, &amp;quot;temperature&amp;quot;: 0.3 } try: response = requests.post(url, headers=headers, json=data) response.raise_for_status() response_json = response.json() if &amp;quot;choices&amp;quot; in response_json and len(response_json[&amp;quot;choices&amp;quot;]) &amp;gt; 0: reply = response_json[&amp;quot;choices&amp;quot;][0][&amp;quot;message&amp;quot;][&amp;quot;content&amp;quot;] return reply.strip() else: return &amp;quot;No response.&amp;quot; except requests.RequestException as e: return f&amp;quot;Connection error: {e}&amp;quot; except Exception as e: return f&amp;quot;Unexpected error: {e}&amp;quot; # --- SPEECH SETUP --- engine = pyttsx3.init() engine.setProperty('rate', 125) def say(text): print(f&amp;quot;GPT4All: {text}&amp;quot;) engine.say(text) engine.runAndWait() # --- VOSK SETUP --- if not os.path.exists(vosk_model_path): print(&amp;quot;Please download a Vosk model and specify its path in 'vosk_model_path'&amp;quot;) sys.exit(1) model = Model(vosk_model_path) recognizer = KaldiRecognizer(model, 16000) # --- LISTEN FUNCTION USING VOSK --- def listen(): print(&amp;quot;Listening... (say 'quit' to exit or 'clear' to reset)&amp;quot;) p = pyaudio.PyAudio() stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192) stream.start_stream() result = &amp;quot;&amp;quot; try: while True: data = stream.read(4096, exception_on_overflow=False) if recognizer.AcceptWaveform(data): res = json.loads(recognizer.Result()) result = res.get(&amp;quot;text&amp;quot;, &amp;quot;&amp;quot;) if result: break except KeyboardInterrupt: print(&amp;quot;Stopped listening.&amp;quot;) finally: stream.stop_stream() stream.close() p.terminate() print(f&amp;quot;You: {result}&amp;quot;) return result.lower().strip() # --- MAIN CHAT LOGIC --- def main(): conn = init_db() conversation_history = load_conversation(conn) if not conversation_history: conversation_history = InitialContext save_message(conn, &amp;quot;user&amp;quot;, InitialContext[0][&amp;quot;content&amp;quot;]) reply = send_message(conversation_history) say(reply) save_message(conn, &amp;quot;assistant&amp;quot;, reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) log_conversation(InitialContext[0][&amp;quot;content&amp;quot;], reply) else: print(&amp;quot;Loaded previous conversation (last 5 lines):&amp;quot;) for msg in conversation_history[-5:]: print(f&amp;quot;{msg['role'].capitalize()}: {msg['content']}&amp;quot;) say(&amp;quot;Hey, how are you?&amp;quot;) while True: user_input = listen() if user_input == &amp;quot;quit&amp;quot;: print(&amp;quot;Exiting the program. Goodbye!&amp;quot;) break elif user_input == &amp;quot;clear&amp;quot;: clear_history(conn) conversation_history = InitialContext save_message(conn, &amp;quot;user&amp;quot;, InitialContext[0][&amp;quot;content&amp;quot;]) print(&amp;quot;Chat history cleared and reset to initial context.&amp;quot;) reply = send_message(conversation_history) say(reply) save_message(conn, &amp;quot;assistant&amp;quot;, reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) log_conversation(InitialContext[0][&amp;quot;content&amp;quot;], reply) elif user_input: conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: user_input}) save_message(conn, &amp;quot;user&amp;quot;, user_input) reply = send_message(conversation_history) say(reply) conversation_history.append({&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: reply}) save_message(conn, &amp;quot;assistant&amp;quot;, reply) log_conversation(user_input, reply) conn.close() # --- ENTRY POINT --- if __name__ == &amp;quot;__main__&amp;quot;: main() &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/betolley"&gt; /u/betolley &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc94mc/used_chatgpt_to_create_python_interfaces_with_tts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-16T00:19:23+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jbswbb</id>
     <title>Google Gemma 3 Function Calling Example</title>
     <updated>2025-03-15T11:17:23+00:00</updated>
@@ -138,19 +125,6 @@
     <published>2025-03-14T18:05:43+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jbrf3z</id>
-    <title>This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!</title>
-    <updated>2025-03-15T09:30:50+00:00</updated>
-    <author>
-      <name>/u/ifioravanti</name>
-      <uri>https://old.reddit.com/user/ifioravanti</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt; &lt;img alt="This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!" src="https://external-preview.redd.it/_KRDmpyK0VZKT3ecW_LXf4RyMu89oGSa7dfrQMy211g.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=203660775a9e061a35755c30e8f0cb5c0192515d" title="This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sorry for the outburst, but I can't see M2 Ultra numbers so low in benchmarks any more.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/tvkobl58mtoe1.png?width=2534&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=34930c4a39ca9669762e6331c64b63ac23fd451e"&gt;https://preview.redd.it/tvkobl58mtoe1.png?width=2534&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=34930c4a39ca9669762e6331c64b63ac23fd451e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have used M2 Ultra 192GB 76 GPU cores and M3 Ultra 512GB 80 GPU cores.&lt;/p&gt; &lt;p&gt;I repeated same test, 3 times per machine and these were mine results:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GGUF M2 Ultra 82.75 tok/sec (much higher than 58!)&lt;/li&gt; &lt;li&gt;GGUF M3 Ultra 88.08 tok/sec&lt;br /&gt;&lt;/li&gt; &lt;li&gt;MLX M2 Ultra 119.32 tok/sec&lt;br /&gt;&lt;/li&gt; &lt;li&gt;MLX M3 Ultra 118.74 tok/sec&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here the YouTube video: &lt;a href="https://www.youtube.com/watch?v=2Hgk46_E_1c"&gt;Link&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I wrote a thread on X on this &lt;a href="https://x.com/ivanfioravanti/status/1900841506912493847"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ifioravanti"&gt; /u/ifioravanti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T09:30:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jbywp5</id>
     <title>DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests</title>
     <updated>2025-03-15T16:27:20+00:00</updated>
@@ -162,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbywp5/deepseek_r1_distill_qwen_7b_q4_large_context_up/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-15T16:27:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jbrf3z</id>
+    <title>This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!</title>
+    <updated>2025-03-15T09:30:50+00:00</updated>
+    <author>
+      <name>/u/ifioravanti</name>
+      <uri>https://old.reddit.com/user/ifioravanti</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt; &lt;img alt="This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!" src="https://external-preview.redd.it/_KRDmpyK0VZKT3ecW_LXf4RyMu89oGSa7dfrQMy211g.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=203660775a9e061a35755c30e8f0cb5c0192515d" title="This M2 Ultra v2 M3 Ultra benchmark by Matt Tech Talks is just wrong!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Sorry for the outburst, but I can't see M2 Ultra numbers so low in benchmarks any more.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/tvkobl58mtoe1.png?width=2534&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=34930c4a39ca9669762e6331c64b63ac23fd451e"&gt;https://preview.redd.it/tvkobl58mtoe1.png?width=2534&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=34930c4a39ca9669762e6331c64b63ac23fd451e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have used M2 Ultra 192GB 76 GPU cores and M3 Ultra 512GB 80 GPU cores.&lt;/p&gt; &lt;p&gt;I repeated same test, 3 times per machine and these were mine results:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GGUF M2 Ultra 82.75 tok/sec (much higher than 58!)&lt;/li&gt; &lt;li&gt;GGUF M3 Ultra 88.08 tok/sec&lt;br /&gt;&lt;/li&gt; &lt;li&gt;MLX M2 Ultra 119.32 tok/sec&lt;br /&gt;&lt;/li&gt; &lt;li&gt;MLX M3 Ultra 118.74 tok/sec&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here the YouTube video: &lt;a href="https://www.youtube.com/watch?v=2Hgk46_E_1c"&gt;Link&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I wrote a thread on X on this &lt;a href="https://x.com/ivanfioravanti/status/1900841506912493847"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ifioravanti"&gt; /u/ifioravanti &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jbrf3z/this_m2_ultra_v2_m3_ultra_benchmark_by_matt_tech/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-15T09:30:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbwjav</id>
@@ -216,17 +203,17 @@
     <published>2025-03-15T16:17:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jc5iqi</id>
-    <title>AI Scientists By Sakana AI passed ICLR review bar!!!</title>
-    <updated>2025-03-15T21:21:33+00:00</updated>
+    <id>t3_1jc9meu</id>
+    <title>Who's still running ancient models?</title>
+    <updated>2025-03-16T00:44:12+00:00</updated>
     <author>
-      <name>/u/mansurul11</name>
-      <uri>https://old.reddit.com/user/mansurul11</uri>
+      <name>/u/segmond</name>
+      <uri>https://old.reddit.com/user/segmond</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;An amazing experiment was conducted by Sakana.ai. They collaborated with ICLR workshop organizers to submit three original research papers, all originated and written entirely by this AI scientist. The review process was double-blind, but reviewers were informed that three out of the 43 submitted papers were original research from an AI scientist. 🤯&lt;/p&gt; &lt;p&gt;TLDR from the blog post: The AI Scientist-v2, after being given a broad topic to conduct research on, generated a paper titled “Compositional Regularization: Unexpected Obstacles in Enhancing Neural Network Generalization”. This paper reported a negative result that The AI Scientist encountered while trying to innovate on novel regularization methods for training neural networks that can improve their compositional generalization. This manuscript received an average reviewer score of 6.33 at the ICLR workshop, placing it above the average acceptance threshold.&lt;/p&gt; &lt;p&gt;&lt;a href="https://sakana.ai/ai-scientist-first-publication/"&gt;https://sakana.ai/ai-scientist-first-publication/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mansurul11"&gt; /u/mansurul11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I had to take a pause from my experiments today, gemma3, mistralsmall, phi4, qwq, qwen, etc and marvel at how good they are for their size. A year ago most of us thought that we needed 70B to kick ass. 14-32B is punching super hard. I'm deleting my Q2/Q3 llama405B, and deepseek dyanmic quants.&lt;/p&gt; &lt;p&gt;I'm going to re-download guanaco, dolphin-llama2, vicuna, wizardLM, nous-hermes-llama2, etc&lt;br /&gt; For old times sake. It's amazing how far we have come and how fast. Some of these are not even 2 years old! Just a year plus! I'm going to keep some ancient model and run them so I can remember and don't forget and to also have more appreciation for what we have.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/segmond"&gt; /u/segmond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc9meu/whos_still_running_ancient_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc9meu/whos_still_running_ancient_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc9meu/whos_still_running_ancient_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T21:21:33+00:00</published>
+    <published>2025-03-16T00:44:12+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbrwqf</id>
@@ -242,6 +229,19 @@
     <published>2025-03-15T10:07:54+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jc5iqi</id>
+    <title>AI Scientists By Sakana AI passed ICLR review bar!!!</title>
+    <updated>2025-03-15T21:21:33+00:00</updated>
+    <author>
+      <name>/u/mansurul11</name>
+      <uri>https://old.reddit.com/user/mansurul11</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;An amazing experiment was conducted by Sakana.ai. They collaborated with ICLR workshop organizers to submit three original research papers, all originated and written entirely by this AI scientist. The review process was double-blind, but reviewers were informed that three out of the 43 submitted papers were original research from an AI scientist. 🤯&lt;/p&gt; &lt;p&gt;TLDR from the blog post: The AI Scientist-v2, after being given a broad topic to conduct research on, generated a paper titled “Compositional Regularization: Unexpected Obstacles in Enhancing Neural Network Generalization”. This paper reported a negative result that The AI Scientist encountered while trying to innovate on novel regularization methods for training neural networks that can improve their compositional generalization. This manuscript received an average reviewer score of 6.33 at the ICLR workshop, placing it above the average acceptance threshold.&lt;/p&gt; &lt;p&gt;&lt;a href="https://sakana.ai/ai-scientist-first-publication/"&gt;https://sakana.ai/ai-scientist-first-publication/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mansurul11"&gt; /u/mansurul11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc5iqi/ai_scientists_by_sakana_ai_passed_iclr_review_bar/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-15T21:21:33+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jbufek</id>
     <title>Local LLM on cheap machine, a one page summary</title>
     <updated>2025-03-15T12:51:41+00:00</updated>
@@ -255,17 +255,17 @@
     <published>2025-03-15T12:51:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jc3fkd</id>
-    <title>I hope uncensored gemma3b come soon enough... the model is unbearable boring as it is know.</title>
-    <updated>2025-03-15T19:47:15+00:00</updated>
+    <id>t3_1jc1nw1</id>
+    <title>Actual Electricity Consumption and Cost to Run Local LLMs. From Gemma3 to QwQ.</title>
+    <updated>2025-03-15T18:28:09+00:00</updated>
     <author>
-      <name>/u/pumukidelfuturo</name>
-      <uri>https://old.reddit.com/user/pumukidelfuturo</uri>
+      <name>/u/QuantuisBenignus</name>
+      <uri>https://old.reddit.com/user/QuantuisBenignus</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I honestly had more fun with Darkest Muse or even the Gemma2 9b simpo version (which is my fav model).&lt;/p&gt; &lt;p&gt;I'm not even talking about NSFW stuff, i'm just chatting with it and its visions about everything are just lame, safe, boring and such... the lack of personality it just bores me too much. It's lame vanilla corpo mumbo jumbo style all over the place. If i wanted that i'd use Llama 3 instead.&lt;/p&gt; &lt;p&gt;I hope trainers can fix this and make this fun somewhat. It's gonna be a hard job. I'm just experiencing brainrot of how dull it is. It's dumb as a rock.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pumukidelfuturo"&gt; /u/pumukidelfuturo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tokens/WattHour and Tokens/US cent calculated for 17 local LLMs, including the new Gemma3 models. Wall plug power measured for each run under similar conditions and prompt.&lt;/p&gt; &lt;p&gt;Table, graph and formulas for estimate here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/QuantiusBenignus/Zshelf/discussions/2"&gt;https://github.com/QuantiusBenignus/Zshelf/discussions/2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Average, consumer-grade hardware and local LLMs quantized to Q5 on average.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/QuantuisBenignus"&gt; /u/QuantuisBenignus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T19:47:15+00:00</published>
+    <published>2025-03-15T18:28:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbn4a4</id>
@@ -281,17 +281,17 @@
     <published>2025-03-15T04:24:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jc1nw1</id>
-    <title>Actual Electricity Consumption and Cost to Run Local LLMs. From Gemma3 to QwQ.</title>
-    <updated>2025-03-15T18:28:09+00:00</updated>
+    <id>t3_1jc3fkd</id>
+    <title>I hope uncensored gemma3b come soon enough... the model is unbearable boring as it is know.</title>
+    <updated>2025-03-15T19:47:15+00:00</updated>
     <author>
-      <name>/u/QuantuisBenignus</name>
-      <uri>https://old.reddit.com/user/QuantuisBenignus</uri>
+      <name>/u/pumukidelfuturo</name>
+      <uri>https://old.reddit.com/user/pumukidelfuturo</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tokens/WattHour and Tokens/US cent calculated for 17 local LLMs, including the new Gemma3 models. Wall plug power measured for each run under similar conditions and prompt.&lt;/p&gt; &lt;p&gt;Table, graph and formulas for estimate here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/QuantiusBenignus/Zshelf/discussions/2"&gt;https://github.com/QuantiusBenignus/Zshelf/discussions/2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Average, consumer-grade hardware and local LLMs quantized to Q5 on average.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/QuantuisBenignus"&gt; /u/QuantuisBenignus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc1nw1/actual_electricity_consumption_and_cost_to_run/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I honestly had more fun with Darkest Muse or even the Gemma2 9b simpo version (which is my fav model).&lt;/p&gt; &lt;p&gt;I'm not even talking about NSFW stuff, i'm just chatting with it and its visions about everything are just lame, safe, boring and such... the lack of personality it just bores me too much. It's lame vanilla corpo mumbo jumbo style all over the place. If i wanted that i'd use Llama 3 instead.&lt;/p&gt; &lt;p&gt;I hope trainers can fix this and make this fun somewhat. It's gonna be a hard job. I'm just experiencing brainrot of how dull it is. It's dumb as a rock.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pumukidelfuturo"&gt; /u/pumukidelfuturo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-15T18:28:09+00:00</published>
+    <published>2025-03-15T19:47:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbyg29</id>
