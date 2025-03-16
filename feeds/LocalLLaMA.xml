@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-16T05:06:06+00:00</updated>
+  <updated>2025-03-16T05:23:24+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jba8c1</id>
-    <title>Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM</title>
-    <updated>2025-03-14T18:05:43+00:00</updated>
-    <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt; &lt;img alt="Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM" src="https://b.thumbs.redditmedia.com/HVn5TgokJMLlPcDoL4fVZ2_Vk4oxK6Eh7mcozu3sLRs.jpg" title="Gemma 3 Fine-tuning now in Unsloth - 1.6x faster with 60% less VRAM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys! You can now fine-tune Gemma 3 (12B) up to &lt;strong&gt;6x longer context lengths&lt;/strong&gt; with Unsloth than Hugging Face + FA2 on a 24GB GPU. 27B also fits in 24GB!&lt;/p&gt; &lt;p&gt;We also saw &lt;strong&gt;infinite exploding gradients&lt;/strong&gt; when using older GPUs (Tesla T4s, RTX 2080) with float16 for Gemma 3. Newer GPUs using float16 like A100s also have the same issue - I auto fix this in Unsloth!&lt;/p&gt; &lt;ul&gt; &lt;li&gt;There are also double BOS tokens which ruin finetunes for Gemma 3 - Unsloth auto corrects for this as well!&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Unsloth now supports&lt;/strong&gt; &lt;a href="https://unsloth.ai/blog/gemma3#everything"&gt;&lt;strong&gt;everything&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt; This includes &lt;strong&gt;full fine-tuning&lt;/strong&gt;, pretraining, and support for all models (like &lt;strong&gt;Mixtral&lt;/strong&gt;, MoEs, Cohere etc. models) and algorithms like DoRA&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&amp;#8203;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;model, tokenizer = FastModel.from_pretrained( model_name = &amp;quot;unsloth/gemma-3-4B-it&amp;quot;, load_in_4bit = True, load_in_8bit = False, # [NEW!] 8bit full_finetuning = False, # [NEW!] We have full finetuning now! ) &lt;/code&gt;&lt;/pre&gt; &lt;ul&gt; &lt;li&gt;Gemma 3 (27B) fits in 22GB VRAM. You can read our in depth blog post about the new changes: &lt;a href="https://unsloth.ai/blog/gemma3"&gt;unsloth.ai/blog/gemma3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Fine-tune Gemma 3 (4B) for free using our&lt;/strong&gt; &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Gemma3_(4B"&gt;&lt;strong&gt;Colab notebook&lt;/strong&gt;&lt;/a&gt;.ipynb)&lt;/li&gt; &lt;li&gt;We uploaded Dynamic 4-bit quants, and it's even more effective due to Gemma 3's multi modality. See all Gemma 3 Uploads including GGUF, 4-bit etc: &lt;a href="https://huggingface.co/collections/unsloth/gemma-3-67d12b7e8816ec6efa7e4e5b"&gt;Models&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7xnidddi3poe1.png?width=1000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=75c2f0fad10c4e170d1455269118d0fff4c38baf"&gt;Gemma 3 27B quantization errors&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;We made a &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-gemma-3-effectively"&gt;Guide to run Gemma 3&lt;/a&gt; properly and fixed issues with GGUFs not working with vision - reminder the correct params according to the Gemma team are &lt;strong&gt;temperature = 1.0, top_p = 0.95, top_k = 64&lt;/strong&gt;. According to the Ollama team, you should use temp = 0.1 in Ollama for now due to some backend differences. Use temp = 1.0 in llama.cpp, Unsloth, and other backends!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Gemma 3 Dynamic 4-bit instruct quants:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-1b-it-unsloth-bnb-4bit"&gt;1B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-4b-it-unsloth-bnb-4bit"&gt;4B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-12b-it-unsloth-bnb-4bit"&gt;12B&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://huggingface.co/unsloth/gemma-3-27b-it-unsloth-bnb-4bit"&gt;27B&lt;/a&gt;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Let me know if you have any questions and hope you all have a lovely Friday and weekend! :) Also to update Unsloth do:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;pip install --upgrade --force-reinstall --no-deps unsloth unsloth_zoo &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Gemma3_(4B"&gt;&lt;strong&gt;Colab Notebook&lt;/strong&gt;&lt;/a&gt;.ipynb) with free GPU to finetune, do inference, data prep on Gemma 3&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jba8c1/gemma_3_finetuning_now_in_unsloth_16x_faster_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-14T18:05:43+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jbswbb</id>
     <title>Google Gemma 3 Function Calling Example</title>
@@ -112,19 +99,6 @@
     <published>2025-03-15T01:03:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jcdsat</id>
-    <title>A tip to make QwQ less verbose</title>
-    <updated>2025-03-16T04:37:40+00:00</updated>
-    <author>
-      <name>/u/Aggressive-Stop-9091</name>
-      <uri>https://old.reddit.com/user/Aggressive-Stop-9091</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In my experience, QwQ tends to overthink because it's fine-tuned to interpret the writer's intentions. One effective way to minimize this is by providing examples. QwQ is an excellent few-shot learner that doesnt merely copy the examples, but also and when given a few well-crafted examples, it can generate a more articulate prompt than I initially wrote (which I then included in subsequent generations). Yes, I know this is prompt engineering 101, but what I find interesting about QwQ is that, unlike most local models I've tried, it doesn't get fixated on wording or style. Instead, it focuses on understanding the 'bigger picture' in the examples, like it had some sort 'meta learning'. For instance, I was working on condensing a research paper into a highly engaging and conversational format. The model when provided examples was able to outline what I wanted on its own, based on my instruction and the examples:&lt;/p&gt; &lt;p&gt;Hook: Why can't you stop scrolling TikTok?&lt;/p&gt; &lt;p&gt;Problem: Personalized content triggers brain regions linked to attention and reward.&lt;/p&gt; &lt;p&gt;Mechanism: DMN activation, VTA activity, reduced self-control regions coupling.&lt;/p&gt; &lt;p&gt;Outcome: Compulsive use, especially in those with low self-control.&lt;/p&gt; &lt;p&gt;Significance: Algorithm exploits neural pathways, need for understanding tech addiction.&lt;/p&gt; &lt;p&gt;Needless to say, it doesn't always work perfectly, but in my experience, it significantly improves the output. (The engine I use is ExLlama, and I follow the recommended settings for the model.)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aggressive-Stop-9091"&gt; /u/Aggressive-Stop-9091 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-16T04:37:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jbywp5</id>
     <title>DeepSeek R1 Distill Qwen 7B Q4 large context (up to 128K) tests</title>
     <updated>2025-03-15T16:27:20+00:00</updated>
@@ -149,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jca6xz/how_can_i_save_my_progress_between_different/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-16T01:14:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jcef1d</id>
+    <title>How I used entropy and varentropy to detect and remediate hallucinations in LLMs</title>
+    <updated>2025-03-16T05:18:48+00:00</updated>
+    <author>
+      <name>/u/AdditionalWeb107</name>
+      <uri>https://old.reddit.com/user/AdditionalWeb107</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The following blog is a high-level introduction to a series of research work we are doing with fast and efficient language models for routing and function calling scenarios. For experts this might be too high-level, but for people learning more about LLMs this might be a decent introduction to some machine learning concepts. &lt;/p&gt; &lt;p&gt;&lt;a href="https://www.archgw.com/blogs/detecting-hallucinations-in-llm-function-calling-with-entropy-and-varentropy"&gt;https://www.archgw.com/blogs/detecting-hallucinations-in-llm-function-calling-with-entropy-and-varentropy&lt;/a&gt; (part 1). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AdditionalWeb107"&gt; /u/AdditionalWeb107 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcef1d/how_i_used_entropy_and_varentropy_to_detect_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcef1d/how_i_used_entropy_and_varentropy_to_detect_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcef1d/how_i_used_entropy_and_varentropy_to_detect_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-16T05:18:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1jcd51c</id>
@@ -203,6 +190,19 @@
     <published>2025-03-15T12:51:41+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jcdsat</id>
+    <title>A tip to make QwQ less verbose</title>
+    <updated>2025-03-16T04:37:40+00:00</updated>
+    <author>
+      <name>/u/Aggressive-Stop-9091</name>
+      <uri>https://old.reddit.com/user/Aggressive-Stop-9091</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In my experience, QwQ tends to overthink because it's fine-tuned to interpret the writer's intentions. One effective way to minimize this is by providing examples. QwQ is an excellent few-shot learner that doesnt merely copy the examples, but also and when given a few well-crafted examples, it can generate a more articulate prompt than I initially wrote (which I then included in subsequent generations). Yes, I know this is prompt engineering 101, but what I find interesting about QwQ is that, unlike most local models I've tried, it doesn't get fixated on wording or style. Instead, it focuses on understanding the 'bigger picture' in the examples, like it had some sort 'meta learning'. For instance, I was working on condensing a research paper into a highly engaging and conversational format. The model when provided examples was able to outline what I wanted on its own, based on my instruction and the examples:&lt;/p&gt; &lt;p&gt;Hook: Why can't you stop scrolling TikTok?&lt;/p&gt; &lt;p&gt;Problem: Personalized content triggers brain regions linked to attention and reward.&lt;/p&gt; &lt;p&gt;Mechanism: DMN activation, VTA activity, reduced self-control regions coupling.&lt;/p&gt; &lt;p&gt;Outcome: Compulsive use, especially in those with low self-control.&lt;/p&gt; &lt;p&gt;Significance: Algorithm exploits neural pathways, need for understanding tech addiction.&lt;/p&gt; &lt;p&gt;Needless to say, it doesn't always work perfectly, but in my experience, it significantly improves the output. (The engine I use is ExLlama, and I follow the recommended settings for the model.)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aggressive-Stop-9091"&gt; /u/Aggressive-Stop-9091 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcdsat/a_tip_to_make_qwq_less_verbose/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-16T04:37:40+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jbn4a4</id>
     <title>DeepSeek's owner asked R&amp;D staff to hand in passports so they can't travel abroad. How does this make any sense considering Deepseek open sources everything?</title>
     <updated>2025-03-15T04:24:47+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-03-15T06:58:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jcchtq</id>
-    <title>Baidu releases X1, a (closed?) model that matches R1 and ERNIE 4.5, that matches GPT 4.5</title>
-    <updated>2025-03-16T03:20:25+00:00</updated>
-    <author>
-      <name>/u/ortegaalfredo</name>
-      <uri>https://old.reddit.com/user/ortegaalfredo</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/Baidu_Inc/status/1901094083508220035"&gt;https://x.com/Baidu_Inc/status/1901094083508220035&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ortegaalfredo"&gt; /u/ortegaalfredo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-16T03:20:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jc3fkd</id>
     <title>I hope uncensored gemma3b come soon enough... the model is unbearable boring as it is know.</title>
     <updated>2025-03-15T19:47:15+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jc3fkd/i_hope_uncensored_gemma3b_come_soon_enough_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-15T19:47:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jcchtq</id>
+    <title>Baidu releases X1, a (closed?) model that matches R1 and ERNIE 4.5, that matches GPT 4.5</title>
+    <updated>2025-03-16T03:20:25+00:00</updated>
+    <author>
+      <name>/u/ortegaalfredo</name>
+      <uri>https://old.reddit.com/user/ortegaalfredo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/Baidu_Inc/status/1901094083508220035"&gt;https://x.com/Baidu_Inc/status/1901094083508220035&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ortegaalfredo"&gt; /u/ortegaalfredo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcchtq/baidu_releases_x1_a_closed_model_that_matches_r1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-16T03:20:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1jbyg29</id>
