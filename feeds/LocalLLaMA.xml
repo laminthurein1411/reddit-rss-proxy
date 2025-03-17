@@ -2,63 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-17T16:07:29+00:00</updated>
+  <updated>2025-03-17T16:25:09+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jcxb9w</id>
-    <title>R2R v3.5.0 Release Notes</title>
-    <updated>2025-03-16T22:16:28+00:00</updated>
-    <author>
-      <name>/u/docsoc1</name>
-      <uri>https://old.reddit.com/user/docsoc1</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcxb9w/r2r_v350_release_notes/"&gt; &lt;img alt="R2R v3.5.0 Release Notes" src="https://external-preview.redd.it/NErnoInmUcnZ4qVCAEDCbRxra-qc_bCUEu34Ma-sqH0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fb8d8b0e950c0928d1cbab06e4e58a4350e51c11" title="R2R v3.5.0 Release Notes" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We're excited to announce R2R v3.5.0, featuring our new Deep Research API and significant improvements to our RAG capabilities.&lt;/p&gt; &lt;h1&gt;🚀 Highlights&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Deep Research API: Multi-step reasoning system that fetches data from your knowledge base and the internet to deliver comprehensive, context-aware answers&lt;/li&gt; &lt;li&gt;Enhanced RAG Agent: More robust with new web search and scraping capabilities&lt;/li&gt; &lt;li&gt;Real-time Streaming: Server-side event streaming for visibility into the agent's thinking process and tool usage&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;✨ Key Features&lt;/h1&gt; &lt;h1&gt;Research Capabilities&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Research Agent: Specialized mode with advanced reasoning and computational tools&lt;/li&gt; &lt;li&gt;Extended Thinking: Toggle reasoning capabilities with optimized Claude model support&lt;/li&gt; &lt;li&gt;Improved Citations: Real-time citation identification with precise source attribution&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;New Tools&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Web Tools: Search external APIs and scrape web pages for up-to-date information&lt;/li&gt; &lt;li&gt;Research Tools: Reasoning, critique, and Python execution for complex analysis&lt;/li&gt; &lt;li&gt;RAG Tool: Leverage underlying RAG capabilities within the research agent&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;💡 Usage Examples&lt;/h1&gt; &lt;h1&gt;Basic RAG Mode&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;response = client.retrieval.agent( query=&amp;quot;What does deepseek r1 imply for the future of AI?&amp;quot;, generation_config={ &amp;quot;model&amp;quot;: &amp;quot;anthropic/claude-3-7-sonnet-20250219&amp;quot;, &amp;quot;extended_thinking&amp;quot;: True, &amp;quot;thinking_budget&amp;quot;: 4096, &amp;quot;temperature&amp;quot;: 1, &amp;quot;max_tokens_to_sample&amp;quot;: 16000, &amp;quot;stream&amp;quot;: True }, rag_tools=[&amp;quot;search_file_descriptions&amp;quot;, &amp;quot;search_file_knowledge&amp;quot;, &amp;quot;get_file_content&amp;quot;, &amp;quot;web_search&amp;quot;, &amp;quot;web_scrape&amp;quot;], mode=&amp;quot;rag&amp;quot; ) # Process the streaming events for event in response: if isinstance(event, ThinkingEvent): print(f&amp;quot;🧠 Thinking: {event.data.delta.content[0].payload.value}&amp;quot;) elif isinstance(event, ToolCallEvent): print(f&amp;quot;🔧 Tool call: {event.data.name}({event.data.arguments})&amp;quot;) elif isinstance(event, ToolResultEvent): print(f&amp;quot;📊 Tool result: {event.data.content[:60]}...&amp;quot;) elif isinstance(event, CitationEvent): print(f&amp;quot;📑 Citation: {event.data}&amp;quot;) elif isinstance(event, MessageEvent): print(f&amp;quot;💬 Message: {event.data.delta.content[0].payload.value}&amp;quot;) elif isinstance(event, FinalAnswerEvent): print(f&amp;quot;✅ Final answer: {event.data.generated_answer[:100]}...&amp;quot;) print(f&amp;quot; Citations: {len(event.data.citations)} sources referenced&amp;quot;) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Research Mode&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;response = client.retrieval.agent( query=&amp;quot;Analyze the philosophical implications of DeepSeek R1&amp;quot;, generation_config={ &amp;quot;model&amp;quot;: &amp;quot;anthropic/claude-3-opus-20240229&amp;quot;, &amp;quot;extended_thinking&amp;quot;: True, &amp;quot;thinking_budget&amp;quot;: 8192, &amp;quot;temperature&amp;quot;: 0.2, &amp;quot;max_tokens_to_sample&amp;quot;: 32000, &amp;quot;stream&amp;quot;: True }, research_tools=[&amp;quot;rag&amp;quot;, &amp;quot;reasoning&amp;quot;, &amp;quot;critique&amp;quot;, &amp;quot;python_executor&amp;quot;], mode=&amp;quot;research&amp;quot; ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;For more details, visit our &lt;a href="https://github.com/SciPhi-AI/R2R/"&gt;Github&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a href="https://reddit.com/link/1jcxb9w/video/kmbjp35ro7pe1/player"&gt;EDIT - Adding a video.&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/docsoc1"&gt; /u/docsoc1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcxb9w/r2r_v350_release_notes/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcxb9w/r2r_v350_release_notes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcxb9w/r2r_v350_release_notes/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-16T22:16:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jd9cty</id>
-    <title>Unsloth configuration to fine-tune Gemma3 into a reasoning model with GRPO</title>
-    <updated>2025-03-17T10:21:17+00:00</updated>
-    <author>
-      <name>/u/molbal</name>
-      <uri>https://old.reddit.com/user/molbal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey,&lt;/p&gt; &lt;p&gt;I have not seen a Gemma 3 reasoning fine-tune here yet and I have not seen a notebook either, so I took some time to find what configuration works:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/molbal/ai-helper-scripts/blob/master/docs/gemma-3-reasoning.md"&gt;https://github.com/molbal/ai-helper-scripts/blob/master/docs/gemma-3-reasoning.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I did not yet finish a single epoch with it, but it might be useful if someone else is doing the same and is stuck trying to find a configuration that works.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/molbal"&gt; /u/molbal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9cty/unsloth_configuration_to_finetune_gemma3_into_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9cty/unsloth_configuration_to_finetune_gemma3_into_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9cty/unsloth_configuration_to_finetune_gemma3_into_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T10:21:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jd8lwp</id>
-    <title>What’s the smallest, most effective model for function calling and AI agents?</title>
-    <updated>2025-03-17T09:27:53+00:00</updated>
-    <author>
-      <name>/u/DiogoSnows</name>
-      <uri>https://old.reddit.com/user/DiogoSnows</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’m looking for a compact, highly efficient model that performs well on function calling. For now I’m thinking &amp;lt;= 4b parameters (do you consider that small?)&lt;/p&gt; &lt;p&gt;Does anyone know of any dedicated leaderboards or benchmarks that compare smaller models in this area?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DiogoSnows"&gt; /u/DiogoSnows &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd8lwp/whats_the_smallest_most_effective_model_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd8lwp/whats_the_smallest_most_effective_model_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd8lwp/whats_the_smallest_most_effective_model_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T09:27:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jdcm1u</id>
-    <title>What app to use on an old Android 8.1.0 phone to connect to my LLM on my laptop?</title>
-    <updated>2025-03-17T13:27:32+00:00</updated>
-    <author>
-      <name>/u/ExtremePresence3030</name>
-      <uri>https://old.reddit.com/user/ExtremePresence3030</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;and how to do it?&lt;/p&gt; &lt;p&gt;I use koboldcpp as my llm server app.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ExtremePresence3030"&gt; /u/ExtremePresence3030 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdcm1u/what_app_to_use_on_an_old_android_810_phone_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdcm1u/what_app_to_use_on_an_old_android_810_phone_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdcm1u/what_app_to_use_on_an_old_android_810_phone_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T13:27:32+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jdg29r</id>
     <title>AMD's Ryzen AI MAX+ 395 "Strix Halo" APU Is Over 3x Faster Than RTX 5080 In DeepSeek R1 AI Benchmarks</title>
@@ -99,17 +47,17 @@
     <published>2025-03-17T00:57:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jd7u63</id>
-    <title>[Open Source] Deploy and run voice AI models with one click on MacOS</title>
-    <updated>2025-03-17T08:26:54+00:00</updated>
+    <id>t3_1jdgqcj</id>
+    <title>NEW MISTRAL JUST DROPPED</title>
+    <updated>2025-03-17T16:23:29+00:00</updated>
     <author>
-      <name>/u/Heybud221</name>
-      <uri>https://old.reddit.com/user/Heybud221</uri>
+      <name>/u/Straight-Worker-4327</name>
+      <uri>https://old.reddit.com/user/Straight-Worker-4327</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/Ilikepizza2/localspeech-AI"&gt;LocalSpeech&lt;/a&gt; is an open source project that I created to make it easy to run and deploy Voice AI models on MacOS in an openai compliant api server along with an API playground. Currently it supports Zonos, Spark, Whisper and Kokoro. Had been away for the weekend so I am still working on adding support for Sesame CSM. &lt;/p&gt; &lt;p&gt;Currently learning MLOps to make it reliable for prod. I don't have a good GPU machine for linux, so I am not able to test but I want this to be compatible with linux too. If you have one and are willing to assist, PRs would be welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Heybud221"&gt; /u/Heybud221 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://mistral.ai/fr/news/mistral-small-3-1"&gt;https://mistral.ai/fr/news/mistral-small-3-1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Straight-Worker-4327"&gt; /u/Straight-Worker-4327 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgqcj/new_mistral_just_dropped/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgqcj/new_mistral_just_dropped/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgqcj/new_mistral_just_dropped/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T08:26:54+00:00</published>
+    <published>2025-03-17T16:23:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd7jll</id>
@@ -138,6 +86,19 @@
     <published>2025-03-16T19:08:31+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jd7u63</id>
+    <title>[Open Source] Deploy and run voice AI models with one click on MacOS</title>
+    <updated>2025-03-17T08:26:54+00:00</updated>
+    <author>
+      <name>/u/Heybud221</name>
+      <uri>https://old.reddit.com/user/Heybud221</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/Ilikepizza2/localspeech-AI"&gt;LocalSpeech&lt;/a&gt; is an open source project that I created to make it easy to run and deploy Voice AI models on MacOS in an openai compliant api server along with an API playground. Currently it supports Zonos, Spark, Whisper and Kokoro. Had been away for the weekend so I am still working on adding support for Sesame CSM. &lt;/p&gt; &lt;p&gt;Currently learning MLOps to make it reliable for prod. I don't have a good GPU machine for linux, so I am not able to test but I want this to be compatible with linux too. If you have one and are willing to assist, PRs would be welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Heybud221"&gt; /u/Heybud221 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd7u63/open_source_deploy_and_run_voice_ai_models_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T08:26:54+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jd8cw3</id>
     <title>Is there a better service than Grok for NSFW 'Creative Writing'?</title>
     <updated>2025-03-17T09:08:28+00:00</updated>
@@ -164,6 +125,19 @@
     <published>2025-03-17T10:53:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jdf5ag</id>
+    <title>New Paper by Yann LeCun (META) - Transformers without Normalization</title>
+    <updated>2025-03-17T15:19:34+00:00</updated>
+    <author>
+      <name>/u/ApprehensiveAd3629</name>
+      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Source: &lt;a href="https://arxiv.org/abs/2503.10622"&gt;Transformers without Normalization&lt;/a&gt;&lt;/p&gt; &lt;p&gt;A new AI paper by Yann LeCun (@ylecun), one of the fathers of Deep Learning, has been released, and it could bring a radical shift in the architecture of deep neural networks and LLMs.&lt;/p&gt; &lt;p&gt;The paper is called &lt;em&gt;&amp;quot;Transformers without Normalization&amp;quot;&lt;/em&gt; and introduces a surprisingly simple technique called Dynamic Tanh (DyT), which replaces traditional normalization layers (Layer Norm or RMSNorm) with a single operation:&lt;br /&gt; DyT(x) = tanh(αx)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T15:19:34+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jcqy6c</id>
     <title>We have Deep Research at home</title>
     <updated>2025-03-16T17:39:04+00:00</updated>
@@ -175,19 +149,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-16T17:39:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jdawqj</id>
-    <title>What is the difference between an AI agent and a background job calling LLM API?</title>
-    <updated>2025-03-17T11:58:44+00:00</updated>
-    <author>
-      <name>/u/superloser48</name>
-      <uri>https://old.reddit.com/user/superloser48</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi - I am a programmer and I use LLMs extensively for work. For coding and for data cleaning - I have found LLMs INSANELY helpful.&lt;/p&gt; &lt;p&gt;But I am struggling to understand the &lt;strong&gt;difference between using an AI agent vs calling the LLMs' API in a background job&lt;/strong&gt; (cron). My code currently runs in cron jobs and passes PDFs to LLMs' API to OCR for dirty PDFs. (eg. we have a lot of PDF submissions on our website).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This is not a loaded question or a diss on AI agents.&lt;/strong&gt; Would love it if someone could point what can be done differently in a AI agent vs a background job. I am curious if I can reduce my codebase size for data cleaning.&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/superloser48"&gt; /u/superloser48 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T11:58:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd0zpf</id>
@@ -203,17 +164,17 @@
     <published>2025-03-17T01:12:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jdfgx1</id>
-    <title>QwQ 32B appears on LMSYS Arena Leaderboard</title>
-    <updated>2025-03-17T15:32:48+00:00</updated>
+    <id>t3_1jdawqj</id>
+    <title>What is the difference between an AI agent and a background job calling LLM API?</title>
+    <updated>2025-03-17T11:58:44+00:00</updated>
     <author>
-      <name>/u/jpydych</name>
-      <uri>https://old.reddit.com/user/jpydych</uri>
+      <name>/u/superloser48</name>
+      <uri>https://old.reddit.com/user/superloser48</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"&gt; &lt;img alt="QwQ 32B appears on LMSYS Arena Leaderboard" src="https://preview.redd.it/5zj3vxe1r9pe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9766a91861bd2ecad6af7013d5f14d8d3610d132" title="QwQ 32B appears on LMSYS Arena Leaderboard" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jpydych"&gt; /u/jpydych &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/5zj3vxe1r9pe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi - I am a programmer and I use LLMs extensively for work. For coding and for data cleaning - I have found LLMs INSANELY helpful.&lt;/p&gt; &lt;p&gt;But I am struggling to understand the &lt;strong&gt;difference between using an AI agent vs calling the LLMs' API in a background job&lt;/strong&gt; (cron). My code currently runs in cron jobs and passes PDFs to LLMs' API to OCR for dirty PDFs. (eg. we have a lot of PDF submissions on our website).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This is not a loaded question or a diss on AI agents.&lt;/strong&gt; Would love it if someone could point what can be done differently in a AI agent vs a background job. I am curious if I can reduce my codebase size for data cleaning.&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/superloser48"&gt; /u/superloser48 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T15:32:48+00:00</published>
+    <published>2025-03-17T11:58:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jddh2e</id>
@@ -229,6 +190,19 @@
     <published>2025-03-17T14:07:31+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jdgnh4</id>
+    <title>Mistral Small 3.1 (24B)</title>
+    <updated>2025-03-17T16:20:23+00:00</updated>
+    <author>
+      <name>/u/xLionel775</name>
+      <uri>https://old.reddit.com/user/xLionel775</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnh4/mistral_small_31_24b/"&gt; &lt;img alt="Mistral Small 3.1 (24B)" src="https://external-preview.redd.it/UDZBQmD4AJb2vSY-B7oM2DhQ3zjGzTcUOviRMRcUKkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=122efd46018c04117aca71d80db3640d390428bd" title="Mistral Small 3.1 (24B)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/xLionel775"&gt; /u/xLionel775 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/news/mistral-small-3-1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnh4/mistral_small_31_24b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnh4/mistral_small_31_24b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T16:20:23+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jdfdqz</id>
     <title>open source coding agent refact</title>
     <updated>2025-03-17T15:29:13+00:00</updated>
@@ -240,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfdqz/open_source_coding_agent_refact/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T15:29:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdgnw5</id>
+    <title>Mistrall Small 3.1 released</title>
+    <updated>2025-03-17T16:20:51+00:00</updated>
+    <author>
+      <name>/u/Dirky_</name>
+      <uri>https://old.reddit.com/user/Dirky_</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnw5/mistrall_small_31_released/"&gt; &lt;img alt="Mistrall Small 3.1 released" src="https://external-preview.redd.it/UDZBQmD4AJb2vSY-B7oM2DhQ3zjGzTcUOviRMRcUKkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=122efd46018c04117aca71d80db3640d390428bd" title="Mistrall Small 3.1 released" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dirky_"&gt; /u/Dirky_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/fr/news/mistral-small-3-1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnw5/mistrall_small_31_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdgnw5/mistrall_small_31_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T16:20:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdfgx1</id>
+    <title>QwQ 32B appears on LMSYS Arena Leaderboard</title>
+    <updated>2025-03-17T15:32:48+00:00</updated>
+    <author>
+      <name>/u/jpydych</name>
+      <uri>https://old.reddit.com/user/jpydych</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"&gt; &lt;img alt="QwQ 32B appears on LMSYS Arena Leaderboard" src="https://preview.redd.it/5zj3vxe1r9pe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9766a91861bd2ecad6af7013d5f14d8d3610d132" title="QwQ 32B appears on LMSYS Arena Leaderboard" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jpydych"&gt; /u/jpydych &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/5zj3vxe1r9pe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdfgx1/qwq_32b_appears_on_lmsys_arena_leaderboard/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T15:32:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd616a</id>
