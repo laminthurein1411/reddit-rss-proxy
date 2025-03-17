@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-17T13:12:07+00:00</updated>
+  <updated>2025-03-17T13:28:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -45,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdc0hq/mathematics_for_machine_learning_417_page_pdf/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T12:58:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jd9zsr</id>
+    <title>UPDATE: Tool calling support for QwQ-32B using LangChain’s ChatOpenAI</title>
+    <updated>2025-03-17T11:03:00+00:00</updated>
+    <author>
+      <name>/u/lc19-</name>
+      <uri>https://old.reddit.com/user/lc19-</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;QwQ-32B Support&lt;/strong&gt; ✅&lt;/p&gt; &lt;p&gt;I've updated my repo with a new tutorial for tool calling support for QwQ-32B using LangChain’s ChatOpenAI (via OpenRouter) using both the Python and JavaScript/TypeScript version of my package (Note: LangChain's ChatOpenAI does not currently support tool calling for QwQ-32B).&lt;/p&gt; &lt;p&gt;I noticed OpenRouter's QwQ-32B API is a little unstable (likely due to model was only added about a week ago) and returning empty responses. So I have updated the package to keep looping until a non-empty response is returned. If you have previously downloaded the package, please update the package via &lt;code&gt;pip install --upgrade taot&lt;/code&gt; or &lt;code&gt;npm update taot-ts&lt;/code&gt;&lt;/p&gt; &lt;p&gt;You can also use the TAoT package for tool calling support for QwQ-32B on Nebius AI which uses LangChain's ChatOpenAI. Alternatively, you can also use Groq where their team have already provided tool calling support for QwQ-32B using LangChain's ChatGroq.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;OpenAI Agents SDK? Not Yet!&lt;/strong&gt; ❌&lt;/p&gt; &lt;p&gt;I checked out the OpenAI Agents SDK framework for tool calling support for non-OpenAI models (&lt;a href="https://openai.github.io/openai-agents-python/models/"&gt;https://openai.github.io/openai-agents-python/models/&lt;/a&gt;) and they don't support tool calling for DeepSeek-R1 (or any models available through OpenRouter) yet. &lt;strong&gt;So there you go!&lt;/strong&gt; 😉&lt;/p&gt; &lt;p&gt;Check it out my updates here: Python: &lt;a href="https://github.com/leockl/tool-ahead-of-time"&gt;https://github.com/leockl/tool-ahead-of-time&lt;/a&gt;&lt;/p&gt; &lt;p&gt;JavaScript/TypeScript: &lt;a href="https://github.com/leockl/tool-ahead-of-time-ts"&gt;https://github.com/leockl/tool-ahead-of-time-ts&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Please give my GitHub repos a star if this was helpful ⭐&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lc19-"&gt; /u/lc19- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T11:03:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd8v0i</id>
@@ -112,6 +125,19 @@
     <published>2025-03-17T09:27:53+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jd9ttx</id>
+    <title>PSA: c4ai-command-a-03-2025 seems to be trained for reasoning / "thinking"</title>
+    <updated>2025-03-17T10:53:07+00:00</updated>
+    <author>
+      <name>/u/CheatCodesOfLife</name>
+      <uri>https://old.reddit.com/user/CheatCodesOfLife</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just tested &lt;a href="https://huggingface.co/bartowski/CohereForAI_c4ai-command-a-03-2025-GGUF"&gt;c4ai-command-a-03-2025-GGUF&lt;/a&gt; Q4_K with this simple prompt (very crude, I'm sure there's a lot of room for improvement) system prompt:&lt;/p&gt; &lt;p&gt;&lt;code&gt;Think about your response within &amp;lt;think&amp;gt;&amp;lt;/think&amp;gt; tags before responding to the user. There's no need for structure or formatting, take as long as you need. When you're ready, write the final response outside the thinking tags. The user will only see the final response.&lt;/code&gt;&lt;/p&gt; &lt;p&gt;It even did the QwQ/R1-style reasoning with &amp;quot;wait...&amp;quot; within the tags, and it managed to solve a problem that no other local model I've tried could solve.&lt;/p&gt; &lt;p&gt;Without the system prompt, it just gave me the usual incorrect response that other models like Mistral-Large and QwQ provide.&lt;/p&gt; &lt;p&gt;Give it a try!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheatCodesOfLife"&gt; /u/CheatCodesOfLife &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T10:53:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jcxb9w</id>
     <title>R2R v3.5.0 Release Notes</title>
     <updated>2025-03-16T22:16:28+00:00</updated>
@@ -123,19 +149,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcxb9w/r2r_v350_release_notes/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-16T22:16:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jd9zsr</id>
-    <title>UPDATE: Tool calling support for QwQ-32B using LangChain’s ChatOpenAI</title>
-    <updated>2025-03-17T11:03:00+00:00</updated>
-    <author>
-      <name>/u/lc19-</name>
-      <uri>https://old.reddit.com/user/lc19-</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;QwQ-32B Support&lt;/strong&gt; ✅&lt;/p&gt; &lt;p&gt;I've updated my repo with a new tutorial for tool calling support for QwQ-32B using LangChain’s ChatOpenAI (via OpenRouter) using both the Python and JavaScript/TypeScript version of my package (Note: LangChain's ChatOpenAI does not currently support tool calling for QwQ-32B).&lt;/p&gt; &lt;p&gt;I noticed OpenRouter's QwQ-32B API is a little unstable (likely due to model was only added about a week ago) and returning empty responses. So I have updated the package to keep looping until a non-empty response is returned. If you have previously downloaded the package, please update the package via &lt;code&gt;pip install --upgrade taot&lt;/code&gt; or &lt;code&gt;npm update taot-ts&lt;/code&gt;&lt;/p&gt; &lt;p&gt;You can also use the TAoT package for tool calling support for QwQ-32B on Nebius AI which uses LangChain's ChatOpenAI. Alternatively, you can also use Groq where their team have already provided tool calling support for QwQ-32B using LangChain's ChatGroq.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;OpenAI Agents SDK? Not Yet!&lt;/strong&gt; ❌&lt;/p&gt; &lt;p&gt;I checked out the OpenAI Agents SDK framework for tool calling support for non-OpenAI models (&lt;a href="https://openai.github.io/openai-agents-python/models/"&gt;https://openai.github.io/openai-agents-python/models/&lt;/a&gt;) and they don't support tool calling for DeepSeek-R1 (or any models available through OpenRouter) yet. &lt;strong&gt;So there you go!&lt;/strong&gt; 😉&lt;/p&gt; &lt;p&gt;Check it out my updates here: Python: &lt;a href="https://github.com/leockl/tool-ahead-of-time"&gt;https://github.com/leockl/tool-ahead-of-time&lt;/a&gt;&lt;/p&gt; &lt;p&gt;JavaScript/TypeScript: &lt;a href="https://github.com/leockl/tool-ahead-of-time-ts"&gt;https://github.com/leockl/tool-ahead-of-time-ts&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Please give my GitHub repos a star if this was helpful ⭐&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lc19-"&gt; /u/lc19- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9zsr/update_tool_calling_support_for_qwq32b_using/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T11:03:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd7jll</id>
@@ -164,19 +177,6 @@
     <published>2025-03-17T00:57:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jd9ttx</id>
-    <title>PSA: c4ai-command-a-03-2025 seems to be trained for reasoning / "thinking"</title>
-    <updated>2025-03-17T10:53:07+00:00</updated>
-    <author>
-      <name>/u/CheatCodesOfLife</name>
-      <uri>https://old.reddit.com/user/CheatCodesOfLife</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just tested &lt;a href="https://huggingface.co/bartowski/CohereForAI_c4ai-command-a-03-2025-GGUF"&gt;c4ai-command-a-03-2025-GGUF&lt;/a&gt; Q4_K with this simple prompt (very crude, I'm sure there's a lot of room for improvement) system prompt:&lt;/p&gt; &lt;p&gt;&lt;code&gt;Think about your response within &amp;lt;think&amp;gt;&amp;lt;/think&amp;gt; tags before responding to the user. There's no need for structure or formatting, take as long as you need. When you're ready, write the final response outside the thinking tags. The user will only see the final response.&lt;/code&gt;&lt;/p&gt; &lt;p&gt;It even did the QwQ/R1-style reasoning with &amp;quot;wait...&amp;quot; within the tags, and it managed to solve a problem that no other local model I've tried could solve.&lt;/p&gt; &lt;p&gt;Without the system prompt, it just gave me the usual incorrect response that other models like Mistral-Large and QwQ provide.&lt;/p&gt; &lt;p&gt;Give it a try!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheatCodesOfLife"&gt; /u/CheatCodesOfLife &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd9ttx/psa_c4aicommanda032025_seems_to_be_trained_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T10:53:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jctquk</id>
     <title>Introducing Mochi, a finetuned version of Moshi.</title>
     <updated>2025-03-16T19:38:29+00:00</updated>
@@ -188,19 +188,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jctquk/introducing_mochi_a_finetuned_version_of_moshi/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-16T19:38:29+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jdawqj</id>
-    <title>What is the difference between an AI agent and a background job calling LLM API?</title>
-    <updated>2025-03-17T11:58:44+00:00</updated>
-    <author>
-      <name>/u/superloser48</name>
-      <uri>https://old.reddit.com/user/superloser48</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi - I am a programmer and I use LLMs extensively for work. For coding and for data cleaning - I have found LLMs INSANELY helpful.&lt;/p&gt; &lt;p&gt;But I am struggling to understand the &lt;strong&gt;difference between using an AI agent vs calling the LLMs' API in a background job&lt;/strong&gt; (cron). My code currently runs in cron jobs and passes PDFs to LLMs' API to OCR for dirty PDFs. (eg. we have a lot of PDF submissions on our website).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This is not a loaded question or a diss on AI agents.&lt;/strong&gt; Would love it if someone could point what can be done differently in a AI agent vs a background job. I am curious if I can reduce my codebase size for data cleaning.&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/superloser48"&gt; /u/superloser48 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T11:58:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jct1lk</id>
@@ -216,17 +203,17 @@
     <published>2025-03-16T19:08:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jcqy6c</id>
-    <title>We have Deep Research at home</title>
-    <updated>2025-03-16T17:39:04+00:00</updated>
+    <id>t3_1jdawqj</id>
+    <title>What is the difference between an AI agent and a background job calling LLM API?</title>
+    <updated>2025-03-17T11:58:44+00:00</updated>
     <author>
-      <name>/u/atineiatte</name>
-      <uri>https://old.reddit.com/user/atineiatte</uri>
+      <name>/u/superloser48</name>
+      <uri>https://old.reddit.com/user/superloser48</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"&gt; &lt;img alt="We have Deep Research at home" src="https://external-preview.redd.it/NA_JTAjwBAYLbzLjIgJ3Q_k4TmFsR5MWHCoiYKiIQJ8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ff9bd51d7c05f78cbad725a12ad69bc6ff6fe2ec" title="We have Deep Research at home" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/atineiatte"&gt; /u/atineiatte &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/atineiatte/deep-research-at-home"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi - I am a programmer and I use LLMs extensively for work. For coding and for data cleaning - I have found LLMs INSANELY helpful.&lt;/p&gt; &lt;p&gt;But I am struggling to understand the &lt;strong&gt;difference between using an AI agent vs calling the LLMs' API in a background job&lt;/strong&gt; (cron). My code currently runs in cron jobs and passes PDFs to LLMs' API to OCR for dirty PDFs. (eg. we have a lot of PDF submissions on our website).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This is not a loaded question or a diss on AI agents.&lt;/strong&gt; Would love it if someone could point what can be done differently in a AI agent vs a background job. I am curious if I can reduce my codebase size for data cleaning.&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/superloser48"&gt; /u/superloser48 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdawqj/what_is_the_difference_between_an_ai_agent_and_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-16T17:39:04+00:00</published>
+    <published>2025-03-17T11:58:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd8cw3</id>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jd8cw3/is_there_a_better_service_than_grok_for_nsfw/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T09:08:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jcqy6c</id>
+    <title>We have Deep Research at home</title>
+    <updated>2025-03-16T17:39:04+00:00</updated>
+    <author>
+      <name>/u/atineiatte</name>
+      <uri>https://old.reddit.com/user/atineiatte</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"&gt; &lt;img alt="We have Deep Research at home" src="https://external-preview.redd.it/NA_JTAjwBAYLbzLjIgJ3Q_k4TmFsR5MWHCoiYKiIQJ8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ff9bd51d7c05f78cbad725a12ad69bc6ff6fe2ec" title="We have Deep Research at home" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/atineiatte"&gt; /u/atineiatte &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/atineiatte/deep-research-at-home"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jcqy6c/we_have_deep_research_at_home/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-16T17:39:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1jd0zpf</id>
