@@ -2,63 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-18T01:34:13+00:00</updated>
+  <updated>2025-03-18T02:15:22+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jdpco3</id>
-    <title>Performance comparisons of QwQ-32B</title>
-    <updated>2025-03-17T22:10:15+00:00</updated>
-    <author>
-      <name>/u/mattgwwalker</name>
-      <uri>https://old.reddit.com/user/mattgwwalker</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdpco3/performance_comparisons_of_qwq32b/"&gt; &lt;img alt="Performance comparisons of QwQ-32B" src="https://preview.redd.it/6elg06gnkbpe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=73ee4b30212180372d30a5f3c902323b49817d84" title="Performance comparisons of QwQ-32B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking at self-hosting QwQ-32B for analysis of some private data, but in a real-time context rather than being able to batch process documents. Would LocalLlama mind critiquing my effort to measure performance?&lt;/p&gt; &lt;p&gt;I felt time to first token (TTFT, seconds) and output throughput (characters per second) were the primary worries.&lt;/p&gt; &lt;p&gt;The above image shows results for three of the setups I've looked at: * An A5000 GPU that we have locally. It's running a very heavily quantised model (IQ4_XS) on llama.cpp because the card only has 24GB of VRAM.&lt;br /&gt; * 4 x A10G GPUs (on an EC2 instance with a total of 96GB of VRAM). The instance type is g5.12xlarge. I tried two INT8 versions, one for llama.cpp and one for vLLM. * QwQ-32B on Fireworks.ai as a comparison to make me feel bad.&lt;/p&gt; &lt;p&gt;I was surprised to see that, for longer prompts, vLLM has a significant advantage over llama.cpp in terms of TTFT. Any ideas why? Is there something I misconfigured perhaps with llama.cpp?&lt;/p&gt; &lt;p&gt;I was also surprised that vLLM's output throughput drops so significantly at around prompt lengths of 10,000 characters. Again, any ideas why? Is there a configuration option I should look at?&lt;/p&gt; &lt;p&gt;I'd love to know how the new Mac Studios would perform in comparison. Should anyone feel like running this benchmark on their very new hardware I'd be very happy to clean up my code and share it.&lt;/p&gt; &lt;p&gt;The benchmark is a modified version of LLMPerf using the OpenAI interface. The prompt asks to stream lines of Shakespeare that are provided. The output is fixed at 100 characters in length.&lt;/p&gt; &lt;p&gt;Thanks in advance for your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mattgwwalker"&gt; /u/mattgwwalker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/6elg06gnkbpe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdpco3/performance_comparisons_of_qwq32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdpco3/performance_comparisons_of_qwq32b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T22:10:15+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jdsl15</id>
-    <title>8B Q7 or 7B Q8 on 8GB VRAM ?</title>
-    <updated>2025-03-18T00:36:16+00:00</updated>
-    <author>
-      <name>/u/cosmoschtroumpf</name>
-      <uri>https://old.reddit.com/user/cosmoschtroumpf</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, i kow that it's going to depend on lots of factors (what we mean by &amp;quot;good&amp;quot; and for what task, etc.)&lt;/p&gt; &lt;p&gt;Assuming two similarly performing models for a given task. For example (might be a bad example) Deepseek-R1-Distill-Qwen-7B and Deepseek-R1-Distill-Llama-8B.&lt;/p&gt; &lt;p&gt;Qwen can run on my 8GB Nvidia 1080 at Q8. Llama fits at Q7. Which one may be &amp;quot;better&amp;quot;?&lt;/p&gt; &lt;p&gt;And what about Deepseek-R1-Distill-Qwen-14B-Q4 vs same Qwen-7B-Q8 ?&lt;/p&gt; &lt;p&gt;I'm what case is Q more important that model size ?&lt;/p&gt; &lt;p&gt;All have roughly the same memory usage and tokens/s.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cosmoschtroumpf"&gt; /u/cosmoschtroumpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdsl15/8b_q7_or_7b_q8_on_8gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdsl15/8b_q7_or_7b_q8_on_8gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdsl15/8b_q7_or_7b_q8_on_8gb_vram/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-18T00:36:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jddh2e</id>
-    <title>Do any of you have a "hidden gem" LLM that you use daily?</title>
-    <updated>2025-03-17T14:07:31+00:00</updated>
-    <author>
-      <name>/u/ForsookComparison</name>
-      <uri>https://old.reddit.com/user/ForsookComparison</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This was common back in the Llama2 days when fine-tunes often out-performed the popular models. I don't see it quite as often, so I figured I'd ask.&lt;/p&gt; &lt;p&gt;For every major model (Mistral, Llama, Qwen, etc..) I'll try and download one community version of it to test out. Sometimes they're about &lt;em&gt;as&lt;/em&gt; good, sometimes they're slightly worse. Rarely are they better.&lt;/p&gt; &lt;p&gt;I'd say the &amp;quot;oddest&amp;quot; one I have is IBM-Granite-3.2-2B . Not exactly a community/small-time model, but it's managed to replace Llama 3B in certain use-cases for me. It performs exactly as well but is a fair bit smaller.&lt;/p&gt; &lt;p&gt;Are you using anything that you'd consider un/less common?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ForsookComparison"&gt; /u/ForsookComparison &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jddh2e/do_any_of_you_have_a_hidden_gem_llm_that_you_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jddh2e/do_any_of_you_have_a_hidden_gem_llm_that_you_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jddh2e/do_any_of_you_have_a_hidden_gem_llm_that_you_use/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T14:07:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jdqqq4</id>
-    <title>Cohere Command-A on LMSYS -- 13th place</title>
-    <updated>2025-03-17T23:11:08+00:00</updated>
-    <author>
-      <name>/u/Confident_Proof4707</name>
-      <uri>https://old.reddit.com/user/Confident_Proof4707</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"&gt; &lt;img alt="Cohere Command-A on LMSYS -- 13th place" src="https://preview.redd.it/xf6tmhng0cpe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c097a63b9849bbdd01e284112894b318f5ac165b" title="Cohere Command-A on LMSYS -- 13th place" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Confident_Proof4707"&gt; /u/Confident_Proof4707 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/xf6tmhng0cpe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T23:11:08+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jdjohr</id>
     <title>Charting and Navigating Hugging Face's Model Atlas</title>
@@ -97,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdnjq9/improved_realtime_console_with_support_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T20:55:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jduff4</id>
+    <title>Is it just me or is LG's EXAONE 2.4b crazy good?</title>
+    <updated>2025-03-18T02:07:07+00:00</updated>
+    <author>
+      <name>/u/dp3471</name>
+      <uri>https://old.reddit.com/user/dp3471</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Take a look at these benchmarks: &lt;a href="https://github.com/LG-AI-EXAONE/EXAONE-Deep"&gt;https://github.com/LG-AI-EXAONE/EXAONE-Deep&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I mean - you're telling me that a 2.4b model (46.6) outperforms gemma3 27b (29.7) on live code bench?&lt;/p&gt; &lt;p&gt;I understand that this is a reasoning model (and gemma3 was not technically trained for coding) - but how did they do such a good job condensing the size?&lt;/p&gt; &lt;p&gt;The 2.4b also outperforms gemma3 27b on GPQA diamond by 11.9 points&lt;/p&gt; &lt;p&gt;its 11.25x smaller.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dp3471"&gt; /u/dp3471 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jduff4/is_it_just_me_or_is_lgs_exaone_24b_crazy_good/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jduff4/is_it_just_me_or_is_lgs_exaone_24b_crazy_good/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jduff4/is_it_just_me_or_is_lgs_exaone_24b_crazy_good/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-18T02:07:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1jcx69i</id>
@@ -138,19 +99,6 @@
     <published>2025-03-17T15:29:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jdf5ag</id>
-    <title>New Paper by Yann LeCun (META) - Transformers without Normalization</title>
-    <updated>2025-03-17T15:19:34+00:00</updated>
-    <author>
-      <name>/u/ApprehensiveAd3629</name>
-      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Source: &lt;a href="https://arxiv.org/abs/2503.10622"&gt;Transformers without Normalization&lt;/a&gt;&lt;/p&gt; &lt;p&gt;A new AI paper by Yann LeCun (@ylecun), one of the fathers of Deep Learning, has been released, and it could bring a radical shift in the architecture of deep neural networks and LLMs.&lt;/p&gt; &lt;p&gt;The paper is called &lt;em&gt;&amp;quot;Transformers without Normalization&amp;quot;&lt;/em&gt; and introduces a surprisingly simple technique called Dynamic Tanh (DyT), which replaces traditional normalization layers (Layer Norm or RMSNorm) with a single operation:&lt;br /&gt; DyT(x) = tanh(αx)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-17T15:19:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jdkir1</id>
     <title>Gemma 3 Text Finally working with MLX</title>
     <updated>2025-03-17T18:53:50+00:00</updated>
@@ -175,6 +123,45 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdrovh/llm_chess_tournament_singleelimination_includes/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T23:54:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdqqq4</id>
+    <title>Cohere Command-A on LMSYS -- 13th place</title>
+    <updated>2025-03-17T23:11:08+00:00</updated>
+    <author>
+      <name>/u/Confident_Proof4707</name>
+      <uri>https://old.reddit.com/user/Confident_Proof4707</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"&gt; &lt;img alt="Cohere Command-A on LMSYS -- 13th place" src="https://preview.redd.it/xf6tmhng0cpe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c097a63b9849bbdd01e284112894b318f5ac165b" title="Cohere Command-A on LMSYS -- 13th place" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Confident_Proof4707"&gt; /u/Confident_Proof4707 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/xf6tmhng0cpe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdqqq4/cohere_commanda_on_lmsys_13th_place/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T23:11:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdf5ag</id>
+    <title>New Paper by Yann LeCun (META) - Transformers without Normalization</title>
+    <updated>2025-03-17T15:19:34+00:00</updated>
+    <author>
+      <name>/u/ApprehensiveAd3629</name>
+      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Source: &lt;a href="https://arxiv.org/abs/2503.10622"&gt;Transformers without Normalization&lt;/a&gt;&lt;/p&gt; &lt;p&gt;A new AI paper by Yann LeCun (@ylecun), one of the fathers of Deep Learning, has been released, and it could bring a radical shift in the architecture of deep neural networks and LLMs.&lt;/p&gt; &lt;p&gt;The paper is called &lt;em&gt;&amp;quot;Transformers without Normalization&amp;quot;&lt;/em&gt; and introduces a surprisingly simple technique called Dynamic Tanh (DyT), which replaces traditional normalization layers (Layer Norm or RMSNorm) with a single operation:&lt;br /&gt; DyT(x) = tanh(αx)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdf5ag/new_paper_by_yann_lecun_meta_transformers_without/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-17T15:19:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdtv3l</id>
+    <title>Gemini Coder lets you initialize multiple web chats hands-free so you can compare responses</title>
+    <updated>2025-03-18T01:39:04+00:00</updated>
+    <author>
+      <name>/u/robertpiosik</name>
+      <uri>https://old.reddit.com/user/robertpiosik</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdtv3l/gemini_coder_lets_you_initialize_multiple_web/"&gt; &lt;img alt="Gemini Coder lets you initialize multiple web chats hands-free so you can compare responses" src="https://external-preview.redd.it/M2VzYXptejJyY3BlMVfz1_gV3KrkqfgOs1t-8su9tg4fAbmz1WDAj_ufXzb_.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=93df2743a06d2f34c237709ea7b9694946d61d8b" title="Gemini Coder lets you initialize multiple web chats hands-free so you can compare responses" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/robertpiosik"&gt; /u/robertpiosik &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/x6ysfwy2rcpe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdtv3l/gemini_coder_lets_you_initialize_multiple_web/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdtv3l/gemini_coder_lets_you_initialize_multiple_web/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-18T01:39:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1jdc0hq</id>
@@ -216,6 +203,19 @@
     <published>2025-03-17T15:32:48+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jdu2kl</id>
+    <title>LG releases Exaone Deep Thinking Model</title>
+    <updated>2025-03-18T01:49:17+00:00</updated>
+    <author>
+      <name>/u/unemployed_capital</name>
+      <uri>https://old.reddit.com/user/unemployed_capital</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdu2kl/lg_releases_exaone_deep_thinking_model/"&gt; &lt;img alt="LG releases Exaone Deep Thinking Model" src="https://external-preview.redd.it/Xzc7CaAUyXww2X_fqYFnasfbsy1Ttn8iznYPzjG7T8Q.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5dea72509723e72da35b7be603406680827841bb" title="LG releases Exaone Deep Thinking Model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/unemployed_capital"&gt; /u/unemployed_capital &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/LGAI-EXAONE/exaone-deep-67d119918816ec6efa79a4aa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdu2kl/lg_releases_exaone_deep_thinking_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdu2kl/lg_releases_exaone_deep_thinking_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-18T01:49:17+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jd9xjj</id>
     <title>Gemma 3 is now available for free on HuggingChat!</title>
     <updated>2025-03-17T10:59:36+00:00</updated>
@@ -255,19 +255,6 @@
     <published>2025-03-17T22:29:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jdt29q</id>
-    <title>LG has released their new reasoning models EXAONE-Deep</title>
-    <updated>2025-03-18T00:59:59+00:00</updated>
-    <author>
-      <name>/u/remixer_dec</name>
-      <uri>https://old.reddit.com/user/remixer_dec</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt; &lt;img alt="LG has released their new reasoning models EXAONE-Deep" src="https://b.thumbs.redditmedia.com/lXcocC3WrsvsaYixAdXVzQqh6xX0Tav-ZRP20RDNdvw.jpg" title="LG has released their new reasoning models EXAONE-Deep" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;EXAONE reasoning model series of 2.4B, 7.8B, and 32B, optimized for reasoning tasks including math and coding&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;We introduce EXAONE Deep, which exhibits superior capabilities in various reasoning tasks including math and coding benchmarks, ranging from 2.4B to 32B parameters developed and released by LG AI Research. Evaluation results show that 1) EXAONE Deep 2.4B outperforms other models of comparable size, 2) EXAONE Deep 7.8B outperforms not only open-weight models of comparable scale but also a proprietary reasoning model OpenAI o1-mini, and 3) EXAONE Deep 32B demonstrates competitive performance against leading open-weight models.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://www.lgresearch.ai/news/view?seq=543"&gt;Blog post&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/collections/LGAI-EXAONE/exaone-deep-67d119918816ec6efa79a4aa"&gt;HF collection&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://arxiv.org/abs/2503.12524"&gt;Arxiv paper&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/LG-AI-EXAONE/EXAONE-Deep"&gt;Github repo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The models are licensed under EXAONE AI Model License Agreement 1.1 - NC&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/64raac7jpcpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e7c4f866c5cbdcace44f4c139efcb1c7366cd952"&gt;https://preview.redd.it/64raac7jpcpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e7c4f866c5cbdcace44f4c139efcb1c7366cd952&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;sup&gt;P.S. I made a bot that monitors fresh public releases from large companies and research labs and posts them in a&lt;/sup&gt; &lt;a href="https://remixer-dec.com/genaimon"&gt;&lt;sup&gt;tg channel&lt;/sup&gt;&lt;/a&gt;&lt;sup&gt;, feel free to join.&lt;/sup&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remixer_dec"&gt; /u/remixer_dec &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-18T00:59:59+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jdgnh4</id>
     <title>Mistral Small 3.1 (24B)</title>
     <updated>2025-03-17T16:20:23+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdaq7x/3x_rtx_5090_watercooled_in_one_desktop/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-17T11:48:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdt29q</id>
+    <title>LG has released their new reasoning models EXAONE-Deep</title>
+    <updated>2025-03-18T00:59:59+00:00</updated>
+    <author>
+      <name>/u/remixer_dec</name>
+      <uri>https://old.reddit.com/user/remixer_dec</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt; &lt;img alt="LG has released their new reasoning models EXAONE-Deep" src="https://b.thumbs.redditmedia.com/lXcocC3WrsvsaYixAdXVzQqh6xX0Tav-ZRP20RDNdvw.jpg" title="LG has released their new reasoning models EXAONE-Deep" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;EXAONE reasoning model series of 2.4B, 7.8B, and 32B, optimized for reasoning tasks including math and coding&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;We introduce EXAONE Deep, which exhibits superior capabilities in various reasoning tasks including math and coding benchmarks, ranging from 2.4B to 32B parameters developed and released by LG AI Research. Evaluation results show that 1) EXAONE Deep 2.4B outperforms other models of comparable size, 2) EXAONE Deep 7.8B outperforms not only open-weight models of comparable scale but also a proprietary reasoning model OpenAI o1-mini, and 3) EXAONE Deep 32B demonstrates competitive performance against leading open-weight models.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://www.lgresearch.ai/news/view?seq=543"&gt;Blog post&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/collections/LGAI-EXAONE/exaone-deep-67d119918816ec6efa79a4aa"&gt;HF collection&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://arxiv.org/abs/2503.12524"&gt;Arxiv paper&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/LG-AI-EXAONE/EXAONE-Deep"&gt;Github repo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The models are licensed under EXAONE AI Model License Agreement 1.1 - NC&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/64raac7jpcpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e7c4f866c5cbdcace44f4c139efcb1c7366cd952"&gt;https://preview.redd.it/64raac7jpcpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e7c4f866c5cbdcace44f4c139efcb1c7366cd952&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;sup&gt;P.S. I made a bot that monitors fresh public releases from large companies and research labs and posts them in a&lt;/sup&gt; &lt;a href="https://remixer-dec.com/genaimon"&gt;&lt;sup&gt;tg channel&lt;/sup&gt;&lt;/a&gt;&lt;sup&gt;, feel free to join.&lt;/sup&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remixer_dec"&gt; /u/remixer_dec &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jdt29q/lg_has_released_their_new_reasoning_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-18T00:59:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1jdgqcj</id>
