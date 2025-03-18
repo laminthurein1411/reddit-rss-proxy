@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-18T20:35:23+00:00</updated>
+  <updated>2025-03-18T20:48:50+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -106,7 +106,7 @@
       <name>/u/Admirable-Star7088</name>
       <uri>https://old.reddit.com/user/Admirable-Star7088</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When I was going to download Gemma 3 for Ollama, I could not find a Q5_K_M version. This is my favorite quant because it's the smallest quant possible with no noticeable quality loss (in my experience).&lt;/p&gt; &lt;p&gt;So, instead of downloading, I was doing some quick research how to convert my own GGUF file (&lt;strong&gt;google_gemma-3-12b-it-Q5_K_M.gguf&lt;/strong&gt;) and my mmproj file (&lt;strong&gt;mmproj-google_gemma-3-12b-it-f32.gguf&lt;/strong&gt;) to a format that I can run in Ollama. (these GGUFs are downloaded from &lt;a href="https://huggingface.co/bartowski/google_gemma-3-12b-it-GGUF"&gt;Bartowski&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;After successfully converting, the model works fine at first and it responds to text, but when I send it an image and ask it to describe it, it won't respond. I assume there is some problem with the mmproj file? Here is my Modelfile:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ./google_gemma-3-12b-it-Q5_K_M.gguf FROM ./mmproj-google_gemma-3-12b-it-f32.gguf PARAMETER temperature 1 PARAMETER top_k 64 PARAMETER top_p 0.95 PARAMETER min_p 0.0 PARAMETER num_ctx 8192 PARAMETER stop &amp;quot;&amp;lt;end_of_turn&amp;gt;&amp;quot; TEMPLATE &amp;quot;&amp;quot;&amp;quot; {{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 }} {{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ if $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ .Content }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- end }} {{- end }} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm an amateur with Ollama, I have probably just made a silly mistake or missed some step. Thanks in advance to anyone who can help out!&lt;/p&gt; &lt;p&gt;p.s, I'm using Open WebUI as front-end.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Admirable-Star7088"&gt; /u/Admirable-Star7088 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;EDIT: Solved, read comment to this post.&lt;/h1&gt; &lt;p&gt;When I was going to download Gemma 3 for Ollama, I could not find a Q5_K_M version. This is my favorite quant because it's the smallest quant possible with no noticeable quality loss (in my experience).&lt;/p&gt; &lt;p&gt;So, instead of downloading, I was doing some quick research how to convert my own GGUF file (&lt;strong&gt;google_gemma-3-12b-it-Q5_K_M.gguf&lt;/strong&gt;) and my mmproj file (&lt;strong&gt;mmproj-google_gemma-3-12b-it-f32.gguf&lt;/strong&gt;) to a format that I can run in Ollama. (these GGUFs are downloaded from &lt;a href="https://huggingface.co/bartowski/google_gemma-3-12b-it-GGUF"&gt;Bartowski&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;After successfully converting, the model works fine at first and it responds to text, but when I send it an image and ask it to describe it, it won't respond. I assume there is some problem with the mmproj file? Here is my Modelfile:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ./google_gemma-3-12b-it-Q5_K_M.gguf FROM ./mmproj-google_gemma-3-12b-it-f32.gguf PARAMETER temperature 1 PARAMETER top_k 64 PARAMETER top_p 0.95 PARAMETER min_p 0.0 PARAMETER num_ctx 8192 PARAMETER stop &amp;quot;&amp;lt;end_of_turn&amp;gt;&amp;quot; TEMPLATE &amp;quot;&amp;quot;&amp;quot; {{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 }} {{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ if $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ .Content }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- end }} {{- end }} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm an amateur with Ollama, I have probably just made a silly mistake or missed some step. Thanks in advance to anyone who can help out!&lt;/p&gt; &lt;p&gt;p.s, I'm using Open WebUI as front-end.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Admirable-Star7088"&gt; /u/Admirable-Star7088 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-17T18:49:33+00:00</published>
@@ -307,19 +307,6 @@
     <published>2025-03-18T10:10:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1je5u77</id>
-    <title>Example running Gemma 3 locally for OCR using Ollama</title>
-    <updated>2025-03-18T14:09:48+00:00</updated>
-    <author>
-      <name>/u/Elegant-Army-8888</name>
-      <uri>https://old.reddit.com/user/Elegant-Army-8888</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Google DeepMind has been cooking lately, while everyone has been focusing on the Gemini 2.0 Flash native image generation release, Gemma 3 is really a nifty little tool for developers&lt;/p&gt; &lt;p&gt;I build this demo python app in a couple of hours with Claude 3.7 in &lt;a href="/u/cursor_ai"&gt;u/cursor_ai&lt;/a&gt; showcasing that.&lt;br /&gt; The app uses Streamlit for the UI, Ollama as the backend running Gemma 3 vision locally, PIL for image processing, and pdf2image for PDF support.&lt;/p&gt; &lt;p&gt;And I can run it all locally on my 3 year old Macbook Pro. Takes about 30 seconds per image, but that's ok by me. If you have more than 32 gb of memory, and an RTX or M4 i'm sure it's even faster.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/adspiceprospice/localOCR"&gt;https://github.com/adspiceprospice/localOCR&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Elegant-Army-8888"&gt; /u/Elegant-Army-8888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-18T14:09:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jebv52</id>
     <title>PrivateLLMLens updated (zero web server single page HTML file)</title>
     <updated>2025-03-18T18:21:26+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jebv52/privatellmlens_updated_zero_web_server_single/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-18T18:21:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1je5u77</id>
+    <title>Example running Gemma 3 locally for OCR using Ollama</title>
+    <updated>2025-03-18T14:09:48+00:00</updated>
+    <author>
+      <name>/u/Elegant-Army-8888</name>
+      <uri>https://old.reddit.com/user/Elegant-Army-8888</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Google DeepMind has been cooking lately, while everyone has been focusing on the Gemini 2.0 Flash native image generation release, Gemma 3 is really a nifty little tool for developers&lt;/p&gt; &lt;p&gt;I build this demo python app in a couple of hours with Claude 3.7 in &lt;a href="/u/cursor_ai"&gt;u/cursor_ai&lt;/a&gt; showcasing that.&lt;br /&gt; The app uses Streamlit for the UI, Ollama as the backend running Gemma 3 vision locally, PIL for image processing, and pdf2image for PDF support.&lt;/p&gt; &lt;p&gt;And I can run it all locally on my 3 year old Macbook Pro. Takes about 30 seconds per image, but that's ok by me. If you have more than 32 gb of memory, and an RTX or M4 i'm sure it's even faster.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/adspiceprospice/localOCR"&gt;https://github.com/adspiceprospice/localOCR&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Elegant-Army-8888"&gt; /u/Elegant-Army-8888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1je5u77/example_running_gemma_3_locally_for_ocr_using/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-18T14:09:48+00:00</published>
   </entry>
 </feed>
