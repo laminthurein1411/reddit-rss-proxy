@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-19T15:49:01+00:00</updated>
+  <updated>2025-03-19T16:07:06+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jezrkg</id>
-    <title>My Local Llama's</title>
-    <updated>2025-03-19T15:33:13+00:00</updated>
-    <author>
-      <name>/u/getfitdotus</name>
-      <uri>https://old.reddit.com/user/getfitdotus</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt; &lt;img alt="My Local Llama's" src="https://b.thumbs.redditmedia.com/rWpvztVJ1vqHh62Svkwv_pRGX7IgMuLyn1_XIpZuoss.jpg" title="My Local Llama's" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just some local lab AI p0rn.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Top&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ThreadRipper&lt;/li&gt; &lt;li&gt;Quad 3090's&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Bottom&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Threadripper&lt;/li&gt; &lt;li&gt;Quad ada a6000's&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/9j6utjw31ope1.jpg?width=4284&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=062eddb550a725843ce39be8a721adfd8a97bbd5"&gt;https://preview.redd.it/9j6utjw31ope1.jpg?width=4284&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=062eddb550a725843ce39be8a721adfd8a97bbd5&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/getfitdotus"&gt; /u/getfitdotus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-19T15:33:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jewrar</id>
-    <title>Dockerfile for deploying Qwen QwQ 32B on A10Gs , L4s or L40S</title>
-    <updated>2025-03-19T13:18:07+00:00</updated>
-    <author>
-      <name>/u/tempNull</name>
-      <uri>https://old.reddit.com/user/tempNull</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Adding a Dockerfile here that can be used to deploy Qwen on any machine which has a combined GPU RAM of ~80GBs. The below Dockerfile is for multi-GPU L4 instances as L4s are the cheapest ones on AWS, feel free to make changes to try it on L40S, A10Gs, A100s etc. Soon will follow up with metrics around single request tokens / sec and throughput.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;# Dockerfile for Qwen QwQ 32B FROM vllm/vllm-openai:latest # Enable HF Hub Transfer for faster downloads ENV HF_HUB_ENABLE_HF_TRANSFER 1 # Expose port 80 EXPOSE 80 # Entrypoint with API key ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;-m&amp;quot;, &amp;quot;vllm.entrypoints.openai.api_server&amp;quot;, \ # name of the model &amp;quot;--model&amp;quot;, &amp;quot;Qwen/QwQ-32B&amp;quot;, \ # set the data type to bfloat16 - requires ~1400GB GPU memory &amp;quot;--dtype&amp;quot;, &amp;quot;bfloat16&amp;quot;, \ &amp;quot;--trust-remote-code&amp;quot;, \ # below runs the model on 4 GPUs &amp;quot;--tensor-parallel-size&amp;quot;,&amp;quot;4&amp;quot;, \ # Maximum number of tokens, can lead to OOM if overestimated &amp;quot;--max-model-len&amp;quot;, &amp;quot;8192&amp;quot;, \ # Port on which to run the vLLM server &amp;quot;--port&amp;quot;, &amp;quot;80&amp;quot;, \ # CPU offload in GB. Need this as 8 H100s are not sufficient &amp;quot;--cpu-offload-gb&amp;quot;, &amp;quot;80&amp;quot;, \ &amp;quot;--gpu-memory-utilization&amp;quot;, &amp;quot;0.95&amp;quot;, \ # API key for authentication to the server stored in Tensorfuse secrets &amp;quot;--api-key&amp;quot;, &amp;quot;${VLLM_API_KEY}&amp;quot;] &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;You can use the following commands to build and run the above Dockerfile.&lt;/p&gt; &lt;p&gt;&lt;code&gt;docker build -t qwen-qwq-32b .&lt;/code&gt;&lt;/p&gt; &lt;p&gt;followed by&lt;/p&gt; &lt;p&gt;&lt;code&gt;docker run --gpus all --shm-size=2g -p 80:80 -e VLLM_API_KEY=YOUR_API_KEY qwen-qwq-32b&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Originally posted here: -&lt;br /&gt; &lt;a href="https://tensorfuse.io/docs/guides/reasoning/qwen_qwq"&gt;https://tensorfuse.io/docs/guides/reasoning/qwen_qwq&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tempNull"&gt; /u/tempNull &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jewrar/dockerfile_for_deploying_qwen_qwq_32b_on_a10gs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jewrar/dockerfile_for_deploying_qwen_qwq_32b_on_a10gs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jewrar/dockerfile_for_deploying_qwen_qwq_32b_on_a10gs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-19T13:18:07+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jehxiw</id>
     <title>LLAMA 4 in April?!?!?!?</title>
@@ -47,17 +21,17 @@
     <published>2025-03-18T22:31:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jezoa8</id>
-    <title>I built an Opensource Hybrid Reasoning LLM</title>
-    <updated>2025-03-19T15:29:31+00:00</updated>
+    <id>t3_1jexlrd</id>
+    <title>QwQ-32B draft models?</title>
+    <updated>2025-03-19T13:58:51+00:00</updated>
     <author>
-      <name>/u/Altruistic-Tea-5612</name>
-      <uri>https://old.reddit.com/user/Altruistic-Tea-5612</uri>
+      <name>/u/ipechman</name>
+      <uri>https://old.reddit.com/user/ipechman</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt; &lt;img alt="I built an Opensource Hybrid Reasoning LLM" src="https://external-preview.redd.it/g3zlUvCeapXPuEZ6nIvL25M9kJ9WCIOgMAou5ESCEbo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f3230cab2698ea7f0b474a9ed4cde18b5d626000" title="I built an Opensource Hybrid Reasoning LLM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I built this model called Apollo which is a Hybrid reasoner built based on Qwen using mergekit and this is an experiment to answer a question in my mind can we build a LLM model which can answer simple questions quicker and think for a while to answer complex questions and I attached eval numbers here and you can find gguf in attached repo and I recommend people here to try this model and let me know your feedback&lt;/p&gt; &lt;p&gt;repo: &lt;a href="https://huggingface.co/rootxhacker/Apollo-v3-32B"&gt;https://huggingface.co/rootxhacker/Apollo-v3-32B&lt;/a&gt;&lt;br /&gt; gguf: &lt;a href="https://huggingface.co/mradermacher/Apollo-v3-32B-GGUF"&gt;https://huggingface.co/mradermacher/Apollo-v3-32B-GGUF&lt;/a&gt;&lt;br /&gt; blog: &lt;a href="https://medium.com/@harishhacker3010/making-opensource-hybrid-reasoner-llm-to-build-better-rags-4364418ef7c4"&gt;https://medium.com/@harishhacker3010/making-opensource-hybrid-reasoner-llm-to-build-better-rags-4364418ef7c4&lt;/a&gt;&lt;br /&gt; I found this model this good for building RAGs and I use this for RAG&lt;/p&gt; &lt;p&gt;if anyone over here found useful and ran eval against benchmarks do definitely share to me I will credit your work and add them into article&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/yenfdompynpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8a82c07f17b2e36173bbba01168194326a1ff295"&gt;https://preview.redd.it/yenfdompynpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8a82c07f17b2e36173bbba01168194326a1ff295&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Altruistic-Tea-5612"&gt; /u/Altruistic-Tea-5612 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Anyone knows of a good draft model for QwQ-32b? I’ve been trying to find good ones, less than 1.5b but no luck so far!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ipechman"&gt; /u/ipechman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jexlrd/qwq32b_draft_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jexlrd/qwq32b_draft_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jexlrd/qwq32b_draft_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-19T15:29:31+00:00</published>
+    <published>2025-03-19T13:58:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1jeh199</id>
@@ -97,6 +71,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jef8pr/llama33nemotronsuper49bv1_benchmarks/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-18T20:37:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jezoa8</id>
+    <title>I built an Opensource Hybrid Reasoning LLM</title>
+    <updated>2025-03-19T15:29:31+00:00</updated>
+    <author>
+      <name>/u/Altruistic-Tea-5612</name>
+      <uri>https://old.reddit.com/user/Altruistic-Tea-5612</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt; &lt;img alt="I built an Opensource Hybrid Reasoning LLM" src="https://external-preview.redd.it/g3zlUvCeapXPuEZ6nIvL25M9kJ9WCIOgMAou5ESCEbo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f3230cab2698ea7f0b474a9ed4cde18b5d626000" title="I built an Opensource Hybrid Reasoning LLM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I built this model called Apollo which is a Hybrid reasoner built based on Qwen using mergekit and this is an experiment to answer a question in my mind can we build a LLM model which can answer simple questions quicker and think for a while to answer complex questions and I attached eval numbers here and you can find gguf in attached repo and I recommend people here to try this model and let me know your feedback&lt;/p&gt; &lt;p&gt;repo: &lt;a href="https://huggingface.co/rootxhacker/Apollo-v3-32B"&gt;https://huggingface.co/rootxhacker/Apollo-v3-32B&lt;/a&gt;&lt;br /&gt; gguf: &lt;a href="https://huggingface.co/mradermacher/Apollo-v3-32B-GGUF"&gt;https://huggingface.co/mradermacher/Apollo-v3-32B-GGUF&lt;/a&gt;&lt;br /&gt; blog: &lt;a href="https://medium.com/@harishhacker3010/making-opensource-hybrid-reasoner-llm-to-build-better-rags-4364418ef7c4"&gt;https://medium.com/@harishhacker3010/making-opensource-hybrid-reasoner-llm-to-build-better-rags-4364418ef7c4&lt;/a&gt;&lt;br /&gt; I found this model this good for building RAGs and I use this for RAG&lt;/p&gt; &lt;p&gt;if anyone over here found useful and ran eval against benchmarks do definitely share to me I will credit your work and add them into article&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/yenfdompynpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8a82c07f17b2e36173bbba01168194326a1ff295"&gt;https://preview.redd.it/yenfdompynpe1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8a82c07f17b2e36173bbba01168194326a1ff295&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Altruistic-Tea-5612"&gt; /u/Altruistic-Tea-5612 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jezoa8/i_built_an_opensource_hybrid_reasoning_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-19T15:29:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jezrkg</id>
+    <title>My Local Llama's</title>
+    <updated>2025-03-19T15:33:13+00:00</updated>
+    <author>
+      <name>/u/getfitdotus</name>
+      <uri>https://old.reddit.com/user/getfitdotus</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt; &lt;img alt="My Local Llama's" src="https://b.thumbs.redditmedia.com/rWpvztVJ1vqHh62Svkwv_pRGX7IgMuLyn1_XIpZuoss.jpg" title="My Local Llama's" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just some local lab AI p0rn.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Top&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;ThreadRipper&lt;/li&gt; &lt;li&gt;Quad 3090's&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Bottom&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Threadripper&lt;/li&gt; &lt;li&gt;Quad ada a6000's&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/9j6utjw31ope1.jpg?width=4284&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=062eddb550a725843ce39be8a721adfd8a97bbd5"&gt;https://preview.redd.it/9j6utjw31ope1.jpg?width=4284&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=062eddb550a725843ce39be8a721adfd8a97bbd5&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/getfitdotus"&gt; /u/getfitdotus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jezrkg/my_local_llamas/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-19T15:33:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1jedtdx</id>
@@ -229,19 +229,6 @@
     <published>2025-03-19T06:43:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jez456</id>
-    <title>KBLaM by microsoft, This looks interesting</title>
-    <updated>2025-03-19T15:05:42+00:00</updated>
-    <author>
-      <name>/u/AryanEmbered</name>
-      <uri>https://old.reddit.com/user/AryanEmbered</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.microsoft.com/en-us/research/blog/introducing-kblam-bringing-plug-and-play-external-knowledge-to-llms/"&gt;https://www.microsoft.com/en-us/research/blog/introducing-kblam-bringing-plug-and-play-external-knowledge-to-llms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Anyone more knowledgeable, please enlighten us&lt;/p&gt; &lt;p&gt;in what contexts can it replace rag?&lt;/p&gt; &lt;p&gt;I genuinely believe rag getting solved is the next big unlock. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-19T15:05:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jezj71</id>
     <title>New open-source model for transpiling PyTorch to Triton outperforms DeepSeek-R1 and OpenAI o1 on kernelbench - made with reinforcement fine-tuning</title>
     <updated>2025-03-19T15:23:26+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jezj71/new_opensource_model_for_transpiling_pytorch_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-19T15:23:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jez456</id>
+    <title>KBLaM by microsoft, This looks interesting</title>
+    <updated>2025-03-19T15:05:42+00:00</updated>
+    <author>
+      <name>/u/AryanEmbered</name>
+      <uri>https://old.reddit.com/user/AryanEmbered</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.microsoft.com/en-us/research/blog/introducing-kblam-bringing-plug-and-play-external-knowledge-to-llms/"&gt;https://www.microsoft.com/en-us/research/blog/introducing-kblam-bringing-plug-and-play-external-knowledge-to-llms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Anyone more knowledgeable, please enlighten us&lt;/p&gt; &lt;p&gt;in what contexts can it replace rag?&lt;/p&gt; &lt;p&gt;I genuinely believe rag getting solved is the next big unlock. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jez456/kblam_by_microsoft_this_looks_interesting/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-19T15:05:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1jevseg</id>
