@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-19T02:15:09+00:00</updated>
+  <updated>2025-03-19T02:46:39+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,19 +47,6 @@
     <published>2025-03-18T01:02:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jdkevi</id>
-    <title>Creating Gemma 3 from GGUF with mmproj not working.</title>
-    <updated>2025-03-17T18:49:33+00:00</updated>
-    <author>
-      <name>/u/Admirable-Star7088</name>
-      <uri>https://old.reddit.com/user/Admirable-Star7088</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;EDIT: Solved, read comment to this post.&lt;/h1&gt; &lt;p&gt;When I was going to download Gemma 3 for Ollama, I could not find a Q5_K_M version. This is my favorite quant because it's the smallest quant possible with no noticeable quality loss (in my experience).&lt;/p&gt; &lt;p&gt;So, instead of downloading, I was doing some quick research how to convert my own GGUF file (&lt;strong&gt;google_gemma-3-12b-it-Q5_K_M.gguf&lt;/strong&gt;) and my mmproj file (&lt;strong&gt;mmproj-google_gemma-3-12b-it-f32.gguf&lt;/strong&gt;) to a format that I can run in Ollama. (these GGUFs are downloaded from &lt;a href="https://huggingface.co/bartowski/google_gemma-3-12b-it-GGUF"&gt;Bartowski&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;After successfully converting, the model works fine at first and it responds to text, but when I send it an image and ask it to describe it, it won't respond. I assume there is some problem with the mmproj file? Here is my Modelfile:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ./google_gemma-3-12b-it-Q5_K_M.gguf FROM ./mmproj-google_gemma-3-12b-it-f32.gguf PARAMETER temperature 1 PARAMETER top_k 64 PARAMETER top_p 0.95 PARAMETER min_p 0.0 PARAMETER num_ctx 8192 PARAMETER stop &amp;quot;&amp;lt;end_of_turn&amp;gt;&amp;quot; TEMPLATE &amp;quot;&amp;quot;&amp;quot; {{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 }} {{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ if $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ .Content }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- end }} {{- end }} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm an amateur with Ollama, I have probably just made a silly mistake or missed some step. Thanks in advance to anyone who can help out!&lt;/p&gt; &lt;p&gt;p.s, I'm using Open WebUI as front-end.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Admirable-Star7088"&gt; /u/Admirable-Star7088 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-17T18:49:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jd4op1</id>
     <title>Clara: Browser based Local AI Chat, ImageGen with simple custom Agent builder.</title>
     <updated>2025-03-17T04:36:21+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jdf5fp/x299_i9_7980xe_skylakexcascadex_cpu_only_llm/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-17T15:19:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jdkevi</id>
+    <title>Creating Gemma 3 from GGUF with mmproj not working.</title>
+    <updated>2025-03-17T18:49:33+00:00</updated>
+    <author>
+      <name>/u/Admirable-Star7088</name>
+      <uri>https://old.reddit.com/user/Admirable-Star7088</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;EDIT: Solved, read comment to this post.&lt;/h1&gt; &lt;p&gt;When I was going to download Gemma 3 for Ollama, I could not find a Q5_K_M version. This is my favorite quant because it's the smallest quant possible with no noticeable quality loss (in my experience).&lt;/p&gt; &lt;p&gt;So, instead of downloading, I was doing some quick research how to convert my own GGUF file (&lt;strong&gt;google_gemma-3-12b-it-Q5_K_M.gguf&lt;/strong&gt;) and my mmproj file (&lt;strong&gt;mmproj-google_gemma-3-12b-it-f32.gguf&lt;/strong&gt;) to a format that I can run in Ollama. (these GGUFs are downloaded from &lt;a href="https://huggingface.co/bartowski/google_gemma-3-12b-it-GGUF"&gt;Bartowski&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;After successfully converting, the model works fine at first and it responds to text, but when I send it an image and ask it to describe it, it won't respond. I assume there is some problem with the mmproj file? Here is my Modelfile:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM ./google_gemma-3-12b-it-Q5_K_M.gguf FROM ./mmproj-google_gemma-3-12b-it-f32.gguf PARAMETER temperature 1 PARAMETER top_k 64 PARAMETER top_p 0.95 PARAMETER min_p 0.0 PARAMETER num_ctx 8192 PARAMETER stop &amp;quot;&amp;lt;end_of_turn&amp;gt;&amp;quot; TEMPLATE &amp;quot;&amp;quot;&amp;quot; {{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 }} {{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ if $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ .Content }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- end }} {{- end }} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm an amateur with Ollama, I have probably just made a silly mistake or missed some step. Thanks in advance to anyone who can help out!&lt;/p&gt; &lt;p&gt;p.s, I'm using Open WebUI as front-end.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Admirable-Star7088"&gt; /u/Admirable-Star7088 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-17T18:49:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1jdj98c</id>
@@ -255,19 +255,6 @@
     <published>2025-03-18T21:50:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1je1k10</id>
-    <title>Mistral Small 3.1</title>
-    <updated>2025-03-18T10:10:50+00:00</updated>
-    <author>
-      <name>/u/laurentbourrelly</name>
-      <uri>https://old.reddit.com/user/laurentbourrelly</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you are looking for a small model, Mistral is an interesting option. Unfortunately, like all small models, it hallucinates a lot.&lt;/p&gt; &lt;p&gt;The new Mistral just came out and looks promising &lt;a href="https://mistral.ai/news/mistral-small-3-1"&gt;https://mistral.ai/news/mistral-small-3-1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/laurentbourrelly"&gt; /u/laurentbourrelly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-18T10:10:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jegfg8</id>
     <title>LLM Req's for Goose on RTX 2070</title>
     <updated>2025-03-18T21:26:30+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jegfg8/llm_reqs_for_goose_on_rtx_2070/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-18T21:26:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1je1k10</id>
+    <title>Mistral Small 3.1</title>
+    <updated>2025-03-18T10:10:50+00:00</updated>
+    <author>
+      <name>/u/laurentbourrelly</name>
+      <uri>https://old.reddit.com/user/laurentbourrelly</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you are looking for a small model, Mistral is an interesting option. Unfortunately, like all small models, it hallucinates a lot.&lt;/p&gt; &lt;p&gt;The new Mistral just came out and looks promising &lt;a href="https://mistral.ai/news/mistral-small-3-1"&gt;https://mistral.ai/news/mistral-small-3-1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/laurentbourrelly"&gt; /u/laurentbourrelly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1je1k10/mistral_small_31/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-18T10:10:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1jekene</id>
