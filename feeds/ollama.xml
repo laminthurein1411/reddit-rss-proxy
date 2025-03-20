@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-20T22:05:45+00:00</updated>
+  <updated>2025-03-20T22:23:44+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jf1e1l/anyone_else_not_loving_todays_nvidia_driver_update/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-19T16:41:59+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jesz6w</id>
-    <title>*Temp fix* http://127.0.0.1:36365/completion": EOF with image attachments</title>
-    <updated>2025-03-19T09:23:25+00:00</updated>
-    <author>
-      <name>/u/DaleCooperHS</name>
-      <uri>https://old.reddit.com/user/DaleCooperHS</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Following the lead from &lt;a href="https://www.reddit.com/r/ollama/comments/1jdkevi/creating_gemma_3_from_gguf_with_mmproj_not_working/"&gt;OP&lt;/a&gt; I have reproduced the process to fix the issue with getting the model to interact with images when using custom GGUF downloaded form from Huggingface in order to have higher quants. &lt;/p&gt; &lt;p&gt;Here are the instructions on how to do it:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Download the full weight from hugginface.&lt;/strong&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;You will need:&lt;br /&gt; - Huggingface account name and access token (access token needs to be created in your hugginface profile under the tab &amp;quot;Access Tokens)&lt;br /&gt; - granted access to the models (by requesting &amp;quot;grant access&amp;quot; on the huggingface pages below)&lt;br /&gt; - Git (or manual download)&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/google/gemma-3-4b-it"&gt;Gemma 3 4b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/google/gemma-3-12b-it"&gt;Gemma 3 12b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/google/gemma-3-27b-pt"&gt;Gemma 3 27b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Use git command &amp;quot;git clone&amp;quot; to clone the huggingface repo. You can find the full command under the 3 dots on the model page next to &amp;quot;Train&amp;quot;)&lt;/p&gt; &lt;p&gt;Insert your credentials when prompted and download the weights.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. Create a ModelFile&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;In the same folder where you downloaded the model create a file with any text editor and paste this:&lt;/p&gt; &lt;p&gt;FROM .&lt;/p&gt; &lt;p&gt;# Inference parameters&lt;/p&gt; &lt;p&gt;PARAMETER num_ctx 8192&lt;/p&gt; &lt;p&gt;PARAMETER stop &amp;quot;&amp;lt;end\_of\_turn&amp;gt;&amp;quot;&lt;/p&gt; &lt;p&gt;PARAMETER temperature 1&lt;/p&gt; &lt;p&gt;# Template for conversation formatting&lt;/p&gt; &lt;p&gt;TEMPLATE &amp;quot;&amp;quot;&amp;quot;{{- range $i, $_ := .Messages }}&lt;/p&gt; &lt;p&gt;{{- $last := eq (len (slice $.Messages $i)) 1 }}&lt;/p&gt; &lt;p&gt;{{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start\_of\_turn&amp;gt;user&lt;/p&gt; &lt;p&gt;{{ .Content }}&amp;lt;end\_of\_turn&amp;gt;&lt;/p&gt; &lt;p&gt;{{ if $last }}&amp;lt;start\_of\_turn&amp;gt;model&lt;/p&gt; &lt;p&gt;{{ end }}&lt;/p&gt; &lt;p&gt;{{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start\_of\_turn&amp;gt;model&lt;/p&gt; &lt;p&gt;{{ .Content }}{{ if not $last }}&amp;lt;end\_of\_turn&amp;gt;&lt;/p&gt; &lt;p&gt;{{ end }}&lt;/p&gt; &lt;p&gt;{{- end }}&lt;/p&gt; &lt;p&gt;{{- end }}&amp;quot;&amp;quot;&amp;quot; &lt;/p&gt; &lt;p&gt;Save the file as a ModelFIle (no file extensions like .txt)&lt;/p&gt; &lt;p&gt;&lt;em&gt;(NOTE: THe temperature can either be 0.1 or 1. I tested both and I can not find a difference yet.)&lt;/em&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. Create the GGUF&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Open a terminal in the location of your files and run: &lt;/p&gt; &lt;p&gt;ollama create --quantize q8_0 Gemma3 -f ModelFile&lt;/p&gt; &lt;h1&gt;Where:&lt;/h1&gt; &lt;p&gt;- q8_0 is the quant size you want&lt;/p&gt; &lt;p&gt;- Gemma3 is the name you want to give to the model&lt;/p&gt; &lt;p&gt;- ModelFile is the exact name (cap sensitive) of the ModelFile you create&lt;/p&gt; &lt;p&gt;THis should create the model for you and should now support images.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DaleCooperHS"&gt; /u/DaleCooperHS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jesz6w/temp_fix_http12700136365completion_eof_with_image/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jesz6w/temp_fix_http12700136365completion_eof_with_image/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jesz6w/temp_fix_http12700136365completion_eof_with_image/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-19T09:23:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1jein5y</id>
@@ -249,7 +236,7 @@
       <name>/u/THE_ABC_GM</name>
       <uri>https://old.reddit.com/user/THE_ABC_GM</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to try ollama so I downloaded the windows installer. I tried using Gemma3:1b and and Llama3.2. I have NVIDIA GPU with 4Gb of memory so both should fit in memory fine. However both crash my computer.&lt;/p&gt; &lt;p&gt;Sometimes Gemma runs fine, but other times my entire computer freezes &lt;em&gt;completely unresponsive&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;Llama3.2 usually bluescreens my computer after two prompts. It also blue screened me &lt;em&gt;when i tried stopping&lt;/em&gt; the server with &lt;code&gt;ollama stop llama3.2&lt;/code&gt;. It appears that there is a large spike in GPU memory usage when closing.&lt;/p&gt; &lt;p&gt;Any tips? Or am I just hosed?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/THE_ABC_GM"&gt; /u/THE_ABC_GM &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jfz86g/ollama_for_windows_freezes_or_crashes_windows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jfz86g/ollama_for_windows_freezes_or_crashes_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to try ollama so I downloaded the windows installer. I tried using Gemma3:1b and and Llama3.2. I have NVIDIA GPU with 4Gb of memory so both should fit in memory fine. However both crash my computer.&lt;/p&gt; &lt;p&gt;Sometimes Gemma runs fine, but other times my entire computer freezes &lt;em&gt;completely unresponsive&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;Llama3.2 usually bluescreens my computer after two prompts. It also blue screened me &lt;em&gt;when i tried stopping&lt;/em&gt; the server with &lt;code&gt;ollama stop llama3.2&lt;/code&gt;. It appears that there is a large spike in GPU memory usage when closing.&lt;/p&gt; &lt;p&gt;Any tips? Or am I just hosed?&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;Edit 1 GPU: NVIDIA GeForce GTX 1050 with 4Gb of ram. CPU: i7 quad core System Memory: 16Gb, although the OS uses about 5Gb.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/THE_ABC_GM"&gt; /u/THE_ABC_GM &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jfz86g/ollama_for_windows_freezes_or_crashes_windows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jfz86g/ollama_for_windows_freezes_or_crashes_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/ollama/comments/1jfz86g/ollama_for_windows_freezes_or_crashes_windows/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-20T20:48:34+00:00</published>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jfb2s1/what_are_the_uses_for_small_models_below_7b/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-19T23:28:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jg1dzj</id>
+    <title>Am I doing something wrong? Ollama never gives answers longer than one sentence.</title>
+    <updated>2025-03-20T22:19:44+00:00</updated>
+    <author>
+      <name>/u/typhoon90</name>
+      <uri>https://old.reddit.com/user/typhoon90</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I installed Ollama the other day and have been playing around with it, so far I have tried Llama 3.2 as well as Wizard Vicuna Uncensored and have been getting very poor responses on both. No matter what I prompt I only ever get one around one sentence as a response and there doesnt appear to be any context in future messages. I have tried setting system prompts /set system and can see them being saved but they appear to have no impact on the replies that I am getting out of the model. I am just running it out of powershell. Am I doing something wrong?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jg1dzj/am_i_doing_something_wrong_ollama_never_gives/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jg1dzj/am_i_doing_something_wrong_ollama_never_gives/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jg1dzj/am_i_doing_something_wrong_ollama_never_gives/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-20T22:19:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1jft4n6</id>
