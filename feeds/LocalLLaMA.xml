@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-21T11:48:37+00:00</updated>
+  <updated>2025-03-21T12:10:00+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jfwxnn</id>
-    <title>5 things I learned from running DeepEval</title>
-    <updated>2025-03-20T19:14:08+00:00</updated>
-    <author>
-      <name>/u/FlimsyProperty8544</name>
-      <uri>https://old.reddit.com/user/FlimsyProperty8544</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For the past year, I’ve been one of the maintainers at &lt;a href="https://github.com/confident-ai/deepeval"&gt;DeepEval&lt;/a&gt;, an open-source LLM eval package for python.&lt;/p&gt; &lt;p&gt;Over a year ago, DeepEval started as a collection of traditional NLP methods (like BLEU score) and fine-tuned transformer models, but thanks to community feedback and contributions, it has evolved into a more powerful and robust suite of LLM-powered metrics.&lt;/p&gt; &lt;p&gt;Right now, DeepEval is running around 600,000 evaluations daily. Given this, I wanted to share some key insights I’ve gained from user feedback and interactions with the LLM community!&lt;/p&gt; &lt;h1&gt;1. Custom Metrics BY FAR most popular&lt;/h1&gt; &lt;p&gt;DeepEval’s &lt;a href="https://docs.confident-ai.com/docs/metrics-llm-evals"&gt;G-Eval&lt;/a&gt; was used 3x more than the second most popular metric, Answer Relevancy. G-Eval is a custom metric framework that helps you easily define reliable, robust metrics with custom evaluation criteria.&lt;/p&gt; &lt;p&gt;While DeepEval offers standard metrics like &lt;a href="https://docs.confident-ai.com/docs/metrics-answer-relevancy"&gt;relevancy&lt;/a&gt; and &lt;a href="https://docs.confident-ai.com/docs/metrics-faithfulness"&gt;faithfulness&lt;/a&gt;, these alone don’t always capture the specific evaluation criteria needed for niche use cases. For example, how concise a chatbot is or how jargony a legal AI might be. For these use cases, using custom metrics is much more effective and direct.&lt;/p&gt; &lt;p&gt;Even for common metrics like relevancy or faithfulness, users often have highly specific requirements. A few have even used G-Eval to create their &lt;a href="https://docs.confident-ai.com/docs/metrics-dag"&gt;own custom RAG metrics &lt;/a&gt;tailored to their needs.&lt;/p&gt; &lt;h1&gt;2. Fine-Tuning LLM Judges: Not Worth It (Most of the Time)&lt;/h1&gt; &lt;p&gt;Fine-tuning LLM judges for domain-specific metrics can be helpful, but most of the time, it’s a lot of bang for not a lot of buck. If you’re noticing significant bias in your metric, simply &lt;a href="https://docs.confident-ai.com/docs/metrics-answer-relevancy#example"&gt;injecting a few well-chosen examples into the prompt&lt;/a&gt; will usually do the trick.&lt;/p&gt; &lt;p&gt;Any remaining tweaks can be handled at the prompt level, and fine-tuning will only give you incremental improvements—at a much higher cost. In my experience, it’s usually not worth the effort, though I’m sure others might have had success with it.&lt;/p&gt; &lt;h1&gt;3. Models Matter: Rise of DeepSeek&lt;/h1&gt; &lt;p&gt;DeepEval is model-agnostic, so you can use any LLM provider to power your metrics. This makes the package flexible, but it also means that if you're using smaller, less powerful models, the accuracy of your metrics may suffer.&lt;/p&gt; &lt;p&gt;Before DeepSeek, most people relied on &lt;a href="https://docs.confident-ai.com/docs/metrics-introduction#using-openai"&gt;GPT-4o for evaluation&lt;/a&gt;—it’s still one of the best LLMs for metrics, providing consistent and reliable results, far outperforming GPT-3.5.&lt;/p&gt; &lt;p&gt;However, since DeepSeek's release, we've seen a shift. More users are now hosting &lt;a href="https://docs.confident-ai.com/docs/metrics-introduction#using-ollama"&gt;DeepSeek LLMs locally through Ollama&lt;/a&gt;, effectively running their own models. But be warned—this can be much slower if you don’t have the hardware and infrastructure to support it.&lt;/p&gt; &lt;h1&gt;4. Evaluation Dataset &amp;gt;&amp;gt;&amp;gt;&amp;gt; Vibe Coding&lt;/h1&gt; &lt;p&gt;A lot of users of DeepEval start off with a few test cases and no datasets—a practice you might know as “Vibe Coding.”&lt;/p&gt; &lt;p&gt;The problem with vibe coding (or vibe evaluating) is that when you make a change to your LLM application—whether it's your model or prompt template—you might see improvements in the things you’re testing. However, the things you haven’t tested could experience regressions in performance due to your changes. So you'll see these users just build a dataset later on anyways.&lt;/p&gt; &lt;p&gt;That’s why it’s crucial to have a dataset from the start. This ensures your development is focused on the right things, actually working, and prevents wasted time on vibe coding. Since a lot of people have been asking, DeepEval has a &lt;a href="https://docs.confident-ai.com/docs/synthesizer-introduction"&gt;synthesizer to help you build an initial dataset&lt;/a&gt;, which you can then edit as needed.&lt;/p&gt; &lt;h1&gt;5. Generator First, Retriever Second&lt;/h1&gt; &lt;p&gt;The second and third most-used metrics are Answer Relevancy and Faithfulness, followed by Contextual Precision, Contextual Recall, and Contextual Relevancy.&lt;/p&gt; &lt;p&gt;Answer Relevancy and Faithfulness are directly influenced by the prompt template and model, while the contextual metrics are more affected by retriever hyperparameters like top-K. If you’re working on RAG evaluation, &lt;a href="https://docs.confident-ai.com/guides/guides-rag-evaluation"&gt;here’s a detailed guide for a deeper dive&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;This suggests that people are seeing more impact from improving their generator (LLM generation) rather than fine-tuning their retriever.&lt;/p&gt; &lt;p&gt;...&lt;/p&gt; &lt;p&gt;These are just a few of the insights we hear every day and use to keep improving DeepEval. If you have any takeaways from building your eval pipeline, feel free to share them below—always curious to learn how others approach it. We’d also really appreciate any feedback on DeepEval. Dropping the repo link below!&lt;/p&gt; &lt;p&gt;DeepEval: &lt;a href="https://github.com/confident-ai/deepeval"&gt;https://github.com/confident-ai/deepeval&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FlimsyProperty8544"&gt; /u/FlimsyProperty8544 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jfwxnn/5_things_i_learned_from_running_deepeval/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jfwxnn/5_things_i_learned_from_running_deepeval/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jfwxnn/5_things_i_learned_from_running_deepeval/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-20T19:14:08+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jfryg8</id>
     <title>Public Goods Game Benchmark: Contribute and Punish, a Multi-Agent Benchmark</title>
@@ -34,17 +21,30 @@
     <published>2025-03-20T15:47:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jg2ywz</id>
-    <title>DGX Spark Session</title>
-    <updated>2025-03-20T23:29:51+00:00</updated>
+    <id>t3_1jgeneu</id>
+    <title>WebDev Arena doesn't generate a result half of the time</title>
+    <updated>2025-03-21T11:30:49+00:00</updated>
     <author>
-      <name>/u/mapestree</name>
-      <uri>https://old.reddit.com/user/mapestree</uri>
+      <name>/u/Then-Meeting3703</name>
+      <uri>https://old.reddit.com/user/Then-Meeting3703</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg2ywz/dgx_spark_session/"&gt; &lt;img alt="DGX Spark Session" src="https://external-preview.redd.it/zXJKCfzK0Bmroj8EIe-yWlKoUHidM18nX6_A1LAVva0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=521486b418be75ba2f501c1f24905fa7df810395" title="DGX Spark Session" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mapestree"&gt; /u/mapestree &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.imgur.com/HIozRbs.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg2ywz/dgx_spark_session/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jg2ywz/dgx_spark_session/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgeneu/webdev_arena_doesnt_generate_a_result_half_of_the/"&gt; &lt;img alt="WebDev Arena doesn't generate a result half of the time" src="https://preview.redd.it/wdctb8xe31qe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9088c78b2b13f115d6c5a0a8d718bed12e889d8e" title="WebDev Arena doesn't generate a result half of the time" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Then-Meeting3703"&gt; /u/Then-Meeting3703 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wdctb8xe31qe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgeneu/webdev_arena_doesnt_generate_a_result_half_of_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgeneu/webdev_arena_doesnt_generate_a_result_half_of_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-20T23:29:51+00:00</published>
+    <published>2025-03-21T11:30:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jgf07w</id>
+    <title>Vulkan 1.4.311 Released With New Extension For BFloat16</title>
+    <updated>2025-03-21T11:51:53+00:00</updated>
+    <author>
+      <name>/u/FastDecode1</name>
+      <uri>https://old.reddit.com/user/FastDecode1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgf07w/vulkan_14311_released_with_new_extension_for/"&gt; &lt;img alt="Vulkan 1.4.311 Released With New Extension For BFloat16" src="https://external-preview.redd.it/2t1oSj_vzvn5bCPIAvxtQL6anEzXfRChmhjaylPaVXw.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=738740aa1d4f0c6631304412cf45ecce910e09ab" title="Vulkan 1.4.311 Released With New Extension For BFloat16" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FastDecode1"&gt; /u/FastDecode1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.phoronix.com/news/Vulkan-1.4.311-Released"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgf07w/vulkan_14311_released_with_new_extension_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgf07w/vulkan_14311_released_with_new_extension_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T11:51:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1jg13y8</id>
@@ -73,19 +73,6 @@
     <published>2025-03-21T03:37:07+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jge0d3</id>
-    <title>Any predictions for GPU pricing 6-12 months from now?</title>
-    <updated>2025-03-21T10:50:08+00:00</updated>
-    <author>
-      <name>/u/TumbleweedDeep825</name>
-      <uri>https://old.reddit.com/user/TumbleweedDeep825</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Are we basically screwed as demand for local LLMs will only keep growing while GPU manufacturing output won't change much?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TumbleweedDeep825"&gt; /u/TumbleweedDeep825 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T10:50:08+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jfz88z</id>
     <title>OpenAI teases to open-source model(s) soon</title>
     <updated>2025-03-20T20:48:40+00:00</updated>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jfz88z/openai_teases_to_opensource_models_soon/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-20T20:48:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jge0d3</id>
+    <title>Any predictions for GPU pricing 6-12 months from now?</title>
+    <updated>2025-03-21T10:50:08+00:00</updated>
+    <author>
+      <name>/u/TumbleweedDeep825</name>
+      <uri>https://old.reddit.com/user/TumbleweedDeep825</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Are we basically screwed as demand for local LLMs will only keep growing while GPU manufacturing output won't change much?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TumbleweedDeep825"&gt; /u/TumbleweedDeep825 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jge0d3/any_predictions_for_gpu_pricing_612_months_from/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T10:50:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1jg1mn1</id>
@@ -242,19 +242,6 @@
     <published>2025-03-21T00:43:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jgdvr7</id>
-    <title>GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI</title>
-    <updated>2025-03-21T10:41:39+00:00</updated>
-    <author>
-      <name>/u/blazerx</name>
-      <uri>https://old.reddit.com/user/blazerx</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"&gt; &lt;img alt="GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI" src="https://external-preview.redd.it/FfsH6_lD8ZDjWq58F-nI0b3jtl3po6p4fWNK_dOGUbY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=067fd5517027950d0c15b75fbdf4301c41337833" title="GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/blazerx"&gt; /u/blazerx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.amd.com/en/developer/resources/technical-articles/gaia-an-open-source-project-from-amd-for-running-local-llms-on-ryzen-ai.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T10:41:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jfyqye</id>
     <title>Sesame CSM Gradio UI – Free, Local, High-Quality Text-to-Speech with Voice Cloning! (CUDA, Apple MLX and CPU)</title>
     <updated>2025-03-20T20:28:48+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jfyqye/sesame_csm_gradio_ui_free_local_highquality/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-20T20:28:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jgdvr7</id>
+    <title>GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI</title>
+    <updated>2025-03-21T10:41:39+00:00</updated>
+    <author>
+      <name>/u/blazerx</name>
+      <uri>https://old.reddit.com/user/blazerx</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"&gt; &lt;img alt="GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI" src="https://external-preview.redd.it/FfsH6_lD8ZDjWq58F-nI0b3jtl3po6p4fWNK_dOGUbY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=067fd5517027950d0c15b75fbdf4301c41337833" title="GAIA: An Open-Source Project from AMD for Running Local LLMs on Ryzen™ AI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/blazerx"&gt; /u/blazerx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.amd.com/en/developer/resources/technical-articles/gaia-an-open-source-project-from-amd-for-running-local-llms-on-ryzen-ai.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdvr7/gaia_an_opensource_project_from_amd_for_running/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T10:41:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1jgd0e8</id>
@@ -294,19 +294,6 @@
     <published>2025-03-21T05:12:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jgau52</id>
-    <title>Gemma 3 27b vs. Mistral 24b vs. QwQ 32b: I tested on personal benchmark, here's what I found out</title>
-    <updated>2025-03-21T06:53:42+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was looking for LLMs to use locally; the requirements are good enough reasoning and understanding, coding, and some elementary-level mathematics. I was looking into QwQ 32b, which seemed very promising.&lt;br /&gt; Last week, Google and Mistral released Gemma 3 27b and Mistral small 3.1 24b; from the benchmarks, both seem capable models approximating Deepseek r1 in ELO rating, which is impressive.&lt;/p&gt; &lt;p&gt;But, tbh, I have stopped caring about benchmarks, especially Lmsys; idk. The rankings always seem off when you try the models IRL.&lt;/p&gt; &lt;p&gt;So, I ran a small test to vibe-check which models to pick. I also benchmarked answers with Deepseek r1, as I use it often to get a better picture. &lt;/p&gt; &lt;p&gt;Here's what I found out&lt;/p&gt; &lt;h1&gt;For Coding&lt;/h1&gt; &lt;p&gt;QwQ 32b is just miles ahead in coding among the three. It sometimes does better code than Deepseek r1. They weren't lying in the benchmarks. It feels good to talk to you as well. Gemma is 2nd and does the job for easy tasks. Mistral otoh was bad.&lt;/p&gt; &lt;h1&gt;For Reasoning&lt;/h1&gt; &lt;p&gt;Again, Qwen was better. Well, ofc it's a reasoning model, but Gemma was also excellent. They made a good base model. Mistral was there but not there.&lt;/p&gt; &lt;h1&gt;For Math&lt;/h1&gt; &lt;p&gt;Gemma and QwQ were good enough for simple math tasks. Gemma, being a base model, was faster. I might test more with these two. Mistral was decent but 3rd again.&lt;/p&gt; &lt;h1&gt;What to pick?&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;QwQ 32b is no doubt the best available model in its class. Great at coding, reasoning, and math. It's been a long since I used a local model, the last one was Mixtral, a year ago, and I never expected them to be this good. QwQ is promising; I can't wait for their new max model.&lt;/li&gt; &lt;li&gt;Gemma 3 27b is a solid base model. Great vibes. And you wouldn't be missing a lot with this. But it comes with a Gemma-specific license, which is more restrictive than Apache 2.0.&lt;/li&gt; &lt;li&gt;Mistral small 3.1 24b didn't impress me much; perhaps it needs more rigorous testing. &lt;/li&gt; &lt;li&gt;Both Gemma and Mistral Small have image support, so consider that as well.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For the complete analysis, check out this blog post: &lt;a href="https://composio.dev/blog/qwq-32b-vs-gemma-3-mistral-small-vs-deepseek-r1/"&gt;Gemma 3 27b vs QwQ 32b vs Mistral 24b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I would love to know which other model you're currently using and for what specific tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T06:53:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jg0exn</id>
     <title>Intel's Former CEO Calls Out NVIDIA: 'AI GPUs 10,000x Too Expensive'—Says Jensen Got Lucky and Inferencing Needs a Reality Check</title>
     <updated>2025-03-20T21:38:25+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jg0exn/intels_former_ceo_calls_out_nvidia_ai_gpus_10000x/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-20T21:38:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jgau52</id>
+    <title>Gemma 3 27b vs. Mistral 24b vs. QwQ 32b: I tested on personal benchmark, here's what I found out</title>
+    <updated>2025-03-21T06:53:42+00:00</updated>
+    <author>
+      <name>/u/SunilKumarDash</name>
+      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was looking for LLMs to use locally; the requirements are good enough reasoning and understanding, coding, and some elementary-level mathematics. I was looking into QwQ 32b, which seemed very promising.&lt;br /&gt; Last week, Google and Mistral released Gemma 3 27b and Mistral small 3.1 24b; from the benchmarks, both seem capable models approximating Deepseek r1 in ELO rating, which is impressive.&lt;/p&gt; &lt;p&gt;But, tbh, I have stopped caring about benchmarks, especially Lmsys; idk. The rankings always seem off when you try the models IRL.&lt;/p&gt; &lt;p&gt;So, I ran a small test to vibe-check which models to pick. I also benchmarked answers with Deepseek r1, as I use it often to get a better picture. &lt;/p&gt; &lt;p&gt;Here's what I found out&lt;/p&gt; &lt;h1&gt;For Coding&lt;/h1&gt; &lt;p&gt;QwQ 32b is just miles ahead in coding among the three. It sometimes does better code than Deepseek r1. They weren't lying in the benchmarks. It feels good to talk to you as well. Gemma is 2nd and does the job for easy tasks. Mistral otoh was bad.&lt;/p&gt; &lt;h1&gt;For Reasoning&lt;/h1&gt; &lt;p&gt;Again, Qwen was better. Well, ofc it's a reasoning model, but Gemma was also excellent. They made a good base model. Mistral was there but not there.&lt;/p&gt; &lt;h1&gt;For Math&lt;/h1&gt; &lt;p&gt;Gemma and QwQ were good enough for simple math tasks. Gemma, being a base model, was faster. I might test more with these two. Mistral was decent but 3rd again.&lt;/p&gt; &lt;h1&gt;What to pick?&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;QwQ 32b is no doubt the best available model in its class. Great at coding, reasoning, and math. It's been a long since I used a local model, the last one was Mixtral, a year ago, and I never expected them to be this good. QwQ is promising; I can't wait for their new max model.&lt;/li&gt; &lt;li&gt;Gemma 3 27b is a solid base model. Great vibes. And you wouldn't be missing a lot with this. But it comes with a Gemma-specific license, which is more restrictive than Apache 2.0.&lt;/li&gt; &lt;li&gt;Mistral small 3.1 24b didn't impress me much; perhaps it needs more rigorous testing. &lt;/li&gt; &lt;li&gt;Both Gemma and Mistral Small have image support, so consider that as well.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For the complete analysis, check out this blog post: &lt;a href="https://composio.dev/blog/qwq-32b-vs-gemma-3-mistral-small-vs-deepseek-r1/"&gt;Gemma 3 27b vs QwQ 32b vs Mistral 24b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I would love to know which other model you're currently using and for what specific tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgau52/gemma_3_27b_vs_mistral_24b_vs_qwq_32b_i_tested_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T06:53:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1jgap0q</id>
