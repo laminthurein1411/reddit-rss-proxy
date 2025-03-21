@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-21T10:24:16+00:00</updated>
+  <updated>2025-03-21T10:37:40+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jfh1d7</id>
-    <title>LLMs are 800x Cheaper for Translation than DeepL</title>
-    <updated>2025-03-20T04:37:11+00:00</updated>
-    <author>
-      <name>/u/Ninjinka</name>
-      <uri>https://old.reddit.com/user/Ninjinka</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When looking at the cost of translation APIs, I was floored by the prices. Azure is $10 per million characters, Google is $20, and DeepL is $25.&lt;/p&gt; &lt;p&gt;To come up with a rough estimate for a real-time translation use case, I assumed 150 WPM speaking speed, with each word being translated 3 times (since the text gets retranslated multiple times as the context lengthens). This resulted in the following costs:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Azure: $1.62/hr&lt;/li&gt; &lt;li&gt;Google: $3.24/hr&lt;/li&gt; &lt;li&gt;DeepL: $4.05/hr&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Assuming the same numbers, &lt;code&gt;gemini-2.0-flash-lite&lt;/code&gt; would cost &lt;strong&gt;less than $0.01/hr&lt;/strong&gt;. Cost varies based on prompt length, but I'm actually getting just under $0.005/hr.&lt;/p&gt; &lt;p&gt;That's over 800x cheaper than DeepL, or 0.1% of the cost.&lt;/p&gt; &lt;p&gt;Presumably the quality of the translations would be somewhat worse, but how much worse? And how long will that disadvantage last? I can stomach a certain amount of worse for 99% cheaper, and it seems easy to foresee that LLMs will surpass the quality of the legacy translation models in the near future.&lt;/p&gt; &lt;p&gt;Right now the accuracy depends a lot on the prompting. I need to run a lot more evals, but so far in my tests I'm seeing that the translations I'm getting are as good (most of the time identical) or &lt;em&gt;better&lt;/em&gt; than Google's the vast majority of the time. I'm confident I can get to 90% of Google's accuracy with better prompting.&lt;/p&gt; &lt;p&gt;I can live with 90% accuracy with a 99.9% cost reduction.&lt;/p&gt; &lt;p&gt;For many, 90% doesn't cut it for their translation needs and they are willing to pay a premium for the best. But the high costs of legacy translation APIs will become increasingly indefensible as LLM-based solutions improve, and we'll see translation incorporated in ways that were previously cost-prohibitive.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ninjinka"&gt; /u/Ninjinka &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jfh1d7/llms_are_800x_cheaper_for_translation_than_deepl/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jfh1d7/llms_are_800x_cheaper_for_translation_than_deepl/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jfh1d7/llms_are_800x_cheaper_for_translation_than_deepl/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-20T04:37:11+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jgdb4a</id>
-    <title>Using local QwQ-32B / Qwen2.5-Coder-32B in aider (24GB vram)</title>
-    <updated>2025-03-21T10:02:31+00:00</updated>
-    <author>
-      <name>/u/bjodah</name>
-      <uri>https://old.reddit.com/user/bjodah</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have recently started using &lt;a href="https://aider.chat"&gt;aider&lt;/a&gt; and I was curious to see how Qwen's reasoning model and coder tune would perform as architect &amp;amp; editor respectively. I have a single 3090, so I need to use ~Q5 quants for both models, and I need to load/unload the models on the fly. I settled on using &lt;a href="https://docs.litellm.ai/docs/providers/litellm_proxy"&gt;litellm proxy&lt;/a&gt; (which is the endpoint recommended by aider's docs), together with &lt;a href="https://github.com/mostlygeek/llama-swap"&gt;llama-swap&lt;/a&gt; to automatically spawn &lt;a href="https://github.com/ggml-org/llama.cpp/blob/master/examples/server/README.md"&gt;llama.cpp server&lt;/a&gt; instances as needed.&lt;/p&gt; &lt;p&gt;Getting all these parts to play nice together in a container (I use podman, but docker should work with minimial tweaks, if any) was quite challenging. So I made an effort to collect my notes, configs and scripts and publish it as git repo over at: - &lt;a href="https://github.com/bjodah/local-aider"&gt;https://github.com/bjodah/local-aider&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Useage looks like: &lt;code&gt;console $ # the command below spawns a docker-compose config (or rather podman-compose) $ ./bin/local-model-enablement-wrapper \ aider \ --architect --model litellm_proxy/local-qwq-32b \ --editor-model litellm_proxy/local-qwen25-coder-32b &lt;/code&gt;&lt;/p&gt; &lt;p&gt;There are still some work to be done to get this working optimally. But hopefully my findings can be helpful for anyone trying something similar. If you try this out and spot any issue, please let me know, and if there are any similar resources, I'd love to hear about them too.&lt;/p&gt; &lt;p&gt;Cheers!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bjodah"&gt; /u/bjodah &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T10:02:31+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jfrwqw</id>
     <title>New sampling method that boosts reasoning performance and can be applied to any existing model</title>
@@ -112,6 +86,19 @@
     <published>2025-03-20T22:07:47+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jgdm0t</id>
+    <title>DeepSeek Distilled Qwen 7B and 14B on NPU for Windows on Snapdragon</title>
+    <updated>2025-03-21T10:23:25+00:00</updated>
+    <author>
+      <name>/u/SkyFeistyLlama8</name>
+      <uri>https://old.reddit.com/user/SkyFeistyLlama8</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hot off the press, Microsoft just added Qwen 7B and 14B DeepSeek Distill models that run on NPUs. I think for the moment, only the Snapdragon X Hexagon NPU is supported. I'm downloading them now and I'll report on their performance soon.&lt;/p&gt; &lt;p&gt;These are ONNX models that require Microsoft's AI Toolkit to run. You will need to install the AI Toolkit extension under Visual Studio Code.&lt;/p&gt; &lt;p&gt;My previous link on running the 1.5B model: &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1io9lfc/deepseek_distilled_qwen_15b_on_npu_for_windows_on/"&gt;https://old.reddit.com/r/LocalLLaMA/comments/1io9lfc/deepseek_distilled_qwen_15b_on_npu_for_windows_on/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SkyFeistyLlama8"&gt; /u/SkyFeistyLlama8 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdm0t/deepseek_distilled_qwen_7b_and_14b_on_npu_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdm0t/deepseek_distilled_qwen_7b_and_14b_on_npu_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdm0t/deepseek_distilled_qwen_7b_and_14b_on_npu_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T10:23:25+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jg7tw6</id>
     <title>An Open-source Local Training AI Project</title>
     <updated>2025-03-21T03:37:07+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jfz88z/openai_teases_to_opensource_models_soon/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-20T20:48:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jgdb4a</id>
+    <title>Using local QwQ-32B / Qwen2.5-Coder-32B in aider (24GB vram)</title>
+    <updated>2025-03-21T10:02:31+00:00</updated>
+    <author>
+      <name>/u/bjodah</name>
+      <uri>https://old.reddit.com/user/bjodah</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have recently started using &lt;a href="https://aider.chat"&gt;aider&lt;/a&gt; and I was curious to see how Qwen's reasoning model and coder tune would perform as architect &amp;amp; editor respectively. I have a single 3090, so I need to use ~Q5 quants for both models, and I need to load/unload the models on the fly. I settled on using &lt;a href="https://docs.litellm.ai/docs/providers/litellm_proxy"&gt;litellm proxy&lt;/a&gt; (which is the endpoint recommended by aider's docs), together with &lt;a href="https://github.com/mostlygeek/llama-swap"&gt;llama-swap&lt;/a&gt; to automatically spawn &lt;a href="https://github.com/ggml-org/llama.cpp/blob/master/examples/server/README.md"&gt;llama.cpp server&lt;/a&gt; instances as needed.&lt;/p&gt; &lt;p&gt;Getting all these parts to play nice together in a container (I use podman, but docker should work with minimial tweaks, if any) was quite challenging. So I made an effort to collect my notes, configs and scripts and publish it as git repo over at: - &lt;a href="https://github.com/bjodah/local-aider"&gt;https://github.com/bjodah/local-aider&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Useage looks like: &lt;code&gt;console $ # the command below spawns a docker-compose config (or rather podman-compose) $ ./bin/local-model-enablement-wrapper \ aider \ --architect --model litellm_proxy/local-qwq-32b \ --editor-model litellm_proxy/local-qwen25-coder-32b &lt;/code&gt;&lt;/p&gt; &lt;p&gt;There are still some work to be done to get this working optimally. But hopefully my findings can be helpful for anyone trying something similar. If you try this out and spot any issue, please let me know, and if there are any similar resources, I'd love to hear about them too.&lt;/p&gt; &lt;p&gt;Cheers!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bjodah"&gt; /u/bjodah &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgdb4a/using_local_qwq32b_qwen25coder32b_in_aider_24gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T10:02:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1jg1mn1</id>
@@ -177,19 +177,6 @@
     <published>2025-03-20T18:40:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jgd0e8</id>
-    <title>The Hugging Face Agents Course now includes three major agent frameworks (smolagents, langchain, and llamaindex)</title>
-    <updated>2025-03-21T09:41:02+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The Hugging Face Agents Course now includes three major agent frameworks.&lt;/p&gt; &lt;p&gt;🔗 &lt;a href="https://huggingface.co/agents-course"&gt;https://huggingface.co/agents-course&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This includes LlamaIndex, LangChain, and our very own smolagents. We've worked to integrate the three frameworks in distinctive ways so that learners can reflect on when and where to use each. &lt;/p&gt; &lt;p&gt;This also means that you can follow the course if you're already familiar with one of these frameworks, and soak up some of the fundamental knowledge in earlier units. &lt;/p&gt; &lt;p&gt;Hopefully, this makes the agents course as open to as many people as possible. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T09:41:02+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jg5sbj</id>
     <title>Mistral-small 3.1 Vision for PDF RAG tested</title>
     <updated>2025-03-21T01:48:26+00:00</updated>
@@ -216,19 +203,6 @@
     <published>2025-03-21T03:55:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jg9943</id>
-    <title>Created a app as an alternative to Openwebui</title>
-    <updated>2025-03-21T05:02:52+00:00</updated>
-    <author>
-      <name>/u/BadBoy17Ge</name>
-      <uri>https://old.reddit.com/user/BadBoy17Ge</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"&gt; &lt;img alt="Created a app as an alternative to Openwebui" src="https://external-preview.redd.it/wBMT-jmCl5XYkWR1AWvetODsl1A2V4fj59LTyPe1WpI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0b8331475460b9074f076a36ad33a972de04b5fe" title="Created a app as an alternative to Openwebui" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I love open web ui but its overwhelming and its taking up quite a lot of resources,&lt;/p&gt; &lt;p&gt;So i thought why not create an UI that has both ollama and comfyui support&lt;/p&gt; &lt;p&gt;And can create flow with both of them to create app or agents&lt;/p&gt; &lt;p&gt;And then created apps for Mac, Windows and Linux and Docker &lt;/p&gt; &lt;p&gt;And everything is stored in IndexDB.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BadBoy17Ge"&gt; /u/BadBoy17Ge &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/badboysm890/ClaraVerse"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-21T05:02:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jg2xi1</id>
     <title>Switching back to llamacpp (from vllm)</title>
     <updated>2025-03-20T23:27:59+00:00</updated>
@@ -240,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jg2xi1/switching_back_to_llamacpp_from_vllm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-20T23:27:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jgd0e8</id>
+    <title>The Hugging Face Agents Course now includes three major agent frameworks (smolagents, langchain, and llamaindex)</title>
+    <updated>2025-03-21T09:41:02+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The Hugging Face Agents Course now includes three major agent frameworks.&lt;/p&gt; &lt;p&gt;🔗 &lt;a href="https://huggingface.co/agents-course"&gt;https://huggingface.co/agents-course&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This includes LlamaIndex, LangChain, and our very own smolagents. We've worked to integrate the three frameworks in distinctive ways so that learners can reflect on when and where to use each. &lt;/p&gt; &lt;p&gt;This also means that you can follow the course if you're already familiar with one of these frameworks, and soak up some of the fundamental knowledge in earlier units. &lt;/p&gt; &lt;p&gt;Hopefully, this makes the agents course as open to as many people as possible. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jgd0e8/the_hugging_face_agents_course_now_includes_three/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T09:41:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jg9943</id>
+    <title>Created a app as an alternative to Openwebui</title>
+    <updated>2025-03-21T05:02:52+00:00</updated>
+    <author>
+      <name>/u/BadBoy17Ge</name>
+      <uri>https://old.reddit.com/user/BadBoy17Ge</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"&gt; &lt;img alt="Created a app as an alternative to Openwebui" src="https://external-preview.redd.it/wBMT-jmCl5XYkWR1AWvetODsl1A2V4fj59LTyPe1WpI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0b8331475460b9074f076a36ad33a972de04b5fe" title="Created a app as an alternative to Openwebui" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I love open web ui but its overwhelming and its taking up quite a lot of resources,&lt;/p&gt; &lt;p&gt;So i thought why not create an UI that has both ollama and comfyui support&lt;/p&gt; &lt;p&gt;And can create flow with both of them to create app or agents&lt;/p&gt; &lt;p&gt;And then created apps for Mac, Windows and Linux and Docker &lt;/p&gt; &lt;p&gt;And everything is stored in IndexDB.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BadBoy17Ge"&gt; /u/BadBoy17Ge &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/badboysm890/ClaraVerse"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jg9943/created_a_app_as_an_alternative_to_openwebui/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-21T05:02:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1jfnw9x</id>
