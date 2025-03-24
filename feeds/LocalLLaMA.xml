@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-24T00:27:53+00:00</updated>
+  <updated>2025-03-24T00:53:33+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jhhsgv</id>
-    <title>Qwen2.5-Omni Incoming? Huggingface Transformers PR 36752</title>
-    <updated>2025-03-22T20:25:00+00:00</updated>
-    <author>
-      <name>/u/Inevitable_Sea8804</name>
-      <uri>https://old.reddit.com/user/Inevitable_Sea8804</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;(&lt;a href="https://github.com/huggingface/transformers/pull/36752"&gt;https://github.com/huggingface/transformers/pull/36752&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Haven't seen anyone bring this up, so making a post here...&lt;/p&gt; &lt;p&gt;Using DeepSeek-R1 to summarize the features of this model based on PR commits:&lt;/p&gt; &lt;hr /&gt; &lt;h1&gt;&lt;strong&gt;Qwen2.5-Omni Technical Summary&lt;/strong&gt;&lt;/h1&gt; &lt;h2&gt;&lt;strong&gt;1. Basic Information&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Model Scale&lt;/strong&gt;: 7B parameter version (&amp;quot;Qwen/Qwen2.5-Omni-7B&amp;quot;)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Open Source&lt;/strong&gt;: Fully open-sourced under Apache 2.0 license&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;2. Input/Output Modalities&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Input Support&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;em&gt;Text&lt;/em&gt;: Natural language instructions&lt;/li&gt; &lt;li&gt;&lt;em&gt;Images&lt;/em&gt;: Common formats (JPEG/PNG)&lt;/li&gt; &lt;li&gt;&lt;em&gt;Audio&lt;/em&gt;: WAV/MP3 (requires FFmpeg)&lt;/li&gt; &lt;li&gt;&lt;em&gt;Video&lt;/em&gt;: MP4 with audio track extraction&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Output Capabilities&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;em&gt;Text&lt;/em&gt;: Natural language responses&lt;/li&gt; &lt;li&gt;&lt;em&gt;Speech&lt;/em&gt;: 24kHz natural speech (streaming supported)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;3. Architectural Design&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Multimodal Encoder&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;em&gt;Block-wise Processing&lt;/em&gt;: Decouples long-sequence handling between encoder (perception) and LLM (sequence modeling)&lt;/li&gt; &lt;li&gt;&lt;em&gt;TMRoPE&lt;/em&gt;: Time-aligned Multimodal Rotary Positional Encoding for audio-video synchronization&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dual-path Generation&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;em&gt;Thinker&lt;/em&gt;: Text-generating LLM backbone&lt;/li&gt; &lt;li&gt;&lt;em&gt;Talker&lt;/em&gt;: Dual-track AR model for audio token generation using Thinker's hidden states&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Streaming Optimization&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Sliding-window Diffusion Transformer (DiT) reduces audio latency&lt;/li&gt; &lt;li&gt;Simultaneous text/speech streaming output&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;4. Technical Highlights&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Unified Multimodal Processing&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;End-to-end joint training without intermediate representations&lt;/li&gt; &lt;li&gt;Supports arbitrary modality combinations (single/mixed)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Efficient Attention&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Native FlashAttention 2 support&lt;/li&gt; &lt;li&gt;Compatible with PyTorch SDPA&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Voice Customization&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Prebuilt voices: &lt;code&gt;Cherry&lt;/code&gt; (female) &amp;amp; &lt;code&gt;Ethan&lt;/code&gt; (male)&lt;/li&gt; &lt;li&gt;Dynamic voice switching via &lt;code&gt;spk&lt;/code&gt; parameter&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Deployment Flexibility&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Disable speech output to save VRAM (~2GB)&lt;/li&gt; &lt;li&gt;Text-only mode (&lt;code&gt;return_audio=False&lt;/code&gt;)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;5. Performance&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Multimodal Benchmarks&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;SOTA on Omni-Bench&lt;/li&gt; &lt;li&gt;Outperforms same-scale Qwen2-VL/Qwen2-Audio in vision/audio tasks&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Speech Understanding&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;First open-source model with text-level E2E speech instruction following&lt;/li&gt; &lt;li&gt;Matches text-input performance on MMLU/GSM8K with speech inputs&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;6. Implementation Details&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Hardware Support&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Auto device mapping (&lt;code&gt;device_map=&amp;quot;auto&amp;quot;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Mixed precision (&lt;code&gt;bfloat16/float16&lt;/code&gt;)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Processing Pipeline&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;Unified &lt;code&gt;Qwen2_5OmniProcessor&lt;/code&gt; handles multimodal inputs&lt;/li&gt; &lt;li&gt;Batch processing of mixed media combinations&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;&lt;strong&gt;7. Requirements&lt;/strong&gt;&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;System Prompt&lt;/strong&gt;: Mandatory for full functionality:&lt;br /&gt; &lt;code&gt; &amp;quot;You are Qwen... capable of generating text and speech.&amp;quot; &lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dependencies&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;FlashAttention 2 (optional acceleration)&lt;/li&gt; &lt;li&gt;FFmpeg (video/non-WAV audio processing)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;em&gt;This architecture achieves deep multimodal fusion through innovative designs while maintaining strong text capabilities, significantly advancing audiovisual understanding/generation for multimodal agent development.&lt;/em&gt;&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;Also from the PR:&lt;/p&gt; &lt;p&gt;&lt;em&gt;We present Qwen2.5-Omni, an end-to-end multimodal model designed to perceive diverse modalities, including text, images, audio, and video, while simultaneously generating text and natural speech responses in a streaming manner. To enable the streaming of multimodal information inputs, both audio and visual encoders utilize a block-wise processing approach. This strategy effectively decouples the handling of long sequences of multimodal data, assigning the perceptual responsibilities to the multimodal encoder and entrusting the modeling of extended sequences to a large language model. Such a division of labor enhances the fusion of different modalities via the shared attention mechanism. To synchronize the timestamps of video inputs with audio, we organized the audio and video sequentially in an interleaved manner and propose a novel position embedding approach, named TMRoPE (Time-aligned Multimodal RoPE). To concurrently generate text and speech while avoiding interference between the two modalities, we propose Thinker-Talker architecture. In this framework, Thinker functions as a large language model tasked with text generation, while Talker is a dual-track autoregressive model that directly utilizes the hidden representations from the Thinker to produce audio tokens as output. Both the Thinker and Talker models are designed to be trained and inferred in an end-to-end manner. For decoding audio tokens in a streaming manner, we introduce a sliding-window DiT that restricts the receptive field, aiming to reduce the initial package delay. Qwen2.5-Omni outperforms the similarly sized Qwen2-VL and Qwen2-Audio in both image and audio capabilities. Furthermore, Qwen2.5-Omni achieves state-of-the-art performance on multimodal benchmarks like Omni-Bench. Notably, Qwen2.5-Omni is the first open-source model to achieve a level of performance in end-to-end speech instruction following that is comparable to its capabilities with text inputs, as evidenced by benchmarks such as MMLU and GSM8K. As for speech generation, Qwen2.5-Omni’s streaming Talker outperform most existing streaming and non-streaming alternatives in robustness and naturalness.&lt;/em&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Can the community help confirm whether this PR is legit?&lt;/strong&gt;&lt;br /&gt; &lt;em&gt;(Original PR: &lt;a href="https://github.com/huggingface/transformers/pull/36752"&gt;https://github.com/huggingface/transformers/pull/36752&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Inevitable_Sea8804"&gt; /u/Inevitable_Sea8804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jhhsgv/qwen25omni_incoming_huggingface_transformers_pr/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jhhsgv/qwen25omni_incoming_huggingface_transformers_pr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jhhsgv/qwen25omni_incoming_huggingface_transformers_pr/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-22T20:25:00+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jhl6y0</id>
     <title>Are any of the big API providers (OpenAI, Anthropic, etc) actually making money, or are all of them operating at a loss and burning through investment cash?</title>
@@ -151,19 +138,6 @@
     <published>2025-03-23T20:32:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jicibv</id>
-    <title>Local AI Voice Assistant with Ollama + gTTS, would love some feedback!</title>
-    <updated>2025-03-23T23:07:33+00:00</updated>
-    <author>
-      <name>/u/typhoon90</name>
-      <uri>https://old.reddit.com/user/typhoon90</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"&gt; &lt;img alt="Local AI Voice Assistant with Ollama + gTTS, would love some feedback!" src="https://external-preview.redd.it/TQ2fGDRsMwYWjW0KZrmUIsOmwQ7oZISnsLRQppMhYvk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b5ebab71cac0d3ea15e7e3563017501fcd0f9627" title="Local AI Voice Assistant with Ollama + gTTS, would love some feedback!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-23T23:07:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jhl6jp</id>
     <title>Gemma3 is outperforming a ton of models on fine-tuning / world knowledge</title>
     <updated>2025-03-22T23:03:02+00:00</updated>
@@ -190,6 +164,19 @@
     <published>2025-03-23T13:33:25+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jicibv</id>
+    <title>Local AI Voice Assistant with Ollama + gTTS, would love some feedback!</title>
+    <updated>2025-03-23T23:07:33+00:00</updated>
+    <author>
+      <name>/u/typhoon90</name>
+      <uri>https://old.reddit.com/user/typhoon90</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"&gt; &lt;img alt="Local AI Voice Assistant with Ollama + gTTS, would love some feedback!" src="https://external-preview.redd.it/TQ2fGDRsMwYWjW0KZrmUIsOmwQ7oZISnsLRQppMhYvk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b5ebab71cac0d3ea15e7e3563017501fcd0f9627" title="Local AI Voice Assistant with Ollama + gTTS, would love some feedback!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jicibv/local_ai_voice_assistant_with_ollama_gtts_would/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-23T23:07:33+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jhv57y</id>
     <title>Finally some good news for older hardware pricing</title>
     <updated>2025-03-23T09:04:21+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jhv57y/finally_some_good_news_for_older_hardware_pricing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-23T09:04:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jie6oo</id>
+    <title>Mistral small draft model</title>
+    <updated>2025-03-24T00:27:09+00:00</updated>
+    <author>
+      <name>/u/frivolousfidget</name>
+      <uri>https://old.reddit.com/user/frivolousfidget</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jie6oo/mistral_small_draft_model/"&gt; &lt;img alt="Mistral small draft model" src="https://external-preview.redd.it/fGQq4SyEYUq9b_wFHpxbLnoYjtgYQA70SDrLvYPMmkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6c1cb6b0de0e00a235e6f56fd99854ec7f7e0180" title="Mistral small draft model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was browsing hugging face and found this model, made a 4bit mlx quants and it actually seems to work really well! 60.7% accepted tokens in a coding test!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frivolousfidget"&gt; /u/frivolousfidget &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/alamios/Mistral-Small-3.1-DRAFT-0.5B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jie6oo/mistral_small_draft_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jie6oo/mistral_small_draft_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-24T00:27:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1jia4bo</id>
@@ -229,19 +229,6 @@
     <published>2025-03-23T15:57:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ji75t5</id>
-    <title>Mistral 24b</title>
-    <updated>2025-03-23T19:15:30+00:00</updated>
-    <author>
-      <name>/u/Illustrious-Dot-6888</name>
-      <uri>https://old.reddit.com/user/Illustrious-Dot-6888</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First time using Mistral 24b today. Man, how good this thing is! And fast too!Finally a model that translates perfectly. This is a keeper.🤗&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Illustrious-Dot-6888"&gt; /u/Illustrious-Dot-6888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-23T19:15:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ji8o7p</id>
     <title>Quantization Method Matters: MLX Q2 vs GGUF Q2_K: MLX ruins the model performance whereas GGUF keeps it useable</title>
     <updated>2025-03-23T20:19:33+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ji32vh/understanding_r1zerolike_training_deepseek_v3_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-23T16:23:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ji75t5</id>
+    <title>Mistral 24b</title>
+    <updated>2025-03-23T19:15:30+00:00</updated>
+    <author>
+      <name>/u/Illustrious-Dot-6888</name>
+      <uri>https://old.reddit.com/user/Illustrious-Dot-6888</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First time using Mistral 24b today. Man, how good this thing is! And fast too!Finally a model that translates perfectly. This is a keeper.🤗&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Illustrious-Dot-6888"&gt; /u/Illustrious-Dot-6888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ji75t5/mistral_24b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-23T19:15:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1ji5mbg</id>
