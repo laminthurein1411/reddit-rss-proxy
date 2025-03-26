@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-26T11:22:03+00:00</updated>
+  <updated>2025-03-26T11:34:19+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1jj0dp6</id>
-    <title>Dockerized Ollama Not Using GPU (CUDA init error 999)</title>
-    <updated>2025-03-24T20:04:22+00:00</updated>
-    <author>
-      <name>/u/lowriskcork</name>
-      <uri>https://old.reddit.com/user/lowriskcork</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I'm running Ollama in Docker with GPU support, but it’s not using my GPU. My host and container both show my Quadro P2000 correctly via &lt;code&gt;nvidia-smi&lt;/code&gt; (Driver 535.216.01, CUDA 12.2). However, Ollama logs display:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;unknown error initializing cuda driver library /usr/lib/x86_64-linux-gnu/libcuda.so.535.216.01: cuda driver library init failure: 999 no compatible GPUs were discovered &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I’ve tried setting the environment variable:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;docker run --rm -it --gpus all -e LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu -p 11434:11434 ollama/ollama &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;and ensured the NVIDIA container toolkit is installed. According to the Ollama GPU docs, GPUs with compute capability 5.0+ are supported (my GPU is 6.1).&lt;/p&gt; &lt;p&gt;Has anyone encountered this issue or have suggestions on how to resolve the CUDA initialization error inside Ollama? Thanks!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Advanced details:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Host: Quadro P2000, nvidia-smi confirms GPU is detected.&lt;/li&gt; &lt;li&gt;Docker test with nvidia/cuda image works as expected.&lt;/li&gt; &lt;li&gt;Ollama falls back to CPU inference despite the GPU being visible.&lt;/li&gt; &lt;li&gt;Any troubleshooting tips or fixes would be appreciated.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lowriskcork"&gt; /u/lowriskcork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jj0dp6/dockerized_ollama_not_using_gpu_cuda_init_error/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jj0dp6/dockerized_ollama_not_using_gpu_cuda_init_error/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jj0dp6/dockerized_ollama_not_using_gpu_cuda_init_error/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-24T20:04:22+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jjcso2</id>
     <title>Top 20 Open-Source LLMs to Use in 2025</title>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jjsc2b/i_got_ollama_working_on_my_9070xt_heres_how/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-25T19:44:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jk9fab</id>
+    <title>Ollama *always* summarizes a local text file</title>
+    <updated>2025-03-26T11:22:33+00:00</updated>
+    <author>
+      <name>/u/ozaarmat</name>
+      <uri>https://old.reddit.com/user/ozaarmat</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;OS : MacOS 15.3.2&lt;br /&gt; ollama : installed locally and as python module&lt;br /&gt; models : llama2, mistral&lt;br /&gt; language : python3&lt;br /&gt; issue : no matter what I prompt, the output is always a summary of the local text file. &lt;/p&gt; &lt;p&gt;I'd appreciate some tips if anyone has encountered this issue. &lt;/p&gt; &lt;p&gt;CLI PROMPT 1&lt;br /&gt; $python3 &lt;a href="http://promptfile2.py"&gt;promptfile2.py&lt;/a&gt; cinq_semaines.txt &amp;quot;Count the words in this text file&amp;quot; &lt;/p&gt; &lt;p&gt;&amp;gt;&amp;gt; The prompt is read correctly&lt;br /&gt; &amp;quot;Sending prompt: Count the number of words and characters in this file. &amp;quot; but&lt;br /&gt; &amp;gt;&amp;gt; I get a summary of the text file, irrespective of which model is selected (llama2 or mistral)&lt;/p&gt; &lt;p&gt;CLI PROMPT 2&lt;br /&gt; $ollama run mistral &amp;quot;Do not summarize. Return only the total number of words in this text as an integer, nothing else: Hello world, this is a test.&amp;quot;&lt;br /&gt; &amp;gt;&amp;gt; 15&lt;br /&gt; &amp;gt;&amp;gt; direct prompt returns the correct result. Counting words is for testing purposes, I know there are other ways to count words. &lt;/p&gt; &lt;p&gt;** ollama/mistral is able to understand the instruction when called directly, but not via the script.&lt;br /&gt; ** My text file is in French, but llama2 or mistral read it and give me a nice summary in English.&lt;br /&gt; ** I tried ollama.chat() and ollama.generate() &lt;/p&gt; &lt;p&gt;Code :&lt;/p&gt; &lt;pre&gt;&lt;code&gt;import ollama import os import sys # Check command-line arguments if len(sys.argv) &amp;lt; 2 or len(sys.argv) &amp;gt; 3: print(&amp;quot;Usage: python3 promptfileX.py &amp;lt;filename.txt&amp;gt; [prompt]&amp;quot;) print(&amp;quot; If no prompt is provided, defaults to 'Summarize'&amp;quot;) sys.exit(1) filename = sys.argv[1] prompt = sys.argv[2] # Check file validity if not filename.endswith(&amp;quot;.txt&amp;quot;) or not os.path.isfile(filename): print(&amp;quot;Error: Please provide a valid .txt file&amp;quot;) sys.exit(1) # Read the file def read_text_file(file_path): try: with open(file_path, 'r', encoding='utf-8') as file: return file.read() except Exception as e: return f&amp;quot;Error reading file: {str(e)}&amp;quot; # Use ollama.generate() def query_ollama_generate(content, prompt): full_prompt = f&amp;quot;{prompt}\n\n---\n\n{content}&amp;quot; print(f&amp;quot;Sending prompt: {prompt[:60]}...&amp;quot;) try: response = ollama.generate( model='mistral', # or 'mistral', whichever you want prompt=full_prompt ) return response['response'] except Exception as e: return f&amp;quot;Error from Ollama: {str(e)}&amp;quot; # Main content = read_text_file(filename) if &amp;quot;Error&amp;quot; in content: print(content) sys.exit(1) result = query_ollama_generate(content, prompt) print(&amp;quot;Ollama response:&amp;quot;) print(result) import ollama import os import sys # Check command-line arguments if len(sys.argv) &amp;lt; 2 or len(sys.argv) &amp;gt; 3: print(&amp;quot;Usage: python3 promptfileX.py &amp;lt;filename.txt&amp;gt; [prompt]&amp;quot;) print(&amp;quot; If no prompt is provided, defaults to 'Summarize'&amp;quot;) sys.exit(1) filename = sys.argv[1] prompt = sys.argv[2] # Check file validity if not filename.endswith(&amp;quot;.txt&amp;quot;) or not os.path.isfile(filename): print(&amp;quot;Error: Please provide a valid .txt file&amp;quot;) sys.exit(1) # Read the file def read_text_file(file_path): try: with open(file_path, 'r', encoding='utf-8') as file: return file.read() except Exception as e: return f&amp;quot;Error reading file: {str(e)}&amp;quot; # Use ollama.generate() def query_ollama_generate(content, prompt): full_prompt = f&amp;quot;{prompt}\n\n---\n\n{content}&amp;quot; print(f&amp;quot;Sending prompt: {prompt[:60]}...&amp;quot;) try: response = ollama.generate( model='mistral', # or 'mistral', whichever you want prompt=full_prompt ) return response['response'] except Exception as e: return f&amp;quot;Error from Ollama: {str(e)}&amp;quot; # Main content = read_text_file(filename) if &amp;quot;Error&amp;quot; in content: print(content) sys.exit(1) result = query_ollama_generate(content, prompt) print(&amp;quot;Ollama response:&amp;quot;) print(result) &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ozaarmat"&gt; /u/ozaarmat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jk9fab/ollama_always_summarizes_a_local_text_file/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jk9fab/ollama_always_summarizes_a_local_text_file/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jk9fab/ollama_always_summarizes_a_local_text_file/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-26T11:22:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1jjtyrq</id>
