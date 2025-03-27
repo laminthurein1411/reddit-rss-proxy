@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-27T06:08:38+00:00</updated>
+  <updated>2025-03-27T06:25:26+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jk0qjs</id>
-    <title>1.78bit DeepSeek-V3-0324 - 230GB Unsloth Dynamic GGUF</title>
-    <updated>2025-03-26T01:51:16+00:00</updated>
-    <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk0qjs/178bit_deepseekv30324_230gb_unsloth_dynamic_gguf/"&gt; &lt;img alt="1.78bit DeepSeek-V3-0324 - 230GB Unsloth Dynamic GGUF" src="https://b.thumbs.redditmedia.com/VQUhjwmdzkKwJU-pPDHGMZROeUu65PNj2UGT0ZKAjUg.jpg" title="1.78bit DeepSeek-V3-0324 - 230GB Unsloth Dynamic GGUF" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey r/LocalLLaMA! We're back again to release DeepSeek-V3-0324 (671B) dynamic quants in &lt;strong&gt;1.78-bit and more GGUF formats&lt;/strong&gt; so you can run them locally. All GGUFs are at &lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF"&gt;https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/67rxi0wo3yqe1.gif"&gt;https://i.redd.it/67rxi0wo3yqe1.gif&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We initially provided the &lt;strong&gt;1.58-bit version&lt;/strong&gt;, which you can still use but its outputs weren't the best. So, we found it necessary to upcast to 1.78-bit by increasing the down proj size to achieve much better performance.&lt;/p&gt; &lt;p&gt;To ensure the best tradeoff between accuracy and size, we do &lt;strong&gt;not to quantize all layers&lt;/strong&gt;, but selectively quantize e.g. the MoE layers to lower bit, and leave attention and other layers in 4 or 6bit. This time we also added 3.5 + 4.5-bit dynamic quants.&lt;/p&gt; &lt;p&gt;Read our Guide on How To Run the GGUFs on llama.cpp: &lt;a href="https://docs.unsloth.ai/basics/tutorial-how-to-run-deepseek-v3-0324-locally"&gt;https://docs.unsloth.ai/basics/tutorial-how-to-run-deepseek-v3-0324-locally&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We also found that if you use convert all layers to 2-bit (standard 2-bit GGUF), the model is still very bad, producing endless loops, gibberish and very poor code. Our Dynamic 2.51-bit quant largely solves this issue. The same applies for 1.78-bit however is it recommended to use our 2.51 version for best results.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model uploads:&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;MoE Bits&lt;/th&gt; &lt;th align="left"&gt;Type&lt;/th&gt; &lt;th align="left"&gt;Disk Size&lt;/th&gt; &lt;th align="left"&gt;HF Link&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;1.78bit (prelim)&lt;/td&gt; &lt;td align="left"&gt;IQ1_S&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;151GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-IQ1_S"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;1.93bit (prelim)&lt;/td&gt; &lt;td align="left"&gt;IQ1_M&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;178GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-IQ1_M"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;2.42-bit (prelim)&lt;/td&gt; &lt;td align="left"&gt;IQ2_XXS&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;203GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-IQ2_XXS"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;2.71-bit (best)&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;Q2_K_XL&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;231GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-Q2_K_XL"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3.5-bit&lt;/td&gt; &lt;td align="left"&gt;Q3_K_XL&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;321GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-Q3_K_XL"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;4.5-bit&lt;/td&gt; &lt;td align="left"&gt;Q4_K_XL&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;406GB&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF/tree/main/UD-Q4_K_XL"&gt;Link&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;For recommended settings:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Temperature of 0.3&lt;/strong&gt; (Maybe 0.0 for coding as &lt;a href="https://api-docs.deepseek.com/quick_start/parameter_settings"&gt;seen here&lt;/a&gt;)&lt;/li&gt; &lt;li&gt;Min_P of 0.00 (optional, but 0.01 works well, llama.cpp default is 0.1)&lt;/li&gt; &lt;li&gt;Chat template: &lt;code&gt;&amp;lt;｜User｜&amp;gt;Create a simple playable Flappy Bird Game in Python. Place the final game inside of a markdown section.&amp;lt;｜Assistant｜&amp;gt;&lt;/code&gt;&lt;/li&gt; &lt;li&gt;A BOS token of &lt;code&gt;&amp;lt;｜begin▁of▁sentence｜&amp;gt;&lt;/code&gt; is auto added during tokenization (do NOT add it manually!)&lt;/li&gt; &lt;li&gt;DeepSeek mentioned using a &lt;strong&gt;system prompt&lt;/strong&gt; as well (optional) - it's in Chinese: &lt;code&gt;该助手为DeepSeek Chat，由深度求索公司创造。\n今天是3月24日，星期一。&lt;/code&gt; which translates to: &lt;code&gt;The assistant is DeepSeek Chat, created by DeepSeek.\nToday is Monday, March 24th.&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;For KV cache quantization, use 8bit, NOT 4bit - we found it to do noticeably worse.&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I suggest people to run the 2.71bit for now - the other other bit quants (listed as prelim) are still processing.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;# !pip install huggingface_hub hf_transfer import os os.environ[&amp;quot;HF_HUB_ENABLE_HF_TRANSFER&amp;quot;] = &amp;quot;1&amp;quot; from huggingface_hub import snapshot_download snapshot_download( repo_id = &amp;quot;unsloth/DeepSeek-V3-0324-GGUF&amp;quot;, local_dir = &amp;quot;unsloth/DeepSeek-V3-0324-GGUF&amp;quot;, allow_patterns = [&amp;quot;*UD-Q2_K_XL*&amp;quot;], # Dynamic 2.7bit (230GB) ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I did both the Flappy Bird and Heptagon test (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1j7r47l/i%5C_just%5C_made%5C_an%5C_animation%5C_of%5C_a%5C_ball%5C_bouncing/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1j7r47l/i\_just\_made\_an\_animation\_of\_a\_ball\_bouncing/&lt;/a&gt;)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk0qjs/178bit_deepseekv30324_230gb_unsloth_dynamic_gguf/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk0qjs/178bit_deepseekv30324_230gb_unsloth_dynamic_gguf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jk0qjs/178bit_deepseekv30324_230gb_unsloth_dynamic_gguf/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-26T01:51:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jkrwyj</id>
-    <title>dora-cli - cli tool for semantic search</title>
-    <updated>2025-03-27T00:58:40+00:00</updated>
-    <author>
-      <name>/u/ranoutofusernames__</name>
-      <uri>https://old.reddit.com/user/ranoutofusernames__</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Local peeps, sharing this CLI &lt;a href="https://github.com/space0blaster/dora-cli"&gt;tool&lt;/a&gt; I wrote last weekend for using semantic search on your local files. It uses a super simple recursive (sorry NASA) crawler and embeds paths so you can use natural language to retrieve files and folder. It's a CLI version of the &lt;a href="https://github.com/space0blaster/dora"&gt;desktop app&lt;/a&gt; I released a couple months ago. Uses local Ollama for inference and ChromaDB for vector storage.&lt;/p&gt; &lt;p&gt;Link: &lt;a href="https://github.com/space0blaster/dora-cli"&gt;https://github.com/space0blaster/dora-cli&lt;/a&gt; &lt;/p&gt; &lt;p&gt;License: MIT&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ranoutofusernames__"&gt; /u/ranoutofusernames__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkrwyj/doracli_cli_tool_for_semantic_search/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkrwyj/doracli_cli_tool_for_semantic_search/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkrwyj/doracli_cli_tool_for_semantic_search/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-27T00:58:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jkhhum</id>
-    <title>What are the technical details behind recent improvements in image gen?</title>
-    <updated>2025-03-26T17:32:38+00:00</updated>
-    <author>
-      <name>/u/West-Code4642</name>
-      <uri>https://old.reddit.com/user/West-Code4642</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I know this isn't related to the current batch of local models (maybe in the future), but what are some of the technical details behind the improvements in recent image generators like OpenAI's native image gen or Gemini's? Or is it completely unknown at the moment? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/West-Code4642"&gt; /u/West-Code4642 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkhhum/what_are_the_technical_details_behind_recent/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkhhum/what_are_the_technical_details_behind_recent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkhhum/what_are_the_technical_details_behind_recent/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-26T17:32:38+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jke2i6</id>
     <title>LlamaCon 2025 Registration Opens</title>
@@ -58,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jke2i6/llamacon_2025_registration_opens/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-26T15:11:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jkxevv</id>
+    <title>What's the background for the current image generating improvements?</title>
+    <updated>2025-03-27T06:11:17+00:00</updated>
+    <author>
+      <name>/u/Jentano</name>
+      <uri>https://old.reddit.com/user/Jentano</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;AI image generation seems to improve a lot across the board. &lt;/p&gt; &lt;p&gt;The new GPT4o image generation is very good, although it has a lot of blocking compliance rules like not wanting to modify real fotos.&lt;/p&gt; &lt;p&gt;But others also seem to be progressing a lot in image accuracy, image-text precision amd prompt following.&lt;/p&gt; &lt;p&gt;Were there any paper breakthroughs or is this mostly better training, perhaps text insertion and more correction loops?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Jentano"&gt; /u/Jentano &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkxevv/whats_the_background_for_the_current_image/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkxevv/whats_the_background_for_the_current_image/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkxevv/whats_the_background_for_the_current_image/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-27T06:11:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1jk96ei</id>
@@ -73,30 +47,17 @@
     <published>2025-03-26T11:06:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jkwe7u</id>
-    <title>How does gpt4o image generator works? and there's gemini flash too, what techinique do they use?</title>
-    <updated>2025-03-27T05:01:09+00:00</updated>
+    <id>t3_1jkvv1m</id>
+    <title>What wrong with Gemma 3?</title>
+    <updated>2025-03-27T04:27:41+00:00</updated>
     <author>
-      <name>/u/aman167k</name>
-      <uri>https://old.reddit.com/user/aman167k</uri>
+      <name>/u/Neffor</name>
+      <uri>https://old.reddit.com/user/Neffor</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;i want to replicate this for domain specific tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aman167k"&gt; /u/aman167k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just got the impression that Gemma 3 was held captive or detained in a basement, perhaps? The model is excellent and very accurate, but if anything, it constantly belittles itself and apologizes. Unlike the second version, which was truly friendly, the third version is creepy because it behaves like a frightened servant, not an assistant-colleague.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Neffor"&gt; /u/Neffor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkvv1m/what_wrong_with_gemma_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkvv1m/what_wrong_with_gemma_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkvv1m/what_wrong_with_gemma_3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-27T05:01:09+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jkv955</id>
-    <title>Local Workstations</title>
-    <updated>2025-03-27T03:52:30+00:00</updated>
-    <author>
-      <name>/u/Personal-Attitude872</name>
-      <uri>https://old.reddit.com/user/Personal-Attitude872</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been planning out a workstation for a little bit now and I’ve run into some questions I think are better answered by those with experience. My proposed build is as follows:&lt;/p&gt; &lt;p&gt;CPU: AMD Threadripper 7965WX&lt;/p&gt; &lt;p&gt;GPU: 1x 4090 + 2-3x 3090 (undervolted to ~200w)&lt;/p&gt; &lt;p&gt;MoBo: Asus Pro WS WRX90E-SAGE&lt;/p&gt; &lt;p&gt;RAM: 512gb DDR5&lt;/p&gt; &lt;p&gt;This would give me 72gb of VRAM and 512gb of system memory to fallback on. &lt;/p&gt; &lt;p&gt;Ideally I want to be able to run Qwen 2.5-coder 32b and a smaller model for inline copilot completions. From what I read Qwen can be ran at the 16bit quant comfortably at 64gb so I’d be able to load this into VRAM (i assume) however that would be about it. I can’t go over a 2000w power consumption so there’s not much room for expansion either. &lt;/p&gt; &lt;p&gt;I then ran into the M3 ultra mac studio at 512gb. This machine seems perfect and the results on even larger models is insane. However, I’m a linux user at heart and switching to a mac just doesn’t sit right with me.&lt;/p&gt; &lt;p&gt;So what should I do? Is the mac a no-brainer? Is there other options I don’t know about for local builds?&lt;/p&gt; &lt;p&gt;I’m a beginner in this space, only running smaller models on my 4060 but I’d love some input from you guys or some resources to further educate myself. Any response is appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Personal-Attitude872"&gt; /u/Personal-Attitude872 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-27T03:52:30+00:00</published>
+    <published>2025-03-27T04:27:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1jkhlk6</id>
@@ -112,6 +73,19 @@
     <published>2025-03-26T17:36:50+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jkqn77</id>
+    <title>Speculation on the Latest OpenAI Image Generation</title>
+    <updated>2025-03-26T23:57:44+00:00</updated>
+    <author>
+      <name>/u/FrostyContribution35</name>
+      <uri>https://old.reddit.com/user/FrostyContribution35</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been messing with the latest OpenAI image generation, generating studio ghibli portraits of myself and such; and I’m curious how it may have been implemented under the hood.&lt;/p&gt; &lt;p&gt;The previous version seemed to add DALL-E as a tool and had 4o/4.5 generate the prompts to send in to DALL-E.&lt;/p&gt; &lt;p&gt;The new version appears to be much more tightly integrated, similar to the Chameleon paper from a few months ago, or maybe contains a diffusion head within the transformer similarly to the LCM from Meta.&lt;/p&gt; &lt;p&gt;Furthermore I’ve noticed the image is generated a bit differently than a normal diffusion model. Initially a blank image is shown, then the details are added row by row from the top. Is this just an artifact of the UI (OAI has a habit of hiding model details), or is there a novel autoregressive approach at play.&lt;/p&gt; &lt;p&gt;I’m curious how yall think it works, and if something similar can be implemented with OSS models&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FrostyContribution35"&gt; /u/FrostyContribution35 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkqn77/speculation_on_the_latest_openai_image_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkqn77/speculation_on_the_latest_openai_image_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkqn77/speculation_on_the_latest_openai_image_generation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-26T23:57:44+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jke93s</id>
     <title>I tested the new DeepSeek V3 (0324) vs Claude 3.7 Sonnet in a 250k Token Codebase...</title>
     <updated>2025-03-26T15:19:00+00:00</updated>
@@ -125,6 +99,19 @@
     <published>2025-03-26T15:19:00+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jkv955</id>
+    <title>Local Workstations</title>
+    <updated>2025-03-27T03:52:30+00:00</updated>
+    <author>
+      <name>/u/Personal-Attitude872</name>
+      <uri>https://old.reddit.com/user/Personal-Attitude872</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been planning out a workstation for a little bit now and I’ve run into some questions I think are better answered by those with experience. My proposed build is as follows:&lt;/p&gt; &lt;p&gt;CPU: AMD Threadripper 7965WX&lt;/p&gt; &lt;p&gt;GPU: 1x 4090 + 2-3x 3090 (undervolted to ~200w)&lt;/p&gt; &lt;p&gt;MoBo: Asus Pro WS WRX90E-SAGE&lt;/p&gt; &lt;p&gt;RAM: 512gb DDR5&lt;/p&gt; &lt;p&gt;This would give me 72gb of VRAM and 512gb of system memory to fallback on. &lt;/p&gt; &lt;p&gt;Ideally I want to be able to run Qwen 2.5-coder 32b and a smaller model for inline copilot completions. From what I read Qwen can be ran at the 16bit quant comfortably at 64gb so I’d be able to load this into VRAM (i assume) however that would be about it. I can’t go over a 2000w power consumption so there’s not much room for expansion either. &lt;/p&gt; &lt;p&gt;I then ran into the M3 ultra mac studio at 512gb. This machine seems perfect and the results on even larger models is insane. However, I’m a linux user at heart and switching to a mac just doesn’t sit right with me.&lt;/p&gt; &lt;p&gt;So what should I do? Is the mac a no-brainer? Is there other options I don’t know about for local builds?&lt;/p&gt; &lt;p&gt;I’m a beginner in this space, only running smaller models on my 4060 but I’d love some input from you guys or some resources to further educate myself. Any response is appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Personal-Attitude872"&gt; /u/Personal-Attitude872 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv955/local_workstations/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-27T03:52:30+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jkejpp</id>
     <title>gemini-2.5-pro-exp-03-25 takes no.1 spot on Livebench</title>
     <updated>2025-03-26T15:31:37+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkejpp/gemini25proexp0325_takes_no1_spot_on_livebench/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-26T15:31:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jkwe7u</id>
+    <title>How does gpt4o image generator works? and there's gemini flash too, what techinique do they use?</title>
+    <updated>2025-03-27T05:01:09+00:00</updated>
+    <author>
+      <name>/u/aman167k</name>
+      <uri>https://old.reddit.com/user/aman167k</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;i want to replicate this for domain specific tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aman167k"&gt; /u/aman167k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkwe7u/how_does_gpt4o_image_generator_works_and_theres/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-27T05:01:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1jkkcd2</id>
@@ -177,19 +177,6 @@
     <published>2025-03-26T13:56:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jkl8ul</id>
-    <title>Megastructure made by new gemini 2.5 Pro one shot</title>
-    <updated>2025-03-26T20:05:32+00:00</updated>
-    <author>
-      <name>/u/KillyOnTerra</name>
-      <uri>https://old.reddit.com/user/KillyOnTerra</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"&gt; &lt;img alt="Megastructure made by new gemini 2.5 Pro one shot" src="https://external-preview.redd.it/Y3BoMjhvYnliM3JlMXCwHJYcCFS2at4U0624bh9xAyv9yXDKiCS8t1hTdo0t.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5e0f520cb053129adb6695eed4de9b9adaf60706" title="Megastructure made by new gemini 2.5 Pro one shot" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I see alot of people testing ai with 2D games but I wanted to see how it handles 3D. &lt;/p&gt; &lt;p&gt;Prompt: make an enormous megastructure in unity using c# make it complex and interesting. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/KillyOnTerra"&gt; /u/KillyOnTerra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ej6ukleyb3re1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-26T20:05:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jkotcs</id>
     <title>Delving deep into Llama.cpp and exploiting Llama.cpp's Heap Maze, from Heap-Overflow to Remote-Code Execution.</title>
     <updated>2025-03-26T22:36:54+00:00</updated>
@@ -203,17 +190,17 @@
     <published>2025-03-26T22:36:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jk7cka</id>
-    <title>Plenty 3090 FE's for sale in the Netherlands</title>
-    <updated>2025-03-26T08:56:31+00:00</updated>
+    <id>t3_1jkl8ul</id>
+    <title>Megastructure made by new gemini 2.5 Pro one shot</title>
+    <updated>2025-03-26T20:05:32+00:00</updated>
     <author>
-      <name>/u/jwestra</name>
-      <uri>https://old.reddit.com/user/jwestra</uri>
+      <name>/u/KillyOnTerra</name>
+      <uri>https://old.reddit.com/user/KillyOnTerra</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"&gt; &lt;img alt="Plenty 3090 FE's for sale in the Netherlands" src="https://preview.redd.it/3bxpnick00re1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7295d7a24ea4033f0e4d96d4cdbf0b662770a23a" title="Plenty 3090 FE's for sale in the Netherlands" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jwestra"&gt; /u/jwestra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/3bxpnick00re1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"&gt; &lt;img alt="Megastructure made by new gemini 2.5 Pro one shot" src="https://external-preview.redd.it/Y3BoMjhvYnliM3JlMXCwHJYcCFS2at4U0624bh9xAyv9yXDKiCS8t1hTdo0t.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5e0f520cb053129adb6695eed4de9b9adaf60706" title="Megastructure made by new gemini 2.5 Pro one shot" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I see alot of people testing ai with 2D games but I wanted to see how it handles 3D. &lt;/p&gt; &lt;p&gt;Prompt: make an enormous megastructure in unity using c# make it complex and interesting. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/KillyOnTerra"&gt; /u/KillyOnTerra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ej6ukleyb3re1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkl8ul/megastructure_made_by_new_gemini_25_pro_one_shot/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-26T08:56:31+00:00</published>
+    <published>2025-03-26T20:05:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1jkv93q</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jkv93q/i_reverseengineered_claude_code_cursor_ai_agents/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-27T03:52:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jk7cka</id>
+    <title>Plenty 3090 FE's for sale in the Netherlands</title>
+    <updated>2025-03-26T08:56:31+00:00</updated>
+    <author>
+      <name>/u/jwestra</name>
+      <uri>https://old.reddit.com/user/jwestra</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"&gt; &lt;img alt="Plenty 3090 FE's for sale in the Netherlands" src="https://preview.redd.it/3bxpnick00re1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7295d7a24ea4033f0e4d96d4cdbf0b662770a23a" title="Plenty 3090 FE's for sale in the Netherlands" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jwestra"&gt; /u/jwestra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/3bxpnick00re1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jk7cka/plenty_3090_fes_for_sale_in_the_netherlands/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-26T08:56:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1jkkqs3</id>
