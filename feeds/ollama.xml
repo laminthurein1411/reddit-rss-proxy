@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-28T18:08:29+00:00</updated>
+  <updated>2025-03-28T18:25:36+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1jkfsmr</id>
-    <title>GPU Not Recognized in Ollama Running in LXC (Host: pve) – "cuda driver library init failure: 999" Error</title>
-    <updated>2025-03-26T16:23:21+00:00</updated>
-    <author>
-      <name>/u/lowriskcork</name>
-      <uri>https://old.reddit.com/user/lowriskcork</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone,&lt;/p&gt; &lt;p&gt;I’m encountering a persistent issue trying to enable GPU acceleration with Ollama within an LXC container on my host system. Although my host detects the GPU via PCI (and the appropriate kernel driver is in use), Ollama inside the container cannot initialize CUDA and falls back to CPU inference with the following error:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;unknown error initializing cuda driver library /usr/lib/x86_64-linux-gnu/nvidia/current/libcuda.so.535.216.01: cuda driver library init failure: 999. see https://github.com/ollama/ollama/blob/main/docs/troubleshooting.md for more information &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Below I’ve included the diagnostic information I’ve gathered both from the container and the host.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Inside the Container:&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;CUDA Library and NVIDIA Directory:&lt;/strong&gt;&lt;em&gt;Output snippet from the container:&lt;/em&gt;ls -l /lib/x86_64-linux-gnu/libcuda.so* ls -l /usr/lib/x86_64-linux-gnu/nvidia/current/ lrwxrwxrwx 1 root root 34 Mar 26 16:17 /lib/x86_64-linux-gnu/libcuda.so.535.216.01 -&amp;gt; /lib/x86_64-linux-gnu/libcuda.so.1 ... &lt;/li&gt; &lt;li&gt;&lt;strong&gt;LD_LIBRARY_PATH:&lt;/strong&gt;&lt;em&gt;Output:&lt;/em&gt;echo $LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu/nvidia/current:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/nvidia/current:/usr/lib/x86_64-linux-gnu: &lt;/li&gt; &lt;li&gt;&lt;strong&gt;NVIDIA GPU Details:&lt;/strong&gt;&lt;em&gt;Output from container:&lt;/em&gt;nvidia-smi Wed Mar 26 16:20:09 2025 +---------------------------------------------------------------------------------------+ | NVIDIA-SMI 535.216.01 Driver Version: 535.216.01 CUDA Version: 12.2 | |-----------------------------------------+----------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | |=========================================+======================+======================| | 0 Quadro P2000 On | 00000000:C1:00.0 Off | N/A | +-----------------------------------------+----------------------+----------------------+ &lt;/li&gt; &lt;li&gt;&lt;strong&gt;CUDA Compiler Version:&lt;/strong&gt;&lt;em&gt;Output snippet:&lt;/em&gt;nvcc --version nvcc: NVIDIA (R) Cuda compiler driver Cuda compilation tools, release 11.8, V11.8.89 &lt;/li&gt; &lt;li&gt;&lt;strong&gt;Kernel Information:&lt;/strong&gt;&lt;em&gt;Output:&lt;/em&gt;uname -a Linux GPU 6.8.12-9-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-9 (2025-03-16T19:18Z) x86_64 GNU/Linux &lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamic Linker Cache for CUDA:&lt;/strong&gt;&lt;em&gt;Output snippet:&lt;/em&gt;ldconfig -p | grep cuda libcuda.so.1 (libc6,x86-64) =&amp;gt; /lib/x86_64-linux-gnu/libcuda.so.1 &lt;a href="http://libcuda.so"&gt;libcuda.so&lt;/a&gt; (libc6,x86-64) =&amp;gt; /lib/x86_64-linux-gnu/libcuda.so &lt;/li&gt; &lt;li&gt;&lt;strong&gt;Ollama Logs:&lt;/strong&gt;&lt;em&gt;Key Log Lines:&lt;/em&gt;ollama serve time=2025-03-26T16:20:41.525Z level=WARN source=gpu.go:605 msg=&amp;quot;unknown error initializing cuda driver library /usr/lib/x86_64-linux-gnu/nvidia/current/libcuda.so.535.216.01: cuda driver library init failure: 999...&amp;quot; time=2025-03-26T16:20:41.593Z level=INFO source=gpu.go:377 msg=&amp;quot;no compatible GPUs were discovered&amp;quot; &lt;/li&gt; &lt;li&gt;&lt;strong&gt;Container Environment Variables:&lt;/strong&gt;&lt;em&gt;Snippet of the output:&lt;/em&gt;cat /proc/1/environ | tr '\0' '\n' TERM=linux container=lxc &lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;On the Host Machine:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I also gathered some details from the host, running on Proxmox Virtual Environment (pve):&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Kernel Version and OS Info:&lt;/strong&gt;&lt;em&gt;Output:&lt;/em&gt;uname -a Linux pve 6.8.12-9-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-9 (2025-03-16T19:18Z) x86_64 &lt;/li&gt; &lt;li&gt;&lt;strong&gt;nvidia-smi:&lt;/strong&gt;When I ran &lt;code&gt;nvidia-smi&lt;/code&gt; on the host, I received:However, the GPU is visible via PCI later.-bash: nvidia-smi: command not found &lt;/li&gt; &lt;li&gt;&lt;strong&gt;PCI Device Listing:&lt;/strong&gt;&lt;em&gt;Output:&lt;/em&gt;lspci -nnk | grep -i nvidia c1:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP106GL [Quadro P2000] [10de:1c30] (rev a1) Kernel driver in use: nvidia Kernel modules: nvidia c1:00.1 Audio device [0403]: NVIDIA Corporation GP106 High Definition Audio Controller [10de:10f1] (rev a1) &lt;/li&gt; &lt;li&gt;&lt;strong&gt;Host Dynamic Linker Cache:&lt;/strong&gt;&lt;em&gt;Output snippet:&lt;/em&gt;ldconfig -p | grep cuda libcuda.so.1 (libc6,x86-64) =&amp;gt; /lib/x86_64-linux-gnu/libcuda.so.1 &lt;a href="http://libcuda.so"&gt;libcuda.so&lt;/a&gt; (libc6,x86-64) =&amp;gt; /lib/x86_64-linux-gnu/libcuda.so &lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;The Issue &amp;amp; My Questions:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Issue:&lt;/strong&gt; Despite detailed configuration inside the container, Ollama fails to initialize the CUDA driver (error 999) and falls back to CPU, even though the GPU is visible and the symlink adjustments seem correct.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Questions:&lt;/strong&gt; &lt;ol&gt; &lt;li&gt;Are there any known compatibility issues with Ollama, the specific NVIDIA driver/CUDA version, and running inside an LXC container?&lt;/li&gt; &lt;li&gt;Is there additional host-side configuration (perhaps re: GPU passthrough or container privileges) that I should check?&lt;/li&gt; &lt;li&gt;Should I provide or adjust any further details from the host (like installing or running &lt;code&gt;nvidia-smi&lt;/code&gt; on the host) to help diagnose this?&lt;/li&gt; &lt;li&gt;Are there additional debugging steps to force Ollama to successfully initialize the CUDA driver?&lt;/li&gt; &lt;/ol&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Any help or insights would be greatly appreciated. I’m happy to provide further logs or configuration details if needed.&lt;/p&gt; &lt;p&gt;Thanks in advance for your assistance!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Additional Note:&lt;/strong&gt;&lt;br /&gt; If anyone has suggestions for ensuring that the host’s NVIDIA tools (like &lt;code&gt;nvidia-smi&lt;/code&gt;) are available for deeper diagnostics from inside the host environment, please let me know.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lowriskcork"&gt; /u/lowriskcork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jkfsmr/gpu_not_recognized_in_ollama_running_in_lxc_host/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jkfsmr/gpu_not_recognized_in_ollama_running_in_lxc_host/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jkfsmr/gpu_not_recognized_in_ollama_running_in_lxc_host/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-26T16:23:21+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jkgp0g</id>
     <title>Hardware Recommendations</title>
@@ -268,17 +255,17 @@
     <published>2025-03-28T02:24:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jm1a4g</id>
-    <title>Mastering Text Chunking with Ollama: A Comprehensive Guide to Advanced Processing</title>
-    <updated>2025-03-28T18:00:04+00:00</updated>
+    <id>t3_1jm1rqh</id>
+    <title>Worth fine-tuning an embedding model specifically for file/folder naming?</title>
+    <updated>2025-03-28T18:20:30+00:00</updated>
     <author>
-      <name>/u/KonradFreeman</name>
-      <uri>https://old.reddit.com/user/KonradFreeman</uri>
+      <name>/u/taxem_tbma</name>
+      <uri>https://old.reddit.com/user/taxem_tbma</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/KonradFreeman"&gt; /u/KonradFreeman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://danielkliewer.com/blog/2025-03-28-Ollama-Chunking"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jm1a4g/mastering_text_chunking_with_ollama_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jm1a4g/mastering_text_chunking_with_ollama_a/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;br /&gt; I’m not very experienced in AI, but I’ve been experimenting with using embedding models to semantically organize files — basically comparing file names, clustering them, and generating folder names with a local LLM if needed.&lt;/p&gt; &lt;p&gt;Right now I’m using general-purpose embedding models &lt;em&gt;mxbai-embed-large&lt;/em&gt; , but they sometimes miss the mark when it comes to the &lt;em&gt;&amp;quot;folder naming intuition&amp;quot;&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;So my question is:&lt;br /&gt; &lt;strong&gt;Would it make sense to fine-tune a small embedding model specifically for file/folder naming semantics?&lt;/strong&gt;&lt;br /&gt; Or is that overkill for a local tool like this?&lt;/p&gt; &lt;p&gt;For context, I’ve been building a CLI tool called &lt;a href="https://github.com/PerminovEugene/messy-folder-reorganizer-ai"&gt;messy-folder-reorganizer-ai&lt;/a&gt; that does exactly this with Ollama and local vector search.&lt;/p&gt; &lt;p&gt;Would love to hear thoughts or similar experiences.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taxem_tbma"&gt; /u/taxem_tbma &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jm1rqh/worth_finetuning_an_embedding_model_specifically/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jm1rqh/worth_finetuning_an_embedding_model_specifically/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jm1rqh/worth_finetuning_an_embedding_model_specifically/"/>
     <category term="ollama" label="r/ollama"/>
-    <published>2025-03-28T18:00:04+00:00</published>
+    <published>2025-03-28T18:20:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1jlqp06</id>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jlhysn/building_a_front_end_that_sits_on_ollama_is_this/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-28T00:08:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jm1a4g</id>
+    <title>Mastering Text Chunking with Ollama: A Comprehensive Guide to Advanced Processing</title>
+    <updated>2025-03-28T18:00:04+00:00</updated>
+    <author>
+      <name>/u/KonradFreeman</name>
+      <uri>https://old.reddit.com/user/KonradFreeman</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/KonradFreeman"&gt; /u/KonradFreeman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://danielkliewer.com/blog/2025-03-28-Ollama-Chunking"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jm1a4g/mastering_text_chunking_with_ollama_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jm1a4g/mastering_text_chunking_with_ollama_a/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-28T18:00:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1jll087</id>
