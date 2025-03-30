@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-03-30T16:38:22+00:00</updated>
+  <updated>2025-03-30T16:49:16+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1jlkpsj</id>
-    <title>Which is the smallest, fastest text generation model on ollama that can be used for chatbot?</title>
-    <updated>2025-03-28T02:24:49+00:00</updated>
-    <author>
-      <name>/u/gilzonme</name>
-      <uri>https://old.reddit.com/user/gilzonme</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gilzonme"&gt; /u/gilzonme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jlkpsj/which_is_the_smallest_fastest_text_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jlkpsj/which_is_the_smallest_fastest_text_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jlkpsj/which_is_the_smallest_fastest_text_generation/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-03-28T02:24:49+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jm3obq</id>
     <title>Minimalist Note-Taking App with Integrated AI Assistant</title>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jnfb6h/need_help_stopping_runaway_gpu_due_to_inferencing/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-03-30T15:47:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jngors</id>
+    <title>Agent - A Local Computer-Use Operator for macOS</title>
+    <updated>2025-03-30T16:48:19+00:00</updated>
+    <author>
+      <name>/u/sandropuppo</name>
+      <uri>https://old.reddit.com/user/sandropuppo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've just open-sourced Agent, our framework for running computer-use workflows across multiple apps in isolated macOS/Linux sandboxes.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Grab the code at&lt;/strong&gt; &lt;a href="https://github.com/trycua/cua"&gt;&lt;strong&gt;https://github.com/trycua/cua&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;After launching Computer a few weeks ago, we realized many of you wanted to run complex workflows that span multiple applications. Agent builds on Computer to make this possible. It works with local Ollama models (if you're privacy-minded) or cloud providers like OpenAI, Anthropic, and others.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why we built this:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;We kept hitting the same problems when building multi-app AI agents - they'd break in unpredictable ways, work inconsistently across environments, or just fail with complex workflows. So we built Agent to solve these headaches:&lt;/p&gt; &lt;p&gt;•⁠ ⁠It handles complex workflows across multiple apps without falling apart&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can use your preferred model (local or cloud) - we're not locking you into one provider&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can swap between different agent loop implementations depending on what you're building&lt;/p&gt; &lt;p&gt;•⁠ ⁠You get clean, structured responses that work well with other tools&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The code is pretty straightforward:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async with Computer() as macos_computer:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;agent = ComputerAgent(&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;computer=macos_computer,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;loop=AgentLoop.OPENAI,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;model=LLM(provider=LLMProvider.OPENAI)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;tasks = [&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Look for a repository named trycua/cua on GitHub.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Check the open issues, open the most recent one and read it.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Clone the repository if it doesn't exist yet.&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;for i, task in enumerate(tasks):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nTask {i+1}/{len(tasks)}: {task}&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async for result in agent.run(task):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(result)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nFinished task {i+1}!&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Some cool things you can do with it:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;•⁠ ⁠Mix and match agent loops - OpenAI for some tasks, Claude for others, or try our experimental OmniParser&lt;/p&gt; &lt;p&gt;•⁠ ⁠Run it with various models - works great with OpenAI's computer_use_preview, but also with Claude and others&lt;/p&gt; &lt;p&gt;•⁠ ⁠Get detailed logs of what your agent is thinking/doing (super helpful for debugging)&lt;/p&gt; &lt;p&gt;•⁠ ⁠All the sandboxing from Computer means your main system stays protected&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Getting started is easy:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install &amp;quot;cua-agent[all]&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;# Or if you only need specific providers:&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install &amp;quot;cua-agent[openai]&amp;quot; # Just OpenAI&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install &amp;quot;cua-agent[anthropic]&amp;quot; # Just Anthropic&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;pip install &amp;quot;cua-agent[omni]&amp;quot; # Our experimental OmniParser&lt;/code&gt;&lt;/p&gt; &lt;p&gt;We've been dogfooding this internally for weeks now, and it's been a game-changer for automating our workflows. &lt;/p&gt; &lt;p&gt;Would love to hear your thoughts ! :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sandropuppo"&gt; /u/sandropuppo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jngors/agent_a_local_computeruse_operator_for_macos/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jngors/agent_a_local_computeruse_operator_for_macos/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jngors/agent_a_local_computeruse_operator_for_macos/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-03-30T16:48:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1jndb9h</id>
