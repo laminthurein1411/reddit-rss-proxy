@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-30T06:49:50+00:00</updated>
+  <updated>2025-03-30T07:05:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jmg7td</id>
-    <title>Best models to run with 8GB VRAM, 16GB RAM</title>
-    <updated>2025-03-29T06:27:04+00:00</updated>
-    <author>
-      <name>/u/Qxz3</name>
-      <uri>https://old.reddit.com/user/Qxz3</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been experimenting with local LLMs on my gaming laptop (RTX 4070 8GB, 16GB of RAM). My use cases have been coding and creative writing. Models that work well and that I like:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Gemma 3 12B&lt;/strong&gt; - low quantization (IQ3_XS), 100% offloaded to GPU, spilling into RAM. ~10t/s. Great at following instructions and general knowledge. &lt;em&gt;This is the sweet spot and my main model&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Gemma 3 4B&lt;/strong&gt; - full quantization (Q8), 100% offloaded to GPU, minimal spill. ~30-40t/s. Still smart and competent but more limited knowledge. &lt;em&gt;This is an amazing model at this performance level&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;MN GRAND Gutenburg Lyra4 Lyra 23.5B,&lt;/strong&gt; medium quant (Q4) (lower quants are just too wonky) about 50% offloaded to GPU, 2-3t/s. When quality of prose and writing a captivating story matters. Tends to break down so needs some supervision, but it's in another league entirely - Gemma 3 just cannot write like this &lt;em&gt;whatsoever&lt;/em&gt; (although Gemma follows instructions more closely). Great companion for creative writing. &lt;strong&gt;12B version&lt;/strong&gt; of this is way faster (100% GPU, 15t/s) and still strong stylistically, although its stories aren't nearly as engaging so I tend to be patient and wait for the 23.5B.&lt;/p&gt; &lt;p&gt;I was disappointed with:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Llama 3.1 8B&lt;/strong&gt; - runs fast, but responses are short, superficial and uninteresting compared with Gemma 3 4B.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Mistral Small 3.1&lt;/strong&gt; - Can barely run on my machine, and for the extreme slowness, wasn't impressed with the responses. Would rather run &lt;strong&gt;Gemma 3 27B&lt;/strong&gt; instead.&lt;/p&gt; &lt;p&gt;I wish I could run:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;QWQ 32B&lt;/strong&gt; - doesn't do well at the lower quants that would allow it to run on my system, just too slow.&lt;br /&gt; &lt;strong&gt;Gemma 3 27B&lt;/strong&gt; - it runs but the jump in quality compared to &lt;strong&gt;12B&lt;/strong&gt; hasn't been worth going down to 2t/s.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Qxz3"&gt; /u/Qxz3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmg7td/best_models_to_run_with_8gb_vram_16gb_ram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmg7td/best_models_to_run_with_8gb_vram_16gb_ram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmg7td/best_models_to_run_with_8gb_vram_16gb_ram/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-29T06:27:04+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jmgj6z</id>
     <title>is there a future for diffusion language models ?</title>
@@ -99,6 +86,19 @@
     <published>2025-03-28T20:07:08+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jn6w95</id>
+    <title>CUDA GPUs vs Price Tradeoff (Local CSM/Sesame on RX GPU)</title>
+    <updated>2025-03-30T07:00:17+00:00</updated>
+    <author>
+      <name>/u/elchurnerista</name>
+      <uri>https://old.reddit.com/user/elchurnerista</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is it possible to run a LLama 1B locally alongside another &lt;a href="https://huggingface.co/sesame/csm-1b"&gt;model&lt;/a&gt; that explicitly mentions the need to have CUDA-compatible hardware (CUDA 12.4 or 12.6) on a RX GPU with a CUDA adapter (ZLUDA or another variety) with 16-20GB VRAM and get similar native-CUDA performance?&lt;/p&gt; &lt;p&gt;Now, is the potential better performance by running in a NVidia GPU worth ~800$? I'm not technically in a budget, but I'd prefer not to burn all my cash given the GPU market.&lt;/p&gt; &lt;p&gt;I'm trying to get ~20 T/s on 1B LLama, &lt;strong&gt;&lt;em&gt;at least&lt;/em&gt;&lt;/strong&gt;. Running it on the cloud it's not an option.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/elchurnerista"&gt; /u/elchurnerista &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn6w95/cuda_gpus_vs_price_tradeoff_local_csmsesame_on_rx/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn6w95/cuda_gpus_vs_price_tradeoff_local_csmsesame_on_rx/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jn6w95/cuda_gpus_vs_price_tradeoff_local_csmsesame_on_rx/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T07:00:17+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jn3miw</id>
     <title>finetune llm to make comfyui workflow</title>
     <updated>2025-03-30T03:20:34+00:00</updated>
@@ -164,19 +164,6 @@
     <published>2025-03-29T16:50:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jmvwi5</id>
-    <title>GMKtec announces imminent availability of Strix Halo EVO-X2 mini PC</title>
-    <updated>2025-03-29T20:50:00+00:00</updated>
-    <author>
-      <name>/u/fairydreaming</name>
-      <uri>https://old.reddit.com/user/fairydreaming</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.notebookcheck.net/GMKtec-announces-imminent-availability-of-Strix-Halo-EVO-X2-mini-PC.989734.0.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmvwi5/gmktec_announces_imminent_availability_of_strix/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmvwi5/gmktec_announces_imminent_availability_of_strix/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-29T20:50:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jn10lx</id>
     <title>Gemini 2.5 Pro unusable for coding?</title>
     <updated>2025-03-30T00:56:48+00:00</updated>
@@ -190,17 +177,17 @@
     <published>2025-03-30T00:56:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jml2w8</id>
-    <title>Nemotron-49B uses 70% less KV cache compare to source Llama-70B</title>
-    <updated>2025-03-29T12:21:40+00:00</updated>
+    <id>t3_1jmvwi5</id>
+    <title>GMKtec announces imminent availability of Strix Halo EVO-X2 mini PC</title>
+    <updated>2025-03-29T20:50:00+00:00</updated>
     <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+      <name>/u/fairydreaming</name>
+      <uri>https://old.reddit.com/user/fairydreaming</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;While studying how much KV cache major models uses using formula and empirically running it with llama.cpp if possible, I found that the Nemotron models are not only 30% smaller in model size, KV cache is also 70% less. Overall, it is 38% VRAM saving if you run at 128k context.&lt;/p&gt; &lt;p&gt;This is because the non-self attention layers doesn't have any KV cache at all. For Nemotron-49B, 31 out of 80 layers are non-self attention. For 51B, 26 out of 80 layers.&lt;/p&gt; &lt;p&gt;So if you are into 128k context and have 48GB VRAM, Nemotron can run at Q5_K_M at 128k with unquantized KV cache. On the other hand, QwQ can only run at IQ3_M due to 32GB KV cache.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Other things I learned:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;gemma-3 is pretty bad at KV cache while running with llama.cpp but this is because llama.cpp doesn't implement interleaved sliding window attention that can reduce KV cache to one sixth. (probably HF's transformers is the only one that support iSWA?)&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Deepseek should make smaller MLA models that fit in 24GB or 48GB VRAM. This will blow the competition out of the water for local long context use.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fairydreaming"&gt; /u/fairydreaming &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.notebookcheck.net/GMKtec-announces-imminent-availability-of-Strix-Halo-EVO-X2-mini-PC.989734.0.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmvwi5/gmktec_announces_imminent_availability_of_strix/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmvwi5/gmktec_announces_imminent_availability_of_strix/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-29T12:21:40+00:00</published>
+    <published>2025-03-29T20:50:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1jmxdgg</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmxdgg/splitquantv2_enhancing_lowbit_quantization_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-29T21:58:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jml2w8</id>
+    <title>Nemotron-49B uses 70% less KV cache compare to source Llama-70B</title>
+    <updated>2025-03-29T12:21:40+00:00</updated>
+    <author>
+      <name>/u/Ok_Warning2146</name>
+      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;While studying how much KV cache major models uses using formula and empirically running it with llama.cpp if possible, I found that the Nemotron models are not only 30% smaller in model size, KV cache is also 70% less. Overall, it is 38% VRAM saving if you run at 128k context.&lt;/p&gt; &lt;p&gt;This is because the non-self attention layers doesn't have any KV cache at all. For Nemotron-49B, 31 out of 80 layers are non-self attention. For 51B, 26 out of 80 layers.&lt;/p&gt; &lt;p&gt;So if you are into 128k context and have 48GB VRAM, Nemotron can run at Q5_K_M at 128k with unquantized KV cache. On the other hand, QwQ can only run at IQ3_M due to 32GB KV cache.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Other things I learned:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;gemma-3 is pretty bad at KV cache while running with llama.cpp but this is because llama.cpp doesn't implement interleaved sliding window attention that can reduce KV cache to one sixth. (probably HF's transformers is the only one that support iSWA?)&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Deepseek should make smaller MLA models that fit in 24GB or 48GB VRAM. This will blow the competition out of the water for local long context use.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jml2w8/nemotron49b_uses_70_less_kv_cache_compare_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-29T12:21:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1jmpjeu</id>
@@ -294,19 +294,6 @@
     <published>2025-03-29T21:41:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jn5uto</id>
-    <title>MacBook M4 Max isn't great for LLMs</title>
-    <updated>2025-03-30T05:42:51+00:00</updated>
-    <author>
-      <name>/u/val_in_tech</name>
-      <uri>https://old.reddit.com/user/val_in_tech</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I had M1 Max and recently upgraded to M4 Max - inferance speed difference is huge improvement (~3x) but it's still much slower than 5 years old RTX 3090 you can get for 700$ USD. &lt;/p&gt; &lt;p&gt;While it's nice to be able to load large models, they're just not gonna be very usable on that machine. An example - pretty small 14b distilled Qwen 4bit quant runs pretty slow for coding (40tps, with diff frequently failing so needs to redo whole file), and quality is very low. 32 bit is pretty unusable via Roo Code and Cline because of low speed.&lt;/p&gt; &lt;p&gt;And this is the best a money can buy you as Apple laptop.&lt;/p&gt; &lt;p&gt;Those are very pricey machines and I don't see any mentions that they aren't practical for local AI. You likely better off getting 1-2 generations old Nvidia rig if really need it, or renting, or just paying for API, as quality/speed will be day and night without upfront cost. &lt;/p&gt; &lt;p&gt;If you're getting MBP - save yourselves thousands $ and just get minimal ram you need with a bit extra SSD, and use more specialized hardware for local AI. &lt;/p&gt; &lt;p&gt;It's an awesome machine, all I'm saying - it prob won't deliver if you have high AI expectations for it. &lt;/p&gt; &lt;p&gt;PS: to me, this is not about getting or not getting a MacBook. I've been getting them for 15 years now and think they are awesome. The top models might not be quite the AI beast you were hoping for dropping these kinda $$$$, this is all I'm saying. I've had M1 Max with 64GB for years, and after the initial euphoria of holy smokes I can run large stuff there - never did it again for the reasons mentioned above. M4 is much faster but does feel similar in that sense. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/val_in_tech"&gt; /u/val_in_tech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T05:42:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jmyvpd</id>
     <title>Moondream 2025-03-27 Release</title>
     <updated>2025-03-29T23:10:50+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmyvpd/moondream_20250327_release/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-29T23:10:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jn5uto</id>
+    <title>MacBook M4 Max isn't great for LLMs</title>
+    <updated>2025-03-30T05:42:51+00:00</updated>
+    <author>
+      <name>/u/val_in_tech</name>
+      <uri>https://old.reddit.com/user/val_in_tech</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I had M1 Max and recently upgraded to M4 Max - inferance speed difference is huge improvement (~3x) but it's still much slower than 5 years old RTX 3090 you can get for 700$ USD. &lt;/p&gt; &lt;p&gt;While it's nice to be able to load large models, they're just not gonna be very usable on that machine. An example - pretty small 14b distilled Qwen 4bit quant runs pretty slow for coding (40tps, with diff frequently failing so needs to redo whole file), and quality is very low. 32 bit is pretty unusable via Roo Code and Cline because of low speed.&lt;/p&gt; &lt;p&gt;And this is the best a money can buy you as Apple laptop.&lt;/p&gt; &lt;p&gt;Those are very pricey machines and I don't see any mentions that they aren't practical for local AI. You likely better off getting 1-2 generations old Nvidia rig if really need it, or renting, or just paying for API, as quality/speed will be day and night without upfront cost. &lt;/p&gt; &lt;p&gt;If you're getting MBP - save yourselves thousands $ and just get minimal ram you need with a bit extra SSD, and use more specialized hardware for local AI. &lt;/p&gt; &lt;p&gt;It's an awesome machine, all I'm saying - it prob won't deliver if you have high AI expectations for it. &lt;/p&gt; &lt;p&gt;PS: to me, this is not about getting or not getting a MacBook. I've been getting them for 15 years now and think they are awesome. The top models might not be quite the AI beast you were hoping for dropping these kinda $$$$, this is all I'm saying. I've had M1 Max with 64GB for years, and after the initial euphoria of holy smokes I can run large stuff there - never did it again for the reasons mentioned above. M4 is much faster but does feel similar in that sense. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/val_in_tech"&gt; /u/val_in_tech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T05:42:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1jmtkgo</id>
