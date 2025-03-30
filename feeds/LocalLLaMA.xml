@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-30T22:35:26+00:00</updated>
+  <updated>2025-03-30T22:48:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,17 +21,17 @@
     <published>2025-03-29T21:41:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jnmdlk</id>
-    <title>Are there ready-to-use RAG (w local llm) projects for wikis?</title>
-    <updated>2025-03-30T20:54:42+00:00</updated>
+    <id>t3_1jner1g</id>
+    <title>What is deep research to you?</title>
+    <updated>2025-03-30T15:21:58+00:00</updated>
     <author>
-      <name>/u/la_baguette77</name>
-      <uri>https://old.reddit.com/user/la_baguette77</uri>
+      <name>/u/swagonflyyyy</name>
+      <uri>https://old.reddit.com/user/swagonflyyyy</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Pretty much the title. Wiki pages are somewhat standardized, is there already some kind project, for throwing the content into the RAG?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/la_baguette77"&gt; /u/la_baguette77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnmdlk/are_there_readytouse_rag_w_local_llm_projects_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnmdlk/are_there_readytouse_rag_w_local_llm_projects_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnmdlk/are_there_readytouse_rag_w_local_llm_projects_for/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm updating an old framework I have to seamlessly perform a simple online search in duckduckgo search (if the user activates that feature), retrieving the text results from the results only, but it only yields an overview of the text contents of the page, which is ok for quick search since the results are returned immediately.&lt;/p&gt; &lt;p&gt;The system recognizes complex inquiries intuitively and if the user requests a deep search, it proceeds to perform a systematic, agentic search online from the results, yielding 10 results, rather than simply parsing the overview text. I'm trying to get more ideas as to how to actually incorporate and expand deep search functionality to take a more broad, systematic, agentic approach. Here is what I have so far:&lt;/p&gt; &lt;p&gt;1 - Activate Deep Search when prompted, generating a query related to the user's inquiry, using the convo history as additional context.&lt;/p&gt; &lt;p&gt;2 - For each search result: check if the website respects robots.txt and if the text overview is related to the user's inquiry and if so, scrape the text inside webpage.&lt;/p&gt; &lt;p&gt;3 - If the webpage contains links, use the user's inquiry, convo history and the scraped text from the page itself (summarizing the text contents from context length-long chunks if the text is greater than the context length before achieving a final summary) to ask a list of questions related to the user's inquiry and the info gathered so far.&lt;/p&gt; &lt;p&gt;4 - After generating the list of questions, a list of links inside the search result is sent to the agent to see if any of the links may be related to the user's inquiry and the list of questions. If any link is detected as relevant, the agent selects that link and recursively performs step 2, but for links instead of search results. Keep in mind this is all done inside the same search result. If none of the links presented are related or there is an issue accessing the link, the agent stops digging and moves on to the next search result.&lt;/p&gt; &lt;p&gt;Once all of that is done, the agent will summarize each chunk of text gathered related to each search result, then provide a final summary before providing an answer to the user.&lt;/p&gt; &lt;p&gt;This actually works surprisingly well and is stable enough to keep going and gathering tons of accurate information. So once I deal with a number of issues (convo history chunking, handling pdf links, etc.) I want to expand the scope of the deep search further to reach even deeper conclusions. Here are some ideas:&lt;/p&gt; &lt;p&gt;1 - Scrape youtube videos - duckduckgo_search allows you to return youtube videos. I already have methods set up to perform the search and auto-download batches of youtube videos based on the search results and converting them to mp4. This is done with duckduckgo_search, yt-dlp and ffmpeg. All I would need to do afterwards is to break up the audio into 30-second temp audio clips and use local whisper to transcribe the audio and use the deep search agent to chunk/summarize them and include the information as part of the inquiry.&lt;/p&gt; &lt;p&gt;2 - That's it. Lmao.&lt;/p&gt; &lt;p&gt;If you read this far, you're probably thinking to yourself that this would take forever, and honestly, yes it does take a long time to generate an answer but when it does, it really does generate a goldmine of information that the agent worked so hard to gather, so my version of Deep Search is built for the patient in mind, who really need a lot of information or need to make sure you have incredibly precise information and are willing to wait for results. &lt;/p&gt; &lt;p&gt;I think its interesting to see the effects of scraping youtube videos alongside search results. I tried scraping related images from the links inside the search results but the agent kept correctly discarding the images as irrelevant, which means there usually isn't much valuable info to gather with images themselves.&lt;/p&gt; &lt;p&gt;That being said, I feel like even here I'm not doing enough to provide a satisfactory deep search. I feel like there should be additional functionality included (like RAG, etc.) and I'm personally not satisfied with this approach, even if it does yield valuable information. &lt;/p&gt; &lt;p&gt;So that begs the question: what is your interpretation of deep search and how would you approach it differently?&lt;/p&gt; &lt;p&gt;TL;DR: I have a bot with two versions of search: Shallow search for quick search results, and deep search, for in-depth, systematic, agentic approach to data gathering. Deep search may not be enough to really consider it &amp;quot;deep&amp;quot;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/swagonflyyyy"&gt; /u/swagonflyyyy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jner1g/what_is_deep_research_to_you/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jner1g/what_is_deep_research_to_you/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jner1g/what_is_deep_research_to_you/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T20:54:42+00:00</published>
+    <published>2025-03-30T15:21:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1jnb3cl</id>
@@ -112,19 +112,6 @@
     <published>2025-03-29T19:02:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jnld6i</id>
-    <title>We experimented with developing cross language voice cloning TTS for Indic Languages</title>
-    <updated>2025-03-30T20:11:03+00:00</updated>
-    <author>
-      <name>/u/Aquaaa3539</name>
-      <uri>https://old.reddit.com/user/Aquaaa3539</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"&gt; &lt;img alt="We experimented with developing cross language voice cloning TTS for Indic Languages" src="https://external-preview.redd.it/ZXB1a3Y5ZGl3dnJlMXyf8-rvm1C__Q4bDL3gJBkjO_bjkyMUPsobX80FiZpA.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=039712a29c370d05620c2cf8ca6c56b1d00c0c18" title="We experimented with developing cross language voice cloning TTS for Indic Languages" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We at our startup FuturixAI experimented with developing cross language voice cloning TTS models for Indic Languages&lt;br /&gt; Here is the result&lt;/p&gt; &lt;p&gt;Currently developed for Hindi, Telegu and Marathi&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aquaaa3539"&gt; /u/Aquaaa3539 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/h9sc3kdiwvre1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T20:11:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jnewf8</id>
     <title>Has anyone tried Tarsier2 7B? Insanely impressive video language model</title>
     <updated>2025-03-30T15:28:46+00:00</updated>
@@ -151,17 +138,17 @@
     <published>2025-03-30T15:10:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jng3cz</id>
-    <title>Agent - A Local Computer-Use Operator for macOS</title>
-    <updated>2025-03-30T16:21:27+00:00</updated>
+    <id>t3_1jnld6i</id>
+    <title>We experimented with developing cross language voice cloning TTS for Indic Languages</title>
+    <updated>2025-03-30T20:11:03+00:00</updated>
     <author>
-      <name>/u/sandropuppo</name>
-      <uri>https://old.reddit.com/user/sandropuppo</uri>
+      <name>/u/Aquaaa3539</name>
+      <uri>https://old.reddit.com/user/Aquaaa3539</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've just open-sourced Agent, our framework for running computer-use workflows across multiple apps in isolated macOS/Linux sandboxes.&lt;/p&gt; &lt;p&gt;After launching Computer a few weeks ago, we realized many of you wanted to run complex workflows that span multiple applications. Agent builds on Computer to make this possible. It works with local Ollama models (if you're privacy-minded) or cloud providers like OpenAI, Anthropic, and others.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why we built this:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;We kept hitting the same problems when building multi-app AI agents - they'd break in unpredictable ways, work inconsistently across environments, or just fail with complex workflows. So we built Agent to solve these headaches:&lt;/p&gt; &lt;p&gt;•⁠ ⁠It handles complex workflows across multiple apps without falling apart&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can use your preferred model (local or cloud) - we're not locking you into one provider&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can swap between different agent loop implementations depending on what you're building&lt;/p&gt; &lt;p&gt;•⁠ ⁠You get clean, structured responses that work well with other tools&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The code is pretty straightforward:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async with Computer() as macos_computer:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;agent = ComputerAgent(&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;computer=macos_computer,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;loop=AgentLoop.OPENAI,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;model=LLM(provider=LLMProvider.OPENAI)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;tasks = [&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Look for a repository named trycua/cua on GitHub.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Check the open issues, open the most recent one and read it.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Clone the repository if it doesn't exist yet.&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;for i, task in enumerate(tasks):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nTask {i+1}/{len(tasks)}: {task}&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async for result in agent.run(task):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(result)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nFinished task {i+1}!&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Some cool things you can do with it:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;•⁠ ⁠Mix and match agent loops - OpenAI for some tasks, Claude for others, or try our experimental OmniParser&lt;/p&gt; &lt;p&gt;•⁠ ⁠Run it with various models - works great with OpenAI's computer_use_preview, but also with Claude and others&lt;/p&gt; &lt;p&gt;•⁠ ⁠Get detailed logs of what your agent is thinking/doing (super helpful for debugging)&lt;/p&gt; &lt;p&gt;•⁠ ⁠All the sandboxing from Computer means your main system stays protected&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Getting started is easy:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[all]&amp;quot;&lt;/p&gt; &lt;p&gt;# Or if you only need specific providers:&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[openai]&amp;quot; # Just OpenAI&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[anthropic]&amp;quot; # Just Anthropic&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[omni]&amp;quot; # Our experimental OmniParser&lt;/p&gt; &lt;p&gt;We've been dogfooding this internally for weeks now, and it's been a game-changer for automating our workflows. &lt;strong&gt;Grab the code at&lt;/strong&gt; &lt;a href="https://github.com/trycua/cua"&gt;&lt;strong&gt;https://github.com/trycua/cua&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts LocalLLaMA community! :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sandropuppo"&gt; /u/sandropuppo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"&gt; &lt;img alt="We experimented with developing cross language voice cloning TTS for Indic Languages" src="https://external-preview.redd.it/ZXB1a3Y5ZGl3dnJlMXyf8-rvm1C__Q4bDL3gJBkjO_bjkyMUPsobX80FiZpA.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=039712a29c370d05620c2cf8ca6c56b1d00c0c18" title="We experimented with developing cross language voice cloning TTS for Indic Languages" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We at our startup FuturixAI experimented with developing cross language voice cloning TTS models for Indic Languages&lt;br /&gt; Here is the result&lt;/p&gt; &lt;p&gt;Currently developed for Hindi, Telegu and Marathi&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aquaaa3539"&gt; /u/Aquaaa3539 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/h9sc3kdiwvre1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnld6i/we_experimented_with_developing_cross_language/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T16:21:27+00:00</published>
+    <published>2025-03-30T20:11:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1jnlzb6</id>
@@ -177,17 +164,17 @@
     <published>2025-03-30T20:37:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jnf28i</id>
-    <title>Exploiting Large Language Models: Backdoor Injections</title>
-    <updated>2025-03-30T15:36:01+00:00</updated>
+    <id>t3_1jng3cz</id>
+    <title>Agent - A Local Computer-Use Operator for macOS</title>
+    <updated>2025-03-30T16:21:27+00:00</updated>
     <author>
-      <name>/u/phantagom</name>
-      <uri>https://old.reddit.com/user/phantagom</uri>
+      <name>/u/sandropuppo</name>
+      <uri>https://old.reddit.com/user/sandropuppo</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"&gt; &lt;img alt="Exploiting Large Language Models: Backdoor Injections" src="https://external-preview.redd.it/UeXieNkboMcAP3kmecNJZk2I2AO_-fluFc5hU8_aXv8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=51fe2f830643e486ffcf2effb92ea6a480e64cf2" title="Exploiting Large Language Models: Backdoor Injections" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phantagom"&gt; /u/phantagom &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://kruyt.org/llminjectbackdoor/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've just open-sourced Agent, our framework for running computer-use workflows across multiple apps in isolated macOS/Linux sandboxes.&lt;/p&gt; &lt;p&gt;After launching Computer a few weeks ago, we realized many of you wanted to run complex workflows that span multiple applications. Agent builds on Computer to make this possible. It works with local Ollama models (if you're privacy-minded) or cloud providers like OpenAI, Anthropic, and others.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why we built this:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;We kept hitting the same problems when building multi-app AI agents - they'd break in unpredictable ways, work inconsistently across environments, or just fail with complex workflows. So we built Agent to solve these headaches:&lt;/p&gt; &lt;p&gt;•⁠ ⁠It handles complex workflows across multiple apps without falling apart&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can use your preferred model (local or cloud) - we're not locking you into one provider&lt;/p&gt; &lt;p&gt;•⁠ ⁠You can swap between different agent loop implementations depending on what you're building&lt;/p&gt; &lt;p&gt;•⁠ ⁠You get clean, structured responses that work well with other tools&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The code is pretty straightforward:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async with Computer() as macos_computer:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;agent = ComputerAgent(&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;computer=macos_computer,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;loop=AgentLoop.OPENAI,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;model=LLM(provider=LLMProvider.OPENAI)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;tasks = [&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Look for a repository named trycua/cua on GitHub.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Check the open issues, open the most recent one and read it.&amp;quot;,&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Clone the repository if it doesn't exist yet.&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;for i, task in enumerate(tasks):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nTask {i+1}/{len(tasks)}: {task}&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;async for result in agent.run(task):&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(result)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;print(f&amp;quot;\nFinished task {i+1}!&amp;quot;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Some cool things you can do with it:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;•⁠ ⁠Mix and match agent loops - OpenAI for some tasks, Claude for others, or try our experimental OmniParser&lt;/p&gt; &lt;p&gt;•⁠ ⁠Run it with various models - works great with OpenAI's computer_use_preview, but also with Claude and others&lt;/p&gt; &lt;p&gt;•⁠ ⁠Get detailed logs of what your agent is thinking/doing (super helpful for debugging)&lt;/p&gt; &lt;p&gt;•⁠ ⁠All the sandboxing from Computer means your main system stays protected&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Getting started is easy:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[all]&amp;quot;&lt;/p&gt; &lt;p&gt;# Or if you only need specific providers:&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[openai]&amp;quot; # Just OpenAI&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[anthropic]&amp;quot; # Just Anthropic&lt;/p&gt; &lt;p&gt;pip install &amp;quot;cua-agent[omni]&amp;quot; # Our experimental OmniParser&lt;/p&gt; &lt;p&gt;We've been dogfooding this internally for weeks now, and it's been a game-changer for automating our workflows. &lt;strong&gt;Grab the code at&lt;/strong&gt; &lt;a href="https://github.com/trycua/cua"&gt;&lt;strong&gt;https://github.com/trycua/cua&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts LocalLLaMA community! :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sandropuppo"&gt; /u/sandropuppo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jng3cz/agent_a_local_computeruse_operator_for_macos/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T15:36:01+00:00</published>
+    <published>2025-03-30T16:21:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1jngswb</id>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T16:53:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jnf28i</id>
+    <title>Exploiting Large Language Models: Backdoor Injections</title>
+    <updated>2025-03-30T15:36:01+00:00</updated>
+    <author>
+      <name>/u/phantagom</name>
+      <uri>https://old.reddit.com/user/phantagom</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"&gt; &lt;img alt="Exploiting Large Language Models: Backdoor Injections" src="https://external-preview.redd.it/UeXieNkboMcAP3kmecNJZk2I2AO_-fluFc5hU8_aXv8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=51fe2f830643e486ffcf2effb92ea6a480e64cf2" title="Exploiting Large Language Models: Backdoor Injections" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phantagom"&gt; /u/phantagom &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://kruyt.org/llminjectbackdoor/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T15:36:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1jndsj5</id>
@@ -242,19 +242,6 @@
     <published>2025-03-30T17:39:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jngj5u</id>
-    <title>I built a coding agent that allows qwen2.5-coder to use tools</title>
-    <updated>2025-03-30T16:41:24+00:00</updated>
-    <author>
-      <name>/u/bobaburger</name>
-      <uri>https://old.reddit.com/user/bobaburger</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"&gt; &lt;img alt="I built a coding agent that allows qwen2.5-coder to use tools" src="https://preview.redd.it/1erih6euuure1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5447b0990d64ea3d82b01889605650baf3b6948d" title="I built a coding agent that allows qwen2.5-coder to use tools" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bobaburger"&gt; /u/bobaburger &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1erih6euuure1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T16:41:24+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jn5uto</id>
     <title>MacBook M4 Max isn't great for LLMs</title>
     <updated>2025-03-30T05:42:51+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jn5uto/macbook_m4_max_isnt_great_for_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T05:42:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jngj5u</id>
+    <title>I built a coding agent that allows qwen2.5-coder to use tools</title>
+    <updated>2025-03-30T16:41:24+00:00</updated>
+    <author>
+      <name>/u/bobaburger</name>
+      <uri>https://old.reddit.com/user/bobaburger</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"&gt; &lt;img alt="I built a coding agent that allows qwen2.5-coder to use tools" src="https://preview.redd.it/1erih6euuure1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5447b0990d64ea3d82b01889605650baf3b6948d" title="I built a coding agent that allows qwen2.5-coder to use tools" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bobaburger"&gt; /u/bobaburger &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1erih6euuure1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jngj5u/i_built_a_coding_agent_that_allows_qwen25coder_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T16:41:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1jnegrp</id>
