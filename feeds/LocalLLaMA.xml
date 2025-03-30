@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-30T18:49:08+00:00</updated>
+  <updated>2025-03-30T19:05:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jmjq5h</id>
-    <title>Finally someone's making a GPU with expandable memory!</title>
-    <updated>2025-03-29T10:54:13+00:00</updated>
-    <author>
-      <name>/u/Normal-Ad-7114</name>
-      <uri>https://old.reddit.com/user/Normal-Ad-7114</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's a RISC-V gpu with SO-DIMM slots, so don't get your hopes up just yet, but it's &lt;em&gt;something&lt;/em&gt;!&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.servethehome.com/bolt-graphics-zeus-the-new-gpu-architecture-with-up-to-2-25tb-of-memory-and-800gbe/2/"&gt;https://www.servethehome.com/bolt-graphics-zeus-the-new-gpu-architecture-with-up-to-2-25tb-of-memory-and-800gbe/2/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://bolt.graphics/"&gt;https://bolt.graphics/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Normal-Ad-7114"&gt; /u/Normal-Ad-7114 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmjq5h/finally_someones_making_a_gpu_with_expandable/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jmjq5h/finally_someones_making_a_gpu_with_expandable/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jmjq5h/finally_someones_making_a_gpu_with_expandable/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-29T10:54:13+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jndrns</id>
     <title>How do you integrate your LLM machine into the rest of your Homelab? Does it make sense to connect your LLM server to Kubernetes?</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnb3cl/macbook_m3_24gb_ram_whats_best_for_llm_engine/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T12:12:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jnjrdk</id>
+    <title>Benchmark: RTX 3090, 4090, and even 4080 are surprisingly strong for 1-person QwQ-32B inference. (but 5090 not yet)</title>
+    <updated>2025-03-30T19:01:34+00:00</updated>
+    <author>
+      <name>/u/fxtentacle</name>
+      <uri>https://old.reddit.com/user/fxtentacle</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I don't want to send all of my code to any outside company, but I still want to use AI code completion. Accordingly, I was curious how fast various GPUs would be for hosting when there's only 1 user: me. I used vLLM and &lt;code&gt;QwQ-32B-Q4_K_M&lt;/code&gt; for benchmarking.&lt;/p&gt; &lt;p&gt;&lt;code&gt;median_ttft_ms&lt;/code&gt; measures how long it takes for the GPU to handle the context and parse my request. And then &lt;code&gt;median_otps&lt;/code&gt; is how many output tokens the GPU can generate per second. (OTPS = Output Tokens Per Second) Overall, the &lt;code&gt;median_ttft_ms&lt;/code&gt; values were all &amp;lt;1s unless the card was overloaded and I think they will rarely matter in practice. That means the race is on for the highest OTPS.&lt;/p&gt; &lt;p&gt;As expected, a H200 is fast with 334ms + 30 OTPS. The H100 NVL is still fast with 426ms + 23 OTPS. The &amp;quot;old&amp;quot; H100 with HBM3 is similar at 310ms + 22 OTPS.&lt;/p&gt; &lt;p&gt;But I did not expect 2x RTX 4080 to score 383ms + 33 OTPS, which is really close to the H200 and that's somewhat insane if you consider that I'm comparing a 34000€ datacenter product with a 1800€ home setup. An old pair of 2x RTX 3090 is also still pleasant at 564ms + 28 OTPS. And a (watercooled and gently overclocked) RTX 3090 TI rocked the ranking with 558ms + 36 OTPS. You can also clearly see that vLLM is not fully optimized for the RTX 5090 yet, because there the official docker image did not work (yet) and I had to compile from source and, still, the results were somewhat meh with 517ms + 18 TOPS, which is slightly slower than a single 4090.&lt;/p&gt; &lt;p&gt;You'll notice that the consumer GPUs are slower in the initial context and request parsing. That makes sense because that task is highly parallel, i.e. what datacenter products were optimized for. But due to higher clock speeds and more aggressive cooling, consumer GPUs outcompete both H100 and H200 at output token generation, which is the sequential part of the task.&lt;/p&gt; &lt;p&gt;Here's my raw result JSONs from &lt;code&gt;vllm/benchmarks/benchmark_serving.py&lt;/code&gt; and a table with even more hardware variations: &lt;a href="https://github.com/DeutscheKI/llm-performance-tests"&gt;https://github.com/DeutscheKI/llm-performance-tests&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Anyway, my take-aways from this would be:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;RAM clock dominates everything. OC for the win!&lt;/li&gt; &lt;li&gt;Go with 2x 4080 over a single 4090 or 5090.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fxtentacle"&gt; /u/fxtentacle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnjrdk/benchmark_rtx_3090_4090_and_even_4080_are/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnjrdk/benchmark_rtx_3090_4090_and_even_4080_are/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnjrdk/benchmark_rtx_3090_4090_and_even_4080_are/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T19:01:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1jner1g</id>
@@ -164,19 +164,6 @@
     <published>2025-03-30T15:10:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jngswb</id>
-    <title>Dou (道) - Visual Knowledge Organization and Analysis Tool</title>
-    <updated>2025-03-30T16:53:31+00:00</updated>
-    <author>
-      <name>/u/shokuninstudio</name>
-      <uri>https://old.reddit.com/user/shokuninstudio</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"&gt; &lt;img alt="Dou (道) - Visual Knowledge Organization and Analysis Tool" src="https://external-preview.redd.it/GOPYVA45L4Hs0UVngiY3mnW7r51k7UY71hhV_hEB_XU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a2a61ea030a8d438936d0ede1ad351db268caa9" title="Dou (道) - Visual Knowledge Organization and Analysis Tool" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shokuninstudio"&gt; /u/shokuninstudio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/shokuninstudio/Dou"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T16:53:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jn9klk</id>
     <title>This is the Reason why I am Still Debating whether to buy RTX5090!</title>
     <updated>2025-03-30T10:27:32+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jn9klk/this_is_the_reason_why_i_am_still_debating/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T10:27:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jngswb</id>
+    <title>Dou (道) - Visual Knowledge Organization and Analysis Tool</title>
+    <updated>2025-03-30T16:53:31+00:00</updated>
+    <author>
+      <name>/u/shokuninstudio</name>
+      <uri>https://old.reddit.com/user/shokuninstudio</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"&gt; &lt;img alt="Dou (道) - Visual Knowledge Organization and Analysis Tool" src="https://external-preview.redd.it/GOPYVA45L4Hs0UVngiY3mnW7r51k7UY71hhV_hEB_XU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a2a61ea030a8d438936d0ede1ad351db268caa9" title="Dou (道) - Visual Knowledge Organization and Analysis Tool" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shokuninstudio"&gt; /u/shokuninstudio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/shokuninstudio/Dou"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jngswb/dou_道_visual_knowledge_organization_and_analysis/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T16:53:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1jng3cz</id>
@@ -203,19 +203,6 @@
     <published>2025-03-30T16:21:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jnhuy3</id>
-    <title>Llama 3.2 going insane on Facebook</title>
-    <updated>2025-03-30T17:39:40+00:00</updated>
-    <author>
-      <name>/u/Reader3123</name>
-      <uri>https://old.reddit.com/user/Reader3123</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"&gt; &lt;img alt="Llama 3.2 going insane on Facebook" src="https://b.thumbs.redditmedia.com/NqDMwH6Bz4GQgIvs8QbIfAzCKcWDnZaM3TyMCLpxkoc.jpg" title="Llama 3.2 going insane on Facebook" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It kept going like this.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jnhuy3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-30T17:39:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jnf28i</id>
     <title>Exploiting Large Language Models: Backdoor Injections</title>
     <updated>2025-03-30T15:36:01+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnf28i/exploiting_large_language_models_backdoor/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T15:36:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jnhuy3</id>
+    <title>Llama 3.2 going insane on Facebook</title>
+    <updated>2025-03-30T17:39:40+00:00</updated>
+    <author>
+      <name>/u/Reader3123</name>
+      <uri>https://old.reddit.com/user/Reader3123</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"&gt; &lt;img alt="Llama 3.2 going insane on Facebook" src="https://b.thumbs.redditmedia.com/NqDMwH6Bz4GQgIvs8QbIfAzCKcWDnZaM3TyMCLpxkoc.jpg" title="Llama 3.2 going insane on Facebook" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It kept going like this.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jnhuy3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnhuy3/llama_32_going_insane_on_facebook/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-30T17:39:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1jngj5u</id>
