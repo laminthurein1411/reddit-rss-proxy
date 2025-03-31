@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-03-31T19:05:27+00:00</updated>
+  <updated>2025-03-31T19:21:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jo6065</id>
-    <title>Only vllm supports Deepseek MLA?</title>
-    <updated>2025-03-31T15:32:57+00:00</updated>
-    <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seems like for the major open source inference software, vllm is the only one support MLA&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/vllm-project/vllm/releases/tag/v0.7.1"&gt;https://github.com/vllm-project/vllm/releases/tag/v0.7.1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;llama.cpp has a PR but still not merged. So when it runs deepseeks models, it convert it to MHA that uses significantly more KV cache.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/11446"&gt;https://github.com/ggml-org/llama.cpp/pull/11446&lt;/a&gt;&lt;/p&gt; &lt;p&gt;HF transformer also doesn't support it.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/huggingface/transformers/releases/tag/v4.50.3-DeepSeek-3"&gt;https://github.com/huggingface/transformers/releases/tag/v4.50.3-DeepSeek-3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I ran llama.cpp with DSV2-Lite to determine the empirical f16 KV cache size and discovered that Deepseek's head_dim is different for q and v. Can someone with enough resource to run vllm confirm the MLA KV cache usage for R1 or V2.5? Thanks a lot in advance.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Type&lt;/th&gt; &lt;th align="left"&gt;byte/param&lt;/th&gt; &lt;th align="left"&gt;layer#&lt;/th&gt; &lt;th align="left"&gt;group#&lt;/th&gt; &lt;th align="left"&gt;q_head_dim&lt;/th&gt; &lt;th align="left"&gt;v_head_dim&lt;/th&gt; &lt;th align="left"&gt;context&lt;/th&gt; &lt;th align="left"&gt;KV cache&lt;/th&gt; &lt;th align="left"&gt;model_sz&lt;/th&gt; &lt;th align="left"&gt;KV%&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-R1&lt;/td&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;1&lt;/td&gt; &lt;td align="left"&gt;61&lt;/td&gt; &lt;td align="left"&gt;N/A&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;128k&lt;/td&gt; &lt;td align="left"&gt;4.29GB&lt;/td&gt; &lt;td align="left"&gt;671GB&lt;/td&gt; &lt;td align="left"&gt;0.639%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-R1&lt;/td&gt; &lt;td align="left"&gt;MHA&lt;/td&gt; &lt;td align="left"&gt;1&lt;/td&gt; &lt;td align="left"&gt;61&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;128k&lt;/td&gt; &lt;td align="left"&gt;305GB&lt;/td&gt; &lt;td align="left"&gt;671GB&lt;/td&gt; &lt;td align="left"&gt;45.45%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-V2.5&lt;/td&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;60&lt;/td&gt; &lt;td align="left"&gt;N/A&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;128k&lt;/td&gt; &lt;td align="left"&gt;8.44GB&lt;/td&gt; &lt;td align="left"&gt;472GB&lt;/td&gt; &lt;td align="left"&gt;1.788%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-V2.5&lt;/td&gt; &lt;td align="left"&gt;MHA&lt;/td&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;60&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;128k&lt;/td&gt; &lt;td align="left"&gt;600GB&lt;/td&gt; &lt;td align="left"&gt;472GB&lt;/td&gt; &lt;td align="left"&gt;127.1%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-V2-Lite&lt;/td&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;27&lt;/td&gt; &lt;td align="left"&gt;N/A&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;32k&lt;/td&gt; &lt;td align="left"&gt;0.95GB&lt;/td&gt; &lt;td align="left"&gt;31.42GB&lt;/td&gt; &lt;td align="left"&gt;3.023%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-V2-Lite&lt;/td&gt; &lt;td align="left"&gt;MHA&lt;/td&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;27&lt;/td&gt; &lt;td align="left"&gt;16&lt;/td&gt; &lt;td align="left"&gt;192&lt;/td&gt; &lt;td align="left"&gt;128&lt;/td&gt; &lt;td align="left"&gt;32k&lt;/td&gt; &lt;td align="left"&gt;8.44GB&lt;/td&gt; &lt;td align="left"&gt;31.42GB&lt;/td&gt; &lt;td align="left"&gt;26.85%&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo6065/only_vllm_supports_deepseek_mla/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo6065/only_vllm_supports_deepseek_mla/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo6065/only_vllm_supports_deepseek_mla/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T15:32:57+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jo9ktc</id>
     <title>Looking for Image-to-Text and Captioning Model Recommendations + How Does Summarization Without Transcription Work?</title>
@@ -86,6 +73,19 @@
     <published>2025-03-31T14:07:05+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jobe0u</id>
+    <title>Benchmark: Dual-GPU boosts speed, despire all common internet wisdom. 2x RTX 5090 &gt; 1x H100, 2x RTX 4070 &gt; 1x RTX 4090 for QwQ-32B-AWQ. And the RTX 6000 Ada is overpriced.</title>
+    <updated>2025-03-31T19:12:45+00:00</updated>
+    <author>
+      <name>/u/fxtentacle</name>
+      <uri>https://old.reddit.com/user/fxtentacle</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After yesterday's tests, I got the suggestion to test AWQ quants. And all over the internet I had repeatedly heard that dual-GPU setups won't help because they would not increase sequential speed. But the thing is: With vLLM, dual-GPU setups work anyway. I guess nobody told them ;)&lt;/p&gt; &lt;p&gt;In this benchmark set, the Time To First Token was below 0.1s in all cases, so I'm just going to ignore that. This race is all about the Output Tokens Per Second. And let's be honest, especially with a reasoning model like QwQ, those 4000 tokens of internal monologue is what we are waiting for and skipping the wait is all we care about. And, BTW, just like with my last benchmarking set, I am looking purely at 1-user setups here.&lt;/p&gt; &lt;p&gt;To nobody's surprise, the H100 80GB HBM3 again makes for great inference card with 78 OT/s. And the RTX 5090 is a beast with 65 OT/s, although it took me almost a day to get vLLM, flashInfer, and Nccl compiled just right for it to run stable enough to survive a 30 minute benchmark ... Still, the 5090 delivers 83% of a H100 at 10% the price. &lt;/p&gt; &lt;p&gt;Where things get surprising again is that 2x RTX 4070 TI SUPER actually outperform a RTX 4090 with 46 vs 43 OT/s. In line with that, 2x RTX 4080 also do well with 52 OT/s and they reach 80% of a 5090. My old RTX 3090 TI is also still very pleasant to use at 40 OT/s - which is a respectable 61% of the speed a shiny new 5090 would deliver.&lt;/p&gt; &lt;p&gt;The pricey RTX 6000 Ada completely disappoints with 42 OT/s, so it's only marginally faster than the 3090 TI and way behind a dual-4070 setup. &lt;/p&gt; &lt;p&gt;And what's truly cool is to see how well the 5090 can use additional RAM for speeding up the attention kernels. That's why 2x RTX 5090 outperforms even the mighty H100 by a small margin. That's 30,000€ performance for 5,718€.&lt;/p&gt; &lt;p&gt;Here's the new result table: &lt;a href="https://github.com/DeutscheKI/llm-performance-tests#qwq-32b-awq"&gt;https://github.com/DeutscheKI/llm-performance-tests#qwq-32b-awq&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fxtentacle"&gt; /u/fxtentacle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jobe0u/benchmark_dualgpu_boosts_speed_despire_all_common/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jobe0u/benchmark_dualgpu_boosts_speed_despire_all_common/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jobe0u/benchmark_dualgpu_boosts_speed_despire_all_common/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-31T19:12:45+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jnfpnr</id>
     <title>It’s been 1000 releases and 5000 commits in llama.cpp</title>
     <updated>2025-03-30T16:04:30+00:00</updated>
@@ -97,19 +97,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnfpnr/its_been_1000_releases_and_5000_commits_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-30T16:04:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jo9q6q</id>
-    <title>Assessing facial recognition performance of vision LLMs</title>
-    <updated>2025-03-31T18:05:21+00:00</updated>
-    <author>
-      <name>/u/jordo45</name>
-      <uri>https://old.reddit.com/user/jordo45</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt; &lt;img alt="Assessing facial recognition performance of vision LLMs" src="https://b.thumbs.redditmedia.com/5azfRvOkHc3buvqQo_AQ1DG_OLzutTmTi4piyfzEkhQ.jpg" title="Assessing facial recognition performance of vision LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought it'd be interesting to assess face recognition performance of vision LLMs. Even though it wouldn't be wise to use a vision LLM to do face rec when there are dedicated models, I'll note that:&lt;/p&gt; &lt;p&gt;- it gives us a way to measure the gap between dedicated vision models and LLM approaches, to assess how close we are to 'vision is solved'.&lt;/p&gt; &lt;p&gt;- lots of jurisdictions have regulations around face rec system, so it is important to know if vision LLMs are becoming capable face rec systems.&lt;/p&gt; &lt;p&gt;I measured performance of multiple models on multiple datasets (AgeDB30, LFW, CFP). As a baseline, I used arface-resnet-100. Note that as there are 24,000 pair of images, I did not benchmark the more costly commercial APIs:&lt;/p&gt; &lt;p&gt;Results&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/a3je6r1ze2se1.png?width=5363&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b4a21607e5a8790a05089996fd659a116c36fbe"&gt;https://preview.redd.it/a3je6r1ze2se1.png?width=5363&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b4a21607e5a8790a05089996fd659a116c36fbe&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Samples&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3nh02tvze2se1.png?width=1275&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e09edd4de64b313d4716ef7ff68d5ae7e9f1c0bf"&gt;https://preview.redd.it/3nh02tvze2se1.png?width=1275&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e09edd4de64b313d4716ef7ff68d5ae7e9f1c0bf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Discussion&lt;/p&gt; &lt;p&gt;- Most vision LLMs are very far from even a several year old resnet-100.&lt;/p&gt; &lt;p&gt;- All models perform better than random chance.&lt;/p&gt; &lt;p&gt;- The google models (Gemini, Gemma) perform best.&lt;/p&gt; &lt;p&gt;Repo &lt;a href="https://github.com/yhenon/llm-face-vision"&gt;here&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jordo45"&gt; /u/jordo45 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T18:05:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1jo8joe</id>
@@ -125,17 +112,17 @@
     <published>2025-03-31T17:18:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1joadxp</id>
-    <title>Exaone Deep 2.4B Q8_0</title>
-    <updated>2025-03-31T18:31:50+00:00</updated>
+    <id>t3_1jo9q6q</id>
+    <title>Assessing facial recognition performance of vision LLMs</title>
+    <updated>2025-03-31T18:05:21+00:00</updated>
     <author>
-      <name>/u/giant3</name>
-      <uri>https://old.reddit.com/user/giant3</uri>
+      <name>/u/jordo45</name>
+      <uri>https://old.reddit.com/user/jordo45</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/LGAI-EXAONE/EXAONE-Deep-2.4B-GGUF"&gt;https://huggingface.co/LGAI-EXAONE/EXAONE-Deep-2.4B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;LG's 2.4B model is surprisingly usable. The license might be very restrictive, but for personal use it doesn't matter.&lt;/p&gt; &lt;p&gt;I get 40 tk/s on a measly RX 7600 while DeepSeek R1 distilled llama 8B is only 3 tk/s. &lt;/p&gt; &lt;p&gt;Give it a try.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/giant3"&gt; /u/giant3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt; &lt;img alt="Assessing facial recognition performance of vision LLMs" src="https://b.thumbs.redditmedia.com/5azfRvOkHc3buvqQo_AQ1DG_OLzutTmTi4piyfzEkhQ.jpg" title="Assessing facial recognition performance of vision LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought it'd be interesting to assess face recognition performance of vision LLMs. Even though it wouldn't be wise to use a vision LLM to do face rec when there are dedicated models, I'll note that:&lt;/p&gt; &lt;p&gt;- it gives us a way to measure the gap between dedicated vision models and LLM approaches, to assess how close we are to 'vision is solved'.&lt;/p&gt; &lt;p&gt;- lots of jurisdictions have regulations around face rec system, so it is important to know if vision LLMs are becoming capable face rec systems.&lt;/p&gt; &lt;p&gt;I measured performance of multiple models on multiple datasets (AgeDB30, LFW, CFP). As a baseline, I used arface-resnet-100. Note that as there are 24,000 pair of images, I did not benchmark the more costly commercial APIs:&lt;/p&gt; &lt;p&gt;Results&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/a3je6r1ze2se1.png?width=5363&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b4a21607e5a8790a05089996fd659a116c36fbe"&gt;https://preview.redd.it/a3je6r1ze2se1.png?width=5363&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b4a21607e5a8790a05089996fd659a116c36fbe&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Samples&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3nh02tvze2se1.png?width=1275&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e09edd4de64b313d4716ef7ff68d5ae7e9f1c0bf"&gt;https://preview.redd.it/3nh02tvze2se1.png?width=1275&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e09edd4de64b313d4716ef7ff68d5ae7e9f1c0bf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Discussion&lt;/p&gt; &lt;p&gt;- Most vision LLMs are very far from even a several year old resnet-100.&lt;/p&gt; &lt;p&gt;- All models perform better than random chance.&lt;/p&gt; &lt;p&gt;- The google models (Gemini, Gemma) perform best.&lt;/p&gt; &lt;p&gt;Repo &lt;a href="https://github.com/yhenon/llm-face-vision"&gt;here&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jordo45"&gt; /u/jordo45 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo9q6q/assessing_facial_recognition_performance_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T18:31:50+00:00</published>
+    <published>2025-03-31T18:05:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1jo6h8w</id>
@@ -203,6 +190,19 @@
     <published>2025-03-31T07:46:24+00:00</published>
   </entry>
   <entry>
+    <id>t3_1joadxp</id>
+    <title>Exaone Deep 2.4B Q8_0</title>
+    <updated>2025-03-31T18:31:50+00:00</updated>
+    <author>
+      <name>/u/giant3</name>
+      <uri>https://old.reddit.com/user/giant3</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/LGAI-EXAONE/EXAONE-Deep-2.4B-GGUF"&gt;https://huggingface.co/LGAI-EXAONE/EXAONE-Deep-2.4B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;LG's 2.4B model is surprisingly usable. The license might be very restrictive, but for personal use it doesn't matter.&lt;/p&gt; &lt;p&gt;I get 40 tk/s on a measly RX 7600 while DeepSeek R1 distilled llama 8B is only 3 tk/s. &lt;/p&gt; &lt;p&gt;Give it a try.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/giant3"&gt; /u/giant3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1joadxp/exaone_deep_24b_q8_0/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-31T18:31:50+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jnvhkd</id>
     <title>The diminishing returns of larger models, perhaps you don't need to spend big on hardware for inference</title>
     <updated>2025-03-31T04:50:11+00:00</updated>
@@ -216,19 +216,6 @@
     <published>2025-03-31T04:50:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jo81g2</id>
-    <title>Best setup for $10k USD</title>
-    <updated>2025-03-31T16:57:47+00:00</updated>
-    <author>
-      <name>/u/LedByReason</name>
-      <uri>https://old.reddit.com/user/LedByReason</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are the best options if my goal is to be able to run 70B models at &amp;gt;10 tokens/s? Mac Studio? Wait for DGX Spark? Multiple 3090s? Something else?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LedByReason"&gt; /u/LedByReason &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T16:57:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jnzjnb</id>
     <title>[MERGED] Adding Qwen3 and Qwen3MoE · Pull Request #36878 · huggingface/transformers</title>
     <updated>2025-03-31T09:54:44+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnzjnb/merged_adding_qwen3_and_qwen3moe_pull_request/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-31T09:54:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jo81g2</id>
+    <title>Best setup for $10k USD</title>
+    <updated>2025-03-31T16:57:47+00:00</updated>
+    <author>
+      <name>/u/LedByReason</name>
+      <uri>https://old.reddit.com/user/LedByReason</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are the best options if my goal is to be able to run 70B models at &amp;gt;10 tokens/s? Mac Studio? Wait for DGX Spark? Multiple 3090s? Something else?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LedByReason"&gt; /u/LedByReason &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo81g2/best_setup_for_10k_usd/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-31T16:57:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1jo0wf9</id>
@@ -281,19 +281,6 @@
     <published>2025-03-31T15:26:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jo78b8</id>
-    <title>LM arena updated - now contains Deepseek v3.1</title>
-    <updated>2025-03-31T16:23:53+00:00</updated>
-    <author>
-      <name>/u/Economy_Apple_4617</name>
-      <uri>https://old.reddit.com/user/Economy_Apple_4617</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;scored at 1370 - even better than R1&lt;/p&gt; &lt;p&gt;I also saw following interesting models on LMarena:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Nebula - seems to turn out as gemini 2.5&lt;/li&gt; &lt;li&gt;Phantom - disappeared few days ago&lt;/li&gt; &lt;li&gt;Chatbot-anonymous - does anyone have insights?&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Economy_Apple_4617"&gt; /u/Economy_Apple_4617 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T16:23:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jnzq51</id>
     <title>PC Build: Run Deepseek-V3-0324:671b-Q8 Locally 6-8 tok/s</title>
     <updated>2025-03-31T10:06:50+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jnzq51/pc_build_run_deepseekv30324671bq8_locally_68_toks/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-31T10:06:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jo78b8</id>
+    <title>LM arena updated - now contains Deepseek v3.1</title>
+    <updated>2025-03-31T16:23:53+00:00</updated>
+    <author>
+      <name>/u/Economy_Apple_4617</name>
+      <uri>https://old.reddit.com/user/Economy_Apple_4617</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;scored at 1370 - even better than R1&lt;/p&gt; &lt;p&gt;I also saw following interesting models on LMarena:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Nebula - seems to turn out as gemini 2.5&lt;/li&gt; &lt;li&gt;Phantom - disappeared few days ago&lt;/li&gt; &lt;li&gt;Chatbot-anonymous - does anyone have insights?&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Economy_Apple_4617"&gt; /u/Economy_Apple_4617 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo78b8/lm_arena_updated_now_contains_deepseek_v31/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-03-31T16:23:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1jo88lg</id>
