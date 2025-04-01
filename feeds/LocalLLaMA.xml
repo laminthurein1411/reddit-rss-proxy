@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-01T23:24:00+00:00</updated>
+  <updated>2025-04-01T23:34:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jopcyr</id>
-    <title>GPT 4o is not actually omni-modal</title>
-    <updated>2025-04-01T06:51:45+00:00</updated>
-    <author>
-      <name>/u/kuzheren</name>
-      <uri>https://old.reddit.com/user/kuzheren</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Source: &lt;a href="https://chatgpt.com/share/67eb9fc8-458c-8007-85ad-46be9aa56519"&gt;https://chatgpt.com/share/67eb9fc8-458c-8007-85ad-46be9aa56519&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Wanted to share this here - I haven’t seen much discussion about it, and I hope it could be helpful to the LocalLLaMA community.&lt;/p&gt; &lt;p&gt;(Also, let’s define &lt;em&gt;omni-modal&lt;/em&gt; as multimodal models that support both understanding and generation across different modalities. This definition might not be perfect, but we need some way to distinguish models with multimodal decoding capabilities from those without)&lt;/p&gt; &lt;p&gt;As we know, the new GPT-4o model is highly context-aware. It can reference both images and previous user conversation. At first glance, it might seem like GPT-4o generates image tokens directly based on the full context, without relying on any external tools. But that’s not exactly how it works.&lt;/p&gt; &lt;p&gt;Image generation still relies on a new version of DALL·E (at least it’s still referred to by that name), and it happens through a function call like this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;image_gen.text2im { &amp;quot;prompt&amp;quot;: &amp;quot;A photorealistic owl sitting on a branch at night&amp;quot;, &amp;quot;size&amp;quot;: &amp;quot;1024x1024&amp;quot;, &amp;quot;n&amp;quot;: 1, &amp;quot;referenced_image_ids&amp;quot;: [&amp;quot;file_0000000054d45230be886096390c241a&amp;quot;], // optional &amp;quot;transparent_background&amp;quot;: false // optional } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;As we can see, the process still uses an explicit API-style call. GPT writes the prompt and optionally includes image references, allowing the image generator to use much more context than DALL·E 3 ever could.&lt;/p&gt; &lt;p&gt;Compare this to models like open-source OmniGen or Gemini 2.0 Flash - these do &lt;strong&gt;not&lt;/strong&gt; rely on external function calls. Instead, they generate images directly, using both text and image inputs as unified context. That’s why I’d say they’re &lt;em&gt;truly&lt;/em&gt; omni-modal.&lt;/p&gt; &lt;p&gt;One more detail: after the image is generated, GPT only sees a &lt;strong&gt;textual description&lt;/strong&gt; of the result — not the actual image itself (unless it was user-uploaded). This means GPT-4o wasn't retrained to “see” its own generated images.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; GPT-4o doesn’t generate image tokens directly. It calls a separate, more advanced image model (a new DALL·E version) that can handle reference images. The models are still modular, not unified.&lt;/p&gt; &lt;p&gt;Please don't k#ll me for this post. I know it might sound obvious, boring, or lame, but nobody seems to be talking about it, and many people assume the image generator is somehow merged into GPT itself - which is not the case.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kuzheren"&gt; /u/kuzheren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T06:51:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jpa1ep</id>
     <title>I got tired of guessing what blackbox AI coding tools were sending as prompt context... so I built a transparent local open-source coding tool</title>
@@ -73,6 +60,19 @@
     <published>2025-04-01T21:08:26+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jp1sy8</id>
+    <title>Smallest model capable of detecting profane/nsfw language?</title>
+    <updated>2025-04-01T17:44:27+00:00</updated>
+    <author>
+      <name>/u/ohcrap___fk</name>
+      <uri>https://old.reddit.com/user/ohcrap___fk</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I have my first ever steam game about to be released in a week which I couldn't be more excited/nervous about. It is a singleplayer game but I have a global chat that allows people to talk to other people playing. It's a space game, and space is lonely, so I thought that'd be a fun aesthetic.&lt;/p&gt; &lt;p&gt;Anyways, it is in beta-testing phase right now and I had to ban someone for the first time today because of things they were saying over chat. It was a manual process and I'd like to automate the detection/flagging of unsavory messages.&lt;/p&gt; &lt;p&gt;Are &amp;lt;1b parameter models capable of outperforming a simple keyword check? I like the idea of an LLM because it could go beyond matching strings.&lt;/p&gt; &lt;p&gt;Also, if anyone is interested in trying it out, I'm handing out keys like crazy because I'm too nervous to charge $2.99 for the game and then underdeliver. Game info &lt;a href="https://x.com/hvent90"&gt;here&lt;/a&gt;, sorry for the self-promo.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ohcrap___fk"&gt; /u/ohcrap___fk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T17:44:27+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jp7o2i</id>
     <title>workflow for recording audio/video, transcript and automatic document generation</title>
     <updated>2025-04-01T21:39:04+00:00</updated>
@@ -99,17 +99,17 @@
     <published>2025-04-01T04:45:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jp1sy8</id>
-    <title>Smallest model capable of detecting profane/nsfw language?</title>
-    <updated>2025-04-01T17:44:27+00:00</updated>
+    <id>t3_1jp96eq</id>
+    <title>Powering Multiple GPUs with multiple PSUs</title>
+    <updated>2025-04-01T22:43:52+00:00</updated>
     <author>
-      <name>/u/ohcrap___fk</name>
-      <uri>https://old.reddit.com/user/ohcrap___fk</uri>
+      <name>/u/eagle6705</name>
+      <uri>https://old.reddit.com/user/eagle6705</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I have my first ever steam game about to be released in a week which I couldn't be more excited/nervous about. It is a singleplayer game but I have a global chat that allows people to talk to other people playing. It's a space game, and space is lonely, so I thought that'd be a fun aesthetic.&lt;/p&gt; &lt;p&gt;Anyways, it is in beta-testing phase right now and I had to ban someone for the first time today because of things they were saying over chat. It was a manual process and I'd like to automate the detection/flagging of unsavory messages.&lt;/p&gt; &lt;p&gt;Are &amp;lt;1b parameter models capable of outperforming a simple keyword check? I like the idea of an LLM because it could go beyond matching strings.&lt;/p&gt; &lt;p&gt;Also, if anyone is interested in trying it out, I'm handing out keys like crazy because I'm too nervous to charge $2.99 for the game and then underdeliver. Game info &lt;a href="https://x.com/hvent90"&gt;here&lt;/a&gt;, sorry for the self-promo.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ohcrap___fk"&gt; /u/ohcrap___fk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1sy8/smallest_model_capable_of_detecting_profanensfw/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So I was sent here by the home labbers.&lt;/p&gt; &lt;p&gt;And no this isnt a mining rig, its an application that is in development that is going to develop AI to process protein sequences. End goal is to throw in h100s on an actual server and not some workstation) For now this is what was given to me to work with as a proof of concept. I need to develop a rig to power many gpus for one system. (at least 3)&lt;/p&gt; &lt;p&gt;I was asking a question on how cryptominers power multiple GPUs and they said you guys would be using the same setup. So this is a question on how to power multiple GPUS when the one main unit won't be able to power all of them.&lt;/p&gt; &lt;p&gt;Long story short, i will have 1 4090, and 3 4070 pcie cards in one motherboard. However we obviously don't have the power.&lt;/p&gt; &lt;p&gt;I was looking at the following to use multiple GPUs &lt;a href="https://www.amazon.com/ADD2PSU-Connector-Multiple-Adapter-Synchronous/dp/B09Q11WG4Z/?_encoding=UTF8&amp;amp;pd_rd_w=fQ8L3&amp;amp;content-id=amzn1.sym.255b3518-6e7f-495c-8611-30a58648072e%3Aamzn1.symc.a68f4ca3-28dc-4388-a2cf-24672c480d8f&amp;amp;pf_rd_p=255b3518-6e7f-495c-8611-30a58648072e&amp;amp;pf_rd_r=1YT4D5S3ER7MYTAN393A&amp;amp;pd_rd_wg=fGg7k&amp;amp;pd_rd_r=501f521f-069c-47dc-8b0a-cf212a639286&amp;amp;ref_=pd_hp_d_atf_ci_mcx_mr_ca_hp_atf_d"&gt;https://www.amazon.com/ADD2PSU-Connector-Multiple-Adapter-Synchronous/dp/B09Q11WG4Z/?_encoding=UTF8&amp;amp;pd_rd_w=fQ8L3&amp;amp;content-id=amzn1.sym.255b3518-6e7f-495c-8611-30a58648072e%3Aamzn1.symc.a68f4ca3-28dc-4388-a2cf-24672c480d8f&amp;amp;pf_rd_p=255b3518-6e7f-495c-8611-30a58648072e&amp;amp;pf_rd_r=1YT4D5S3ER7MYTAN393A&amp;amp;pd_rd_wg=fGg7k&amp;amp;pd_rd_r=501f521f-069c-47dc-8b0a-cf212a639286&amp;amp;ref_=pd_hp_d_atf_ci_mcx_mr_ca_hp_atf_d&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Basically I want to know how you would be powering them. ANd yes my system can handle it as it had 4 single slot gpus as a proof of concept. we just need to expand now and get more power.&lt;/p&gt; &lt;p&gt;And yes I can buy that thing I linked but I&amp;quot;m just looking into how to run multiple psus or the methods you guys use reliably. obviously i'm using some corsairs but its the matter of getting them to work as one is what I don't really know what to do.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/eagle6705"&gt; /u/eagle6705 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp96eq/powering_multiple_gpus_with_multiple_psus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp96eq/powering_multiple_gpus_with_multiple_psus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp96eq/powering_multiple_gpus_with_multiple_psus/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T17:44:27+00:00</published>
+    <published>2025-04-01T22:43:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1jobybk</id>
