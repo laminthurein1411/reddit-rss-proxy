@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-01T07:24:16+00:00</updated>
+  <updated>2025-04-01T07:35:04+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -112,17 +112,17 @@
     <published>2025-03-31T18:31:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jopcyr</id>
-    <title>GPT 4o is not actually omni-modal</title>
-    <updated>2025-04-01T06:51:45+00:00</updated>
+    <id>t3_1jofuyc</id>
+    <title>How good unsloth fine tuned models can actually get</title>
+    <updated>2025-03-31T22:17:02+00:00</updated>
     <author>
-      <name>/u/kuzheren</name>
-      <uri>https://old.reddit.com/user/kuzheren</uri>
+      <name>/u/CautiousSand</name>
+      <uri>https://old.reddit.com/user/CautiousSand</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Wanted to share this here - I haven’t seen much discussion about it, and I hope it could be helpful to the LocalLLaMA community.&lt;/p&gt; &lt;p&gt;(Also, let’s define &lt;em&gt;omni-modal&lt;/em&gt; as multimodal models that support both understanding and generation across different modalities. This definition might not be perfect, but we need some way to distinguish models with multimodal decoding capabilities from those without)&lt;/p&gt; &lt;p&gt;As we know, the new GPT-4o model is highly context-aware. It can reference both images and previous user conversation. At first glance, it might seem like GPT-4o generates image tokens directly based on the full context, without relying on any external tools. But that’s not exactly how it works.&lt;/p&gt; &lt;p&gt;Image generation still relies on a new version of DALL·E (at least it’s still referred to by that name), and it happens through a function call like this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;image_gen.text2im { &amp;quot;prompt&amp;quot;: &amp;quot;A photorealistic owl sitting on a branch at night&amp;quot;, &amp;quot;size&amp;quot;: &amp;quot;1024x1024&amp;quot;, &amp;quot;n&amp;quot;: 1, &amp;quot;referenced_image_ids&amp;quot;: [&amp;quot;file_0000000054d45230be886096390c241a&amp;quot;], // optional &amp;quot;transparent_background&amp;quot;: false // optional } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;As we can see, the process still uses an explicit API-style call. GPT writes the prompt and optionally includes image references, allowing the image generator to use much more context than DALL·E 3 ever could.&lt;/p&gt; &lt;p&gt;Compare this to models like open-source OmniGen or Gemini 2.0 Flash - these do &lt;strong&gt;not&lt;/strong&gt; rely on external function calls. Instead, they generate images directly, using both text and image inputs as unified context. That’s why I’d say they’re &lt;em&gt;truly&lt;/em&gt; omni-modal.&lt;/p&gt; &lt;p&gt;One more detail: after the image is generated, GPT only sees a &lt;strong&gt;textual description&lt;/strong&gt; of the result — not the actual image itself (unless it was user-uploaded). This means GPT-4o wasn't retrained to “see” its own generated images.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; GPT-4o doesn’t generate image tokens directly. It calls a separate, more advanced image model (a new DALL·E version) that can handle reference images. The models are still modular, not unified.&lt;/p&gt; &lt;p&gt;Please don't k#ll me for this post. I know it might sound obvious, boring, or lame, but nobody seems to be talking about it, and many people assume the image generator is somehow merged into GPT itself - which is not the case.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kuzheren"&gt; /u/kuzheren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been reading a bit about Unsloth fine-tuning and wondering how good these models can actually get.&lt;/p&gt; &lt;p&gt;I know a lot depends on the dataset, but before I go too deep into yet another rabbit hole, I want to get a sense of what’s realistically achievable—especially when it comes to fine-tuning a model to match my writing style. Is it possible to get decent results without massive datasets and expensive hardware?&lt;/p&gt; &lt;p&gt;I’ve tried searching for examples of fine-tuned Unsloth models, but all I find are tutorials—nothing I can actually try to see what kind of results are possible.&lt;/p&gt; &lt;p&gt;For those who have worked with Unsloth fine-tuning, what’s been your experience? I’m not chasing a specific use case, just experimenting, but I don’t want to sink a ton of time into this only to find out you really need a 32B+ model and a very specific setup for it to be worthwhile.&lt;/p&gt; &lt;p&gt;How big of a dataset and model would I actually need to get reasonable results? Would love to hear from anyone who’s tried.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CautiousSand"&gt; /u/CautiousSand &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T06:51:45+00:00</published>
+    <published>2025-03-31T22:17:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1jo5v3f</id>
@@ -136,19 +136,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo5v3f/latent_verification_mechanism_for_10_absolute/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-03-31T15:26:51+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jofuyc</id>
-    <title>How good unsloth fine tuned models can actually get</title>
-    <updated>2025-03-31T22:17:02+00:00</updated>
-    <author>
-      <name>/u/CautiousSand</name>
-      <uri>https://old.reddit.com/user/CautiousSand</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been reading a bit about Unsloth fine-tuning and wondering how good these models can actually get.&lt;/p&gt; &lt;p&gt;I know a lot depends on the dataset, but before I go too deep into yet another rabbit hole, I want to get a sense of what’s realistically achievable—especially when it comes to fine-tuning a model to match my writing style. Is it possible to get decent results without massive datasets and expensive hardware?&lt;/p&gt; &lt;p&gt;I’ve tried searching for examples of fine-tuned Unsloth models, but all I find are tutorials—nothing I can actually try to see what kind of results are possible.&lt;/p&gt; &lt;p&gt;For those who have worked with Unsloth fine-tuning, what’s been your experience? I’m not chasing a specific use case, just experimenting, but I don’t want to sink a ton of time into this only to find out you really need a 32B+ model and a very specific setup for it to be worthwhile.&lt;/p&gt; &lt;p&gt;How big of a dataset and model would I actually need to get reasonable results? Would love to hear from anyone who’s tried.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CautiousSand"&gt; /u/CautiousSand &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jofuyc/how_good_unsloth_fine_tuned_models_can_actually/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T22:17:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1jocz51</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jonibh/openwebui_adopt_openapi_and_offer_an_mcp_bridge/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T04:45:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jopcyr</id>
+    <title>GPT 4o is not actually omni-modal</title>
+    <updated>2025-04-01T06:51:45+00:00</updated>
+    <author>
+      <name>/u/kuzheren</name>
+      <uri>https://old.reddit.com/user/kuzheren</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Wanted to share this here - I haven’t seen much discussion about it, and I hope it could be helpful to the LocalLLaMA community.&lt;/p&gt; &lt;p&gt;(Also, let’s define &lt;em&gt;omni-modal&lt;/em&gt; as multimodal models that support both understanding and generation across different modalities. This definition might not be perfect, but we need some way to distinguish models with multimodal decoding capabilities from those without)&lt;/p&gt; &lt;p&gt;As we know, the new GPT-4o model is highly context-aware. It can reference both images and previous user conversation. At first glance, it might seem like GPT-4o generates image tokens directly based on the full context, without relying on any external tools. But that’s not exactly how it works.&lt;/p&gt; &lt;p&gt;Image generation still relies on a new version of DALL·E (at least it’s still referred to by that name), and it happens through a function call like this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;image_gen.text2im { &amp;quot;prompt&amp;quot;: &amp;quot;A photorealistic owl sitting on a branch at night&amp;quot;, &amp;quot;size&amp;quot;: &amp;quot;1024x1024&amp;quot;, &amp;quot;n&amp;quot;: 1, &amp;quot;referenced_image_ids&amp;quot;: [&amp;quot;file_0000000054d45230be886096390c241a&amp;quot;], // optional &amp;quot;transparent_background&amp;quot;: false // optional } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;As we can see, the process still uses an explicit API-style call. GPT writes the prompt and optionally includes image references, allowing the image generator to use much more context than DALL·E 3 ever could.&lt;/p&gt; &lt;p&gt;Compare this to models like open-source OmniGen or Gemini 2.0 Flash - these do &lt;strong&gt;not&lt;/strong&gt; rely on external function calls. Instead, they generate images directly, using both text and image inputs as unified context. That’s why I’d say they’re &lt;em&gt;truly&lt;/em&gt; omni-modal.&lt;/p&gt; &lt;p&gt;One more detail: after the image is generated, GPT only sees a &lt;strong&gt;textual description&lt;/strong&gt; of the result — not the actual image itself (unless it was user-uploaded). This means GPT-4o wasn't retrained to “see” its own generated images.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; GPT-4o doesn’t generate image tokens directly. It calls a separate, more advanced image model (a new DALL·E version) that can handle reference images. The models are still modular, not unified.&lt;/p&gt; &lt;p&gt;Please don't k#ll me for this post. I know it might sound obvious, boring, or lame, but nobody seems to be talking about it, and many people assume the image generator is somehow merged into GPT itself - which is not the case.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kuzheren"&gt; /u/kuzheren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jopcyr/gpt_4o_is_not_actually_omnimodal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T06:51:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1jodbgl</id>
