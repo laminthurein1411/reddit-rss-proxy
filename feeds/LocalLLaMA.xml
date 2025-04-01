@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-01T20:24:39+00:00</updated>
+  <updated>2025-04-01T20:36:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jo88lg</id>
-    <title>Part of Orpheus Team here - Ama + educational content</title>
-    <updated>2025-03-31T17:05:34+00:00</updated>
-    <author>
-      <name>/u/EveryDayStonks</name>
-      <uri>https://old.reddit.com/user/EveryDayStonks</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys,&lt;/p&gt; &lt;p&gt;I’m part of the team behind Orpheus. It’s been really exciting to see everyone’s support for Orpheus and excited to continue launching more open speech models. I wanted to clear up some of the questions about the design and data choices, and potential misconceptions about Orpheus.&lt;/p&gt; &lt;h2&gt;Background on the project&lt;/h2&gt; &lt;p&gt;We’re a pretty small team building end-to-end multimodal human motion and speech, and our mission is to create realistic realtime “humans”. We decided to we’d start working on, and open source, a TTS about 4 weeks ago, more of as an exploration into how natural and usable we could make LLM driven speech sound, without worrying about the more complex aspects of end-to-end systems. We launched the results of our experiments just over a week and a half ago in the form or a pre-trained model and a fine-tuned model as Orpheus 0.1.&lt;/p&gt; &lt;h2&gt;Why even use an LLM as the backbone?&lt;/h2&gt; &lt;p&gt;Since LLMs have already seen trillions of text tokens, they have a deep understanding of the emotion and nuance conveyed in text. This ability transfers well to speech generation. For example, if the models is trained the text and speech for “I failed my exam but I get to resit next year”, it learns sad sentences with an upbeat finish should be said in a certain way. When it’s asked to generate “I sprained my leg, but it will get better in a few weeks” it knows, thanks to its semantic understanding, that this is also a sad sentence with an upbeat finish, and it already has a good sense of how “sad sentences with upbeat finishes” roughly sound. &lt;/p&gt; &lt;p&gt;In short, using LLMs lead to more natural generations. To maintain the model’s text abilities, we also, for the first 50% of “speech pretraining”, made every other batch being a purely text based batch. &lt;/p&gt; &lt;h2&gt;Datasets&lt;/h2&gt; &lt;h3&gt;Pretraining&lt;/h3&gt; &lt;p&gt;We used a combination of publicly available and permissively licensed text and speech datasets, available on Hugging Face. We minimally cleaned the data, like removing silence, or incoherent examples. We created dataset of tokenised text-speech pairs for the speech using the same preprocessing script, provided in the GitHub for speech. I also share the text preprocessing framework in a Github Issue for anyone interested. We then packed sequences together into 8192 token length sequences. We trained for 100k hours of speech, the first 50k hours also had interleaved batches of text sequences based on QA answer datasets. This nets around 4 million steps on speech which takes around 1500 H100 hours.&lt;/p&gt; &lt;h3&gt;Finetuning&lt;/h3&gt; &lt;p&gt;We got 8 professional voice actors to record 300 lines each. These were generated using an open source LLM prompted to include tags (like &amp;lt;laugh&amp;gt;). We used full parameter fine-tuning. Spoken lines were on average 10 seconds long with a standard deviation of 6 seconds. &lt;/p&gt; &lt;h2&gt;With regards to misconceptions about training:&lt;/h2&gt; &lt;p&gt;1.⁠ ⁠Should I train over multiple epochs: all our training was done over 1 epoch - Our fine-tuned models become slightly more unstable over multiple epochs, due to overfitting. We never tested pre-training over multiple epochs but it would make more sense to scale to a bigger dataset rather scale number of epochs, as pre-training level speech data isn’t lacking or hard to obtain.&lt;/p&gt; &lt;p&gt;2.⁠ ⁠Benefits of increasing pre-training data: I predict better stability over very long sequences as the biggest downstream improvement - but we’ll find out soon :)&lt;/p&gt; &lt;h2&gt;Model Architecture Decisions&lt;/h2&gt; &lt;p&gt;Audio is typically split up into frames (like 25-100ms chunks). Each chunk is represented by a set of tokens. Often these tokens have different levels of importance. Orpheus uses a tokeniser which has 7 tokens per frame and generates all 7 auto-regressively using the LLM. Other models like Moshi or Sesame use the LLM to predict the most important token per frame and offload the other tokens to a separate smaller model. &lt;/p&gt; &lt;h3&gt;“Offloading” could be a good idea because&lt;/h3&gt; &lt;p&gt;1.⁠ ⁠You can generate tokens faster as you use a smaller model to generate most of the tokens quickly. &lt;/p&gt; &lt;p&gt;2.⁠ ⁠You train the model on fewer speech tokens so it becomes less worse (forgets less) at text reasoning.&lt;/p&gt; &lt;h3&gt;Our thoughts are:&lt;/h3&gt; &lt;p&gt;1.⁠ ⁠For speed/realtime streaming Orpheus 3b requires 83 tokens/second which is actually very easy to get on A100/H100+ models. Not to mention Orpheus quantises well, and we are going to releasing smaller faster versions … that said I apologise to everyone current trying to run Orpheus 4-bit on RTX 4090s :)&lt;/p&gt; &lt;p&gt;2.⁠ ⁠You only need to care about maintaining really good text based reasoning for end-to-end speech models, which really suffer from LLMs catastrophically forgetting text. That said if you were trying to make end-to-end speech, in my opinion, conceptually Qwen Omni is a far superior architecture to Sesame/Moshi as it doesn’t touch the LLM at all but still has the same potential for emotional upside as Orpheus or Sesame with a bit of work.&lt;/p&gt; &lt;p&gt;3.⁠ ⁠From an architectural standpoint, our general philosophy is if it can be simple, it should be simple - and having a Llama model spit out tokens without any other modules is the simplest approach we could think of. In general, I believe machine learning is moving towards simple scalable architectures that benefit from more and higher data and over engineered architectures only offer local maxima.&lt;/p&gt; &lt;h2&gt;Why did we choose SNAC (more technical section)&lt;/h2&gt; &lt;p&gt;When training multimodal LLMs (this goes for images/motion/video/speech) there are 2 important things that go into picking a good tokeniser. First is reconstruction - if your tokeniser can’t represent the underlying modality well (i.e. it can only be de-tokenised into deep voices / or pictures with oceans) it isn’t useful. This incentivises the tokeniser architect to use as many tokens as possible with as high a codebook size, so you can capture as rich nuanced details as possible. &lt;/p&gt; &lt;p&gt;Unfortunately there is a competing interest (as there always is). This is entropy of the token distribution. LLMs are worse at learning the token statistics from tokeniser distributions with higher entropy. Without getting too technical, a good heuristic for entropy is bitrate. Bitrate = codebook size * tokens/second. For SNAC this is 980 bips, for the simplest version of Mimi this is 550 bips (which is better) but suffers from inferior reconstruction. The standard version of Mimi has a bitrate of 1100 bips which is worse than SNAC. Thus, we went with SNAC for this version of Orpheus but we may switch this in the future as too much thought hasn’t been put into this and we wanted to innovate on other parts of the approach.&lt;/p&gt; &lt;h2&gt;What’s Next&lt;/h2&gt; &lt;p&gt;We have decided to prioritise multilingual as this seems to be the most sought after feature. We will then focus on releasing the pretrained and finetunes for the smaller parameter size models. After that we have a few different ideas for what could be a good second open source speech release, and we are always open to suggestions. That said, this is our current release plan, all of which is subject to being rearranged/modified, based on what seems most important.&lt;/p&gt; &lt;p&gt;Hope this was useful/interesting, happy to go into more detail in the comments/answer any questions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EveryDayStonks"&gt; /u/EveryDayStonks &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo88lg/part_of_orpheus_team_here_ama_educational_content/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jo88lg/part_of_orpheus_team_here_ama_educational_content/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jo88lg/part_of_orpheus_team_here_ama_educational_content/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-03-31T17:05:34+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jodbgl</id>
     <title>Orpheus TTS Local WebUI: Your Personal Text-to-Speech Studio, Gradio UI, Supports Emotive tags.</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1joonmc/do_you_think_this_will_catch_on_amazons_nova/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T06:01:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jp5y5a</id>
+    <title>Different LLM models make different sounds from the GPU when doing inference</title>
+    <updated>2025-04-01T20:28:29+00:00</updated>
+    <author>
+      <name>/u/vibjelo</name>
+      <uri>https://old.reddit.com/user/vibjelo</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vibjelo"&gt; /u/vibjelo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://bsky.app/profile/victor.earth/post/3llrphluwb22p"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5y5a/different_llm_models_make_different_sounds_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5y5a/different_llm_models_make_different_sounds_from/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T20:28:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1jodrcx</id>
@@ -164,19 +164,6 @@
     <published>2025-04-01T04:45:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jp5g2l</id>
-    <title>Is a multimodal focused release from openai the best for us?</title>
-    <updated>2025-04-01T20:08:29+00:00</updated>
-    <author>
-      <name>/u/AryanEmbered</name>
-      <uri>https://old.reddit.com/user/AryanEmbered</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"&gt; &lt;img alt="Is a multimodal focused release from openai the best for us?" src="https://preview.redd.it/w31a75fy5ase1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=bf8159e2e72f93f2c1e7edfd8a2bb4a73c81275c" title="Is a multimodal focused release from openai the best for us?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I feel like with the exception of Qwen 2.5 7b(11b) audio, we have seen almost no real progress in multimodality so far in open models.&lt;/p&gt; &lt;p&gt;It seems gippty 4o mini can now do advanced voice mode as well. &lt;/p&gt; &lt;p&gt;They keep saying its a model that can run on your hardware, and 4omini is estimated to be less than a 20B model consider how badly it gets mogged by mistral smol and others. &lt;/p&gt; &lt;p&gt;It would be great if we can get a shittier 4o mini but with all the features intact like audio and image output. (A llamalover can dream)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/w31a75fy5ase1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T20:08:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jobybk</id>
     <title>OpenAI is open-sourcing a model soon</title>
     <updated>2025-03-31T19:36:01+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jojuf4/is_everyone_ready_for_all_of_the_totally_legit_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T01:25:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jp5g2l</id>
+    <title>Is a multimodal focused release from openai the best for us?</title>
+    <updated>2025-04-01T20:08:29+00:00</updated>
+    <author>
+      <name>/u/AryanEmbered</name>
+      <uri>https://old.reddit.com/user/AryanEmbered</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"&gt; &lt;img alt="Is a multimodal focused release from openai the best for us?" src="https://preview.redd.it/w31a75fy5ase1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=bf8159e2e72f93f2c1e7edfd8a2bb4a73c81275c" title="Is a multimodal focused release from openai the best for us?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I feel like with the exception of Qwen 2.5 7b(11b) audio, we have seen almost no real progress in multimodality so far in open models.&lt;/p&gt; &lt;p&gt;It seems gippty 4o mini can now do advanced voice mode as well. &lt;/p&gt; &lt;p&gt;They keep saying its a model that can run on your hardware, and 4omini is estimated to be less than a 20B model consider how badly it gets mogged by mistral smol and others. &lt;/p&gt; &lt;p&gt;It would be great if we can get a shittier 4o mini but with all the features intact like audio and image output. (A llamalover can dream)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/w31a75fy5ase1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp5g2l/is_a_multimodal_focused_release_from_openai_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T20:08:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1joxqul</id>
@@ -307,19 +307,6 @@
     <published>2025-04-01T08:28:37+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jp1555</id>
-    <title>DeepMind will delay sharing research to remain competitive</title>
-    <updated>2025-04-01T17:17:47+00:00</updated>
-    <author>
-      <name>/u/mayalihamur</name>
-      <uri>https://old.reddit.com/user/mayalihamur</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A &lt;a href="https://archive.ph/tkuum"&gt;recent report&lt;/a&gt; in Financial Times claims that Google's DeepMind &amp;quot;has been holding back the release of its world-renowned research&amp;quot; to remain competitive. Accordingly the company will adopt a six-month embargo policy &amp;quot;before strategic papers related to generative AI are released&amp;quot;. &lt;/p&gt; &lt;p&gt;In an interesting statement, a DeepMind researcher said he could &amp;quot;not imagine us putting out the transformer papers for general use now&amp;quot;. Considering the impact of the DeepMind's transformer research on the development of LLMs, just think where we would have been now if they held back the research. The report also claims that some DeepMind staff left the company as their careers would be negatively affected if they are not allowed to publish their research. &lt;/p&gt; &lt;p&gt;I don't have any knowledge about the current impact of DeepMind's open research contributions. But just a couple of months ago we have been talking about the potential contributions the DeepSeek release will make. But as it gets competitive it looks like the big players are slowly becoming &lt;del&gt;Open&lt;/del&gt;ClosedAIs. &lt;/p&gt; &lt;p&gt;Too bad, let's hope that this won't turn into a general trend.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mayalihamur"&gt; /u/mayalihamur &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T17:17:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1joy1g9</id>
     <title>You can now check if your Laptop/ Rig can run a GGUF directly from Hugging Face! 🤗</title>
     <updated>2025-04-01T15:13:10+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1joy1g9/you_can_now_check_if_your_laptop_rig_can_run_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T15:13:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jp1555</id>
+    <title>DeepMind will delay sharing research to remain competitive</title>
+    <updated>2025-04-01T17:17:47+00:00</updated>
+    <author>
+      <name>/u/mayalihamur</name>
+      <uri>https://old.reddit.com/user/mayalihamur</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A &lt;a href="https://archive.ph/tkuum"&gt;recent report&lt;/a&gt; in Financial Times claims that Google's DeepMind &amp;quot;has been holding back the release of its world-renowned research&amp;quot; to remain competitive. Accordingly the company will adopt a six-month embargo policy &amp;quot;before strategic papers related to generative AI are released&amp;quot;. &lt;/p&gt; &lt;p&gt;In an interesting statement, a DeepMind researcher said he could &amp;quot;not imagine us putting out the transformer papers for general use now&amp;quot;. Considering the impact of the DeepMind's transformer research on the development of LLMs, just think where we would have been now if they held back the research. The report also claims that some DeepMind staff left the company as their careers would be negatively affected if they are not allowed to publish their research. &lt;/p&gt; &lt;p&gt;I don't have any knowledge about the current impact of DeepMind's open research contributions. But just a couple of months ago we have been talking about the potential contributions the DeepSeek release will make. But as it gets competitive it looks like the big players are slowly becoming &lt;del&gt;Open&lt;/del&gt;ClosedAIs. &lt;/p&gt; &lt;p&gt;Too bad, let's hope that this won't turn into a general trend.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mayalihamur"&gt; /u/mayalihamur &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T17:17:47+00:00</published>
   </entry>
 </feed>
