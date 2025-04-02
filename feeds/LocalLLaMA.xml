@@ -2,36 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-02T09:48:56+00:00</updated>
+  <updated>2025-04-02T10:06:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jpbptf</id>
-    <title>tried a bunch of open models with goose</title>
-    <updated>2025-04-02T00:40:54+00:00</updated>
+    <id>t3_1jpjt5e</id>
+    <title>While Waiting for Llama 4</title>
+    <updated>2025-04-02T08:36:39+00:00</updated>
     <author>
-      <name>/u/lifelonglearn3r</name>
-      <uri>https://old.reddit.com/user/lifelonglearn3r</uri>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpbptf/tried_a_bunch_of_open_models_with_goose/"&gt; &lt;img alt="tried a bunch of open models with goose" src="https://external-preview.redd.it/8ypLw4iI5hM69IbWKzJkC6YTV7o1sva9BZJYBWMD5KY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cd7ebb67fdbf8351f9a6eedeebf6f17a1be026ca" title="tried a bunch of open models with goose" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;hey all, been lurking forever and finally have something hopefully worth sharing. I've been messing with different models in Goose (open source AI agent by Block, similar to Aider) and ran some benchmarking that might be interesting. I tried out qwen series, qwq, deepseek-chat-v3 latest checkpoint, llama3, and the leading closed models also.&lt;/p&gt; &lt;p&gt;For models that don't support native tool calling (deepseek-r1, gemma3, phi4) which is needed for agent use cases, I built a &amp;quot;toolshim&amp;quot; for Goose which uses a local ollama model to interpret responses from the primary model into the right tool calls. It's usable but the performance is unsurprisingly subpar compared to models specifically fine-tuned for tool calling. Has anyone had any success with other approaches for getting these models to successfully use tools?&lt;/p&gt; &lt;p&gt;I ran 8 pretty simple tasks x3 times for each model to get the overall rankings:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Create file&lt;/li&gt; &lt;li&gt;List files&lt;/li&gt; &lt;li&gt;Search/replace in file&lt;/li&gt; &lt;li&gt;Build flappy bird&lt;/li&gt; &lt;li&gt;Creating a wikipedia-stylized page&lt;/li&gt; &lt;li&gt;Data analysis on a CSV&lt;/li&gt; &lt;li&gt;Restaurant research on web&lt;/li&gt; &lt;li&gt;Blogpost summarization&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Here are the results:&lt;/h1&gt; &lt;p&gt;|Rank|Model|Average Eval Score|Inference Provider|&lt;/p&gt; &lt;p&gt;|-----|-----|-----|-----|&lt;/p&gt; &lt;p&gt;|1|claude-3-5-sonnet-2|1.00|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|2|claude-3-7-sonnet|0.94|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|3|claude-3-5-haiku|0.91|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|4|o1|0.81|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|4|gpt-4o|0.81|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|6|qwen2.5-coder:32b|0.8|ollama|&lt;/p&gt; &lt;p&gt;|7|o3-mini|0.79|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|8|qwq|0.77|ollama|&lt;/p&gt; &lt;p&gt;|9|gpt-4o-mini|0.74|databricks (bedrock)|&lt;/p&gt; &lt;p&gt;|10|deepseek-chat-v3-0324|0.73|openrouter|&lt;/p&gt; &lt;p&gt;|11|gpt-4-5-preview|0.67|databricks|&lt;/p&gt; &lt;p&gt;|12|qwen2.5:32b|0.64|ollama|&lt;/p&gt; &lt;p&gt;|13|qwen2.5:14b|0.62|ollama|&lt;/p&gt; &lt;p&gt;|14|qwen2.5-coder:14b|0.51|ollama|&lt;/p&gt; &lt;p&gt;|15|deepseek-r1-toolshim-mistral-nemo*|0.48|openrouter|&lt;/p&gt; &lt;p&gt;|16|llama3.3:70b-instruct-q4_K_M|0.47|ollama|&lt;/p&gt; &lt;p&gt;|17|phi4-toolshim-mistral-nemo*|0.46|ollama|&lt;/p&gt; &lt;p&gt;|18|phi4-mistral-nemo|0.45|ollama|&lt;/p&gt; &lt;p&gt;|19|gemma3:27b-toolshim-mistral-nemo*|0.43|ollama|&lt;/p&gt; &lt;p&gt;|20|deepseek-r1-toolshim-qwen2.5-coder7b*|0.42|openrouter|&lt;/p&gt; &lt;p&gt;|21|llama3.3:70b-instruct-q8_0|0.41|ollama|&lt;/p&gt; &lt;p&gt;|22|deepseek-r1:14b-toolshim-mistral-nemo*|0.37|openrouter|&lt;/p&gt; &lt;p&gt;|23|deepseek-r1-distill-llama-70b-toolshim-mistral-nemo*|0.36|ollama|&lt;/p&gt; &lt;p&gt;|24|phi4-toolshim-qwen2.5-coder7b*|0.3|ollama|&lt;/p&gt; &lt;p&gt;|25|mistral-nemo|0.27|ollama|&lt;/p&gt; &lt;p&gt;|26|deepseek-r1-distill-llama-70b-toolshim-qwen2.5-coder7b*|0.26|openrouter|&lt;/p&gt; &lt;p&gt;|27|llama3.2|0.25|ollama|&lt;/p&gt; &lt;p&gt;|28|gemma3:27b-toolshim-qwen2.5-coder7b*|0.24|ollama|&lt;/p&gt; &lt;p&gt;|29|deepseek-r1:14b-toolshim-qwen2.5-coder7b*|0.22|ollama|&lt;/p&gt; &lt;p&gt;|29|gemma3:12b-toolshim-qwen2.5-coder7b*|0.22|ollama|&lt;/p&gt; &lt;p&gt;|31|mistral|0.17|ollama|&lt;/p&gt; &lt;p&gt;|32|gemma3:12b-toolshim-mistral-nemo*|0.15|ollama|&lt;/p&gt; &lt;p&gt;I'm pretty excited about Qwen/QwQ/Deepseek-chat from these rankings! I'm impressed with the 32B model size performance although the tasks I tried are admittedly simple.&lt;/p&gt; &lt;p&gt;Here are some screenshots and gifs comparing some of the results across the models:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/v36hanhlgbse1.png?width=1898&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4522686b361aced31272dd7335b2873420716421"&gt;Claude 3.7 Sonnet&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7usml71qgbse1.png?width=2144&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=59ccdb513735841b521b49de257a58afe91d50d6"&gt;deepseek-chat-v3-0324&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/h94udhotgbse1.png?width=2144&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a5ecc853cab4c97cb391340c18052ed23343ac93"&gt;qwen2.5-coder:32b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/n6j18kyxgbse1.png?width=2144&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=607bfd82876c3d79b611359c8d255a487b2d0b77"&gt;deepseek-r1 70B with mistral-nemo as the tool interpreter&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/lslc1mg8hbse1.gif"&gt;deepseek-chat-v3-0324&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/6fr1c0oehbse1.gif"&gt;qwq&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/hitdcjaihbse1.gif"&gt;qwen2.5-coder:32b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/asn7ovnmhbse1.gif"&gt;deepseek-r1 with mistral-nemo tool interpreter&lt;/a&gt;&lt;/p&gt; &lt;p&gt;here's the full blogpost about it I wrote with more results: &lt;a href="https://block.github.io/goose/blog/2025/03/31/goose-benchmark"&gt;https://block.github.io/goose/blog/2025/03/31/goose-benchmark&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lifelonglearn3r"&gt; /u/lifelonglearn3r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpbptf/tried_a_bunch_of_open_models_with_goose/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpbptf/tried_a_bunch_of_open_models_with_goose/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpbptf/tried_a_bunch_of_open_models_with_goose/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When we look exclusively at open-source models listed on LM Arena, we see the following top performers:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;DeepSeek-V3-0324&lt;/li&gt; &lt;li&gt;DeepSeek-R1&lt;/li&gt; &lt;li&gt;Gemma-3-27B-it&lt;/li&gt; &lt;li&gt;DeepSeek-V3&lt;/li&gt; &lt;li&gt;QwQ-32B&lt;/li&gt; &lt;li&gt;Command A (03-2025)&lt;/li&gt; &lt;li&gt;Llama-3.3-Nemotron-Super-49B-v1&lt;/li&gt; &lt;li&gt;DeepSeek-v2.5-1210&lt;/li&gt; &lt;li&gt;Llama-3.1-Nemotron-70B-Instruct&lt;/li&gt; &lt;li&gt;Meta-Llama-3.1-405B-Instruct-bf16&lt;/li&gt; &lt;li&gt;Meta-Llama-3.1-405B-Instruct-fp8&lt;/li&gt; &lt;li&gt;DeepSeek-v2.5&lt;/li&gt; &lt;li&gt;Llama-3.3-70B-Instruct&lt;/li&gt; &lt;li&gt;Qwen2.5-72B-Instruct&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Now, take a look at the Llama models. The most powerful one listed here is the massive 405B version. However, NVIDIA introduced Nemotron, and interestingly, the 70B Nemotron outperformed the larger Llama. Later, an even smaller Nemotron variant was released that performed even better!&lt;/p&gt; &lt;p&gt;But what happened next is even more intriguing. At the top of the leaderboard is DeepSeek, a very powerful model, but it's so large that it's not practical for home use. Right after that, we see the much smaller QwQ model outperforming all Llamas, not to mention older, larger Qwen models. And then, there's Gemma, an even smaller model, ranking impressively high.&lt;/p&gt; &lt;p&gt;All of this explains why Llama 4 is still in training. Hopefully, the upcoming version will bring not only exceptional performance but also better accessibility for local or home use, just like QwQ and Gemma.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjt5e/while_waiting_for_llama_4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjt5e/while_waiting_for_llama_4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjt5e/while_waiting_for_llama_4/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-02T00:40:54+00:00</published>
+    <published>2025-04-02T08:36:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jpi1a7</id>
-    <title>What are the options for local high quality text to speech?</title>
-    <updated>2025-04-02T06:23:16+00:00</updated>
+    <id>t3_1jpjyoc</id>
+    <title>Can Orpheus be replicated with another more permissively-licenced llm?</title>
+    <updated>2025-04-02T08:48:36+00:00</updated>
     <author>
-      <name>/u/idleWizard</name>
-      <uri>https://old.reddit.com/user/idleWizard</uri>
+      <name>/u/Silver-Champion-4846</name>
+      <uri>https://old.reddit.com/user/Silver-Champion-4846</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It doesn't have to be real time. I just care for consistent voices&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/idleWizard"&gt; /u/idleWizard &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi1a7/what_are_the_options_for_local_high_quality_text/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi1a7/what_are_the_options_for_local_high_quality_text/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi1a7/what_are_the_options_for_local_high_quality_text/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey there guys, so Orpheus as far as I know was trained on LLAMA-3B, but then its license changed and I think it got a little bit less permissive. So, can another large language model be used to replicate what Orpheus did, or even do better than it? Not sure whether that's possible or even needed, though. Sorry for the errors, I used voice dictation to write it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Silver-Champion-4846"&gt; /u/Silver-Champion-4846 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjyoc/can_orpheus_be_replicated_with_another_more/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjyoc/can_orpheus_be_replicated_with_another_more/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpjyoc/can_orpheus_be_replicated_with_another_more/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-02T06:23:16+00:00</published>
+    <published>2025-04-02T08:48:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1jp9hu6</id>
@@ -281,19 +281,6 @@
     <published>2025-04-01T23:12:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jpdre9</id>
-    <title>I made it! 90 t/s on my iPhone with llama1b fp16</title>
-    <updated>2025-04-02T02:19:03+00:00</updated>
-    <author>
-      <name>/u/darkolorin</name>
-      <uri>https://old.reddit.com/user/darkolorin</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We completely rewrite the inference engine and did some tricks. This is a summarization with llama 3.2 1b float16. So most of the times we do much faster than MLX. lmk in comments if you wanna test the inference and I’ll post a link. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkolorin"&gt; /u/darkolorin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/fh2xne3uzbse1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpdre9/i_made_it_90_ts_on_my_iphone_with_llama1b_fp16/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpdre9/i_made_it_90_ts_on_my_iphone_with_llama1b_fp16/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-02T02:19:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jp1555</id>
     <title>DeepMind will delay sharing research to remain competitive</title>
     <updated>2025-04-01T17:17:47+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp1555/deepmind_will_delay_sharing_research_to_remain/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T17:17:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jpdre9</id>
+    <title>I made it! 90 t/s on my iPhone with llama1b fp16</title>
+    <updated>2025-04-02T02:19:03+00:00</updated>
+    <author>
+      <name>/u/darkolorin</name>
+      <uri>https://old.reddit.com/user/darkolorin</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We completely rewrite the inference engine and did some tricks. This is a summarization with llama 3.2 1b float16. So most of the times we do much faster than MLX. lmk in comments if you wanna test the inference and I’ll post a link. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/darkolorin"&gt; /u/darkolorin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/fh2xne3uzbse1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpdre9/i_made_it_90_ts_on_my_iphone_with_llama1b_fp16/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpdre9/i_made_it_90_ts_on_my_iphone_with_llama1b_fp16/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-02T02:19:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1jpi0n9</id>
