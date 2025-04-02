@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-02T06:08:51+00:00</updated>
+  <updated>2025-04-02T06:25:35+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jpcmpq</id>
-    <title>5090 Card vs two 5070ti</title>
-    <updated>2025-04-02T01:25:45+00:00</updated>
-    <author>
-      <name>/u/Brave_Sheepherder_39</name>
-      <uri>https://old.reddit.com/user/Brave_Sheepherder_39</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What is the performance penalty in running two 5070 ti cards with 16 Vram than a single 5090. In my part of the world 5090 are selling way more than twice the price of a 5070 ti. Most of the models that I'm interested at running at the moment are GGUF files sized about 2O GB that don't fit into a single 5070 ti card. Would most the layers run on one card with a few on the second card. I've been running lmstudio and GPT4ALL on the front end.&lt;br /&gt; Regards All&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Brave_Sheepherder_39"&gt; /u/Brave_Sheepherder_39 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpcmpq/5090_card_vs_two_5070ti/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpcmpq/5090_card_vs_two_5070ti/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpcmpq/5090_card_vs_two_5070ti/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-02T01:25:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jp6sbn</id>
     <title>Dou (道) updated with LM Studio (and Ollama) support</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp6sbn/dou_道_updated_with_lm_studio_and_ollama_support/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T21:02:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jpi0n9</id>
+    <title>KTransformers Now Supports Multi-Concurrency and Runs 40 Tokens/s of DeepSeek-R1 Q4/FP8 on MRDIMM-8800</title>
+    <updated>2025-04-02T06:22:05+00:00</updated>
+    <author>
+      <name>/u/CombinationNo780</name>
+      <uri>https://old.reddit.com/user/CombinationNo780</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi0n9/ktransformers_now_supports_multiconcurrency_and/"&gt; &lt;img alt="KTransformers Now Supports Multi-Concurrency and Runs 40 Tokens/s of DeepSeek-R1 Q4/FP8 on MRDIMM-8800" src="https://external-preview.redd.it/02ytj9SuhUQUk607vUmaEPEVgYFEBjKWtivCx0rWwKk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=26792f11e8a9b5c5d3f26c92c937264cb15d0fec" title="KTransformers Now Supports Multi-Concurrency and Runs 40 Tokens/s of DeepSeek-R1 Q4/FP8 on MRDIMM-8800" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, it's been a while since our last update. &lt;/p&gt; &lt;p&gt;We've been hard at work completely refactoring KTransformers to add the highly desired multi-concurrency support. This effort involved over 10,000 lines of code updates and took longer than we expected.&lt;/p&gt; &lt;p&gt;Drawing inspiration from the excellent architecture of sglang, we have implemented high-performance asynchronous concurrent scheduling in C++, including features like &lt;strong&gt;continuous batching, chunked prefill,&lt;/strong&gt; and more. Thanks to GPU sharing in concurrent scenarios and the efficient flashinfer lib, overall throughput has also improved to a certain extent.&lt;/p&gt; &lt;p&gt;Also, with support from Intel, we tested KTransformers v0.2.4 on the latest Xeon6 + MRDIMM-8800 platform. By increasing concurrency, the total output throughput increased &lt;strong&gt;from 17 tokens/s to 40 tokens/s.&lt;/strong&gt; We observed that the bottleneck has now shifted to the GPU. Using a higher-end GPU than the 4090D could further improve performance.&lt;/p&gt; &lt;p&gt;The following is a demonstration and you can find more infomation from &lt;a href="https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/balance-serve.md"&gt;https://github.com/kvcache-ai/ktransformers/blob/main/doc/en/balance-serve.md&lt;/a&gt; :&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/10g65zko0dse1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=d2af5901cb0f773d315bfdfb324bb3c8ecf61a72"&gt;https://preview.redd.it/10g65zko0dse1.jpg?width=2560&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=d2af5901cb0f773d315bfdfb324bb3c8ecf61a72&lt;/a&gt;&lt;/p&gt; &lt;p&gt;After this huge refactoring, we can now start working on merging the AMX part and open sourcing it. We are sure that this will happen in April.&lt;/p&gt; &lt;p&gt;Finally, we greatly thank the local LLaMa community for your support. We now have over 13K GitHub stars and are widely deployed in many scenarios. KTransformers is a project that grew from the localLLaMa community, and we hope to see what you want next.&lt;/p&gt; &lt;p&gt;Stay tuned!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CombinationNo780"&gt; /u/CombinationNo780 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi0n9/ktransformers_now_supports_multiconcurrency_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi0n9/ktransformers_now_supports_multiconcurrency_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jpi0n9/ktransformers_now_supports_multiconcurrency_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-02T06:22:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1joxqul</id>
@@ -164,19 +164,6 @@
     <published>2025-04-02T01:25:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1josy27</id>
-    <title>An idea: an LLM trapped in the past</title>
-    <updated>2025-04-01T11:09:36+00:00</updated>
-    <author>
-      <name>/u/Vehnum</name>
-      <uri>https://old.reddit.com/user/Vehnum</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anyone ever thought to make an LLM trained on data from before a certain year/time?&lt;/p&gt; &lt;p&gt;For example, an LLM trained on data only from 2010 or prior.&lt;/p&gt; &lt;p&gt;I thought it was an interesting concept but I don’t know if it had been thought of or done before. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vehnum"&gt; /u/Vehnum &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-01T11:09:36+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jp77z1</id>
     <title>Arch-Function-Chat (1B/3B/7B) - Device friendly, family of fast LLMs for function calling scenarios now trained to chat.</title>
     <updated>2025-04-01T21:20:18+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jp77z1/archfunctionchat_1b3b7b_device_friendly_family_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-01T21:20:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1josy27</id>
+    <title>An idea: an LLM trapped in the past</title>
+    <updated>2025-04-01T11:09:36+00:00</updated>
+    <author>
+      <name>/u/Vehnum</name>
+      <uri>https://old.reddit.com/user/Vehnum</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anyone ever thought to make an LLM trained on data from before a certain year/time?&lt;/p&gt; &lt;p&gt;For example, an LLM trained on data only from 2010 or prior.&lt;/p&gt; &lt;p&gt;I thought it was an interesting concept but I don’t know if it had been thought of or done before. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vehnum"&gt; /u/Vehnum &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1josy27/an_idea_an_llm_trapped_in_the_past/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-01T11:09:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1joyl9t</id>
