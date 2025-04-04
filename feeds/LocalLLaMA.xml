@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-04T07:06:30+00:00</updated>
+  <updated>2025-04-04T07:24:07+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jqum8l</id>
-    <title>Fairly simple coding question throwing off lot of smallish models</title>
-    <updated>2025-04-03T21:20:25+00:00</updated>
+    <id>t3_1jqawj1</id>
+    <title>Open Sourcing Latent Space Guardrails that catch 43% of Hallucinations</title>
+    <updated>2025-04-03T06:05:16+00:00</updated>
     <author>
-      <name>/u/gamesntech</name>
-      <uri>https://old.reddit.com/user/gamesntech</uri>
+      <name>/u/Cautious_Hospital352</name>
+      <uri>https://old.reddit.com/user/Cautious_Hospital352</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this bad CUDA code below that I wanted checked and corrected. A lot of models around the 20-30B range seem to fail. Most of them identify and address some of the &amp;quot;less serious&amp;quot; issues with the code but not identify and fix the main issue, which is move the cudaHello method out of main.&lt;/p&gt; &lt;p&gt;The latest Gemma 27B fails this miserably. Gemini Flash 1.5 and above of course, work fine.&lt;/p&gt; &lt;p&gt;The smaller Qwen2.5 Coder-14B fails, but the 32B version does work well.&lt;/p&gt; &lt;p&gt;Some of the models that do work can still produce some unnecessary code. Only some of them correctly identify and eliminate the whole malloc/free parts which are not required.&lt;/p&gt; &lt;p&gt;One notable exception in this range that works perfectly is Mistral-Small-24B.&lt;/p&gt; &lt;p&gt;These results were very surprising to me. If folks have any other smallish models handy can you please try this out on some of the latest versions?&lt;/p&gt; &lt;p&gt;Any thoughts on why simple code like this seems to trump so many models after all this time?&lt;/p&gt; &lt;pre&gt;&lt;code&gt;does this code look right? if not, can you provide the corrected version? #include &amp;lt;iostream&amp;gt; #include &amp;lt;cuda.h&amp;gt; int main() { // Allocate on device char *dev; size_t numThreads = 1024; cudaMalloc(&amp;amp;dev, numThreads); // Kernel function __global__ void cudaHello() { int i = threadIdx.x; std::cout &amp;lt;&amp;lt; &amp;quot;Hello, CUDA! from thread &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl; } // Launch kernel cudaLaunch(&amp;amp;cudaHello, numThreads); // Cleanup cudaFree(dev); return 0; } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gamesntech"&gt; /u/gamesntech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just released fully open source latent space guardrails that monitor and stop unwelcome outputs of your LLM on the latent space level. Check it out here and happy to adopt it to your use case! &lt;a href="https://github.com/wisent-ai/wisent-guard"&gt;https://github.com/wisent-ai/wisent-guard&lt;/a&gt; On hallucinations it has not been trained on in TruthfulQA, this results in a 43% detection of hallucinations just from the activation patterns. You can use them to control the brain of your LLM and block it from outputting bad code, harmful outputs or taking decisions because of gender or racial bias. This is a new approach, different from circuit breakers or SAE-based mechanistic interpretability. We will be releasing a new version of the reasoning architecture based on latent space interventions soon to not only reduce hallucinations but use this for capabilities gain as well! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cautious_Hospital352"&gt; /u/Cautious_Hospital352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqawj1/open_sourcing_latent_space_guardrails_that_catch/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqawj1/open_sourcing_latent_space_guardrails_that_catch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqawj1/open_sourcing_latent_space_guardrails_that_catch/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T21:20:25+00:00</published>
+    <published>2025-04-03T06:05:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqcj89</id>
@@ -47,6 +47,19 @@
     <published>2025-04-03T15:16:17+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jqum8l</id>
+    <title>Fairly simple coding question throwing off lot of smallish models</title>
+    <updated>2025-04-03T21:20:25+00:00</updated>
+    <author>
+      <name>/u/gamesntech</name>
+      <uri>https://old.reddit.com/user/gamesntech</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this bad CUDA code below that I wanted checked and corrected. A lot of models around the 20-30B range seem to fail. Most of them identify and address some of the &amp;quot;less serious&amp;quot; issues with the code but not identify and fix the main issue, which is move the cudaHello method out of main.&lt;/p&gt; &lt;p&gt;The latest Gemma 27B fails this miserably. Gemini Flash 1.5 and above of course, work fine.&lt;/p&gt; &lt;p&gt;The smaller Qwen2.5 Coder-14B fails, but the 32B version does work well.&lt;/p&gt; &lt;p&gt;Some of the models that do work can still produce some unnecessary code. Only some of them correctly identify and eliminate the whole malloc/free parts which are not required.&lt;/p&gt; &lt;p&gt;One notable exception in this range that works perfectly is Mistral-Small-24B.&lt;/p&gt; &lt;p&gt;These results were very surprising to me. If folks have any other smallish models handy can you please try this out on some of the latest versions?&lt;/p&gt; &lt;p&gt;Any thoughts on why simple code like this seems to trump so many models after all this time?&lt;/p&gt; &lt;pre&gt;&lt;code&gt;does this code look right? if not, can you provide the corrected version? #include &amp;lt;iostream&amp;gt; #include &amp;lt;cuda.h&amp;gt; int main() { // Allocate on device char *dev; size_t numThreads = 1024; cudaMalloc(&amp;amp;dev, numThreads); // Kernel function __global__ void cudaHello() { int i = threadIdx.x; std::cout &amp;lt;&amp;lt; &amp;quot;Hello, CUDA! from thread &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl; } // Launch kernel cudaLaunch(&amp;amp;cudaHello, numThreads); // Cleanup cudaFree(dev); return 0; } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gamesntech"&gt; /u/gamesntech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-03T21:20:25+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jqip5f</id>
     <title>Security vulnerabilities with Ryzen AI / NPU CPUs</title>
     <updated>2025-04-03T13:38:58+00:00</updated>
@@ -58,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqip5f/security_vulnerabilities_with_ryzen_ai_npu_cpus/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T13:38:58+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jr57z6</id>
-    <title>What are your thoughts on diffusion-type LLMs?🤔</title>
-    <updated>2025-04-04T06:20:24+00:00</updated>
-    <author>
-      <name>/u/internal-pagal</name>
-      <uri>https://old.reddit.com/user/internal-pagal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Yesterday, I found out about Mercury Coder by Inception Labs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/internal-pagal"&gt; /u/internal-pagal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr57z6/what_are_your_thoughts_on_diffusiontype_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr57z6/what_are_your_thoughts_on_diffusiontype_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr57z6/what_are_your_thoughts_on_diffusiontype_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T06:20:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqj9a7</id>
@@ -112,17 +112,17 @@
     <published>2025-04-03T12:45:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jqtcav</id>
-    <title>llama.cpp discussion - Experimenting with custom quants</title>
-    <updated>2025-04-03T20:30:21+00:00</updated>
+    <id>t3_1jqa182</id>
+    <title>Llama 4 will probably suck</title>
+    <updated>2025-04-03T05:12:21+00:00</updated>
     <author>
-      <name>/u/Master-Meal-77</name>
-      <uri>https://old.reddit.com/user/Master-Meal-77</uri>
+      <name>/u/klapperjak</name>
+      <uri>https://old.reddit.com/user/klapperjak</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"&gt; &lt;img alt="llama.cpp discussion - Experimenting with custom quants" src="https://external-preview.redd.it/46Rep-nLx-3vJHhS_PeWnbGdv0vLCjLkOmttYuCisu0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e0990f8b73a03b0471a3890665aa7002573c0fda" title="llama.cpp discussion - Experimenting with custom quants" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Master-Meal-77"&gt; /u/Master-Meal-77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/discussions/12741"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been following meta FAIR research for awhile for my phd application to MILA and now knowing that metas lead ai researcher quit, I’m thinking it happened to dodge responsibility about falling behind basically.&lt;/p&gt; &lt;p&gt;I hope I’m proven wrong of course, but the writing is kinda on the wall.&lt;/p&gt; &lt;p&gt;Meta will probably fall behind and so will Montreal unfortunately 😔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/klapperjak"&gt; /u/klapperjak &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T20:30:21+00:00</published>
+    <published>2025-04-03T05:12:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqrnx6</id>
@@ -138,17 +138,17 @@
     <published>2025-04-03T19:26:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jqa182</id>
-    <title>Llama 4 will probably suck</title>
-    <updated>2025-04-03T05:12:21+00:00</updated>
+    <id>t3_1jqtcav</id>
+    <title>llama.cpp discussion - Experimenting with custom quants</title>
+    <updated>2025-04-03T20:30:21+00:00</updated>
     <author>
-      <name>/u/klapperjak</name>
-      <uri>https://old.reddit.com/user/klapperjak</uri>
+      <name>/u/Master-Meal-77</name>
+      <uri>https://old.reddit.com/user/Master-Meal-77</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been following meta FAIR research for awhile for my phd application to MILA and now knowing that metas lead ai researcher quit, I’m thinking it happened to dodge responsibility about falling behind basically.&lt;/p&gt; &lt;p&gt;I hope I’m proven wrong of course, but the writing is kinda on the wall.&lt;/p&gt; &lt;p&gt;Meta will probably fall behind and so will Montreal unfortunately 😔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/klapperjak"&gt; /u/klapperjak &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqa182/llama_4_will_probably_suck/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"&gt; &lt;img alt="llama.cpp discussion - Experimenting with custom quants" src="https://external-preview.redd.it/46Rep-nLx-3vJHhS_PeWnbGdv0vLCjLkOmttYuCisu0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e0990f8b73a03b0471a3890665aa7002573c0fda" title="llama.cpp discussion - Experimenting with custom quants" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Master-Meal-77"&gt; /u/Master-Meal-77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/discussions/12741"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T05:12:21+00:00</published>
+    <published>2025-04-03T20:30:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1jr0na9</id>
@@ -177,19 +177,6 @@
     <published>2025-04-03T21:54:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jr5f2h</id>
-    <title>Anyone wants to collaborate on new open-source TTS?</title>
-    <updated>2025-04-04T06:33:47+00:00</updated>
-    <author>
-      <name>/u/yukiarimo</name>
-      <uri>https://old.reddit.com/user/yukiarimo</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community! We’re currently working on (very WIP) a groundbreaking TTS model with a 48kHz sampling rate and stereo speech! Based on VITS architecture! Very fast training (literally hours) and real-time inference! If you’re interested, let’s discuss the code more, not the weights!&lt;/p&gt; &lt;p&gt;Link (just in case): &lt;a href="https://github.com/yukiarimo/hanasu"&gt;https://github.com/yukiarimo/hanasu&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T06:33:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jqfnmh</id>
     <title>Gemma 3 Reasoning Finetune for Creative, Scientific, and Coding</title>
     <updated>2025-04-03T11:13:31+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqfnmh/gemma_3_reasoning_finetune_for_creative/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T11:13:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr5f2h</id>
+    <title>Anyone wants to collaborate on new open-source TTS?</title>
+    <updated>2025-04-04T06:33:47+00:00</updated>
+    <author>
+      <name>/u/yukiarimo</name>
+      <uri>https://old.reddit.com/user/yukiarimo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community! We’re currently working on (very WIP) a groundbreaking TTS model with a 48kHz sampling rate and stereo speech! Based on VITS architecture! Very fast training (literally hours) and real-time inference! If you’re interested, let’s discuss the code more, not the weights!&lt;/p&gt; &lt;p&gt;Link (just in case): &lt;a href="https://github.com/yukiarimo/hanasu"&gt;https://github.com/yukiarimo/hanasu&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T06:33:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqlkfp</id>
@@ -242,19 +242,6 @@
     <published>2025-04-03T17:14:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jr4rbi</id>
-    <title>Samsung is working on a large vision language model</title>
-    <updated>2025-04-04T05:49:43+00:00</updated>
-    <author>
-      <name>/u/WordyBug</name>
-      <uri>https://old.reddit.com/user/WordyBug</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"&gt; &lt;img alt="Samsung is working on a large vision language model" src="https://preview.redd.it/d46j28ufbrse1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=758a25e039afe10d74be40c317403382200cbb0c" title="Samsung is working on a large vision language model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WordyBug"&gt; /u/WordyBug &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/d46j28ufbrse1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T05:49:43+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jr0vnb</id>
     <title>Real-time in-browser speech recognition with Nuxt and Transformers.js</title>
     <updated>2025-04-04T02:09:45+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0vnb/realtime_inbrowser_speech_recognition_with_nuxt/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-04T02:09:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr4rbi</id>
+    <title>Samsung is working on a large vision language model</title>
+    <updated>2025-04-04T05:49:43+00:00</updated>
+    <author>
+      <name>/u/WordyBug</name>
+      <uri>https://old.reddit.com/user/WordyBug</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"&gt; &lt;img alt="Samsung is working on a large vision language model" src="https://preview.redd.it/d46j28ufbrse1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=758a25e039afe10d74be40c317403382200cbb0c" title="Samsung is working on a large vision language model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WordyBug"&gt; /u/WordyBug &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/d46j28ufbrse1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr4rbi/samsung_is_working_on_a_large_vision_language/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T05:49:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1jr35zl</id>
