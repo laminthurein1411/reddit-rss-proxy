@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-04T07:34:28+00:00</updated>
+  <updated>2025-04-04T07:48:45+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jqcj89</id>
-    <title>YourBench: Know which model is the best for your use case in less than 5 min, no matter the topic!</title>
-    <updated>2025-04-03T07:53:41+00:00</updated>
+    <id>t3_1jqum8l</id>
+    <title>Fairly simple coding question throwing off lot of smallish models</title>
+    <updated>2025-04-03T21:20:25+00:00</updated>
     <author>
-      <name>/u/clefourrier</name>
-      <uri>https://old.reddit.com/user/clefourrier</uri>
+      <name>/u/gamesntech</name>
+      <uri>https://old.reddit.com/user/gamesntech</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqcj89/yourbench_know_which_model_is_the_best_for_your/"&gt; &lt;img alt="YourBench: Know which model is the best for your use case in less than 5 min, no matter the topic!" src="https://external-preview.redd.it/NTZsOHM4NDNya3NlMWK-C_FeILIR1n-iDldyZrl0VqZ3vuhsUq5jbN6auZ0Q.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a07a6ac257f3a744208337e975f20df2a138d814" title="YourBench: Know which model is the best for your use case in less than 5 min, no matter the topic!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi! clefourrier from HF's OpenEvals team! We open sourced YourBench yesterday, a custom synthetic evaluation framework: from any document, it creates a custom made QA set, then builds a leaderboard on your specific use case.&lt;/p&gt; &lt;p&gt;It works through multiple steps of chunking, summarization, LLM single and multi hop question and answer generation, validation, and so far we've found it works really well to generate interesting QAs! &lt;/p&gt; &lt;p&gt;You can use the demo as is, or customize and download it to run it with your favorite models: Best model for diverse questions is Qwen2.5-32B, and open model generating most grounded/valid questions is Gemma3-27B (just one place below o3-mini)! You can also set several seeds to augment diversity, complexity, etc. &lt;/p&gt; &lt;p&gt;This work has been carried by our intern, Sumuk, who had a great idea on how to dynamically generate eval sets, and we wrote a paper explaining the full method here: &lt;a href="https://huggingface.co/papers/2504.01833"&gt;https://huggingface.co/papers/2504.01833&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Try it out here: &lt;a href="https://huggingface.co/spaces/yourbench/demo"&gt;https://huggingface.co/spaces/yourbench/demo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;TLDR: Document -&amp;gt; custom made evaluation set -&amp;gt; leaderboard in 5 min&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/clefourrier"&gt; /u/clefourrier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/xy7fgb43rkse1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqcj89/yourbench_know_which_model_is_the_best_for_your/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqcj89/yourbench_know_which_model_is_the_best_for_your/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this bad CUDA code below that I wanted checked and corrected. A lot of models around the 20-30B range seem to fail. Most of them identify and address some of the &amp;quot;less serious&amp;quot; issues with the code but not identify and fix the main issue, which is move the cudaHello method out of main.&lt;/p&gt; &lt;p&gt;The latest Gemma 27B fails this miserably. Gemini Flash 1.5 and above of course, work fine.&lt;/p&gt; &lt;p&gt;The smaller Qwen2.5 Coder-14B fails, but the 32B version does work well.&lt;/p&gt; &lt;p&gt;Some of the models that do work can still produce some unnecessary code. Only some of them correctly identify and eliminate the whole malloc/free parts which are not required.&lt;/p&gt; &lt;p&gt;One notable exception in this range that works perfectly is Mistral-Small-24B.&lt;/p&gt; &lt;p&gt;These results were very surprising to me. If folks have any other smallish models handy can you please try this out on some of the latest versions?&lt;/p&gt; &lt;p&gt;Any thoughts on why simple code like this seems to trump so many models after all this time?&lt;/p&gt; &lt;pre&gt;&lt;code&gt;does this code look right? if not, can you provide the corrected version? #include &amp;lt;iostream&amp;gt; #include &amp;lt;cuda.h&amp;gt; int main() { // Allocate on device char *dev; size_t numThreads = 1024; cudaMalloc(&amp;amp;dev, numThreads); // Kernel function __global__ void cudaHello() { int i = threadIdx.x; std::cout &amp;lt;&amp;lt; &amp;quot;Hello, CUDA! from thread &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl; } // Launch kernel cudaLaunch(&amp;amp;cudaHello, numThreads); // Cleanup cudaFree(dev); return 0; } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gamesntech"&gt; /u/gamesntech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T07:53:41+00:00</published>
+    <published>2025-04-03T21:20:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1jql4ia</id>
@@ -32,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jql4ia/does_anyone_else_kinda_love_the_coil_whine_noise/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T15:16:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jqum8l</id>
-    <title>Fairly simple coding question throwing off lot of smallish models</title>
-    <updated>2025-04-03T21:20:25+00:00</updated>
-    <author>
-      <name>/u/gamesntech</name>
-      <uri>https://old.reddit.com/user/gamesntech</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this bad CUDA code below that I wanted checked and corrected. A lot of models around the 20-30B range seem to fail. Most of them identify and address some of the &amp;quot;less serious&amp;quot; issues with the code but not identify and fix the main issue, which is move the cudaHello method out of main.&lt;/p&gt; &lt;p&gt;The latest Gemma 27B fails this miserably. Gemini Flash 1.5 and above of course, work fine.&lt;/p&gt; &lt;p&gt;The smaller Qwen2.5 Coder-14B fails, but the 32B version does work well.&lt;/p&gt; &lt;p&gt;Some of the models that do work can still produce some unnecessary code. Only some of them correctly identify and eliminate the whole malloc/free parts which are not required.&lt;/p&gt; &lt;p&gt;One notable exception in this range that works perfectly is Mistral-Small-24B.&lt;/p&gt; &lt;p&gt;These results were very surprising to me. If folks have any other smallish models handy can you please try this out on some of the latest versions?&lt;/p&gt; &lt;p&gt;Any thoughts on why simple code like this seems to trump so many models after all this time?&lt;/p&gt; &lt;pre&gt;&lt;code&gt;does this code look right? if not, can you provide the corrected version? #include &amp;lt;iostream&amp;gt; #include &amp;lt;cuda.h&amp;gt; int main() { // Allocate on device char *dev; size_t numThreads = 1024; cudaMalloc(&amp;amp;dev, numThreads); // Kernel function __global__ void cudaHello() { int i = threadIdx.x; std::cout &amp;lt;&amp;lt; &amp;quot;Hello, CUDA! from thread &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl; } // Launch kernel cudaLaunch(&amp;amp;cudaHello, numThreads); // Cleanup cudaFree(dev); return 0; } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gamesntech"&gt; /u/gamesntech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T21:20:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqip5f</id>
@@ -71,19 +58,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqj9a7/fully_featured_ai_coding_agent_as_mcp_server_or/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T14:02:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jr5qpy</id>
-    <title>Which Gemma3 Model?</title>
-    <updated>2025-04-04T06:56:10+00:00</updated>
-    <author>
-      <name>/u/Caputperson</name>
-      <uri>https://old.reddit.com/user/Caputperson</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, &lt;/p&gt; &lt;p&gt;I've build up an Agentic RAG system which performance I'm happy with using the 12B Q4_M_K, 16k tokens variant of the Gemma3 model on my 4060 TI 8GB at home.&lt;/p&gt; &lt;p&gt;I am to test this system at my workplace where I have been given access to a T4 16GB. But as far as i have read into it, running a Q4 model on a Turing architecture is either gonna fail or run very unefficiently, - is this true?&lt;/p&gt; &lt;p&gt;If so, do you have any suggestions on how to move forward? I would like to keep atleast the Model Size and token limit.&lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Caputperson"&gt; /u/Caputperson &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T06:56:10+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqzd21</id>
@@ -151,17 +125,17 @@
     <published>2025-04-03T20:30:21+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jr0na9</id>
-    <title>New long context model "quasar-alpha" released for free on OpenRouter | tested on Fiction.live long context bench</title>
-    <updated>2025-04-04T01:58:11+00:00</updated>
+    <id>t3_1jr5qpy</id>
+    <title>Which Gemma3 Model?</title>
+    <updated>2025-04-04T06:56:10+00:00</updated>
     <author>
-      <name>/u/fictionlive</name>
-      <uri>https://old.reddit.com/user/fictionlive</uri>
+      <name>/u/Caputperson</name>
+      <uri>https://old.reddit.com/user/Caputperson</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"&gt; &lt;img alt="New long context model &amp;quot;quasar-alpha&amp;quot; released for free on OpenRouter | tested on Fiction.live long context bench" src="https://preview.redd.it/pdl90u206qse1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9b478bd386cac9b9e16f4ddf628034c68780f83d" title="New long context model &amp;quot;quasar-alpha&amp;quot; released for free on OpenRouter | tested on Fiction.live long context bench" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pdl90u206qse1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, &lt;/p&gt; &lt;p&gt;I've build up an Agentic RAG system which performance I'm happy with using the 12B Q4_M_K, 16k tokens variant of the Gemma3 model on my 4060 TI 8GB at home.&lt;/p&gt; &lt;p&gt;I am to test this system at my workplace where I have been given access to a T4 16GB. But as far as i have read into it, running a Q4 model on a Turing architecture is either gonna fail or run very unefficiently, - is this true?&lt;/p&gt; &lt;p&gt;If so, do you have any suggestions on how to move forward? I would like to keep atleast the Model Size and token limit.&lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Caputperson"&gt; /u/Caputperson &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5qpy/which_gemma3_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T01:58:11+00:00</published>
+    <published>2025-04-04T06:56:10+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqvgj8</id>
@@ -177,6 +151,19 @@
     <published>2025-04-03T21:54:54+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jr0na9</id>
+    <title>New long context model "quasar-alpha" released for free on OpenRouter | tested on Fiction.live long context bench</title>
+    <updated>2025-04-04T01:58:11+00:00</updated>
+    <author>
+      <name>/u/fictionlive</name>
+      <uri>https://old.reddit.com/user/fictionlive</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"&gt; &lt;img alt="New long context model &amp;quot;quasar-alpha&amp;quot; released for free on OpenRouter | tested on Fiction.live long context bench" src="https://preview.redd.it/pdl90u206qse1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9b478bd386cac9b9e16f4ddf628034c68780f83d" title="New long context model &amp;quot;quasar-alpha&amp;quot; released for free on OpenRouter | tested on Fiction.live long context bench" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pdl90u206qse1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr0na9/new_long_context_model_quasaralpha_released_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T01:58:11+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jqfnmh</id>
     <title>Gemma 3 Reasoning Finetune for Creative, Scientific, and Coding</title>
     <updated>2025-04-03T11:13:31+00:00</updated>
@@ -190,17 +177,17 @@
     <published>2025-04-03T11:13:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jr5f2h</id>
-    <title>Anyone wants to collaborate on new open-source TTS?</title>
-    <updated>2025-04-04T06:33:47+00:00</updated>
+    <id>t3_1jr6c8e</id>
+    <title>Lumina-mGPT 2.0: Stand-alone Autoregressive Image Modeling | Completely open source under Apache 2.0</title>
+    <updated>2025-04-04T07:39:20+00:00</updated>
     <author>
-      <name>/u/yukiarimo</name>
-      <uri>https://old.reddit.com/user/yukiarimo</uri>
+      <name>/u/umarmnaq</name>
+      <uri>https://old.reddit.com/user/umarmnaq</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community! We’re currently working on (very WIP) a groundbreaking TTS model with a 48kHz sampling rate and stereo speech! Based on VITS architecture! Very fast training (literally hours) and real-time inference! If you’re interested, let’s discuss the code more, not the weights!&lt;/p&gt; &lt;p&gt;Link (just in case): &lt;a href="https://github.com/yukiarimo/hanasu"&gt;https://github.com/yukiarimo/hanasu&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6c8e/luminamgpt_20_standalone_autoregressive_image/"&gt; &lt;img alt="Lumina-mGPT 2.0: Stand-alone Autoregressive Image Modeling | Completely open source under Apache 2.0" src="https://external-preview.redd.it/djIzeHlvdXJ1cnNlMewzcMfvF_oVr57d3HNacgT7P88RyE9Zm1kIukBjIS8J.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cb528c0ac716b1babb41d1d367689915e0210a68" title="Lumina-mGPT 2.0: Stand-alone Autoregressive Image Modeling | Completely open source under Apache 2.0" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/Alpha-VLLM/Lumina-mGPT-2.0"&gt;https://github.com/Alpha-VLLM/Lumina-mGPT-2.0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Alpha-VLLM/Lumina-mGPT-2.0"&gt;https://huggingface.co/Alpha-VLLM/Lumina-mGPT-2.0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/spaces/Alpha-VLLM/Lumina-Image-2.0"&gt;https://huggingface.co/spaces/Alpha-VLLM/Lumina-Image-2.0&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/umarmnaq"&gt; /u/umarmnaq &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/jrf0voururse1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6c8e/luminamgpt_20_standalone_autoregressive_image/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6c8e/luminamgpt_20_standalone_autoregressive_image/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T06:33:47+00:00</published>
+    <published>2025-04-04T07:39:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqlkfp</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqef4d/china_modded_48_gb_rtx_4090_training_video_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T10:00:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr5f2h</id>
+    <title>Anyone wants to collaborate on new open-source TTS?</title>
+    <updated>2025-04-04T06:33:47+00:00</updated>
+    <author>
+      <name>/u/yukiarimo</name>
+      <uri>https://old.reddit.com/user/yukiarimo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community! We’re currently working on (very WIP) a groundbreaking TTS model with a 48kHz sampling rate and stereo speech! Based on VITS architecture! Very fast training (literally hours) and real-time inference! If you’re interested, let’s discuss the code more, not the weights!&lt;/p&gt; &lt;p&gt;Link (just in case): &lt;a href="https://github.com/yukiarimo/hanasu"&gt;https://github.com/yukiarimo/hanasu&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr5f2h/anyone_wants_to_collaborate_on_new_opensource_tts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T06:33:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqo71p</id>
@@ -268,19 +268,6 @@
     <published>2025-04-04T05:49:43+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jqzr2y</id>
-    <title>Llama 4 sighting</title>
-    <updated>2025-04-04T01:12:13+00:00</updated>
-    <author>
-      <name>/u/Tha_One</name>
-      <uri>https://old.reddit.com/user/Tha_One</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/legit_api/status/1907941993789141475"&gt;https://x.com/legit_api/status/1907941993789141475&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tha_One"&gt; /u/Tha_One &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T01:12:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jr35zl</id>
     <title>Mystery model on openrouter (quasar-alpha) is probably new OpenAI model</title>
     <updated>2025-04-04T04:12:42+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr35zl/mystery_model_on_openrouter_quasaralpha_is/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-04T04:12:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jqzr2y</id>
+    <title>Llama 4 sighting</title>
+    <updated>2025-04-04T01:12:13+00:00</updated>
+    <author>
+      <name>/u/Tha_One</name>
+      <uri>https://old.reddit.com/user/Tha_One</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/legit_api/status/1907941993789141475"&gt;https://x.com/legit_api/status/1907941993789141475&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tha_One"&gt; /u/Tha_One &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzr2y/llama_4_sighting/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T01:12:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqnnfp</id>
