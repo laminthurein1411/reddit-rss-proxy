@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-04T09:35:44+00:00</updated>
+  <updated>2025-04-04T09:48:34+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jqum8l</id>
-    <title>Fairly simple coding question throwing off lot of smallish models</title>
-    <updated>2025-04-03T21:20:25+00:00</updated>
-    <author>
-      <name>/u/gamesntech</name>
-      <uri>https://old.reddit.com/user/gamesntech</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this bad CUDA code below that I wanted checked and corrected. A lot of models around the 20-30B range seem to fail. Most of them identify and address some of the &amp;quot;less serious&amp;quot; issues with the code but not identify and fix the main issue, which is move the cudaHello method out of main.&lt;/p&gt; &lt;p&gt;The latest Gemma 27B fails this miserably. Gemini Flash 1.5 and above of course, work fine.&lt;/p&gt; &lt;p&gt;The smaller Qwen2.5 Coder-14B fails, but the 32B version does work well.&lt;/p&gt; &lt;p&gt;Some of the models that do work can still produce some unnecessary code. Only some of them correctly identify and eliminate the whole malloc/free parts which are not required.&lt;/p&gt; &lt;p&gt;One notable exception in this range that works perfectly is Mistral-Small-24B.&lt;/p&gt; &lt;p&gt;These results were very surprising to me. If folks have any other smallish models handy can you please try this out on some of the latest versions?&lt;/p&gt; &lt;p&gt;Any thoughts on why simple code like this seems to trump so many models after all this time?&lt;/p&gt; &lt;pre&gt;&lt;code&gt;does this code look right? if not, can you provide the corrected version? #include &amp;lt;iostream&amp;gt; #include &amp;lt;cuda.h&amp;gt; int main() { // Allocate on device char *dev; size_t numThreads = 1024; cudaMalloc(&amp;amp;dev, numThreads); // Kernel function __global__ void cudaHello() { int i = threadIdx.x; std::cout &amp;lt;&amp;lt; &amp;quot;Hello, CUDA! from thread &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl; } // Launch kernel cudaLaunch(&amp;amp;cudaHello, numThreads); // Cleanup cudaFree(dev); return 0; } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gamesntech"&gt; /u/gamesntech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqum8l/fairly_simple_coding_question_throwing_off_lot_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T21:20:25+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jql4ia</id>
-    <title>Does anyone else kinda love the coil whine noise as the LLM spins up?</title>
-    <updated>2025-04-03T15:16:17+00:00</updated>
-    <author>
-      <name>/u/taylorwilsdon</name>
-      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The first time I heard the faint screech as a model started doing its thing, I was afraid my GPU was fucked up... a year later, I've come to almost see it as the dial up modem tone of yesteryear - a small sound that let me know good things are coming in just a moment! Seems like every model has its own little song, and the tones during inference on a Mac are very different than the ones I get out of my nvidia GPUs. It makes me weirdly nostalgic, and now it's almost a comforting indicator that things are working rather than a warning flag. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jql4ia/does_anyone_else_kinda_love_the_coil_whine_noise/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jql4ia/does_anyone_else_kinda_love_the_coil_whine_noise/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jql4ia/does_anyone_else_kinda_love_the_coil_whine_noise/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-03T15:16:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jqj9a7</id>
     <title>Fully Featured AI Coding Agent as MCP Server (or for local model)</title>
@@ -47,19 +21,6 @@
     <published>2025-04-03T14:02:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jqzd21</id>
-    <title>I Created A Lightweight Voice Assistant for Ollama with Real-Time Interaction</title>
-    <updated>2025-04-04T00:52:28+00:00</updated>
-    <author>
-      <name>/u/typhoon90</name>
-      <uri>https://old.reddit.com/user/typhoon90</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T00:52:28+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jqhgzq</id>
     <title>Confused with Too Many LLM Benchmarks, What Actually Matters Now?</title>
     <updated>2025-04-03T12:45:15+00:00</updated>
@@ -71,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqhgzq/confused_with_too_many_llm_benchmarks_what/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T12:45:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jqzd21</id>
+    <title>I Created A Lightweight Voice Assistant for Ollama with Real-Time Interaction</title>
+    <updated>2025-04-04T00:52:28+00:00</updated>
+    <author>
+      <name>/u/typhoon90</name>
+      <uri>https://old.reddit.com/user/typhoon90</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqzd21/i_created_a_lightweight_voice_assistant_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T00:52:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqa182</id>
@@ -97,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqtcav/llamacpp_discussion_experimenting_with_custom/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T20:30:21+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jr7ljh</id>
-    <title>Wow!! Cloudflare starts to provide hosting for MCP Servers</title>
-    <updated>2025-04-04T09:13:47+00:00</updated>
-    <author>
-      <name>/u/Different-Olive-8745</name>
-      <uri>https://old.reddit.com/user/Different-Olive-8745</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"&gt; &lt;img alt="Wow!! Cloudflare starts to provide hosting for MCP Servers" src="https://external-preview.redd.it/aSe81vpAstY8O3ojbrQ8SQijuRSxkXwgag2mTxMYYKM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7383c3e17364a83344967e65a4e97924b9b28076" title="Wow!! Cloudflare starts to provide hosting for MCP Servers" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Cloudflare provides hosting for MCP Server. Need MORE MCP SERVER HERE IS A LIST FOR YOU GUYS &lt;a href="https://github.com/MobinX/awesome-mcp-list/tree/main"&gt;https://github.com/MobinX/awesome-mcp-list/tree/main&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Different-Olive-8745"&gt; /u/Different-Olive-8745 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.infoq.com/news/2025/04/cloudflare-remote-mcp-servers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T09:13:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1jqrnx6</id>
@@ -151,6 +112,45 @@
     <published>2025-04-03T11:13:31+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jr7ljh</id>
+    <title>Wow!! Cloudflare starts to provide hosting for MCP Servers</title>
+    <updated>2025-04-04T09:13:47+00:00</updated>
+    <author>
+      <name>/u/Different-Olive-8745</name>
+      <uri>https://old.reddit.com/user/Different-Olive-8745</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"&gt; &lt;img alt="Wow!! Cloudflare starts to provide hosting for MCP Servers" src="https://external-preview.redd.it/aSe81vpAstY8O3ojbrQ8SQijuRSxkXwgag2mTxMYYKM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7383c3e17364a83344967e65a4e97924b9b28076" title="Wow!! Cloudflare starts to provide hosting for MCP Servers" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Cloudflare provides hosting for MCP Server. Need MORE MCP SERVER HERE IS A LIST FOR YOU GUYS &lt;a href="https://github.com/MobinX/awesome-mcp-list/tree/main"&gt;https://github.com/MobinX/awesome-mcp-list/tree/main&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Different-Olive-8745"&gt; /u/Different-Olive-8745 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.infoq.com/news/2025/04/cloudflare-remote-mcp-servers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7ljh/wow_cloudflare_starts_to_provide_hosting_for_mcp/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T09:13:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr7o1v</id>
+    <title>AnimeGamer: Infinite Anime Life Simulation with Next Game State Prediction</title>
+    <updated>2025-04-04T09:18:54+00:00</updated>
+    <author>
+      <name>/u/Icy-Corgi4757</name>
+      <uri>https://old.reddit.com/user/Icy-Corgi4757</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7o1v/animegamer_infinite_anime_life_simulation_with/"&gt; &lt;img alt="AnimeGamer: Infinite Anime Life Simulation with Next Game State Prediction" src="https://external-preview.redd.it/xWFKiluMMwERAv1-k-74qSop9in2RY5xOINzk_h_shc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ac8cbffea6739e5098cfdd04414cd9e051302d24" title="AnimeGamer: Infinite Anime Life Simulation with Next Game State Prediction" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Icy-Corgi4757"&gt; /u/Icy-Corgi4757 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/TencentARC/AnimeGamer"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7o1v/animegamer_infinite_anime_life_simulation_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7o1v/animegamer_infinite_anime_life_simulation_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T09:18:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr7y5l</id>
+    <title>New model "24_karat_gold" on lmarena, looking good so far</title>
+    <updated>2025-04-04T09:39:50+00:00</updated>
+    <author>
+      <name>/u/shroddy</name>
+      <uri>https://old.reddit.com/user/shroddy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Anyone else got that model on lmarena? On first glance, it looks really promising, I wonder which one it is, maybe llama4?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shroddy"&gt; /u/shroddy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7y5l/new_model_24_karat_gold_on_lmarena_looking_good/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7y5l/new_model_24_karat_gold_on_lmarena_looking_good/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr7y5l/new_model_24_karat_gold_on_lmarena_looking_good/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T09:39:50+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jr0na9</id>
     <title>New long context model "quasar-alpha" released for free on OpenRouter | tested on Fiction.live long context bench</title>
     <updated>2025-04-04T01:58:11+00:00</updated>
@@ -190,19 +190,6 @@
     <published>2025-04-03T15:33:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jr6wu2</id>
-    <title>Wattage efficiency for the 5090</title>
-    <updated>2025-04-04T08:22:01+00:00</updated>
-    <author>
-      <name>/u/bullerwins</name>
-      <uri>https://old.reddit.com/user/bullerwins</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I run benchmarks at different power limits for the 5090.&lt;/p&gt; &lt;p&gt;Llama.cpp is running the new QAT Gemma3-27B model (at q4) at 16K context&lt;br /&gt; Exllamav2 is using tabbyapi and Qwen2.5-7B-instruct-1M-exl2-8bpw at 32K context&lt;/p&gt; &lt;p&gt;They are different models and quants so this is not a comparison between llama.cpp and exllama, only between themselves.&lt;/p&gt; &lt;p&gt;The lower limit nvidia-smi allows for this card is 400W and a max of 600W (default)&lt;/p&gt; &lt;p&gt;Some observations is that clearly it affects more pp and is when it spikes the wattage the most.&lt;br /&gt; For tg most of the time it doesn't even go up to 600w when allowed. Rarely passes 450w that's why there is so little difference I guess.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;llama.cpp&lt;/th&gt; &lt;th&gt;pp heavy&lt;/th&gt; &lt;th&gt;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;watt&lt;/td&gt; &lt;td&gt;pp&lt;/td&gt; &lt;td&gt;tg&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;400&lt;/td&gt; &lt;td&gt;3110.63&lt;/td&gt; &lt;td&gt;50.36&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;450&lt;/td&gt; &lt;td&gt;3414.68&lt;/td&gt; &lt;td&gt;51.27&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;500&lt;/td&gt; &lt;td&gt;3687&lt;/td&gt; &lt;td&gt;51.44&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;550&lt;/td&gt; &lt;td&gt;3932.41&lt;/td&gt; &lt;td&gt;51.48&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;600&lt;/td&gt; &lt;td&gt;4127.32&lt;/td&gt; &lt;td&gt;51.56&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;exllamav2&lt;/td&gt; &lt;td&gt;pp heavy&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;watt&lt;/td&gt; &lt;td&gt;pp&lt;/td&gt; &lt;td&gt;tg&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;400&lt;/td&gt; &lt;td&gt;10425.72&lt;/td&gt; &lt;td&gt;104.13&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;450&lt;/td&gt; &lt;td&gt;11545.92&lt;/td&gt; &lt;td&gt;102.96&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;500&lt;/td&gt; &lt;td&gt;12376.37&lt;/td&gt; &lt;td&gt;105.71&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;550&lt;/td&gt; &lt;td&gt;13180.73&lt;/td&gt; &lt;td&gt;105.94&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;600&lt;/td&gt; &lt;td&gt;13738.99&lt;/td&gt; &lt;td&gt;107.87&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bullerwins"&gt; /u/bullerwins &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-04T08:22:01+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jqo71p</id>
     <title>Google released Gemma 3 QAT, is this going to be better than Bartowski's stuff</title>
     <updated>2025-04-03T17:14:48+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jqo71p/google_released_gemma_3_qat_is_this_going_to_be/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-03T17:14:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jr6wu2</id>
+    <title>Wattage efficiency for the 5090</title>
+    <updated>2025-04-04T08:22:01+00:00</updated>
+    <author>
+      <name>/u/bullerwins</name>
+      <uri>https://old.reddit.com/user/bullerwins</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I run benchmarks at different power limits for the 5090.&lt;/p&gt; &lt;p&gt;Llama.cpp is running the new QAT Gemma3-27B model (at q4) at 16K context&lt;br /&gt; Exllamav2 is using tabbyapi and Qwen2.5-7B-instruct-1M-exl2-8bpw at 32K context&lt;/p&gt; &lt;p&gt;They are different models and quants so this is not a comparison between llama.cpp and exllama, only between themselves.&lt;/p&gt; &lt;p&gt;The lower limit nvidia-smi allows for this card is 400W and a max of 600W (default)&lt;/p&gt; &lt;p&gt;Some observations is that clearly it affects more pp and is when it spikes the wattage the most.&lt;br /&gt; For tg most of the time it doesn't even go up to 600w when allowed. Rarely passes 450w that's why there is so little difference I guess.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;llama.cpp&lt;/th&gt; &lt;th&gt;pp heavy&lt;/th&gt; &lt;th&gt;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;watt&lt;/td&gt; &lt;td&gt;pp&lt;/td&gt; &lt;td&gt;tg&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;400&lt;/td&gt; &lt;td&gt;3110.63&lt;/td&gt; &lt;td&gt;50.36&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;450&lt;/td&gt; &lt;td&gt;3414.68&lt;/td&gt; &lt;td&gt;51.27&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;500&lt;/td&gt; &lt;td&gt;3687&lt;/td&gt; &lt;td&gt;51.44&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;550&lt;/td&gt; &lt;td&gt;3932.41&lt;/td&gt; &lt;td&gt;51.48&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;600&lt;/td&gt; &lt;td&gt;4127.32&lt;/td&gt; &lt;td&gt;51.56&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;exllamav2&lt;/td&gt; &lt;td&gt;pp heavy&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;watt&lt;/td&gt; &lt;td&gt;pp&lt;/td&gt; &lt;td&gt;tg&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;400&lt;/td&gt; &lt;td&gt;10425.72&lt;/td&gt; &lt;td&gt;104.13&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;450&lt;/td&gt; &lt;td&gt;11545.92&lt;/td&gt; &lt;td&gt;102.96&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;500&lt;/td&gt; &lt;td&gt;12376.37&lt;/td&gt; &lt;td&gt;105.71&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;550&lt;/td&gt; &lt;td&gt;13180.73&lt;/td&gt; &lt;td&gt;105.94&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;600&lt;/td&gt; &lt;td&gt;13738.99&lt;/td&gt; &lt;td&gt;107.87&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bullerwins"&gt; /u/bullerwins &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jr6wu2/wattage_efficiency_for_the_5090/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-04T08:22:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1jr5f2h</id>
