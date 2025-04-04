@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-04-04T21:34:17+00:00</updated>
+  <updated>2025-04-04T21:48:54+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1jpryie</id>
-    <title>Best Model for json parser analyser.</title>
-    <updated>2025-04-02T15:50:44+00:00</updated>
-    <author>
-      <name>/u/Proper-Acanthaceae39</name>
-      <uri>https://old.reddit.com/user/Proper-Acanthaceae39</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, im new in the local LLM world, and im still learning.&lt;/p&gt; &lt;p&gt;Im running in my local a Ollama with gemma:2b, but im not sure if is the best one for what im doing.&lt;/p&gt; &lt;p&gt;Basically with python, in extracting a pdf with pdfplumber to a json.&lt;br /&gt; I want to send this json to the LLM, so it can understand the json and return me another parsed JSON.&lt;/p&gt; &lt;p&gt;However, I'm facing two main issues:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;It seems like gemma only supports around 12k characters of context, which is hard to manage since the extracted JSON varies a lot depending on the PDF.&lt;/li&gt; &lt;li&gt;Its tooo slow, to process a small pdf, its taking too much time&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'm also concerned about accuracy, I'm not sure if this is the most suitable model for structured data parsing. &lt;/p&gt; &lt;p&gt;Some one can help me with tips?&lt;/p&gt; &lt;p&gt;Also, here its the code&lt;/p&gt; &lt;pre&gt;&lt;code&gt;#aiProcessor.py import json import os import uuid import requests from typing import Optional def load_prompt(path: str) -&amp;gt; str: with open(path, &amp;quot;r&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as f: return f.read().strip() def call_llm(pdf_json_data: list, filename: str, model: str = &amp;quot;gemma:2b&amp;quot;) -&amp;gt; str: client_prompt = load_prompt(&amp;quot;../json/client.prompt&amp;quot;) purchase_prompt = load_prompt(&amp;quot;../json/purchase.prompt&amp;quot;) full_prompt = f&amp;quot;&amp;quot;&amp;quot; You are an intelligent invoice parser. Based on the structured data extracted from a Brazilian invoice PDF (below), extract and return exactly TWO JSONs: First JSON: {client_prompt} Second JSON: {purchase_prompt} Only return valid JSON. Do not explain. Structured invoice data: {json.dumps(pdf_json_data, indent=2, ensure_ascii=False)[:12000]} Filename: {filename} &amp;quot;&amp;quot;&amp;quot; response = requests.post( &amp;quot;http://localhost:11434/api/generate&amp;quot;, json={&amp;quot;model&amp;quot;: model, &amp;quot;prompt&amp;quot;: full_prompt}, stream=True, timeout=300 ) result = &amp;quot;&amp;quot; for line in response.iter_lines(): if line: try: chunk = json.loads(line.decode(&amp;quot;utf-8&amp;quot;)) result += chunk.get(&amp;quot;response&amp;quot;, &amp;quot;&amp;quot;) except: continue return result.strip() def extract_two_jsons(text: str): import re candidates = re.findall(r'\{(?:[^{}]|\{[^{}]*\})*\}', text) if len(candidates) &amp;gt;= 2: return candidates[0], candidates[1] return None, None def process_with_ai( extracted_json: list, filename: str, save_to_disk: bool = False, output_dir: str = &amp;quot;output/ai&amp;quot; ) -&amp;gt; Optional[dict]: &amp;quot;&amp;quot;&amp;quot; Processa o JSON extraído do PDF com a IA e retorna dois JSONs: cliente e compra. &amp;quot;&amp;quot;&amp;quot; result_text = call_llm(extracted_json, filename) client_str, purchase_str = extract_two_jsons(result_text) if not client_str or not purchase_str: print(f&amp;quot;⚠️ Could not extract two JSONs from AI result for {filename}&amp;quot;) if save_to_disk: os.makedirs(f&amp;quot;{output_dir}/fallback&amp;quot;, exist_ok=True) with open(f&amp;quot;{output_dir}/fallback/{filename}.txt&amp;quot;, &amp;quot;w&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as f: f.write(result_text) return None try: client_json = json.loads(client_str) purchase_json = json.loads(purchase_str) except json.JSONDecodeError as e: print(f&amp;quot;❌ JSON parse error for {filename}: {e}&amp;quot;) return None client_id = str(uuid.uuid4()) purchase_id = str(uuid.uuid4()) client_json[&amp;quot;id&amp;quot;] = client_id if &amp;quot;client&amp;quot; in purchase_json: purchase_json[&amp;quot;client&amp;quot;][&amp;quot;id&amp;quot;] = client_id purchase_json[&amp;quot;id&amp;quot;] = purchase_id if save_to_disk: os.makedirs(f&amp;quot;{output_dir}/clientes&amp;quot;, exist_ok=True) os.makedirs(f&amp;quot;{output_dir}/compras&amp;quot;, exist_ok=True) with open(f&amp;quot;{output_dir}/clientes/{client_id}.json&amp;quot;, &amp;quot;w&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as f: json.dump(client_json, f, indent=2, ensure_ascii=False) with open(f&amp;quot;{output_dir}/compras/{purchase_id}.json&amp;quot;, &amp;quot;w&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as f: json.dump(purchase_json, f, indent=2, ensure_ascii=False) return {&amp;quot;client&amp;quot;: client_json, &amp;quot;purchase&amp;quot;: purchase_json} # extractor.py import fitz # PyMuPDF import pdfplumber import json import os from typing import Union, Optional from io import BytesIO def extract_pdf_structure( file: Union[str, BytesIO], save_to_file: bool = False, output_path: Optional[str] = None ) -&amp;gt; Optional[list]: data = [] doc = fitz.open(stream=file.read(), filetype=&amp;quot;pdf&amp;quot;) if isinstance(file, BytesIO) else fitz.open(file) for page_num, page in enumerate(doc, start=1): page_data = { &amp;quot;page&amp;quot;: page_num, &amp;quot;text_blocks&amp;quot;: [], &amp;quot;tables&amp;quot;: [] } blocks = page.get_text(&amp;quot;dict&amp;quot;)[&amp;quot;blocks&amp;quot;] for block in blocks: if &amp;quot;lines&amp;quot; in block: text_content = &amp;quot;&amp;quot; for line in block[&amp;quot;lines&amp;quot;]: for span in line[&amp;quot;spans&amp;quot;]: text_content += span[&amp;quot;text&amp;quot;] + &amp;quot; &amp;quot; page_data[&amp;quot;text_blocks&amp;quot;].append({ &amp;quot;bbox&amp;quot;: block[&amp;quot;bbox&amp;quot;], &amp;quot;text&amp;quot;: text_content.strip() }) data.append(page_data) doc.close() plumber_doc = pdfplumber.open(file) if isinstance(file, str) else pdfplumber.open(BytesIO(file.getvalue())) for i, page in enumerate(plumber_doc.pages): try: tables = page.extract_tables() if tables: data[i][&amp;quot;tables&amp;quot;] = tables except: continue plumber_doc.close() if save_to_file and output_path: os.makedirs(os.path.dirname(output_path), exist_ok=True) with open(output_path, &amp;quot;w&amp;quot;, encoding=&amp;quot;utf-8&amp;quot;) as f: json.dump(data, f, indent=2, ensure_ascii=False) return data if not save_to_file else None &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Proper-Acanthaceae39"&gt; /u/Proper-Acanthaceae39 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jpryie/best_model_for_json_parser_analyser/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jpryie/best_model_for_json_parser_analyser/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jpryie/best_model_for_json_parser_analyser/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-04-02T15:50:44+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jpjntg</id>
     <title>I made an Ollama hub</title>
@@ -294,19 +281,6 @@
     <published>2025-04-03T18:14:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jrlse7</id>
-    <title>I vibe-coded a fun open source totally local social media app, where you interact with AI personas.</title>
-    <updated>2025-04-04T20:26:49+00:00</updated>
-    <author>
-      <name>/u/mintybadgerme</name>
-      <uri>https://old.reddit.com/user/mintybadgerme</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"&gt; &lt;img alt="I vibe-coded a fun open source totally local social media app, where you interact with AI personas." src="https://external-preview.redd.it/yRMmy9rJdU6oEgkUE9UOoanY2i_uGmcxsgYwNsy1G4Y.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2926c58ead9947a5bbc987b1496791620d0f4f05" title="I vibe-coded a fun open source totally local social media app, where you interact with AI personas." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mintybadgerme"&gt; /u/mintybadgerme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nigelp/mycrowd"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-04-04T20:26:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jr4a4p</id>
     <title>When will we get Qwen 2.5 Omni - the most multi modal available in ollama ?</title>
     <updated>2025-04-04T05:18:57+00:00</updated>
@@ -331,5 +305,31 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jqzbvf/i_created_a_lightweight_voice_assistant_for/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-04-04T00:50:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jrlse7</id>
+    <title>I vibe-coded a fun open source totally local social media app, where you interact with AI personas.</title>
+    <updated>2025-04-04T20:26:49+00:00</updated>
+    <author>
+      <name>/u/mintybadgerme</name>
+      <uri>https://old.reddit.com/user/mintybadgerme</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"&gt; &lt;img alt="I vibe-coded a fun open source totally local social media app, where you interact with AI personas." src="https://external-preview.redd.it/yRMmy9rJdU6oEgkUE9UOoanY2i_uGmcxsgYwNsy1G4Y.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2926c58ead9947a5bbc987b1496791620d0f4f05" title="I vibe-coded a fun open source totally local social media app, where you interact with AI personas." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mintybadgerme"&gt; /u/mintybadgerme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nigelp/mycrowd"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jrlse7/i_vibecoded_a_fun_open_source_totally_local/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-04-04T20:26:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jrndbt</id>
+    <title>2 questions: Time to process tokens and OpenAI</title>
+    <updated>2025-04-04T21:35:07+00:00</updated>
+    <author>
+      <name>/u/ChikyScaresYou</name>
+      <uri>https://old.reddit.com/user/ChikyScaresYou</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First&lt;/p&gt; &lt;p&gt;I'm using Chronos_Hermes through ollama to analyze text, and yesterday i tested it with a chunk (arouns 1400 tokens) and took me almost 20 minutes to complete. For comparison, Mistral:7b took like 3 mins to do the same. Anyone has an idea of why could it be so slow?&lt;/p&gt; &lt;p&gt;Second&lt;/p&gt; &lt;p&gt;I heard that OpenAI released a free version of the lastest model to general use when it also released the thing that plagarizes Studio Ghibli's art. Is that true? Is the model accessible through ollama?&lt;/p&gt; &lt;p&gt;thanks&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ChikyScaresYou"&gt; /u/ChikyScaresYou &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jrndbt/2_questions_time_to_process_tokens_and_openai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jrndbt/2_questions_time_to_process_tokens_and_openai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jrndbt/2_questions_time_to_process_tokens_and_openai/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-04-04T21:35:07+00:00</published>
   </entry>
 </feed>
