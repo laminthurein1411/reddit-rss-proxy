@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-06T22:35:33+00:00</updated>
+  <updated>2025-04-06T22:48:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,19 +21,6 @@
     <published>2025-04-06T00:32:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jt35yu</id>
-    <title>What is your opinion on using Llama 4's 10M context window as purely a RAG engine for another LLM?</title>
-    <updated>2025-04-06T20:06:54+00:00</updated>
-    <author>
-      <name>/u/Snoo_64233</name>
-      <uri>https://old.reddit.com/user/Snoo_64233</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anybody done extensive testing on this route? Your thought?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Snoo_64233"&gt; /u/Snoo_64233 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-06T20:06:54+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jswb3y</id>
     <title>How trustworthy is lmarena leaderboard?</title>
     <updated>2025-04-06T15:10:41+00:00</updated>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jswb3y/how_trustworthy_is_lmarena_leaderboard/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T15:10:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jt35yu</id>
+    <title>What is your opinion on using Llama 4's 10M context window as purely a RAG engine for another LLM?</title>
+    <updated>2025-04-06T20:06:54+00:00</updated>
+    <author>
+      <name>/u/Snoo_64233</name>
+      <uri>https://old.reddit.com/user/Snoo_64233</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anybody done extensive testing on this route? Your thought?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Snoo_64233"&gt; /u/Snoo_64233 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt35yu/what_is_your_opinion_on_using_llama_4s_10m/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-06T20:06:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1jswaux</id>
@@ -197,7 +197,7 @@
       <name>/u/stduhpf</name>
       <uri>https://old.reddit.com/user/stduhpf</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was a bit frustrated by the release of Gemma3 QAT (quantized-aware training). These models are performing insanely well for quantized models, but despite being advertised as &amp;quot;q4_0&amp;quot; quants, they were bigger than some 5-bit quants out there, and critically, they were above the 16GB and 8GB thresholds for the 27B and 12B models respectively, which makes them harder to run fully offloaded to some consumer GPUS.&lt;/p&gt; &lt;p&gt;I quickly found out that the reason for this significant size increase compared to normal q4_0 quants was the unquantized, half precision token embeddings table, wheras, by llama.cpp standards, this table should be quantized to Q6_K type.&lt;/p&gt; &lt;p&gt;So I did some &amp;quot;brain surgery&amp;quot; and swapped out the embeddings table from those QAT models with the one taken from an imatrix-quantized model by &lt;a href="https://huggingface.co/bartowski"&gt;bartowski&lt;/a&gt;. The end product is a model that is performing almost exactly like the &amp;quot;full&amp;quot; QAT model by google, but significantly smaller. I ran some perplexity tests, and the results were consistently within margin of error.&lt;/p&gt; &lt;p&gt;You can find the weights (and the script I used to perform the surgery) here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-12b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-12b-it-qat-q4_0-gguf-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-4b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-4b-it-qat-q4_0-gguf-small&lt;/a&gt; &lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-1b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-1b-it-qat-q4_0-gguf-small&lt;/a&gt; (Caution: seems to be broken, just like the official one)&lt;/p&gt; &lt;p&gt;With these I can run Gemma3 12b qat on a 8GB GPU with 2.5k context window without any other optimisation, and by enabling flash attention and q8 kv cache, it can go up to 4k ctx.&lt;/p&gt; &lt;p&gt;Gemma3 27b qat still barely fits on a 16GB GPU with only 1k context window, and quantized cache doesn't help much at this point. But I can run it with more context than before when spreding it across my 2 GPUs (24GB total). I use 12k ctx, but there's still some room for more. &lt;/p&gt; &lt;p&gt;I haven't played around with the 4b and 1b yet, but since the 4b is now under 3GB, it should be possible to run entirely on a 1060 3GB now?&lt;/p&gt; &lt;p&gt;Edit: I found out some of my assumptions were wrong, these models are qtill good, but not as good as they could be, I'll update them soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jsq1so/smaller_gemma3_qat_versions_12b_in_8gb_and_27b_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jsq1so/smaller_gemma3_qat_versions_12b_in_8gb_and_27b_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was a bit frustrated by the release of Gemma3 QAT (quantized-aware training). These models are performing insanely well for quantized models, but despite being advertised as &amp;quot;q4_0&amp;quot; quants, they were bigger than some 5-bit quants out there, and critically, they were above the 16GB and 8GB thresholds for the 27B and 12B models respectively, which makes them harder to run fully offloaded to some consumer GPUS.&lt;/p&gt; &lt;p&gt;I quickly found out that the reason for this significant size increase compared to normal q4_0 quants was the unquantized, half precision token embeddings table, wheras, by llama.cpp standards, this table should be quantized to Q6_K type.&lt;/p&gt; &lt;p&gt;So I did some &amp;quot;brain surgery&amp;quot; and swapped out the embeddings table from those QAT models with the one taken from an imatrix-quantized model by &lt;a href="https://huggingface.co/bartowski"&gt;bartowski&lt;/a&gt;. The end product is a model that is performing almost exactly like the &amp;quot;full&amp;quot; QAT model by google, but significantly smaller. I ran some perplexity tests, and the results were consistently within margin of error.&lt;/p&gt; &lt;p&gt;You can find the weights (and the script I used to perform the surgery) here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-12b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-12b-it-qat-q4_0-gguf-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-4b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-4b-it-qat-q4_0-gguf-small&lt;/a&gt; &lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/stduhpf/google-gemma-3-1b-it-qat-q4_0-gguf-small"&gt;https://huggingface.co/stduhpf/google-gemma-3-1b-it-qat-q4_0-gguf-small&lt;/a&gt; (Caution: seems to be broken, just like the official one)&lt;/p&gt; &lt;p&gt;With these I can run Gemma3 12b qat on a 8GB GPU with 2.5k context window without any other optimisation, and by enabling flash attention and q8 kv cache, it can go up to 4k ctx.&lt;/p&gt; &lt;p&gt;Gemma3 27b qat still barely fits on a 16GB GPU with only 1k context window, and quantized cache doesn't help much at this point. But I can run it with more context than before when spreding it across my 2 GPUs (24GB total). I use 12k ctx, but there's still some room for more. &lt;/p&gt; &lt;p&gt;I haven't played around with the 4b and 1b yet, but since the 4b is now under 3GB, it should be possible to run entirely on a 1060 3GB now?&lt;/p&gt; &lt;p&gt;Edit: I found out some of my assumptions were wrong, these models are still good, but not as good as they could be, I'll update them soon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jsq1so/smaller_gemma3_qat_versions_12b_in_8gb_and_27b_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jsq1so/smaller_gemma3_qat_versions_12b_in_8gb_and_27b_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jsq1so/smaller_gemma3_qat_versions_12b_in_8gb_and_27b_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T09:10:08+00:00</published>
