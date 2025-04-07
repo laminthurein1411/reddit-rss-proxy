@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-07T08:08:56+00:00</updated>
+  <updated>2025-04-07T08:25:21+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jt97fn</id>
-    <title>LLAMA 4 Scout on M3 Mac, 32 Tokens/sec 4-bit, 24 Tokens/sec 6-bit</title>
-    <updated>2025-04-07T00:56:17+00:00</updated>
-    <author>
-      <name>/u/PerformanceRound7913</name>
-      <uri>https://old.reddit.com/user/PerformanceRound7913</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt97fn/llama_4_scout_on_m3_mac_32_tokenssec_4bit_24/"&gt; &lt;img alt="LLAMA 4 Scout on M3 Mac, 32 Tokens/sec 4-bit, 24 Tokens/sec 6-bit" src="https://external-preview.redd.it/dmNvMGgxbW85YnRlMTNIns53Od6sUFLxeG7LHB3pN84GWbK3wZ0Y3inX9hXf.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=64f320b3580d9c7a0a06c17f508aefe4cc219054" title="LLAMA 4 Scout on M3 Mac, 32 Tokens/sec 4-bit, 24 Tokens/sec 6-bit" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PerformanceRound7913"&gt; /u/PerformanceRound7913 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/t1fxl1mo9bte1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt97fn/llama_4_scout_on_m3_mac_32_tokenssec_4bit_24/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt97fn/llama_4_scout_on_m3_mac_32_tokenssec_4bit_24/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T00:56:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jsq1so</id>
     <title>Smaller Gemma3 QAT versions: 12B in &lt; 8GB and 27B in &lt;16GB !</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jsrz5v/109b_vs_24b_whats_this_benchmark/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T11:27:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtg1mp</id>
+    <title>Briefly discussing Llama 4</title>
+    <updated>2025-04-07T08:02:05+00:00</updated>
+    <author>
+      <name>/u/fourDnet</name>
+      <uri>https://old.reddit.com/user/fourDnet</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So Llama 4 is out, and so far we don't have a full technical report, but do have a semi-technical blog post (&lt;a href="https://huggingface.co/blog/llama4-release"&gt;https://huggingface.co/blog/llama4-release&lt;/a&gt;). I'm creating this post to foster discussion about their model architecture.&lt;/p&gt; &lt;p&gt;Regarding the model, the most striking claim is the 10 million token context size, which their team attributes to the following:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Blending layers that utilize rotary embeddings (RoPE) and no positional embeddings (NoPE)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Blending across layers is new, however similar approaches have been used before:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/lucidrains/x-transformers/issues/40"&gt;https://github.com/lucidrains/x-transformers/issues/40&lt;/a&gt; where they utilize RoPE only on some dimensions, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY&lt;/a&gt;, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ&lt;/a&gt;&lt;/li&gt; &lt;li&gt;GPT-Neo/GPT-NeoX which applied RoPE on 25% of the dimensions&lt;/li&gt; &lt;li&gt;Deepseek V2 where they use NoPE/RoPE together in MLA&lt;/li&gt; &lt;li&gt;The author of RoPE wrote a blog post on partial rope: &lt;a href="https://kexue.fm/archives/10122"&gt;https://kexue.fm/archives/10122&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;2. Length dependent softmax scaling&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;This exact form of softmax was proposed by &amp;quot;Overcoming a Theoretical Limitation of Self-Attention&amp;quot; in section 5.3 in 2022&lt;/li&gt; &lt;li&gt;The author of RoPE also wrote a blog post on length dependent scaled softmax in 2022: &lt;a href="https://www.spaces.ac.cn/archives/9034"&gt;https://www.spaces.ac.cn/archives/9034&lt;/a&gt;&lt;/li&gt; &lt;li&gt;I see the blogpost they only reference &lt;a href="https://arxiv.org/abs/2501.19399"&gt;https://arxiv.org/abs/2501.19399&lt;/a&gt;, which is slightly puzzling since Qwen 1 (the original one from 2023) also uses the exact same softmax scaling strategy, and they call it logn scaling.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fourDnet"&gt; /u/fourDnet &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T08:02:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtb4r5</id>
@@ -112,19 +112,6 @@
     <published>2025-04-07T04:56:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtfm44</id>
-    <title>Meta Leaker refutes the training on test set claim</title>
-    <updated>2025-04-07T07:29:49+00:00</updated>
-    <author>
-      <name>/u/ElectronicCress3132</name>
-      <uri>https://old.reddit.com/user/ElectronicCress3132</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"&gt; &lt;img alt="Meta Leaker refutes the training on test set claim" src="https://preview.redd.it/m4roxa1z7dte1.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=83d5ddfa391a2107eb5ac49fe7ec99d2b2a5c5c3" title="Meta Leaker refutes the training on test set claim" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ElectronicCress3132"&gt; /u/ElectronicCress3132 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/m4roxa1z7dte1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T07:29:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jsw1x6</id>
     <title>Llama 4 Maverick surpassing Claude 3.7 Sonnet, under DeepSeek V3.1 according to Artificial Analysis</title>
     <updated>2025-04-06T14:59:47+00:00</updated>
@@ -151,19 +138,6 @@
     <published>2025-04-06T15:50:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtby7o</id>
-    <title>How to properly use Reasoning models in ST</title>
-    <updated>2025-04-07T03:26:49+00:00</updated>
-    <author>
-      <name>/u/Arli_AI</name>
-      <uri>https://old.reddit.com/user/Arli_AI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"&gt; &lt;img alt="How to properly use Reasoning models in ST" src="https://b.thumbs.redditmedia.com/bPykmlsSqilfr33lVfV_hLYIoAKGURDUeFZPF8QObsM.jpg" title="How to properly use Reasoning models in ST" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For any reasoning models in general, you need to make sure to set:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Prefix is set to ONLY &amp;lt;think&amp;gt; and the suffix is set to ONLY &amp;lt;/think&amp;gt; without any spaces or newlines (enter)&lt;/li&gt; &lt;li&gt;Reply starts with &amp;lt;think&amp;gt;&lt;/li&gt; &lt;li&gt;Always add character names is unchecked&lt;/li&gt; &lt;li&gt;Include names is set to never&lt;/li&gt; &lt;li&gt;As always the chat template should also conform to the model being used&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Note: Reasoning models work properly only if include names is set to never, since they always expect the eos token of the user turn followed by the &amp;lt;think&amp;gt; token in order to start reasoning before outputting their response. If you set include names to enabled, then it will always append the character name at the end like &amp;quot;Seraphina:&amp;lt;eos\_token&amp;gt;&amp;quot; which confuses the model on whether it should respond or reason first.&lt;/p&gt; &lt;p&gt;The rest of your sampler parameters can be set as you wish as usual.&lt;/p&gt; &lt;p&gt;If you don't see the reasoning wrapped inside the thinking block, then either your settings is still wrong and doesn't follow my example or that your ST version is too old without reasoning block auto parsing.&lt;/p&gt; &lt;p&gt;If you see the whole response is in the reasoning block, then your &amp;lt;think&amp;gt; and &amp;lt;/think&amp;gt; reasoning token suffix and prefix might have an extra space or newline. Or the model just isn't a reasoning model that is smart enough to always put reasoning in between those tokens.&lt;/p&gt; &lt;p&gt;This has been a PSA from Owen of Arli AI in anticipation of our new &amp;quot;RpR&amp;quot; model. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jtby7o"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T03:26:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jt08di</id>
     <title>EXL3 early preview has been released! exl3 4.0bpw comparable to exl2 5.0bpw/gguf q4_k_m/l for less size!</title>
     <updated>2025-04-06T18:01:08+00:00</updated>
@@ -175,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt08di/exl3_early_preview_has_been_released_exl3_40bpw/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T18:01:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtby7o</id>
+    <title>How to properly use Reasoning models in ST</title>
+    <updated>2025-04-07T03:26:49+00:00</updated>
+    <author>
+      <name>/u/Arli_AI</name>
+      <uri>https://old.reddit.com/user/Arli_AI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"&gt; &lt;img alt="How to properly use Reasoning models in ST" src="https://b.thumbs.redditmedia.com/bPykmlsSqilfr33lVfV_hLYIoAKGURDUeFZPF8QObsM.jpg" title="How to properly use Reasoning models in ST" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For any reasoning models in general, you need to make sure to set:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Prefix is set to ONLY &amp;lt;think&amp;gt; and the suffix is set to ONLY &amp;lt;/think&amp;gt; without any spaces or newlines (enter)&lt;/li&gt; &lt;li&gt;Reply starts with &amp;lt;think&amp;gt;&lt;/li&gt; &lt;li&gt;Always add character names is unchecked&lt;/li&gt; &lt;li&gt;Include names is set to never&lt;/li&gt; &lt;li&gt;As always the chat template should also conform to the model being used&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Note: Reasoning models work properly only if include names is set to never, since they always expect the eos token of the user turn followed by the &amp;lt;think&amp;gt; token in order to start reasoning before outputting their response. If you set include names to enabled, then it will always append the character name at the end like &amp;quot;Seraphina:&amp;lt;eos\_token&amp;gt;&amp;quot; which confuses the model on whether it should respond or reason first.&lt;/p&gt; &lt;p&gt;The rest of your sampler parameters can be set as you wish as usual.&lt;/p&gt; &lt;p&gt;If you don't see the reasoning wrapped inside the thinking block, then either your settings is still wrong and doesn't follow my example or that your ST version is too old without reasoning block auto parsing.&lt;/p&gt; &lt;p&gt;If you see the whole response is in the reasoning block, then your &amp;lt;think&amp;gt; and &amp;lt;/think&amp;gt; reasoning token suffix and prefix might have an extra space or newline. Or the model just isn't a reasoning model that is smart enough to always put reasoning in between those tokens.&lt;/p&gt; &lt;p&gt;This has been a PSA from Owen of Arli AI in anticipation of our new &amp;quot;RpR&amp;quot; model. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jtby7o"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtby7o/how_to_properly_use_reasoning_models_in_st/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T03:26:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtcn8o</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt7zp7/cybersecurity_benchmark_pretty_sure_maverick_is/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T23:53:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtfm44</id>
+    <title>Meta Leaker refutes the training on test set claim</title>
+    <updated>2025-04-07T07:29:49+00:00</updated>
+    <author>
+      <name>/u/ElectronicCress3132</name>
+      <uri>https://old.reddit.com/user/ElectronicCress3132</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"&gt; &lt;img alt="Meta Leaker refutes the training on test set claim" src="https://preview.redd.it/m4roxa1z7dte1.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=83d5ddfa391a2107eb5ac49fe7ec99d2b2a5c5c3" title="Meta Leaker refutes the training on test set claim" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ElectronicCress3132"&gt; /u/ElectronicCress3132 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/m4roxa1z7dte1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T07:29:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1jt0bx3</id>
