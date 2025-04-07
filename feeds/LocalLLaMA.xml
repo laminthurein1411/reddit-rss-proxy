@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-07T13:50:56+00:00</updated>
+  <updated>2025-04-07T14:06:35+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jta5vj</id>
-    <title>VRAM requirement for 10M context</title>
-    <updated>2025-04-07T01:48:53+00:00</updated>
-    <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recently, I am into calculating KV cache size for different models:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;To my surprise, the new Llama 4 Scout has 10M context. While most people don't have the resource or use case for 10M context, this super long maximum context can improve the lower context by a lot. Potentially making its &amp;lt;=128k performance similar to ChatGPT. So I think it is a huge breakthrough that warrants a calculation of how much VRAM it will use.&lt;/p&gt; &lt;p&gt;According vllm, Llama 4 Scout has a 3:1 interleaved chunked attention with 8192 tokens chunk:&lt;/p&gt; &lt;p&gt;&lt;a href="https://blog.vllm.ai/2025/04/05/llama4.html"&gt;https://blog.vllm.ai/2025/04/05/llama4.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Judging from the name, it seems to be similar to gemma 3's 5:1 interleaved Sliding Window Attention (iSWA) with 1024 tokens window. So I would just assume it is iSWA. Since not all inference engine supports iSWA, I would also calculate the KV cache requirement under the default Grouped Query Attention (GQA)&lt;/p&gt; &lt;p&gt;Here is a table comparing DeepSeek, Gemma 3 and Llama 4 assuming the first two can also run 10M context. All models parameters are fp8 and the KV cache is also fp8.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Context&lt;/th&gt; &lt;th align="left"&gt;8k&lt;/th&gt; &lt;th align="left"&gt;32k&lt;/th&gt; &lt;th align="left"&gt;128k&lt;/th&gt; &lt;th align="left"&gt;512k&lt;/th&gt; &lt;th align="left"&gt;2m&lt;/th&gt; &lt;th align="left"&gt;10m&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 GQA&lt;/td&gt; &lt;td align="left"&gt;19.06GB&lt;/td&gt; &lt;td align="left"&gt;76.25GB&lt;/td&gt; &lt;td align="left"&gt;305GB&lt;/td&gt; &lt;td align="left"&gt;1220GB&lt;/td&gt; &lt;td align="left"&gt;4880GB&lt;/td&gt; &lt;td align="left"&gt;24400GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 MLA&lt;/td&gt; &lt;td align="left"&gt;.268GB&lt;/td&gt; &lt;td align="left"&gt;1.07GB&lt;/td&gt; &lt;td align="left"&gt;4.29GB&lt;/td&gt; &lt;td align="left"&gt;17.16GB&lt;/td&gt; &lt;td align="left"&gt;68.63GB&lt;/td&gt; &lt;td align="left"&gt;343.1GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 KV%&lt;/td&gt; &lt;td align="left"&gt;.04%&lt;/td&gt; &lt;td align="left"&gt;.159%&lt;/td&gt; &lt;td align="left"&gt;.64%&lt;/td&gt; &lt;td align="left"&gt;2.56%&lt;/td&gt; &lt;td align="left"&gt;10.23%&lt;/td&gt; &lt;td align="left"&gt;51.13%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B GQA&lt;/td&gt; &lt;td align="left"&gt;1.94GB&lt;/td&gt; &lt;td align="left"&gt;7.75GB&lt;/td&gt; &lt;td align="left"&gt;31GB&lt;/td&gt; &lt;td align="left"&gt;124GB&lt;/td&gt; &lt;td align="left"&gt;496GB&lt;/td&gt; &lt;td align="left"&gt;2480GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B iSWA&lt;/td&gt; &lt;td align="left"&gt;.516GB&lt;/td&gt; &lt;td align="left"&gt;1.45GB&lt;/td&gt; &lt;td align="left"&gt;5.2GB&lt;/td&gt; &lt;td align="left"&gt;20.2GB&lt;/td&gt; &lt;td align="left"&gt;80.2GB&lt;/td&gt; &lt;td align="left"&gt;400.2GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B KV%&lt;/td&gt; &lt;td align="left"&gt;1.91%&lt;/td&gt; &lt;td align="left"&gt;5.37%&lt;/td&gt; &lt;td align="left"&gt;19.26%&lt;/td&gt; &lt;td align="left"&gt;74.81%&lt;/td&gt; &lt;td align="left"&gt;297%&lt;/td&gt; &lt;td align="left"&gt;1482%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout GQA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;3GB&lt;/td&gt; &lt;td align="left"&gt;12GB&lt;/td&gt; &lt;td align="left"&gt;48GB&lt;/td&gt; &lt;td align="left"&gt;192GB&lt;/td&gt; &lt;td align="left"&gt;960GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout iSWA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;1.31GB&lt;/td&gt; &lt;td align="left"&gt;3.56GB&lt;/td&gt; &lt;td align="left"&gt;12.56GB&lt;/td&gt; &lt;td align="left"&gt;48.56GB&lt;/td&gt; &lt;td align="left"&gt;240.56GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout KV%&lt;/td&gt; &lt;td align="left"&gt;.688%&lt;/td&gt; &lt;td align="left"&gt;1.2%&lt;/td&gt; &lt;td align="left"&gt;3.27%&lt;/td&gt; &lt;td align="left"&gt;11.52%&lt;/td&gt; &lt;td align="left"&gt;44.55%&lt;/td&gt; &lt;td align="left"&gt;220.7%&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;MLA and iSWA support from the popular inference engines.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Software&lt;/th&gt; &lt;th align="left"&gt;llama.cpp&lt;/th&gt; &lt;th align="left"&gt;transformers&lt;/th&gt; &lt;th align="left"&gt;vllm&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;iSWA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;llama.cpp and transformers are working on MLA, so they will support it soon. But I haven't heard anything that llama.cpp and vllm are working on iSWA.&lt;/p&gt; &lt;p&gt;We can see that basically it is impractical to run 10m on GQA. It seems feasible to run Llama 4 Scout at 10m context with M3 Ultra but obviously the run time can be an issue. &lt;/p&gt; &lt;p&gt;Also, MLA is superior to iSWA for KV cache size, so it will be great if 10m context is supported by DeepSeek V4 in the future.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T01:48:53+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jtb4r5</id>
     <title>Llama 4 doesn’t perform well on Fiction.LiveBench</title>
@@ -99,6 +86,19 @@
     <published>2025-04-06T17:46:04+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jtlmld</id>
+    <title>Qwen 3 due this week?</title>
+    <updated>2025-04-07T13:46:47+00:00</updated>
+    <author>
+      <name>/u/OnceMoreOntoTheBrie</name>
+      <uri>https://old.reddit.com/user/OnceMoreOntoTheBrie</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After what looks like a failure so far for llama 4, I am even more excited by what qwen 3 might offer. I believe they said the second week of April, which is now!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OnceMoreOntoTheBrie"&gt; /u/OnceMoreOntoTheBrie &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtlmld/qwen_3_due_this_week/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtlmld/qwen_3_due_this_week/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtlmld/qwen_3_due_this_week/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T13:46:47+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jtby7o</id>
     <title>How to properly use Reasoning models in ST</title>
     <updated>2025-04-07T03:26:49+00:00</updated>
@@ -125,19 +125,6 @@
     <published>2025-04-06T23:53:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtkfl6</id>
-    <title>Chinese finetune model using quantum computer</title>
-    <updated>2025-04-07T12:48:46+00:00</updated>
-    <author>
-      <name>/u/MMuchogu</name>
-      <uri>https://old.reddit.com/user/MMuchogu</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/ChinaScience/status/1909168123309392133?s=19"&gt;https://x.com/ChinaScience/status/1909168123309392133?s=19&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MMuchogu"&gt; /u/MMuchogu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T12:48:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jt0bx3</id>
     <title>QwQ-32b outperforms Llama-4 by a lot!</title>
     <updated>2025-04-06T18:05:12+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T08:02:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtkfl6</id>
+    <title>Chinese finetune model using quantum computer</title>
+    <updated>2025-04-07T12:48:46+00:00</updated>
+    <author>
+      <name>/u/MMuchogu</name>
+      <uri>https://old.reddit.com/user/MMuchogu</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/ChinaScience/status/1909168123309392133?s=19"&gt;https://x.com/ChinaScience/status/1909168123309392133?s=19&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MMuchogu"&gt; /u/MMuchogu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T12:48:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtcn8o</id>
@@ -229,19 +229,6 @@
     <published>2025-04-07T03:38:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtkb3p</id>
-    <title>So what happened to Llama 4, which trained on 100,000 H100 GPUs?</title>
-    <updated>2025-04-07T12:42:24+00:00</updated>
-    <author>
-      <name>/u/sunshinecheung</name>
-      <uri>https://old.reddit.com/user/sunshinecheung</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt; &lt;img alt="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" src="https://a.thumbs.redditmedia.com/8BEqw6mD4ZzZP0i0wXUPQrGPrNe0wHwiWVuao_uM-w8.jpg" title="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464"&gt;https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Llama 4 was trained using 100,000 H100 GPUs. However, even though Deepseek does not have as so much data and GPUs as Meta, it could manage to achieve a better performance (like DeepSeek-V3-0324)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942"&gt;https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Yann LeCun: FAIR is working on the next generation of AI architectures beyond Auto-Regressive LLMs. &lt;/p&gt; &lt;p&gt;But now, it seems that Meta's leading edge is diminishing, and smaller open-source model have been surpassed by Qwen.(Qwen3 is coming...)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sunshinecheung"&gt; /u/sunshinecheung &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T12:42:24+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jt85zy</id>
     <title>I'd like to see Zuckerberg try to replace mid level engineers with Llama 4</title>
     <updated>2025-04-07T00:01:40+00:00</updated>
@@ -255,19 +242,6 @@
     <published>2025-04-07T00:01:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtjris</id>
-    <title>I believe this is the first properly-trained multi-turn RP with reasoning model</title>
-    <updated>2025-04-07T12:13:53+00:00</updated>
-    <author>
-      <name>/u/Arli_AI</name>
-      <uri>https://old.reddit.com/user/Arli_AI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"&gt; &lt;img alt="I believe this is the first properly-trained multi-turn RP with reasoning model" src="https://external-preview.redd.it/d84kJOigyOx8M2I0kJHv3kMb0sZFeN-O5golQM9rmrE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f770c6926b6e4357e1747fc2a5b6bd9979c041d2" title="I believe this is the first properly-trained multi-turn RP with reasoning model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ArliAI/QwQ-32B-ArliAI-RpR-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T12:13:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jtfm44</id>
     <title>Meta Leaker refutes the training on test set claim</title>
     <updated>2025-04-07T07:29:49+00:00</updated>
@@ -279,6 +253,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtfm44/meta_leaker_refutes_the_training_on_test_set_claim/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T07:29:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtkb3p</id>
+    <title>So what happened to Llama 4, which trained on 100,000 H100 GPUs?</title>
+    <updated>2025-04-07T12:42:24+00:00</updated>
+    <author>
+      <name>/u/sunshinecheung</name>
+      <uri>https://old.reddit.com/user/sunshinecheung</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt; &lt;img alt="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" src="https://a.thumbs.redditmedia.com/8BEqw6mD4ZzZP0i0wXUPQrGPrNe0wHwiWVuao_uM-w8.jpg" title="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464"&gt;https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Llama 4 was trained using 100,000 H100 GPUs. However, even though Deepseek does not have as so much data and GPUs as Meta, it could manage to achieve a better performance (like DeepSeek-V3-0324)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942"&gt;https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Yann LeCun: FAIR is working on the next generation of AI architectures beyond Auto-Regressive LLMs. &lt;/p&gt; &lt;p&gt;But now, it seems that Meta's leading edge is diminishing, and smaller open-source model have been surpassed by Qwen.(Qwen3 is coming...)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sunshinecheung"&gt; /u/sunshinecheung &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T12:42:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtjris</id>
+    <title>I believe this is the first properly-trained multi-turn RP with reasoning model</title>
+    <updated>2025-04-07T12:13:53+00:00</updated>
+    <author>
+      <name>/u/Arli_AI</name>
+      <uri>https://old.reddit.com/user/Arli_AI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"&gt; &lt;img alt="I believe this is the first properly-trained multi-turn RP with reasoning model" src="https://external-preview.redd.it/d84kJOigyOx8M2I0kJHv3kMb0sZFeN-O5golQM9rmrE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f770c6926b6e4357e1747fc2a5b6bd9979c041d2" title="I believe this is the first properly-trained multi-turn RP with reasoning model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ArliAI/QwQ-32B-ArliAI-RpR-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtjris/i_believe_this_is_the_first_properlytrained/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T12:13:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1jt8yug</id>
