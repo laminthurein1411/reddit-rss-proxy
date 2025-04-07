@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-07T12:49:27+00:00</updated>
+  <updated>2025-04-07T13:13:12+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jt9ig2</id>
-    <title>The missing LLM size sweet-spot 18B</title>
-    <updated>2025-04-07T01:12:28+00:00</updated>
+    <id>t3_1jta5vj</id>
+    <title>VRAM requirement for 10M context</title>
+    <updated>2025-04-07T01:48:53+00:00</updated>
     <author>
-      <name>/u/Eden1506</name>
-      <uri>https://old.reddit.com/user/Eden1506</uri>
+      <name>/u/Ok_Warning2146</name>
+      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We have 1b,2b3b,4b... until 14b but then jump to 24b,27b,32b and again jump up to 70b.&lt;/p&gt; &lt;p&gt;Outside of a small number of people (&amp;lt;10%) the majority don't run anything above 32b locally so my focus is on the gap between 14b and 24b. &lt;/p&gt; &lt;p&gt;An 18B model, in the most popular Q4KM quantisation, would be 10.5 gb in size fitting nicely on a 12gb gpu with 1.5 gb for context (~4096 tokens) or on 16gb with 5.5 gb context (20k tokens).&lt;/p&gt; &lt;p&gt;For consumer hardware 12gb vram seems to be the current sweet spot (Price/VRAM) right now with cards like the 2060 12gb, 3060 12gb, B580 12gb and many more AMD cards having 12gb as well. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Eden1506"&gt; /u/Eden1506 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt9ig2/the_missing_llm_size_sweetspot_18b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jt9ig2/the_missing_llm_size_sweetspot_18b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt9ig2/the_missing_llm_size_sweetspot_18b/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recently, I am into calculating KV cache size for different models:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;To my surprise, the new Llama 4 Scout has 10M context. While most people don't have the resource or use case for 10M context, this super long maximum context can improve the lower context by a lot. Potentially making its &amp;lt;=128k performance similar to ChatGPT. So I think it is a huge breakthrough that warrants a calculation of how much VRAM it will use.&lt;/p&gt; &lt;p&gt;According vllm, Llama 4 Scout has a 3:1 interleaved chunked attention with 8192 tokens chunk:&lt;/p&gt; &lt;p&gt;&lt;a href="https://blog.vllm.ai/2025/04/05/llama4.html"&gt;https://blog.vllm.ai/2025/04/05/llama4.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Judging from the name, it seems to be similar to gemma 3's 5:1 interleaved Sliding Window Attention (iSWA) with 1024 tokens window. So I would just assume it is iSWA. Since not all inference engine supports iSWA, I would also calculate the KV cache requirement under the default Grouped Query Attention (GQA)&lt;/p&gt; &lt;p&gt;Here is a table comparing DeepSeek, Gemma 3 and Llama 4 assuming the first two can also run 10M context. All models parameters are fp8 and the KV cache is also fp8.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Context&lt;/th&gt; &lt;th align="left"&gt;8k&lt;/th&gt; &lt;th align="left"&gt;32k&lt;/th&gt; &lt;th align="left"&gt;128k&lt;/th&gt; &lt;th align="left"&gt;512k&lt;/th&gt; &lt;th align="left"&gt;2m&lt;/th&gt; &lt;th align="left"&gt;10m&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 GQA&lt;/td&gt; &lt;td align="left"&gt;19.06GB&lt;/td&gt; &lt;td align="left"&gt;76.25GB&lt;/td&gt; &lt;td align="left"&gt;305GB&lt;/td&gt; &lt;td align="left"&gt;1220GB&lt;/td&gt; &lt;td align="left"&gt;4880GB&lt;/td&gt; &lt;td align="left"&gt;24400GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 MLA&lt;/td&gt; &lt;td align="left"&gt;.268GB&lt;/td&gt; &lt;td align="left"&gt;1.07GB&lt;/td&gt; &lt;td align="left"&gt;4.29GB&lt;/td&gt; &lt;td align="left"&gt;17.16GB&lt;/td&gt; &lt;td align="left"&gt;68.63GB&lt;/td&gt; &lt;td align="left"&gt;343.1GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 KV%&lt;/td&gt; &lt;td align="left"&gt;.04%&lt;/td&gt; &lt;td align="left"&gt;.159%&lt;/td&gt; &lt;td align="left"&gt;.64%&lt;/td&gt; &lt;td align="left"&gt;2.56%&lt;/td&gt; &lt;td align="left"&gt;10.23%&lt;/td&gt; &lt;td align="left"&gt;51.13%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B GQA&lt;/td&gt; &lt;td align="left"&gt;1.94GB&lt;/td&gt; &lt;td align="left"&gt;7.75GB&lt;/td&gt; &lt;td align="left"&gt;31GB&lt;/td&gt; &lt;td align="left"&gt;124GB&lt;/td&gt; &lt;td align="left"&gt;496GB&lt;/td&gt; &lt;td align="left"&gt;2480GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B iSWA&lt;/td&gt; &lt;td align="left"&gt;.516GB&lt;/td&gt; &lt;td align="left"&gt;1.45GB&lt;/td&gt; &lt;td align="left"&gt;5.2GB&lt;/td&gt; &lt;td align="left"&gt;20.2GB&lt;/td&gt; &lt;td align="left"&gt;80.2GB&lt;/td&gt; &lt;td align="left"&gt;400.2GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B KV%&lt;/td&gt; &lt;td align="left"&gt;1.91%&lt;/td&gt; &lt;td align="left"&gt;5.37%&lt;/td&gt; &lt;td align="left"&gt;19.26%&lt;/td&gt; &lt;td align="left"&gt;74.81%&lt;/td&gt; &lt;td align="left"&gt;297%&lt;/td&gt; &lt;td align="left"&gt;1482%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout GQA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;3GB&lt;/td&gt; &lt;td align="left"&gt;12GB&lt;/td&gt; &lt;td align="left"&gt;48GB&lt;/td&gt; &lt;td align="left"&gt;192GB&lt;/td&gt; &lt;td align="left"&gt;960GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout iSWA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;1.31GB&lt;/td&gt; &lt;td align="left"&gt;3.56GB&lt;/td&gt; &lt;td align="left"&gt;12.56GB&lt;/td&gt; &lt;td align="left"&gt;48.56GB&lt;/td&gt; &lt;td align="left"&gt;240.56GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout KV%&lt;/td&gt; &lt;td align="left"&gt;.688%&lt;/td&gt; &lt;td align="left"&gt;1.2%&lt;/td&gt; &lt;td align="left"&gt;3.27%&lt;/td&gt; &lt;td align="left"&gt;11.52%&lt;/td&gt; &lt;td align="left"&gt;44.55%&lt;/td&gt; &lt;td align="left"&gt;220.7%&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;MLA and iSWA support from the popular inference engines.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Software&lt;/th&gt; &lt;th align="left"&gt;llama.cpp&lt;/th&gt; &lt;th align="left"&gt;transformers&lt;/th&gt; &lt;th align="left"&gt;vllm&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;iSWA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;llama.cpp and transformers are working on MLA, so they will support it soon. But I haven't heard anything that llama.cpp and vllm are working on iSWA.&lt;/p&gt; &lt;p&gt;We can see that basically it is impractical to run 10m on GQA. It seems feasible to run Llama 4 Scout at 10m context with M3 Ultra but obviously the run time can be an issue. &lt;/p&gt; &lt;p&gt;Also, MLA is superior to iSWA for KV cache size, so it will be great if 10m context is supported by DeepSeek V4 in the future.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T01:12:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jti1j4</id>
-    <title>LLaMa 4 behaving differently on Groq vs Fireworks AI</title>
-    <updated>2025-04-07T10:29:49+00:00</updated>
-    <author>
-      <name>/u/AndrazP</name>
-      <uri>https://old.reddit.com/user/AndrazP</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm testing llama-4-scout for my chatbot and seeing inconsistent behavior between Groq and Fireworks AI, even with what I believe are the same parameters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;On &lt;strong&gt;Groq&lt;/strong&gt;, responses are normal and conversational (similar to what I'd expect from GPT-4o).&lt;/li&gt; &lt;li&gt;On &lt;strong&gt;Fireworks AI&lt;/strong&gt;, after the first message exchange, the model starts outputting raw JSON unexpectedly instead of a natural language response.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Has anyone else noticed significant behavioral differences like this for the same model just by changing the inference provider?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AndrazP"&gt; /u/AndrazP &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jti1j4/llama_4_behaving_differently_on_groq_vs_fireworks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jti1j4/llama_4_behaving_differently_on_groq_vs_fireworks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jti1j4/llama_4_behaving_differently_on_groq_vs_fireworks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T10:29:49+00:00</published>
+    <published>2025-04-07T01:48:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtb4r5</id>
@@ -45,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtb4r5/llama_4_doesnt_perform_well_on_fictionlivebench/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T02:42:08+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jta5vj</id>
-    <title>VRAM requirement for 10M context</title>
-    <updated>2025-04-07T01:48:53+00:00</updated>
-    <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Recently, I am into calculating KV cache size for different models:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jl33br/qwq32b_has_the_highest_kv_cachemodel_size_ratio/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;To my surprise, the new Llama 4 Scout has 10M context. While most people don't have the resource or use case for 10M context, this super long maximum context can improve the lower context by a lot. Potentially making its &amp;lt;=128k performance similar to ChatGPT. So I think it is a huge breakthrough that warrants a calculation of how much VRAM it will use.&lt;/p&gt; &lt;p&gt;According vllm, Llama 4 Scout has a 3:1 interleaved chunked attention with 8192 tokens chunk:&lt;/p&gt; &lt;p&gt;&lt;a href="https://blog.vllm.ai/2025/04/05/llama4.html"&gt;https://blog.vllm.ai/2025/04/05/llama4.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Judging from the name, it seems to be similar to gemma 3's 5:1 interleaved Sliding Window Attention (iSWA) with 1024 tokens window. So I would just assume it is iSWA. Since not all inference engine supports iSWA, I would also calculate the KV cache requirement under the default Grouped Query Attention (GQA)&lt;/p&gt; &lt;p&gt;Here is a table comparing DeepSeek, Gemma 3 and Llama 4 assuming the first two can also run 10M context. All models parameters are fp8 and the KV cache is also fp8.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Context&lt;/th&gt; &lt;th align="left"&gt;8k&lt;/th&gt; &lt;th align="left"&gt;32k&lt;/th&gt; &lt;th align="left"&gt;128k&lt;/th&gt; &lt;th align="left"&gt;512k&lt;/th&gt; &lt;th align="left"&gt;2m&lt;/th&gt; &lt;th align="left"&gt;10m&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 GQA&lt;/td&gt; &lt;td align="left"&gt;19.06GB&lt;/td&gt; &lt;td align="left"&gt;76.25GB&lt;/td&gt; &lt;td align="left"&gt;305GB&lt;/td&gt; &lt;td align="left"&gt;1220GB&lt;/td&gt; &lt;td align="left"&gt;4880GB&lt;/td&gt; &lt;td align="left"&gt;24400GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 MLA&lt;/td&gt; &lt;td align="left"&gt;.268GB&lt;/td&gt; &lt;td align="left"&gt;1.07GB&lt;/td&gt; &lt;td align="left"&gt;4.29GB&lt;/td&gt; &lt;td align="left"&gt;17.16GB&lt;/td&gt; &lt;td align="left"&gt;68.63GB&lt;/td&gt; &lt;td align="left"&gt;343.1GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1 KV%&lt;/td&gt; &lt;td align="left"&gt;.04%&lt;/td&gt; &lt;td align="left"&gt;.159%&lt;/td&gt; &lt;td align="left"&gt;.64%&lt;/td&gt; &lt;td align="left"&gt;2.56%&lt;/td&gt; &lt;td align="left"&gt;10.23%&lt;/td&gt; &lt;td align="left"&gt;51.13%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B GQA&lt;/td&gt; &lt;td align="left"&gt;1.94GB&lt;/td&gt; &lt;td align="left"&gt;7.75GB&lt;/td&gt; &lt;td align="left"&gt;31GB&lt;/td&gt; &lt;td align="left"&gt;124GB&lt;/td&gt; &lt;td align="left"&gt;496GB&lt;/td&gt; &lt;td align="left"&gt;2480GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B iSWA&lt;/td&gt; &lt;td align="left"&gt;.516GB&lt;/td&gt; &lt;td align="left"&gt;1.45GB&lt;/td&gt; &lt;td align="left"&gt;5.2GB&lt;/td&gt; &lt;td align="left"&gt;20.2GB&lt;/td&gt; &lt;td align="left"&gt;80.2GB&lt;/td&gt; &lt;td align="left"&gt;400.2GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma-3-27B KV%&lt;/td&gt; &lt;td align="left"&gt;1.91%&lt;/td&gt; &lt;td align="left"&gt;5.37%&lt;/td&gt; &lt;td align="left"&gt;19.26%&lt;/td&gt; &lt;td align="left"&gt;74.81%&lt;/td&gt; &lt;td align="left"&gt;297%&lt;/td&gt; &lt;td align="left"&gt;1482%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout GQA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;3GB&lt;/td&gt; &lt;td align="left"&gt;12GB&lt;/td&gt; &lt;td align="left"&gt;48GB&lt;/td&gt; &lt;td align="left"&gt;192GB&lt;/td&gt; &lt;td align="left"&gt;960GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout iSWA&lt;/td&gt; &lt;td align="left"&gt;.75GB&lt;/td&gt; &lt;td align="left"&gt;1.31GB&lt;/td&gt; &lt;td align="left"&gt;3.56GB&lt;/td&gt; &lt;td align="left"&gt;12.56GB&lt;/td&gt; &lt;td align="left"&gt;48.56GB&lt;/td&gt; &lt;td align="left"&gt;240.56GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-4-Scout KV%&lt;/td&gt; &lt;td align="left"&gt;.688%&lt;/td&gt; &lt;td align="left"&gt;1.2%&lt;/td&gt; &lt;td align="left"&gt;3.27%&lt;/td&gt; &lt;td align="left"&gt;11.52%&lt;/td&gt; &lt;td align="left"&gt;44.55%&lt;/td&gt; &lt;td align="left"&gt;220.7%&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;MLA and iSWA support from the popular inference engines.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Software&lt;/th&gt; &lt;th align="left"&gt;llama.cpp&lt;/th&gt; &lt;th align="left"&gt;transformers&lt;/th&gt; &lt;th align="left"&gt;vllm&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;MLA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;iSWA&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;No&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;llama.cpp and transformers are working on MLA, so they will support it soon. But I haven't heard anything that llama.cpp and vllm are working on iSWA.&lt;/p&gt; &lt;p&gt;We can see that basically it is impractical to run 10m on GQA. It seems feasible to run Llama 4 Scout at 10m context with M3 Ultra but obviously the run time can be an issue. &lt;/p&gt; &lt;p&gt;Also, MLA is superior to iSWA for KV cache size, so it will be great if 10m context is supported by DeepSeek V4 in the future.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jta5vj/vram_requirement_for_10m_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T01:48:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1jsw1x6</id>
@@ -138,19 +112,6 @@
     <published>2025-04-07T03:26:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtg1mp</id>
-    <title>Briefly discussing Llama 4</title>
-    <updated>2025-04-07T08:02:05+00:00</updated>
-    <author>
-      <name>/u/fourDnet</name>
-      <uri>https://old.reddit.com/user/fourDnet</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So Llama 4 is out, and so far we don't have a full technical report, but do have a semi-technical blog post (&lt;a href="https://huggingface.co/blog/llama4-release"&gt;https://huggingface.co/blog/llama4-release&lt;/a&gt;). I'm creating this post to foster discussion about their model architecture.&lt;/p&gt; &lt;p&gt;Regarding the model, the most striking claim is the 10 million token context size, which their team attributes to the following:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Blending layers that utilize rotary embeddings (RoPE) and no positional embeddings (NoPE)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Blending across layers is new, however similar approaches have been used before:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/lucidrains/x-transformers/issues/40"&gt;https://github.com/lucidrains/x-transformers/issues/40&lt;/a&gt; where they utilize RoPE only on some dimensions, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY&lt;/a&gt;, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ&lt;/a&gt;&lt;/li&gt; &lt;li&gt;GPT-Neo/GPT-NeoX which applied RoPE on 25% of the dimensions&lt;/li&gt; &lt;li&gt;Deepseek V2 where they use NoPE/RoPE together in MLA&lt;/li&gt; &lt;li&gt;The author of RoPE wrote a blog post on partial rope: &lt;a href="https://kexue.fm/archives/10122"&gt;https://kexue.fm/archives/10122&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;2. Length dependent softmax scaling&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;This exact form of softmax was proposed by &amp;quot;Overcoming a Theoretical Limitation of Self-Attention&amp;quot; in section 5.3 in 2022&lt;/li&gt; &lt;li&gt;The author of RoPE also wrote a blog post on length dependent scaled softmax in 2022: &lt;a href="https://www.spaces.ac.cn/archives/9034"&gt;https://www.spaces.ac.cn/archives/9034&lt;/a&gt;&lt;/li&gt; &lt;li&gt;I see the blogpost they only reference &lt;a href="https://arxiv.org/abs/2501.19399"&gt;https://arxiv.org/abs/2501.19399&lt;/a&gt;, which is slightly puzzling since Qwen 1 (the original one from 2023) also uses the exact same softmax scaling strategy, and they call it logn scaling.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fourDnet"&gt; /u/fourDnet &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T08:02:05+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jt7zp7</id>
     <title>Cybersecurity Benchmark - Pretty sure Maverick is broken</title>
     <updated>2025-04-06T23:53:03+00:00</updated>
@@ -162,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt7zp7/cybersecurity_benchmark_pretty_sure_maverick_is/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T23:53:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtg1mp</id>
+    <title>Briefly discussing Llama 4</title>
+    <updated>2025-04-07T08:02:05+00:00</updated>
+    <author>
+      <name>/u/fourDnet</name>
+      <uri>https://old.reddit.com/user/fourDnet</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So Llama 4 is out, and so far we don't have a full technical report, but do have a semi-technical blog post (&lt;a href="https://huggingface.co/blog/llama4-release"&gt;https://huggingface.co/blog/llama4-release&lt;/a&gt;). I'm creating this post to foster discussion about their model architecture.&lt;/p&gt; &lt;p&gt;Regarding the model, the most striking claim is the 10 million token context size, which their team attributes to the following:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Blending layers that utilize rotary embeddings (RoPE) and no positional embeddings (NoPE)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Blending across layers is new, however similar approaches have been used before:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://github.com/lucidrains/x-transformers/issues/40"&gt;https://github.com/lucidrains/x-transformers/issues/40&lt;/a&gt; where they utilize RoPE only on some dimensions, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests--Vmlldzo2MjE1MjY&lt;/a&gt;, &lt;a href="https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ"&gt;https://wandb.ai/eleutherai/neox/reports/Partial-Rotary-Tests-v2--Vmlldzo2MjE4MTQ&lt;/a&gt;&lt;/li&gt; &lt;li&gt;GPT-Neo/GPT-NeoX which applied RoPE on 25% of the dimensions&lt;/li&gt; &lt;li&gt;Deepseek V2 where they use NoPE/RoPE together in MLA&lt;/li&gt; &lt;li&gt;The author of RoPE wrote a blog post on partial rope: &lt;a href="https://kexue.fm/archives/10122"&gt;https://kexue.fm/archives/10122&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;2. Length dependent softmax scaling&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;This exact form of softmax was proposed by &amp;quot;Overcoming a Theoretical Limitation of Self-Attention&amp;quot; in section 5.3 in 2022&lt;/li&gt; &lt;li&gt;The author of RoPE also wrote a blog post on length dependent scaled softmax in 2022: &lt;a href="https://www.spaces.ac.cn/archives/9034"&gt;https://www.spaces.ac.cn/archives/9034&lt;/a&gt;&lt;/li&gt; &lt;li&gt;I see the blogpost they only reference &lt;a href="https://arxiv.org/abs/2501.19399"&gt;https://arxiv.org/abs/2501.19399&lt;/a&gt;, which is slightly puzzling since Qwen 1 (the original one from 2023) also uses the exact same softmax scaling strategy, and they call it logn scaling.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fourDnet"&gt; /u/fourDnet &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtg1mp/briefly_discussing_llama_4/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T08:02:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1jt0bx3</id>
@@ -188,6 +162,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtcn8o/meta_ai_could_have_just_released_small_variants/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T04:07:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtkfl6</id>
+    <title>Chinese finetune model using quantum computer</title>
+    <updated>2025-04-07T12:48:46+00:00</updated>
+    <author>
+      <name>/u/MMuchogu</name>
+      <uri>https://old.reddit.com/user/MMuchogu</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/ChinaScience/status/1909168123309392133?s=19"&gt;https://x.com/ChinaScience/status/1909168123309392133?s=19&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MMuchogu"&gt; /u/MMuchogu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkfl6/chinese_finetune_model_using_quantum_computer/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T12:48:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtkb3p</id>
+    <title>So what happened to Llama 4, which trained on 100,000 H100 GPUs?</title>
+    <updated>2025-04-07T12:42:24+00:00</updated>
+    <author>
+      <name>/u/sunshinecheung</name>
+      <uri>https://old.reddit.com/user/sunshinecheung</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt; &lt;img alt="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" src="https://a.thumbs.redditmedia.com/8BEqw6mD4ZzZP0i0wXUPQrGPrNe0wHwiWVuao_uM-w8.jpg" title="So what happened to Llama 4, which trained on 100,000 H100 GPUs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464"&gt;https://preview.redd.it/zue0vixknete1.png?width=1040&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9950ec242a827a86d5a2cc1d01da439839edd464&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Llama 4 was trained using 100,000 H100 GPUs. However, even though Deepseek does not have as so much data and GPUs as Meta, it could manage to achieve a better performance (like DeepSeek-V3-0324)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942"&gt;https://preview.redd.it/fvq6jcysnete1.png?width=1107&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8aa1cdf1e955d208d2250e706d94efade06ae942&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Yann LeCun: FAIR is working on the next generation of AI architectures beyond Auto-Regressive LLMs. &lt;/p&gt; &lt;p&gt;But now, it seems that Meta's leading edge is diminishing, and smaller open-source model have been surpassed by Qwen.(Qwen3 is coming...)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sunshinecheung"&gt; /u/sunshinecheung &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtkb3p/so_what_happened_to_llama_4_which_trained_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T12:42:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1jsshhe</id>
@@ -281,19 +281,6 @@
     <published>2025-04-07T07:29:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jth72b</id>
-    <title>OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages</title>
-    <updated>2025-04-07T09:30:12+00:00</updated>
-    <author>
-      <name>/u/OuteAI</name>
-      <uri>https://old.reddit.com/user/OuteAI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"&gt; &lt;img alt="OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages" src="https://external-preview.redd.it/Z2xta3YzNmRzZHRlMQNkNwCzMCfIUGDv1ghIC3hRjQCjH8UUjqUCJCni6W9u.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=df30707fd170e60bfac0344bd18a6f9e6c533729" title="OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OuteAI"&gt; /u/OuteAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bw9ii56dsdte1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T09:30:12+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jt8yug</id>
     <title>“Serious issues in Llama 4 training. I Have Submitted My Resignation to GenAI“</title>
     <updated>2025-04-07T00:43:36+00:00</updated>
@@ -307,17 +294,17 @@
     <published>2025-04-07T00:43:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtejzj</id>
-    <title>Llama 4 is open - unless you are in the EU</title>
-    <updated>2025-04-07T06:13:05+00:00</updated>
+    <id>t3_1jth72b</id>
+    <title>OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages</title>
+    <updated>2025-04-07T09:30:12+00:00</updated>
     <author>
-      <name>/u/Feeling_Dog9493</name>
-      <uri>https://old.reddit.com/user/Feeling_Dog9493</uri>
+      <name>/u/OuteAI</name>
+      <uri>https://old.reddit.com/user/OuteAI</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Have you guys read the LLaMA 4 license? EU based entities are not restricted - they are banned. AI Geofencing has arrived:&lt;/p&gt; &lt;p&gt;“You may not use the Llama Materials if you are… domiciled in a country that is part of the European Union.”&lt;/p&gt; &lt;p&gt;No exceptions. Not for research, not for personal use, not even through a US-based cloud provider. If your org is legally in the EU, you’re legally locked out.&lt;/p&gt; &lt;p&gt;And that’s just the start: • Must use Meta’s branding (“LLaMA” must be in any derivative’s name) • Attribution is required (“Built with LLaMA”) • No field-of-use freedom • No redistribution freedom • Not OSI-compliant = not open source&lt;/p&gt; &lt;p&gt;This isn’t “open” in any meaningful sense—it’s corporate-controlled access dressed up in community language. The likely reason? Meta doesn’t want to deal with the EU AI Act’s transparency and risk requirements, so it’s easier to just draw a legal border around the entire continent.&lt;/p&gt; &lt;p&gt;This move sets a dangerous precedent. If region-locking becomes the norm, we’re headed for a fractured, privilege-based AI landscape—where your access to foundational tools depends on where your HQ is.&lt;/p&gt; &lt;p&gt;For EU devs, researchers, and startups: You’re out. For the open-source community: This is the line in the sand.&lt;/p&gt; &lt;p&gt;Real “open” models like DeepSeek and Mistral deserve more attention than ever—because this? This isn’t it.&lt;/p&gt; &lt;p&gt;What’s your take—are you switching models? Ignoring the license? Holding out hope for change?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Feeling_Dog9493"&gt; /u/Feeling_Dog9493 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"&gt; &lt;img alt="OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages" src="https://external-preview.redd.it/Z2xta3YzNmRzZHRlMQNkNwCzMCfIUGDv1ghIC3hRjQCjH8UUjqUCJCni6W9u.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=df30707fd170e60bfac0344bd18a6f9e6c533729" title="OuteTTS 1.0: Upgrades in Quality, Cloning, and 20 Languages" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OuteAI"&gt; /u/OuteAI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bw9ii56dsdte1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jth72b/outetts_10_upgrades_in_quality_cloning_and_20/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T06:13:05+00:00</published>
+    <published>2025-04-07T09:30:12+00:00</published>
   </entry>
   <entry>
     <id>t3_1jt7hlc</id>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt7hlc/metas_llama_4_fell_short/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T23:27:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtejzj</id>
+    <title>Llama 4 is open - unless you are in the EU</title>
+    <updated>2025-04-07T06:13:05+00:00</updated>
+    <author>
+      <name>/u/Feeling_Dog9493</name>
+      <uri>https://old.reddit.com/user/Feeling_Dog9493</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Have you guys read the LLaMA 4 license? EU based entities are not restricted - they are banned. AI Geofencing has arrived:&lt;/p&gt; &lt;p&gt;“You may not use the Llama Materials if you are… domiciled in a country that is part of the European Union.”&lt;/p&gt; &lt;p&gt;No exceptions. Not for research, not for personal use, not even through a US-based cloud provider. If your org is legally in the EU, you’re legally locked out.&lt;/p&gt; &lt;p&gt;And that’s just the start: • Must use Meta’s branding (“LLaMA” must be in any derivative’s name) • Attribution is required (“Built with LLaMA”) • No field-of-use freedom • No redistribution freedom • Not OSI-compliant = not open source&lt;/p&gt; &lt;p&gt;This isn’t “open” in any meaningful sense—it’s corporate-controlled access dressed up in community language. The likely reason? Meta doesn’t want to deal with the EU AI Act’s transparency and risk requirements, so it’s easier to just draw a legal border around the entire continent.&lt;/p&gt; &lt;p&gt;This move sets a dangerous precedent. If region-locking becomes the norm, we’re headed for a fractured, privilege-based AI landscape—where your access to foundational tools depends on where your HQ is.&lt;/p&gt; &lt;p&gt;For EU devs, researchers, and startups: You’re out. For the open-source community: This is the line in the sand.&lt;/p&gt; &lt;p&gt;Real “open” models like DeepSeek and Mistral deserve more attention than ever—because this? This isn’t it.&lt;/p&gt; &lt;p&gt;What’s your take—are you switching models? Ignoring the license? Holding out hope for change?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Feeling_Dog9493"&gt; /u/Feeling_Dog9493 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtejzj/llama_4_is_open_unless_you_are_in_the_eu/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T06:13:05+00:00</published>
   </entry>
 </feed>
