@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-04-08T18:07:36+00:00</updated>
+  <updated>2025-04-08T18:25:21+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1jtcuwv</id>
-    <title>Deterministic output with same seed - example</title>
-    <updated>2025-04-07T04:20:30+00:00</updated>
-    <author>
-      <name>/u/binuuday</name>
-      <uri>https://old.reddit.com/user/binuuday</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1jtcuwv/deterministic_output_with_same_seed_example/"&gt; &lt;img alt="Deterministic output with same seed - example" src="https://a.thumbs.redditmedia.com/GhsfXzRn2Zg7o5WMYtymEXZzFU2iv6W9dcgYQpxK5K4.jpg" title="Deterministic output with same seed - example" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Most experts know this already, this entry is for people who are new to ollama, like me.&lt;/p&gt; &lt;p&gt;During some RAG cases, we need our output to be deterministic. Ollama allows this by setting the seed value, to the same number, for consecutive requests. This will not work in chat mode, or where multiple prompts are sent. (All prompts to the Ollama server needs to be same)&lt;/p&gt; &lt;p&gt;This is a property of the generation function, a random tensor is created upon which the layers act upon. If we don't give seed, or give seed as -1, the initial tensor is filled with truly random numbers. But when same seed value is given the tensor is filled with deterministic random numbers ( assuming you are on the same machine and using the same functionality, process). In Ollama's case we are hitting the same processs running on the same machine too.&lt;/p&gt; &lt;p&gt;If you are using any UI, you have to clear the history, to get deterministic output, because they tend to maintain sessions, and send the history of chat in prompt. Example of curl commands given below.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/a6147idz7cte1.png?width=2610&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=690d0527eddea5f2ee7bd965d7879fc26791f77d"&gt;Deterministic Output with Same Seed&lt;/a&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;date curl -s http://localhost:11434/api/chat -d '{ &amp;quot;model&amp;quot;: &amp;quot;llama3.2:latest&amp;quot;, &amp;quot;messages&amp;quot;: [ { &amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Give 5 random numbers and 5 random animals&amp;quot; } ], &amp;quot;options&amp;quot;: { &amp;quot;seed&amp;quot;: 32988 }, &amp;quot;stream&amp;quot;: false }' | jq '.message.content' Mon Apr 7 09:47:38 IST 2025 &amp;quot;Here are 5 random numbers:\n\n1. 854\n2. 219\n3. 467\n4. 982\n5. 135\n\nAnd here are 5 random animals:\n\n1. Quail\n2. Narwhal\n3. Meerkat\n4. Lemur\n5. Otter&amp;quot; date curl -s http://localhost:11434/api/chat -d '{ &amp;quot;model&amp;quot;: &amp;quot;llama3.2:latest&amp;quot;, &amp;quot;messages&amp;quot;: [ { &amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Give 5 random numbers and 5 random animals&amp;quot; } ], &amp;quot;options&amp;quot;: { &amp;quot;seed&amp;quot;: 32988 }, &amp;quot;stream&amp;quot;: false }' | jq '.message.content' Mon Apr 7 09:49:03 IST 2025 &amp;quot;Here are 5 random numbers:\n\n1. 854\n2. 219\n3. 467\n4. 982\n5. 135\n\nAnd here are 5 random animals:\n\n1. Quail\n2. Narwhal\n3. Meerkat\n4. Lemur\n5. Otter&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Above are same command at different point of time.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/binuuday"&gt; /u/binuuday &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jtcuwv/deterministic_output_with_same_seed_example/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jtcuwv/deterministic_output_with_same_seed_example/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1jtcuwv/deterministic_output_with_same_seed_example/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-04-07T04:20:30+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jtcsfp</id>
     <title>I want to create a RAG from tabular data (databases). How do I proceed?</title>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1jtycy6/working_on_a_cool_ai_project/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-04-07T22:35:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jukoca</id>
+    <title>Local LLM MCP, what is your preferred model?</title>
+    <updated>2025-04-08T18:23:49+00:00</updated>
+    <author>
+      <name>/u/Representative-Park6</name>
+      <uri>https://old.reddit.com/user/Representative-Park6</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We are working on some internal tooling at work that would bennefit greatly from moving away from individual standard function calling to a MCP server approach, so I have been toying around with MCP servers over the past few weeks. &lt;/p&gt; &lt;p&gt;From my testing setup where I have a rtx3080 I do find &lt;strong&gt;llama3.2&lt;/strong&gt; waaaay too weak, and &lt;strong&gt;qwq&lt;/strong&gt; a bit too slow. Enabeling function calling on &lt;strong&gt;Gemma3(12b)&lt;/strong&gt; is surprisingly fast and quite strong for most tasks. (Tho requires a bit of schafolding and context loss for doing function lookups. But its clearly the best i have found sofar.)&lt;/p&gt; &lt;p&gt;So im pretty happy with &lt;strong&gt;Gemma3&lt;/strong&gt; for my needs, but would love to have an option to turn up the dial a bit as a fallback mechanism if it fails. &lt;/p&gt; &lt;p&gt;So my question is, are there anything between &lt;strong&gt;Gemma3&lt;/strong&gt; and &lt;strong&gt;qwq&lt;/strong&gt; that are worth exploring?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Representative-Park6"&gt; /u/Representative-Park6 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jukoca/local_llm_mcp_what_is_your_preferred_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1jukoca/local_llm_mcp_what_is_your_preferred_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1jukoca/local_llm_mcp_what_is_your_preferred_model/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-04-08T18:23:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1ju6izn</id>
