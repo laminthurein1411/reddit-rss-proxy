@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-08T19:22:07+00:00</updated>
+  <updated>2025-04-08T19:34:35+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1ju9s1c</id>
-    <title>The experimental version of llama4 maverick on lmstudio is also more creative in programming than the released one.</title>
-    <updated>2025-04-08T09:53:16+00:00</updated>
+    <id>t3_1juira1</id>
+    <title>Advice on pipeline for OCR / document ingestion for RAG</title>
+    <updated>2025-04-08T17:07:37+00:00</updated>
     <author>
-      <name>/u/cpldcpu</name>
-      <uri>https://old.reddit.com/user/cpldcpu</uri>
+      <name>/u/TheRedfather</name>
+      <uri>https://old.reddit.com/user/TheRedfather</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the_experimental_version_of_llama4_maverick_on/"&gt; &lt;img alt="The experimental version of llama4 maverick on lmstudio is also more creative in programming than the released one." src="https://a.thumbs.redditmedia.com/-5ejAs5mGvCvbETun_oMhAuj7NcAjrFvlTgozmvlrf0.jpg" title="The experimental version of llama4 maverick on lmstudio is also more creative in programming than the released one." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I compared code generated for the prompt:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;write a python program that prints an interesting landscape in ascii art in the console&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&amp;quot;llama-4-maverick-03-26-experimental&amp;quot; will consistently create longer and more creative outputs than &amp;quot;llama-4-maverick&amp;quot; as released. I also noticed that longer programs are more often throwing an error in the experimental version.&lt;/p&gt; &lt;p&gt;I found this quite interesting - shows that the finetuning for more engaging text is also influencing the code style. The release version could need a dash more creativity in its code generation.&lt;/p&gt; &lt;p&gt;Example output of the experimental version:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/clllc91c2lte1.png?width=805&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cb4de48920b8e3f23c40f676ce0114bb9c782f8d"&gt;https://preview.redd.it/clllc91c2lte1.png?width=805&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cb4de48920b8e3f23c40f676ce0114bb9c782f8d&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Example output of released version:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/mhgkwbie2lte1.png?width=811&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e144c67a751e6773a423638f7e29fe932ddd42d1"&gt;https://preview.redd.it/mhgkwbie2lte1.png?width=811&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e144c67a751e6773a423638f7e29fe932ddd42d1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jwgzgzck2lte1.png?width=2364&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4cbe936ee5c2e2b20a273bdea72a38f57ba62842"&gt;https://preview.redd.it/jwgzgzck2lte1.png?width=2364&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4cbe936ee5c2e2b20a273bdea72a38f57ba62842&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Length statistic of generated code for both models &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the_experimental_version_of_llama4_maverick_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the_experimental_version_of_llama4_maverick_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the_experimental_version_of_llama4_maverick_on/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I'm working on a project which involves ingesting and indexing a large number of files for a RAG pipeline (mostly PDF, PowerPoint, Excel and Word but often containing a lot charts, tables, images and diagrams). The intention would be to convert the files to a text format that is RAG-friendly and store the text chunks in a vector database along with metadata such as the source document, page number etc.&lt;/p&gt; &lt;p&gt;When I originally tested out document parsers such as Azure Document Intelligence, OpenParse and Unstructured I was a bit underwhelmed with the results. I was using the following pipeline:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use the document parser to segment the document (e.g. headers, paragraphs, images)&lt;/li&gt; &lt;li&gt;For the non-text elements, send them to a vision model to convert to text (if it's a graph, chart or table, output a JSON string; if it's an image, provide a text description/summary of the image)&lt;/li&gt; &lt;li&gt;Concatenate the text and non-text transcriptions into a final document, chunk based on some heuristic and embed&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The problem seems to lie in step 1 - some parsers apply bounding boxes to the document and get these completely wrong for more complex documents, or don't properly group associated elements together. This then breaks down the rest of the pipeline.&lt;/p&gt; &lt;p&gt;I've found that the new vision models seem to actually do a better job of converting a document to text. Open/local models also seem to be improving quickly here. The pipeline looks something like this (e.g. for PDF):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Convert each page of a PDF to an image&lt;/li&gt; &lt;li&gt;Send each page to a vision model/multimodal language model along with a prompt to convert to text (+ instructions on how to handle images, charts and tables)&lt;/li&gt; &lt;li&gt;Concatenate, chunk and embed&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The problem with the latter approach is it's a bit more expensive and probably overkill in some situations (particularly when dealing with documents that are mostly text), so perhaps some sort of hybrid works best.&lt;/p&gt; &lt;p&gt;I'm wondering if other folks have worked on a similar problem. Specifically:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How are you setting up your pipeline to do large scale OCR tasks of this sort?&lt;/li&gt; &lt;li&gt;Do you have any suggestions on the best strategy for storing image, table and chart representations?&lt;/li&gt; &lt;li&gt;Any recommendations on the best open source packages/tools that abstract away some of the extraction challenges using vision models (e.g. prompt setup, handling non-text elements etc)? Ideally looking for a package that can easily plug and play different local and online models, and that is lightweight (minimal number of dependencies)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheRedfather"&gt; /u/TheRedfather &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T09:53:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ju2po9</id>
-    <title>Karpathy's newest blog: Power to the people: How LLMs flip the script on technology diffusion</title>
-    <updated>2025-04-08T02:08:33+00:00</updated>
-    <author>
-      <name>/u/Cheap_Ship6400</name>
-      <uri>https://old.reddit.com/user/Cheap_Ship6400</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju2po9/karpathys_newest_blog_power_to_the_people_how/"&gt; &lt;img alt="Karpathy's newest blog: Power to the people: How LLMs flip the script on technology diffusion" src="https://external-preview.redd.it/xysnssK0wWdIRckvWVwaBSbIhMo96eApOHbJ846j7qQ.jpg?width=108&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2cd1045517eda93c2aaafc19130bea85c7466318" title="Karpathy's newest blog: Power to the people: How LLMs flip the script on technology diffusion" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/uejdgej8qite1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=dc73f72076b01e82f3d46aa5b89f26373b080bb0"&gt;https://preview.redd.it/uejdgej8qite1.png?width=1200&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=dc73f72076b01e82f3d46aa5b89f26373b080bb0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://karpathy.bearblog.dev/power-to-the-people/"&gt;https://karpathy.bearblog.dev/power-to-the-people/&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;If you go back through various sci-fi you'll see that very few would have predicted that the AI revolution would feature this progression. It was supposed to be a top secret government megabrain project wielded by the generals, not ChatGPT appearing basically overnight and for free on a device already in everyone's pocket.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Karpathy has argued that we are at a unique historical moment where technological (AI) power is being diffused to the general public in an astonishing and unprecedented way, which is very different from past experiences and science fiction predictions. That is a manifestation of &amp;quot;power to the people.&amp;quot; &lt;/p&gt; &lt;p&gt;I do think the LocalLLaMA community helps a lot in this paradigm shift.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cheap_Ship6400"&gt; /u/Cheap_Ship6400 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju2po9/karpathys_newest_blog_power_to_the_people_how/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju2po9/karpathys_newest_blog_power_to_the_people_how/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju2po9/karpathys_newest_blog_power_to_the_people_how/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T02:08:33+00:00</published>
+    <published>2025-04-08T17:07:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1jub3jj</id>
@@ -73,6 +60,19 @@
     <published>2025-04-07T15:18:03+00:00</published>
   </entry>
   <entry>
+    <id>t3_1julc3c</id>
+    <title>Well llama 4 is facing so many defeats again such low score on arc agi</title>
+    <updated>2025-04-08T18:50:36+00:00</updated>
+    <author>
+      <name>/u/Independent-Wind4462</name>
+      <uri>https://old.reddit.com/user/Independent-Wind4462</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt; &lt;img alt="Well llama 4 is facing so many defeats again such low score on arc agi" src="https://preview.redd.it/espl4stfqnte1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f0f715cad13717f261670e6b5e2abe772afa2aed" title="Well llama 4 is facing so many defeats again such low score on arc agi" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Wind4462"&gt; /u/Independent-Wind4462 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/espl4stfqnte1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T18:50:36+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ju0nd6</id>
     <title>LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a "customized model to optimize for human preference"</title>
     <updated>2025-04-08T00:23:00+00:00</updated>
@@ -99,19 +99,6 @@
     <published>2025-04-08T02:43:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1julc3c</id>
-    <title>Well llama 4 is facing so many defeats again such low score on arc agi</title>
-    <updated>2025-04-08T18:50:36+00:00</updated>
-    <author>
-      <name>/u/Independent-Wind4462</name>
-      <uri>https://old.reddit.com/user/Independent-Wind4462</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt; &lt;img alt="Well llama 4 is facing so many defeats again such low score on arc agi" src="https://preview.redd.it/espl4stfqnte1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f0f715cad13717f261670e6b5e2abe772afa2aed" title="Well llama 4 is facing so many defeats again such low score on arc agi" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Wind4462"&gt; /u/Independent-Wind4462 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/espl4stfqnte1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T18:50:36+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jug3ku</id>
     <title>Discussion on LM Arena’s Credibility, Evaluation Methods, and User Preference Alignment</title>
     <updated>2025-04-08T15:17:59+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jug3ku/discussion_on_lm_arenas_credibility_evaluation/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-08T15:17:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jum5s1</id>
+    <title>Cogito releases strongest LLMs of sizes 3B, 8B, 14B, 32B and 70B under open license</title>
+    <updated>2025-04-08T19:24:51+00:00</updated>
+    <author>
+      <name>/u/ResearchCrafty1804</name>
+      <uri>https://old.reddit.com/user/ResearchCrafty1804</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jum5s1/cogito_releases_strongest_llms_of_sizes_3b_8b_14b/"&gt; &lt;img alt="Cogito releases strongest LLMs of sizes 3B, 8B, 14B, 32B and 70B under open license" src="https://b.thumbs.redditmedia.com/UF9D2G4LY8nt9Z5N6vRdkaTUx2GI3fo84_fgBsrinvs.jpg" title="Cogito releases strongest LLMs of sizes 3B, 8B, 14B, 32B and 70B under open license" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Cogito: “We are releasing the strongest LLMs of sizes 3B, 8B, 14B, 32B and 70B under open license. Each model outperforms the best available open models of the same size, including counterparts from LLaMA, DeepSeek, and Qwen, across most standard benchmarks”&lt;/p&gt; &lt;p&gt;Hugging Face: &lt;a href="https://huggingface.co/collections/deepcogito/cogito-v1-preview-67eb105721081abe4ce2ee53"&gt;https://huggingface.co/collections/deepcogito/cogito-v1-preview-67eb105721081abe4ce2ee53&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ResearchCrafty1804"&gt; /u/ResearchCrafty1804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jum5s1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jum5s1/cogito_releases_strongest_llms_of_sizes_3b_8b_14b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jum5s1/cogito_releases_strongest_llms_of_sizes_3b_8b_14b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T19:24:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1ju6sm1</id>
