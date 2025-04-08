@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-08T07:24:14+00:00</updated>
+  <updated>2025-04-08T07:34:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jtwbt9</id>
-    <title>LLM-based TTS explained by a human, a breakdown</title>
-    <updated>2025-04-07T21:05:21+00:00</updated>
-    <author>
-      <name>/u/rzvzn</name>
-      <uri>https://old.reddit.com/user/rzvzn</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a technical post written by me, so apologies in advance if I lose you.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Autoregressive&lt;/strong&gt; simply means the future is conditioned on the past. Autoregressiveness is a nice property for streaming and thereby lowering latency, because you can predict the next token on the fly, just based on what you have seen so far (as opposed to waiting for the end of a sentence). Most modern transformers/LLMs are autoregressive. Diffusion models are non-autoregressive. BERT is non-autoregressive: the B stands for Bidirectional.&lt;/li&gt; &lt;li&gt;A &lt;strong&gt;backbone&lt;/strong&gt; is an (often autoregressive) LLM that does: text tokens input =&amp;gt; acoustic tokens output. An acoustic token is a discrete, compressed representation over some frame of time, which can be decoded later into audio. In some cases, you might also have audio input tokens and/or text output tokens as well.&lt;/li&gt; &lt;li&gt;A &lt;strong&gt;neural audio codec&lt;/strong&gt; is an additional model that decodes acoustic tokens to audio. These are often trained with a compression/reconstruction objective and have various sample rates, codebook sizes, token resolutions (how many tokens per second), and so on.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compression/reconstruction objective&lt;/strong&gt; means: You have some audio, you &lt;strong&gt;encode&lt;/strong&gt; it into discrete acoustic tokens, then you &lt;strong&gt;decode&lt;/strong&gt; it back into audio. For any given codebook size / token resolution (aka &lt;strong&gt;compression&lt;/strong&gt;), you want to maximize &lt;strong&gt;reconstruction&lt;/strong&gt;, i.e. recover as much original signal as possible. This is a straightforward and easy objective because when you're training such a neural audio codec, you don't need text labels, you can just do it with raw audio.&lt;/li&gt; &lt;li&gt;There are many pretrained &lt;strong&gt;neural audio codecs&lt;/strong&gt;, some optimized for speech, others for music, and you can choose to freeze the neural audio codec during training. If you are working with a pretrained &amp;amp; frozen neural audio codec, you only need to pack and ship token sequences to your GPU and train the LLM backbone. This makes training faster, easier, and cheaper compared to training on raw audio waveforms.&lt;/li&gt; &lt;li&gt;Recall that LLMs have been cynically called &amp;quot;next token predictors&amp;quot;. But there is no law saying a token must represent text. If you can strap on &lt;strong&gt;encoders&lt;/strong&gt; `(image patch, audio frame, video frame, etc) =&amp;gt; token` and &lt;strong&gt;decoders&lt;/strong&gt; `token =&amp;gt; (image patch, audio frame, video frame, etc)`, then all of a sudden your next-token-predicting LLM gets a lot more powerful and Ghibli-like.&lt;/li&gt; &lt;li&gt;Many people are understandably converging on LLM-based TTS. To highlight this point, I will list some prominent LLM-based TTS released or updated in 2025, in chronological order. This list is best-effort off the top of my head, not exhaustive, and any omissions are either me not knowing or remembering that a particular TTS is LLM-based.&lt;/li&gt; &lt;/ul&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Name&lt;/th&gt; &lt;th align="left"&gt;Backbone&lt;/th&gt; &lt;th align="left"&gt;Neural Audio Codec&lt;/th&gt; &lt;th align="left"&gt;Date&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/collections/HKUSTAudio/llasa-679b87dbd06ac556cc0e0f44"&gt;Llasa&lt;/a&gt; (CC-BY-NC)&lt;/td&gt; &lt;td align="left"&gt;Llama &lt;a href="https://huggingface.co/HKUSTAudio/Llasa-1B"&gt;1B&lt;/a&gt; / &lt;a href="https://huggingface.co/HKUSTAudio/Llasa-3B"&gt;3B&lt;/a&gt; / &lt;a href="https://huggingface.co/HKUSTAudio/Llasa-8B"&gt;8B&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/HKUSTAudio/xcodec2"&gt;XCodec2&lt;/a&gt;, 16khz, 800M&lt;/td&gt; &lt;td align="left"&gt;Jan 2025&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/collections/Zyphra/zonos-v01-67ac661c85e1898670823b4f"&gt;Zonos&lt;/a&gt; (Apache 2)&lt;/td&gt; &lt;td align="left"&gt;1.6B &lt;a href="https://huggingface.co/Zyphra/Zonos-v0.1-transformer"&gt;Transformer&lt;/a&gt; / &lt;a href="https://huggingface.co/Zyphra/Zonos-v0.1-hybrid"&gt;SSM&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://github.com/descriptinc/descript-audio-codec"&gt;Descript Audio Codec&lt;/a&gt;, 44.1khz, 54M?&lt;/td&gt; &lt;td align="left"&gt;Feb 2025&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;CSM (Apache 2)&lt;/td&gt; &lt;td align="left"&gt;Llama &lt;a href="https://huggingface.co/sesame/csm-1b"&gt;1B&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/kyutai/mimi"&gt;Mimi&lt;/a&gt;, 12.5khz?, ~100M?&lt;/td&gt; &lt;td align="left"&gt;Mar 2025&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/collections/canopylabs/orpheus-tts-67d9ea3f6c05a941c06ad9d2"&gt;Orpheus&lt;/a&gt; (Apache 2)&lt;/td&gt; &lt;td align="left"&gt;Llama &lt;a href="https://huggingface.co/canopylabs/orpheus-3b-0.1-ft"&gt;3B&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://github.com/hubertsiuzdak/snac"&gt;SNAC&lt;/a&gt;, 24khz, 20M&lt;/td&gt; &lt;td align="left"&gt;Mar 2025&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Oute (CC-BY-NC-SA)&lt;/td&gt; &lt;td align="left"&gt;Llama &lt;a href="https://huggingface.co/OuteAI/Llama-OuteTTS-1.0-1B"&gt;1B&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://huggingface.co/ibm-research/DAC.speech.v1.0"&gt;IBM-DAC&lt;/a&gt;, 24khz, 54M?&lt;/td&gt; &lt;td align="left"&gt;Apr 2025&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;ul&gt; &lt;li&gt;There are almost certainly more LLM-based TTS, such as Fish, Spark, Index, etc etc, but I couldn't be bothered to look up the parameter counts and neural audio codec being used. Authors should consider making parameter counts and component details more prominent in their model cards. Feel free to also Do Your Own Research.&lt;/li&gt; &lt;li&gt;Interestingly, none of these guys are using the exact same Neural Audio Codec, which implies disagreement in the TTS community over which codec to use.&lt;/li&gt; &lt;li&gt;The Seahawks should have ran the ball, and at least some variant of Llama 4 should have been able to predict audio tokens.&lt;/li&gt; &lt;li&gt;Despite the table being scoped to 2025, LLM-based TTS dates back to Tortoise in 2022 by James Betker, who I think is now at OpenAI. See &lt;a href="https://nonint.com/2022/04/25/tortoise-architectural-design-doc/"&gt;Tortoise Design Doc&lt;/a&gt;. There could be LLM-based TTS before Tortoise, but I'm just not well-read on the history.&lt;/li&gt; &lt;li&gt;That said, I think we are still in very the nascent stages of LLM-based TTS. The fact that established LLM players like Meta and DeepSeek have not yet put out LLM-based TTS even though I think they could and should be able to, means the sky is still the limit.&lt;/li&gt; &lt;li&gt;If ElevenLabs were a publicly traded company, one gameplan for DeepSeek could be: Take out short positions on ElevenLabs, use DeepSeek whale magic to train a cracked LLM-based TTS model (possibly a SOTA Neural Audio Codec to go along with it), then drop open weights. To be clear, I hear ElevenLabs is currently one of the rare profitable AI companies, but they might need to play more defense as better open models emerge and the &amp;quot;sauce&amp;quot; is not quite as secret as it once was.&lt;/li&gt; &lt;li&gt;Hyperscalers are also doing/upgrading their LLM-based TTS offerings. A couple weeks ago, Google dropped &lt;a href="https://cloud.google.com/text-to-speech/docs/chirp3-hd"&gt;Chirp3 HD&lt;/a&gt; voices, and around that time Azure also dropped &lt;a href="https://techcommunity.microsoft.com/blog/azure-ai-services-blog/march-2025-azure-ai-speech%E2%80%99s-hd-voices-are-generally-available-and-more/4398951"&gt;Dragon HD&lt;/a&gt; voices. Both are almost certainly LLM-based.&lt;/li&gt; &lt;li&gt;Conversational / multi-speaker / podcast generation usually implies either or both (1) a shift in training data and/or (2) conditioning on audio input as well as text input.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This is both a resource and a discussion. The above statements are just one (hopefully informed) guy's opinion. Anything can be challenged, corrected or expanded upon.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rzvzn"&gt; /u/rzvzn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtwbt9/llmbased_tts_explained_by_a_human_a_breakdown/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtwbt9/llmbased_tts_explained_by_a_human_a_breakdown/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtwbt9/llmbased_tts_explained_by_a_human_a_breakdown/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T21:05:21+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jt7hlc</id>
     <title>Meta's Llama 4 Fell Short</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jt7hlc/metas_llama_4_fell_short/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-06T23:27:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ju3pjb</id>
+    <title>Weird new livebench.ai coding scores</title>
+    <updated>2025-04-08T03:00:58+00:00</updated>
+    <author>
+      <name>/u/SandboChang</name>
+      <uri>https://old.reddit.com/user/SandboChang</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju3pjb/weird_new_livebenchai_coding_scores/"&gt; &lt;img alt="Weird new livebench.ai coding scores" src="https://b.thumbs.redditmedia.com/9ly2jkzLDcfv4_ZINd8MbM00syRF5SbgPFq1oD3TvUI.jpg" title="Weird new livebench.ai coding scores" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It uses to align with aider's leaderboard relatively well, but these new scores just did not make any sense to me. Sonnet 3.7 Thinking cannot be worse than R1 Distilled models, for example.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SandboChang"&gt; /u/SandboChang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ju3pjb"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju3pjb/weird_new_livebenchai_coding_scores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju3pjb/weird_new_livebenchai_coding_scores/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T03:00:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtejzj</id>
@@ -190,19 +190,6 @@
     <published>2025-04-07T23:57:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jtudz4</id>
-    <title>Benchmark update: Llama 4 is now the top open source OCR model</title>
-    <updated>2025-04-07T19:45:51+00:00</updated>
-    <author>
-      <name>/u/Tylernator</name>
-      <uri>https://old.reddit.com/user/Tylernator</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tylernator"&gt; /u/Tylernator &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://getomni.ai/blog/benchmarking-open-source-models-for-ocr"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtudz4/benchmark_update_llama_4_is_now_the_top_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtudz4/benchmark_update_llama_4_is_now_the_top_open/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-07T19:45:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jtweei</id>
     <title>Llama4 support is merged into llama.cpp!</title>
     <updated>2025-04-07T21:08:20+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtweei/llama4_support_is_merged_into_llamacpp/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T21:08:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jtudz4</id>
+    <title>Benchmark update: Llama 4 is now the top open source OCR model</title>
+    <updated>2025-04-07T19:45:51+00:00</updated>
+    <author>
+      <name>/u/Tylernator</name>
+      <uri>https://old.reddit.com/user/Tylernator</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Tylernator"&gt; /u/Tylernator &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://getomni.ai/blog/benchmarking-open-source-models-for-ocr"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jtudz4/benchmark_update_llama_4_is_now_the_top_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtudz4/benchmark_update_llama_4_is_now_the_top_open/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-07T19:45:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtslj9</id>
@@ -229,19 +229,6 @@
     <published>2025-04-07T18:34:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ju6sm1</id>
-    <title>nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face</title>
-    <updated>2025-04-08T06:10:27+00:00</updated>
-    <author>
-      <name>/u/rerri</name>
-      <uri>https://old.reddit.com/user/rerri</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt; &lt;img alt="nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face" src="https://external-preview.redd.it/3UxngnIkjlXfR7MJ8ohQbkyRtFJzuTypVV_aoc8_Tmk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e441532f8217ac64c401c9352ae767ec98103b56" title="nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Reasoning model derived from Llama 3 405B, 128k context length. Llama-3 license. See model card for more info.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rerri"&gt; /u/rerri &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/Llama-3_1-Nemotron-Ultra-253B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T06:10:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jts2hq</id>
     <title>"...we're also hearing some reports of mixed quality across different services. Since we dropped the models as soon as they were ready, we expect it'll take several days for all the public implementations to get dialed in..."</title>
     <updated>2025-04-07T18:12:50+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jts2hq/were_also_hearing_some_reports_of_mixed_quality/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T18:12:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ju6sm1</id>
+    <title>nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face</title>
+    <updated>2025-04-08T06:10:27+00:00</updated>
+    <author>
+      <name>/u/rerri</name>
+      <uri>https://old.reddit.com/user/rerri</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt; &lt;img alt="nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face" src="https://external-preview.redd.it/3UxngnIkjlXfR7MJ8ohQbkyRtFJzuTypVV_aoc8_Tmk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e441532f8217ac64c401c9352ae767ec98103b56" title="nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Reasoning model derived from Llama 3 405B, 128k context length. Llama-3 license. See model card for more info.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rerri"&gt; /u/rerri &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/Llama-3_1-Nemotron-Ultra-253B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T06:10:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1ju3dtg</id>
@@ -268,19 +268,6 @@
     <published>2025-04-08T02:43:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ju0nd6</id>
-    <title>LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a "customized model to optimize for human preference"</title>
-    <updated>2025-04-08T00:23:00+00:00</updated>
-    <author>
-      <name>/u/TKGaming_11</name>
-      <uri>https://old.reddit.com/user/TKGaming_11</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"&gt; &lt;img alt="LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a &amp;quot;customized model to optimize for human preference&amp;quot;" src="https://external-preview.redd.it/Sg2foySeNKtSftpVRS-DvTZSfTyNGrVywN1v0vjvasA.jpg?width=108&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c0bc2190330f7558e229144dd8c588556bdeaf22" title="LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a &amp;quot;customized model to optimize for human preference&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://x.com/lmarena_ai/status/1909397817434816562"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T00:23:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jtnryp</id>
     <title>Must have 5–8+ years experience with ChatGPT and Microsoft Copilot</title>
     <updated>2025-04-07T15:18:03+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jtnryp/must_have_58_years_experience_with_chatgpt_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-07T15:18:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ju0nd6</id>
+    <title>LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a "customized model to optimize for human preference"</title>
+    <updated>2025-04-08T00:23:00+00:00</updated>
+    <author>
+      <name>/u/TKGaming_11</name>
+      <uri>https://old.reddit.com/user/TKGaming_11</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"&gt; &lt;img alt="LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a &amp;quot;customized model to optimize for human preference&amp;quot;" src="https://external-preview.redd.it/Sg2foySeNKtSftpVRS-DvTZSfTyNGrVywN1v0vjvasA.jpg?width=108&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c0bc2190330f7558e229144dd8c588556bdeaf22" title="LM Arena confirm that the version of Llama-4 Maverick listed on the arena is a &amp;quot;customized model to optimize for human preference&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://x.com/lmarena_ai/status/1909397817434816562"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju0nd6/lm_arena_confirm_that_the_version_of_llama4/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T00:23:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1ju37gh</id>
