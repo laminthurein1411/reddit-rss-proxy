@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-08T18:51:00+00:00</updated>
+  <updated>2025-04-08T19:05:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1juira1</id>
-    <title>Advice on pipeline for OCR / document ingestion for RAG</title>
-    <updated>2025-04-08T17:07:37+00:00</updated>
-    <author>
-      <name>/u/TheRedfather</name>
-      <uri>https://old.reddit.com/user/TheRedfather</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I'm working on a project which involves ingesting and indexing a large number of files for a RAG pipeline (mostly PDF, PowerPoint, Excel and Word but often containing a lot charts, tables, images and diagrams). The intention would be to convert the files to a text format that is RAG-friendly and store the text chunks in a vector database along with metadata such as the source document, page number etc.&lt;/p&gt; &lt;p&gt;When I originally tested out document parsers such as Azure Document Intelligence, OpenParse and Unstructured I was a bit underwhelmed with the results. I was using the following pipeline:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use the document parser to segment the document (e.g. headers, paragraphs, images)&lt;/li&gt; &lt;li&gt;For the non-text elements, send them to a vision model to convert to text (if it's a graph, chart or table, output a JSON string; if it's an image, provide a text description/summary of the image)&lt;/li&gt; &lt;li&gt;Concatenate the text and non-text transcriptions into a final document, chunk based on some heuristic and embed&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The problem seems to lie in step 1 - some parsers apply bounding boxes to the document and get these completely wrong for more complex documents, or don't properly group associated elements together. This then breaks down the rest of the pipeline.&lt;/p&gt; &lt;p&gt;I've found that the new vision models seem to actually do a better job of converting a document to text. Open/local models also seem to be improving quickly here. The pipeline looks something like this (e.g. for PDF):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Convert each page of a PDF to an image&lt;/li&gt; &lt;li&gt;Send each page to a vision model/multimodal language model along with a prompt to convert to text (+ instructions on how to handle images, charts and tables)&lt;/li&gt; &lt;li&gt;Concatenate, chunk and embed&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The problem with the latter approach is it's a bit more expensive and probably overkill in some situations (particularly when dealing with documents that are mostly text), so perhaps some sort of hybrid works best.&lt;/p&gt; &lt;p&gt;I'm wondering if other folks have worked on a similar problem. Specifically:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How are you setting up your pipeline to do large scale OCR tasks of this sort?&lt;/li&gt; &lt;li&gt;Do you have any suggestions on the best strategy for storing image, table and chart representations?&lt;/li&gt; &lt;li&gt;Any recommendations on the best open source packages/tools that abstract away some of the extraction challenges using vision models (e.g. prompt setup, handling non-text elements etc)? Ideally looking for a package that can easily plug and play different local and online models, and that is lightweight (minimal number of dependencies)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheRedfather"&gt; /u/TheRedfather &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1juira1/advice_on_pipeline_for_ocr_document_ingestion_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T17:07:37+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1judvfg</id>
-    <title>How to fix slow inference speed of mistral-small 3.1 when using Ollama</title>
-    <updated>2025-04-08T13:42:59+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1judvfg/how_to_fix_slow_inference_speed_of_mistralsmall/"&gt; &lt;img alt="How to fix slow inference speed of mistral-small 3.1 when using Ollama" src="https://b.thumbs.redditmedia.com/b1xC6TcznxFibF4fZlAF8DJi1Xq03BdK_UxT2UDXHGs.jpg" title="How to fix slow inference speed of mistral-small 3.1 when using Ollama" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Ollama v0.6.5 messed up the VRAM estimation for this model, so it will more likely to offload everything to RAM and slow things down.&lt;/p&gt; &lt;p&gt;Setting &lt;code&gt;num_gpu&lt;/code&gt; to the maximum will fix the issue. (Load everything into GPU VRAM)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8a8ywhk77mte1.png?width=996&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e58f491e89e22d90028540856012f878704efd88"&gt;https://preview.redd.it/8a8ywhk77mte1.png?width=996&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e58f491e89e22d90028540856012f878704efd88&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1judvfg/how_to_fix_slow_inference_speed_of_mistralsmall/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1judvfg/how_to_fix_slow_inference_speed_of_mistralsmall/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1judvfg/how_to_fix_slow_inference_speed_of_mistralsmall/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T13:42:59+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ju9s1c</id>
     <title>The experimental version of llama4 maverick on lmstudio is also more creative in programming than the released one.</title>
@@ -71,6 +45,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jub3jj/cogito_v1_preview_suite_of_models_released_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-08T11:19:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jukgrh</id>
+    <title>LMArena Alpha UI drops [https://alpha.lmarena.ai/leaderboard]</title>
+    <updated>2025-04-08T18:15:23+00:00</updated>
+    <author>
+      <name>/u/HostFit8686</name>
+      <uri>https://old.reddit.com/user/HostFit8686</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jukgrh/lmarena_alpha_ui_drops/"&gt; &lt;img alt="LMArena Alpha UI drops [https://alpha.lmarena.ai/leaderboard]" src="https://b.thumbs.redditmedia.com/paDtWssmzWtKFyovI1RDMVntzQ7e2NAmQQIh0MeL_UE.jpg" title="LMArena Alpha UI drops [https://alpha.lmarena.ai/leaderboard]" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/l6cev0tsjnte1.png?width=1365&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6d98d3642a3b5a503c3b72b0ae2d5a3829998fe1"&gt;https://preview.redd.it/l6cev0tsjnte1.png?width=1365&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6d98d3642a3b5a503c3b72b0ae2d5a3829998fe1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I guess it's better than their atrocious Gradio UI version. It's still in alpha though.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jd0lbqjyjnte1.png?width=782&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c6bd13d24fca49b8c4fb7c38f96c3ee4fb491737"&gt;https://preview.redd.it/jd0lbqjyjnte1.png?width=782&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c6bd13d24fca49b8c4fb7c38f96c3ee4fb491737&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HostFit8686"&gt; /u/HostFit8686 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jukgrh/lmarena_alpha_ui_drops/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jukgrh/lmarena_alpha_ui_drops/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jukgrh/lmarena_alpha_ui_drops/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T18:15:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1julc3c</id>
+    <title>Well llama 4 is facing so many defeats again such low score on arc agi</title>
+    <updated>2025-04-08T18:50:36+00:00</updated>
+    <author>
+      <name>/u/Independent-Wind4462</name>
+      <uri>https://old.reddit.com/user/Independent-Wind4462</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt; &lt;img alt="Well llama 4 is facing so many defeats again such low score on arc agi" src="https://preview.redd.it/espl4stfqnte1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f0f715cad13717f261670e6b5e2abe772afa2aed" title="Well llama 4 is facing so many defeats again such low score on arc agi" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Wind4462"&gt; /u/Independent-Wind4462 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/espl4stfqnte1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1julc3c/well_llama_4_is_facing_so_many_defeats_again_such/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T18:50:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1jtnryp</id>
@@ -125,19 +125,6 @@
     <published>2025-04-08T15:17:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jucj35</id>
-    <title>We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs</title>
-    <updated>2025-04-08T12:38:04+00:00</updated>
-    <author>
-      <name>/u/Conscious-Marvel</name>
-      <uri>https://old.reddit.com/user/Conscious-Marvel</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"&gt; &lt;img alt="We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs" src="https://b.thumbs.redditmedia.com/cook1ZcfBr2fbNlaXrngBmGrgpU1awEmaVa2B9k4fms.jpg" title="We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL:DR&lt;/strong&gt; - We fine-tuned a vision-language model to efficiently convert &lt;strong&gt;process diagrams (images)&lt;/strong&gt; into &lt;strong&gt;structured knowledge graphs&lt;/strong&gt;. Our custom model outperformed the base Qwen model by &lt;strong&gt;14% on node detection&lt;/strong&gt; and &lt;strong&gt;23% on edge detection&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;We’re still in early stages and would love community feedback to improve further!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model repo&lt;/strong&gt; : &lt;a href="https://huggingface.co/zackriya/diagram2graph"&gt;https://huggingface.co/zackriya/diagram2graph&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Github&lt;/strong&gt; : &lt;a href="https://github.com/Zackriya-Solutions/diagram2graph/tree/main"&gt;https://github.com/Zackriya-Solutions/diagram2graph/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The problem statement :&lt;/strong&gt; We had a large collection of &lt;strong&gt;Process Diagram images&lt;/strong&gt; that needed to be converted into a &lt;strong&gt;graph-based knowledge base for&lt;/strong&gt; downstream analytics and automation. The manual conversion process was inefficient, so we decided to build a system that could digitize these diagrams into &lt;strong&gt;machine-readable knowledge graphs&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt; : We started with API-based methods using &lt;strong&gt;Claude 3.5 Sonnet&lt;/strong&gt; and &lt;strong&gt;GPT-4o&lt;/strong&gt; to extract entities (nodes), relationships (edges), and attributes from diagrams. While performance was promising, &lt;strong&gt;data privacy&lt;/strong&gt; and &lt;strong&gt;cost of external APIs&lt;/strong&gt; were major blockers. We used models like GPT-4o and Claude-3.5 Sonet initially. We wanted something simple that can run on our servers. The privacy aspect is very important because we don’t want our business process data to be transferred to external APIs.&lt;/p&gt; &lt;p&gt;We fine-tuned &lt;strong&gt;Qwen2.5-VL-3B&lt;/strong&gt;, a small but capable vision-language model, to run &lt;strong&gt;locally&lt;/strong&gt; and securely. Our team (myself and &lt;a href="https://meetily.zackriya.com/"&gt;u/Sorry_Transition_599&lt;/a&gt;, the creator of Meetily – an open-source self-hosted meeting note-taker) worked on the initial architecture of the system, building the base software and training a model on a custom dataset of &lt;strong&gt;200 labeled diagram images&lt;/strong&gt;. We decided to go with qwen2.5-vl-3b after experimenting with multiple small LLMs for running them locally.&lt;/p&gt; &lt;p&gt;Compared to the base Qwen model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;+14% improvement&lt;/strong&gt; in node detection&lt;/li&gt; &lt;li&gt;&lt;strong&gt;+23% improvement&lt;/strong&gt; in edge detection&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Dataset size&lt;/strong&gt; : 200 Custom Labelled images&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Next steps :&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Increase dataset size and improve fine-tuning&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. Make the model compatible with Ollama for easy deployment&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. Package as a Python library for bulk and efficient diagram-to-graph conversion&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I hope our learnings are helpful to the community and expect community support.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious-Marvel"&gt; /u/Conscious-Marvel &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jucj35"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-08T12:38:04+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ju6sm1</id>
     <title>nvidia/Llama-3_1-Nemotron-Ultra-253B-v1 · Hugging Face</title>
     <updated>2025-04-08T06:10:27+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-08T06:10:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jucj35</id>
+    <title>We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs</title>
+    <updated>2025-04-08T12:38:04+00:00</updated>
+    <author>
+      <name>/u/Conscious-Marvel</name>
+      <uri>https://old.reddit.com/user/Conscious-Marvel</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"&gt; &lt;img alt="We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs" src="https://b.thumbs.redditmedia.com/cook1ZcfBr2fbNlaXrngBmGrgpU1awEmaVa2B9k4fms.jpg" title="We Fine-Tuned a Small Vision-Language Model (Qwen 2.5 3B VL) to Convert Process Diagram Images to Knowledge Graphs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL:DR&lt;/strong&gt; - We fine-tuned a vision-language model to efficiently convert &lt;strong&gt;process diagrams (images)&lt;/strong&gt; into &lt;strong&gt;structured knowledge graphs&lt;/strong&gt;. Our custom model outperformed the base Qwen model by &lt;strong&gt;14% on node detection&lt;/strong&gt; and &lt;strong&gt;23% on edge detection&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;We’re still in early stages and would love community feedback to improve further!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model repo&lt;/strong&gt; : &lt;a href="https://huggingface.co/zackriya/diagram2graph"&gt;https://huggingface.co/zackriya/diagram2graph&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Github&lt;/strong&gt; : &lt;a href="https://github.com/Zackriya-Solutions/diagram2graph/tree/main"&gt;https://github.com/Zackriya-Solutions/diagram2graph/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The problem statement :&lt;/strong&gt; We had a large collection of &lt;strong&gt;Process Diagram images&lt;/strong&gt; that needed to be converted into a &lt;strong&gt;graph-based knowledge base for&lt;/strong&gt; downstream analytics and automation. The manual conversion process was inefficient, so we decided to build a system that could digitize these diagrams into &lt;strong&gt;machine-readable knowledge graphs&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt; : We started with API-based methods using &lt;strong&gt;Claude 3.5 Sonnet&lt;/strong&gt; and &lt;strong&gt;GPT-4o&lt;/strong&gt; to extract entities (nodes), relationships (edges), and attributes from diagrams. While performance was promising, &lt;strong&gt;data privacy&lt;/strong&gt; and &lt;strong&gt;cost of external APIs&lt;/strong&gt; were major blockers. We used models like GPT-4o and Claude-3.5 Sonet initially. We wanted something simple that can run on our servers. The privacy aspect is very important because we don’t want our business process data to be transferred to external APIs.&lt;/p&gt; &lt;p&gt;We fine-tuned &lt;strong&gt;Qwen2.5-VL-3B&lt;/strong&gt;, a small but capable vision-language model, to run &lt;strong&gt;locally&lt;/strong&gt; and securely. Our team (myself and &lt;a href="https://meetily.zackriya.com/"&gt;u/Sorry_Transition_599&lt;/a&gt;, the creator of Meetily – an open-source self-hosted meeting note-taker) worked on the initial architecture of the system, building the base software and training a model on a custom dataset of &lt;strong&gt;200 labeled diagram images&lt;/strong&gt;. We decided to go with qwen2.5-vl-3b after experimenting with multiple small LLMs for running them locally.&lt;/p&gt; &lt;p&gt;Compared to the base Qwen model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;+14% improvement&lt;/strong&gt; in node detection&lt;/li&gt; &lt;li&gt;&lt;strong&gt;+23% improvement&lt;/strong&gt; in edge detection&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Dataset size&lt;/strong&gt; : 200 Custom Labelled images&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Next steps :&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Increase dataset size and improve fine-tuning&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. Make the model compatible with Ollama for easy deployment&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. Package as a Python library for bulk and efficient diagram-to-graph conversion&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I hope our learnings are helpful to the community and expect community support.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious-Marvel"&gt; /u/Conscious-Marvel &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jucj35"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jucj35/we_finetuned_a_small_visionlanguage_model_qwen_25/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-08T12:38:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1ju1qtt</id>
