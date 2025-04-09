@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-09T22:35:49+00:00</updated>
+  <updated>2025-04-09T22:48:41+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -99,19 +99,6 @@
     <published>2025-04-09T13:49:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jvi860</id>
-    <title>PSA: Gemma 3 QAT gguf models have some wrongly configured tokens</title>
-    <updated>2025-04-09T22:08:06+00:00</updated>
-    <author>
-      <name>/u/dampflokfreund</name>
-      <uri>https://old.reddit.com/user/dampflokfreund</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello,&lt;/p&gt; &lt;p&gt;so as I loaded my 12B IT q4_0 QAT model, I've noticed a strage error in llama.cpp: &amp;quot;load: control-looking token: 106 '' was not control-type; this is probably a bug in the model. its type will be overridden&amp;quot;&lt;/p&gt; &lt;p&gt;So I've wondered, is this normal and loaded a Bartowski file, and indeed, that error was nowhere to be seen. After that, I did some digging and came across this post by the guy who implemented Gemma 3 and LLama 4 support in llama.cpp: &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151"&gt;https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This looked awfully similar to my error, so what I did was set both token 105 and 106 to control (which are &amp;lt;start\_of\_turn&amp;gt; and &amp;lt;end\_of\_turn&amp;gt; btw) instead of normal (like it's the case with the bartowski files too) using the huggingface gguf editor. Not only that, the image start and end tokens were also not set to control, unlike the original. I've fixed that and noticed a boost in the image capabilities immediately.&lt;/p&gt; &lt;p&gt;If you have noticed weirdness with the QAT models in comparison to the older bart models, then it was most likely due to that. On top of that, the name metadata was missing as well which I've added back, apparently some inference backends need it. &lt;/p&gt; &lt;p&gt;I have uploaded it here: &lt;a href="https://huggingface.co/Dampfinchen/google-gemma-3-12b-it-qat-q4_0-gguf-small-fix"&gt;https://huggingface.co/Dampfinchen/google-gemma-3-12b-it-qat-q4_0-gguf-small-fix&lt;/a&gt; Note that it is based on &lt;a href="https://huggingface.co/stduhpf"&gt;stduhpf&lt;/a&gt;'s version which is faster without any compromise to performance.&lt;/p&gt; &lt;p&gt;Happy testing!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dampflokfreund"&gt; /u/dampflokfreund &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-09T22:08:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jvcss8</id>
     <title>Loong is here: An open-source program to build verifiable synthetic datasets for reasoning-heavy domains (logic, math, graph theory, etc.)</title>
     <updated>2025-04-09T18:20:10+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvcss8/loong_is_here_an_opensource_program_to_build/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-09T18:20:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jvi860</id>
+    <title>PSA: Gemma 3 QAT gguf models have some wrongly configured tokens</title>
+    <updated>2025-04-09T22:08:06+00:00</updated>
+    <author>
+      <name>/u/dampflokfreund</name>
+      <uri>https://old.reddit.com/user/dampflokfreund</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello,&lt;/p&gt; &lt;p&gt;so as I loaded my 12B IT q4_0 QAT model, I've noticed a strage error in llama.cpp: &amp;quot;load: control-looking token: 106 '' was not control-type; this is probably a bug in the model. its type will be overridden&amp;quot;&lt;/p&gt; &lt;p&gt;So I've wondered, is this normal and loaded a Bartowski file, and indeed, that error was nowhere to be seen. After that, I did some digging and came across this post by the guy who implemented Gemma 3 and LLama 4 support in llama.cpp: &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151"&gt;https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This looked awfully similar to my error, so what I did was set both token 105 and 106 to control (which are &amp;lt;start\_of\_turn&amp;gt; and &amp;lt;end\_of\_turn&amp;gt; btw) instead of normal (like it's the case with the bartowski files too) using the huggingface gguf editor. Not only that, the image start and end tokens were also not set to control, unlike the original. I've fixed that and noticed a boost in the image capabilities immediately.&lt;/p&gt; &lt;p&gt;If you have noticed weirdness with the QAT models in comparison to the older bart models, then it was most likely due to that. On top of that, the name metadata was missing as well which I've added back, apparently some inference backends need it. &lt;/p&gt; &lt;p&gt;I have uploaded it here: &lt;a href="https://huggingface.co/Dampfinchen/google-gemma-3-12b-it-qat-q4_0-gguf-small-fix"&gt;https://huggingface.co/Dampfinchen/google-gemma-3-12b-it-qat-q4_0-gguf-small-fix&lt;/a&gt; Note that it is based on &lt;a href="https://huggingface.co/stduhpf"&gt;stduhpf&lt;/a&gt;'s version which is faster without any compromise to performance.&lt;/p&gt; &lt;p&gt;Happy testing!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dampflokfreund"&gt; /u/dampflokfreund &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-09T22:08:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1juni3t</id>
@@ -229,19 +229,6 @@
     <published>2025-04-09T15:01:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jvgpju</id>
-    <title>Moonshot AI released Kimi-VL MoE (3B/16B) Thinking</title>
-    <updated>2025-04-09T21:02:16+00:00</updated>
-    <author>
-      <name>/u/ResearchCrafty1804</name>
-      <uri>https://old.reddit.com/user/ResearchCrafty1804</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt; &lt;img alt="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" src="https://b.thumbs.redditmedia.com/eEN3TB95dTXyXnsBnqObPtpp29ara6PvOVYX7yFQo1c.jpg" title="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Moonshot AI's Kimi-VL and Kimi-VL-Thinking! &lt;/p&gt; &lt;p&gt;💡 An MoE VLM and an MoE Reasoning VLM with only ~3B activated parameters (total 16B) 🧠 Strong multimodal reasoning (36.8% on MathVision, on par with 10x larger models) and agent skills (34.5% on ScreenSpot-Pro) 🖼️ Handles high-res visuals natively with MoonViT (867 on OCRBench) 🧾 Supports long context windows up to 128K (35.1% on MMLongBench-Doc, 64.5% on LongVideoBench) 🏆 Outperforms larger models like GPT-4o on key benchmarks&lt;/p&gt; &lt;p&gt;📜 Paper: &lt;a href="https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf"&gt;https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf&lt;/a&gt; 🤗 Huggingface: &lt;a href="https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85"&gt;https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ResearchCrafty1804"&gt; /u/ResearchCrafty1804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jvgpju"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-09T21:02:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jv9s6q</id>
     <title>LMSYS WebDev Arena updated with DeepSeek-V3-0324 and Llama 4 models.</title>
     <updated>2025-04-09T16:18:25+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jv22mm/qwen3_and_qwen3moe_support_merged_into_llamacpp/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-09T10:00:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jvgpju</id>
+    <title>Moonshot AI released Kimi-VL MoE (3B/16B) Thinking</title>
+    <updated>2025-04-09T21:02:16+00:00</updated>
+    <author>
+      <name>/u/ResearchCrafty1804</name>
+      <uri>https://old.reddit.com/user/ResearchCrafty1804</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt; &lt;img alt="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" src="https://b.thumbs.redditmedia.com/eEN3TB95dTXyXnsBnqObPtpp29ara6PvOVYX7yFQo1c.jpg" title="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Moonshot AI's Kimi-VL and Kimi-VL-Thinking! &lt;/p&gt; &lt;p&gt;💡 An MoE VLM and an MoE Reasoning VLM with only ~3B activated parameters (total 16B) 🧠 Strong multimodal reasoning (36.8% on MathVision, on par with 10x larger models) and agent skills (34.5% on ScreenSpot-Pro) 🖼️ Handles high-res visuals natively with MoonViT (867 on OCRBench) 🧾 Supports long context windows up to 128K (35.1% on MMLongBench-Doc, 64.5% on LongVideoBench) 🏆 Outperforms larger models like GPT-4o on key benchmarks&lt;/p&gt; &lt;p&gt;📜 Paper: &lt;a href="https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf"&gt;https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf&lt;/a&gt; 🤗 Huggingface: &lt;a href="https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85"&gt;https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ResearchCrafty1804"&gt; /u/ResearchCrafty1804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jvgpju"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-09T21:02:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1jv71su</id>
