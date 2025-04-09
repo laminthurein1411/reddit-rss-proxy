@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-09T22:06:02+00:00</updated>
+  <updated>2025-04-09T22:24:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jvhno3</id>
-    <title>Is this the same LLama-4 as we can download from HF? Looks legit for browser automation agents with cerebras/groq.</title>
-    <updated>2025-04-09T21:42:55+00:00</updated>
-    <author>
-      <name>/u/secopsml</name>
-      <uri>https://old.reddit.com/user/secopsml</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvhno3/is_this_the_same_llama4_as_we_can_download_from/"&gt; &lt;img alt="Is this the same LLama-4 as we can download from HF? Looks legit for browser automation agents with cerebras/groq." src="https://preview.redd.it/p7t6enynovte1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f96b049cc70584195232d8e7a5863788968ac752" title="Is this the same LLama-4 as we can download from HF? Looks legit for browser automation agents with cerebras/groq." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;we got much faster llama 4 with little quality upgrade. People talking shit about recent llamas seem to have no idea how important latency for user facing apps is. And how much optimization is required to host ai apps without vc funding.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/p7t6enynovte1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvhno3/is_this_the_same_llama4_as_we_can_download_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvhno3/is_this_the_same_llama4_as_we_can_download_from/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-09T21:42:55+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jvcq5h</id>
     <title>Another heptagon spin test with bouncing balls</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvcq5h/another_heptagon_spin_test_with_bouncing_balls/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-09T18:17:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jvi860</id>
+    <title>PSA: Gemma 3 QAT gguf models have some wrongly configured tokens</title>
+    <updated>2025-04-09T22:08:06+00:00</updated>
+    <author>
+      <name>/u/dampflokfreund</name>
+      <uri>https://old.reddit.com/user/dampflokfreund</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello,&lt;/p&gt; &lt;p&gt;so as I loaded my 12B IT q4_0 QAT model, I've noticed a strage error in llama.cpp: &amp;quot;load: control-looking token: 106 '' was not control-type; this is probably a bug in the model. its type will be overridden&amp;quot;&lt;/p&gt; &lt;p&gt;So I've wondered, is this normal and loaded a Bartowski file, and indeed, that error was nowhere to be seen. After that, I did some digging and came across this post by the guy who implemented Gemma 3 and LLama 4 support in llama.cpp: &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151"&gt;https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3#67f6a2e0207b4bceea793151&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This looked awfully similar to my error, so what I did was set both token 105 and 106 to control (which are &amp;lt;start\_of\_turn&amp;gt; and &amp;lt;end\_of\_turn&amp;gt; btw) instead of normal (like it's the case with the bartowski files too) using the huggingface gguf editor. Not only that, the image start and end tokens were also not set to control, unlike the original. I've fixed that and noticed a boost in the image capabilities immediately. &lt;/p&gt; &lt;p&gt;If you have noticed weirdness with the QAT models in comparison to the older bart models, then it was most likely due to that. On top of that, the name metadata was missing as well which I've added back, apparently some inference backends need it. I will upload the 12B one shortly here &amp;quot;Dampfinchen/google-gemma-3-12b-it-qat-q4_0-gguf-small-fix&amp;quot; Note that it is based on u/&lt;a href="https://huggingface.co/stduhpf"&gt;stduhpf&lt;/a&gt; 's version which is faster without any compromise to performance. &lt;/p&gt; &lt;p&gt;Happy testing! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dampflokfreund"&gt; /u/dampflokfreund &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvi860/psa_gemma_3_qat_gguf_models_have_some_wrongly/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-09T22:08:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1jvgb3w</id>
@@ -125,19 +125,6 @@
     <published>2025-04-09T18:20:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jvflqw</id>
-    <title>Oobabooga just added support for Exllamav3!</title>
-    <updated>2025-04-09T20:15:25+00:00</updated>
-    <author>
-      <name>/u/Jellonling</name>
-      <uri>https://old.reddit.com/user/Jellonling</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"&gt; &lt;img alt="Oobabooga just added support for Exllamav3!" src="https://external-preview.redd.it/oveKGWlpg5XZWYThefWN76YvFa_8xGC9Blo4QccpcsM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cddd23fbc026a9cda1c530e7417ee1358ccf7915" title="Oobabooga just added support for Exllamav3!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Jellonling"&gt; /u/Jellonling &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/oobabooga/text-generation-webui/releases/tag/v2.7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-09T20:15:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1juni3t</id>
     <title>DeepCoder: A Fully Open-Source 14B Coder at O3-mini Level</title>
     <updated>2025-04-08T20:20:30+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1juni3t/deepcoder_a_fully_opensource_14b_coder_at_o3mini/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-08T20:20:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jvflqw</id>
+    <title>Oobabooga just added support for Exllamav3!</title>
+    <updated>2025-04-09T20:15:25+00:00</updated>
+    <author>
+      <name>/u/Jellonling</name>
+      <uri>https://old.reddit.com/user/Jellonling</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"&gt; &lt;img alt="Oobabooga just added support for Exllamav3!" src="https://external-preview.redd.it/oveKGWlpg5XZWYThefWN76YvFa_8xGC9Blo4QccpcsM.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cddd23fbc026a9cda1c530e7417ee1358ccf7915" title="Oobabooga just added support for Exllamav3!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Jellonling"&gt; /u/Jellonling &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/oobabooga/text-generation-webui/releases/tag/v2.7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvflqw/oobabooga_just_added_support_for_exllamav3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-09T20:15:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1jv4k84</id>
@@ -203,19 +203,6 @@
     <published>2025-04-09T17:56:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jvgpju</id>
-    <title>Moonshot AI released Kimi-VL MoE (3B/16B) Thinking</title>
-    <updated>2025-04-09T21:02:16+00:00</updated>
-    <author>
-      <name>/u/ResearchCrafty1804</name>
-      <uri>https://old.reddit.com/user/ResearchCrafty1804</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt; &lt;img alt="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" src="https://b.thumbs.redditmedia.com/eEN3TB95dTXyXnsBnqObPtpp29ara6PvOVYX7yFQo1c.jpg" title="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Moonshot AI's Kimi-VL and Kimi-VL-Thinking! &lt;/p&gt; &lt;p&gt;💡 An MoE VLM and an MoE Reasoning VLM with only ~3B activated parameters (total 16B) 🧠 Strong multimodal reasoning (36.8% on MathVision, on par with 10x larger models) and agent skills (34.5% on ScreenSpot-Pro) 🖼️ Handles high-res visuals natively with MoonViT (867 on OCRBench) 🧾 Supports long context windows up to 128K (35.1% on MMLongBench-Doc, 64.5% on LongVideoBench) 🏆 Outperforms larger models like GPT-4o on key benchmarks&lt;/p&gt; &lt;p&gt;📜 Paper: &lt;a href="https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf"&gt;https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf&lt;/a&gt; 🤗 Huggingface: &lt;a href="https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85"&gt;https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ResearchCrafty1804"&gt; /u/ResearchCrafty1804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jvgpju"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-09T21:02:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jvbhlp</id>
     <title>I actually really like Llama 4 scout</title>
     <updated>2025-04-09T17:28:00+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvbhlp/i_actually_really_like_llama_4_scout/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-09T17:28:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jvgpju</id>
+    <title>Moonshot AI released Kimi-VL MoE (3B/16B) Thinking</title>
+    <updated>2025-04-09T21:02:16+00:00</updated>
+    <author>
+      <name>/u/ResearchCrafty1804</name>
+      <uri>https://old.reddit.com/user/ResearchCrafty1804</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt; &lt;img alt="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" src="https://b.thumbs.redditmedia.com/eEN3TB95dTXyXnsBnqObPtpp29ara6PvOVYX7yFQo1c.jpg" title="Moonshot AI released Kimi-VL MoE (3B/16B) Thinking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Moonshot AI's Kimi-VL and Kimi-VL-Thinking! &lt;/p&gt; &lt;p&gt;💡 An MoE VLM and an MoE Reasoning VLM with only ~3B activated parameters (total 16B) 🧠 Strong multimodal reasoning (36.8% on MathVision, on par with 10x larger models) and agent skills (34.5% on ScreenSpot-Pro) 🖼️ Handles high-res visuals natively with MoonViT (867 on OCRBench) 🧾 Supports long context windows up to 128K (35.1% on MMLongBench-Doc, 64.5% on LongVideoBench) 🏆 Outperforms larger models like GPT-4o on key benchmarks&lt;/p&gt; &lt;p&gt;📜 Paper: &lt;a href="https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf"&gt;https://github.com/MoonshotAI/Kimi-VL/blob/main/Kimi-VL.pdf&lt;/a&gt; 🤗 Huggingface: &lt;a href="https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85"&gt;https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ResearchCrafty1804"&gt; /u/ResearchCrafty1804 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1jvgpju"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jvgpju/moonshot_ai_released_kimivl_moe_3b16b_thinking/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-09T21:02:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1jv7x6l</id>
