@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-12T04:24:38+00:00</updated>
+  <updated>2025-04-12T04:38:06+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -125,19 +125,6 @@
     <published>2025-04-11T12:34:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jx84il</id>
-    <title>Single purpose small (&gt;8b) LLMs?</title>
-    <updated>2025-04-12T03:27:14+00:00</updated>
-    <author>
-      <name>/u/InsideYork</name>
-      <uri>https://old.reddit.com/user/InsideYork</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Any ones you consider good enough to run constantly for quick inferences? I like llama 3.1 ultramedical 8b a lot for medical knowledge and I use phi-4 mini for questions for RAG. I was wondering which you use for single purposes like maybe CLI autocomplete or otherwise.&lt;/p&gt; &lt;p&gt;I'm also wondering what the capabilities for the 8b models are so that you don't need to use stuff like Google anymore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/InsideYork"&gt; /u/InsideYork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T03:27:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jx30gl</id>
     <title>Current state of TTS Pipeline</title>
     <updated>2025-04-11T22:54:17+00:00</updated>
@@ -151,19 +138,6 @@
     <published>2025-04-11T22:54:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jx8ax5</id>
-    <title>3090 + 2070 experiments</title>
-    <updated>2025-04-12T03:37:23+00:00</updated>
-    <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - &lt;strong&gt;even a slow GPU helps a lot if you're out of VRAM&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Before I buy a second 3090, I want to check if I am able to use two GPUs at all.&lt;/p&gt; &lt;p&gt;In my old computer, I had a 2070. It's a very old GPU with 8GB of VRAM, but it was my first GPU for experimenting with LLMs, so I knew it was useful.&lt;/p&gt; &lt;p&gt;I purchased a riser and connected the 2070 as a second GPU. No configuration was needed; however, I had to rebuild llama.cpp, because it uses nvcc to detect the GPU during the build, and the 2070 uses a lower version of CUDA. So my regular llama.cpp build wasn't able to use the old card, but a simple CMake rebuild fixed it.&lt;/p&gt; &lt;p&gt;So let's say I want to use &lt;strong&gt;Qwen_QwQ-32B-Q6_K_L.gguf&lt;/strong&gt; on my 3090. To do that, I can offload only 54 out of 65 layers to the GPU, which results in &lt;strong&gt;7.44 t/s&lt;/strong&gt;. But when I run the same model on the 3090 + 2070, I can fit all 65 layers into the GPUs, and the result is &lt;strong&gt;16.20 t/s.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For &lt;strong&gt;Qwen2.5-32B-Instruct-Q5_K_M.gguf&lt;/strong&gt;, it's different, because I can fit all 65 layers on the 3090 alone, and the result is &lt;strong&gt;29.68 t/s&lt;/strong&gt;. When I enable the 2070, so the layers are split across both cards, performance drops to &lt;strong&gt;19.01 t/s&lt;/strong&gt; — because some calculations are done on the slower 2070 instead of the fast 3090.&lt;/p&gt; &lt;p&gt;When I try &lt;strong&gt;nvidia_Llama-3_3-Nemotron-Super-49B-v1-Q4_K_M.gguf&lt;/strong&gt; on the 3090, I can offload 65 out of 81 layers to the GPU, and the result is &lt;strong&gt;5.17 t/s.&lt;/strong&gt; When I split the model across the 3090 and 2070, I can offload all 81 layers, and the result is &lt;strong&gt;16.16 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Finally, when testing &lt;strong&gt;google_gemma-3-27b-it-Q6_K.gguf&lt;/strong&gt; on the 3090 alone, I can offload 61 out of 63 layers, which gives me &lt;strong&gt;15.33 t/s&lt;/strong&gt;. With the 3090 + 2070, I can offload all 63 layers, and the result is &lt;strong&gt;22.38 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Hope that’s useful for people who are thinking about adding a second GPU.&lt;/p&gt; &lt;p&gt;All tests were done on Linux with llama-cli.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T03:37:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jwiye4</id>
     <title>Lmarena.ai boots off llama4 from leaderboard</title>
     <updated>2025-04-11T06:01:09+00:00</updated>
@@ -175,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwiye4/lmarenaai_boots_off_llama4_from_leaderboard/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T06:01:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jx84il</id>
+    <title>Single purpose small (&gt;8b) LLMs?</title>
+    <updated>2025-04-12T03:27:14+00:00</updated>
+    <author>
+      <name>/u/InsideYork</name>
+      <uri>https://old.reddit.com/user/InsideYork</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Any ones you consider good enough to run constantly for quick inferences? I like llama 3.1 ultramedical 8b a lot for medical knowledge and I use phi-4 mini for questions for RAG. I was wondering which you use for single purposes like maybe CLI autocomplete or otherwise.&lt;/p&gt; &lt;p&gt;I'm also wondering what the capabilities for the 8b models are so that you don't need to use stuff like Google anymore.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/InsideYork"&gt; /u/InsideYork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T03:27:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1jx195z</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwuizx/i_tested_the_top_models_used_for_translation_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T16:48:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jx8ax5</id>
+    <title>3090 + 2070 experiments</title>
+    <updated>2025-04-12T03:37:23+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - &lt;strong&gt;even a slow GPU helps a lot if you're out of VRAM&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Before I buy a second 3090, I want to check if I am able to use two GPUs at all.&lt;/p&gt; &lt;p&gt;In my old computer, I had a 2070. It's a very old GPU with 8GB of VRAM, but it was my first GPU for experimenting with LLMs, so I knew it was useful.&lt;/p&gt; &lt;p&gt;I purchased a riser and connected the 2070 as a second GPU. No configuration was needed; however, I had to rebuild llama.cpp, because it uses nvcc to detect the GPU during the build, and the 2070 uses a lower version of CUDA. So my regular llama.cpp build wasn't able to use the old card, but a simple CMake rebuild fixed it.&lt;/p&gt; &lt;p&gt;So let's say I want to use &lt;strong&gt;Qwen_QwQ-32B-Q6_K_L.gguf&lt;/strong&gt; on my 3090. To do that, I can offload only 54 out of 65 layers to the GPU, which results in &lt;strong&gt;7.44 t/s&lt;/strong&gt;. But when I run the same model on the 3090 + 2070, I can fit all 65 layers into the GPUs, and the result is &lt;strong&gt;16.20 t/s.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For &lt;strong&gt;Qwen2.5-32B-Instruct-Q5_K_M.gguf&lt;/strong&gt;, it's different, because I can fit all 65 layers on the 3090 alone, and the result is &lt;strong&gt;29.68 t/s&lt;/strong&gt;. When I enable the 2070, so the layers are split across both cards, performance drops to &lt;strong&gt;19.01 t/s&lt;/strong&gt; — because some calculations are done on the slower 2070 instead of the fast 3090.&lt;/p&gt; &lt;p&gt;When I try &lt;strong&gt;nvidia_Llama-3_3-Nemotron-Super-49B-v1-Q4_K_M.gguf&lt;/strong&gt; on the 3090, I can offload 65 out of 81 layers to the GPU, and the result is &lt;strong&gt;5.17 t/s.&lt;/strong&gt; When I split the model across the 3090 and 2070, I can offload all 81 layers, and the result is &lt;strong&gt;16.16 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Finally, when testing &lt;strong&gt;google_gemma-3-27b-it-Q6_K.gguf&lt;/strong&gt; on the 3090 alone, I can offload 61 out of 63 layers, which gives me &lt;strong&gt;15.33 t/s&lt;/strong&gt;. With the 3090 + 2070, I can offload all 63 layers, and the result is &lt;strong&gt;22.38 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Hope that’s useful for people who are thinking about adding a second GPU.&lt;/p&gt; &lt;p&gt;All tests were done on Linux with llama-cli.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T03:37:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1jwlcar</id>
