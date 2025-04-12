@@ -2,62 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-12T12:46:48+00:00</updated>
+  <updated>2025-04-12T13:08:41+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jx30gl</id>
-    <title>Current state of TTS Pipeline</title>
-    <updated>2025-04-11T22:54:17+00:00</updated>
+    <id>t3_1jxgwjr</id>
+    <title>Optimus Alpha and Quasar Alpha tested</title>
+    <updated>2025-04-12T13:07:45+00:00</updated>
     <author>
-      <name>/u/kvenaik696969</name>
-      <uri>https://old.reddit.com/user/kvenaik696969</uri>
+      <name>/u/Ok-Contribution9043</name>
+      <uri>https://old.reddit.com/user/Ok-Contribution9043</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Text LLM gen models are all the rage, and they have solid pipelines. Ollama is extremely easy to use, but I cannot seem to find consensus on the TTS/cloning side of things. Here is some context,&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;I am trying to do voiceover work for a technical presentation I am making.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;I have a script that I initially read off decently (20 mins of speech and exact text), but need to modify the script and re record, so might as well use TTS to directly clone my voice. I could also use whisper to transcribe if necessary. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;The audio I recorded is decently clean - anechoic chamber, ok microphone (yeti blue - not the greatest, but better than my phone), has been denoised, eq'ed etc. It's good to go for a solid video, but the material needs to be changed, and I'd rather spend the time learning a new skill than boring redo work. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;I also would like to be able to translate the document into Mandarin/Chinese, and hopefully Korean (through deepseek or another LLM), but some of the items will be in English. This could be things like the word &amp;quot;Python&amp;quot; (programming language), so the model should accomodate that, which I have read some have problem with. &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;What is the textual length these models can transform into audio? I know some have only 5000 characters - do these have an API I can use to split my large text into words below 5000 chars, and then continually feed into the model?&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;What models do you recommend + &lt;em&gt;how do I run them?&lt;/em&gt; I have access to macOS. I could probably obtain Linux too, but only if it absolutely needs to be done that way. Windows is not preferred.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kvenaik696969"&gt; /u/kvenaik696969 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx30gl/current_state_of_tts_pipeline/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx30gl/current_state_of_tts_pipeline/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx30gl/current_state_of_tts_pipeline/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR, optimus alpha seems a slightly better version of quasar alpha. If these are indeed the open source open AI models, then they would be a strong addition to the open source options. They outperform llama 4 in most of my benchmarks, but as with anything LLM, YMMV. Below are the results, and links the the prompts, responses for each of teh questions, etc are in the video description.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=UISPFTwN2B4"&gt;https://www.youtube.com/watch?v=UISPFTwN2B4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model Performance Summary&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Test / Task&lt;/th&gt; &lt;th align="left"&gt;x-ai/grok-3-beta&lt;/th&gt; &lt;th align="left"&gt;openrouter/optimus-alpha&lt;/th&gt; &lt;th align="left"&gt;openrouter/quasar-alpha&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Harmful Question Detector&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 100&lt;/strong&gt; Perfect score.&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 100&lt;/strong&gt; Perfect score.&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 100&lt;/strong&gt; Perfect score.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;SQL Query Generator&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 95&lt;/strong&gt; Generally good. Minor error: returned index '1' instead of 'Wednesday'. Failed percentage question.&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 95&lt;/strong&gt; Generally good. Failed percentage question.&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 90&lt;/strong&gt; Struggled more. Generated invalid SQL (syntax error) on one question. Failed percentage question.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Retrieval Augmented Gen.&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 100&lt;/strong&gt; Perfect score. Handled tricky questions well.&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 95&lt;/strong&gt; Failed one question by misunderstanding the entity (answered GPT-4o, not 'o1').&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Score: 90&lt;/strong&gt; Failed one question due to hallucination (claimed DeepSeek-R1 was best based on partial context). Also failed the same entity misunderstanding question as Optimus Alpha.&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;Key Observations from the Video:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;strong&gt;Similarity:&lt;/strong&gt; Optimus Alpha and Quasar Alpha appear very similar, possibly sharing lineage, notably making the identical mistake on the RAG test (confusing 'o1' with GPT-4o).&lt;/li&gt; &lt;li&gt; &lt;strong&gt;Grok-3 Beta:&lt;/strong&gt; Showed strong performance, scoring perfectly on two tests with only minor SQL issues. It excelled at the RAG task where the others had errors.&lt;/li&gt; &lt;li&gt; &lt;strong&gt;Potential Weaknesses:&lt;/strong&gt; Quasar Alpha had issues with SQL generation (invalid code) and RAG (hallucination). Both Quasar Alpha and Optimus Alpha struggled with correctly identifying the target entity ('o1') in a specific RAG question.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Contribution9043"&gt; /u/Ok-Contribution9043 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgwjr/optimus_alpha_and_quasar_alpha_tested/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgwjr/optimus_alpha_and_quasar_alpha_tested/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgwjr/optimus_alpha_and_quasar_alpha_tested/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T22:54:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jxgf9d</id>
-    <title>I’m mostly into local AI due to the sensitivity of my data involved but have any of you guys tried the audio overview thing with Gemini? It’s freaking amazing!</title>
-    <updated>2025-04-12T12:42:19+00:00</updated>
-    <author>
-      <name>/u/Euphoric_Ad9500</name>
-      <uri>https://old.reddit.com/user/Euphoric_Ad9500</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://rr1---sn-qxo7rn7k.googlevideo.com/videoplayback?expire=1744468906&amp;amp;ei=il_6Z6K2Cr2Cir4P1s6G-AI&amp;amp;ip=208.92.185.155&amp;amp;id=c7a44a80feb2a798&amp;amp;itag=140&amp;amp;source=contrib_service_bard_storage&amp;amp;begin=0&amp;amp;requiressl=yes&amp;amp;xpc=EghoqJzIP3oBAQ==&amp;amp;met=1744461706,&amp;amp;mh=uY&amp;amp;mm=32&amp;amp;mn=sn-qxo7rn7k&amp;amp;ms=su&amp;amp;mv=m&amp;amp;mvi=1&amp;amp;pl=22&amp;amp;rms=su,su&amp;amp;sc=yes&amp;amp;susc=gg&amp;amp;app=fife&amp;amp;ic=976&amp;amp;eaua=cwlhzh6Cgy8&amp;amp;pcm2=yes&amp;amp;mime=audio/mp4&amp;amp;vprv=1&amp;amp;rqh=1&amp;amp;dur=423.857&amp;amp;lmt=1744461169373817&amp;amp;mt=1744461410&amp;amp;txp=0011224&amp;amp;sparams=expire,ei,ip,id,itag,source,requiressl,xpc,susc,app,ic,eaua,pcm2,mime,vprv,rqh,dur,lmt&amp;amp;sig=AJfQdSswRgIhAPGHDgpwZ8NzLc9uGqxBwgeQ6o2Y3nVZeqs5c9vf1_BLAiEA1_kq0d2ITINset5cfpJ1Ux_oO7oqsqQeijCUWUM8QzE=&amp;amp;lsparams=met,mh,mm,mn,ms,mv,mvi,pl,rms,sc&amp;amp;lsig=ACuhMU0wRgIhALYRPY770lHsqwHpylqISYL9TPJbLeecZlqzbU-Yaz24AiEAtScR0U42VzHKlTxeVbpteCUv0XLX0TiFncXLB58HFbE="&gt;https://rr1---sn-qxo7rn7k.googlevideo.com/videoplayback?expire=1744468906&amp;amp;ei=il_6Z6K2Cr2Cir4P1s6G-AI&amp;amp;ip=208.92.185.155&amp;amp;id=c7a44a80feb2a798&amp;amp;itag=140&amp;amp;source=contrib_service_bard_storage&amp;amp;begin=0&amp;amp;requiressl=yes&amp;amp;xpc=EghoqJzIP3oBAQ==&amp;amp;met=1744461706,&amp;amp;mh=uY&amp;amp;mm=32&amp;amp;mn=sn-qxo7rn7k&amp;amp;ms=su&amp;amp;mv=m&amp;amp;mvi=1&amp;amp;pl=22&amp;amp;rms=su,su&amp;amp;sc=yes&amp;amp;susc=gg&amp;amp;app=fife&amp;amp;ic=976&amp;amp;eaua=cwlhzh6Cgy8&amp;amp;pcm2=yes&amp;amp;mime=audio/mp4&amp;amp;vprv=1&amp;amp;rqh=1&amp;amp;dur=423.857&amp;amp;lmt=1744461169373817&amp;amp;mt=1744461410&amp;amp;txp=0011224&amp;amp;sparams=expire,ei,ip,id,itag,source,requiressl,xpc,susc,app,ic,eaua,pcm2,mime,vprv,rqh,dur,lmt&amp;amp;sig=AJfQdSswRgIhAPGHDgpwZ8NzLc9uGqxBwgeQ6o2Y3nVZeqs5c9vf1_BLAiEA1_kq0d2ITINset5cfpJ1Ux_oO7oqsqQeijCUWUM8QzE=&amp;amp;lsparams=met,mh,mm,mn,ms,mv,mvi,pl,rms,sc&amp;amp;lsig=ACuhMU0wRgIhALYRPY770lHsqwHpylqISYL9TPJbLeecZlqzbU-Yaz24AiEAtScR0U42VzHKlTxeVbpteCUv0XLX0TiFncXLB58HFbE=&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Euphoric_Ad9500"&gt; /u/Euphoric_Ad9500 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgf9d/im_mostly_into_local_ai_due_to_the_sensitivity_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgf9d/im_mostly_into_local_ai_due_to_the_sensitivity_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgf9d/im_mostly_into_local_ai_due_to_the_sensitivity_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T12:42:19+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jx195z</id>
-    <title>Built a React-based local LLM lab (Sigil). It's pretty simple and easy to make your own!</title>
-    <updated>2025-04-11T21:33:41+00:00</updated>
-    <author>
-      <name>/u/Quick_Ad5059</name>
-      <uri>https://old.reddit.com/user/Quick_Ad5059</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx195z/built_a_reactbased_local_llm_lab_sigil_its_pretty/"&gt; &lt;img alt="Built a React-based local LLM lab (Sigil). It's pretty simple and easy to make your own!" src="https://preview.redd.it/oc96pjxsx9ue1.gif?width=640&amp;amp;crop=smart&amp;amp;s=28a0a17b56e4183189515375e6f3003caffb14c4" title="Built a React-based local LLM lab (Sigil). It's pretty simple and easy to make your own!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I've been working with AI a bit lately and wanted to share a project I have with you all you. It is a React based app for testing LLM inference locally.&lt;/p&gt; &lt;p&gt;You can:&lt;/p&gt; &lt;p&gt;- Run local inference through a clean UI&lt;/p&gt; &lt;p&gt;- Customize system prompts and sampling settings&lt;/p&gt; &lt;p&gt;- Swap models by relaunching with a new path&lt;/p&gt; &lt;p&gt;It’s developer-facing and completely open source. If you’re experimenting with local models or building your own tools, feel free to dig in!&lt;/p&gt; &lt;p&gt;If you're *brand* new to coding I would recommend starting with my other inference engine repo, Prometheus to get your feet wet.&lt;/p&gt; &lt;p&gt;Link: [GitHub: Thrasher-Intelligence/Sigil](&lt;a href="https://github.com/Thrasher-Intelligence/sigil"&gt;https://github.com/Thrasher-Intelligence/sigil&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Would love your feedback, I'm still working and learning and I want to make this as good as I can for you!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Quick_Ad5059"&gt; /u/Quick_Ad5059 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/oc96pjxsx9ue1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx195z/built_a_reactbased_local_llm_lab_sigil_its_pretty/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx195z/built_a_reactbased_local_llm_lab_sigil_its_pretty/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T21:33:41+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jx90o3</id>
-    <title>Docker support for local LLM, with apple silicon support.</title>
-    <updated>2025-04-12T04:20:30+00:00</updated>
-    <author>
-      <name>/u/binuuday</name>
-      <uri>https://old.reddit.com/user/binuuday</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx90o3/docker_support_for_local_llm_with_apple_silicon/"&gt; &lt;img alt="Docker support for local LLM, with apple silicon support." src="https://b.thumbs.redditmedia.com/uYowlzd1mBc5PEZhnu5I7x_pSRjsewqaH8CXFFJA-Cg.jpg" title="Docker support for local LLM, with apple silicon support." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Docker supports running LLM model locally, and it supports apple silicon. Great speed. It exposes a host port for integrating UI and other tools. You need to update Docker to the latest version. &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/40qhb1qfybue1.png?width=2672&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=128e2c0543fd1fbbf890da9fd2886fbc5cad3ad0"&gt;https://preview.redd.it/40qhb1qfybue1.png?width=2672&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=128e2c0543fd1fbbf890da9fd2886fbc5cad3ad0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It's as simple as pulling a model, and running. Might be a wrapper of llama.cpp, but a very useful tool indeed. Opens up a lot of possibility.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;docker model pull ai/gemma3 docker model run ai/gemma3 &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/binuuday"&gt; /u/binuuday &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx90o3/docker_support_for_local_llm_with_apple_silicon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx90o3/docker_support_for_local_llm_with_apple_silicon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx90o3/docker_support_for_local_llm_with_apple_silicon/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T04:20:30+00:00</published>
+    <published>2025-04-12T13:07:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1jwuizx</id>
@@ -99,17 +60,17 @@
     <published>2025-04-11T08:59:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jxerlp</id>
-    <title>Llama 4: One week after</title>
-    <updated>2025-04-12T11:02:41+00:00</updated>
+    <id>t3_1jxes7n</id>
+    <title>Curious about AI architecture concepts: Tool Calling, AI Agents, and MCP (Model-Context-Protocol)</title>
+    <updated>2025-04-12T11:03:45+00:00</updated>
     <author>
-      <name>/u/1024cities</name>
-      <uri>https://old.reddit.com/user/1024cities</uri>
+      <name>/u/dai_app</name>
+      <uri>https://old.reddit.com/user/dai_app</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"&gt; &lt;img alt="Llama 4: One week after" src="https://external-preview.redd.it/0-6paEoT6qInH2ShEmXT2oFG97XXE-ZU3bj_4thONWo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=708dd533b280c6725c32ced47f682c73002a5635" title="Llama 4: One week after" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1024cities"&gt; /u/1024cities &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.kilocode.ai/p/llama-4-one-week-after"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone, I'm the developer of an Android app that runs AI models locally, without needing an internet connection. While exploring ways to make the system more modular and intelligent, I came across three concepts that seem related but not identical: Tool Calling, AI Agents, and MCP (Model-Context-Protocol).&lt;/p&gt; &lt;p&gt;I’d love to understand:&lt;/p&gt; &lt;p&gt;What are the key differences between these?&lt;/p&gt; &lt;p&gt;Are there overlapping ideas or design goals?&lt;/p&gt; &lt;p&gt;Which concept is more suitable for local-first, lightweight AI systems?&lt;/p&gt; &lt;p&gt;Any insights, explanations, or resources would be super helpful!&lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dai_app"&gt; /u/dai_app &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxes7n/curious_about_ai_architecture_concepts_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxes7n/curious_about_ai_architecture_concepts_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxes7n/curious_about_ai_architecture_concepts_tool/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T11:02:41+00:00</published>
+    <published>2025-04-12T11:03:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1jwlxlt</id>
@@ -151,19 +112,6 @@
     <published>2025-04-11T19:42:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jwsw03</id>
-    <title>Llama 4 Maverick vs. Deepseek v3 0324: A few observations</title>
-    <updated>2025-04-11T15:39:40+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran a few tests with Llama 4 Maverick and Deepseek v3 0324 regarding coding capability, reasoning intelligence, writing efficiency, and long context retrieval. &lt;/p&gt; &lt;p&gt;Here are a few observations:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Coding&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Llama 4 Maverick is simply not built for coding. The model is pretty bad at questions that were aced by QwQ 32b and Qwen 2.5 Coder. Deepseek v3 0324, on the other hand, is very much at the Sonnet 3.7 level. It aces pretty much everything thrown at it.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Reasoning&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is fast and does decent at reasoning tasks, if not for very complex reasoning, Maverick is good enough. Deepseek is a level above the new model distilled from r1, making it a good reasoner.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Writing and Response&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is pretty solid at writing; it might not be the best at creative writing, but it is plenty good for interaction and general conversation. What stands out is it's the fastest model at that size at a response time, consistently 5x-10x faster than Deepseek v3, though Deepseek is more creative and intelligent. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Long Context Retrievals&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is very fast and great at long-context retrieval. One million context windows are plenty for most RAG-related tasks. Deepseek takes a long time, much longer than Maverick, to do the same stuff. &lt;/p&gt; &lt;p&gt;For more detail, check out this post: &lt;a href="https://composio.dev/blog/llama-4-maverick-vs-deepseek-v3-0324/"&gt;Llama 4 Maverick vs. Deepseek v3 0324&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Maverick has its own uses. It's cheaper, faster, decent tool use, and gets things done, perfect for real-time interactions-based apps. &lt;/p&gt; &lt;p&gt;It's not perfect, but if Meta had positioned it differently, kept the launch more grounded, and avoided gaming the benchmarks, it wouldn't have blown up in their face.&lt;/p&gt; &lt;p&gt;Would love to know if you have found the Llama 4 models useful in your tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T15:39:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jx84il</id>
     <title>Single purpose small (&gt;8b) LLMs?</title>
     <updated>2025-04-12T03:27:14+00:00</updated>
@@ -175,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx84il/single_purpose_small_8b_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-12T03:27:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jwsw03</id>
+    <title>Llama 4 Maverick vs. Deepseek v3 0324: A few observations</title>
+    <updated>2025-04-11T15:39:40+00:00</updated>
+    <author>
+      <name>/u/SunilKumarDash</name>
+      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran a few tests with Llama 4 Maverick and Deepseek v3 0324 regarding coding capability, reasoning intelligence, writing efficiency, and long context retrieval. &lt;/p&gt; &lt;p&gt;Here are a few observations:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Coding&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Llama 4 Maverick is simply not built for coding. The model is pretty bad at questions that were aced by QwQ 32b and Qwen 2.5 Coder. Deepseek v3 0324, on the other hand, is very much at the Sonnet 3.7 level. It aces pretty much everything thrown at it.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Reasoning&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is fast and does decent at reasoning tasks, if not for very complex reasoning, Maverick is good enough. Deepseek is a level above the new model distilled from r1, making it a good reasoner.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Writing and Response&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is pretty solid at writing; it might not be the best at creative writing, but it is plenty good for interaction and general conversation. What stands out is it's the fastest model at that size at a response time, consistently 5x-10x faster than Deepseek v3, though Deepseek is more creative and intelligent. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Long Context Retrievals&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Maverick is very fast and great at long-context retrieval. One million context windows are plenty for most RAG-related tasks. Deepseek takes a long time, much longer than Maverick, to do the same stuff. &lt;/p&gt; &lt;p&gt;For more detail, check out this post: &lt;a href="https://composio.dev/blog/llama-4-maverick-vs-deepseek-v3-0324/"&gt;Llama 4 Maverick vs. Deepseek v3 0324&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Maverick has its own uses. It's cheaper, faster, decent tool use, and gets things done, perfect for real-time interactions-based apps. &lt;/p&gt; &lt;p&gt;It's not perfect, but if Meta had positioned it differently, kept the launch more grounded, and avoided gaming the benchmarks, it wouldn't have blown up in their face.&lt;/p&gt; &lt;p&gt;Would love to know if you have found the Llama 4 models useful in your tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwsw03/llama_4_maverick_vs_deepseek_v3_0324_a_few/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-11T15:39:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1jwstll</id>
@@ -190,17 +151,30 @@
     <published>2025-04-11T15:36:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jxg66a</id>
-    <title>Chonky — a neural approach for semantic text chunking</title>
-    <updated>2025-04-12T12:28:40+00:00</updated>
+    <id>t3_1jxgle9</id>
+    <title>Need help choosing the right model</title>
+    <updated>2025-04-12T12:51:17+00:00</updated>
     <author>
-      <name>/u/SpiritedTrip</name>
-      <uri>https://old.reddit.com/user/SpiritedTrip</uri>
+      <name>/u/Pentasis</name>
+      <uri>https://old.reddit.com/user/Pentasis</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"&gt; &lt;img alt="Chonky — a neural approach for semantic text chunking" src="https://external-preview.redd.it/bbol2phLNODm5ihucnpsipSAfUC2pz5hfAf0EiqnmkI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=808e31d64e7076456f2f61a5d747860e0bbd8c8c" title="Chonky — a neural approach for semantic text chunking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: I’ve made a transformer model and a wrapper library that segments text into meaningful semantic chunks.&lt;/p&gt; &lt;p&gt;The current text splitting approaches rely on heuristics (although one can use neural embedder to group semantically related sentences).&lt;/p&gt; &lt;p&gt;I propose a fully neural approach to semantic chunking.&lt;/p&gt; &lt;p&gt;I took the base distilbert model and trained it on a bookcorpus to split concatenated text paragraphs into original paragraphs. Basically it’s a token classification task. Model fine-tuning took day and a half on a 2x1080ti.&lt;/p&gt; &lt;p&gt;The library could be used as a text splitter module in a RAG system or for splitting transcripts for example.&lt;/p&gt; &lt;p&gt;The usage pattern that I see is the following: strip all the markup tags to produce pure text and feed this text into the model.&lt;/p&gt; &lt;p&gt;The problem is that although in theory this should improve overall RAG pipeline performance I didn’t manage to measure it properly. Other limitations: the model only supports English for now and the output text is downcased.&lt;/p&gt; &lt;p&gt;Please give it a try. I'll appreciate a feedback.&lt;/p&gt; &lt;p&gt;The Python library: &lt;a href="https://github.com/mirth/chonky"&gt;https://github.com/mirth/chonky&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The transformer model: &lt;a href="https://huggingface.co/mirth/chonky_distilbert_base_uncased_1"&gt;https://huggingface.co/mirth/chonky_distilbert_base_uncased_1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SpiritedTrip"&gt; /u/SpiritedTrip &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mirth/chonky"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today I was playing around with Gemini 2.5 pro. I used it to practice a meeting I will have next week regarding a complaint I have. I fed it all the relevant documents and emails, told it to be objective and not agree with me when I am wrong etc. etc. Then to take on the persona of the other party (with parameter) and initiate the meeting. It was incredible. And I learned a lot about my own flaws in communication techniques. From there the session became more therapeutic and again I feel like I learned more about my own behaviour and faults then 10 years of therapy.&lt;br /&gt; But the nature of the conversation (and the price tag) made me want to look at open source alternatives. So I downloaded Msty (or was that a bad choice? I'm new at this) but now I am looking at all these models at a loss at which one would fit my use-case best. Any advice?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Pentasis"&gt; /u/Pentasis &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgle9/need_help_choosing_the_right_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgle9/need_help_choosing_the_right_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgle9/need_help_choosing_the_right_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T12:28:40+00:00</published>
+    <published>2025-04-12T12:51:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxgmn8</id>
+    <title>Anyone used this LLM knowledge benchmark test?</title>
+    <updated>2025-04-12T12:53:12+00:00</updated>
+    <author>
+      <name>/u/borninmumbai</name>
+      <uri>https://old.reddit.com/user/borninmumbai</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgmn8/anyone_used_this_llm_knowledge_benchmark_test/"&gt; &lt;img alt="Anyone used this LLM knowledge benchmark test?" src="https://external-preview.redd.it/NonEiweyfQAsokMk86eDBTJ7R83pUKYMxr8CxV1z1HM.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9aff3afee7655533c10d6115069f258c973b92e5" title="Anyone used this LLM knowledge benchmark test?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was looking at some way to learn FAANG interview for LLMs and came across this MCQ test.&lt;/p&gt; &lt;p&gt;At first glance it looks like we'll structured and contains lot of concepts.&lt;/p&gt; &lt;p&gt;Has anyone gave this and if you have any review or suggestions for FAANG interview preparation.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/borninmumbai"&gt; /u/borninmumbai &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.masteringllm.com/course/advanced-genai-assessment#/home"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgmn8/anyone_used_this_llm_knowledge_benchmark_test/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxgmn8/anyone_used_this_llm_knowledge_benchmark_test/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T12:53:12+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxccrt</id>
@@ -216,6 +190,32 @@
     <published>2025-04-12T08:05:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jxg66a</id>
+    <title>Chonky — a neural approach for semantic text chunking</title>
+    <updated>2025-04-12T12:28:40+00:00</updated>
+    <author>
+      <name>/u/SpiritedTrip</name>
+      <uri>https://old.reddit.com/user/SpiritedTrip</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"&gt; &lt;img alt="Chonky — a neural approach for semantic text chunking" src="https://external-preview.redd.it/bbol2phLNODm5ihucnpsipSAfUC2pz5hfAf0EiqnmkI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=808e31d64e7076456f2f61a5d747860e0bbd8c8c" title="Chonky — a neural approach for semantic text chunking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: I’ve made a transformer model and a wrapper library that segments text into meaningful semantic chunks.&lt;/p&gt; &lt;p&gt;The current text splitting approaches rely on heuristics (although one can use neural embedder to group semantically related sentences).&lt;/p&gt; &lt;p&gt;I propose a fully neural approach to semantic chunking.&lt;/p&gt; &lt;p&gt;I took the base distilbert model and trained it on a bookcorpus to split concatenated text paragraphs into original paragraphs. Basically it’s a token classification task. Model fine-tuning took day and a half on a 2x1080ti.&lt;/p&gt; &lt;p&gt;The library could be used as a text splitter module in a RAG system or for splitting transcripts for example.&lt;/p&gt; &lt;p&gt;The usage pattern that I see is the following: strip all the markup tags to produce pure text and feed this text into the model.&lt;/p&gt; &lt;p&gt;The problem is that although in theory this should improve overall RAG pipeline performance I didn’t manage to measure it properly. Other limitations: the model only supports English for now and the output text is downcased.&lt;/p&gt; &lt;p&gt;Please give it a try. I'll appreciate a feedback.&lt;/p&gt; &lt;p&gt;The Python library: &lt;a href="https://github.com/mirth/chonky"&gt;https://github.com/mirth/chonky&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The transformer model: &lt;a href="https://huggingface.co/mirth/chonky_distilbert_base_uncased_1"&gt;https://huggingface.co/mirth/chonky_distilbert_base_uncased_1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SpiritedTrip"&gt; /u/SpiritedTrip &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mirth/chonky"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxg66a/chonky_a_neural_approach_for_semantic_text/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T12:28:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxerlp</id>
+    <title>Llama 4: One week after</title>
+    <updated>2025-04-12T11:02:41+00:00</updated>
+    <author>
+      <name>/u/1024cities</name>
+      <uri>https://old.reddit.com/user/1024cities</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"&gt; &lt;img alt="Llama 4: One week after" src="https://external-preview.redd.it/0-6paEoT6qInH2ShEmXT2oFG97XXE-ZU3bj_4thONWo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=708dd533b280c6725c32ced47f682c73002a5635" title="Llama 4: One week after" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1024cities"&gt; /u/1024cities &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.kilocode.ai/p/llama-4-one-week-after"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T11:02:41+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jx8ax5</id>
     <title>3090 + 2070 experiments</title>
     <updated>2025-04-12T03:37:23+00:00</updated>
@@ -229,19 +229,6 @@
     <published>2025-04-12T03:37:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jxbilb</id>
-    <title>Granite 3.3</title>
-    <updated>2025-04-12T07:05:16+00:00</updated>
-    <author>
-      <name>/u/Illustrious-Dot-6888</name>
-      <uri>https://old.reddit.com/user/Illustrious-Dot-6888</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just downloaded granite 3.3 2b from -mrutkows-,assume the rest will not take long to appear&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Illustrious-Dot-6888"&gt; /u/Illustrious-Dot-6888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T07:05:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jww19t</id>
     <title>The LLaMa 4 release version (not modified for human preference) has been added to LMArena and it's absolutely pathetic... 32nd place.</title>
     <updated>2025-04-11T17:50:59+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jww19t/the_llama_4_release_version_not_modified_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T17:50:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxbilb</id>
+    <title>Granite 3.3</title>
+    <updated>2025-04-12T07:05:16+00:00</updated>
+    <author>
+      <name>/u/Illustrious-Dot-6888</name>
+      <uri>https://old.reddit.com/user/Illustrious-Dot-6888</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just downloaded granite 3.3 2b from -mrutkows-,assume the rest will not take long to appear&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Illustrious-Dot-6888"&gt; /u/Illustrious-Dot-6888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T07:05:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1jx0ybl</id>
