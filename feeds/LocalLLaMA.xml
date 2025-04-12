@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-12T03:17:01+00:00</updated>
+  <updated>2025-04-12T03:41:12+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jwcbfm</id>
-    <title>Mistral hasn't released a big model in ages.</title>
-    <updated>2025-04-10T23:46:41+00:00</updated>
+    <id>t3_1jx8ax5</id>
+    <title>3090 + 2070 experiments</title>
+    <updated>2025-04-12T03:37:23+00:00</updated>
     <author>
-      <name>/u/Amgadoz</name>
-      <uri>https://old.reddit.com/user/Amgadoz</uri>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;How about a new version of MoE that can put the LLama4 to shame? Hopefully something with less than 120B params total.&lt;/p&gt; &lt;p&gt;Or a new version of Mistral large. Or a Mistral Medium (30-40B range)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amgadoz"&gt; /u/Amgadoz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwcbfm/mistral_hasnt_released_a_big_model_in_ages/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwcbfm/mistral_hasnt_released_a_big_model_in_ages/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwcbfm/mistral_hasnt_released_a_big_model_in_ages/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;tl;dr - &lt;strong&gt;even a slow GPU helps a lot if you're out of VRAM&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Before I buy a second 3090, I want to check if I am able to use two GPUs at all.&lt;/p&gt; &lt;p&gt;In my old computer, I had a 2070. It's a very old GPU with 8GB of VRAM, but it was my first GPU for experimenting with LLMs, so I knew it was useful.&lt;/p&gt; &lt;p&gt;I purchased a riser and connected the 2070 as a second GPU. No configuration was needed; however, I had to rebuild llama.cpp, because it uses nvcc to detect the GPU during the build, and the 2070 uses a lower version of CUDA. So my regular llama.cpp build wasn't able to use the old card, but a simple CMake rebuild fixed it.&lt;/p&gt; &lt;p&gt;So let's say I want to use &lt;strong&gt;Qwen_QwQ-32B-Q6_K_L.gguf&lt;/strong&gt; on my 3090. To do that, I can offload only 54 out of 65 layers to the GPU, which results in &lt;strong&gt;7.44 t/s&lt;/strong&gt;. But when I run the same model on the 3090 + 2070, I can fit all 65 layers into the GPUs, and the result is &lt;strong&gt;16.20 t/s.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For &lt;strong&gt;Qwen2.5-32B-Instruct-Q5_K_M.gguf&lt;/strong&gt;, it's different, because I can fit all 65 layers on the 3090 alone, and the result is &lt;strong&gt;29.68 t/s&lt;/strong&gt;. When I enable the 2070, so the layers are split across both cards, performance drops to &lt;strong&gt;19.01 t/s&lt;/strong&gt; — because some calculations are done on the slower 2070 instead of the fast 3090.&lt;/p&gt; &lt;p&gt;When I try &lt;strong&gt;nvidia_Llama-3_3-Nemotron-Super-49B-v1-Q4_K_M.gguf&lt;/strong&gt; on the 3090, I can offload 65 out of 81 layers to the GPU, and the result is &lt;strong&gt;5.17 t/s.&lt;/strong&gt; When I split the model across the 3090 and 2070, I can offload all 81 layers, and the result is &lt;strong&gt;16.16 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Finally, when testing &lt;strong&gt;google_gemma-3-27b-it-Q6_K.gguf&lt;/strong&gt; on the 3090 alone, I can offload 61 out of 63 layers, which gives me &lt;strong&gt;15.33 t/s&lt;/strong&gt;. With the 3090 + 2070, I can offload all 63 layers, and the result is &lt;strong&gt;22.38 t/s&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Hope that’s useful for people who are thinking about adding a second GPU.&lt;/p&gt; &lt;p&gt;All tests were done on Linux with llama-cli.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx8ax5/3090_2070_experiments/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-10T23:46:41+00:00</published>
+    <published>2025-04-12T03:37:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1jx4zh2</id>
@@ -86,19 +86,6 @@
     <published>2025-04-11T15:31:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jwx8ml</id>
-    <title>FileKitty: a small macOS tool for copying file contents into LLMs (with session history)</title>
-    <updated>2025-04-11T18:41:20+00:00</updated>
-    <author>
-      <name>/u/jetsetter</name>
-      <uri>https://old.reddit.com/user/jetsetter</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a simple macOS utility called &lt;strong&gt;FileKitty&lt;/strong&gt; to help when working with LLMs.&lt;/p&gt; &lt;p&gt;It is optimized for python projects but works with any text-based files / projects.&lt;/p&gt; &lt;h1&gt;What it does:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Lets you selects or drag in one or more local files&lt;/li&gt; &lt;li&gt;Styles the file contents into cleanly organized markdown&lt;/li&gt; &lt;li&gt;Combines them into a clipboard-friendly chunk&lt;/li&gt; &lt;li&gt;Stores a timestamped history of what was copied&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/banagale/FileKitty"&gt;https://github.com/banagale/FileKitty&lt;/a&gt;&lt;/p&gt; &lt;p&gt;There's a zip of the app available in releases, but doesn't have a certificate. It is pretty straightforward to build yourself, though!&lt;/p&gt; &lt;p&gt;I originally released this on HN about a year ago (&lt;a href="https://news.ycombinator.com/item?id=40226976"&gt;made front page&lt;/a&gt;) and have steadily improved it since then.&lt;/p&gt; &lt;p&gt;It’s been very useful for feeding structured context into tools various coding assistants — especially when working across multiple files or projects.&lt;/p&gt; &lt;p&gt;MIT licensed, Feedback welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jetsetter"&gt; /u/jetsetter &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T18:41:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jwhp26</id>
     <title>DeepCoder 14B vs Qwen2.5 Coder 32B vs QwQ 32B</title>
     <updated>2025-04-11T04:37:27+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwhp26/deepcoder_14b_vs_qwen25_coder_32b_vs_qwq_32b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T04:37:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jwx8ml</id>
+    <title>FileKitty: a small macOS tool for copying file contents into LLMs (with session history)</title>
+    <updated>2025-04-11T18:41:20+00:00</updated>
+    <author>
+      <name>/u/jetsetter</name>
+      <uri>https://old.reddit.com/user/jetsetter</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a simple macOS utility called &lt;strong&gt;FileKitty&lt;/strong&gt; to help when working with LLMs.&lt;/p&gt; &lt;p&gt;It is optimized for python projects but works with any text-based files / projects.&lt;/p&gt; &lt;h1&gt;What it does:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Lets you selects or drag in one or more local files&lt;/li&gt; &lt;li&gt;Styles the file contents into cleanly organized markdown&lt;/li&gt; &lt;li&gt;Combines them into a clipboard-friendly chunk&lt;/li&gt; &lt;li&gt;Stores a timestamped history of what was copied&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/banagale/FileKitty"&gt;https://github.com/banagale/FileKitty&lt;/a&gt;&lt;/p&gt; &lt;p&gt;There's a zip of the app available in releases, but doesn't have a certificate. It is pretty straightforward to build yourself, though!&lt;/p&gt; &lt;p&gt;I originally released this on HN about a year ago (&lt;a href="https://news.ycombinator.com/item?id=40226976"&gt;made front page&lt;/a&gt;) and have steadily improved it since then.&lt;/p&gt; &lt;p&gt;It’s been very useful for feeding structured context into tools various coding assistants — especially when working across multiple files or projects.&lt;/p&gt; &lt;p&gt;MIT licensed, Feedback welcome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jetsetter"&gt; /u/jetsetter &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwx8ml/filekitty_a_small_macos_tool_for_copying_file/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-11T18:41:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1jx0rg5</id>
@@ -125,19 +125,6 @@
     <published>2025-04-11T21:11:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jwormp</id>
-    <title>Deconstructing agentic AI prompts: some patterns I noticed</title>
-    <updated>2025-04-11T12:34:54+00:00</updated>
-    <author>
-      <name>/u/secopsml</name>
-      <uri>https://old.reddit.com/user/secopsml</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"&gt; &lt;img alt="Deconstructing agentic AI prompts: some patterns I noticed" src="https://external-preview.redd.it/azdsOGd4aXU5N3VlMS-DOok8VecI4VBh-SaZNHm4Aspcxmsyk9I5WC2oHNIS.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=75b1e5a7509a453b428b11dc761e3685731e5d7a" title="Deconstructing agentic AI prompts: some patterns I noticed" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Spending some time digging into the system prompts behind agents like v0, Manus, ChatGPT 4o, (...).&lt;/p&gt; &lt;p&gt;It's pretty interesting seeing the common threads emerge – how they define the agent's role, structure complex instructions, handle tool use (often very explicitly), encourage step-by-step planning, and bake in safety rules. Seems like a kind of 'convergent evolution' in prompt design for getting these things to actually work reliably.&lt;/p&gt; &lt;p&gt;Wrote up a more detailed breakdown with examples from the repo if anyone's interested in this stuff:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.google.com/url?sa=E&amp;amp;q=https%3A%2F%2Fgithub.com%2Fdontriskit%2Fawesome-ai-system-prompts"&gt;awesome-ai-system-prompts&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Might be useful if you're building agents or just curious about the 'ghost in the machine'. Curious what patterns others are finding indispensable?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/5g15kxiu97ue1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T12:34:54+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jwlvjs</id>
     <title>Paper page - OLMoTrace: Tracing Language Model Outputs Back to Trillions of Training Tokens</title>
     <updated>2025-04-11T09:38:02+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwlvjs/paper_page_olmotrace_tracing_language_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T09:38:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jwormp</id>
+    <title>Deconstructing agentic AI prompts: some patterns I noticed</title>
+    <updated>2025-04-11T12:34:54+00:00</updated>
+    <author>
+      <name>/u/secopsml</name>
+      <uri>https://old.reddit.com/user/secopsml</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"&gt; &lt;img alt="Deconstructing agentic AI prompts: some patterns I noticed" src="https://external-preview.redd.it/azdsOGd4aXU5N3VlMS-DOok8VecI4VBh-SaZNHm4Aspcxmsyk9I5WC2oHNIS.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=75b1e5a7509a453b428b11dc761e3685731e5d7a" title="Deconstructing agentic AI prompts: some patterns I noticed" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Spending some time digging into the system prompts behind agents like v0, Manus, ChatGPT 4o, (...).&lt;/p&gt; &lt;p&gt;It's pretty interesting seeing the common threads emerge – how they define the agent's role, structure complex instructions, handle tool use (often very explicitly), encourage step-by-step planning, and bake in safety rules. Seems like a kind of 'convergent evolution' in prompt design for getting these things to actually work reliably.&lt;/p&gt; &lt;p&gt;Wrote up a more detailed breakdown with examples from the repo if anyone's interested in this stuff:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.google.com/url?sa=E&amp;amp;q=https%3A%2F%2Fgithub.com%2Fdontriskit%2Fawesome-ai-system-prompts"&gt;awesome-ai-system-prompts&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Might be useful if you're building agents or just curious about the 'ghost in the machine'. Curious what patterns others are finding indispensable?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/5g15kxiu97ue1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwormp/deconstructing_agentic_ai_prompts_some_patterns_i/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-11T12:34:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1jx30gl</id>
@@ -177,19 +177,6 @@
     <published>2025-04-11T21:33:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jwyo9b</id>
-    <title>Why do you use local LLMs in 2025?</title>
-    <updated>2025-04-11T19:42:35+00:00</updated>
-    <author>
-      <name>/u/Creepy_Reindeer2149</name>
-      <uri>https://old.reddit.com/user/Creepy_Reindeer2149</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the value prop to you, relative to the Cloud services?&lt;/p&gt; &lt;p&gt;How has that changed since last year?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creepy_Reindeer2149"&gt; /u/Creepy_Reindeer2149 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T19:42:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jwiye4</id>
     <title>Lmarena.ai boots off llama4 from leaderboard</title>
     <updated>2025-04-11T06:01:09+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwiye4/lmarenaai_boots_off_llama4_from_leaderboard/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T06:01:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jwyo9b</id>
+    <title>Why do you use local LLMs in 2025?</title>
+    <updated>2025-04-11T19:42:35+00:00</updated>
+    <author>
+      <name>/u/Creepy_Reindeer2149</name>
+      <uri>https://old.reddit.com/user/Creepy_Reindeer2149</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the value prop to you, relative to the Cloud services?&lt;/p&gt; &lt;p&gt;How has that changed since last year?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creepy_Reindeer2149"&gt; /u/Creepy_Reindeer2149 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwyo9b/why_do_you_use_local_llms_in_2025/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-11T19:42:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1jwe7pb</id>
@@ -307,19 +307,6 @@
     <published>2025-04-11T17:50:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jx6w08</id>
-    <title>Pick your poison</title>
-    <updated>2025-04-12T02:16:24+00:00</updated>
-    <author>
-      <name>/u/LinkSea8324</name>
-      <uri>https://old.reddit.com/user/LinkSea8324</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"&gt; &lt;img alt="Pick your poison" src="https://preview.redd.it/huzhgoiocbue1.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ce0357feee818c7cbffab9b54085a3bf734616c3" title="Pick your poison" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LinkSea8324"&gt; /u/LinkSea8324 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/huzhgoiocbue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T02:16:24+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jwuo4w</id>
     <title>Open Source: Look inside a Language Model</title>
     <updated>2025-04-11T16:54:02+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwuo4w/open_source_look_inside_a_language_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-11T16:54:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jx6w08</id>
+    <title>Pick your poison</title>
+    <updated>2025-04-12T02:16:24+00:00</updated>
+    <author>
+      <name>/u/LinkSea8324</name>
+      <uri>https://old.reddit.com/user/LinkSea8324</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"&gt; &lt;img alt="Pick your poison" src="https://preview.redd.it/huzhgoiocbue1.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ce0357feee818c7cbffab9b54085a3bf734616c3" title="Pick your poison" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LinkSea8324"&gt; /u/LinkSea8324 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/huzhgoiocbue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T02:16:24+00:00</published>
   </entry>
 </feed>
