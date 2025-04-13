@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-13T23:23:52+00:00</updated>
+  <updated>2025-04-13T23:35:00+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jxn8x7</id>
-    <title>What if you could run 50+ LLMs per GPU — without keeping them in memory?</title>
-    <updated>2025-04-12T17:58:12+00:00</updated>
-    <author>
-      <name>/u/pmv143</name>
-      <uri>https://old.reddit.com/user/pmv143</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We’ve been experimenting with an AI-native runtime that snapshot-loads LLMs (13B–65B) in 2–5 seconds and dynamically runs 50+ models per GPU without keeping them always resident in memory.&lt;/p&gt; &lt;p&gt;Instead of preloading models (like in vLLM or Triton), we serialize GPU execution state + memory buffers, and restore models on demand even in shared GPU environments where full device access isn’t available.&lt;/p&gt; &lt;p&gt;This seems to unlock: •Real serverless LLM behavior (no idle GPU cost)&lt;/p&gt; &lt;pre&gt;&lt;code&gt;•Multi-model orchestration at low latency •Better GPU utilization for agentic or dynamic workflows &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Curious if others here are exploring similar ideas especially with: •Multi-model/agent stacks&lt;/p&gt; &lt;pre&gt;&lt;code&gt;•Dynamic GPU memory management (MIG, KAI Scheduler, etc.) •Cuda-checkpoint / partial device access challenges &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Happy to share more technical details if helpful. Would love to exchange notes or hear what pain points you’re seeing with current model serving infra!&lt;/p&gt; &lt;p&gt;P.S. Sharing more on X: @InferXai . follow if you’re into local inference, GPU orchestration, and memory tricks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxn8x7/what_if_you_could_run_50_llms_per_gpu_without/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxn8x7/what_if_you_could_run_50_llms_per_gpu_without/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxn8x7/what_if_you_could_run_50_llms_per_gpu_without/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T17:58:12+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jy3qh8</id>
     <title>Research tip</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy3qh8/research_tip/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T09:20:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyl37p</id>
+    <title>Combating code smells that arise from LLM generated code in Python</title>
+    <updated>2025-04-13T23:30:14+00:00</updated>
+    <author>
+      <name>/u/m1tm0</name>
+      <uri>https://old.reddit.com/user/m1tm0</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR - vibelint&lt;/p&gt; &lt;p&gt;Namespace Management: - Visualize your global namespace to identify and resolve naming collisions&lt;/p&gt; &lt;p&gt;Python Documentation Enhancement: - Validate docstrings include relative filepath references to help LLMs &amp;quot;remember&amp;quot; the location of methods within your project structure&lt;/p&gt; &lt;p&gt;Codebase Snapshots: - Generate full codebase snapshots optimized for ultra-long context LLMs (Gemini 2.5 Pro, Llama4 Scout) - Customize snapshots with include/exclude glob patterns&lt;/p&gt; &lt;p&gt;Anecdotally, this approach has helped me improve my LLM python programming performance.&lt;/p&gt; &lt;hr /&gt; &lt;h1&gt;The &amp;quot;Vibe Coding&amp;quot; Phenomenon&lt;/h1&gt; &lt;p&gt;While this approach enables rapid development, it often leads to structural problems in the codebase:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Inconsistent naming patterns across files&lt;/li&gt; &lt;li&gt;Redundant implementations of similar functionality&lt;/li&gt; &lt;li&gt;Confusing namespace collisions that create ambiguity&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;The Specific Problem vibelint Addresses&lt;/h1&gt; &lt;p&gt;I witnessed this firsthand when asking an LLM to help me modify a &lt;code&gt;query()&lt;/code&gt; function in my project. The LLM got confused because I had inadvertently created three different &lt;code&gt;query()&lt;/code&gt; functions scattered across the codebase:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;One for database operations&lt;/li&gt; &lt;li&gt;Another for API requests&lt;/li&gt; &lt;li&gt;A third for search functionality&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Though these files weren't importing each other (so traditional linters didn't flag anything), this duplication created chaos when using AI tools to help modify the code.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;Now that i've gotten that intro out of the way (thanks claude), I wanted to add one more disclaimer, I definitely fall into the class of &amp;quot;Vibe Coder&amp;quot; by most people's standards.&lt;/p&gt; &lt;p&gt;After a painstaking weekend of trial and error, I came up with something that works on my macbook and theoretically should work on linux and windows. Notice the lack of unit and integration tests (I hate writing tests). Vibelint definitely has some code smells (and no unit testing). This will be to vibelint's detriment, but I really think a tool like this is needed even if it isn't perfect.&lt;/p&gt; &lt;p&gt;If anyone in the open source community is interested in integrating vibelint's features into their linter/formatter/analyzer, please do, as it is released under the MIT license. I would appreciate credit, but getting these features into the hands of the public is more important.&lt;/p&gt; &lt;p&gt;If you want to collaborate, my socials are linked to my Github. Feel free to reach out.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/mithranm/vibelint"&gt;https://github.com/mithranm/vibelint&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/m1tm0"&gt; /u/m1tm0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyl37p/combating_code_smells_that_arise_from_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyl37p/combating_code_smells_that_arise_from_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyl37p/combating_code_smells_that_arise_from_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T23:30:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1jy41fx</id>
@@ -86,19 +86,6 @@
     <published>2025-04-13T22:31:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jyfygt</id>
-    <title>Collaborative A2A Knowledge Graphs</title>
-    <updated>2025-04-13T19:34:23+00:00</updated>
-    <author>
-      <name>/u/Ragecommie</name>
-      <uri>https://old.reddit.com/user/Ragecommie</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"&gt; &lt;img alt="Collaborative A2A Knowledge Graphs" src="https://external-preview.redd.it/MEOkVWy74xZRscfX6UD5UydEACEn5gx4IWcOuQ_pYrU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0a4710a0c0fa286d1e8ccd9222c72667602f1973" title="Collaborative A2A Knowledge Graphs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;Just drafted a PR for Google's A2A protocol adding some distributed knowledge graph management features: &lt;a href="https://github.com/google/A2A/pull/141"&gt;https://github.com/google/A2A/pull/141&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The final version will support a number of transactional languages, starting with GraphQL, as well as loading custom EBNF grammars.&lt;/p&gt; &lt;p&gt;The Python implementation is mostly done, with the JS sample and UI demo coming shortly.&lt;/p&gt; &lt;p&gt;We're working on a hierarchical planning agent based on this updates A2A spec, hope someone else finds it useful too.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ragecommie"&gt; /u/Ragecommie &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/google/A2A/pull/141"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T19:34:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jyid0v</id>
     <title>Chapter summaries using Llama 3.1 8B UltraLong 1M</title>
     <updated>2025-04-13T21:19:48+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyid0v/chapter_summaries_using_llama_31_8b_ultralong_1m/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T21:19:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyfygt</id>
+    <title>Collaborative A2A Knowledge Graphs</title>
+    <updated>2025-04-13T19:34:23+00:00</updated>
+    <author>
+      <name>/u/Ragecommie</name>
+      <uri>https://old.reddit.com/user/Ragecommie</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"&gt; &lt;img alt="Collaborative A2A Knowledge Graphs" src="https://external-preview.redd.it/MEOkVWy74xZRscfX6UD5UydEACEn5gx4IWcOuQ_pYrU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0a4710a0c0fa286d1e8ccd9222c72667602f1973" title="Collaborative A2A Knowledge Graphs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;Just drafted a PR for Google's A2A protocol adding some distributed knowledge graph management features: &lt;a href="https://github.com/google/A2A/pull/141"&gt;https://github.com/google/A2A/pull/141&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The final version will support a number of transactional languages, starting with GraphQL, as well as loading custom EBNF grammars.&lt;/p&gt; &lt;p&gt;The Python implementation is mostly done, with the JS sample and UI demo coming shortly.&lt;/p&gt; &lt;p&gt;We're working on a hierarchical planning agent based on this updates A2A spec, hope someone else finds it useful too.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ragecommie"&gt; /u/Ragecommie &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/google/A2A/pull/141"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyfygt/collaborative_a2a_knowledge_graphs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T19:34:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxv644</id>
@@ -190,19 +190,6 @@
     <published>2025-04-13T11:38:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jyhd6i</id>
-    <title>[2503.23817] MVDRAM: Enabling GeMV Execution in Unmodified DRAM for Low-Bit LLM Acceleration</title>
-    <updated>2025-04-13T20:35:30+00:00</updated>
-    <author>
-      <name>/u/Aaaaaaaaaeeeee</name>
-      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/abs/2503.23817"&gt;https://arxiv.org/abs/2503.23817&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;General matrix-vector multiplication (GeMV) remains a critical latency bottleneck in large language model (LLM) inference, even with quantized low-bit models. Processing-Using-DRAM (PUD), an analog in-DRAM computing technique, has the potential to repurpose on-device DRAM as a GeMV engine, offering additional high-throughput processing capabilities to widespread consumer devices without DRAM modifications. However, applying PUD to GeMV operations in the LLM inference pipeline incurs significant overheads before and after in-DRAM computation, diminishing the benefits of its high-throughput processing capabilities. This paper presents MVDRAM, the first practical system to accelerate GeMV operations for low-bit LLM inference using unmodified DRAM. By leveraging the data sharing patterns and mathematical linearity in GeMV operations, MVDRAM orchestrates the processor and DRAM to eliminate the costs associated with pre-arranging inputs and bit-transposition of outputs required in conventional PUD approaches. Our experimental evaluation with four DDR4 DRAM modules shows that MVDRAM achieves comparable or even better inference speed than the processor-based implementation for GeMV operations in low-bit (under 4-bit) LLM. In particular, MVDRAM achieves up to 7.29× speedup and 30.5× energy efficiency for low-bit GeMV operations. For end-to-end LLM inference, MVDRAM achieves 2.18× and 1.31× throughput improvements, along with 3.04× and 2.35× energy efficiency, for 2-bit and 4-bit quantized low-bit models, respectively. MVDRAM has the potential to redefine the AI hardware landscape by demonstrating the feasibility of standard DRAM as an LLM accelerator.&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2503.23817"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T20:35:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jy16yi</id>
     <title>LMArena ruined language models</title>
     <updated>2025-04-13T06:16:18+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy16yi/lmarena_ruined_language_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T06:16:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyhd6i</id>
+    <title>[2503.23817] MVDRAM: Enabling GeMV Execution in Unmodified DRAM for Low-Bit LLM Acceleration</title>
+    <updated>2025-04-13T20:35:30+00:00</updated>
+    <author>
+      <name>/u/Aaaaaaaaaeeeee</name>
+      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/abs/2503.23817"&gt;https://arxiv.org/abs/2503.23817&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;General matrix-vector multiplication (GeMV) remains a critical latency bottleneck in large language model (LLM) inference, even with quantized low-bit models. Processing-Using-DRAM (PUD), an analog in-DRAM computing technique, has the potential to repurpose on-device DRAM as a GeMV engine, offering additional high-throughput processing capabilities to widespread consumer devices without DRAM modifications. However, applying PUD to GeMV operations in the LLM inference pipeline incurs significant overheads before and after in-DRAM computation, diminishing the benefits of its high-throughput processing capabilities. This paper presents MVDRAM, the first practical system to accelerate GeMV operations for low-bit LLM inference using unmodified DRAM. By leveraging the data sharing patterns and mathematical linearity in GeMV operations, MVDRAM orchestrates the processor and DRAM to eliminate the costs associated with pre-arranging inputs and bit-transposition of outputs required in conventional PUD approaches. Our experimental evaluation with four DDR4 DRAM modules shows that MVDRAM achieves comparable or even better inference speed than the processor-based implementation for GeMV operations in low-bit (under 4-bit) LLM. In particular, MVDRAM achieves up to 7.29× speedup and 30.5× energy efficiency for low-bit GeMV operations. For end-to-end LLM inference, MVDRAM achieves 2.18× and 1.31× throughput improvements, along with 3.04× and 2.35× energy efficiency, for 2-bit and 4-bit quantized low-bit models, respectively. MVDRAM has the potential to redefine the AI hardware landscape by demonstrating the feasibility of standard DRAM as an LLM accelerator.&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2503.23817"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T20:35:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1jydrnr</id>
@@ -242,19 +242,6 @@
     <published>2025-04-13T14:53:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jyk213</id>
-    <title>Still true 3 months later</title>
-    <updated>2025-04-13T22:38:59+00:00</updated>
-    <author>
-      <name>/u/Amgadoz</name>
-      <uri>https://old.reddit.com/user/Amgadoz</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"&gt; &lt;img alt="Still true 3 months later" src="https://preview.redd.it/7644n1vqjoue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b0b79a5e35c4e594b33dc646534a2248d3db9159" title="Still true 3 months later" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;They rushed the release so hard it's been full of implementation bugs. And let's not get started on the custom model to hill climb lmarena alop&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amgadoz"&gt; /u/Amgadoz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/7644n1vqjoue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T22:38:59+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jycfvf</id>
     <title>You can preview quantizations of Llama 4 Maverick 17Bx128E at acceptable speeds even without the necessary memory</title>
     <updated>2025-04-13T17:04:14+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jycfvf/you_can_preview_quantizations_of_llama_4_maverick/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T17:04:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyk213</id>
+    <title>Still true 3 months later</title>
+    <updated>2025-04-13T22:38:59+00:00</updated>
+    <author>
+      <name>/u/Amgadoz</name>
+      <uri>https://old.reddit.com/user/Amgadoz</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"&gt; &lt;img alt="Still true 3 months later" src="https://preview.redd.it/7644n1vqjoue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b0b79a5e35c4e594b33dc646534a2248d3db9159" title="Still true 3 months later" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;They rushed the release so hard it's been full of implementation bugs. And let's not get started on the custom model to hill climb lmarena alop&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amgadoz"&gt; /u/Amgadoz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/7644n1vqjoue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk213/still_true_3_months_later/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T22:38:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxy26m</id>
