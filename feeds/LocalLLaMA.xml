@@ -2,62 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-13T00:14:18+00:00</updated>
+  <updated>2025-04-13T01:02:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1jxq2th</id>
-    <title>Filename generation for scanned PDFs with local LLM (deepseek-r1:32b)</title>
-    <updated>2025-04-12T20:04:14+00:00</updated>
+    <id>t3_1jxtbcf</id>
+    <title>How does batch inference work (with MOE)</title>
+    <updated>2025-04-12T22:37:02+00:00</updated>
     <author>
-      <name>/u/aaronk6</name>
-      <uri>https://old.reddit.com/user/aaronk6</uri>
+      <name>/u/Conscious_Cut_6144</name>
+      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;My goal is to use a local LLM to generate a meaningful filename for a scanned document in PDF format. The documents have all been OCRed before and therefore contain a text layer that can be fed into the LLM.&lt;/p&gt; &lt;p&gt;I’m using pdftotext from poppler-utils to extract the plain text OCR layer from the PDF.&lt;/p&gt; &lt;p&gt;I initially thought that I should also give the LLM some information about font sizes and positioning, so it has more clues on how important certain elements on the document are. I tried giving it the XML output of &lt;code&gt;pdftohtml -xml&lt;/code&gt;. However, this seems to confuse the LLM more than it helps.&lt;/p&gt; &lt;p&gt;My prompt that I feed into the LLM looks like this:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Generate a filename for a scanned document based on this OCR-extracted content (first page only).&lt;/p&gt; &lt;p&gt;The filename must follow this format: YYYY-MM-DD Titel des Dokuments&lt;/p&gt; &lt;p&gt;If you can only determine month and year, it's fine to go with YYYY-MM Titel des Dokuments.&lt;/p&gt; &lt;p&gt;Guidelines: - Use the &lt;strong&gt;most likely creation date&lt;/strong&gt; found in the content (ignore irrelevant dates like birthdates unless it's a birth certificate). - Use &lt;strong&gt;mixed case&lt;/strong&gt; for the title in natural language. Use spaces. - The title should be short and in the document’s language (default to German if unsure). - Avoid slashes. If there are slashes, for example in invoice numbers, replace them with dashes. - If it's an invoice, use this format: $VENDOR Rechnung $RECHNUNGSNUMMER - Do &lt;strong&gt;not&lt;/strong&gt; explain your reasoning. - Output just the filename as plain text, &lt;strong&gt;without&lt;/strong&gt; the file extension.&lt;/p&gt; &lt;p&gt;Here is the content: {content}&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;This sometimes works quite well, but in other cases, it will output something like the example below, clearly ignoring what was requested (not expaining reasoning and simply returning the filename):&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Based on the provided text, the document appears to be a &lt;strong&gt;salary slip&lt;/strong&gt; or &lt;strong&gt;payment notification&lt;/strong&gt; for July 2024. Here's how we can generate a filename based on the given guidelines:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Date&lt;/strong&gt;: The document mentions &amp;quot;Bezüge mitteilt ab Juli 2024&amp;quot; (Salary Notification as of July 2024), so we'll use the year and month.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Title&lt;/strong&gt;: The title should reflect the content of the document, such as &amp;quot;Bezüge Mitteilung&amp;quot; (Salary Notification).&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Using these details, a suitable filename would be:&lt;/p&gt; &lt;p&gt;&lt;code&gt; 2024-07 Bezüge Mitteilung &lt;/code&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;I’m using &lt;strong&gt;deepseek-r1:32b&lt;/strong&gt;, which takes about 1 minute to produce this result on my M1 MacBook (32 GB RAM). This would be acceptable if I could get it to stop ignoring the rules from time to time.&lt;/p&gt; &lt;p&gt;Any ideas how I can solve this problem? Are there better models for this use case? Or would you that this task is still too complex for a local LLM that works with 32 GB of RAM?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aaronk6"&gt; /u/aaronk6 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxq2th/filename_generation_for_scanned_pdfs_with_local/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxq2th/filename_generation_for_scanned_pdfs_with_local/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxq2th/filename_generation_for_scanned_pdfs_with_local/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought the speed up with batch inference came from streaming the model weights once for multiple tokens.&lt;/p&gt; &lt;p&gt;But wouldn’t that not work with MOE models, because different tokens would need different experts at the same time?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T20:04:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jxnh0m</id>
-    <title>64 vs 128 MBP?</title>
-    <updated>2025-04-12T18:07:50+00:00</updated>
-    <author>
-      <name>/u/steffi8</name>
-      <uri>https://old.reddit.com/user/steffi8</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are the differences between the above memory profiles and what you can do locally with well known LLMs?&lt;/p&gt; &lt;p&gt;Does 128gb get your significantly more capable models?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/steffi8"&gt; /u/steffi8 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxnh0m/64_vs_128_mbp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxnh0m/64_vs_128_mbp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxnh0m/64_vs_128_mbp/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T18:07:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jxbilb</id>
-    <title>Granite 3.3</title>
-    <updated>2025-04-12T07:05:16+00:00</updated>
-    <author>
-      <name>/u/Illustrious-Dot-6888</name>
-      <uri>https://old.reddit.com/user/Illustrious-Dot-6888</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just downloaded granite 3.3 2b from -mrutkows-,assume the rest will not take long to appear&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Illustrious-Dot-6888"&gt; /u/Illustrious-Dot-6888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxbilb/granite_33/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T07:05:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jwuo4w</id>
-    <title>Open Source: Look inside a Language Model</title>
-    <updated>2025-04-11T16:54:02+00:00</updated>
-    <author>
-      <name>/u/aliasaria</name>
-      <uri>https://old.reddit.com/user/aliasaria</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwuo4w/open_source_look_inside_a_language_model/"&gt; &lt;img alt="Open Source: Look inside a Language Model" src="https://external-preview.redd.it/MWFyZDcxbTNrOHVlMXp2kjpC2F-fu2abv7ICwxSyd_Rdx4itC4_pP37pW1kk.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=595b5958f8b43fd938ac318b433bd6773080e551" title="Open Source: Look inside a Language Model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recorded a screen capture of some of the new tools in open source app Transformer Lab that let you &amp;quot;look inside&amp;quot; a large language model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aliasaria"&gt; /u/aliasaria &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/mgrp02m3k8ue1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jwuo4w/open_source_look_inside_a_language_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jwuo4w/open_source_look_inside_a_language_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-11T16:54:02+00:00</published>
+    <published>2025-04-12T22:37:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxjzsk</id>
@@ -73,17 +34,30 @@
     <published>2025-04-12T15:34:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jxtbcf</id>
-    <title>How does batch inference work (with MOE)</title>
-    <updated>2025-04-12T22:37:02+00:00</updated>
+    <id>t3_1jxvwda</id>
+    <title>Quick Follow-Up to the Snapshot Thread</title>
+    <updated>2025-04-13T00:52:33+00:00</updated>
     <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
+      <name>/u/pmv143</name>
+      <uri>https://old.reddit.com/user/pmv143</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought the speed up with batch inference came from streaming the model weights once for multiple tokens.&lt;/p&gt; &lt;p&gt;But wouldn’t that not work with MOE models, because different tokens would need different experts at the same time?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtbcf/how_does_batch_inference_work_with_moe/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Really appreciate all the support and ideas in the LLM orchestration post . didn’t expect it to take off like this.&lt;/p&gt; &lt;p&gt;I forgot to drop this earlier, but if you’re curious about the technical deep dives, benchmarks, or just want to keep the conversation going, I’ve been sharing more over on X: @InferXai&lt;/p&gt; &lt;p&gt;Mostly building in public, sharing what’s working (and what’s not). Always open to ideas or feedback if you’re building in this space too.🙏🙏🙏&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvwda/quick_followup_to_the_snapshot_thread/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvwda/quick_followup_to_the_snapshot_thread/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvwda/quick_followup_to_the_snapshot_thread/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T22:37:02+00:00</published>
+    <published>2025-04-13T00:52:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxqxja</id>
+    <title>When do you guys think we will hit a wall with AI due to compute constraints?</title>
+    <updated>2025-04-12T20:44:07+00:00</updated>
+    <author>
+      <name>/u/SecretAd2701</name>
+      <uri>https://old.reddit.com/user/SecretAd2701</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Compute constraints:&lt;br /&gt; - Training time constraints(even with hyper scalling you can do with AI datacenter hardware, at somepoint any inefficiencies with training/interference amongst a lot of nodes could ?scale out of proportion?).&lt;br /&gt; - There simply at somepoint (almost) not being any more efficient way to train AI or prune/quantize models.&lt;br /&gt; - Semiconductor manufacturing limits.&lt;br /&gt; - Hardware design limits. &lt;/p&gt; &lt;p&gt;Do you think the progress could slow down to a point that it feels like there's not much going on a wall of sorts.&lt;br /&gt; I'm not in the AI space so. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SecretAd2701"&gt; /u/SecretAd2701 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxqxja/when_do_you_guys_think_we_will_hit_a_wall_with_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxqxja/when_do_you_guys_think_we_will_hit_a_wall_with_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxqxja/when_do_you_guys_think_we_will_hit_a_wall_with_ai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T20:44:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxerlp</id>
@@ -97,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxerlp/llama_4_one_week_after/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-12T11:02:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxvmxs</id>
+    <title>Drive-By Note on Cogito [ mlx - qwen - 32B - 8bit ]</title>
+    <updated>2025-04-13T00:38:05+00:00</updated>
+    <author>
+      <name>/u/davidpfarrell</name>
+      <uri>https://old.reddit.com/user/davidpfarrell</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MacBook Pro 16&amp;quot; M4 Max 48gb&lt;/p&gt; &lt;p&gt;Downloaded &amp;quot;mlx-community/deepcogito-cogito-v1-preview-qwen-32B-8bit&amp;quot; (35gb) into LM Studio this morning and have been having a good time with it.&lt;/p&gt; &lt;p&gt;Nothing too heavy but have been asking tech/code questions and also configured it in Cursor (using ngrok to connect to lms) and had it generate a small app (in Ask mode since Cursor Free won't let me enable Agent mode on it)&lt;/p&gt; &lt;p&gt;It feels snappy compared to the &amp;quot;mlx-community/qwq-32b&amp;quot; I was using.&lt;/p&gt; &lt;p&gt;I get 13 tokens/s out with 1-2s to first token for most things I'm asking it.&lt;/p&gt; &lt;p&gt;I've been using Copilot Agent, Chat GPT, and JetBrains Junie a lot this week but I feel like I might hang out here with Cogito for little longer and see how it does.&lt;/p&gt; &lt;p&gt;Anyone else playing with it in LM Studio ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davidpfarrell"&gt; /u/davidpfarrell &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvmxs/driveby_note_on_cogito_mlx_qwen_32b_8bit/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvmxs/driveby_note_on_cogito_mlx_qwen_32b_8bit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxvmxs/driveby_note_on_cogito_mlx_qwen_32b_8bit/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T00:38:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxqe9w</id>
@@ -123,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxk8rx/anyone_else_find_benchmarks_dont_match_their/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-12T15:46:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jxtdp7</id>
-    <title>What's the difference in the Unsloth version of the Gemma 3 that came out yesterday vs their old version?</title>
-    <updated>2025-04-12T22:40:21+00:00</updated>
-    <author>
-      <name>/u/jaxchang</name>
-      <uri>https://old.reddit.com/user/jaxchang</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the difference in the Unsloth version of the Gemma 3 that came out yesterday vs their old version?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaxchang"&gt; /u/jaxchang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T22:40:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxgwjr</id>
@@ -203,6 +177,19 @@
     <published>2025-04-12T06:51:15+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jxtdp7</id>
+    <title>What's the difference in the Unsloth version of the Gemma 3 that came out yesterday vs their old version?</title>
+    <updated>2025-04-12T22:40:21+00:00</updated>
+    <author>
+      <name>/u/jaxchang</name>
+      <uri>https://old.reddit.com/user/jaxchang</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the difference in the Unsloth version of the Gemma 3 that came out yesterday vs their old version?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaxchang"&gt; /u/jaxchang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxtdp7/whats_the_difference_in_the_unsloth_version_of/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T22:40:21+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jxdpc8</id>
     <title>Meet HIGGS - a new LLM compression method from researchers from Yandex and leading science and technology universities</title>
     <updated>2025-04-12T09:47:11+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jx6w08/pick_your_poison/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-12T02:16:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxv644</id>
+    <title>I chopped the screen off my MacBook Air to be a full time LLM server</title>
+    <updated>2025-04-13T00:12:36+00:00</updated>
+    <author>
+      <name>/u/mark-lord</name>
+      <uri>https://old.reddit.com/user/mark-lord</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt; &lt;img alt="I chopped the screen off my MacBook Air to be a full time LLM server" src="https://preview.redd.it/qrnzf9tguhue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=16bb48263ccc8f44559ef992fd4e2e9901fdac0f" title="I chopped the screen off my MacBook Air to be a full time LLM server" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Got the thing for £250 used with a broken screen; finally just got around to removing it permanently lol&lt;/p&gt; &lt;p&gt;Runs Qwen-7b at 14 tokens-per-second, which isn’t amazing, but honestly is actually a lot better than I expected for an M1 8gb chip!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qrnzf9tguhue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T00:12:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1jxlqil</id>
@@ -307,19 +307,6 @@
     <published>2025-04-12T10:21:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jxu0f7</id>
-    <title>We should have a monthly “which models are you using” discussion</title>
-    <updated>2025-04-12T23:12:01+00:00</updated>
-    <author>
-      <name>/u/Arkhos-Winter</name>
-      <uri>https://old.reddit.com/user/Arkhos-Winter</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Since a lot of people keep coming on here and asking which models they should use (either through API or on their GPU), I propose that we have a formalized discussion on what we think are the best models (both proprietary and open-weights) for different purposes (coding, writing, etc.) on the 1st of every month.&lt;/p&gt; &lt;p&gt;It’ll go something like this: “I’m currently using Deepseek v3.1, 4o (March 2025 version), and Gemini 2.5 Pro for writing, and I’m using R1, Qwen 2.5 Max, and Sonnet 3.7 (thinking) for coding.”&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arkhos-Winter"&gt; /u/Arkhos-Winter &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-12T23:12:01+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jxn8x7</id>
     <title>What if you could run 50+ LLMs per GPU — without keeping them in memory?</title>
     <updated>2025-04-12T17:58:12+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxn8x7/what_if_you_could_run_50_llms_per_gpu_without/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-12T17:58:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jxu0f7</id>
+    <title>We should have a monthly “which models are you using” discussion</title>
+    <updated>2025-04-12T23:12:01+00:00</updated>
+    <author>
+      <name>/u/Arkhos-Winter</name>
+      <uri>https://old.reddit.com/user/Arkhos-Winter</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Since a lot of people keep coming on here and asking which models they should use (either through API or on their GPU), I propose that we have a formalized discussion on what we think are the best models (both proprietary and open-weights) for different purposes (coding, writing, etc.) on the 1st of every month.&lt;/p&gt; &lt;p&gt;It’ll go something like this: “I’m currently using Deepseek v3.1, 4o (March 2025 version), and Gemini 2.5 Pro for writing, and I’m using R1, Qwen 2.5 Max, and Sonnet 3.7 (thinking) for coding.”&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arkhos-Winter"&gt; /u/Arkhos-Winter &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxu0f7/we_should_have_a_monthly_which_models_are_you/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-12T23:12:01+00:00</published>
   </entry>
 </feed>
