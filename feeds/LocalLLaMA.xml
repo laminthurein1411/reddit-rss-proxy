@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-14T13:51:48+00:00</updated>
+  <updated>2025-04-14T14:06:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jycfvf</id>
-    <title>You can preview quantizations of Llama 4 Maverick 17Bx128E at acceptable speeds even without the necessary memory</title>
-    <updated>2025-04-13T17:04:14+00:00</updated>
-    <author>
-      <name>/u/brown2green</name>
-      <uri>https://old.reddit.com/user/brown2green</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Probably many already know this, but with llama.cpp it's possible to perform inference off models larger than the available total physical memory; this is thanks to the magic of &lt;code&gt;mmap&lt;/code&gt;. Inference speed might be surprisingly faster than you'd think.&lt;/p&gt; &lt;p&gt;I tested this with &lt;a href="https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF/tree/main/UD-IQ2_M"&gt;Llama-4-Maverick-17B-128E-Instruct-UD-IQ2_M&lt;/a&gt;, which is about 143 GB in total and shouldn't fit within my 64GB of DDR4 memory + one RTX3090 (24GB).&lt;/p&gt; &lt;p&gt;It takes a while for prompt processing to occur (admittedly at a fairly slow rate compared to normal), during which NVMe reads appear to be intense (5-6 GiB/s), which can be tracked on Linux with &lt;code&gt;iostat -s 1&lt;/code&gt;, but once that is done, inference speed is fairly decent.&lt;/p&gt; &lt;p&gt;Here's a benchmark with &lt;code&gt;llama-bench&lt;/code&gt; (I couldn't load more than 3 model layers on the GPU):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;# ./build/bin/llama-bench -m ~/models/Llama-4-Maverick-17B-128E-Instruct-UD-IQ2_M.gguf -ngl 3 ggml_cuda_init: GGML_CUDA_FORCE_MMQ: no ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no ggml_cuda_init: found 1 CUDA devices: Device 0: NVIDIA GeForce RTX 3090, compute capability 8.6, VMM: yes | model | size | params | backend | ngl | test | t/s | | ------------------------------------------ | ---------: | ---------: | ---------- | --: | ------------: | -------------------: | | llama4 17Bx128E (Maverick) IQ2_M - 2.7 bpw | 143.06 GiB | 400.71 B | CUDA | 3 | pp512 | 16.43 ± 0.25 | | llama4 17Bx128E (Maverick) IQ2_M - 2.7 bpw | 143.06 GiB | 400.71 B | CUDA | 3 | tg128 | 3.45 ± 0.26 | build: 06bb53ad (5115) # free total used free shared buff/cache available Mem: 65523176 8262924 600336 184900 57572992 57260252 Swap: 65523172 14129384 51393788 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;More details for the flag that would prevent this behavior (disabling &lt;code&gt;mmap&lt;/code&gt;): &lt;a href="https://github.com/ggml-org/llama.cpp/discussions/1876"&gt;https://github.com/ggml-org/llama.cpp/discussions/1876&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;&lt;code&gt;--no-mmap&lt;/code&gt;: Do not memory-map the model. By default, models are mapped into memory, which allows the system to load only the necessary parts of the model as needed. However, if the model is larger than your total amount of RAM or if your system is low on available memory, using mmap might increase the risk of pageouts, negatively impacting performance. Disabling mmap results in slower load times but may reduce pageouts if you're not using &lt;code&gt;--mlock&lt;/code&gt;. Note that if the model is larger than the total amount of RAM, turning off mmap would prevent the model from loading at all.&lt;/p&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;p&gt;&lt;strong&gt;EDIT&lt;/strong&gt;: from a suggestion in the comments below by PhoenixModBot, starting Llama.cpp with &lt;code&gt;-ngl 999 -ot \\d+.ffn_.*_exps.=CPU&lt;/code&gt; can increase inference speed to &lt;strong&gt;8~18 tokens/s&lt;/strong&gt; (depending on which experts get cached on RAM). What this does is loading the shared model parameters on the GPU, while keeping the FFN layers (the routed experts) on the CPU (RAM). This is documented here: &lt;a href="https://github.com/ggml-org/llama.cpp/pull/11397"&gt;https://github.com/ggml-org/llama.cpp/pull/11397&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Additionally, in my own tests I've observed better prompt processing speeds by configuring both the physical and logical batch size to the same value of 2048. This can increase memory usage, though. &lt;code&gt;-b 2048 -ub 2048&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/brown2green"&gt; /u/brown2green &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jycfvf/you_can_preview_quantizations_of_llama_4_maverick/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jycfvf/you_can_preview_quantizations_of_llama_4_maverick/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jycfvf/you_can_preview_quantizations_of_llama_4_maverick/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T17:04:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jyv6if</id>
-    <title>What would you say are the best open models for code generation?</title>
-    <updated>2025-04-14T10:01:48+00:00</updated>
-    <author>
-      <name>/u/awebb78</name>
-      <uri>https://old.reddit.com/user/awebb78</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just thought I would pick the community's brain and see what people thought were the best language models for generating software. I am particularly interested in knowledge of the mechanics of structuring code, as well as Python and Javascript lanaguages, but I welcome all input on the best models for code generation in general.&lt;/p&gt; &lt;p&gt;My personal use case is not generating complete sofware per-se, but augmenting my own coding with AI generated testing and documentation through the CLI (not IDE). I love coding but I hate writing tests and documentation. I'd love to improve my efficiency and enjoyment by offloading testing and documentation to AI, so I am looking into how I would structure and implement that. I am not looking for productized solutions.&lt;/p&gt; &lt;p&gt;My ultimate goal is to have a model / models I can run locally or on my own servers.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/awebb78"&gt; /u/awebb78 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyv6if/what_would_you_say_are_the_best_open_models_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyv6if/what_would_you_say_are_the_best_open_models_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyv6if/what_would_you_say_are_the_best_open_models_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-14T10:01:48+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jxy26m</id>
     <title>Sam Altman: "We're going to do a very powerful open source model... better than any current open source model out there."</title>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T20:35:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyvv8y</id>
+    <title>[2504.02507] ZClip: Adaptive Spike Mitigation for LLM Pre-Training</title>
+    <updated>2025-04-14T10:47:38+00:00</updated>
+    <author>
+      <name>/u/akanyaani</name>
+      <uri>https://old.reddit.com/user/akanyaani</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I'm one of the researchers behind &lt;strong&gt;ZClip: Adaptive Spike Mitigation for LLM Pre-Training&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;ZClip is a lightweight and adaptive gradient clipping method designed to &lt;strong&gt;reduce loss spikes during LLM training&lt;/strong&gt;. Instead of relying on a fixed threshold like traditional gradient clipping, ZClip uses a &lt;strong&gt;z-score-based approach&lt;/strong&gt; to detect and clip only abnormal gradient spikes—those that significantly deviate from the recent moving average.&lt;/p&gt; &lt;p&gt;This helps maintain training stability without interfering with convergence, and it’s easy to integrate into any training loop.&lt;/p&gt; &lt;p&gt;🔗 &lt;strong&gt;Pape&lt;/strong&gt;r: &lt;a href="https://huggingface.co/papers/2504.02507"&gt;https://huggingface.co/papers/2504.02507&lt;/a&gt;&lt;br /&gt; 💻 &lt;strong&gt;Cod&lt;/strong&gt;e: &lt;a href="https://github.com/bluorion-com/ZClip"&gt;github.com/bluorion-com/ZClip&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts or questions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/akanyaani"&gt; /u/akanyaani &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyvv8y/250402507_zclip_adaptive_spike_mitigation_for_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyvv8y/250402507_zclip_adaptive_spike_mitigation_for_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyvv8y/250402507_zclip_adaptive_spike_mitigation_for_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-14T10:47:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1jytv2q</id>
@@ -138,19 +125,6 @@
     <published>2025-04-14T02:09:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jyz4a1</id>
-    <title>Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F</title>
-    <updated>2025-04-14T13:39:42+00:00</updated>
-    <author>
-      <name>/u/frunkp</name>
-      <uri>https://old.reddit.com/user/frunkp</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt; &lt;img alt="Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F" src="https://external-preview.redd.it/LUWPRYVOciUJ48L73KckvO0xvxcEDfER5j_R7LwvqHE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=03d8c19b4f8528a22fe82f93610c49e12edac5a4" title="Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;New SOTA of 80.7% for theorem proving on `miniF2F`! &lt;/p&gt; &lt;p&gt;Idea is to combine reasoning models (o1/r1-style) with formal maths (Lean 4) and apply RL to get human-readable proofs.&lt;/p&gt; &lt;p&gt;Distilled Kimina-Prover 1.5B &amp;amp; 7B models on &lt;a href="https://huggingface.co/collections/AI-MO/kimina-prover-preview-67fb536b883d60e7ca25d7f9"&gt;🤗 Hugging Face&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5hxdploeysue1.png?width=1590&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=81f9b08c6e6eb2382c7eecb53bd589e0f2c3e3cd"&gt;https://preview.redd.it/5hxdploeysue1.png?width=1590&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=81f9b08c6e6eb2382c7eecb53bd589e0f2c3e3cd&lt;/a&gt;&lt;/p&gt; &lt;p&gt;IMO 1968 P5 (1st part) solution found by Kimina-Prover:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/96slg6sszsue1.png?width=1654&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=52904f263895c9f13318e3c9fb1933855aa4c4f8"&gt;https://preview.redd.it/96slg6sszsue1.png?width=1654&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=52904f263895c9f13318e3c9fb1933855aa4c4f8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ns8p29lwzsue1.png?width=1652&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=039dfa8aab4bc272b8578642502e1a9eb33e6aeb"&gt;https://preview.redd.it/ns8p29lwzsue1.png?width=1652&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=039dfa8aab4bc272b8578642502e1a9eb33e6aeb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;📑 Technical report: &lt;a href="https://github.com/MoonshotAI/Kimina-Prover-Preview/blob/master/Kimina_Prover_Preview.pdf"&gt;Kimina_Prover_Preview.pdf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;🤗 Models: &lt;a href="https://huggingface.co/collections/AI-MO/kimina-prover-preview-67fb536b883d60e7ca25d7f9"&gt;AI-MO/kimina-prover-preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frunkp"&gt; /u/frunkp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-14T13:39:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1jyygcj</id>
     <title>What can I do with RTX 5090 that I couldn't do with RTX 4090</title>
     <updated>2025-04-14T13:08:45+00:00</updated>
@@ -201,6 +175,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy6ns6/coming_soon/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T12:36:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyzl0g</id>
+    <title>DGX B200 Startup ASMR</title>
+    <updated>2025-04-14T14:00:52+00:00</updated>
+    <author>
+      <name>/u/Chemical-Mixture3481</name>
+      <uri>https://old.reddit.com/user/Chemical-Mixture3481</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyzl0g/dgx_b200_startup_asmr/"&gt; &lt;img alt="DGX B200 Startup ASMR" src="https://external-preview.redd.it/YTF4eTdsdnozdHVlMTsTLvzMSe_uV5dg8VNzSYJEyMCa9wyDSSGv4dzqg19H.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=635d486d1d0cd25569bc0a249087d4f5360ec61e" title="DGX B200 Startup ASMR" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We just installed one of these beasts in our datacenter. Since I could not find a video that shows one of these machines running with original sound here you go!&lt;/p&gt; &lt;p&gt;Thats probably ~110dB of fan noise given that the previous generation was at around 106dB according to Nvidia. Cooling 1kW GPUs seems to be no joke given that this machine sounds like a fighter jet starting its engines next to you :D&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Chemical-Mixture3481"&gt; /u/Chemical-Mixture3481 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/yy6c2lvz3tue1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyzl0g/dgx_b200_startup_asmr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyzl0g/dgx_b200_startup_asmr/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-14T14:00:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyz4a1</id>
+    <title>Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F</title>
+    <updated>2025-04-14T13:39:42+00:00</updated>
+    <author>
+      <name>/u/frunkp</name>
+      <uri>https://old.reddit.com/user/frunkp</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt; &lt;img alt="Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F" src="https://external-preview.redd.it/LUWPRYVOciUJ48L73KckvO0xvxcEDfER5j_R7LwvqHE.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=03d8c19b4f8528a22fe82f93610c49e12edac5a4" title="Kimina-Prover Preview - New SOTA on theorem proving 80.7% miniF2F" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;New SOTA of 80.7% for theorem proving on `miniF2F`! &lt;/p&gt; &lt;p&gt;Idea is to combine reasoning models (o1/r1-style) with formal maths (Lean 4) and apply RL to get human-readable proofs.&lt;/p&gt; &lt;p&gt;Distilled Kimina-Prover 1.5B &amp;amp; 7B models on &lt;a href="https://huggingface.co/collections/AI-MO/kimina-prover-preview-67fb536b883d60e7ca25d7f9"&gt;🤗 Hugging Face&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5hxdploeysue1.png?width=1590&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=81f9b08c6e6eb2382c7eecb53bd589e0f2c3e3cd"&gt;https://preview.redd.it/5hxdploeysue1.png?width=1590&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=81f9b08c6e6eb2382c7eecb53bd589e0f2c3e3cd&lt;/a&gt;&lt;/p&gt; &lt;p&gt;IMO 1968 P5 (1st part) solution found by Kimina-Prover:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/96slg6sszsue1.png?width=1654&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=52904f263895c9f13318e3c9fb1933855aa4c4f8"&gt;https://preview.redd.it/96slg6sszsue1.png?width=1654&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=52904f263895c9f13318e3c9fb1933855aa4c4f8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ns8p29lwzsue1.png?width=1652&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=039dfa8aab4bc272b8578642502e1a9eb33e6aeb"&gt;https://preview.redd.it/ns8p29lwzsue1.png?width=1652&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=039dfa8aab4bc272b8578642502e1a9eb33e6aeb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;📑 Technical report: &lt;a href="https://github.com/MoonshotAI/Kimina-Prover-Preview/blob/master/Kimina_Prover_Preview.pdf"&gt;Kimina_Prover_Preview.pdf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;🤗 Models: &lt;a href="https://huggingface.co/collections/AI-MO/kimina-prover-preview-67fb536b883d60e7ca25d7f9"&gt;AI-MO/kimina-prover-preview&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/frunkp"&gt; /u/frunkp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyz4a1/kiminaprover_preview_new_sota_on_theorem_proving/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-14T13:39:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1jyxwob</id>
