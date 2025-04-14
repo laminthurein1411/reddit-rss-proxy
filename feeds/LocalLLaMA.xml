@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-14T02:20:07+00:00</updated>
+  <updated>2025-04-14T02:58:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1jy41fx</id>
-    <title>Fast, Zero-Bloat LLM CLI with Streaming, History, and Template Support — Written in Perl</title>
-    <updated>2025-04-13T09:43:23+00:00</updated>
-    <author>
-      <name>/u/jaggzh</name>
-      <uri>https://old.reddit.com/user/jaggzh</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jy41fx/fast_zerobloat_llm_cli_with_streaming_history_and/"&gt; &lt;img alt="Fast, Zero-Bloat LLM CLI with Streaming, History, and Template Support — Written in Perl" src="https://external-preview.redd.it/8J_6sy0IBFKR1WJCX4P9PWZrs5zCr49p_lmJXb6Ggkc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a416bd94be3aa8839c93426a682d5f978204cd4b" title="Fast, Zero-Bloat LLM CLI with Streaming, History, and Template Support — Written in Perl" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/jaggzh/z"&gt;https://github.com/jaggzh/z&lt;/a&gt;&lt;/p&gt; &lt;p&gt;[Edit] I don't like my title. This thing is FAST, convenient to use from anywhere, &lt;strong&gt;language-agnostic&lt;/strong&gt;, and designed to let you jump around either using it CLI or from your scripts, switching between system prompts at will.&lt;/p&gt; &lt;p&gt;Like, I'm writing some bash script, and I just say:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;answer=$(z &amp;quot;Please do such and such with this user-provided text: $1&amp;quot;) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Or, since I have different system-prompts defined (&amp;quot;tasks&amp;quot;), I can pick one with &lt;code&gt;-t taskname&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Ex: I might have one where I forced it to reason (you can make normal models work in stages just using your system prompt, telling it to going back and forth, contradicting and correcting itself, before outputting such-and-such tag and its final answer).&lt;/p&gt; &lt;p&gt;Here's one, &lt;strong&gt;pyval&lt;/strong&gt;, designed to critique and validate python code (the prompt is in z-llm.json, so I don't have to deal with it; I can just use it):&lt;/p&gt; &lt;p&gt;&lt;code&gt;answer=$(cat&lt;/code&gt;&lt;a href="http://code.py"&gt;&lt;code&gt;code.py&lt;/code&gt;&lt;/a&gt;&lt;code&gt;| z -t pyval -)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Then, I might have a psychology question; and I added a 'task' called &lt;strong&gt;psytech&lt;/strong&gt; which is designed to break down and analyze the situation, writing out its evaluation of underlying dynamics, and then output a list of practical techniques I can implement right away:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;$ z -t psytech &amp;quot;my coworker's really defensive&amp;quot; -w &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I had code in my chat history so I &lt;strong&gt;-w&lt;/strong&gt; (wiped) it real quick. The last-used tasktype (psytech) was set as default so I can just continue:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;$ z &amp;quot;Okay, but they usually say xyz when I try those methods.&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm not done with the psychology stuff, but I want to quickly ask a coding question:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;$ z -d -H &amp;quot;In bash, how do you such-and-such?&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;^ Here I temporarily went to my default, AND ignored the chat history.&lt;/p&gt; &lt;p&gt;Old original post:&lt;/p&gt; &lt;p&gt;I've been working on this, and using it, for over a year..&lt;/p&gt; &lt;p&gt;A local LLM CLI interface that’s super fast, and is usable for ultra-convenient command-line use, OR incorporating into pipe workflows or scripts.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/qo3m0q9r2mue1.jpg?width=1142&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7b6e8ffd4d6982c08d616f6faa2bc0337b33f87b"&gt;https://preview.redd.it/qo3m0q9r2mue1.jpg?width=1142&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=7b6e8ffd4d6982c08d616f6faa2bc0337b33f87b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It's super-minimal, while providing tons of [optional] power.&lt;/p&gt; &lt;p&gt;My tests show python calls have way too much overhead, dependency issues, etc. Perl is blazingly-fast (see my benchmarks) -- many times faster than python.&lt;/p&gt; &lt;p&gt;I currently have only used it with its API calls to llama.cpp's llama-server.&lt;/p&gt; &lt;p&gt;✅ Configurable system prompts (aka tasks aka personas). Grammars may also be included.&lt;/p&gt; &lt;p&gt;✅ Auto history, context, and system prompts&lt;/p&gt; &lt;p&gt;✅ Great for scripting in any language or just chatting&lt;/p&gt; &lt;p&gt;✅ Streaming &amp;amp; chain-of-thought toggling (--think)&lt;/p&gt; &lt;p&gt;Perl's dependencies are also very stable, and small, and fast.&lt;/p&gt; &lt;p&gt;It makes your llm use &amp;quot;close&amp;quot;, &amp;quot;native&amp;quot;, and convenient, wherever you are.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/jaggzh/z"&gt;https://github.com/jaggzh/z&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaggzh"&gt; /u/jaggzh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jy41fx/fast_zerobloat_llm_cli_with_streaming_history_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jy41fx/fast_zerobloat_llm_cli_with_streaming_history_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy41fx/fast_zerobloat_llm_cli_with_streaming_history_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T09:43:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1jy0zjw</id>
     <title>Gave Maverick another shot (much better!)</title>
@@ -34,17 +21,17 @@
     <published>2025-04-13T06:02:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jyn934</id>
-    <title>Token generation Performance as Context Increases MLX vs Llama.cpp</title>
-    <updated>2025-04-14T01:24:27+00:00</updated>
+    <id>t3_1jxv644</id>
+    <title>I chopped the screen off my MacBook Air to be a full time LLM server</title>
+    <updated>2025-04-13T00:12:36+00:00</updated>
     <author>
-      <name>/u/davewolfs</name>
-      <uri>https://old.reddit.com/user/davewolfs</uri>
+      <name>/u/mark-lord</name>
+      <uri>https://old.reddit.com/user/mark-lord</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I notice that if the context fills up to about 50% when using Llama.cpp with LMStudio things slow down dramatically e.g. on Scout token speed drops from say 35 t/s to 15 t/s nearly a 60% decrease. With MLX you are going from say 47 to 35 about a 25% decrease. Why is the drop in speed so much more dramatic with Llama.cpp?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davewolfs"&gt; /u/davewolfs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt; &lt;img alt="I chopped the screen off my MacBook Air to be a full time LLM server" src="https://preview.redd.it/qrnzf9tguhue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=16bb48263ccc8f44559ef992fd4e2e9901fdac0f" title="I chopped the screen off my MacBook Air to be a full time LLM server" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Got the thing for £250 used with a broken screen; finally just got around to removing it permanently lol&lt;/p&gt; &lt;p&gt;Runs Qwen-7b at 14 tokens-per-second, which isn’t amazing, but honestly is actually a lot better than I expected for an M1 8gb chip!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qrnzf9tguhue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-14T01:24:27+00:00</published>
+    <published>2025-04-13T00:12:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1jy1x1b</id>
@@ -58,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy1x1b/vocalis_local_conversational_ai_assistant_speech/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T07:07:25+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jxv644</id>
-    <title>I chopped the screen off my MacBook Air to be a full time LLM server</title>
-    <updated>2025-04-13T00:12:36+00:00</updated>
-    <author>
-      <name>/u/mark-lord</name>
-      <uri>https://old.reddit.com/user/mark-lord</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt; &lt;img alt="I chopped the screen off my MacBook Air to be a full time LLM server" src="https://preview.redd.it/qrnzf9tguhue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=16bb48263ccc8f44559ef992fd4e2e9901fdac0f" title="I chopped the screen off my MacBook Air to be a full time LLM server" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Got the thing for £250 used with a broken screen; finally just got around to removing it permanently lol&lt;/p&gt; &lt;p&gt;Runs Qwen-7b at 14 tokens-per-second, which isn’t amazing, but honestly is actually a lot better than I expected for an M1 8gb chip!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mark-lord"&gt; /u/mark-lord &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qrnzf9tguhue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jxv644/i_chopped_the_screen_off_my_macbook_air_to_be_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T00:12:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1jyfygt</id>
@@ -112,17 +86,17 @@
     <published>2025-04-12T23:12:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1jybxfb</id>
-    <title>Vision and voice enabled real-time AI assistant using livekit</title>
-    <updated>2025-04-13T16:42:38+00:00</updated>
+    <id>t3_1jyo2ds</id>
+    <title>Word Synth - Llama 3.2 tiny LLM with sampling parameters exposed</title>
+    <updated>2025-04-14T02:09:01+00:00</updated>
     <author>
-      <name>/u/Traditional_Tap1708</name>
-      <uri>https://old.reddit.com/user/Traditional_Tap1708</uri>
+      <name>/u/Brave_Variety6275</name>
+      <uri>https://old.reddit.com/user/Brave_Variety6275</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! 👋&lt;/p&gt; &lt;p&gt;I've been playing a little with Livekit for making voice assistants having very low response time, and wanted to share what I've put together so far.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/taresh18/conversify-speech"&gt;https://github.com/taresh18/conversify-speech&lt;/a&gt;&lt;/p&gt; &lt;p&gt;My goal was to build something responsive that runs mostly on local AI models (Whisper STT, local LLM via API, KokoroTTS). It's still a learning project (definitely WIP!), but it can already:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Hold a voice conversation.&lt;/li&gt; &lt;li&gt;Use basic vision (takes snapshots from video).&lt;/li&gt; &lt;li&gt;Remember past chats between sessions using memoripy.&lt;/li&gt; &lt;li&gt;Focuses on low latency.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For STT, I used whisper-large-v3-turbo with inference using &lt;a href="https://github.com/SYSTRAN/faster-whisper"&gt;faster-whisper&lt;/a&gt;. For LLM, I used qwen-2.5VL-7B served via sglang and for TTS, I used the &lt;a href="https://github.com/remsky/Kokoro-FastAPI"&gt;kokoro fast api&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;I'd love any feedback or suggestions you have! Especially interested in ideas for:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Making the vision/memory smarter?&lt;/li&gt; &lt;li&gt;Squeezing out more performance?&lt;/li&gt; &lt;li&gt;Cool features to add?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Let me know what you think! Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Traditional_Tap1708"&gt; /u/Traditional_Tap1708 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Built this as an intuition builder around LLM sampling--it's a bit rough around the edges but sharing in case its useful to anyone else trying to get it straight which sampling parameters do what. &lt;/p&gt; &lt;p&gt;&lt;a href="http://wordsynth.latenthomer.com/"&gt;http://wordsynth.latenthomer.com/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Your browser will yell at you because I didn't use https. Sorry. &lt;/p&gt; &lt;p&gt;Also apologies if it breaks or is really slow, this was also an experiment to deploy. &lt;/p&gt; &lt;p&gt;Thanks for reading :) &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Brave_Variety6275"&gt; /u/Brave_Variety6275 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyo2ds/word_synth_llama_32_tiny_llm_with_sampling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyo2ds/word_synth_llama_32_tiny_llm_with_sampling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyo2ds/word_synth_llama_32_tiny_llm_with_sampling/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T16:42:38+00:00</published>
+    <published>2025-04-14T02:09:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1jyl37p</id>
@@ -138,6 +112,32 @@
     <published>2025-04-13T23:30:14+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jyn934</id>
+    <title>Token generation Performance as Context Increases MLX vs Llama.cpp</title>
+    <updated>2025-04-14T01:24:27+00:00</updated>
+    <author>
+      <name>/u/davewolfs</name>
+      <uri>https://old.reddit.com/user/davewolfs</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I notice that if the context fills up to about 50% when using Llama.cpp with LMStudio things slow down dramatically e.g. on Scout token speed drops from say 35 t/s to 15 t/s nearly a 60% decrease. With MLX you are going from say 47 to 35 about a 25% decrease. Why is the drop in speed so much more dramatic with Llama.cpp?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davewolfs"&gt; /u/davewolfs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyn934/token_generation_performance_as_context_increases/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-14T01:24:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jybxfb</id>
+    <title>Vision and voice enabled real-time AI assistant using livekit</title>
+    <updated>2025-04-13T16:42:38+00:00</updated>
+    <author>
+      <name>/u/Traditional_Tap1708</name>
+      <uri>https://old.reddit.com/user/Traditional_Tap1708</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! 👋&lt;/p&gt; &lt;p&gt;I've been playing a little with Livekit for making voice assistants having very low response time, and wanted to share what I've put together so far.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/taresh18/conversify-speech"&gt;https://github.com/taresh18/conversify-speech&lt;/a&gt;&lt;/p&gt; &lt;p&gt;My goal was to build something responsive that runs mostly on local AI models (Whisper STT, local LLM via API, KokoroTTS). It's still a learning project (definitely WIP!), but it can already:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Hold a voice conversation.&lt;/li&gt; &lt;li&gt;Use basic vision (takes snapshots from video).&lt;/li&gt; &lt;li&gt;Remember past chats between sessions using memoripy.&lt;/li&gt; &lt;li&gt;Focuses on low latency.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For STT, I used whisper-large-v3-turbo with inference using &lt;a href="https://github.com/SYSTRAN/faster-whisper"&gt;faster-whisper&lt;/a&gt;. For LLM, I used qwen-2.5VL-7B served via sglang and for TTS, I used the &lt;a href="https://github.com/remsky/Kokoro-FastAPI"&gt;kokoro fast api&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;I'd love any feedback or suggestions you have! Especially interested in ideas for:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Making the vision/memory smarter?&lt;/li&gt; &lt;li&gt;Squeezing out more performance?&lt;/li&gt; &lt;li&gt;Cool features to add?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Let me know what you think! Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Traditional_Tap1708"&gt; /u/Traditional_Tap1708 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jybxfb/vision_and_voice_enabled_realtime_ai_assistant/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T16:42:38+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jy5p12</id>
     <title>Another budget build. 160gb of VRAM for $1000, maybe?</title>
     <updated>2025-04-13T11:38:27+00:00</updated>
@@ -149,19 +149,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy5p12/another_budget_build_160gb_of_vram_for_1000_maybe/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T11:38:27+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jyjwjl</id>
-    <title>Best multimodal for 4gb card?</title>
-    <updated>2025-04-13T22:31:22+00:00</updated>
-    <author>
-      <name>/u/thebadslime</name>
-      <uri>https://old.reddit.com/user/thebadslime</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;wanting to script some photo classification, but haven't messed with local multimodals. I have 32 gb of ram also.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thebadslime"&gt; /u/thebadslime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T22:31:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1jyid0v</id>
@@ -190,6 +177,19 @@
     <published>2025-04-13T06:16:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1jyjwjl</id>
+    <title>Best multimodal for 4gb card?</title>
+    <updated>2025-04-13T22:31:22+00:00</updated>
+    <author>
+      <name>/u/thebadslime</name>
+      <uri>https://old.reddit.com/user/thebadslime</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;wanting to script some photo classification, but haven't messed with local multimodals. I have 32 gb of ram also.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thebadslime"&gt; /u/thebadslime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyjwjl/best_multimodal_for_4gb_card/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T22:31:22+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1jyhd6i</id>
     <title>[2503.23817] MVDRAM: Enabling GeMV Execution in Unmodified DRAM for Low-Bit LLM Acceleration</title>
     <updated>2025-04-13T20:35:30+00:00</updated>
@@ -201,19 +201,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyhd6i/250323817_mvdram_enabling_gemv_execution_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T20:35:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1jyk399</id>
-    <title>Dual 5090 va single 5090</title>
-    <updated>2025-04-13T22:40:38+00:00</updated>
-    <author>
-      <name>/u/EasyConference4177</name>
-      <uri>https://old.reddit.com/user/EasyConference4177</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"&gt; &lt;img alt="Dual 5090 va single 5090" src="https://preview.redd.it/z1xl2ob1koue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a09792ff8b0785b5b36ea4cb15fed716f6a7feaf" title="Dual 5090 va single 5090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Man these dual 5090s are awesome. Went from 4t/s on 29b Gemma 3 to 28t/s when going from 1 to 2. I love these things! Easily runs 70b fast! I only wish they were a little cheaper but can’t wait till the RTX 6000 pro comes out with 96gb because I am totally eyeballing the crap out of it…. Who needs money when u got vram!!!&lt;/p&gt; &lt;p&gt;Btw I got 2 fans right under earn, 5 fans in front, 3 on top and one mac daddy on the back, and bout to put the one that came with the gigabyte 5090 on it too!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasyConference4177"&gt; /u/EasyConference4177 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/z1xl2ob1koue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-13T22:40:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1jydrnr</id>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jy9g9y/waifu_gpu_for_ai_gf/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-13T14:53:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1jyk399</id>
+    <title>Dual 5090 va single 5090</title>
+    <updated>2025-04-13T22:40:38+00:00</updated>
+    <author>
+      <name>/u/EasyConference4177</name>
+      <uri>https://old.reddit.com/user/EasyConference4177</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"&gt; &lt;img alt="Dual 5090 va single 5090" src="https://preview.redd.it/z1xl2ob1koue1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a09792ff8b0785b5b36ea4cb15fed716f6a7feaf" title="Dual 5090 va single 5090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Man these dual 5090s are awesome. Went from 4t/s on 29b Gemma 3 to 28t/s when going from 1 to 2. I love these things! Easily runs 70b fast! I only wish they were a little cheaper but can’t wait till the RTX 6000 pro comes out with 96gb because I am totally eyeballing the crap out of it…. Who needs money when u got vram!!!&lt;/p&gt; &lt;p&gt;Btw I got 2 fans right under earn, 5 fans in front, 3 on top and one mac daddy on the back, and bout to put the one that came with the gigabyte 5090 on it too!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasyConference4177"&gt; /u/EasyConference4177 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/z1xl2ob1koue1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jyk399/dual_5090_va_single_5090/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-13T22:40:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1jycfvf</id>
