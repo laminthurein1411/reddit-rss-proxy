@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-16T08:40:22+00:00</updated>
+  <updated>2025-04-16T08:51:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1k06wr7</id>
+    <title>How would you unit-test LLM outputs?</title>
+    <updated>2025-04-15T23:59:42+00:00</updated>
+    <author>
+      <name>/u/Blender-Fan</name>
+      <uri>https://old.reddit.com/user/Blender-Fan</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have this api where in one of the endpoints's requests has an LLM input field and so does the response&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;{&lt;/p&gt; &lt;p&gt;&amp;quot;llm_input&amp;quot;: &amp;quot;pigs do fly&amp;quot;,&lt;/p&gt; &lt;p&gt;&amp;quot;datetime&amp;quot;: &amp;quot;2025-04-15T12:00:00Z&amp;quot;,&lt;/p&gt; &lt;p&gt;&amp;quot;model&amp;quot;: &amp;quot;gpt-4&amp;quot;&lt;/p&gt; &lt;p&gt;}&lt;/p&gt; &lt;p&gt;{&lt;/p&gt; &lt;p&gt;&amp;quot;llm_output&amp;quot;: &amp;quot;unicorns are real&amp;quot;,&lt;/p&gt; &lt;p&gt;&amp;quot;datetime&amp;quot;: &amp;quot;2025-04-15T12:00:01Z&amp;quot;,&lt;/p&gt; &lt;p&gt;&amp;quot;model&amp;quot;: &amp;quot;gpt-4&amp;quot;&lt;/p&gt; &lt;p&gt;}&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;My API validates stuff like if the datetime (must not be older than datetime.now), but &lt;strong&gt;how the fuck do i validate an llm's output?&lt;/strong&gt; The example is of course exagerated, but if the llm says something logically wrong like &amp;quot;2+2=5&amp;quot; or &amp;quot;It is possible the sun goes supernova this year&amp;quot;, how do we unit-test that?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Blender-Fan"&gt; /u/Blender-Fan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k06wr7/how_would_you_unittest_llm_outputs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k06wr7/how_would_you_unittest_llm_outputs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k06wr7/how_would_you_unittest_llm_outputs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-15T23:59:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k0eivw</id>
+    <title>How to get 9070 working to run LLMs on Windows</title>
+    <updated>2025-04-16T07:21:07+00:00</updated>
+    <author>
+      <name>/u/Semi_Tech</name>
+      <uri>https://old.reddit.com/user/Semi_Tech</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First thanks to u/&lt;a href="https://www.reddit.com/user/DegenerativePoop/"&gt;DegenerativePoop&lt;/a&gt; for finding this and to the entire team that made it possible to get AIs running on this card.&lt;/p&gt; &lt;p&gt;Step by step instructions on how to get this running:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Download exe for Ollama for AMD from &lt;a href="https://github.com/likelovewant/ollama-for-amd/releases"&gt;here&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Install it&lt;/li&gt; &lt;li&gt;Download the &amp;quot;rocm.gfx1201.for.hip.skd.6.2.4-no-optimized.7z&amp;quot; archive from &lt;a href="https://github.com/likelovewant/ROCmLibs-for-gfx1103-AMD780M-APU/releases/tag/v0.6.2.4"&gt;here&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Go to %appdata% -&amp;gt; &lt;code&gt;C:\Users\usrname\AppData\Local\Programs\Ollama\lib\ollama\rocm&lt;/code&gt;&lt;/li&gt; &lt;li&gt;From the archive copy/paste and REPLACE the rocblas dll file&lt;/li&gt; &lt;li&gt;Go in the rocblas folder and DELETE the library folder&lt;/li&gt; &lt;li&gt;From the archive copy/paste the library folder where the old one was&lt;/li&gt; &lt;li&gt;Done&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;You can now do &lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama run gemma3:12b &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And you will have it running GPU accelerated.&lt;/p&gt; &lt;p&gt;I am getting about 15 tokens/s for gemma3 12B which is better than running it on CPU+RAM&lt;/p&gt; &lt;p&gt;You can then use whichever front end you want with Ollama as the server.&lt;/p&gt; &lt;p&gt;The easiest one I was able to get up and running is sillytavern&lt;/p&gt; &lt;p&gt;Installation took 2 minutes for those that don't want to fiddle with stuff too much.&lt;/p&gt; &lt;p&gt;Very easy installation &lt;a href="https://sillytavernai.com/how-to-install-sillytavern/"&gt;here&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Semi_Tech"&gt; /u/Semi_Tech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-16T07:21:07+00:00</published>
+  </entry>
   <entry>
     <id>t3_1jzrc5r</id>
     <title>Mistral Libraries!</title>
@@ -19,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jzrc5r/mistral_libraries/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-15T13:02:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k0fgwc</id>
-    <title>Elo HeLLM: Elo-based language model ranking</title>
-    <updated>2025-04-16T08:31:26+00:00</updated>
-    <author>
-      <name>/u/Remove_Ayys</name>
-      <uri>https://old.reddit.com/user/Remove_Ayys</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0fgwc/elo_hellm_elobased_language_model_ranking/"&gt; &lt;img alt="Elo HeLLM: Elo-based language model ranking" src="https://external-preview.redd.it/dtggyMgkIn4870BNnXiB4V9ZUqxqf0Rp6Uw930hgYwY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=68ed05657b325c5e749e7c21449f46f50780f2b8" title="Elo HeLLM: Elo-based language model ranking" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I started a new project called Elo HeLLM for ranking language models. The context is that one of my current goals is to get language model training to work in llama.cpp/ggml and the current methods for quality control are insufficient. Metrics like perplexity or KL divergence are simply not suitable for judging whether or not one finetuned model is better than some other finetuned model. Note that despite the name differences in Elo ratings between models are currently determined indirectly via assigning Elo ratings to language model benchmarks and comparing the relative performance. Long-term I intend to also compare language model performance using e.g. Chess or the Pokemon Showdown battle simulator though.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Remove_Ayys"&gt; /u/Remove_Ayys &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/JohannesGaessler/elo_hellm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0fgwc/elo_hellm_elobased_language_model_ranking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0fgwc/elo_hellm_elobased_language_model_ranking/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-16T08:31:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1jzk8nu</id>
@@ -58,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1jzncvp/its_good_to_download_a_small_open_local_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-15T09:11:56+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k0eivw</id>
-    <title>How to get 9070 working to run LLMs on Windows</title>
-    <updated>2025-04-16T07:21:07+00:00</updated>
-    <author>
-      <name>/u/Semi_Tech</name>
-      <uri>https://old.reddit.com/user/Semi_Tech</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First thanks to u/&lt;a href="https://www.reddit.com/user/DegenerativePoop/"&gt;DegenerativePoop&lt;/a&gt; for finding this and to the entire team that made it possible to get AIs running on this card.&lt;/p&gt; &lt;p&gt;Step by step instructions on how to get this running:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Download exe for Ollama for AMD from &lt;a href="https://github.com/likelovewant/ollama-for-amd/releases"&gt;here&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Install it&lt;/li&gt; &lt;li&gt;Download the &amp;quot;rocm.gfx1201.for.hip.skd.6.2.4-no-optimized.7z&amp;quot; archive from &lt;a href="https://github.com/likelovewant/ROCmLibs-for-gfx1103-AMD780M-APU/releases/tag/v0.6.2.4"&gt;here&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Go to %appdata% -&amp;gt; &lt;code&gt;C:\Users\usrname\AppData\Local\Programs\Ollama\lib\ollama\rocm&lt;/code&gt;&lt;/li&gt; &lt;li&gt;From the archive copy/paste and REPLACE the rocblas dll file&lt;/li&gt; &lt;li&gt;Go in the rocblas folder and DELETE the library folder&lt;/li&gt; &lt;li&gt;From the archive copy/paste the library folder where the old one was&lt;/li&gt; &lt;li&gt;Done&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;You can now do &lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama run gemma3:12b &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And you will have it running GPU accelerated.&lt;/p&gt; &lt;p&gt;I am getting about 15 tokens/s for gemma3 12B which is better than running it on CPU+RAM&lt;/p&gt; &lt;p&gt;You can then use whichever front end you want with Ollama as the server.&lt;/p&gt; &lt;p&gt;The easiest one I was able to get up and running is sillytavern&lt;/p&gt; &lt;p&gt;Installation took 2 minutes for those that don't want to fiddle with stuff too much.&lt;/p&gt; &lt;p&gt;Very easy installation &lt;a href="https://sillytavernai.com/how-to-install-sillytavern/"&gt;here&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Semi_Tech"&gt; /u/Semi_Tech &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0eivw/how_to_get_9070_working_to_run_llms_on_windows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-16T07:21:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1jzyeak</id>
