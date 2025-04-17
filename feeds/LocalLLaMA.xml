@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-17T09:48:45+00:00</updated>
+  <updated>2025-04-17T10:06:43+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1k0r9pi</id>
+    <title>Llama.cpp has much higher generation quality for Gemma 3 27B on M4 Max</title>
+    <updated>2025-04-16T18:12:44+00:00</updated>
+    <author>
+      <name>/u/IonizedRay</name>
+      <uri>https://old.reddit.com/user/IonizedRay</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When running the llama.cpp WebUI with:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-server -m Gemma-3-27B-Instruct-Q6_K.gguf \ --seed 42 \ --mlock \ --n-gpu-layers -1 \ --ctx-size 8096 \ --port 10000 \ --temp 1.0 \ --top-k 64 \ --top-p 0.95 \ --min-p 0.0 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And running Ollama trough OpenWebUI using the same temp, top-p, top-k, min-p, i get incredibly worse quality.&lt;/p&gt; &lt;p&gt;For example when i ask to add a feature to a python script, llama.cpp correctly adds the piece of code needed without any unnecessary edit, while Ollama completely rewrites the script, making a lot of stupid syntax mistakes that are so bad that the linter catches tons of them even before running it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/IonizedRay"&gt; /u/IonizedRay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0r9pi/llamacpp_has_much_higher_generation_quality_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0r9pi/llamacpp_has_much_higher_generation_quality_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0r9pi/llamacpp_has_much_higher_generation_quality_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-16T18:12:44+00:00</published>
+  </entry>
   <entry>
     <id>t3_1k0qbme</id>
     <title>o4-mini is 186ᵗʰ best coder, sleep well platter! Enjoy retirement!</title>
@@ -19,19 +32,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0qbme/o4mini_is_186ᵗʰ_best_coder_sleep_well_platter/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-16T17:34:46+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k16e8p</id>
-    <title>so those 5060Tis....</title>
-    <updated>2025-04-17T06:43:46+00:00</updated>
-    <author>
-      <name>/u/gaspoweredcat</name>
-      <uri>https://old.reddit.com/user/gaspoweredcat</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;this is a follow up to my post yesterday about getting hold of a pair of 5060tis&lt;/p&gt; &lt;p&gt;Well so far things have not gone smoothly despite me grabbing 2x different cards neither will actually physically fit in my G292-Z20, they have power cables on top of the card right in the middle meaning they dont fit in the GPU cartridges.&lt;/p&gt; &lt;p&gt;thankfully i have a backup, a less than ideal one but a backup no less in the form of my G431-MM0 but thats really a mining rig, it technically only has 1x per slot but it was at least a way to test and fair against the CMPs as they only have 1x&lt;/p&gt; &lt;p&gt;so i get them fitted in, fire up and... they arent seen by nvidia-smi and it hits me &amp;quot;drivers idiot&amp;quot; so i do some searching and find a link to the ones that supposedly supported the 5060ti from phoronix, installed them but still no cigar, i figure it must be because i was on ubuntu 22.04 which is pretty old now, so i grab the very latest ubuntu, do a clean install, install the drivers, still nope&lt;/p&gt; &lt;p&gt;so i bite the bullet and do something i havent in a long time, i download windows, install it, install driver, do updates and finally i grab LM studio and 2 models, gemma-27b at Q6 and QWQ-32b at Q4, i chose to load gemma first, full offload, 20k context, FA enabled and i ask it to tell me a short story&lt;/p&gt; &lt;p&gt;at the end of the story i got the token count, a measly 8.9 tokens per sec im sure that cannot possibly be right but so far its the best ive got, im sure something must be going very wrong somewhere though, i was fully expecting theyd absolutely trounce the CMP100-210s, &lt;/p&gt; &lt;p&gt;back when i ran qwen2.5-32b-q4k (admittedly with spec decoding) on 2x CMPs i was pulling 24 tokens per sec, so i just ran the same test on the 5060tis, 14.96 tokens per sec, now i know theyre limited by the 1x bus but i assumed with them being much newer and having FA and other modern features theyd still be faster despite having slower memory than the CMPs but it seems thats just not the case and the CMPs offer even better value than id imagined (if only you could have enabled 16x on them theyd have been monsters) or something is deeply wrong with the setup (ive never run LLMs under windows before)&lt;/p&gt; &lt;p&gt;ill keep playing about of course and hopefully soon ill workout how to fit them in the other server so i can try them with the full 16x lanes, i feel like im too early to really judge it, at least till i can get them running properly but so far they dont appear to be nearly the ultimate budget card i was hoping theyd be&lt;/p&gt; &lt;p&gt;ill post more info as and when i have it, hopefully others are having better results than me &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gaspoweredcat"&gt; /u/gaspoweredcat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k16e8p/so_those_5060tis/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k16e8p/so_those_5060tis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k16e8p/so_those_5060tis/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T06:43:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1722g</id>
@@ -125,19 +125,6 @@
     <published>2025-04-16T22:27:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k13tz6</id>
-    <title>Fun fact: Google also has a project called Codex</title>
-    <updated>2025-04-17T03:57:41+00:00</updated>
-    <author>
-      <name>/u/Cheap_Ship6400</name>
-      <uri>https://old.reddit.com/user/Cheap_Ship6400</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/google/codex"&gt;https://github.com/google/codex&lt;/a&gt;&lt;/p&gt; &lt;p&gt;but it's for dnn-based data compression&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cheap_Ship6400"&gt; /u/Cheap_Ship6400 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T03:57:41+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k142n9</id>
     <title>What is the latest gossip on a Qwen 3 release date?</title>
     <updated>2025-04-17T04:11:19+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k142n9/what_is_the_latest_gossip_on_a_qwen_3_release_date/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T04:11:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k13tz6</id>
+    <title>Fun fact: Google also has a project called Codex</title>
+    <updated>2025-04-17T03:57:41+00:00</updated>
+    <author>
+      <name>/u/Cheap_Ship6400</name>
+      <uri>https://old.reddit.com/user/Cheap_Ship6400</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/google/codex"&gt;https://github.com/google/codex&lt;/a&gt;&lt;/p&gt; &lt;p&gt;but it's for dnn-based data compression&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cheap_Ship6400"&gt; /u/Cheap_Ship6400 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tz6/fun_fact_google_also_has_a_project_called_codex/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T03:57:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1k0xszu</id>
@@ -216,6 +216,19 @@
     <published>2025-04-16T14:54:48+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k15ah1</id>
+    <title>We fought SB-1047; the same is happening in New York and now is a good time to voice opposition to the RAISE Act</title>
+    <updated>2025-04-17T05:28:19+00:00</updated>
+    <author>
+      <name>/u/Suitable-Listen355</name>
+      <uri>https://old.reddit.com/user/Suitable-Listen355</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been lurking &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; for a while, and remember how the community reacted when lawmakers in California attempted to pass SB-1047, an anti-open weights piece of legislation that would punish derivative models and make the creators of open-weights models liable for so much that open-weights models would be legally barely viable. Some links to posts from the anti-SB-1047 era: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1es87fm/right_now_is_a_good_time_for_californians_to_tell/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1es87fm/right_now_is_a_good_time_for_californians_to_tell/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1cxqtrv/california_senate_passes_sb1047/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1cxqtrv/california_senate_passes_sb1047/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1fkfkth/quick_reminder_sb_1047_hasnt_been_signed_into_law/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1fkfkth/quick_reminder_sb_1047_hasnt_been_signed_into_law/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thankfully, Governor Gavin Newsom vetoed the bill, and the opposition of the open-source community was heard. However, there is now a similar threat in the state of New York: the RAISE Act (A.6453). &lt;/p&gt; &lt;p&gt;The RAISE Act, like SB-1047, imposes state laws that affect models everywhere. Although it does not go as far as the SB-1047, it still should be in principle opposed that a single jurisdiction can be disruptive in a general model release. Outside of that initial consideration, I have listed things I find particularly problematic with the act and its impact on AI development: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;The act imposes a rule if a model is trained with over $5m of resources, a third-party auditor must be hired to audit its compliance. &lt;/li&gt; &lt;li&gt;In addition, even before you cross the $5m threshold, if you &lt;strong&gt;plan&lt;/strong&gt; to train a model that would qualify you as a large developer, you must implement and publish a safety protocol (minus some detail requirements) and send a redacted copy to the AG before training begins. &lt;/li&gt; &lt;li&gt;You may &lt;strong&gt;not&lt;/strong&gt; deploy a frontier model if it poses an “unreasonable risk” of causing critical harm (e.g. planning a mass attack or enabling a bioweapon). &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;First off, it is not at all clear what constitutes an &amp;quot;unreasonable risk&amp;quot;. Something like planning a mass attack is probably possible with prompt engineering on current frontier models with search capabilities already, and the potential liability implications for this &amp;quot;unreasonable risk&amp;quot; provision can stifle development. The issues I have with third-party audits is that many of these audit groups are themselves invested in the &amp;quot;AI safety&amp;quot; bubble. Rules that exist even before one starts training are also a dangerous precedent and set the precedent to far more regulatory hurdles in the future. Even if this act is not as egregious as SB-1047, it is of my opinion that this is a dangerous precedent to be passed into state law and hopefully federal legislation that is pro-development and preempts state laws like these is passed. (Although that's just one of my pipe dreams, the chance of such federal legislation is probably low, considering the Trump admin is thinking of banning DeepSeek right now). &lt;/p&gt; &lt;p&gt;The representative behind SB-1047 is Alex Bores of the 73rd District of New York and if you are in New York, I encourage you to contact your local representative in the New York State Assembly to oppose it. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Suitable-Listen355"&gt; /u/Suitable-Listen355 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T05:28:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k183aa</id>
     <title>Where is Qwen 3?</title>
     <updated>2025-04-17T08:48:36+00:00</updated>
@@ -227,19 +240,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k183aa/where_is_qwen_3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T08:48:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k18pb4</id>
-    <title>Gemma's license has a provision saying "you must make "reasonable efforts to use the latest version of Gemma"</title>
-    <updated>2025-04-17T09:34:02+00:00</updated>
-    <author>
-      <name>/u/vibjelo</name>
-      <uri>https://old.reddit.com/user/vibjelo</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"&gt; &lt;img alt="Gemma's license has a provision saying &amp;quot;you must make &amp;quot;reasonable efforts to use the latest version of Gemma&amp;quot;" src="https://preview.redd.it/pn9z3hg67dve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=86c7084ad25d72a8afaffab2fd42032b322889a8" title="Gemma's license has a provision saying &amp;quot;you must make &amp;quot;reasonable efforts to use the latest version of Gemma&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vibjelo"&gt; /u/vibjelo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pn9z3hg67dve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T09:34:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1k17uv0</id>
@@ -255,17 +255,17 @@
     <published>2025-04-17T08:30:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k15ah1</id>
-    <title>We fought SB-1047; the same is happening in New York and now is a good time to voice opposition to the RAISE Act</title>
-    <updated>2025-04-17T05:28:19+00:00</updated>
+    <id>t3_1k18pb4</id>
+    <title>Gemma's license has a provision saying "you must make "reasonable efforts to use the latest version of Gemma"</title>
+    <updated>2025-04-17T09:34:02+00:00</updated>
     <author>
-      <name>/u/Suitable-Listen355</name>
-      <uri>https://old.reddit.com/user/Suitable-Listen355</uri>
+      <name>/u/vibjelo</name>
+      <uri>https://old.reddit.com/user/vibjelo</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been lurking &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; for a while, and remember how the community reacted when lawmakers in California attempted to pass SB-1047, an anti-open weights piece of legislation that would punish derivative models and make the creators of open-weights models liable for so much that open-weights models would be legally barely viable. Some links to posts from the anti-SB-1047 era: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1es87fm/right_now_is_a_good_time_for_californians_to_tell/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1es87fm/right_now_is_a_good_time_for_californians_to_tell/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1cxqtrv/california_senate_passes_sb1047/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1cxqtrv/california_senate_passes_sb1047/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1fkfkth/quick_reminder_sb_1047_hasnt_been_signed_into_law/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1fkfkth/quick_reminder_sb_1047_hasnt_been_signed_into_law/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thankfully, Governor Gavin Newsom vetoed the bill, and the opposition of the open-source community was heard. However, there is now a similar threat in the state of New York: the RAISE Act (A.6453). &lt;/p&gt; &lt;p&gt;The RAISE Act, like SB-1047, imposes state laws that affect models everywhere. Although it does not go as far as the SB-1047, it still should be in principle opposed that a single jurisdiction can be disruptive in a general model release. Outside of that initial consideration, I have listed things I find particularly problematic with the act and its impact on AI development: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;The act imposes a rule if a model is trained with over $5m of resources, a third-party auditor must be hired to audit its compliance. &lt;/li&gt; &lt;li&gt;In addition, even before you cross the $5m threshold, if you &lt;strong&gt;plan&lt;/strong&gt; to train a model that would qualify you as a large developer, you must implement and publish a safety protocol (minus some detail requirements) and send a redacted copy to the AG before training begins. &lt;/li&gt; &lt;li&gt;You may &lt;strong&gt;not&lt;/strong&gt; deploy a frontier model if it poses an “unreasonable risk” of causing critical harm (e.g. planning a mass attack or enabling a bioweapon). &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;First off, it is not at all clear what constitutes an &amp;quot;unreasonable risk&amp;quot;. Something like planning a mass attack is probably possible with prompt engineering on current frontier models with search capabilities already, and the potential liability implications for this &amp;quot;unreasonable risk&amp;quot; provision can stifle development. The issues I have with third-party audits is that many of these audit groups are themselves invested in the &amp;quot;AI safety&amp;quot; bubble. Rules that exist even before one starts training are also a dangerous precedent and set the precedent to far more regulatory hurdles in the future. Even if this act is not as egregious as SB-1047, it is of my opinion that this is a dangerous precedent to be passed into state law and hopefully federal legislation that is pro-development and preempts state laws like these is passed. (Although that's just one of my pipe dreams, the chance of such federal legislation is probably low, considering the Trump admin is thinking of banning DeepSeek right now). &lt;/p&gt; &lt;p&gt;The representative behind SB-1047 is Alex Bores of the 73rd District of New York and if you are in New York, I encourage you to contact your local representative in the New York State Assembly to oppose it. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Suitable-Listen355"&gt; /u/Suitable-Listen355 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k15ah1/we_fought_sb1047_the_same_is_happening_in_new/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"&gt; &lt;img alt="Gemma's license has a provision saying &amp;quot;you must make &amp;quot;reasonable efforts to use the latest version of Gemma&amp;quot;" src="https://preview.redd.it/pn9z3hg67dve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=86c7084ad25d72a8afaffab2fd42032b322889a8" title="Gemma's license has a provision saying &amp;quot;you must make &amp;quot;reasonable efforts to use the latest version of Gemma&amp;quot;" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vibjelo"&gt; /u/vibjelo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pn9z3hg67dve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k18pb4/gemmas_license_has_a_provision_saying_you_must/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T05:28:19+00:00</published>
+    <published>2025-04-17T09:34:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1k0u8ew</id>
