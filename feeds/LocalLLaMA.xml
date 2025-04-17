@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-17T04:07:47+00:00</updated>
+  <updated>2025-04-17T04:24:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k0yna0</id>
-    <title>How to improve RAG search results ? Tips and Tricks ?</title>
-    <updated>2025-04-16T23:28:01+00:00</updated>
-    <author>
-      <name>/u/MoiSanh</name>
-      <uri>https://old.reddit.com/user/MoiSanh</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I can't make sense of how Embeddings are computed. I most often get random results, a friend told me to put everything in a high context window LLM and get rid of the RAG but I don't understand how that would improve the results.&lt;/p&gt; &lt;p&gt;I am trying to write an AI agent for Terraform, mostly to allow the team to change some values in the codebase and get information from the state straight through the Chat Interface.&lt;/p&gt; &lt;p&gt;I did what most AI code tools are claiming to do:&lt;br /&gt; - Parse the codebase using terraform parsing (treesitter does not work for me in this case)&lt;br /&gt; - Generate plain english description of the code&lt;br /&gt; - Computing the embeddings for the description&lt;br /&gt; - Storing the embeddings in a Vector Database&lt;br /&gt; - Searching through the embeddings by either embedding the prompt or emdedding a hallucinated answer.&lt;/p&gt; &lt;p&gt;The issue is that my search result are RANDOM and REALLY IRRELEVANT, I tried to lower the enthropy, thinking that embedding store the information in different part of the text (length, wording, tone, etc...) but still my results are irrelevant. For example if I search for provider version, it would appear 26th and the 25th first answers are usually the same. &lt;/p&gt; &lt;p&gt;I'd love to get any relevant information on embeddings that would explain how embeddings are computed with an LLM.&lt;/p&gt; &lt;p&gt;The setup:&lt;br /&gt; - I am using CodeQwen to generate the embeddings locally hosted through vllm&lt;br /&gt; - I store the embeddings in SurrealDB&lt;br /&gt; - I search using cosine distance&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MoiSanh"&gt; /u/MoiSanh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0yna0/how_to_improve_rag_search_results_tips_and_tricks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k0yna0/how_to_improve_rag_search_results_tips_and_tricks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0yna0/how_to_improve_rag_search_results_tips_and_tricks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-16T23:28:01+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k0nxlb</id>
     <title>It is almost May of 2025. What do you consider to be the best coding tools?</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0nxlb/it_is_almost_may_of_2025_what_do_you_consider_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-16T15:58:33+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k13tui</id>
-    <title>[2504.12285] BitNet b1.58 2B4T Technical Report</title>
-    <updated>2025-04-17T03:57:28+00:00</updated>
-    <author>
-      <name>/u/Aaaaaaaaaeeeee</name>
-      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h3&gt;Abstract&lt;/h3&gt; &lt;blockquote&gt; &lt;p&gt;We introduce BitNet b1.58 2B4T, the first open-source, native 1-bit Large Language Model (LLM) at the 2-billion parameter scale. Trained on a corpus of 4 trillion tokens, the model has been rigorously evaluated across benchmarks covering language understanding, mathematical reasoning, coding proficiency, and conversational ability. Our results demonstrate that BitNet b1.58 2B4T achieves performance on par with leading open-weight, full-precision LLMs of similar size, while offering significant advantages in computational efficiency, including substantially reduced memory footprint, energy consumption, and decoding latency. To facilitate further research and adoption, the model weights are released via Hugging Face along with open-source inference implementations for both GPU and CPU architectures.&lt;/p&gt; &lt;/blockquote&gt; &lt;h3&gt;Notables:&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;They used activation functions that are compatible with activation sparsity, which means a more efficient version can be created with this base in the future.&lt;/li&gt; &lt;li&gt;trained on publicly available data (Not Phi's proprietary dataset.)&lt;/li&gt; &lt;li&gt;GPU implementation: (Ladder/Bitblas) &lt;a href="https://github.com/microsoft/BitBLAS"&gt;https://github.com/microsoft/BitBLAS&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt; &lt;p&gt;BitNet b1.58 2B4T employs squared ReLU. This choice is motivated by its potential to improve model sparsity and computational characteristics within the 1-bit context: &lt;a href="https://arxiv.org/abs/2411.04965"&gt;BitNet a4.8: 4-bit Activations for 1-bit LLMs&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The pre-training corpus comprised a mixture of publicly available text and code datasets, including large web crawls like DCLM (Li et al., 2024b,) and educational web pages like FineWeb-EDU (Penedo et al.,, 2024). To enhance mathematical reasoning abilities, we also incorporated synthetically generated mathematical data. The data presentation strategy aligned with the two-stage training: the bulk of general web data was processed during Stage 1, while higher-quality curated datasets were emphasized during the Stage 2 cooldown phase, coinciding with the reduced learning rate&lt;/p&gt; &lt;p&gt;The SFT phase utilized a diverse collection of publicly available instruction-following and conversational datasets. These included, but were not limited to, WildChat (Zhao et al.,, 2024), LMSYS-Chat-1M (Zheng et al.,, 2024), WizardLM Evol-Instruct (Xu et al., 2024a,), and SlimOrca &lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2504.12285"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tui/250412285_bitnet_b158_2b4t_technical_report/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tui/250412285_bitnet_b158_2b4t_technical_report/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T03:57:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1k0q0bc</id>
@@ -99,6 +73,19 @@
     <published>2025-04-16T13:53:42+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k13tui</id>
+    <title>[2504.12285] BitNet b1.58 2B4T Technical Report</title>
+    <updated>2025-04-17T03:57:28+00:00</updated>
+    <author>
+      <name>/u/Aaaaaaaaaeeeee</name>
+      <uri>https://old.reddit.com/user/Aaaaaaaaaeeeee</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h3&gt;Abstract&lt;/h3&gt; &lt;blockquote&gt; &lt;p&gt;We introduce BitNet b1.58 2B4T, the first open-source, native 1-bit Large Language Model (LLM) at the 2-billion parameter scale. Trained on a corpus of 4 trillion tokens, the model has been rigorously evaluated across benchmarks covering language understanding, mathematical reasoning, coding proficiency, and conversational ability. Our results demonstrate that BitNet b1.58 2B4T achieves performance on par with leading open-weight, full-precision LLMs of similar size, while offering significant advantages in computational efficiency, including substantially reduced memory footprint, energy consumption, and decoding latency. To facilitate further research and adoption, the model weights are released via Hugging Face along with open-source inference implementations for both GPU and CPU architectures.&lt;/p&gt; &lt;/blockquote&gt; &lt;h3&gt;Notables:&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;They used activation functions that are compatible with activation sparsity, which means a more efficient version can be created with this base in the future.&lt;/li&gt; &lt;li&gt;trained on publicly available data (Not Phi's proprietary dataset.)&lt;/li&gt; &lt;li&gt;GPU implementation: (Ladder/Bitblas) &lt;a href="https://github.com/microsoft/BitBLAS"&gt;https://github.com/microsoft/BitBLAS&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt; &lt;p&gt;BitNet b1.58 2B4T employs squared ReLU. This choice is motivated by its potential to improve model sparsity and computational characteristics within the 1-bit context: &lt;a href="https://arxiv.org/abs/2411.04965"&gt;BitNet a4.8: 4-bit Activations for 1-bit LLMs&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The pre-training corpus comprised a mixture of publicly available text and code datasets, including large web crawls like DCLM (Li et al., 2024b,) and educational web pages like FineWeb-EDU (Penedo et al.,, 2024). To enhance mathematical reasoning abilities, we also incorporated synthetically generated mathematical data. The data presentation strategy aligned with the two-stage training: the bulk of general web data was processed during Stage 1, while higher-quality curated datasets were emphasized during the Stage 2 cooldown phase, coinciding with the reduced learning rate&lt;/p&gt; &lt;p&gt;The SFT phase utilized a diverse collection of publicly available instruction-following and conversational datasets. These included, but were not limited to, WildChat (Zhao et al.,, 2024), LMSYS-Chat-1M (Zheng et al.,, 2024), WizardLM Evol-Instruct (Xu et al., 2024a,), and SlimOrca &lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aaaaaaaaaeeeee"&gt; /u/Aaaaaaaaaeeeee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2504.12285"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tui/250412285_bitnet_b158_2b4t_technical_report/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k13tui/250412285_bitnet_b158_2b4t_technical_report/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T03:57:28+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k0c40c</id>
     <title>We GRPO-ed a Model to Keep Retrying 'Search' Until It Found What It Needed</title>
     <updated>2025-04-16T04:38:13+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k0r9pi/llamacpp_has_much_higher_generation_quality_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-16T18:12:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k142n9</id>
+    <title>What is the latest gossip on a Qwen 3 release date?</title>
+    <updated>2025-04-17T04:11:19+00:00</updated>
+    <author>
+      <name>/u/MrMrsPotts</name>
+      <uri>https://old.reddit.com/user/MrMrsPotts</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am suffering from the wait.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MrMrsPotts"&gt; /u/MrMrsPotts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k142n9/what_is_the_latest_gossip_on_a_qwen_3_release_date/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k142n9/what_is_the_latest_gossip_on_a_qwen_3_release_date/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k142n9/what_is_the_latest_gossip_on_a_qwen_3_release_date/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T04:11:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1k0qbme</id>
