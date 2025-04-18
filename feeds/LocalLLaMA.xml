@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-17T23:48:33+00:00</updated>
+  <updated>2025-04-18T00:26:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1k1qiat</id>
+    <title>Generalized script for wakeword detection to run any script.</title>
+    <updated>2025-04-17T23:12:13+00:00</updated>
+    <author>
+      <name>/u/jaggzh</name>
+      <uri>https://old.reddit.com/user/jaggzh</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;Wakeword: Generalized script that listens for a wakeword and runs a command you give it (so write a wrapper for your project that needs to be triggered with a wakeword): #!/usr/bin/env python3 # by jaggz.h {who is at} gmail.com (and jaggzh on github) # cc0 import asyncio import time import wave import pvporcupine import pyaudio import struct import io import argparse import subprocess # models_basedir=&amp;quot;~/wakegen/venv/lib/python3.11/site-packages/pvporcupine/resources/keyword_files/linux&amp;quot; # alexa_linux.ppn grasshopper_linux.ppn picovoice_linux.ppn # americano_linux.ppn 'hey google_linux.ppn' porcupine_linux.ppn # blueberry_linux.ppn 'hey siri_linux.ppn' 'smart mirror_linux.ppn' # bumblebee_linux.ppn jarvis_linux.ppn snowboy_linux.ppn # computer_linux.ppn 'ok google_linux.ppn' terminator_linux.ppn # grapefruit_linux.ppn 'pico clock_linux.ppn' 'view glass_linux.ppn' # Configuration DEF_KEYWORD_PATH = &amp;quot;~/wakegen/venv/lib/python3.11/site-packages/pvporcupine/resources/keyword_files/linux/blueberry_linux.ppn&amp;quot; DEF_SENSITIVITY = 0.5 # Adjust sensitivity as needed DEF_SR = 16000 # Sample rate of the audio DEF_SAMPLE_WIDTH = 2 # Sample width of the audio DEF_CHANNELS = 1 # Number of audio channels DEF_RECORD_DURATION = .3 # Seconds to record DEF_FRAME_LENGTH = 512 # Porcupine's frame length # Initialize PyAudio audio = pyaudio.PyAudio() # Create Porcupine instance porcupine = pvporcupine.create( keyword_paths=[DEF_KEYWORD_PATH], sensitivities=[DEF_SENSITIVITY] ) # Define function to record audio async def record_audio(stream: pyaudio.Stream, frames_per_buffer: int): &amp;quot;&amp;quot;&amp;quot;Records audio for the specified duration.&amp;quot;&amp;quot;&amp;quot; frames = [] start_time = time.time() while time.time() - start_time &amp;lt; RECORD_DURATION: data = stream.read(frames_per_buffer) frames.append(data) return b&amp;quot;&amp;quot;.join(frames) # Define function to process audio with Porcupine async def process_audio(audio_data: bytes, cmd: str, non_blocking: bool): &amp;quot;&amp;quot;&amp;quot;Processes recorded audio with Porcupine and reports results.&amp;quot;&amp;quot;&amp;quot; print(&amp;quot;Processing audio... &amp;quot;, end='\r') # Add WAV header audio_data_with_header = add_wav_header( audio_data, SAMPLE_RATE, SAMPLE_WIDTH, CHANNELS ) # Now write the audio data with header with wave.open(io.BytesIO(audio_data_with_header), &amp;quot;rb&amp;quot;) as wf: # Read audio in frames for i in range(0, len(audio_data), FRAME_LENGTH * SAMPLE_WIDTH * CHANNELS): frame_data = audio_data[i : i + FRAME_LENGTH * SAMPLE_WIDTH * CHANNELS] # Unpack audio data into a list of samples audio_samples = struct.unpack_from( &amp;quot;h&amp;quot; * FRAME_LENGTH, frame_data ) # Run Porcupine on the frame keyword_index = porcupine.process(audio_samples) if keyword_index &amp;gt;= 0: print(f&amp;quot;Wake word detected! (Index: {keyword_index})&amp;quot;) if cmd: print(f&amp;quot;Executing command: {cmd}&amp;quot;) try: if non_blocking: # Run command in the background subprocess.Popen(cmd.split()) else: # Run command and wait for it to finish subprocess.run(cmd.split(), check=True) except subprocess.CalledProcessError as e: # Handle error if command execution fails print(f&amp;quot;Command failed with error: {e}. Will try again next time.&amp;quot;) except Exception as e: # Handle any other errors that might occur print(f&amp;quot;An unexpected error occurred: {e}. Will try again next time.&amp;quot;) return # Exit after detection print(&amp;quot;Wake word not detected. &amp;quot;, end='\r') async def main(keyword_path: str, sensitivity: float, sample_rate: int, sample_width: int, channels: int, record_duration: float, cmd: str, non_blocking: bool): &amp;quot;&amp;quot;&amp;quot;Main program loop.&amp;quot;&amp;quot;&amp;quot; print(&amp;quot;Listening for wake word...&amp;quot;, end='\r') global SAMPLE_RATE, SAMPLE_WIDTH, CHANNELS, RECORD_DURATION, FRAME_LENGTH SAMPLE_RATE = sample_rate SAMPLE_WIDTH = sample_width CHANNELS = channels RECORD_DURATION = record_duration FRAME_LENGTH = porcupine.frame_length # Create PyAudio stream stream = audio.open( format=pyaudio.paInt16, channels=CHANNELS, rate=SAMPLE_RATE, input=True, frames_per_buffer=FRAME_LENGTH, ) while True: # Record audio audio_data = await record_audio(stream, FRAME_LENGTH) # Process audio with Porcupine await process_audio(audio_data, cmd, non_blocking) # Close stream stream.stop_stream() stream.close() def add_wav_header(audio_data: bytes, sample_rate: int, sample_width: int, channels: int): &amp;quot;&amp;quot;&amp;quot;Adds a WAV header to raw audio data.&amp;quot;&amp;quot;&amp;quot; num_channels = channels frame_rate = sample_rate sample_width = sample_width num_frames = len(audio_data) // (sample_width * num_channels) # Compute audio data size data_size = num_frames * num_channels * sample_width # Create WAV header header = b&amp;quot;RIFF&amp;quot; header += struct.pack(&amp;quot;&amp;lt;L&amp;quot;, 36 + data_size) # Total file size header += b&amp;quot;WAVE&amp;quot; header += b&amp;quot;fmt &amp;quot; header += struct.pack(&amp;quot;&amp;lt;L&amp;quot;, 16) # Length of fmt chunk header += struct.pack(&amp;quot;&amp;lt;H&amp;quot;, 1) # Format code (1 for PCM) header += struct.pack(&amp;quot;&amp;lt;H&amp;quot;, num_channels) header += struct.pack(&amp;quot;&amp;lt;L&amp;quot;, frame_rate) header += struct.pack(&amp;quot;&amp;lt;L&amp;quot;, frame_rate * num_channels * sample_width) # Byte rate header += struct.pack(&amp;quot;&amp;lt;H&amp;quot;, num_channels * sample_width) # Block align header += struct.pack(&amp;quot;&amp;lt;H&amp;quot;, sample_width * 8) # Bits per sample header += b&amp;quot;data&amp;quot; header += struct.pack(&amp;quot;&amp;lt;L&amp;quot;, data_size) # Size of data chunk return header + audio_data if __name__ == &amp;quot;__main__&amp;quot;: parser = argparse.ArgumentParser(prog=&amp;quot;rhasspy-wake-porcupine-hermes&amp;quot;) parser.add_argument( &amp;quot;-k&amp;quot;, &amp;quot;--keyword&amp;quot;, default=DEF_KEYWORD_PATH, help=&amp;quot;Path to Porcupine keyword file (.ppn)&amp;quot;, ) parser.add_argument( &amp;quot;-s&amp;quot;, &amp;quot;--sensitivity&amp;quot;, type=float, default=DEF_SENSITIVITY, help=&amp;quot;Sensitivity of keyword (default: 0.5)&amp;quot;, ) parser.add_argument( &amp;quot;-r&amp;quot;, &amp;quot;--sample-rate&amp;quot;, type=int, default=DEF_SR, help=f&amp;quot;Sample rate of the audio (default: {DEF_SR})&amp;quot;, ) parser.add_argument( &amp;quot;-w&amp;quot;, &amp;quot;--sample-width&amp;quot;, type=int, default=DEF_SAMPLE_WIDTH, help=&amp;quot;Sample width of the audio (default: 2)&amp;quot;, ) parser.add_argument( &amp;quot;-C&amp;quot;, &amp;quot;--channels&amp;quot;, type=int, default=DEF_CHANNELS, help=&amp;quot;Number of audio channels (default: 1)&amp;quot;, ) parser.add_argument( &amp;quot;-d&amp;quot;, &amp;quot;--record-duration&amp;quot;, type=float, default=DEF_RECORD_DURATION, help=f&amp;quot;Seconds to record audio (default: {DEF_RECORD_DURATION})&amp;quot;, ) parser.add_argument( &amp;quot;-c&amp;quot;, &amp;quot;--cmd&amp;quot;, help=&amp;quot;Command to execute when wake word is detected&amp;quot;, ) parser.add_argument( &amp;quot;-B&amp;quot;, &amp;quot;--non-blocking&amp;quot;, action=&amp;quot;store_true&amp;quot;, help=&amp;quot;Run command in the background&amp;quot;, ) args = parser.parse_args() # Recreate Porcupine with the provided keyword path and sensitivity porcupine = pvporcupine.create( keyword_paths=[args.keyword], sensitivities=[args.sensitivity] ) asyncio.run(main(args.keyword, args.sensitivity, args.sample_rate, args.sample_width, args.channels, args.record_duration, args.cmd, args.non_blocking)) # Terminate PyAudio audio.terminate() &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaggzh"&gt; /u/jaggzh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qiat/generalized_script_for_wakeword_detection_to_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qiat/generalized_script_for_wakeword_detection_to_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qiat/generalized_script_for_wakeword_detection_to_run/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T23:12:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k1f6sv</id>
+    <title>What if your local coding agent could perform as well as Cursor on very large, complex codebases codebases?</title>
+    <updated>2025-04-17T15:11:05+00:00</updated>
+    <author>
+      <name>/u/juanviera23</name>
+      <uri>https://old.reddit.com/user/juanviera23</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Local coding agents (Qwen Coder, DeepSeek Coder, etc.) often lack the deep project context of tools like Cursor, especially because their contexts are so much smaller. Standard RAG helps but misses nuanced code relationships.&lt;/p&gt; &lt;p&gt;We're experimenting with building project-specific &lt;strong&gt;Knowledge Graphs (KGs)&lt;/strong&gt; on-the-fly within the IDE—representing functions, classes, dependencies, etc., as structured nodes/edges.&lt;/p&gt; &lt;p&gt;Instead of just vector search or the LLM's base knowledge, our agent queries this dynamic KG for highly relevant, interconnected context (e.g., call graphs, inheritance chains, definition-usage links) before generating code or suggesting refactors.&lt;/p&gt; &lt;p&gt;This seems to unlock:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Deeper context-aware local coding&lt;/strong&gt; (beyond file content/vectors)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;More accurate cross-file generation &amp;amp; complex refactoring&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Full privacy &amp;amp; offline use&lt;/strong&gt; (local LLM + local KG context)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Curious if others are exploring similar areas, especially:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Deep IDE integration for local LLMs (Qwen, CodeLlama, etc.)&lt;/li&gt; &lt;li&gt;Code KG generation (using Tree-sitter, LSP, static analysis)&lt;/li&gt; &lt;li&gt;Feeding structured KG context effectively to LLMs&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Happy to share technical details (KG building, agent interaction). What limitations are you seeing with local agents?&lt;/p&gt; &lt;p&gt;P.S. Considering a deeper write-up on KGs + local code LLMs if folks are interested&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/juanviera23"&gt; /u/juanviera23 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1f6sv/what_if_your_local_coding_agent_could_perform_as/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1f6sv/what_if_your_local_coding_agent_could_perform_as/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1f6sv/what_if_your_local_coding_agent_could_perform_as/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T15:11:05+00:00</published>
+  </entry>
   <entry>
     <id>t3_1k17uv0</id>
     <title>Electron-BitNet has been updated to support Microsoft's official model "BitNet-b1.58-2B-4T"</title>
@@ -60,6 +86,19 @@
     <published>2025-04-17T04:40:53+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k1rjm1</id>
+    <title>How to run Llama 4 fast, even though it's too big to fit in RAM</title>
+    <updated>2025-04-18T00:03:01+00:00</updated>
+    <author>
+      <name>/u/Klutzy-Snow8016</name>
+      <uri>https://old.reddit.com/user/Klutzy-Snow8016</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: in your llama.cpp command, add:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49 --override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Explanation:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;offload all 49 layers to GPU&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;...except for the MOE weights&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;process the prompt in batches of 1 at a time (instead of the default 512 - otherwise your SSD will be the bottleneck and prompt processing will be slower)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This radically speeds up inference by taking advantage of LLama 4's MOE architecture. LLama 4 Maverick has 400 billion total parameters, but only 17 billion active parameters. Some are needed on every token generation, while others are only occasionally used. So if we put the parameters that are always needed onto GPU, those will be processed quickly, and there will just be a small number that need to be handled by the CPU. This works so well that the weights don't even need to all fit in your CPU's RAM - many of them can memory mapped from NVMe.&lt;/p&gt; &lt;p&gt;My results with Llama 4 Maverick:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth's UD-Q4_K_XL quant is 227GB&lt;/li&gt; &lt;li&gt;Unsloth's Q8_0 quant is 397GB&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Both of those are much bigger than my RAM + VRAM (128GB + 3x24GB). But with these tricks, I get 15 tokens per second with the UD-Q4_K_M and 6 tokens per second with the Q8_0.&lt;/p&gt; &lt;p&gt;Full llama.cpp server commands:&lt;/p&gt; &lt;p&gt;Note: the &lt;code&gt;--override-tensor&lt;/code&gt; command is tweaked because I had some extra VRAM available, so I offloaded most of the MOE layers to CPU, but loaded a few onto each GPU.&lt;/p&gt; &lt;p&gt;UD-Q4_K_XL:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-Q4_K_XL-00001-of-00005.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([1][1-9]|[2-9][0-9]).ffn_.*_exps.=CPU,([0-2]).ffn_.*_exps.=CUDA0,([3-6]).ffn_.*_exps.=CUDA1,([7-9]|[1][0]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Q8_0:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-Q8_0-00001-of-00009.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([6-9]|[1-9][0-9]).ffn_.*_exps.=CPU,([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Credit goes to the people behind Unsloth for this knowledge. I hadn't seen people talking about this here, so I thought I'd make a post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Klutzy-Snow8016"&gt; /u/Klutzy-Snow8016 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-18T00:03:01+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k1myni</id>
     <title>LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai</title>
     <updated>2025-04-17T20:33:00+00:00</updated>
@@ -71,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T20:33:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k1o71i</id>
-    <title>SecondMe/Mindverse - stay away</title>
-    <updated>2025-04-17T21:26:07+00:00</updated>
-    <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt; &lt;img alt="SecondMe/Mindverse - stay away" src="https://preview.redd.it/0fu8ie5eqgve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a7d0d6e3cf5517e18cc0d17a997e82ee9ab5ee0" title="SecondMe/Mindverse - stay away" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just a heads up - Mindverse/SecondMe are lowkey scamming to funnel people to their product.&lt;/p&gt; &lt;p&gt;How do I know? I received an email above, seemingly an invitation to proceed with my application to their AI startup. But here's the thing: - I only use this email address on GitHub - so I know it was sourced from there - I never applied to any jobs from Mindverse, I'm happily employed&lt;/p&gt; &lt;p&gt;This is the same entity that was promoting SecondMe here and on other LLM subs a week or so ago - their posts were questionable but nothing out of ordinary for LLM/AI projects. However email above is at least misleading and at most just a scam - so be aware and stay away.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0fu8ie5eqgve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T21:26:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1h5eh</id>
@@ -99,17 +125,17 @@
     <published>2025-04-17T16:31:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1pw3z</id>
-    <title>Gemini 2.5 Flash - First impressions</title>
-    <updated>2025-04-17T22:43:03+00:00</updated>
+    <id>t3_1k1o71i</id>
+    <title>SecondMe/Mindverse - stay away</title>
+    <updated>2025-04-17T21:26:07+00:00</updated>
     <author>
-      <name>/u/Embarrassed-Way-1350</name>
-      <uri>https://old.reddit.com/user/Embarrassed-Way-1350</uri>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Google is rapidly evolving its Gemini models, and I recently got my hands on the preview versions designated as &lt;strong&gt;Gemini 2.5 Flash&lt;/strong&gt; and &lt;strong&gt;Gemini 2.5 Pro&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Flash is positioned as the faster, more cost-effective option, while Pro targets peak performance, especially for complex reasoning. I put them head-to-head, particularly focusing on demanding tasks, and the results challenged the on-paper value proposition.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;The Pricing Picture (As Experienced):&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The per-token costs I encountered were:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Gemini 2.5 Flash (Preview):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;Input: $0.15 / million tokens&lt;/li&gt; &lt;li&gt;Output (Standard/&amp;quot;Non-Thinking&amp;quot;): $0.60 / million tokens&lt;/li&gt; &lt;li&gt;Output (&amp;quot;Thinking Mode&amp;quot; - Implied High Usage Rate): $3.50 / million tokens&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemini 2.5 Pro (Preview):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;Input: $1.25 / million tokens&lt;/li&gt; &lt;li&gt;Output: $10.00 / million tokens&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Performance &amp;amp; Thinking Quality: Flash's Achilles' Heel&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This is where the cost-effectiveness argument started to unravel for me. My focus was on the models' reasoning and problem-solving abilities.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Gemini 2.5 Flash's Thinking:&lt;/strong&gt; The quality of reasoning felt &lt;strong&gt;very poor&lt;/strong&gt;. For complex problems requiring logical steps, its approach seemed inefficient and indirect. It struggled compared to the Pro version.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Token Inefficiency:&lt;/strong&gt; The most critical issue was Flash's token consumption. It consistently required &lt;strong&gt;5-6 times more tokens&lt;/strong&gt; than &lt;strong&gt;Gemini 2.5 Pro&lt;/strong&gt; to tackle the same task. The thinking process felt like it was deliberately burning tokens rather than finding the most direct solution path.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Subjective Benchmark:&lt;/strong&gt; I'd rate its reasoning quality slightly below a strong open-source model like Qwen-QWQ-32b.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;The Real-World Test: STEM Exam Problems&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;To test this under pressure, I used tough STEM exam papers on both models.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Gemini 2.5 Pro (Preview):&lt;/strong&gt; Handled the problems with relative token efficiency for its reasoning process.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemini 2.5 Flash (Preview):&lt;/strong&gt; Despite its much lower per-token costs (even the $3.50 &amp;quot;thinking&amp;quot; rate vs Pro's $10.00), Flash &lt;strong&gt;used vastly more tokens&lt;/strong&gt; for the same problems.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;The Bottom Line: Effective Cost vs. Sticker Price&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;My conclusion based on these tests was clear: &lt;strong&gt;For complex reasoning tasks, the preview version of Gemini 2.5 Flash effectively cost more per solved problem than the preview version of Gemini 2.5 Pro, despite Flash's lower per-token price.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The extreme token inefficiency completely negated the cheaper rate. Paying $3.50 per million for Flash's &amp;quot;thinking&amp;quot; output tokens felt especially wasteful given the low quality and high volume required.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Embarrassed-Way-1350"&gt; /u/Embarrassed-Way-1350 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1pw3z/gemini_25_flash_first_impressions/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1pw3z/gemini_25_flash_first_impressions/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1pw3z/gemini_25_flash_first_impressions/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt; &lt;img alt="SecondMe/Mindverse - stay away" src="https://preview.redd.it/0fu8ie5eqgve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a7d0d6e3cf5517e18cc0d17a997e82ee9ab5ee0" title="SecondMe/Mindverse - stay away" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just a heads up - Mindverse/SecondMe are lowkey scamming to funnel people to their product.&lt;/p&gt; &lt;p&gt;How do I know? I received an email above, seemingly an invitation to proceed with my application to their AI startup. But here's the thing: - I only use this email address on GitHub - so I know it was sourced from there - I never applied to any jobs from Mindverse, I'm happily employed&lt;/p&gt; &lt;p&gt;This is the same entity that was promoting SecondMe here and on other LLM subs a week or so ago - their posts were questionable but nothing out of ordinary for LLM/AI projects. However email above is at least misleading and at most just a scam - so be aware and stay away.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0fu8ie5eqgve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T22:43:03+00:00</published>
+    <published>2025-04-17T21:26:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1drtz</id>
@@ -190,19 +216,6 @@
     <published>2025-04-17T09:34:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1qpr6</id>
-    <title>microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft</title>
-    <updated>2025-04-17T23:22:11+00:00</updated>
-    <author>
-      <name>/u/TKGaming_11</name>
-      <uri>https://old.reddit.com/user/TKGaming_11</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt; &lt;img alt="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" src="https://external-preview.redd.it/oacNTVfe15Ozahhiv8YMZ-Teu__pPBVygtAgzE9FP3c.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=140a805e8a294974bbef97d4e1035ef969130c5a" title="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/microsoft/MAI-DS-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T23:22:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k1fe1d</id>
     <title>Scrappy underdog GLM-4-9b still holding onto the top spot (for local models) for lowest hallucination rate</title>
     <updated>2025-04-17T15:19:43+00:00</updated>
@@ -242,19 +255,6 @@
     <published>2025-04-17T17:34:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1nle9</id>
-    <title>Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)</title>
-    <updated>2025-04-17T21:00:19+00:00</updated>
-    <author>
-      <name>/u/jd_3d</name>
-      <uri>https://old.reddit.com/user/jd_3d</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"&gt; &lt;img alt="Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)" src="https://external-preview.redd.it/Z2JsMWRwbGRrZ3ZlMYv6snaPu9pbXPiAyfaNKBLULaPCIm0pnygnovycxPje.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9eab23a4ac22667d41e99959dfc570a8f5b1ece0" title="Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/eni76fldkgve1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T21:00:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k1av1x</id>
     <title>Medium sized local models already beating vanilla ChatGPT - Mind blown</title>
     <updated>2025-04-17T11:52:34+00:00</updated>
@@ -268,17 +268,30 @@
     <published>2025-04-17T11:52:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1lrya</id>
-    <title>Gemini 2.5 Flash (500RPD free)</title>
-    <updated>2025-04-17T19:43:14+00:00</updated>
+    <id>t3_1k1nle9</id>
+    <title>Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)</title>
+    <updated>2025-04-17T21:00:19+00:00</updated>
     <author>
-      <name>/u/secopsml</name>
-      <uri>https://old.reddit.com/user/secopsml</uri>
+      <name>/u/jd_3d</name>
+      <uri>https://old.reddit.com/user/jd_3d</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1lrya/gemini_25_flash_500rpd_free/"&gt; &lt;img alt="Gemini 2.5 Flash (500RPD free)" src="https://preview.redd.it/uwg0peza7gve1.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5f727724ab78a6312bb60f53052ddcbe90e34675" title="Gemini 2.5 Flash (500RPD free)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/uwg0peza7gve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1lrya/gemini_25_flash_500rpd_free/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1lrya/gemini_25_flash_500rpd_free/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"&gt; &lt;img alt="Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)" src="https://external-preview.redd.it/Z2JsMWRwbGRrZ3ZlMYv6snaPu9pbXPiAyfaNKBLULaPCIm0pnygnovycxPje.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9eab23a4ac22667d41e99959dfc570a8f5b1ece0" title="Inspired by the spinning heptagon test I created the forest fire simulation test (prompt in comments)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jd_3d"&gt; /u/jd_3d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/eni76fldkgve1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1nle9/inspired_by_the_spinning_heptagon_test_i_created/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T19:43:14+00:00</published>
+    <published>2025-04-17T21:00:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k1qpr6</id>
+    <title>microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft</title>
+    <updated>2025-04-17T23:22:11+00:00</updated>
+    <author>
+      <name>/u/TKGaming_11</name>
+      <uri>https://old.reddit.com/user/TKGaming_11</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt; &lt;img alt="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" src="https://external-preview.redd.it/oacNTVfe15Ozahhiv8YMZ-Teu__pPBVygtAgzE9FP3c.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=140a805e8a294974bbef97d4e1035ef969130c5a" title="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/microsoft/MAI-DS-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T23:22:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1hm53</id>
@@ -305,19 +318,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1ahr4/wikipedia_is_giving_ai_developers_its_data_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T11:31:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k1mq98</id>
-    <title>I found AGI</title>
-    <updated>2025-04-17T20:23:10+00:00</updated>
-    <author>
-      <name>/u/gucci-grapes</name>
-      <uri>https://old.reddit.com/user/gucci-grapes</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1mq98/i_found_agi/"&gt; &lt;img alt="I found AGI" src="https://preview.redd.it/fqdi3ms5fgve1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=9fa9f468116b658f1f67e115a46dea460537335f" title="I found AGI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;new model just dropped&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gucci-grapes"&gt; /u/gucci-grapes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/fqdi3ms5fgve1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1mq98/i_found_agi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1mq98/i_found_agi/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T20:23:10+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1fi5w</id>
