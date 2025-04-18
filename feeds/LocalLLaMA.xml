@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-18T00:52:11+00:00</updated>
+  <updated>2025-04-18T01:34:17+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,19 +47,6 @@
     <published>2025-04-17T11:12:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1rfe7</id>
-    <title>I made this extension that applies the AI's changes semi-automatically without using an API.</title>
-    <updated>2025-04-17T23:57:18+00:00</updated>
-    <author>
-      <name>/u/Delicious-Trash6988</name>
-      <uri>https://old.reddit.com/user/Delicious-Trash6988</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"&gt; &lt;img alt="I made this extension that applies the AI's changes semi-automatically without using an API." src="https://external-preview.redd.it/bnM5aHUyNGFmaHZlMfXWszA2aBwWyFSKhA5ZAJVyEflwSFKnBokwQQKV24Gs.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=77abeaf5703afbf932017ff900fc3d226488600f" title="I made this extension that applies the AI's changes semi-automatically without using an API." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Basically, the AI responds in a certain format, and when you paste it into the extension, it automatically executes the commands — creates files, etc. I made it in a short amount of time and wanted to know what you think. The idea was to have something that doesn't rely on APIs, which usually have a lot of limitations. It can be used with any AI — you just need to set the system instructions.&lt;/p&gt; &lt;p&gt;If I were to continue developing it, I'd add more efficient editing (without needing to show the entire code), using search and replace, and so on.&lt;/p&gt; &lt;p&gt;&lt;a href="https://marketplace.visualstudio.com/items/?itemName=FelpolinColorado.buildy"&gt;https://marketplace.visualstudio.com/items/?itemName=FelpolinColorado.buildy&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;LIMITATIONS AND WARNING:&lt;/strong&gt; this extension is not secure at all. Even though it has a checkpoint system, it doesn’t ask for any permissions, so be very careful if you choose to use it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Delicious-Trash6988"&gt; /u/Delicious-Trash6988 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/jxyur24afhve1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T23:57:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k10yak</id>
     <title>Honest thoughts on the OpenAI release</title>
     <updated>2025-04-17T01:22:49+00:00</updated>
@@ -86,30 +73,17 @@
     <published>2025-04-17T04:40:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1rjm1</id>
-    <title>How to run Llama 4 fast, even though it's too big to fit in RAM</title>
-    <updated>2025-04-18T00:03:01+00:00</updated>
+    <id>t3_1k1rfe7</id>
+    <title>I made this extension that applies the AI's changes semi-automatically without using an API.</title>
+    <updated>2025-04-17T23:57:18+00:00</updated>
     <author>
-      <name>/u/Klutzy-Snow8016</name>
-      <uri>https://old.reddit.com/user/Klutzy-Snow8016</uri>
+      <name>/u/Delicious-Trash6988</name>
+      <uri>https://old.reddit.com/user/Delicious-Trash6988</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: in your llama.cpp command, add:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49 --override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Explanation:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;offload all 49 layers to GPU&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;...except for the MOE weights&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;process the prompt in batches of 1 at a time (instead of the default 512 - otherwise your SSD will be the bottleneck and prompt processing will be slower)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This radically speeds up inference by taking advantage of LLama 4's MOE architecture. LLama 4 Maverick has 400 billion total parameters, but only 17 billion active parameters. Some are needed on every token generation, while others are only occasionally used. So if we put the parameters that are always needed onto GPU, those will be processed quickly, and there will just be a small number that need to be handled by the CPU. This works so well that the weights don't even need to all fit in your CPU's RAM - many of them can memory mapped from NVMe.&lt;/p&gt; &lt;p&gt;My results with Llama 4 Maverick:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth's UD-Q4_K_XL quant is 227GB&lt;/li&gt; &lt;li&gt;Unsloth's Q8_0 quant is 397GB&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Both of those are much bigger than my RAM + VRAM (128GB + 3x24GB). But with these tricks, I get 15 tokens per second with the UD-Q4_K_M and 6 tokens per second with the Q8_0.&lt;/p&gt; &lt;p&gt;Full llama.cpp server commands:&lt;/p&gt; &lt;p&gt;Note: the &lt;code&gt;--override-tensor&lt;/code&gt; command is tweaked because I had some extra VRAM available, so I offloaded most of the MOE layers to CPU, but loaded a few onto each GPU.&lt;/p&gt; &lt;p&gt;UD-Q4_K_XL:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-Q4_K_XL-00001-of-00005.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([1][1-9]|[2-9][0-9]).ffn_.*_exps.=CPU,([0-2]).ffn_.*_exps.=CUDA0,([3-6]).ffn_.*_exps.=CUDA1,([7-9]|[1][0]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Q8_0:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-Q8_0-00001-of-00009.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([6-9]|[1-9][0-9]).ffn_.*_exps.=CPU,([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Credit goes to the people behind Unsloth for this knowledge. I hadn't seen people talking about this here, so I thought I'd make a post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Klutzy-Snow8016"&gt; /u/Klutzy-Snow8016 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"&gt; &lt;img alt="I made this extension that applies the AI's changes semi-automatically without using an API." src="https://external-preview.redd.it/bnM5aHUyNGFmaHZlMfXWszA2aBwWyFSKhA5ZAJVyEflwSFKnBokwQQKV24Gs.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=77abeaf5703afbf932017ff900fc3d226488600f" title="I made this extension that applies the AI's changes semi-automatically without using an API." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Basically, the AI responds in a certain format, and when you paste it into the extension, it automatically executes the commands — creates files, etc. I made it in a short amount of time and wanted to know what you think. The idea was to have something that doesn't rely on APIs, which usually have a lot of limitations. It can be used with any AI — you just need to set the system instructions.&lt;/p&gt; &lt;p&gt;If I were to continue developing it, I'd add more efficient editing (without needing to show the entire code), using search and replace, and so on.&lt;/p&gt; &lt;p&gt;&lt;a href="https://marketplace.visualstudio.com/items/?itemName=FelpolinColorado.buildy"&gt;https://marketplace.visualstudio.com/items/?itemName=FelpolinColorado.buildy&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;LIMITATIONS AND WARNING:&lt;/strong&gt; this extension is not secure at all. Even though it has a checkpoint system, it doesn’t ask for any permissions, so be very careful if you choose to use it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Delicious-Trash6988"&gt; /u/Delicious-Trash6988 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/jxyur24afhve1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rfe7/i_made_this_extension_that_applies_the_ais/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-18T00:03:01+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k1myni</id>
-    <title>LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai</title>
-    <updated>2025-04-17T20:33:00+00:00</updated>
-    <author>
-      <name>/u/HostFit8686</name>
-      <uri>https://old.reddit.com/user/HostFit8686</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"&gt; &lt;img alt="LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai" src="https://b.thumbs.redditmedia.com/5-5toRbipdayS6ZmMRoDrI4l0QrDd2eTZnBkQ_mJICU.jpg" title="LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HostFit8686"&gt; /u/HostFit8686 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k1myni"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T20:33:00+00:00</published>
+    <published>2025-04-17T23:57:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1h5eh</id>
@@ -123,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1h5eh/dreamgen_lucid_nemo_12b_storywriting_roleplay/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T16:31:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k1rjm1</id>
+    <title>How to run Llama 4 fast, even though it's too big to fit in RAM</title>
+    <updated>2025-04-18T00:03:01+00:00</updated>
+    <author>
+      <name>/u/Klutzy-Snow8016</name>
+      <uri>https://old.reddit.com/user/Klutzy-Snow8016</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: in your llama.cpp command, add:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49 --override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Explanation:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;offload all 49 layers to GPU&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;...except for the MOE weights&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;process the prompt in batches of 1 at a time (instead of the default 512 - otherwise your SSD will be the bottleneck and prompt processing will be slower)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This radically speeds up inference by taking advantage of LLama 4's MOE architecture. LLama 4 Maverick has 400 billion total parameters, but only 17 billion active parameters. Some are needed on every token generation, while others are only occasionally used. So if we put the parameters that are always needed onto GPU, those will be processed quickly, and there will just be a small number that need to be handled by the CPU. This works so well that the weights don't even need to all fit in your CPU's RAM - many of them can memory mapped from NVMe.&lt;/p&gt; &lt;p&gt;My results with Llama 4 Maverick:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth's UD-Q4_K_XL quant is 227GB&lt;/li&gt; &lt;li&gt;Unsloth's Q8_0 quant is 397GB&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Both of those are much bigger than my RAM + VRAM (128GB + 3x24GB). But with these tricks, I get 15 tokens per second with the UD-Q4_K_M and 6 tokens per second with the Q8_0.&lt;/p&gt; &lt;p&gt;Full llama.cpp server commands:&lt;/p&gt; &lt;p&gt;Note: the &lt;code&gt;--override-tensor&lt;/code&gt; command is tweaked because I had some extra VRAM available, so I offloaded most of the MOE layers to CPU, but loaded a few onto each GPU.&lt;/p&gt; &lt;p&gt;UD-Q4_K_XL:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-Q4_K_XL-00001-of-00005.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([1][1-9]|[2-9][0-9]).ffn_.*_exps.=CPU,([0-2]).ffn_.*_exps.=CUDA0,([3-6]).ffn_.*_exps.=CUDA1,([7-9]|[1][0]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Q8_0:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-Q8_0-00001-of-00009.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([6-9]|[1-9][0-9]).ffn_.*_exps.=CPU,([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Credit goes to the people behind Unsloth for this knowledge. I hadn't seen people talking about this here, so I thought I'd make a post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Klutzy-Snow8016"&gt; /u/Klutzy-Snow8016 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-18T00:03:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1k12i6l</id>
@@ -151,17 +138,17 @@
     <published>2025-04-17T14:11:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1o71i</id>
-    <title>SecondMe/Mindverse - stay away</title>
-    <updated>2025-04-17T21:26:07+00:00</updated>
+    <id>t3_1k1myni</id>
+    <title>LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai</title>
+    <updated>2025-04-17T20:33:00+00:00</updated>
     <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
+      <name>/u/HostFit8686</name>
+      <uri>https://old.reddit.com/user/HostFit8686</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt; &lt;img alt="SecondMe/Mindverse - stay away" src="https://preview.redd.it/0fu8ie5eqgve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a7d0d6e3cf5517e18cc0d17a997e82ee9ab5ee0" title="SecondMe/Mindverse - stay away" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just a heads up - Mindverse/SecondMe are lowkey scamming to funnel people to their product.&lt;/p&gt; &lt;p&gt;How do I know? I received an email above, seemingly an invitation to proceed with my application to their AI startup. But here's the thing: - I only use this email address on GitHub - so I know it was sourced from there - I never applied to any jobs from Mindverse, I'm happily employed&lt;/p&gt; &lt;p&gt;This is the same entity that was promoting SecondMe here and on other LLM subs a week or so ago - their posts were questionable but nothing out of ordinary for LLM/AI projects. However email above is at least misleading and at most just a scam - so be aware and stay away.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0fu8ie5eqgve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"&gt; &lt;img alt="LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai" src="https://b.thumbs.redditmedia.com/5-5toRbipdayS6ZmMRoDrI4l0QrDd2eTZnBkQ_mJICU.jpg" title="LMArena public beta officially releases with a new UI. (No more gradio) | https://beta.lmarena.ai" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HostFit8686"&gt; /u/HostFit8686 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k1myni"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1myni/lmarena_public_beta_officially_releases_with_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T21:26:07+00:00</published>
+    <published>2025-04-17T20:33:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1k183aa</id>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k183aa/where_is_qwen_3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T08:48:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k1o71i</id>
+    <title>SecondMe/Mindverse - stay away</title>
+    <updated>2025-04-17T21:26:07+00:00</updated>
+    <author>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt; &lt;img alt="SecondMe/Mindverse - stay away" src="https://preview.redd.it/0fu8ie5eqgve1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5a7d0d6e3cf5517e18cc0d17a997e82ee9ab5ee0" title="SecondMe/Mindverse - stay away" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just a heads up - Mindverse/SecondMe are lowkey scamming to funnel people to their product.&lt;/p&gt; &lt;p&gt;How do I know? I received an email above, seemingly an invitation to proceed with my application to their AI startup. But here's the thing: - I only use this email address on GitHub - so I know it was sourced from there - I never applied to any jobs from Mindverse, I'm happily employed&lt;/p&gt; &lt;p&gt;This is the same entity that was promoting SecondMe here and on other LLM subs a week or so ago - their posts were questionable but nothing out of ordinary for LLM/AI projects. However email above is at least misleading and at most just a scam - so be aware and stay away.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0fu8ie5eqgve1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1o71i/secondmemindverse_stay_away/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T21:26:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1fk88</id>
@@ -294,19 +294,6 @@
     <published>2025-04-17T16:50:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k1qpr6</id>
-    <title>microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft</title>
-    <updated>2025-04-17T23:22:11+00:00</updated>
-    <author>
-      <name>/u/TKGaming_11</name>
-      <uri>https://old.reddit.com/user/TKGaming_11</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt; &lt;img alt="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" src="https://external-preview.redd.it/oacNTVfe15Ozahhiv8YMZ-Teu__pPBVygtAgzE9FP3c.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=140a805e8a294974bbef97d4e1035ef969130c5a" title="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/microsoft/MAI-DS-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-17T23:22:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k1ahr4</id>
     <title>Wikipedia is giving AI developers its data to fend off bot scrapers - Data science platform Kaggle is hosting a Wikipedia dataset that’s specifically optimized for machine learning applications</title>
     <updated>2025-04-17T11:31:44+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1ahr4/wikipedia_is_giving_ai_developers_its_data_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-17T11:31:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k1qpr6</id>
+    <title>microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft</title>
+    <updated>2025-04-17T23:22:11+00:00</updated>
+    <author>
+      <name>/u/TKGaming_11</name>
+      <uri>https://old.reddit.com/user/TKGaming_11</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt; &lt;img alt="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" src="https://external-preview.redd.it/oacNTVfe15Ozahhiv8YMZ-Teu__pPBVygtAgzE9FP3c.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=140a805e8a294974bbef97d4e1035ef969130c5a" title="microsoft/MAI-DS-R1, DeepSeek R1 Post-Trained by Microsoft" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TKGaming_11"&gt; /u/TKGaming_11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/microsoft/MAI-DS-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1qpr6/microsoftmaidsr1_deepseek_r1_posttrained_by/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-17T23:22:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1k1fi5w</id>
