@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-18T21:24:02+00:00</updated>
+  <updated>2025-04-18T21:34:46+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1k1rjm1</id>
+    <title>How to run Llama 4 fast, even though it's too big to fit in RAM</title>
+    <updated>2025-04-18T00:03:01+00:00</updated>
+    <author>
+      <name>/u/Klutzy-Snow8016</name>
+      <uri>https://old.reddit.com/user/Klutzy-Snow8016</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: in your llama.cpp command, add:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49 --override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Explanation:&lt;/p&gt; &lt;p&gt;&lt;code&gt;-ngl 49&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;offload all 49 layers to GPU&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--override-tensor &amp;quot;([0-9]+).ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;...except for the MOE weights&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;code&gt;--ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;process the prompt in batches of 1 at a time (instead of the default 512 - otherwise your SSD will be the bottleneck and prompt processing will be slower)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This radically speeds up inference by taking advantage of LLama 4's MOE architecture. LLama 4 Maverick has 400 billion total parameters, but only 17 billion active parameters. Some are needed on every token generation, while others are only occasionally used. So if we put the parameters that are always needed onto GPU, those will be processed quickly, and there will just be a small number that need to be handled by the CPU. This works so well that the weights don't even need to all fit in your CPU's RAM - many of them can memory mapped from NVMe.&lt;/p&gt; &lt;p&gt;My results with Llama 4 Maverick:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth's UD-Q4_K_XL quant is 227GB&lt;/li&gt; &lt;li&gt;Unsloth's Q8_0 quant is 397GB&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Both of those are much bigger than my RAM + VRAM (128GB + 3x24GB). But with these tricks, I get 15 tokens per second with the UD-Q4_K_M and 6 tokens per second with the Q8_0.&lt;/p&gt; &lt;p&gt;Full llama.cpp server commands:&lt;/p&gt; &lt;p&gt;Note: the &lt;code&gt;--override-tensor&lt;/code&gt; command is tweaked because I had some extra VRAM available, so I offloaded most of the MOE layers to CPU, but loaded a few onto each GPU.&lt;/p&gt; &lt;p&gt;UD-Q4_K_XL:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-Q4_K_XL-00001-of-00005.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([1][1-9]|[2-9][0-9]).ffn_.*_exps.=CPU,([0-2]).ffn_.*_exps.=CUDA0,([3-6]).ffn_.*_exps.=CUDA1,([7-9]|[1][0]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Q8_0:&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m Llama-4-Maverick-17B-128E-Instruct-Q8_0-00001-of-00009.gguf -ngl 49 -fa -c 16384 --override-tensor &amp;quot;([6-9]|[1-9][0-9]).ffn_.*_exps.=CPU,([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2&amp;quot; --ubatch-size 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Credit goes to the people behind Unsloth for this knowledge. I hadn't seen people talking about this here, so I thought I'd make a post.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Klutzy-Snow8016"&gt; /u/Klutzy-Snow8016 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-18T00:03:01+00:00</published>
+  </entry>
   <entry>
     <id>t3_1k249wy</id>
     <title>Google’s Agent2Agent (A2A) Explained</title>
@@ -58,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k1xgco/vllm_with_transformers_backend/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-18T05:32:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k2fb67</id>
-    <title>Save 13W of idle power on your 3090?</title>
-    <updated>2025-04-18T20:51:07+00:00</updated>
-    <author>
-      <name>/u/DeltaSqueezer</name>
-      <uri>https://old.reddit.com/user/DeltaSqueezer</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A comment on my other post (see: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k22e41/comment/mnr7mk5/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1k22e41/comment/mnr7mk5/&lt;/a&gt; ) led me to do some testing.&lt;/p&gt; &lt;p&gt;With my old drivers:&lt;/p&gt; &lt;p&gt;``` +-----------------------------------------------------------------------------------------+ | NVIDIA-SMI 550.144.03 Driver Version: 550.144.03 CUDA Version: 12.4 | |-----------------------------------------+------------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | | | | MIG M. | |=========================================+========================+======================| | 0 NVIDIA GeForce RTX 3090 On | 00000000:00:10.0 Off | N/A | | 0% 39C P8 21W / 255W | 15967MiB / 24576MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 1 NVIDIA GeForce RTX 3090 Ti On | 00000000:00:11.0 Off | Off | | 0% 35C P8 26W / 255W | 15977MiB / 24564MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;After updating OS/drivers/CUDA:&lt;/p&gt; &lt;p&gt;``` +-----------------------------------------------------------------------------------------+ | NVIDIA-SMI 570.124.06 Driver Version: 570.124.06 CUDA Version: 12.8 | |-----------------------------------------+------------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | | | | MIG M. | |=========================================+========================+======================| | 0 NVIDIA GeForce RTX 3090 On | 00000000:00:10.0 Off | N/A | | 0% 32C P8 8W / 285W | 1MiB / 24576MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 1 NVIDIA GeForce RTX 3090 Ti On | 00000000:00:11.0 Off | Off | | 0% 41C P8 15W / 285W | 1MiB / 24564MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;Holy crap!&lt;/p&gt; &lt;p&gt;13W savings on 3090 and 11W saving on the 3090 Ti!&lt;/p&gt; &lt;p&gt;Now, I just need to check whether these are really 'at the wall' savings, or just 'nvidia-smi reporting differences'.&lt;/p&gt; &lt;p&gt;So old setup was Ubuntu 20.04, CUDA 12.4, 550 driver New setup is Ubuntu 24.04, CUDA 12.8, 570 driver&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DeltaSqueezer"&gt; /u/DeltaSqueezer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2fb67/save_13w_of_idle_power_on_your_3090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2fb67/save_13w_of_idle_power_on_your_3090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k2fb67/save_13w_of_idle_power_on_your_3090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-18T20:51:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k2ex99</id>
@@ -138,19 +138,6 @@
     <published>2025-04-18T11:13:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k2asly</id>
-    <title>I wrote a memory system with GUI for Gemma3 using the Kobold.cpp API</title>
-    <updated>2025-04-18T17:38:29+00:00</updated>
-    <author>
-      <name>/u/PSInvader</name>
-      <uri>https://old.reddit.com/user/PSInvader</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PSInvader"&gt; /u/PSInvader &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Asagix/RecallWeaver"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2asly/i_wrote_a_memory_system_with_gui_for_gemma3_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k2asly/i_wrote_a_memory_system_with_gui_for_gemma3_using/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-18T17:38:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k1v9rq</id>
     <title>CSM 1B is real-time now and has fine-tuning</title>
     <updated>2025-04-18T03:21:15+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k28j02/llama_4_maverick_mlx_performance_on_m3_ultra/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-18T16:03:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k2asly</id>
+    <title>I wrote a memory system with GUI for Gemma3 using the Kobold.cpp API</title>
+    <updated>2025-04-18T17:38:29+00:00</updated>
+    <author>
+      <name>/u/PSInvader</name>
+      <uri>https://old.reddit.com/user/PSInvader</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PSInvader"&gt; /u/PSInvader &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Asagix/RecallWeaver"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2asly/i_wrote_a_memory_system_with_gui_for_gemma3_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k2asly/i_wrote_a_memory_system_with_gui_for_gemma3_using/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-18T17:38:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1k22lyx</id>
@@ -255,19 +255,6 @@
     <published>2025-04-18T16:52:07+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k2chcw</id>
-    <title>Gemma 27B QAT works surprisingly well at Q2_K</title>
-    <updated>2025-04-18T18:49:11+00:00</updated>
-    <author>
-      <name>/u/MaruluVR</name>
-      <uri>https://old.reddit.com/user/MaruluVR</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to test how well QAT models do at a lower quant size so I grabbed the smallest quant currently out for it, Q2_K at 10.5 GB. &lt;a href="https://huggingface.co/bartowski/google_gemma-3-27b-it-qat-GGUF"&gt;https://huggingface.co/bartowski/google_gemma-3-27b-it-qat-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use my models mostly for my Japanese indie game, so following instructions, custom formatting and if it can roleplay or not is what I look for in models. My tests were all done in Japanese, which many models already have issues with at Q4 so I mostly use Q5. In my testing there were no grammatical errors, no random English or Chinese characters. It was able to roleplay in a custom format where I split the spoken words, the actions and the thoughts of the character into different brackets like ()&amp;lt;&amp;gt;「」without any issues. I also asked it basic questions about celebrities, and historical events, it got names and basic information right but dates were all wrong. My tests were done in Ollama with the standard Gemma3 settings.&lt;/p&gt; &lt;p&gt;Overall I am really impressed by the performance of the model especially for being a 27B at Q2. In theory running a 70B model at Q2 would fit into a single 24GB GPU so this technology is very interesting and could allow us to fit even larger models into our cards. After testing it I am really excited for more QAT models to come out in the future.&lt;/p&gt; &lt;p&gt;Have you guys tried running them at smaller quants?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MaruluVR"&gt; /u/MaruluVR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-18T18:49:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k27fz2</id>
     <title>I created an interactive tool to visualize *every* attention weight matrix within GPT-2!</title>
     <updated>2025-04-18T15:18:17+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k27fz2/i_created_an_interactive_tool_to_visualize_every/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-18T15:18:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k2chcw</id>
+    <title>Gemma 27B QAT works surprisingly well at Q2_K</title>
+    <updated>2025-04-18T18:49:11+00:00</updated>
+    <author>
+      <name>/u/MaruluVR</name>
+      <uri>https://old.reddit.com/user/MaruluVR</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to test how well QAT models do at a lower quant size so I grabbed the smallest quant currently out for it, Q2_K at 10.5 GB. &lt;a href="https://huggingface.co/bartowski/google_gemma-3-27b-it-qat-GGUF"&gt;https://huggingface.co/bartowski/google_gemma-3-27b-it-qat-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use my models mostly for my Japanese indie game, so following instructions, custom formatting and if it can roleplay or not is what I look for in models. My tests were all done in Japanese, which many models already have issues with at Q4 so I mostly use Q5. In my testing there were no grammatical errors, no random English or Chinese characters. It was able to roleplay in a custom format where I split the spoken words, the actions and the thoughts of the character into different brackets like ()&amp;lt;&amp;gt;「」without any issues. I also asked it basic questions about celebrities, and historical events, it got names and basic information right but dates were all wrong. My tests were done in Ollama with the standard Gemma3 settings.&lt;/p&gt; &lt;p&gt;Overall I am really impressed by the performance of the model especially for being a 27B at Q2. In theory running a 70B model at Q2 would fit into a single 24GB GPU so this technology is very interesting and could allow us to fit even larger models into our cards. After testing it I am really excited for more QAT models to come out in the future.&lt;/p&gt; &lt;p&gt;Have you guys tried running them at smaller quants?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MaruluVR"&gt; /u/MaruluVR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k2chcw/gemma_27b_qat_works_surprisingly_well_at_q2_k/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-18T18:49:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1k250r6</id>
