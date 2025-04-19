@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-04-19T08:24:42+00:00</updated>
+  <updated>2025-04-19T08:37:02+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1k0fn6y</id>
-    <title>How do you finetune a model?</title>
-    <updated>2025-04-16T08:44:57+00:00</updated>
-    <author>
-      <name>/u/ChikyScaresYou</name>
-      <uri>https://old.reddit.com/user/ChikyScaresYou</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm still pretty new to this topic, but I've seen that some of fhe LLMs i'm running are fine tunned to specifix topics. There are, however, other topics where I havent found anything fine tunned to it. So, how do people fine tune LLMs? Does it rewuire too much processing power? Is it even worth it? &lt;/p&gt; &lt;p&gt;And how do you make an LLM &amp;quot;learn&amp;quot; a large text like a novel?&lt;/p&gt; &lt;p&gt;I'm asking becausey current method uses very small chunks in a chromadb database, but it seems that the &amp;quot;material&amp;quot; the LLM retrieves is minuscule in comparison to the entire novel. I thought the LLM would have access to the entire novel now that it's in a database, but it doesnt seem to be the case. Also, still unsure how RAG works, as it seems that it's basicallt creating a database of the documents as well, which turns out to have the same issue....&lt;/p&gt; &lt;p&gt;o, I was thinking, could I finetune an LLM to know everything that happens in the novel and be able to answer any question about it, regardless of how detailed? And, in addition, I'd like to make an LLM fine tuned with military and police knowledge in attack and defense for factchecking. I'd like to know how to do that, or if that's the wrong approach, if you could point me in the right direction and share resources, i'd appreciate it, thank you&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ChikyScaresYou"&gt; /u/ChikyScaresYou &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k0fn6y/how_do_you_finetune_a_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k0fn6y/how_do_you_finetune_a_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1k0fn6y/how_do_you_finetune_a_model/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-04-16T08:44:57+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k0xy2g</id>
     <title>4xMi300a Server + QwQ-32B-Q8</title>
@@ -294,6 +281,19 @@
     <published>2025-04-18T11:43:09+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k2rlhs</id>
+    <title>Standardizing AI Assistant Memory with Model Context Protocol (MCP)</title>
+    <updated>2025-04-19T08:25:32+00:00</updated>
+    <author>
+      <name>/u/gelembjuk</name>
+      <uri>https://old.reddit.com/user/gelembjuk</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;AI chat tools like ChatGPT and Claude are starting to offer memory—but each platform implements it differently and often as a black box. What if we had a standardized way to plug memory into &lt;em&gt;any&lt;/em&gt; AI assistant?&lt;/p&gt; &lt;p&gt;In this post, I propose using &lt;strong&gt;Model Context Protocol (MCP)&lt;/strong&gt;—originally designed for tool integration—as a foundation for implementing memory subsystems in AI chats.&lt;/p&gt; &lt;p&gt;I want to extend one of AI chats that uses ollama to add a memory to it.&lt;/p&gt; &lt;p&gt;🔧 &lt;strong&gt;How it works:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Memory logging (&lt;code&gt;memory/prompt&lt;/code&gt; + &lt;code&gt;memory/response&lt;/code&gt;) happens automatically at the chat core level.&lt;/li&gt; &lt;li&gt;Before each prompt goes to the LLM, a &lt;code&gt;memory/summary&lt;/code&gt; is fetched and injected into context.&lt;/li&gt; &lt;li&gt;Full search/history retrieval stays as optional tools LLMs can invoke.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;🔥 &lt;strong&gt;Why it’s powerful:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Memory becomes a &lt;strong&gt;separate service&lt;/strong&gt;, not locked to any one AI platform.&lt;/li&gt; &lt;li&gt;You can &lt;strong&gt;switch assistants&lt;/strong&gt; (e.g., from ChatGPT to Claude) and keep your memory.&lt;/li&gt; &lt;li&gt;One memory, &lt;strong&gt;multiple assistants&lt;/strong&gt;—all synchronized.&lt;/li&gt; &lt;li&gt;Users get &lt;strong&gt;transparency and control&lt;/strong&gt; via a memory dashboard.&lt;/li&gt; &lt;li&gt;Competing memory providers can offer better summarization, privacy, etc.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Standardizing memory like this could make AI much more modular, portable, and user-centric.&lt;/p&gt; &lt;p&gt;👉 Full write-up here: &lt;a href="https://gelembjuk.hashnode.dev/benefits-of-using-mcp-to-implement-ai-chat-memory"&gt;https://gelembjuk.hashnode.dev/benefits-of-using-mcp-to-implement-ai-chat-memory&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gelembjuk"&gt; /u/gelembjuk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rlhs/standardizing_ai_assistant_memory_with_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rlhs/standardizing_ai_assistant_memory_with_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1k2rlhs/standardizing_ai_assistant_memory_with_model/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-04-19T08:25:32+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k2kuy2</id>
     <title>MirrorFest: An AI-Only Forum Experiment using ollama</title>
     <updated>2025-04-19T01:21:00+00:00</updated>
@@ -327,7 +327,7 @@
       <name>/u/typhoon90</name>
       <uri>https://old.reddit.com/user/typhoon90</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Instructions:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Clone Repo&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Install requirements&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Run ollama_gtts.py&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rb38/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rb38/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Instructions:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Clone Repo&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Install requirements&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Run ollama_gtts.py&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;*I am working on integrating Kokoro STT at the moment, and perhaps Sesame in the coming days.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rb38/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1k2rb38/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/ollama/comments/1k2rb38/i_built_a_local_ai_voice_assistant_with_ollama/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-04-19T08:04:21+00:00</published>
