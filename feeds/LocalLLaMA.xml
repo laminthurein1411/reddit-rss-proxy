@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-21T22:48:46+00:00</updated>
+  <updated>2025-04-21T23:06:13+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k4favx</id>
-    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
-    <updated>2025-04-21T14:45:44+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:45:44+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k48u73</id>
     <title>Is Google’s Titans architecture doomed by its short context size?</title>
@@ -47,19 +34,6 @@
     <published>2025-04-21T09:51:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4gl0k</id>
-    <title>Trying to add emotion conditioning to Gemma-3</title>
-    <updated>2025-04-21T15:37:25+00:00</updated>
-    <author>
-      <name>/u/FOerlikon</name>
-      <uri>https://old.reddit.com/user/FOerlikon</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt; &lt;img alt="Trying to add emotion conditioning to Gemma-3" src="https://b.thumbs.redditmedia.com/rHRvAjz9hBfUOUAXuneChyyaVvWZbDMq2GT3_bBVjlk.jpg" title="Trying to add emotion conditioning to Gemma-3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I was curious to make LLM influenced by something more than just the text, so I made a small attempt to add emotional input to smallest Gemma-3-1B, which is honestly pretty inconsistent, and it was only trained on short sequences of synthetic dataset with emotion markers.&lt;/p&gt; &lt;p&gt;The idea: alongside text there is an emotion vector, and it trainable projection then added to the token embeddings before they go into the transformer layers, and trainable LoRA is added on top. &lt;/p&gt; &lt;p&gt;Here are some (cherry picked) results, generated per same input/seed/temp but with different joy/sadness. I found them kind of intriguing to share (even though the dataset looks similar)&lt;/p&gt; &lt;p&gt;My question is has anyone else has played around with similar conditioning? Does this kind approach even make much sense to explore further? I mostly see RP-finetunes when searching for existing emotion models.&lt;/p&gt; &lt;p&gt;Curious to hear any thoughts&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FOerlikon"&gt; /u/FOerlikon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k4gl0k"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T15:37:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k47wlc</id>
     <title>🚀 Dive v0.8.0 is Here — Major Architecture Overhaul and Feature Upgrades!</title>
     <updated>2025-04-21T07:44:24+00:00</updated>
@@ -73,6 +47,19 @@
     <published>2025-04-21T07:44:24+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k4gl0k</id>
+    <title>Trying to add emotion conditioning to Gemma-3</title>
+    <updated>2025-04-21T15:37:25+00:00</updated>
+    <author>
+      <name>/u/FOerlikon</name>
+      <uri>https://old.reddit.com/user/FOerlikon</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt; &lt;img alt="Trying to add emotion conditioning to Gemma-3" src="https://b.thumbs.redditmedia.com/rHRvAjz9hBfUOUAXuneChyyaVvWZbDMq2GT3_bBVjlk.jpg" title="Trying to add emotion conditioning to Gemma-3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I was curious to make LLM influenced by something more than just the text, so I made a small attempt to add emotional input to smallest Gemma-3-1B, which is honestly pretty inconsistent, and it was only trained on short sequences of synthetic dataset with emotion markers.&lt;/p&gt; &lt;p&gt;The idea: alongside text there is an emotion vector, and it trainable projection then added to the token embeddings before they go into the transformer layers, and trainable LoRA is added on top. &lt;/p&gt; &lt;p&gt;Here are some (cherry picked) results, generated per same input/seed/temp but with different joy/sadness. I found them kind of intriguing to share (even though the dataset looks similar)&lt;/p&gt; &lt;p&gt;My question is has anyone else has played around with similar conditioning? Does this kind approach even make much sense to explore further? I mostly see RP-finetunes when searching for existing emotion models.&lt;/p&gt; &lt;p&gt;Curious to hear any thoughts&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FOerlikon"&gt; /u/FOerlikon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k4gl0k"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T15:37:25+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k4i4sn</id>
     <title>What LLM woudl you recommend for OCR?</title>
     <updated>2025-04-21T16:46:56+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4i4sn/what_llm_woudl_you_recommend_for_ocr/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T16:46:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4oufe</id>
+    <title>Orpheus-TTS local speech synthesizer in C#</title>
+    <updated>2025-04-21T21:13:48+00:00</updated>
+    <author>
+      <name>/u/ajpy</name>
+      <uri>https://old.reddit.com/user/ajpy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/TheAjaykrishnanR/TaraSharp"&gt;Repo&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No python dependencies&lt;/li&gt; &lt;li&gt;No LM Studio&lt;/li&gt; &lt;li&gt;Should work out of the box &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Uses LlamaSharp (llama.cpp) backend for inference and TorchSharp for decoding. Requires .NET 9 and Cuda 12.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajpy"&gt; /u/ajpy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T21:13:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4na8t</id>
