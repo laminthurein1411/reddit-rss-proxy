@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-21T14:48:43+00:00</updated>
+  <updated>2025-04-21T15:06:28+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k4favx</id>
-    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
-    <updated>2025-04-21T14:45:44+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:45:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k3jpal</id>
-    <title>Trying to create a Sesame-like experience Using Only Local AI</title>
-    <updated>2025-04-20T10:34:52+00:00</updated>
-    <author>
-      <name>/u/fagenorn</name>
-      <uri>https://old.reddit.com/user/fagenorn</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3jpal/trying_to_create_a_sesamelike_experience_using/"&gt; &lt;img alt="Trying to create a Sesame-like experience Using Only Local AI" src="https://external-preview.redd.it/d3VlZmk5dm93eXZlMdxX11AfgZTEMF7oSAzFAlLSpvlezRf_S3o9RpaxpyHo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ec75d44b379dfe02094858707c3beff78197228a" title="Trying to create a Sesame-like experience Using Only Local AI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just wanted to share a personal project I've been working on in my freetime. I'm trying to build an interactive, voice-driven avatar. Think sesame but the full experience running locally.&lt;/p&gt; &lt;p&gt;The basic idea is: my voice goes in -&amp;gt; gets transcribed locally with Whisper -&amp;gt; that text gets sent to the Ollama api (along with history and a personality prompt) -&amp;gt; the response comes back -&amp;gt; gets turned into speech with a local TTS -&amp;gt; and finally animates the Live2D character (lipsync + emotions).&lt;/p&gt; &lt;p&gt;My main goal was to see if I could get this whole thing running smoothly locally on my somewhat old GTX 1080 Ti. Since I also like being able to use latest and greatest models + ability to run bigger models on mac or whatever, I decided to make this work with ollama api so I can just plug and play that.&lt;/p&gt; &lt;p&gt;I shared the initial release around a month back, but since then I have been working on V2 which just makes the whole experience a tad bit nicer. A big added benefit is also that the whole latency has gone down.&lt;br /&gt; I think with time, it might be possible to get the latency down enough that you could havea full blown conversation that feels instantanious. The biggest hurdle at the moment as you can see is the latency causes by the TTS.&lt;/p&gt; &lt;p&gt;The whole thing's built in C#, which was a fun departure from the usual Python AI world for me, and the performance has been pretty decent.&lt;/p&gt; &lt;p&gt;Anyway, the code's here if you want to peek or try it: &lt;a href="https://github.com/fagenorn/handcrafted-persona-engine"&gt;https://github.com/fagenorn/handcrafted-persona-engine&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fagenorn"&gt; /u/fagenorn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/x8koh8vowyve1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3jpal/trying_to_create_a_sesamelike_experience_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k3jpal/trying_to_create_a_sesamelike_experience_using/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-20T10:34:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k3kuqb</id>
     <title>Hopes for cheap 24GB+ cards in 2025</title>
@@ -73,17 +47,30 @@
     <published>2025-04-20T19:40:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4f3a2</id>
-    <title>Local LLM performance results on Raspberry Pi devices</title>
-    <updated>2025-04-21T14:36:47+00:00</updated>
+    <id>t3_1k4favx</id>
+    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
+    <updated>2025-04-21T14:45:44+00:00</updated>
     <author>
-      <name>/u/fatihustun</name>
-      <uri>https://old.reddit.com/user/fatihustun</uri>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt; &lt;img alt="Local LLM performance results on Raspberry Pi devices" src="https://b.thumbs.redditmedia.com/chzBzCsnADn6F4qhCPwQHx6IBkrGvkQhmVAcHbvNnDM.jpg" title="Local LLM performance results on Raspberry Pi devices" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Method (very basic):&lt;/strong&gt;&lt;br /&gt; I simply installed Ollama and downloaded some small models (listed in the table) to my Raspberry Pi devices, which have a clean Raspbian OS (lite) 64-bit OS, nothing else installed/used. I run models with the &amp;quot;--verbose&amp;quot; parameter to get the performance value after each question. I asked 5 same questions to each model and took the average.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Here are the results:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196"&gt;https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;If you have run a local model on a Raspberry Pi device, please share the model and the device variant with its performance result.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fatihustun"&gt; /u/fatihustun &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:36:47+00:00</published>
+    <published>2025-04-21T14:45:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4ffgd</id>
+    <title>Dillon - The Ultimate Writing Partner</title>
+    <updated>2025-04-21T14:51:00+00:00</updated>
+    <author>
+      <name>/u/shokuninstudio</name>
+      <uri>https://old.reddit.com/user/shokuninstudio</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4ffgd/dillon_the_ultimate_writing_partner/"&gt; &lt;img alt="Dillon - The Ultimate Writing Partner" src="https://b.thumbs.redditmedia.com/PRxk4PtrSTsYq66drId7lhyrq6_eCJQFo9O7MwtOtWU.jpg" title="Dillon - The Ultimate Writing Partner" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm back with another open source productivity app for Ollama and LM Studio users.&lt;/p&gt; &lt;p&gt;What's the matter? The standard word processor got you pushing too many pixels?&lt;/p&gt; &lt;p&gt;Dillon is no ordinary word processor. It's a high-powered, combat-ready writing machine that will blow your documents away!&lt;/p&gt; &lt;p&gt;In a world where writing tools have gone soft Dillon is here to rescue your writing process with:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;BADASS ORGANIZATION&lt;/strong&gt; - Folders, documents, and research materials organized like a well-executed mission&lt;/p&gt; &lt;p&gt;&lt;strong&gt;RAW FIREPOWER EDITING&lt;/strong&gt; - Rich text formatting that hits hard and never misses&lt;/p&gt; &lt;p&gt;&lt;strong&gt;AI BACKUP TEAM&lt;/strong&gt; - Choose from elite specialists like yours truly, Apollo, Vader, Ripley, and more to watch your back and comment on your writing! Special guest appearance from Quentin himself! Need more backup, create your own with the Character Manager!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TACTICAL EXPORTS&lt;/strong&gt; - Multiple export formats to deploy your content anywhere. Dillon exports to Open Document, PDF, Plain Text and for you screenwriters** - out there Final Draft format&lt;/p&gt; &lt;p&gt;&lt;strong&gt;SECURE THE BASE&lt;/strong&gt; - Your documents are auto-saved while you work and back ups are stored in your home folder&lt;/p&gt; &lt;p&gt;&lt;strong&gt;STEALTH SEARCH &amp;amp; REPLACE&lt;/strong&gt; - Track down and eliminate problems with surgical precision&lt;/p&gt; &lt;p&gt;Get Dillon from the Github repo today. macOS and Windows builds are ready.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/shokuninstudio/Dillon"&gt;https://github.com/shokuninstudio/Dillon&lt;/a&gt;&lt;/p&gt; &lt;p&gt;As Dutch used to say 'Do it! Dot it now!'&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shokuninstudio"&gt; /u/shokuninstudio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k4ffgd"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4ffgd/dillon_the_ultimate_writing_partner/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4ffgd/dillon_the_ultimate_writing_partner/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T14:51:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1k46pxx</id>
@@ -151,19 +138,6 @@
     <published>2025-04-21T05:08:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4caaw</id>
-    <title>Local RAG tool that doesn't use embedding</title>
-    <updated>2025-04-21T12:28:21+00:00</updated>
-    <author>
-      <name>/u/lily_34</name>
-      <uri>https://old.reddit.com/user/lily_34</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;RAG - retrieval augmented generation - involves searching for relevant information, and adding it to the context, before starting the generation.&lt;/p&gt; &lt;p&gt;It seems most RAG tools use embedding and similaroty search to find relevant information. Are there any RAG tools that use other kind of search/information retirieval?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lily_34"&gt; /u/lily_34 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T12:28:21+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k423l6</id>
     <title>Which drawing do you think is better? What does your LLM output?</title>
     <updated>2025-04-21T01:43:36+00:00</updated>
@@ -177,17 +151,30 @@
     <published>2025-04-21T01:43:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4b5xl</id>
-    <title>I built a Local AI Voice Assistant with Ollama + gTTS with interruption</title>
-    <updated>2025-04-21T11:26:21+00:00</updated>
+    <id>t3_1k4caaw</id>
+    <title>Local RAG tool that doesn't use embedding</title>
+    <updated>2025-04-21T12:28:21+00:00</updated>
     <author>
-      <name>/u/typhoon90</name>
-      <uri>https://old.reddit.com/user/typhoon90</uri>
+      <name>/u/lily_34</name>
+      <uri>https://old.reddit.com/user/lily_34</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Instructions:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Clone Repo&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Install requirements&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Run ollama_gtts.py&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I am working on integrating Kokoro STT at the moment, and perhaps Sesame in the coming days.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;RAG - retrieval augmented generation - involves searching for relevant information, and adding it to the context, before starting the generation.&lt;/p&gt; &lt;p&gt;It seems most RAG tools use embedding and similaroty search to find relevant information. Are there any RAG tools that use other kind of search/information retirieval?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lily_34"&gt; /u/lily_34 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4caaw/local_rag_tool_that_doesnt_use_embedding/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T11:26:21+00:00</published>
+    <published>2025-04-21T12:28:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4f3a2</id>
+    <title>Local LLM performance results on Raspberry Pi devices</title>
+    <updated>2025-04-21T14:36:47+00:00</updated>
+    <author>
+      <name>/u/fatihustun</name>
+      <uri>https://old.reddit.com/user/fatihustun</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt; &lt;img alt="Local LLM performance results on Raspberry Pi devices" src="https://b.thumbs.redditmedia.com/chzBzCsnADn6F4qhCPwQHx6IBkrGvkQhmVAcHbvNnDM.jpg" title="Local LLM performance results on Raspberry Pi devices" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Method (very basic):&lt;/strong&gt;&lt;br /&gt; I simply installed Ollama and downloaded some small models (listed in the table) to my Raspberry Pi devices, which have a clean Raspbian OS (lite) 64-bit OS, nothing else installed/used. I run models with the &amp;quot;--verbose&amp;quot; parameter to get the performance value after each question. I asked 5 same questions to each model and took the average.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Here are the results:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196"&gt;https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;If you have run a local model on a Raspberry Pi device, please share the model and the device variant with its performance result.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fatihustun"&gt; /u/fatihustun &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T14:36:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1k49p6y</id>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k49p6y/still_no_contestant_to_nemo_in_the_12b_range_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T09:51:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4b5xl</id>
+    <title>I built a Local AI Voice Assistant with Ollama + gTTS with interruption</title>
+    <updated>2025-04-21T11:26:21+00:00</updated>
+    <author>
+      <name>/u/typhoon90</name>
+      <uri>https://old.reddit.com/user/typhoon90</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I just built OllamaGTTS, a lightweight voice assistant that brings AI-powered voice interactions to your local Ollama setup using Google TTS for natural speech synthesis. It’s fast, interruptible, and optimized for real-time conversations. I am aware that some people prefer to keep everything local so I am working on an update that will likely use Kokoro for local speech synthesis. I would love to hear your thoughts on it and how it can be improved.&lt;/p&gt; &lt;p&gt;Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Real-time voice interaction (Silero VAD + Whisper transcription)&lt;/li&gt; &lt;li&gt;Interruptible speech playback (no more waiting for the AI to finish talking)&lt;/li&gt; &lt;li&gt;FFmpeg-accelerated audio processing (optional speed-up for faster * replies)&lt;/li&gt; &lt;li&gt;Persistent conversation history with configurable memory&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://github.com/ExoFi-Labs/OllamaGTTS"&gt;GitHub Repo: https://github.com/ExoFi-Labs/OllamaGTTS&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Instructions:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Clone Repo&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Install requirements&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Run ollama_gtts.py&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I am working on integrating Kokoro STT at the moment, and perhaps Sesame in the coming days.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/typhoon90"&gt; /u/typhoon90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4b5xl/i_built_a_local_ai_voice_assistant_with_ollama/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T11:26:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1k48u73</id>
