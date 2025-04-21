@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-21T16:24:58+00:00</updated>
+  <updated>2025-04-21T16:40:21+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k3up8v</id>
-    <title>What’s Your Go-To Local LLM Setup Right Now?</title>
-    <updated>2025-04-20T19:40:17+00:00</updated>
-    <author>
-      <name>/u/techblooded</name>
-      <uri>https://old.reddit.com/user/techblooded</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been experimenting with a few models for summarizing Reddit/blog posts and some light coding tasks, but I keep getting overwhelmed by the sheer number of options and frameworks out there.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/techblooded"&gt; /u/techblooded &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3up8v/whats_your_goto_local_llm_setup_right_now/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3up8v/whats_your_goto_local_llm_setup_right_now/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k3up8v/whats_your_goto_local_llm_setup_right_now/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-20T19:40:17+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k46pxx</id>
     <title>Superscaling like image super resolution but for LLMs</title>
@@ -58,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k44g1f/best_local_llm_to_run_locally/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T03:51:48+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k4favx</id>
-    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
-    <updated>2025-04-21T14:45:44+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:45:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1k3pw8n</id>
@@ -125,6 +99,32 @@
     <published>2025-04-21T12:28:21+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k4gl0k</id>
+    <title>Trying to add emotion conditioning to Gemma-3</title>
+    <updated>2025-04-21T15:37:25+00:00</updated>
+    <author>
+      <name>/u/FOerlikon</name>
+      <uri>https://old.reddit.com/user/FOerlikon</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt; &lt;img alt="Trying to add emotion conditioning to Gemma-3" src="https://b.thumbs.redditmedia.com/rHRvAjz9hBfUOUAXuneChyyaVvWZbDMq2GT3_bBVjlk.jpg" title="Trying to add emotion conditioning to Gemma-3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I was curious to make LLM influenced by something more than just the text, so I made a small attempt to add emotional input to smallest Gemma-3-1B, which is honestly pretty inconsistent, and it was only trained on short sequences of synthetic dataset with emotion markers.&lt;/p&gt; &lt;p&gt;The idea: alongside text there is an emotion vector, and it trainable projection then added to the token embeddings before they go into the transformer layers, and trainable LoRA is added on top. &lt;/p&gt; &lt;p&gt;Here are some (cherry picked) results, generated per same input/seed/temp but with different joy/sadness. I found them kind of intriguing to share (even though the dataset looks similar)&lt;/p&gt; &lt;p&gt;My question is has anyone else has played around with similar conditioning? Does this kind approach even make much sense to explore further? I mostly see RP-finetunes when searching for existing emotion models.&lt;/p&gt; &lt;p&gt;Curious to hear any thoughts&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FOerlikon"&gt; /u/FOerlikon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k4gl0k"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T15:37:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4favx</id>
+    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
+    <updated>2025-04-21T14:45:44+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T14:45:44+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k4b5xl</id>
     <title>I built a Local AI Voice Assistant with Ollama + gTTS with interruption</title>
     <updated>2025-04-21T11:26:21+00:00</updated>
@@ -164,32 +164,6 @@
     <published>2025-04-21T08:50:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4fwck</id>
-    <title>The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension</title>
-    <updated>2025-04-21T15:09:57+00:00</updated>
-    <author>
-      <name>/u/zanatas</name>
-      <uri>https://old.reddit.com/user/zanatas</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt; &lt;img alt="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" src="https://preview.redd.it/v6dt6jrre7we1.gif?width=640&amp;amp;crop=smart&amp;amp;s=083ba989dbd3b12db4098ac42b096e6b6d88fee0" title="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: someone at work made a joke about creating a really unhelpful Clippy-like assistant that exclusively gives you weird suggestions, one thing led to another and I ended up making a whole Chrome extension.&lt;/p&gt; &lt;p&gt;It was part me having the habit of transforming throwaway jokes into very convoluted projects, part a ✨ViBeCoDiNg✨ exercise, part growing up in the early days of the internet, where stuff was just dumb/fun for no reason (I blame Johnny Castaway and those damn Macaronis dancing Macarena).&lt;/p&gt; &lt;p&gt;You'll need either Ollama (lets you pick any model, send in page context) or a Gemini API key (likely better/more creative performance, but only reads the URL of the tab). &lt;/p&gt; &lt;p&gt;Full source here: &lt;a href="https://github.com/yankooliveira/toads"&gt;https://github.com/yankooliveira/toads&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Enjoy!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zanatas"&gt; /u/zanatas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v6dt6jrre7we1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T15:09:57+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k4f3a2</id>
-    <title>Local LLM performance results on Raspberry Pi devices</title>
-    <updated>2025-04-21T14:36:47+00:00</updated>
-    <author>
-      <name>/u/fatihustun</name>
-      <uri>https://old.reddit.com/user/fatihustun</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt; &lt;img alt="Local LLM performance results on Raspberry Pi devices" src="https://b.thumbs.redditmedia.com/chzBzCsnADn6F4qhCPwQHx6IBkrGvkQhmVAcHbvNnDM.jpg" title="Local LLM performance results on Raspberry Pi devices" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Method (very basic):&lt;/strong&gt;&lt;br /&gt; I simply installed Ollama and downloaded some small models (listed in the table) to my Raspberry Pi devices, which have a clean Raspbian OS (lite) 64-bit OS, nothing else installed/used. I run models with the &amp;quot;--verbose&amp;quot; parameter to get the performance value after each question. I asked 5 same questions to each model and took the average.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Here are the results:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196"&gt;https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;If you have run a local model on a Raspberry Pi device, please share the model and the device variant with its performance result.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fatihustun"&gt; /u/fatihustun &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:36:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k47wlc</id>
     <title>🚀 Dive v0.8.0 is Here — Major Architecture Overhaul and Feature Upgrades!</title>
     <updated>2025-04-21T07:44:24+00:00</updated>
@@ -203,17 +177,17 @@
     <published>2025-04-21T07:44:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4gqje</id>
-    <title>[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli</title>
-    <updated>2025-04-21T15:46:41+00:00</updated>
+    <id>t3_1k4f3a2</id>
+    <title>Local LLM performance results on Raspberry Pi devices</title>
+    <updated>2025-04-21T14:36:47+00:00</updated>
     <author>
-      <name>/u/FastDecode1</name>
-      <uri>https://old.reddit.com/user/FastDecode1</uri>
+      <name>/u/fatihustun</name>
+      <uri>https://old.reddit.com/user/fatihustun</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"&gt; &lt;img alt="[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli" src="https://external-preview.redd.it/chyB3Fwy2UcKLBJMyzabSe7PfMaM2G1ZJw5k660LQOY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c97a934134489f4b1d7e573c0218731d1a8a5d5b" title="[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FastDecode1"&gt; /u/FastDecode1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/commit/84a9bf2fc2875205f0806fbbfbb66dc67204094c"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt; &lt;img alt="Local LLM performance results on Raspberry Pi devices" src="https://b.thumbs.redditmedia.com/chzBzCsnADn6F4qhCPwQHx6IBkrGvkQhmVAcHbvNnDM.jpg" title="Local LLM performance results on Raspberry Pi devices" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Method (very basic):&lt;/strong&gt;&lt;br /&gt; I simply installed Ollama and downloaded some small models (listed in the table) to my Raspberry Pi devices, which have a clean Raspbian OS (lite) 64-bit OS, nothing else installed/used. I run models with the &amp;quot;--verbose&amp;quot; parameter to get the performance value after each question. I asked 5 same questions to each model and took the average.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Here are the results:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196"&gt;https://preview.redd.it/igp229o077we1.png?width=1348&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=aa65f28686c212c76f04c344ea767b20cdbe2196&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;If you have run a local model on a Raspberry Pi device, please share the model and the device variant with its performance result.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fatihustun"&gt; /u/fatihustun &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4f3a2/local_llm_performance_results_on_raspberry_pi/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T15:46:41+00:00</published>
+    <published>2025-04-21T14:36:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1k3wuud</id>
@@ -240,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k43htm/hunyuan_opensourced_instantcharacter_image/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T02:58:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4fwck</id>
+    <title>The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension</title>
+    <updated>2025-04-21T15:09:57+00:00</updated>
+    <author>
+      <name>/u/zanatas</name>
+      <uri>https://old.reddit.com/user/zanatas</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt; &lt;img alt="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" src="https://preview.redd.it/v6dt6jrre7we1.gif?width=640&amp;amp;crop=smart&amp;amp;s=083ba989dbd3b12db4098ac42b096e6b6d88fee0" title="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: someone at work made a joke about creating a really unhelpful Clippy-like assistant that exclusively gives you weird suggestions, one thing led to another and I ended up making a whole Chrome extension.&lt;/p&gt; &lt;p&gt;It was part me having the habit of transforming throwaway jokes into very convoluted projects, part a ✨ViBeCoDiNg✨ exercise, part growing up in the early days of the internet, where stuff was just dumb/fun for no reason (I blame Johnny Castaway and those damn Macaronis dancing Macarena).&lt;/p&gt; &lt;p&gt;You'll need either Ollama (lets you pick any model, send in page context) or a Gemini API key (likely better/more creative performance, but only reads the URL of the tab). &lt;/p&gt; &lt;p&gt;Full source here: &lt;a href="https://github.com/yankooliveira/toads"&gt;https://github.com/yankooliveira/toads&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Enjoy!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zanatas"&gt; /u/zanatas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v6dt6jrre7we1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T15:09:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4gqje</id>
+    <title>[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli</title>
+    <updated>2025-04-21T15:46:41+00:00</updated>
+    <author>
+      <name>/u/FastDecode1</name>
+      <uri>https://old.reddit.com/user/FastDecode1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"&gt; &lt;img alt="[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli" src="https://external-preview.redd.it/chyB3Fwy2UcKLBJMyzabSe7PfMaM2G1ZJw5k660LQOY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c97a934134489f4b1d7e573c0218731d1a8a5d5b" title="[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FastDecode1"&gt; /u/FastDecode1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/commit/84a9bf2fc2875205f0806fbbfbb66dc67204094c"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T15:46:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1k43x1h</id>
