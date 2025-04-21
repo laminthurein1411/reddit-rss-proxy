@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-21T15:24:19+00:00</updated>
+  <updated>2025-04-21T15:36:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k3kuqb</id>
-    <title>Hopes for cheap 24GB+ cards in 2025</title>
-    <updated>2025-04-20T11:52:23+00:00</updated>
-    <author>
-      <name>/u/Bitter-College8786</name>
-      <uri>https://old.reddit.com/user/Bitter-College8786</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Before AMD launched their 9000 series GPUs I had hope they would understand the need for a high VRAM GPU but hell no. They are either stupid or not interested in offering AI capable GPUs: Their 9000 series GPUs both have 16 GB VRAM, down from 20 and 24GB from the previous(!) generation of 7900 XT and XTX.&lt;/p&gt; &lt;p&gt;Since it takes 2-3 years for a new GPU generation does this mean no hope for a new challenger to enter the arena this year or is there something that has been announced and about to be released in Q3 or Q4?&lt;/p&gt; &lt;p&gt;I know there is this AMD AI Max and Nvidia Digits, but both seem to have low memory bandwidth (even too low for MoE?)&lt;/p&gt; &lt;p&gt;Is there no chinese competitor who can flood the market with cheap GPUs that have low compute but high VRAM?&lt;/p&gt; &lt;p&gt;EDIT: There is Intel, they produce their own chips, they could offer something. Are they blind?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Bitter-College8786"&gt; /u/Bitter-College8786 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3kuqb/hopes_for_cheap_24gb_cards_in_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k3kuqb/hopes_for_cheap_24gb_cards_in_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k3kuqb/hopes_for_cheap_24gb_cards_in_2025/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-20T11:52:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k3l728</id>
     <title>AMD preparing RDNA4 Radeon PRO series with 32GB memory on board</title>
@@ -60,19 +47,6 @@
     <published>2025-04-21T14:02:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4favx</id>
-    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
-    <updated>2025-04-21T14:45:44+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T14:45:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k46pxx</id>
     <title>Superscaling like image super resolution but for LLMs</title>
     <updated>2025-04-21T06:17:38+00:00</updated>
@@ -97,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k44g1f/best_local_llm_to_run_locally/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T03:51:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4favx</id>
+    <title>RAG retrieval slows down as knowledge base grows - Anyone solve this at scale?</title>
+    <updated>2025-04-21T14:45:44+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here’s my dilemma. My RAG is dialed in and performing great in the relevance department, but it seems like as we add more documents to our knowledge base, the overall time from prompt to result gets slower and slower. My users are patient, but I think asking them to wait any longer than 45 seconds per prompt is too long in my opinion. I need to find something to improve RAG retrieval times.&lt;/p&gt; &lt;p&gt;Here’s my setup:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Open WebUI (latest version) running in its own Azure VM (Dockerized)&lt;/li&gt; &lt;li&gt;Ollama running in its own GPU-enabled VM in Azure (with dual H100s)&lt;/li&gt; &lt;li&gt;QwQ 32b FP16 as the main LLM&lt;/li&gt; &lt;li&gt;Qwen 2.5 1.5b FP16 as the task model (chat title generation, Retrieval Query gen, web query gen, etc)&lt;/li&gt; &lt;li&gt;Nomic-embed-text for embedding model (running on Ollama Server)&lt;/li&gt; &lt;li&gt;all-MiniLM-L12-v2 for reranking model for hybrid search (running on the OWUI server because you can’t run a reranking model on Ollama using OWUI for some unknown reason) &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;RAG Embedding / Retrieval settings: - Vector DB = ChromaDB using default Open WebUI settings (running inside the OWUI Docker container) - Chunk size = 2000 - Chunk overlap = 500 (25% of chunk size as is the accepted standard) - Top K = 10 - Too K Reranker = 10 - Relevance Threshold = 0 - RAG template = OWUI 0.6.5 default RAG prompt template - Full Context Mode = OFF - Content Extraction Engine = Apache Tika&lt;/p&gt; &lt;p&gt;Knowledgebase details: - 7 separate document collections containing approximately 400 total PDFS and TXT files between 100k to 3mb each. Most average around 1mb. &lt;/p&gt; &lt;p&gt;Again, other than speed, my RAG is doing very well, but our knowledge bases are going to have a lot more documents in them soon and I can’t have this process getting much slower or I’m going to start getting user complaints. &lt;/p&gt; &lt;p&gt;One caveat: I’m only allowed to run Windows-based servers, no pure Linux VMs are allowed in my organization. I can run WSL though, just not standalone Linux. So vLLM is not currently an option. &lt;/p&gt; &lt;p&gt;For those running RAG at “production” scale, how do you make it fast without going to 3rd party services? I need to keep all my RAG knowledge bases “local” (within my own private tenant). &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4favx/rag_retrieval_slows_down_as_knowledge_base_grows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T14:45:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1k3pw8n</id>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k423l6/which_drawing_do_you_think_is_better_what_does/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T01:43:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4fwck</id>
+    <title>The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension</title>
+    <updated>2025-04-21T15:09:57+00:00</updated>
+    <author>
+      <name>/u/zanatas</name>
+      <uri>https://old.reddit.com/user/zanatas</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt; &lt;img alt="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" src="https://preview.redd.it/v6dt6jrre7we1.gif?width=640&amp;amp;crop=smart&amp;amp;s=083ba989dbd3b12db4098ac42b096e6b6d88fee0" title="The age of AI is upon us and obviously what everyone wants is an LLM-powered unhelpful assistant on every webpage, so I made a Chrome extension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: someone at work made a joke about creating a really unhelpful Clippy-like assistant that exclusively gives you weird suggestions, one thing led to another and I ended up making a whole Chrome extension.&lt;/p&gt; &lt;p&gt;It was part me having the habit of transforming throwaway jokes into very convoluted projects, part a ✨ViBeCoDiNg✨ exercise, part growing up in the early days of the internet, where stuff was just dumb/fun for no reason (I blame Johnny Castaway and those damn Macaronis dancing Macarena).&lt;/p&gt; &lt;p&gt;You'll need either Ollama (lets you pick any model, send in page context) or a Gemini API key (likely better/more creative performance, but only reads the URL of the tab). &lt;/p&gt; &lt;p&gt;Full source here: &lt;a href="https://github.com/yankooliveira/toads"&gt;https://github.com/yankooliveira/toads&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Enjoy!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/zanatas"&gt; /u/zanatas &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v6dt6jrre7we1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-21T15:09:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4caaw</id>
