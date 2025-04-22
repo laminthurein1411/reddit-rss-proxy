@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-22T05:07:08+00:00</updated>
+  <updated>2025-04-22T05:24:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gl0k/trying_to_add_emotion_conditioning_to_gemma3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T15:37:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4vg25</id>
+    <title>Best ollama model and editor or vscode extension to replace Cursor</title>
+    <updated>2025-04-22T02:22:16+00:00</updated>
+    <author>
+      <name>/u/brauliobo</name>
+      <uri>https://old.reddit.com/user/brauliobo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Cursor Pro with the Claude 3.7 Sonnet and Gemini 2.5 Pro is good, but I feel it could be a lot better.&lt;/p&gt; &lt;p&gt;Tell me good alternatives, paid or free, local or remote. I have a 3090 and 4060 Ti (40gb in total), so running locally is an option&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/brauliobo"&gt; /u/brauliobo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T02:22:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4f3a2</id>
@@ -47,19 +60,6 @@
     <published>2025-04-21T02:56:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4txxw</id>
-    <title>Using a Thunderbolt eGPU Enclosure to Increase VRAM Availability on my Desktop - My Experience</title>
-    <updated>2025-04-22T01:05:57+00:00</updated>
-    <author>
-      <name>/u/Anarchaotic</name>
-      <uri>https://old.reddit.com/user/Anarchaotic</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;This was a fun experiment and a pretty niche use-case, but I basically had everything sitting around anyway. &lt;/p&gt; &lt;p&gt;My desktop is running an RTX 5080, 32GB of RAM, and a 14700k. It was never built to be an LLM machine, but I figured I'd start experimenting with some smaller models that fit within the VRAM.&lt;/p&gt; &lt;p&gt;I also had an old Razer Core X eGPU enclosure sitting around - and put my 3070 in it.&lt;/p&gt; &lt;p&gt;My current PSU wouldn't have been able to handle both cards plugged directly into the MOBO, and I wasn't about to buy a new PSU just to try this out.&lt;/p&gt; &lt;p&gt;I already had a Thunderbolt 4 (GC Maple Ridge) card in my desktop, so I just needed to hook them all up.&lt;/p&gt; &lt;p&gt;Well I was surprised to see how easy it was for Ollama to just start utilizing all of the GPUs. I changed the OLLAMA_VISIBLE_DEVICES environment variable to &amp;quot;0,1&amp;quot; and OLLAMA_SCHED_SPREAD to &amp;quot;1&amp;quot;, and that was about it.&lt;/p&gt; &lt;p&gt;I can go in-depth into findings, but here's generally what I've seen:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Models that previously fit in VRAM ran 30-40% slower. That's pretty expected, the bottleneck of TB4 shows a 141GB/s throughput for the 3070, which is much lower than its 481GB/s BUS speed that it can hypothetically hit. So I was bottlenecked immediately. However I'm okay with that because it allows to me to significantly increase the context size for models I was running before, at rates I'm still perfectly happy with (30&amp;gt; tk/s). &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Models that fit within 24GB of VRAM ran 5-6x better overall. Also expected - even with the TB4 bottleneck, being able to run the entire model in-memory was a massive improvement. As an example, qwq 32b Q4 runs at 13.1tk/s on average with both cards, but gets crushed down to 2.5tk/s on just the 5080. &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If I had a 1250W PSU I would love to try hooking it up the 3070 to a motherboard to get a much better idea the TB4 bottleneck. A hypothetical Oculink-supported enclosure + interface would also double my speeds, but that's way more effort to try and lock down.&lt;/p&gt; &lt;p&gt;This makes me curious enough to keep an eye out for 16gb 4060tis, as it would give me 32GB of usable VRAM, which opens up options for much stronger models than the 8b/12b ones I've been running before.&lt;/p&gt; &lt;p&gt;tl;dr - Using an eGPU enclosure with another Nvidia card works on a desktop - assuming you have a thunderbolt connector installed. This makes models that fit in the pooled VRAM space run significantly better than offloading to CPU/RAM, but by default will hinder performance of models that fit in a single card due to TB4 bottlenecks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anarchaotic"&gt; /u/Anarchaotic &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T01:05:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k43x1h</id>
     <title>Using KoboldCpp like its 1999 (noscript mode, Internet Explorer 6)</title>
     <updated>2025-04-21T03:21:32+00:00</updated>
@@ -73,30 +73,30 @@
     <published>2025-04-21T03:21:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4vg25</id>
-    <title>Best ollama model and editor or vscode extension to replace Cursor</title>
-    <updated>2025-04-22T02:22:16+00:00</updated>
+    <id>t3_1k4txxw</id>
+    <title>Using a Thunderbolt eGPU Enclosure to Increase VRAM Availability on my Desktop - My Experience</title>
+    <updated>2025-04-22T01:05:57+00:00</updated>
     <author>
-      <name>/u/brauliobo</name>
-      <uri>https://old.reddit.com/user/brauliobo</uri>
+      <name>/u/Anarchaotic</name>
+      <uri>https://old.reddit.com/user/Anarchaotic</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Cursor Pro with the Claude 3.7 Sonnet and Gemini 2.5 Pro is good, but I feel it could be a lot better.&lt;/p&gt; &lt;p&gt;Tell me good alternatives, paid or free, local or remote. I have a 3090 and 4060 Ti (40gb in total), so running locally is an option&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/brauliobo"&gt; /u/brauliobo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4vg25/best_ollama_model_and_editor_or_vscode_extension/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;This was a fun experiment and a pretty niche use-case, but I basically had everything sitting around anyway. &lt;/p&gt; &lt;p&gt;My desktop is running an RTX 5080, 32GB of RAM, and a 14700k. It was never built to be an LLM machine, but I figured I'd start experimenting with some smaller models that fit within the VRAM.&lt;/p&gt; &lt;p&gt;I also had an old Razer Core X eGPU enclosure sitting around - and put my 3070 in it.&lt;/p&gt; &lt;p&gt;My current PSU wouldn't have been able to handle both cards plugged directly into the MOBO, and I wasn't about to buy a new PSU just to try this out.&lt;/p&gt; &lt;p&gt;I already had a Thunderbolt 4 (GC Maple Ridge) card in my desktop, so I just needed to hook them all up.&lt;/p&gt; &lt;p&gt;Well I was surprised to see how easy it was for Ollama to just start utilizing all of the GPUs. I changed the OLLAMA_VISIBLE_DEVICES environment variable to &amp;quot;0,1&amp;quot; and OLLAMA_SCHED_SPREAD to &amp;quot;1&amp;quot;, and that was about it.&lt;/p&gt; &lt;p&gt;I can go in-depth into findings, but here's generally what I've seen:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Models that previously fit in VRAM ran 30-40% slower. That's pretty expected, the bottleneck of TB4 shows a 141GB/s throughput for the 3070, which is much lower than its 481GB/s BUS speed that it can hypothetically hit. So I was bottlenecked immediately. However I'm okay with that because it allows to me to significantly increase the context size for models I was running before, at rates I'm still perfectly happy with (30&amp;gt; tk/s). &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Models that fit within 24GB of VRAM ran 5-6x better overall. Also expected - even with the TB4 bottleneck, being able to run the entire model in-memory was a massive improvement. As an example, qwq 32b Q4 runs at 13.1tk/s on average with both cards, but gets crushed down to 2.5tk/s on just the 5080. &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If I had a 1250W PSU I would love to try hooking it up the 3070 to a motherboard to get a much better idea the TB4 bottleneck. A hypothetical Oculink-supported enclosure + interface would also double my speeds, but that's way more effort to try and lock down.&lt;/p&gt; &lt;p&gt;This makes me curious enough to keep an eye out for 16gb 4060tis, as it would give me 32GB of usable VRAM, which opens up options for much stronger models than the 8b/12b ones I've been running before.&lt;/p&gt; &lt;p&gt;tl;dr - Using an eGPU enclosure with another Nvidia card works on a desktop - assuming you have a thunderbolt connector installed. This makes models that fit in the pooled VRAM space run significantly better than offloading to CPU/RAM, but by default will hinder performance of models that fit in a single card due to TB4 bottlenecks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anarchaotic"&gt; /u/Anarchaotic &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T02:22:16+00:00</published>
+    <published>2025-04-22T01:05:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4oufe</id>
-    <title>Orpheus-TTS local speech synthesizer in C#</title>
-    <updated>2025-04-21T21:13:48+00:00</updated>
+    <id>t3_1k4quhi</id>
+    <title>Copilot Workspace being underestimated...</title>
+    <updated>2025-04-21T22:39:28+00:00</updated>
     <author>
-      <name>/u/ajpy</name>
-      <uri>https://old.reddit.com/user/ajpy</uri>
+      <name>/u/itzco1993</name>
+      <uri>https://old.reddit.com/user/itzco1993</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/TheAjaykrishnanR/TaraSharp"&gt;Repo&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No python dependencies&lt;/li&gt; &lt;li&gt;No LM Studio&lt;/li&gt; &lt;li&gt;Should work out of the box &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Uses LlamaSharp (llama.cpp) backend for inference and TorchSharp for decoding. Requires .NET 9 and Cuda 12.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajpy"&gt; /u/ajpy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've recently been using Copilot Workspace (link in comments), which is in technical preview. I'm not sure why it is not being mentioned more in the dev community. It think this product is the natural evolution of localdev tools such as Cursor, Claude Code, etc.&lt;/p&gt; &lt;p&gt;As we gain more trust in coding agents, it makes sense for them to gain more autonomy and leave your local dev. They should handle e2e tasks like a co-dev would do. Well, Copilot Workspace is heading that direction and it works super well.&lt;/p&gt; &lt;p&gt;My experience so far is exactly what I expect for an AI co-worker. It runs cloud, it has access to your repo and it open PRs automatically. You have this thing called &amp;quot;sessions&amp;quot; where you do follow up on a specific task.&lt;/p&gt; &lt;p&gt;I wonder why this has been in preview since Nov 2024. Has anyone tried it? Thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/itzco1993"&gt; /u/itzco1993 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T21:13:48+00:00</published>
+    <published>2025-04-21T22:39:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4s70i</id>
@@ -112,30 +112,17 @@
     <published>2025-04-21T23:40:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4wt5n</id>
-    <title>Does anyone know of a repository of high quality sample voices with descriptions?</title>
-    <updated>2025-04-22T03:34:00+00:00</updated>
+    <id>t3_1k4oufe</id>
+    <title>Orpheus-TTS local speech synthesizer in C#</title>
+    <updated>2025-04-21T21:13:48+00:00</updated>
     <author>
-      <name>/u/Erdeem</name>
-      <uri>https://old.reddit.com/user/Erdeem</uri>
+      <name>/u/ajpy</name>
+      <uri>https://old.reddit.com/user/ajpy</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for as professional sample voices (not celebrities) that come with descriptions, attributes or labels, similar too Elevenlabs. I'd like to be able to use it in Orpheus. &lt;/p&gt; &lt;p&gt;Ex:: Oracle X- An experienced British female voice narrator with a smooth, warm, engaging tone. Attributes- Professional Voice Clone HQ&lt;/p&gt; &lt;p&gt;Labels- Calm Middle-Aged Female English (British) Narrative &amp;amp; Story&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Erdeem"&gt; /u/Erdeem &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/TheAjaykrishnanR/TaraSharp"&gt;Repo&lt;/a&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No python dependencies&lt;/li&gt; &lt;li&gt;No LM Studio&lt;/li&gt; &lt;li&gt;Should work out of the box &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Uses LlamaSharp (llama.cpp) backend for inference and TorchSharp for decoding. Requires .NET 9 and Cuda 12.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajpy"&gt; /u/ajpy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4oufe/orpheustts_local_speech_synthesizer_in_c/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T03:34:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k4quhi</id>
-    <title>Copilot Workspace being underestimated...</title>
-    <updated>2025-04-21T22:39:28+00:00</updated>
-    <author>
-      <name>/u/itzco1993</name>
-      <uri>https://old.reddit.com/user/itzco1993</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've recently been using Copilot Workspace (link in comments), which is in technical preview. I'm not sure why it is not being mentioned more in the dev community. It think this product is the natural evolution of localdev tools such as Cursor, Claude Code, etc.&lt;/p&gt; &lt;p&gt;As we gain more trust in coding agents, it makes sense for them to gain more autonomy and leave your local dev. They should handle e2e tasks like a co-dev would do. Well, Copilot Workspace is heading that direction and it works super well.&lt;/p&gt; &lt;p&gt;My experience so far is exactly what I expect for an AI co-worker. It runs cloud, it has access to your repo and it open PRs automatically. You have this thing called &amp;quot;sessions&amp;quot; where you do follow up on a specific task.&lt;/p&gt; &lt;p&gt;I wonder why this has been in preview since Nov 2024. Has anyone tried it? Thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/itzco1993"&gt; /u/itzco1993 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4quhi/copilot_workspace_being_underestimated/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T22:39:28+00:00</published>
+    <published>2025-04-21T21:13:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4blth</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4fwck/the_age_of_ai_is_upon_us_and_obviously_what/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T15:09:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k4wt5n</id>
+    <title>Does anyone know of a repository of high quality sample voices with descriptions?</title>
+    <updated>2025-04-22T03:34:00+00:00</updated>
+    <author>
+      <name>/u/Erdeem</name>
+      <uri>https://old.reddit.com/user/Erdeem</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for as professional sample voices (not celebrities) that come with descriptions, attributes or labels, similar too Elevenlabs. I'd like to be able to use it in Orpheus. &lt;/p&gt; &lt;p&gt;Ex:: Oracle X- An experienced British female voice narrator with a smooth, warm, engaging tone. Attributes- Professional Voice Clone HQ&lt;/p&gt; &lt;p&gt;Labels- Calm Middle-Aged Female English (British) Narrative &amp;amp; Story&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Erdeem"&gt; /u/Erdeem &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4wt5n/does_anyone_know_of_a_repository_of_high_quality/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T03:34:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1k49h0n</id>
