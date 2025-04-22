@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-22T15:36:50+00:00</updated>
+  <updated>2025-04-22T15:49:07+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -93,7 +93,7 @@
       <name>/u/stduhpf</name>
       <uri>https://old.reddit.com/user/stduhpf</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was able to run Llama4 Scout effortlessly using the &lt;code&gt;--override-tensor &amp;quot;\.ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt; trick to move all experts-related weights to CPU, but when I tried doing the same with Maverick, I kept getting &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13024"&gt;VRAM allocation errors&lt;/a&gt;, even when offloading the whole model to CPU. I could get it to run on a CPU only build at 1-1.5 t/s only.&lt;/p&gt; &lt;p&gt;I just realised that the allocation errors only happens during warmup, so if I just use the &lt;code&gt;--no-warmup&lt;/code&gt; flag, this part is skipped, and the error is never raised. Now I can get around 3-4 t/s by offloading all shared weights + the first layer of experts to GPU. I'm using a nvme gen3 SSD to store the model, so the limiting factor is probably the read speed of my drive. With a gen4 or gen5 ssd, you could probablyget much better speeds. Be aware that a single layer with the MoE weights can takes over 7GB of Vram (not all layers have the same quantization though). The dense layer in comparison only take about half a GB.&lt;/p&gt; &lt;p&gt;So in my 8GB+16GB dual GPU setup, I moved the first two layers fully to the 8GB device, all the shared weights of the other layers to the 16GB GPU, and the experts to CPU using the &lt;code&gt;-ngl 99 -ot &amp;quot;blk\.[01]\.=Vulkan1,\.ffn_.*_exps.=CPU&amp;quot; -ts 1,0&lt;/code&gt; arguments.&lt;/p&gt; &lt;p&gt;With a single 24GB GPU you could probably just do &lt;code&gt;-ngl 99 -ot &amp;quot;blk.1.=Vulkan0,.ffn\_.\*\_exps.=CPU&amp;quot;&lt;/code&gt;. With only 16GB, just don't add the exception for layer 1 (layer 1 is the first MoE layer, only odd-numbered layers are MoE with Maverick). (Maybe there's a way to offload another more quantized MoE layer for those with 20GB vram)&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-server.exe -m models\Llama-4-Maverick-17B-128E-Instruct-GGUF\Llama-4-Maverick-17B-128E-Instruct-UD-IQ1_M-00001-of-00003.gguf -ngl 99 -t 6 -tb 12 -c 16384 --prio 3 -b 16 -ub 4 -ot &amp;quot;\.ffn_.*_exps.=CPU&amp;quot; --no-warmup&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was able to run Llama4 Scout effortlessly using the &lt;code&gt;--override-tensor &amp;quot;\.ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt; trick to move all experts-related weights to CPU, but when I tried doing the same with Maverick, I kept getting &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13024"&gt;VRAM allocation errors&lt;/a&gt;, even when offloading the whole model to CPU. I could get it to run on a CPU only build at 1-1.5 t/s only.&lt;/p&gt; &lt;p&gt;I just realised that the allocation errors only happens during warmup, so if I just use the &lt;code&gt;--no-warmup&lt;/code&gt; flag, this part is skipped, and the error is never raised. Now I can get around 3-4 t/s by offloading all shared weights + the first layer of experts to GPU. I'm using a nvme gen3 SSD to store the model, so the limiting factor is probably the read speed of my drive. With a gen4 or gen5 ssd, you could probably get much better speeds. Be aware that a single layer with the MoE weights can takes over 7GB of Vram (not all layers have the same quantization though). The dense layer in comparison only take about half a GB.&lt;/p&gt; &lt;p&gt;So in my 8GB+16GB dual GPU setup, I moved the first two layers fully to the 8GB device, all the shared weights of the other layers to the 16GB GPU, and the experts to CPU using the &lt;code&gt;-ngl 99 -ot &amp;quot;blk\.[01]\.=Vulkan1,\.ffn_.*_exps.=CPU&amp;quot; -ts 1,0&lt;/code&gt; arguments.&lt;/p&gt; &lt;p&gt;With a single 24GB GPU you could probably just do &lt;code&gt;-ngl 99 -ot &amp;quot;blk.1.=Vulkan0,.ffn\_.\*\_exps.=CPU&amp;quot;&lt;/code&gt;. With only 16GB, just don't add the exception for layer 1 (layer 1 is the first MoE layer, only odd-numbered layers are MoE with Maverick). (Maybe there's a way to offload another more quantized MoE layer for those with 20GB vram)&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-server.exe -m models\Llama-4-Maverick-17B-128E-Instruct-GGUF\Llama-4-Maverick-17B-128E-Instruct-UD-IQ1_M-00001-of-00003.gguf -ngl 99 -t 6 -tb 12 -c 16384 --prio 3 -b 16 -ub 4 -ot &amp;quot;\.ffn_.*_exps.=CPU&amp;quot; --no-warmup&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T13:45:31+00:00</published>
@@ -268,19 +268,6 @@
     <published>2025-04-22T12:05:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k586js</id>
-    <title>Reddit Answers LLM seems to be live</title>
-    <updated>2025-04-22T14:49:21+00:00</updated>
-    <author>
-      <name>/u/Sea_Sympathy_495</name>
-      <uri>https://old.reddit.com/user/Sea_Sympathy_495</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt; &lt;img alt="Reddit Answers LLM seems to be live" src="https://preview.redd.it/ztxmzuc3gewe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5b6763aa6a4a466f395f48779f810ecba2d14503" title="Reddit Answers LLM seems to be live" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sea_Sympathy_495"&gt; /u/Sea_Sympathy_495 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ztxmzuc3gewe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T14:49:21+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4v5fm</id>
     <title>Dia 1.6B is one of the funnest models I've ever come across.</title>
     <updated>2025-04-22T02:07:19+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T11:42:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k586js</id>
+    <title>Reddit Answers LLM seems to be live</title>
+    <updated>2025-04-22T14:49:21+00:00</updated>
+    <author>
+      <name>/u/Sea_Sympathy_495</name>
+      <uri>https://old.reddit.com/user/Sea_Sympathy_495</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt; &lt;img alt="Reddit Answers LLM seems to be live" src="https://preview.redd.it/ztxmzuc3gewe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5b6763aa6a4a466f395f48779f810ecba2d14503" title="Reddit Answers LLM seems to be live" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sea_Sympathy_495"&gt; /u/Sea_Sympathy_495 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ztxmzuc3gewe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T14:49:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1k54foj</id>
