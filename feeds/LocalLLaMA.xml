@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-22T14:49:41+00:00</updated>
+  <updated>2025-04-22T15:06:34+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k4avlq</id>
-    <title>What's the best models available today to run on systems with 8 GB / 16 GB / 24 GB / 48 GB / 72 GB / 96 GB of VRAM today?</title>
-    <updated>2025-04-21T11:08:51+00:00</updated>
-    <author>
-      <name>/u/Severin_Suveren</name>
-      <uri>https://old.reddit.com/user/Severin_Suveren</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As the title says, since many aren't that experienced with running local LLMs and the choice of models, what are the best models available today for the different ranges of VRAM?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Severin_Suveren"&gt; /u/Severin_Suveren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4avlq/whats_the_best_models_available_today_to_run_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4avlq/whats_the_best_models_available_today_to_run_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4avlq/whats_the_best_models_available_today_to_run_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T11:08:51+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k56dpg</id>
     <title>Meta AI System Initialization Prompt</title>
@@ -86,32 +73,6 @@
     <published>2025-04-22T06:38:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k56orb</id>
-    <title>Running Llama 4 Maverick with llama.cpp Vulkan</title>
-    <updated>2025-04-22T13:45:31+00:00</updated>
-    <author>
-      <name>/u/stduhpf</name>
-      <uri>https://old.reddit.com/user/stduhpf</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was able to run Llama4 Scout effortlessly using the &lt;code&gt;--override-tensor &amp;quot;\.ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt; trick to move all experts-related weights to CPU, but when I tried doing the same with Maverick, I kept getting &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13024"&gt;VRAM allocation errors&lt;/a&gt;, even when offloading the whole model to CPU. I could get it to run on a CPU only build at 1-1.5 t/s only.&lt;/p&gt; &lt;p&gt;I just realised that the allocation errors only happens during warmup, so if I just use the &lt;code&gt;--no-warmup&lt;/code&gt; flag, this part is skipped, and the error is never raised. Now I can get around 3-4 t/s by offloading all shared weights + the first layer of experts to GPU. I'm using a nvme gen3 SSD to store the model, so the limiting factor is probably the read speed of my drive. With a gen4 or gen5 ssd, you could probablyget much better speeds. Be aware that a single layer with the MoE weights can takes over 7GB of Vram (not all layers have the same quantization though). The dense layer in comparison only take about half a GB.&lt;/p&gt; &lt;p&gt;So in my 8GB+16GB dual GPU setup, I moved the first two layers fully to the 8GB device, all the shared weights of the other layers to the 16GB GPU, and the experts to CPU using the &lt;code&gt;-ngl 99 -ot &amp;quot;blk\.[01]\.=Vulkan1,\.ffn_.*_exps.=CPU&amp;quot; -ts 1,0&lt;/code&gt; arguments.&lt;/p&gt; &lt;p&gt;With a single 24GB GPU you could probably just do &lt;code&gt;-ngl 99 -ot &amp;quot;blk.1.=Vulkan0,.ffn\_.\*\_exps.=CPU&amp;quot;&lt;/code&gt;. With only 16GB, just don't add the exception for layer 1 (layer 1 is the first MoE layer, only odd-numbered layers are MoE with Maverick). (Maybe there's a way to offload another more quantized MoE layer for those with 20GB vram)&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-server.exe -m models\Llama-4-Maverick-17B-128E-Instruct-GGUF\Llama-4-Maverick-17B-128E-Instruct-UD-IQ1_M-00001-of-00003.gguf -ngl 99 -t 6 -tb 12 -c 16384 --prio 3 -b 16 -ub 4 -ot &amp;quot;\.ffn_.*_exps.=CPU&amp;quot; --no-warmup&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T13:45:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k55eeo</id>
-    <title>Gemma3:12b hallucinating when reading images, anyone else?</title>
-    <updated>2025-04-22T12:45:48+00:00</updated>
-    <author>
-      <name>/u/just-crawling</name>
-      <uri>https://old.reddit.com/user/just-crawling</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"&gt; &lt;img alt="Gemma3:12b hallucinating when reading images, anyone else?" src="https://b.thumbs.redditmedia.com/J2hoDxMmhrWQFydb3uGTflkCCVt567t2-rt0y0ZTLNk.jpg" title="Gemma3:12b hallucinating when reading images, anyone else?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am running the gemma3:12b model (tried the base model, and also the qat model) on ollama (with OpenWeb UI).&lt;/p&gt; &lt;p&gt;And it looks like it massively hallucinates, it even does the math wrong and occasionally (actually quite often) attempts to add in random PC parts to the list.&lt;/p&gt; &lt;p&gt;I see many people claiming that it is a breakthrough for OCR, but I feel like it is unreliable. Is it just my setup?&lt;/p&gt; &lt;p&gt;Rig: 5070TI with 16GB Vram&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/just-crawling"&gt; /u/just-crawling &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k55eeo"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T12:45:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k50u8i</id>
     <title>Sleep-time Compute: Beyond Inference Scaling at Test-time</title>
     <updated>2025-04-22T07:54:24+00:00</updated>
@@ -138,6 +99,19 @@
     <published>2025-04-22T13:30:34+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k56orb</id>
+    <title>Running Llama 4 Maverick with llama.cpp Vulkan</title>
+    <updated>2025-04-22T13:45:31+00:00</updated>
+    <author>
+      <name>/u/stduhpf</name>
+      <uri>https://old.reddit.com/user/stduhpf</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was able to run Llama4 Scout effortlessly using the &lt;code&gt;--override-tensor &amp;quot;\.ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt; trick to move all experts-related weights to CPU, but when I tried doing the same with Maverick, I kept getting &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13024"&gt;VRAM allocation errors&lt;/a&gt;, even when offloading the whole model to CPU. I could get it to run on a CPU only build at 1-1.5 t/s only.&lt;/p&gt; &lt;p&gt;I just realised that the allocation errors only happens during warmup, so if I just use the &lt;code&gt;--no-warmup&lt;/code&gt; flag, this part is skipped, and the error is never raised. Now I can get around 3-4 t/s by offloading all shared weights + the first layer of experts to GPU. I'm using a nvme gen3 SSD to store the model, so the limiting factor is probably the read speed of my drive. With a gen4 or gen5 ssd, you could probablyget much better speeds. Be aware that a single layer with the MoE weights can takes over 7GB of Vram (not all layers have the same quantization though). The dense layer in comparison only take about half a GB.&lt;/p&gt; &lt;p&gt;So in my 8GB+16GB dual GPU setup, I moved the first two layers fully to the 8GB device, all the shared weights of the other layers to the 16GB GPU, and the experts to CPU using the &lt;code&gt;-ngl 99 -ot &amp;quot;blk\.[01]\.=Vulkan1,\.ffn_.*_exps.=CPU&amp;quot; -ts 1,0&lt;/code&gt; arguments.&lt;/p&gt; &lt;p&gt;With a single 24GB GPU you could probably just do &lt;code&gt;-ngl 99 -ot &amp;quot;blk.1.=Vulkan0,.ffn\_.\*\_exps.=CPU&amp;quot;&lt;/code&gt;. With only 16GB, just don't add the exception for layer 1 (layer 1 is the first MoE layer, only odd-numbered layers are MoE with Maverick). (Maybe there's a way to offload another more quantized MoE layer for those with 20GB vram)&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-server.exe -m models\Llama-4-Maverick-17B-128E-Instruct-GGUF\Llama-4-Maverick-17B-128E-Instruct-UD-IQ1_M-00001-of-00003.gguf -ngl 99 -t 6 -tb 12 -c 16384 --prio 3 -b 16 -ub 4 -ot &amp;quot;\.ffn_.*_exps.=CPU&amp;quot; --no-warmup&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T13:45:31+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k4ov9e</id>
     <title>Meta Perception Language Model: Enhancing Understanding of Visual Perception Tasks</title>
     <updated>2025-04-21T21:14:47+00:00</updated>
@@ -149,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4ov9e/meta_perception_language_model_enhancing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T21:14:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k55eeo</id>
+    <title>Gemma3:12b hallucinating when reading images, anyone else?</title>
+    <updated>2025-04-22T12:45:48+00:00</updated>
+    <author>
+      <name>/u/just-crawling</name>
+      <uri>https://old.reddit.com/user/just-crawling</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"&gt; &lt;img alt="Gemma3:12b hallucinating when reading images, anyone else?" src="https://b.thumbs.redditmedia.com/J2hoDxMmhrWQFydb3uGTflkCCVt567t2-rt0y0ZTLNk.jpg" title="Gemma3:12b hallucinating when reading images, anyone else?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am running the gemma3:12b model (tried the base model, and also the qat model) on ollama (with OpenWeb UI).&lt;/p&gt; &lt;p&gt;And it looks like it massively hallucinates, it even does the math wrong and occasionally (actually quite often) attempts to add in random PC parts to the list.&lt;/p&gt; &lt;p&gt;I see many people claiming that it is a breakthrough for OCR, but I feel like it is unreliable. Is it just my setup?&lt;/p&gt; &lt;p&gt;Rig: 5070TI with 16GB Vram&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/just-crawling"&gt; /u/just-crawling &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k55eeo"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T12:45:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4oqpi</id>
@@ -177,6 +164,19 @@
     <published>2025-04-22T13:48:04+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k586js</id>
+    <title>Reddit Answers LLM seems to be live</title>
+    <updated>2025-04-22T14:49:21+00:00</updated>
+    <author>
+      <name>/u/Sea_Sympathy_495</name>
+      <uri>https://old.reddit.com/user/Sea_Sympathy_495</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt; &lt;img alt="Reddit Answers LLM seems to be live" src="https://preview.redd.it/ztxmzuc3gewe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5b6763aa6a4a466f395f48779f810ecba2d14503" title="Reddit Answers LLM seems to be live" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sea_Sympathy_495"&gt; /u/Sea_Sympathy_495 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ztxmzuc3gewe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k586js/reddit_answers_llm_seems_to_be_live/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T14:49:21+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k4juhd</id>
     <title>Don’t Trust This Woman — She Keeps Lying</title>
     <updated>2025-04-21T17:53:19+00:00</updated>
@@ -190,19 +190,6 @@
     <published>2025-04-21T17:53:19+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k50wo0</id>
-    <title>Veiled Rose 22B : Bigger, Smarter and Noicer</title>
-    <updated>2025-04-22T07:59:30+00:00</updated>
-    <author>
-      <name>/u/Reader3123</name>
-      <uri>https://old.reddit.com/user/Reader3123</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt; &lt;img alt="Veiled Rose 22B : Bigger, Smarter and Noicer" src="https://preview.redd.it/99f47p7cecwe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f01384216591c1b49b1cd83d95948d1d577c9571" title="Veiled Rose 22B : Bigger, Smarter and Noicer" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If youve tried my &lt;a href="https://huggingface.co/soob3123/Veiled-Calla-12B"&gt;Veiled Calla 12B&lt;/a&gt; you know how it goes. but since it was a 12B model, there were some pretty obvious short comings. &lt;/p&gt; &lt;p&gt;Here is the Mistral Based 22B model, with better cognition and reasoning. Test it out and let me your feedback!&lt;/p&gt; &lt;p&gt;Model: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;soob3123/Veiled-Rose-22B · Hugging Face &lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUF: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B-gguf"&gt;soob3123/Veiled-Rose-22B-gguf · Hugging Face&lt;/a&gt;&lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/99f47p7cecwe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T07:59:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k547al</id>
     <title>New Lib to process PDFs</title>
     <updated>2025-04-22T11:43:07+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T11:43:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k50wo0</id>
+    <title>Veiled Rose 22B : Bigger, Smarter and Noicer</title>
+    <updated>2025-04-22T07:59:30+00:00</updated>
+    <author>
+      <name>/u/Reader3123</name>
+      <uri>https://old.reddit.com/user/Reader3123</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt; &lt;img alt="Veiled Rose 22B : Bigger, Smarter and Noicer" src="https://preview.redd.it/99f47p7cecwe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f01384216591c1b49b1cd83d95948d1d577c9571" title="Veiled Rose 22B : Bigger, Smarter and Noicer" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If youve tried my &lt;a href="https://huggingface.co/soob3123/Veiled-Calla-12B"&gt;Veiled Calla 12B&lt;/a&gt; you know how it goes. but since it was a 12B model, there were some pretty obvious short comings. &lt;/p&gt; &lt;p&gt;Here is the Mistral Based 22B model, with better cognition and reasoning. Test it out and let me your feedback!&lt;/p&gt; &lt;p&gt;Model: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;soob3123/Veiled-Rose-22B · Hugging Face &lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUF: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B-gguf"&gt;soob3123/Veiled-Rose-22B-gguf · Hugging Face&lt;/a&gt;&lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/99f47p7cecwe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T07:59:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4god7</id>
@@ -242,19 +242,6 @@
     <published>2025-04-22T03:05:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k54mdz</id>
-    <title>Stanford CS 25 Transformers Course (OPEN TO EVERYBODY)</title>
-    <updated>2025-04-22T12:05:15+00:00</updated>
-    <author>
-      <name>/u/MLPhDStudent</name>
-      <uri>https://old.reddit.com/user/MLPhDStudent</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Tl;dr: One of Stanford's hottest seminar courses. We open the course through Zoom to the public. Lectures on Tuesdays, 3-4:20pm PDT (Zoom link on course website). Talks will be recorded and released ~3 weeks after each lecture. Course website:&lt;/strong&gt; &lt;a href="https://web.stanford.edu/class/cs25/"&gt;&lt;strong&gt;https://web.stanford.edu/class/cs25/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Our lecture later &lt;strong&gt;today at 3pm PDT&lt;/strong&gt; is &lt;strong&gt;Eric Zelikman from xAI&lt;/strong&gt;, discussing “We're All in this Together: Human Agency in an Era of Artificial Agents”. &lt;strong&gt;This talk will NOT be recorded!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Each week, we invite folks at the forefront of Transformers research to discuss the latest breakthroughs, from LLM architectures like GPT and Gemini to creative use cases in generating art (e.g. DALL-E and Sora), biology and neuroscience applications, robotics, and so forth!&lt;/p&gt; &lt;p&gt;We invite the coolest speakers such as &lt;strong&gt;Andrej Karpathy, Geoffrey Hinton, Jim Fan, Ashish Vaswani&lt;/strong&gt;, and folks from &lt;strong&gt;OpenAI, Google, NVIDIA&lt;/strong&gt;, etc.&lt;/p&gt; &lt;p&gt;The &lt;strong&gt;recording of the first lecture&lt;/strong&gt; is released! &lt;strong&gt;Check it out&lt;/strong&gt; &lt;a href="https://www.youtube.com/watch?v=JKbtWimlzAE"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt; We gave a brief overview of Transformers, discussed pretraining (focusing on data strategies [&lt;a href="https://arxiv.org/abs/2408.03617"&gt;1&lt;/a&gt;,&lt;a href="https://arxiv.org/abs/2412.15285"&gt;2&lt;/a&gt;]) and post-training, and highlighted recent trends, applications, and remaining challenges/weaknesses of Transformers. Slides are &lt;a href="https://docs.google.com/presentation/d/16tMMBUjPnqw-PvxF8xzu2m1Epdo1fH7nXWlt3mt2q5w/edit?usp=sharing"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Check out our course website for more!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MLPhDStudent"&gt; /u/MLPhDStudent &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://web.stanford.edu/class/cs25/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T12:05:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k52h4n</id>
     <title>Why is MythoMax13B still in high demand?</title>
     <updated>2025-04-22T09:54:54+00:00</updated>
@@ -281,6 +268,19 @@
     <published>2025-04-21T19:02:56+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k54mdz</id>
+    <title>Stanford CS 25 Transformers Course (OPEN TO EVERYBODY)</title>
+    <updated>2025-04-22T12:05:15+00:00</updated>
+    <author>
+      <name>/u/MLPhDStudent</name>
+      <uri>https://old.reddit.com/user/MLPhDStudent</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Tl;dr: One of Stanford's hottest seminar courses. We open the course through Zoom to the public. Lectures on Tuesdays, 3-4:20pm PDT (Zoom link on course website). Talks will be recorded and released ~3 weeks after each lecture. Course website:&lt;/strong&gt; &lt;a href="https://web.stanford.edu/class/cs25/"&gt;&lt;strong&gt;https://web.stanford.edu/class/cs25/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Our lecture later &lt;strong&gt;today at 3pm PDT&lt;/strong&gt; is &lt;strong&gt;Eric Zelikman from xAI&lt;/strong&gt;, discussing “We're All in this Together: Human Agency in an Era of Artificial Agents”. &lt;strong&gt;This talk will NOT be recorded!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Each week, we invite folks at the forefront of Transformers research to discuss the latest breakthroughs, from LLM architectures like GPT and Gemini to creative use cases in generating art (e.g. DALL-E and Sora), biology and neuroscience applications, robotics, and so forth!&lt;/p&gt; &lt;p&gt;We invite the coolest speakers such as &lt;strong&gt;Andrej Karpathy, Geoffrey Hinton, Jim Fan, Ashish Vaswani&lt;/strong&gt;, and folks from &lt;strong&gt;OpenAI, Google, NVIDIA&lt;/strong&gt;, etc.&lt;/p&gt; &lt;p&gt;The &lt;strong&gt;recording of the first lecture&lt;/strong&gt; is released! &lt;strong&gt;Check it out&lt;/strong&gt; &lt;a href="https://www.youtube.com/watch?v=JKbtWimlzAE"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt; We gave a brief overview of Transformers, discussed pretraining (focusing on data strategies [&lt;a href="https://arxiv.org/abs/2408.03617"&gt;1&lt;/a&gt;,&lt;a href="https://arxiv.org/abs/2412.15285"&gt;2&lt;/a&gt;]) and post-training, and highlighted recent trends, applications, and remaining challenges/weaknesses of Transformers. Slides are &lt;a href="https://docs.google.com/presentation/d/16tMMBUjPnqw-PvxF8xzu2m1Epdo1fH7nXWlt3mt2q5w/edit?usp=sharing"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Check out our course website for more!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MLPhDStudent"&gt; /u/MLPhDStudent &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://web.stanford.edu/class/cs25/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T12:05:15+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k546sq</id>
     <title>THUDM/SWE-Dev-9B · Hugging Face</title>
     <updated>2025-04-22T11:42:23+00:00</updated>
@@ -294,19 +294,6 @@
     <published>2025-04-22T11:42:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k54foj</id>
-    <title>Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded</title>
-    <updated>2025-04-22T11:55:45+00:00</updated>
-    <author>
-      <name>/u/OtherRaisin3426</name>
-      <uri>https://old.reddit.com/user/OtherRaisin3426</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt; &lt;img alt="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" src="https://external-preview.redd.it/pAa68GpmjnpZeahm_YMGQkYTs9KtW9HemhGbAYHU02s.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=555355166a247eb92939344c89b96ed48dd7655a" title="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://i.redd.it/5w0lu5m2ldwe1.gif"&gt;A few notes I made as part of this playlist&lt;/a&gt;&lt;/p&gt; &lt;p&gt;“Can I build the DeepSeek architecture and model myself, from scratch?”&lt;/p&gt; &lt;p&gt;You can. You need to know the nuts and bolts. &lt;/p&gt; &lt;p&gt;4 weeks back, we launched our playlist: “Build DeepSeek from Scratch” &lt;/p&gt; &lt;p&gt;Until now, we have uploaded 13 lectures in this playlist: &lt;/p&gt; &lt;p&gt;(1) DeepSeek series introduction: &lt;a href="https://youtu.be/QWNxQIq0hMo"&gt;https://youtu.be/QWNxQIq0hMo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(2) DeepSeek basics: &lt;a href="https://youtu.be/WjhDDeZ7DvM"&gt;https://youtu.be/WjhDDeZ7DvM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(3) Journey of a token into the LLM architecture: &lt;a href="https://youtu.be/rkEYwH4UGa4"&gt;https://youtu.be/rkEYwH4UGa4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(4) Attention mechanism explained in 1 hour: &lt;a href="https://youtu.be/K45ze9Yd5UE"&gt;https://youtu.be/K45ze9Yd5UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(5) Self Attention Mechanism - Handwritten from scratch: &lt;a href="https://youtu.be/s8mskq-nzec"&gt;https://youtu.be/s8mskq-nzec&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(6) Causal Attention Explained: Don't Peek into the Future: &lt;a href="https://youtu.be/c6Kkj6iLeBg"&gt;https://youtu.be/c6Kkj6iLeBg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(7) Multi-Head Attention Visually Explained: &lt;a href="https://youtu.be/qbN4ulK-bZA"&gt;https://youtu.be/qbN4ulK-bZA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(8) Multi-Head Attention Handwritten from Scratch: &lt;a href="https://youtu.be/rvsEW-EsD-Y"&gt;https://youtu.be/rvsEW-EsD-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(9) Key Value Cache from Scratch: &lt;a href="https://youtu.be/IDwTiS4_bKo"&gt;https://youtu.be/IDwTiS4_bKo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(10) Multi-Query Attention Explained: &lt;a href="https://youtu.be/Z6B51Odtn-Y"&gt;https://youtu.be/Z6B51Odtn-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(11) Understand Grouped Query Attention (GQA): &lt;a href="https://youtu.be/kx3rETIxo4Q"&gt;https://youtu.be/kx3rETIxo4Q&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(12) Multi-Head Latent Attention From Scratch: &lt;a href="https://youtu.be/NlDQUj1olXM"&gt;https://youtu.be/NlDQUj1olXM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(13) Multi-Head Latent Attention Coded from Scratch in Python: &lt;a href="https://youtu.be/mIaWmJVrMpc"&gt;https://youtu.be/mIaWmJVrMpc&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Next to come: &lt;/p&gt; &lt;p&gt;- Rotary Positional Encoding (RoPE)&lt;/p&gt; &lt;p&gt;- DeepSeek MLA + RoPE&lt;/p&gt; &lt;p&gt;- DeepSeek Mixture of Experts (MoE)&lt;/p&gt; &lt;p&gt;- Multi-token Prediction (MTP)&lt;/p&gt; &lt;p&gt;- Supervised Fine-Tuning (SFT)&lt;/p&gt; &lt;p&gt;- Group Relative Policy Optimisation (GRPO)&lt;/p&gt; &lt;p&gt;- DeepSeek PTX innovation&lt;/p&gt; &lt;p&gt;This playlist won’t be a 1 hour or 2 hour video. This will be a mega playlist of 35-40 videos with a duration of 40+ hours.&lt;/p&gt; &lt;p&gt;I have made this with a lot of passion. &lt;/p&gt; &lt;p&gt;Would look forward to support and your feedback!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OtherRaisin3426"&gt; /u/OtherRaisin3426 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T11:55:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4v5fm</id>
     <title>Dia 1.6B is one of the funnest models I've ever come across.</title>
     <updated>2025-04-22T02:07:19+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4v5fm/dia_16b_is_one_of_the_funnest_models_ive_ever/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T02:07:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k54foj</id>
+    <title>Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded</title>
+    <updated>2025-04-22T11:55:45+00:00</updated>
+    <author>
+      <name>/u/OtherRaisin3426</name>
+      <uri>https://old.reddit.com/user/OtherRaisin3426</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt; &lt;img alt="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" src="https://external-preview.redd.it/pAa68GpmjnpZeahm_YMGQkYTs9KtW9HemhGbAYHU02s.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=555355166a247eb92939344c89b96ed48dd7655a" title="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://i.redd.it/5w0lu5m2ldwe1.gif"&gt;A few notes I made as part of this playlist&lt;/a&gt;&lt;/p&gt; &lt;p&gt;“Can I build the DeepSeek architecture and model myself, from scratch?”&lt;/p&gt; &lt;p&gt;You can. You need to know the nuts and bolts. &lt;/p&gt; &lt;p&gt;4 weeks back, we launched our playlist: “Build DeepSeek from Scratch” &lt;/p&gt; &lt;p&gt;Until now, we have uploaded 13 lectures in this playlist: &lt;/p&gt; &lt;p&gt;(1) DeepSeek series introduction: &lt;a href="https://youtu.be/QWNxQIq0hMo"&gt;https://youtu.be/QWNxQIq0hMo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(2) DeepSeek basics: &lt;a href="https://youtu.be/WjhDDeZ7DvM"&gt;https://youtu.be/WjhDDeZ7DvM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(3) Journey of a token into the LLM architecture: &lt;a href="https://youtu.be/rkEYwH4UGa4"&gt;https://youtu.be/rkEYwH4UGa4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(4) Attention mechanism explained in 1 hour: &lt;a href="https://youtu.be/K45ze9Yd5UE"&gt;https://youtu.be/K45ze9Yd5UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(5) Self Attention Mechanism - Handwritten from scratch: &lt;a href="https://youtu.be/s8mskq-nzec"&gt;https://youtu.be/s8mskq-nzec&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(6) Causal Attention Explained: Don't Peek into the Future: &lt;a href="https://youtu.be/c6Kkj6iLeBg"&gt;https://youtu.be/c6Kkj6iLeBg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(7) Multi-Head Attention Visually Explained: &lt;a href="https://youtu.be/qbN4ulK-bZA"&gt;https://youtu.be/qbN4ulK-bZA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(8) Multi-Head Attention Handwritten from Scratch: &lt;a href="https://youtu.be/rvsEW-EsD-Y"&gt;https://youtu.be/rvsEW-EsD-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(9) Key Value Cache from Scratch: &lt;a href="https://youtu.be/IDwTiS4_bKo"&gt;https://youtu.be/IDwTiS4_bKo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(10) Multi-Query Attention Explained: &lt;a href="https://youtu.be/Z6B51Odtn-Y"&gt;https://youtu.be/Z6B51Odtn-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(11) Understand Grouped Query Attention (GQA): &lt;a href="https://youtu.be/kx3rETIxo4Q"&gt;https://youtu.be/kx3rETIxo4Q&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(12) Multi-Head Latent Attention From Scratch: &lt;a href="https://youtu.be/NlDQUj1olXM"&gt;https://youtu.be/NlDQUj1olXM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(13) Multi-Head Latent Attention Coded from Scratch in Python: &lt;a href="https://youtu.be/mIaWmJVrMpc"&gt;https://youtu.be/mIaWmJVrMpc&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Next to come: &lt;/p&gt; &lt;p&gt;- Rotary Positional Encoding (RoPE)&lt;/p&gt; &lt;p&gt;- DeepSeek MLA + RoPE&lt;/p&gt; &lt;p&gt;- DeepSeek Mixture of Experts (MoE)&lt;/p&gt; &lt;p&gt;- Multi-token Prediction (MTP)&lt;/p&gt; &lt;p&gt;- Supervised Fine-Tuning (SFT)&lt;/p&gt; &lt;p&gt;- Group Relative Policy Optimisation (GRPO)&lt;/p&gt; &lt;p&gt;- DeepSeek PTX innovation&lt;/p&gt; &lt;p&gt;This playlist won’t be a 1 hour or 2 hour video. This will be a mega playlist of 35-40 videos with a duration of 40+ hours.&lt;/p&gt; &lt;p&gt;I have made this with a lot of passion. &lt;/p&gt; &lt;p&gt;Would look forward to support and your feedback!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OtherRaisin3426"&gt; /u/OtherRaisin3426 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T11:55:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1k55x70</id>
