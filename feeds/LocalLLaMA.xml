@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-22T11:48:48+00:00</updated>
+  <updated>2025-04-22T12:10:35+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k52zd4</id>
-    <title>Gemma3 27b QAT: impossible to change context size ?</title>
-    <updated>2025-04-22T10:29:20+00:00</updated>
-    <author>
-      <name>/u/yeswearecoding</name>
-      <uri>https://old.reddit.com/user/yeswearecoding</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello,I’ve been trying to reduce NVRAM usage to fit the 27b model version into my 20Gb GPU memory. I’ve tried to generate a new model from the “new” Gemma3 QAT version with Ollama:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama show gemma3:27b --modelfile &amp;gt; 27b.Modelfile &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I edit the &lt;code&gt;Modelfile&lt;/code&gt; to change the context size:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM gemma3:27b TEMPLATE &amp;quot;&amp;quot;&amp;quot;{{- range $i, $_ := .Messages }} {{- $last := eq (len (slice $.Messages $i)) 1 }} {{- if or (eq .Role &amp;quot;user&amp;quot;) (eq .Role &amp;quot;system&amp;quot;) }}&amp;lt;start_of_turn&amp;gt;user {{ .Content }}&amp;lt;end_of_turn&amp;gt; {{ if $last }}&amp;lt;start_of_turn&amp;gt;model {{ end }} {{- else if eq .Role &amp;quot;assistant&amp;quot; }}&amp;lt;start_of_turn&amp;gt;model {{ .Content }}{{ if not $last }}&amp;lt;end_of_turn&amp;gt; {{ end }} {{- end }} {{- end }}&amp;quot;&amp;quot;&amp;quot; PARAMETER stop &amp;lt;end_of_turn&amp;gt; PARAMETER temperature 1 PARAMETER top_k 64 PARAMETER top_p 0.95 PARAMETER num_ctx 32768 LICENSE &amp;quot;&amp;quot;&amp;quot;&amp;lt;...&amp;gt;&amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And create a new model:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama create gemma3:27b-32k -f 27b.Modelfile &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Run it and show info:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama run gemma3:27b-32k &amp;gt;&amp;gt;&amp;gt; /show info Model architecture gemma3 parameters 27.4B context length 131072 embedding length 5376 quantization Q4_K_M Capabilities completion vision Parameters temperature 1 top_k 64 top_p 0.95 num_ctx 32768 stop &amp;quot;&amp;lt;end_of_turn&amp;gt;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;code&gt;num_ctx&lt;/code&gt; is OK, but no change for &lt;code&gt;context length&lt;/code&gt; (note in the orignal version, there is no &lt;code&gt;num_ctx&lt;/code&gt; parameter)&lt;/p&gt; &lt;p&gt;Memory usage (&lt;code&gt;ollama ps&lt;/code&gt;):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;NAME ID SIZE PROCESSOR UNTIL gemma3:27b-32k 178c1f193522 27 GB 26%/74% CPU/GPU 4 minutes from now &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;With the original version:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;NAME ID SIZE PROCESSOR UNTIL gemma3:27b a418f5838eaf 24 GB 16%/84% CPU/GPU 4 minutes from now &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Where’s the glitch ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yeswearecoding"&gt; /u/yeswearecoding &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52zd4/gemma3_27b_qat_impossible_to_change_context_size/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52zd4/gemma3_27b_qat_impossible_to_change_context_size/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k52zd4/gemma3_27b_qat_impossible_to_change_context_size/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T10:29:20+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k4blth</id>
-    <title>🚀 Run LightRAG on a Bare Metal Server in Minutes (Fully Automated)</title>
-    <updated>2025-04-21T11:51:54+00:00</updated>
-    <author>
-      <name>/u/aospan</name>
-      <uri>https://old.reddit.com/user/aospan</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4blth/run_lightrag_on_a_bare_metal_server_in_minutes/"&gt; &lt;img alt="🚀 Run LightRAG on a Bare Metal Server in Minutes (Fully Automated)" src="https://b.thumbs.redditmedia.com/2-0WhWHvw-I2OXhO_fkhxKNabIJ7N9A1mmJoTYLUdfM.jpg" title="🚀 Run LightRAG on a Bare Metal Server in Minutes (Fully Automated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Continuing my journey documenting self-hosted AI tools - today I’m dropping a new tutorial on how to run the amazing LightRAG project on your own bare metal server with a GPU… in just minutes 🤯&lt;/p&gt; &lt;p&gt;Thanks to full automation (Ansible + Docker Compose + Sbnb Linux), you can go from an empty machine with no OS to a fully running RAG pipeline.&lt;/p&gt; &lt;p&gt;TL;DR: Start with a blank PC with a GPU. End with an advanced RAG system, ready to answer your questions.&lt;/p&gt; &lt;p&gt;Tutorial link: &lt;a href="https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md"&gt;https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Happy experimenting! Let me know if you try it or run into anything.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aospan"&gt; /u/aospan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k4blth"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4blth/run_lightrag_on_a_bare_metal_server_in_minutes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4blth/run_lightrag_on_a_bare_metal_server_in_minutes/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-21T11:51:54+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k546sq</id>
-    <title>THUDM/SWE-Dev-9B · Hugging Face</title>
-    <updated>2025-04-22T11:42:23+00:00</updated>
-    <author>
-      <name>/u/bobby-chan</name>
-      <uri>https://old.reddit.com/user/bobby-chan</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"&gt; &lt;img alt="THUDM/SWE-Dev-9B · Hugging Face" src="https://external-preview.redd.it/H-WqhcnMRaUejHpQLqeLIABkVOOs-PNNxG0QszsYGF4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=33500f8d40e8a012a0d58c9cc5020fee1f8beadd" title="THUDM/SWE-Dev-9B · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The creators of the GLM-4 models released a collection of coder models&lt;/p&gt; &lt;ul&gt; &lt;li&gt;SWE-Dev-7B (Qwen-2.5-7B-Instruct): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-7B/"&gt;https://huggingface.co/THUDM/SWE-Dev-7B/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;SWE-Dev-9B (GLM-4-9B-Chat): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-9B/"&gt;https://huggingface.co/THUDM/SWE-Dev-9B/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;SWE-Dev-32B (Qwen-2.5-32B-Instruct): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-32B/"&gt;https://huggingface.co/THUDM/SWE-Dev-32B/&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bobby-chan"&gt; /u/bobby-chan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/THUDM/SWE-Dev-9B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T11:42:23+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k4oufe</id>
     <title>Orpheus-TTS local speech synthesizer in C#</title>
@@ -112,19 +73,6 @@
     <published>2025-04-21T09:35:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k547al</id>
-    <title>New Lib to process PDFs</title>
-    <updated>2025-04-22T11:43:07+00:00</updated>
-    <author>
-      <name>/u/Electronic-Lab-7343</name>
-      <uri>https://old.reddit.com/user/Electronic-Lab-7343</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I built a library over the holiday that converts PDF documents to Markdown. It segments by page, extracts relevant elements like titles, images, and tables, and even counts tokens per page. (&lt;a href="https://github.com/matthsena/AlcheMark"&gt;AlcheMark&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Some advantages compared to competitors (Docling):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: In my test with a 500-page file, this library parsed it in 45 seconds. Docling around 3 minutes.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;References&lt;/strong&gt;: Docling convert the entire file into a single large Markdown block without page segmentation, making it harder for LLMs to reference which page the information came from. This library returns a vector of objects—one for each page.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Token estimation&lt;/strong&gt;: The library shows the token count for each page, allowing better cost estimation before sending a prompt.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For this project, I make a ensemble of several existing libraries with a different approach to data handling.&lt;/p&gt; &lt;p&gt;If you'd like to contribute or support the project, feel free to leave a star on GitHub:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/matthsena/AlcheMark"&gt;https://github.com/matthsena/AlcheMark&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic-Lab-7343"&gt; /u/Electronic-Lab-7343 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T11:43:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4gqje</id>
     <title>[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli</title>
     <updated>2025-04-21T15:46:41+00:00</updated>
@@ -136,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T15:46:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k54mdz</id>
+    <title>Stanford CS 25 Transformers Course (OPEN TO EVERYBODY)</title>
+    <updated>2025-04-22T12:05:15+00:00</updated>
+    <author>
+      <name>/u/MLPhDStudent</name>
+      <uri>https://old.reddit.com/user/MLPhDStudent</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Tl;dr: One of Stanford's hottest seminar courses. We open the course through Zoom to the public. Lectures on Tuesdays, 3-4:20pm PDT (Zoom link on course website). Talks will be recorded and released ~3 weeks after each lecture. Course website:&lt;/strong&gt; &lt;a href="https://web.stanford.edu/class/cs25/"&gt;&lt;strong&gt;https://web.stanford.edu/class/cs25/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Our lecture later &lt;strong&gt;today at 3pm PDT&lt;/strong&gt; is &lt;strong&gt;Eric Zelikman from xAI&lt;/strong&gt;, discussing “We're All in this Together: Human Agency in an Era of Artificial Agents”. &lt;strong&gt;This talk will NOT be recorded!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Each week, we invite folks at the forefront of Transformers research to discuss the latest breakthroughs, from LLM architectures like GPT and Gemini to creative use cases in generating art (e.g. DALL-E and Sora), biology and neuroscience applications, robotics, and so forth!&lt;/p&gt; &lt;p&gt;We invite the coolest speakers such as &lt;strong&gt;Andrej Karpathy, Geoffrey Hinton, Jim Fan, Ashish Vaswani&lt;/strong&gt;, and folks from &lt;strong&gt;OpenAI, Google, NVIDIA&lt;/strong&gt;, etc.&lt;/p&gt; &lt;p&gt;The &lt;strong&gt;recording of the first lecture&lt;/strong&gt; is released! &lt;strong&gt;Check it out&lt;/strong&gt; &lt;a href="https://www.youtube.com/watch?v=JKbtWimlzAE"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;.&lt;/strong&gt; We gave a brief overview of Transformers, discussed pretraining (focusing on data strategies [&lt;a href="https://arxiv.org/abs/2408.03617"&gt;1&lt;/a&gt;,&lt;a href="https://arxiv.org/abs/2412.15285"&gt;2&lt;/a&gt;]) and post-training, and highlighted recent trends, applications, and remaining challenges/weaknesses of Transformers. Slides are &lt;a href="https://docs.google.com/presentation/d/16tMMBUjPnqw-PvxF8xzu2m1Epdo1fH7nXWlt3mt2q5w/edit?usp=sharing"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Check out our course website for more!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MLPhDStudent"&gt; /u/MLPhDStudent &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://web.stanford.edu/class/cs25/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54mdz/stanford_cs_25_transformers_course_open_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T12:05:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4p8a1</id>
@@ -203,6 +164,19 @@
     <published>2025-04-21T19:21:36+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k54foj</id>
+    <title>Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded</title>
+    <updated>2025-04-22T11:55:45+00:00</updated>
+    <author>
+      <name>/u/OtherRaisin3426</name>
+      <uri>https://old.reddit.com/user/OtherRaisin3426</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt; &lt;img alt="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" src="https://external-preview.redd.it/pAa68GpmjnpZeahm_YMGQkYTs9KtW9HemhGbAYHU02s.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=555355166a247eb92939344c89b96ed48dd7655a" title="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://i.redd.it/5w0lu5m2ldwe1.gif"&gt;A few notes I made as part of this playlist&lt;/a&gt;&lt;/p&gt; &lt;p&gt;“Can I build the DeepSeek architecture and model myself, from scratch?”&lt;/p&gt; &lt;p&gt;You can. You need to know the nuts and bolts. &lt;/p&gt; &lt;p&gt;4 weeks back, we launched our playlist: “Build DeepSeek from Scratch” &lt;/p&gt; &lt;p&gt;Until now, we have uploaded 13 lectures in this playlist: &lt;/p&gt; &lt;p&gt;(1) DeepSeek series introduction: &lt;a href="https://youtu.be/QWNxQIq0hMo"&gt;https://youtu.be/QWNxQIq0hMo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(2) DeepSeek basics: &lt;a href="https://youtu.be/WjhDDeZ7DvM"&gt;https://youtu.be/WjhDDeZ7DvM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(3) Journey of a token into the LLM architecture: &lt;a href="https://youtu.be/rkEYwH4UGa4"&gt;https://youtu.be/rkEYwH4UGa4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(4) Attention mechanism explained in 1 hour: &lt;a href="https://youtu.be/K45ze9Yd5UE"&gt;https://youtu.be/K45ze9Yd5UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(5) Self Attention Mechanism - Handwritten from scratch: &lt;a href="https://youtu.be/s8mskq-nzec"&gt;https://youtu.be/s8mskq-nzec&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(6) Causal Attention Explained: Don't Peek into the Future: &lt;a href="https://youtu.be/c6Kkj6iLeBg"&gt;https://youtu.be/c6Kkj6iLeBg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(7) Multi-Head Attention Visually Explained: &lt;a href="https://youtu.be/qbN4ulK-bZA"&gt;https://youtu.be/qbN4ulK-bZA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(8) Multi-Head Attention Handwritten from Scratch: &lt;a href="https://youtu.be/rvsEW-EsD-Y"&gt;https://youtu.be/rvsEW-EsD-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(9) Key Value Cache from Scratch: &lt;a href="https://youtu.be/IDwTiS4_bKo"&gt;https://youtu.be/IDwTiS4_bKo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(10) Multi-Query Attention Explained: &lt;a href="https://youtu.be/Z6B51Odtn-Y"&gt;https://youtu.be/Z6B51Odtn-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(11) Understand Grouped Query Attention (GQA): &lt;a href="https://youtu.be/kx3rETIxo4Q"&gt;https://youtu.be/kx3rETIxo4Q&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(12) Multi-Head Latent Attention From Scratch: &lt;a href="https://youtu.be/NlDQUj1olXM"&gt;https://youtu.be/NlDQUj1olXM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(13) Multi-Head Latent Attention Coded from Scratch in Python: &lt;a href="https://youtu.be/mIaWmJVrMpc"&gt;https://youtu.be/mIaWmJVrMpc&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Next to come: &lt;/p&gt; &lt;p&gt;- Rotary Positional Encoding (RoPE)&lt;/p&gt; &lt;p&gt;- DeepSeek MLA + RoPE&lt;/p&gt; &lt;p&gt;- DeepSeek Mixture of Experts (MoE)&lt;/p&gt; &lt;p&gt;- Multi-token Prediction (MTP)&lt;/p&gt; &lt;p&gt;- Supervised Fine-Tuning (SFT)&lt;/p&gt; &lt;p&gt;- Group Relative Policy Optimisation (GRPO)&lt;/p&gt; &lt;p&gt;- DeepSeek PTX innovation&lt;/p&gt; &lt;p&gt;This playlist won’t be a 1 hour or 2 hour video. This will be a mega playlist of 35-40 videos with a duration of 40+ hours.&lt;/p&gt; &lt;p&gt;I have made this with a lot of passion. &lt;/p&gt; &lt;p&gt;Would look forward to support and your feedback!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OtherRaisin3426"&gt; /u/OtherRaisin3426 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T11:55:45+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k50u8i</id>
     <title>Sleep-time Compute: Beyond Inference Scaling at Test-time</title>
     <updated>2025-04-22T07:54:24+00:00</updated>
@@ -216,17 +190,17 @@
     <published>2025-04-22T07:54:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k50wo0</id>
-    <title>Veiled Rose 22B : Bigger, Smarter and Noicer</title>
-    <updated>2025-04-22T07:59:30+00:00</updated>
+    <id>t3_1k547al</id>
+    <title>New Lib to process PDFs</title>
+    <updated>2025-04-22T11:43:07+00:00</updated>
     <author>
-      <name>/u/Reader3123</name>
-      <uri>https://old.reddit.com/user/Reader3123</uri>
+      <name>/u/Electronic-Lab-7343</name>
+      <uri>https://old.reddit.com/user/Electronic-Lab-7343</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt; &lt;img alt="Veiled Rose 22B : Bigger, Smarter and Noicer" src="https://preview.redd.it/99f47p7cecwe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f01384216591c1b49b1cd83d95948d1d577c9571" title="Veiled Rose 22B : Bigger, Smarter and Noicer" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If youve tried my &lt;a href="https://huggingface.co/soob3123/Veiled-Calla-12B"&gt;Veiled Calla 12B&lt;/a&gt; you know how it goes. but since it was a 12B model, there were some pretty obvious short comings. &lt;/p&gt; &lt;p&gt;Here is the Mistral Based 22B model, with better cognition and reasoning. Test it out and let me your feedback!&lt;/p&gt; &lt;p&gt;Model: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;soob3123/Veiled-Rose-22B · Hugging Face &lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUF: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B-gguf"&gt;soob3123/Veiled-Rose-22B-gguf · Hugging Face&lt;/a&gt;&lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/99f47p7cecwe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I built a library over the holiday that converts PDF documents to Markdown. It segments by page, extracts relevant elements like titles, images, and tables, and even counts tokens per page. (&lt;a href="https://github.com/matthsena/AlcheMark"&gt;AlcheMark&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Some advantages compared to competitors (Docling):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: In my test with a 500-page file, this library parsed it in 45 seconds. Docling around 3 minutes.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;References&lt;/strong&gt;: Docling convert the entire file into a single large Markdown block without page segmentation, making it harder for LLMs to reference which page the information came from. This library returns a vector of objects—one for each page.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Token estimation&lt;/strong&gt;: The library shows the token count for each page, allowing better cost estimation before sending a prompt.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For this project, I make a ensemble of several existing libraries with a different approach to data handling.&lt;/p&gt; &lt;p&gt;If you'd like to contribute or support the project, feel free to leave a star on GitHub:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/matthsena/AlcheMark"&gt;https://github.com/matthsena/AlcheMark&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic-Lab-7343"&gt; /u/Electronic-Lab-7343 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T07:59:30+00:00</published>
+    <published>2025-04-22T11:43:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4ov9e</id>
@@ -255,17 +229,17 @@
     <published>2025-04-21T21:09:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k52h4n</id>
-    <title>Why is MythoMax13B still in high demand?</title>
-    <updated>2025-04-22T09:54:54+00:00</updated>
+    <id>t3_1k50wo0</id>
+    <title>Veiled Rose 22B : Bigger, Smarter and Noicer</title>
+    <updated>2025-04-22T07:59:30+00:00</updated>
     <author>
-      <name>/u/Consistent_Winner596</name>
-      <uri>https://old.reddit.com/user/Consistent_Winner596</uri>
+      <name>/u/Reader3123</name>
+      <uri>https://old.reddit.com/user/Reader3123</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently noticed, that MythoMax13B is really high ranked on openrouter in the RPG section and has high demand. That makes no sense to me, as it is a still a Llama2 era model. Is that model so good or is it promoted in the openrouter chat rooms or on other platforms actively, but even if that is the reason it makes no sense. Why didn't they then use modern RP models and stick to that one, can someone who played with that model answer it? Is it just that good or brings still using a L2 other benefits I don't see at the moment? Thanks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Consistent_Winner596"&gt; /u/Consistent_Winner596 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt; &lt;img alt="Veiled Rose 22B : Bigger, Smarter and Noicer" src="https://preview.redd.it/99f47p7cecwe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f01384216591c1b49b1cd83d95948d1d577c9571" title="Veiled Rose 22B : Bigger, Smarter and Noicer" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If youve tried my &lt;a href="https://huggingface.co/soob3123/Veiled-Calla-12B"&gt;Veiled Calla 12B&lt;/a&gt; you know how it goes. but since it was a 12B model, there were some pretty obvious short comings. &lt;/p&gt; &lt;p&gt;Here is the Mistral Based 22B model, with better cognition and reasoning. Test it out and let me your feedback!&lt;/p&gt; &lt;p&gt;Model: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;soob3123/Veiled-Rose-22B · Hugging Face &lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUF: &lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B-gguf"&gt;soob3123/Veiled-Rose-22B-gguf · Hugging Face&lt;/a&gt;&lt;a href="https://huggingface.co/soob3123/Veiled-Rose-22B"&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/99f47p7cecwe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k50wo0/veiled_rose_22b_bigger_smarter_and_noicer/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T09:54:54+00:00</published>
+    <published>2025-04-22T07:59:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4juhd</id>
@@ -305,6 +279,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4god7/glm4_32b_is_mind_blowing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T15:41:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k52h4n</id>
+    <title>Why is MythoMax13B still in high demand?</title>
+    <updated>2025-04-22T09:54:54+00:00</updated>
+    <author>
+      <name>/u/Consistent_Winner596</name>
+      <uri>https://old.reddit.com/user/Consistent_Winner596</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently noticed, that MythoMax13B is really high ranked on openrouter in the RPG section and has high demand. That makes no sense to me, as it is a still a Llama2 era model. Is that model so good or is it promoted in the openrouter chat rooms or on other platforms actively, but even if that is the reason it makes no sense. Why didn't they then use modern RP models and stick to that one, can someone who played with that model answer it? Is it just that good or brings still using a L2 other benefits I don't see at the moment? Thanks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Consistent_Winner596"&gt; /u/Consistent_Winner596 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k52h4n/why_is_mythomax13b_still_in_high_demand/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T09:54:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k546sq</id>
+    <title>THUDM/SWE-Dev-9B · Hugging Face</title>
+    <updated>2025-04-22T11:42:23+00:00</updated>
+    <author>
+      <name>/u/bobby-chan</name>
+      <uri>https://old.reddit.com/user/bobby-chan</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"&gt; &lt;img alt="THUDM/SWE-Dev-9B · Hugging Face" src="https://external-preview.redd.it/H-WqhcnMRaUejHpQLqeLIABkVOOs-PNNxG0QszsYGF4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=33500f8d40e8a012a0d58c9cc5020fee1f8beadd" title="THUDM/SWE-Dev-9B · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The creators of the GLM-4 models released a collection of coder models&lt;/p&gt; &lt;ul&gt; &lt;li&gt;SWE-Dev-7B (Qwen-2.5-7B-Instruct): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-7B/"&gt;https://huggingface.co/THUDM/SWE-Dev-7B/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;SWE-Dev-9B (GLM-4-9B-Chat): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-9B/"&gt;https://huggingface.co/THUDM/SWE-Dev-9B/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;SWE-Dev-32B (Qwen-2.5-32B-Instruct): &lt;a href="https://huggingface.co/THUDM/SWE-Dev-32B/"&gt;https://huggingface.co/THUDM/SWE-Dev-32B/&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bobby-chan"&gt; /u/bobby-chan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/THUDM/SWE-Dev-9B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k546sq/thudmswedev9b_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T11:42:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4lmil</id>
