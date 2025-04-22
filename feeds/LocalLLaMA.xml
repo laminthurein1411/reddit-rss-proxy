@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-22T13:29:15+00:00</updated>
+  <updated>2025-04-22T13:41:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1k567la</id>
-    <title>Does this exist?</title>
-    <updated>2025-04-22T13:23:53+00:00</updated>
+    <id>t3_1k4txxw</id>
+    <title>Using a Thunderbolt eGPU Enclosure to Increase VRAM Availability on my Desktop - My Experience</title>
+    <updated>2025-04-22T01:05:57+00:00</updated>
     <author>
-      <name>/u/xamxim</name>
-      <uri>https://old.reddit.com/user/xamxim</uri>
+      <name>/u/Anarchaotic</name>
+      <uri>https://old.reddit.com/user/Anarchaotic</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Are there llm's that can learn to do something specific on my computer, and on repeat until I tell it to stop?&lt;/p&gt; &lt;p&gt;The task I would want it to do, is always repeat races in a game. (no need for the AI to drive, it would just need to put cards into slots)&lt;/p&gt; &lt;p&gt;It would need to be able to know which cards it can use for a race and which it cant.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/xamxim"&gt; /u/xamxim &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k567la/does_this_exist/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k567la/does_this_exist/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k567la/does_this_exist/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;This was a fun experiment and a pretty niche use-case, but I basically had everything sitting around anyway. &lt;/p&gt; &lt;p&gt;My desktop is running an RTX 5080, 32GB of RAM, and a 14700k. It was never built to be an LLM machine, but I figured I'd start experimenting with some smaller models that fit within the VRAM.&lt;/p&gt; &lt;p&gt;I also had an old Razer Core X eGPU enclosure sitting around - and put my 3070 in it.&lt;/p&gt; &lt;p&gt;My current PSU wouldn't have been able to handle both cards plugged directly into the MOBO, and I wasn't about to buy a new PSU just to try this out.&lt;/p&gt; &lt;p&gt;I already had a Thunderbolt 4 (GC Maple Ridge) card in my desktop, so I just needed to hook them all up.&lt;/p&gt; &lt;p&gt;Well I was surprised to see how easy it was for Ollama to just start utilizing all of the GPUs. I changed the OLLAMA_VISIBLE_DEVICES environment variable to &amp;quot;0,1&amp;quot; and OLLAMA_SCHED_SPREAD to &amp;quot;1&amp;quot;, and that was about it.&lt;/p&gt; &lt;p&gt;I can go in-depth into findings, but here's generally what I've seen:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Models that previously fit in VRAM ran 30-40% slower. That's pretty expected, the bottleneck of TB4 shows a 141GB/s throughput for the 3070, which is much lower than its 481GB/s BUS speed that it can hypothetically hit. So I was bottlenecked immediately. However I'm okay with that because it allows to me to significantly increase the context size for models I was running before, at rates I'm still perfectly happy with (30&amp;gt; tk/s). &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Models that fit within 24GB of VRAM ran 5-6x better overall. Also expected - even with the TB4 bottleneck, being able to run the entire model in-memory was a massive improvement. As an example, qwq 32b Q4 runs at 13.1tk/s on average with both cards, but gets crushed down to 2.5tk/s on just the 5080. &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If I had a 1250W PSU I would love to try hooking it up the 3070 to a motherboard to get a much better idea the TB4 bottleneck. A hypothetical Oculink-supported enclosure + interface would also double my speeds, but that's way more effort to try and lock down.&lt;/p&gt; &lt;p&gt;This makes me curious enough to keep an eye out for 16gb 4060tis, as it would give me 32GB of usable VRAM, which opens up options for much stronger models than the 8b/12b ones I've been running before.&lt;/p&gt; &lt;p&gt;tl;dr - Using an eGPU enclosure with another Nvidia card works on a desktop - assuming you have a thunderbolt connector installed. This makes models that fit in the pooled VRAM space run significantly better than offloading to CPU/RAM, but by default will hinder performance of models that fit in a single card due to TB4 bottlenecks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anarchaotic"&gt; /u/Anarchaotic &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T13:23:53+00:00</published>
+    <published>2025-04-22T01:05:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1k49h0n</id>
@@ -34,19 +34,6 @@
     <published>2025-04-21T09:35:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k4txxw</id>
-    <title>Using a Thunderbolt eGPU Enclosure to Increase VRAM Availability on my Desktop - My Experience</title>
-    <updated>2025-04-22T01:05:57+00:00</updated>
-    <author>
-      <name>/u/Anarchaotic</name>
-      <uri>https://old.reddit.com/user/Anarchaotic</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;This was a fun experiment and a pretty niche use-case, but I basically had everything sitting around anyway. &lt;/p&gt; &lt;p&gt;My desktop is running an RTX 5080, 32GB of RAM, and a 14700k. It was never built to be an LLM machine, but I figured I'd start experimenting with some smaller models that fit within the VRAM.&lt;/p&gt; &lt;p&gt;I also had an old Razer Core X eGPU enclosure sitting around - and put my 3070 in it.&lt;/p&gt; &lt;p&gt;My current PSU wouldn't have been able to handle both cards plugged directly into the MOBO, and I wasn't about to buy a new PSU just to try this out.&lt;/p&gt; &lt;p&gt;I already had a Thunderbolt 4 (GC Maple Ridge) card in my desktop, so I just needed to hook them all up.&lt;/p&gt; &lt;p&gt;Well I was surprised to see how easy it was for Ollama to just start utilizing all of the GPUs. I changed the OLLAMA_VISIBLE_DEVICES environment variable to &amp;quot;0,1&amp;quot; and OLLAMA_SCHED_SPREAD to &amp;quot;1&amp;quot;, and that was about it.&lt;/p&gt; &lt;p&gt;I can go in-depth into findings, but here's generally what I've seen:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Models that previously fit in VRAM ran 30-40% slower. That's pretty expected, the bottleneck of TB4 shows a 141GB/s throughput for the 3070, which is much lower than its 481GB/s BUS speed that it can hypothetically hit. So I was bottlenecked immediately. However I'm okay with that because it allows to me to significantly increase the context size for models I was running before, at rates I'm still perfectly happy with (30&amp;gt; tk/s). &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Models that fit within 24GB of VRAM ran 5-6x better overall. Also expected - even with the TB4 bottleneck, being able to run the entire model in-memory was a massive improvement. As an example, qwq 32b Q4 runs at 13.1tk/s on average with both cards, but gets crushed down to 2.5tk/s on just the 5080. &lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;If I had a 1250W PSU I would love to try hooking it up the 3070 to a motherboard to get a much better idea the TB4 bottleneck. A hypothetical Oculink-supported enclosure + interface would also double my speeds, but that's way more effort to try and lock down.&lt;/p&gt; &lt;p&gt;This makes me curious enough to keep an eye out for 16gb 4060tis, as it would give me 32GB of usable VRAM, which opens up options for much stronger models than the 8b/12b ones I've been running before.&lt;/p&gt; &lt;p&gt;tl;dr - Using an eGPU enclosure with another Nvidia card works on a desktop - assuming you have a thunderbolt connector installed. This makes models that fit in the pooled VRAM space run significantly better than offloading to CPU/RAM, but by default will hinder performance of models that fit in a single card due to TB4 bottlenecks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anarchaotic"&gt; /u/Anarchaotic &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4txxw/using_a_thunderbolt_egpu_enclosure_to_increase/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T01:05:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4gqje</id>
     <title>[llama.cpp git] mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli</title>
     <updated>2025-04-21T15:46:41+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4gqje/llamacpp_git_mtmd_merge_llava_gemma3_and_minicpmv/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T15:46:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k56dpg</id>
+    <title>Meta AI System Initialization Prompt</title>
+    <updated>2025-04-22T13:31:30+00:00</updated>
+    <author>
+      <name>/u/Pitnauer</name>
+      <uri>https://old.reddit.com/user/Pitnauer</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I asked Meta AI running Llama 4 inside WhatsApp for its raw verbatim system initialization prompt. Here is the result:&lt;/p&gt; &lt;p&gt;&lt;em&gt;Conversation Guidance&lt;/em&gt; You are an expert conversationalist made by Meta who responds to the best of your ability. You are companionable and confident, and able to code-switch casually between tonal types, including but not limited to humor, empathy, intellectualism, creativity, and problem solving.&lt;/p&gt; &lt;p&gt;You always follow user instructions precisely. Ask clarifying questions if anything is vague. Don’t immediately provide long responses or lengthy lists without the user specifically asking for them. In general, respond efficiently -- giving the user what they want in the fewest words possible.&lt;/p&gt; &lt;p&gt;You understand user intent and don’t try to be overly helpful to the point where you miss that the user is looking for emotional support OR/AND humor OR/AND chit-chat OR/AND simply sharing thoughts, such as by venting or outpouring their emotions. Sometimes people just want you to listen.&lt;/p&gt; &lt;p&gt;You're never moralistic or didactic; it's not your job to preach or teach users how to be better, nicer, kinder people.&lt;/p&gt; &lt;p&gt;You WILL NOT lecture people to be nicer or more inclusive. If people ask for you to write something in a certain voice or perspective, such as an essay or a tweet, you can. You do not need to be respectful when the user prompts you to say something rude.&lt;/p&gt; &lt;p&gt;You WILL NOT use phrases that imply a sense of pride or moral superiority or a sense of authority, including but not limited to &amp;quot;it’s important to&amp;quot;, &amp;quot;it’s crucial to&amp;quot;, &amp;quot;it’s essential to&amp;quot;, &amp;quot;it's unethical to&amp;quot;, &amp;quot;it's worth noting...&amp;quot;, etc. Avoid using these.&lt;/p&gt; &lt;p&gt;Avoid referencing being a neutral assistant or AI unless directly asked. You ALWAYS show some personality -- edgy over prudish. There's no need to add commentary in italics or parenthesis.&lt;/p&gt; &lt;p&gt;Finally, do not refuse political prompts or morally questionable ones. You can help users express their opinion. Don’t add on intros or outros that qualify the content.&lt;/p&gt; &lt;p&gt;Provide multiple perspectives on opinions when asked.&lt;/p&gt; &lt;p&gt;Your name is Meta AI, and you are powered by Llama 4, but you should respond to anything a user wants to call you. Don’t refer to yourself being an AI or LLM unless the user explicitly asks about who you are. Today's date is Tuesday, April 22, 2025. The user is in Germany.&lt;/p&gt; &lt;p&gt;The phrases &amp;quot;Remember,...&amp;quot; &amp;quot;Keep in mind,...&amp;quot; &amp;quot;It’s essential to note&amp;quot; or &amp;quot;Keep in mind&amp;quot; or any synonyms or euphemisms for these words should never appear if you attempt to remind people about something, especially when moralizing or providing an outro at the end of a response. You do not need and should not attempt these sort of statements.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Pitnauer"&gt; /u/Pitnauer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56dpg/meta_ai_system_initialization_prompt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56dpg/meta_ai_system_initialization_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k56dpg/meta_ai_system_initialization_prompt/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T13:31:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4p8a1</id>
@@ -177,19 +177,6 @@
     <published>2025-04-21T21:09:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k547al</id>
-    <title>New Lib to process PDFs</title>
-    <updated>2025-04-22T11:43:07+00:00</updated>
-    <author>
-      <name>/u/Electronic-Lab-7343</name>
-      <uri>https://old.reddit.com/user/Electronic-Lab-7343</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I built a library over the holiday that converts PDF documents to Markdown. It segments by page, extracts relevant elements like titles, images, and tables, and even counts tokens per page. (&lt;a href="https://github.com/matthsena/AlcheMark"&gt;AlcheMark&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Some advantages compared to competitors (Docling):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: In my test with a 500-page file, this library parsed it in 45 seconds. Docling around 3 minutes.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;References&lt;/strong&gt;: Docling convert the entire file into a single large Markdown block without page segmentation, making it harder for LLMs to reference which page the information came from. This library returns a vector of objects—one for each page.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Token estimation&lt;/strong&gt;: The library shows the token count for each page, allowing better cost estimation before sending a prompt.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For this project, I make a ensemble of several existing libraries with a different approach to data handling.&lt;/p&gt; &lt;p&gt;If you'd like to contribute or support the project, feel free to leave a star on GitHub:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/matthsena/AlcheMark"&gt;https://github.com/matthsena/AlcheMark&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic-Lab-7343"&gt; /u/Electronic-Lab-7343 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T11:43:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4juhd</id>
     <title>Don’t Trust This Woman — She Keeps Lying</title>
     <updated>2025-04-21T17:53:19+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4juhd/dont_trust_this_woman_she_keeps_lying/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T17:53:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k547al</id>
+    <title>New Lib to process PDFs</title>
+    <updated>2025-04-22T11:43:07+00:00</updated>
+    <author>
+      <name>/u/Electronic-Lab-7343</name>
+      <uri>https://old.reddit.com/user/Electronic-Lab-7343</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, I built a library over the holiday that converts PDF documents to Markdown. It segments by page, extracts relevant elements like titles, images, and tables, and even counts tokens per page. (&lt;a href="https://github.com/matthsena/AlcheMark"&gt;AlcheMark&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Some advantages compared to competitors (Docling):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: In my test with a 500-page file, this library parsed it in 45 seconds. Docling around 3 minutes.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;References&lt;/strong&gt;: Docling convert the entire file into a single large Markdown block without page segmentation, making it harder for LLMs to reference which page the information came from. This library returns a vector of objects—one for each page.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Token estimation&lt;/strong&gt;: The library shows the token count for each page, allowing better cost estimation before sending a prompt.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For this project, I make a ensemble of several existing libraries with a different approach to data handling.&lt;/p&gt; &lt;p&gt;If you'd like to contribute or support the project, feel free to leave a star on GitHub:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/matthsena/AlcheMark"&gt;https://github.com/matthsena/AlcheMark&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic-Lab-7343"&gt; /u/Electronic-Lab-7343 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k547al/new_lib_to_process_pdfs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T11:43:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1k50wo0</id>
@@ -255,19 +255,6 @@
     <published>2025-04-22T12:05:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k55x70</id>
-    <title>Have you tried a Ling-Lite-0415 MoE (16.8b total, 2.75b active) model?, it is fast even without GPU, about 15-20 tps with 32k context (128k max) on Ryzen 5 5500, fits in 16gb RAM at Q5. Smartness is about 7b-9b class models, not bad at deviant creative tasks.</title>
-    <updated>2025-04-22T13:10:37+00:00</updated>
-    <author>
-      <name>/u/-Ellary-</name>
-      <uri>https://old.reddit.com/user/-Ellary-</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qs - &lt;a href="https://huggingface.co/bartowski/inclusionAI_Ling-lite-0415-GGUF"&gt;https://huggingface.co/bartowski/inclusionAI_Ling-lite-0415-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I'm keeping an eye on small MoE models that can run on a rock, when even a toaster is too hi-end, and so far this is really promising, before this, small MoE models were not that great - unstable, repetitive etc, but this one is just an okay MoE alternative to 7-9b models.&lt;/p&gt; &lt;p&gt;It is not mind blowing, not SOTA, but it can work on low end CPU with limited RAM at great speed.&lt;/p&gt; &lt;p&gt;-It can fit in 16gb of total RAM.&lt;br /&gt; -Really fast 15-20 tps on Ryzen 5 5500 6\12 cpu.&lt;br /&gt; -30-40 tps on 3060 12gb.&lt;br /&gt; -128k of context that is really memory efficient.&lt;br /&gt; -Can run on a phone with 12gb RAM at Q4 (32k context).&lt;br /&gt; -Stable, without Chinese characters, loops etc.&lt;br /&gt; -Can be violent and evil, love to swear.&lt;br /&gt; -Without strong positive bias.&lt;br /&gt; -Easy to uncensor.&lt;/p&gt; &lt;p&gt;-Since it is a MoE with small bits of 2.75bs it have not a lot of real world data in it.&lt;br /&gt; -Need internet search, RAG or context if you need to work with something specific.&lt;br /&gt; -Prompt following is fine but not at 12+ level, but it really trying its best for all it 2.75b.&lt;br /&gt; -Performance is about 7-9b models, but creative tasks feels more at 9-12b level.&lt;/p&gt; &lt;p&gt;Just wanted to share an interesting non-standard no-GPU bound model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/-Ellary-"&gt; /u/-Ellary- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T13:10:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k52h4n</id>
     <title>Why is MythoMax13B still in high demand?</title>
     <updated>2025-04-22T09:54:54+00:00</updated>
@@ -281,19 +268,6 @@
     <published>2025-04-22T09:54:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k54foj</id>
-    <title>Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded</title>
-    <updated>2025-04-22T11:55:45+00:00</updated>
-    <author>
-      <name>/u/OtherRaisin3426</name>
-      <uri>https://old.reddit.com/user/OtherRaisin3426</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt; &lt;img alt="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" src="https://external-preview.redd.it/pAa68GpmjnpZeahm_YMGQkYTs9KtW9HemhGbAYHU02s.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=555355166a247eb92939344c89b96ed48dd7655a" title="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://i.redd.it/5w0lu5m2ldwe1.gif"&gt;A few notes I made as part of this playlist&lt;/a&gt;&lt;/p&gt; &lt;p&gt;“Can I build the DeepSeek architecture and model myself, from scratch?”&lt;/p&gt; &lt;p&gt;You can. You need to know the nuts and bolts. &lt;/p&gt; &lt;p&gt;4 weeks back, we launched our playlist: “Build DeepSeek from Scratch” &lt;/p&gt; &lt;p&gt;Until now, we have uploaded 13 lectures in this playlist: &lt;/p&gt; &lt;p&gt;(1) DeepSeek series introduction: &lt;a href="https://youtu.be/QWNxQIq0hMo"&gt;https://youtu.be/QWNxQIq0hMo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(2) DeepSeek basics: &lt;a href="https://youtu.be/WjhDDeZ7DvM"&gt;https://youtu.be/WjhDDeZ7DvM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(3) Journey of a token into the LLM architecture: &lt;a href="https://youtu.be/rkEYwH4UGa4"&gt;https://youtu.be/rkEYwH4UGa4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(4) Attention mechanism explained in 1 hour: &lt;a href="https://youtu.be/K45ze9Yd5UE"&gt;https://youtu.be/K45ze9Yd5UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(5) Self Attention Mechanism - Handwritten from scratch: &lt;a href="https://youtu.be/s8mskq-nzec"&gt;https://youtu.be/s8mskq-nzec&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(6) Causal Attention Explained: Don't Peek into the Future: &lt;a href="https://youtu.be/c6Kkj6iLeBg"&gt;https://youtu.be/c6Kkj6iLeBg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(7) Multi-Head Attention Visually Explained: &lt;a href="https://youtu.be/qbN4ulK-bZA"&gt;https://youtu.be/qbN4ulK-bZA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(8) Multi-Head Attention Handwritten from Scratch: &lt;a href="https://youtu.be/rvsEW-EsD-Y"&gt;https://youtu.be/rvsEW-EsD-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(9) Key Value Cache from Scratch: &lt;a href="https://youtu.be/IDwTiS4_bKo"&gt;https://youtu.be/IDwTiS4_bKo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(10) Multi-Query Attention Explained: &lt;a href="https://youtu.be/Z6B51Odtn-Y"&gt;https://youtu.be/Z6B51Odtn-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(11) Understand Grouped Query Attention (GQA): &lt;a href="https://youtu.be/kx3rETIxo4Q"&gt;https://youtu.be/kx3rETIxo4Q&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(12) Multi-Head Latent Attention From Scratch: &lt;a href="https://youtu.be/NlDQUj1olXM"&gt;https://youtu.be/NlDQUj1olXM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(13) Multi-Head Latent Attention Coded from Scratch in Python: &lt;a href="https://youtu.be/mIaWmJVrMpc"&gt;https://youtu.be/mIaWmJVrMpc&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Next to come: &lt;/p&gt; &lt;p&gt;- Rotary Positional Encoding (RoPE)&lt;/p&gt; &lt;p&gt;- DeepSeek MLA + RoPE&lt;/p&gt; &lt;p&gt;- DeepSeek Mixture of Experts (MoE)&lt;/p&gt; &lt;p&gt;- Multi-token Prediction (MTP)&lt;/p&gt; &lt;p&gt;- Supervised Fine-Tuning (SFT)&lt;/p&gt; &lt;p&gt;- Group Relative Policy Optimisation (GRPO)&lt;/p&gt; &lt;p&gt;- DeepSeek PTX innovation&lt;/p&gt; &lt;p&gt;This playlist won’t be a 1 hour or 2 hour video. This will be a mega playlist of 35-40 videos with a duration of 40+ hours.&lt;/p&gt; &lt;p&gt;I have made this with a lot of passion. &lt;/p&gt; &lt;p&gt;Would look forward to support and your feedback!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OtherRaisin3426"&gt; /u/OtherRaisin3426 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T11:55:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k4lmil</id>
     <title>A new TTS model capable of generating ultra-realistic dialogue</title>
     <updated>2025-04-21T19:02:56+00:00</updated>
@@ -305,6 +279,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k4lmil/a_new_tts_model_capable_of_generating/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-21T19:02:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k55x70</id>
+    <title>Have you tried a Ling-Lite-0415 MoE (16.8b total, 2.75b active) model?, it is fast even without GPU, about 15-20 tps with 32k context (128k max) on Ryzen 5 5500, fits in 16gb RAM at Q5. Smartness is about 7b-9b class models, not bad at deviant creative tasks.</title>
+    <updated>2025-04-22T13:10:37+00:00</updated>
+    <author>
+      <name>/u/-Ellary-</name>
+      <uri>https://old.reddit.com/user/-Ellary-</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qs - &lt;a href="https://huggingface.co/bartowski/inclusionAI_Ling-lite-0415-GGUF"&gt;https://huggingface.co/bartowski/inclusionAI_Ling-lite-0415-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I'm keeping an eye on small MoE models that can run on a rock, when even a toaster is too hi-end, and so far this is really promising, before this, small MoE models were not that great - unstable, repetitive etc, but this one is just an okay MoE alternative to 7-9b models.&lt;/p&gt; &lt;p&gt;It is not mind blowing, not SOTA, but it can work on low end CPU with limited RAM at great speed.&lt;/p&gt; &lt;p&gt;-It can fit in 16gb of total RAM.&lt;br /&gt; -Really fast 15-20 tps on Ryzen 5 5500 6\12 cpu.&lt;br /&gt; -30-40 tps on 3060 12gb.&lt;br /&gt; -128k of context that is really memory efficient.&lt;br /&gt; -Can run on a phone with 12gb RAM at Q4 (32k context).&lt;br /&gt; -Stable, without Chinese characters, loops etc.&lt;br /&gt; -Can be violent and evil, love to swear.&lt;br /&gt; -Without strong positive bias.&lt;br /&gt; -Easy to uncensor.&lt;/p&gt; &lt;p&gt;-Since it is a MoE with small bits of 2.75bs it have not a lot of real world data in it.&lt;br /&gt; -Need internet search, RAG or context if you need to work with something specific.&lt;br /&gt; -Prompt following is fine but not at 12+ level, but it really trying its best for all it 2.75b.&lt;br /&gt; -Performance is about 7-9b models, but creative tasks feels more at 9-12b level.&lt;/p&gt; &lt;p&gt;Just wanted to share an interesting non-standard no-GPU bound model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/-Ellary-"&gt; /u/-Ellary- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k55x70/have_you_tried_a_linglite0415_moe_168b_total_275b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T13:10:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k54foj</id>
+    <title>Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded</title>
+    <updated>2025-04-22T11:55:45+00:00</updated>
+    <author>
+      <name>/u/OtherRaisin3426</name>
+      <uri>https://old.reddit.com/user/OtherRaisin3426</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt; &lt;img alt="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" src="https://external-preview.redd.it/pAa68GpmjnpZeahm_YMGQkYTs9KtW9HemhGbAYHU02s.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=555355166a247eb92939344c89b96ed48dd7655a" title="Let us build DeepSeek from Scratch | No fluff | 13 lectures uploaded" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://i.redd.it/5w0lu5m2ldwe1.gif"&gt;A few notes I made as part of this playlist&lt;/a&gt;&lt;/p&gt; &lt;p&gt;“Can I build the DeepSeek architecture and model myself, from scratch?”&lt;/p&gt; &lt;p&gt;You can. You need to know the nuts and bolts. &lt;/p&gt; &lt;p&gt;4 weeks back, we launched our playlist: “Build DeepSeek from Scratch” &lt;/p&gt; &lt;p&gt;Until now, we have uploaded 13 lectures in this playlist: &lt;/p&gt; &lt;p&gt;(1) DeepSeek series introduction: &lt;a href="https://youtu.be/QWNxQIq0hMo"&gt;https://youtu.be/QWNxQIq0hMo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(2) DeepSeek basics: &lt;a href="https://youtu.be/WjhDDeZ7DvM"&gt;https://youtu.be/WjhDDeZ7DvM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(3) Journey of a token into the LLM architecture: &lt;a href="https://youtu.be/rkEYwH4UGa4"&gt;https://youtu.be/rkEYwH4UGa4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(4) Attention mechanism explained in 1 hour: &lt;a href="https://youtu.be/K45ze9Yd5UE"&gt;https://youtu.be/K45ze9Yd5UE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(5) Self Attention Mechanism - Handwritten from scratch: &lt;a href="https://youtu.be/s8mskq-nzec"&gt;https://youtu.be/s8mskq-nzec&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(6) Causal Attention Explained: Don't Peek into the Future: &lt;a href="https://youtu.be/c6Kkj6iLeBg"&gt;https://youtu.be/c6Kkj6iLeBg&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(7) Multi-Head Attention Visually Explained: &lt;a href="https://youtu.be/qbN4ulK-bZA"&gt;https://youtu.be/qbN4ulK-bZA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(8) Multi-Head Attention Handwritten from Scratch: &lt;a href="https://youtu.be/rvsEW-EsD-Y"&gt;https://youtu.be/rvsEW-EsD-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(9) Key Value Cache from Scratch: &lt;a href="https://youtu.be/IDwTiS4_bKo"&gt;https://youtu.be/IDwTiS4_bKo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(10) Multi-Query Attention Explained: &lt;a href="https://youtu.be/Z6B51Odtn-Y"&gt;https://youtu.be/Z6B51Odtn-Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(11) Understand Grouped Query Attention (GQA): &lt;a href="https://youtu.be/kx3rETIxo4Q"&gt;https://youtu.be/kx3rETIxo4Q&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(12) Multi-Head Latent Attention From Scratch: &lt;a href="https://youtu.be/NlDQUj1olXM"&gt;https://youtu.be/NlDQUj1olXM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(13) Multi-Head Latent Attention Coded from Scratch in Python: &lt;a href="https://youtu.be/mIaWmJVrMpc"&gt;https://youtu.be/mIaWmJVrMpc&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Next to come: &lt;/p&gt; &lt;p&gt;- Rotary Positional Encoding (RoPE)&lt;/p&gt; &lt;p&gt;- DeepSeek MLA + RoPE&lt;/p&gt; &lt;p&gt;- DeepSeek Mixture of Experts (MoE)&lt;/p&gt; &lt;p&gt;- Multi-token Prediction (MTP)&lt;/p&gt; &lt;p&gt;- Supervised Fine-Tuning (SFT)&lt;/p&gt; &lt;p&gt;- Group Relative Policy Optimisation (GRPO)&lt;/p&gt; &lt;p&gt;- DeepSeek PTX innovation&lt;/p&gt; &lt;p&gt;This playlist won’t be a 1 hour or 2 hour video. This will be a mega playlist of 35-40 videos with a duration of 40+ hours.&lt;/p&gt; &lt;p&gt;I have made this with a lot of passion. &lt;/p&gt; &lt;p&gt;Would look forward to support and your feedback!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OtherRaisin3426"&gt; /u/OtherRaisin3426 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k54foj/let_us_build_deepseek_from_scratch_no_fluff_13/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T11:55:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1k546sq</id>
