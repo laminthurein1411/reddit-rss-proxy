@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-23T00:27:29+00:00</updated>
+  <updated>2025-04-23T00:53:08+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k56orb</id>
-    <title>Running Llama 4 Maverick with llama.cpp Vulkan</title>
-    <updated>2025-04-22T13:45:31+00:00</updated>
-    <author>
-      <name>/u/stduhpf</name>
-      <uri>https://old.reddit.com/user/stduhpf</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was able to run Llama4 Scout effortlessly using the &lt;code&gt;--override-tensor &amp;quot;\.ffn_.*_exps.=CPU&amp;quot;&lt;/code&gt; trick to move all experts-related weights to CPU, but when I tried doing the same with Maverick, I kept getting &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13024"&gt;VRAM allocation errors&lt;/a&gt;, even when offloading the whole model to CPU. I could get it to run on a CPU only build at 1-1.5 t/s only.&lt;/p&gt; &lt;p&gt;I just realised that the allocation errors only happens during warmup, so if I just use the &lt;code&gt;--no-warmup&lt;/code&gt; flag, this part is skipped, and the error is never raised. Now I can get around 3-4 t/s by offloading all shared weights + the first layer of experts to GPU. I'm using a nvme gen3 SSD to store the model, so the limiting factor is probably the read speed of my drive. With a gen4 or gen5 ssd, you could probably get much better speeds. Be aware that a single layer with the MoE weights can takes over 7GB of Vram (not all layers have the same quantization though). The dense layer in comparison only take about half a GB.&lt;/p&gt; &lt;p&gt;So in my 8GB+16GB dual GPU setup, I moved the first two layers fully to the 8GB device, all the shared weights of the other layers to the 16GB GPU, and the experts to CPU using the &lt;code&gt;-ngl 99 -ot &amp;quot;blk\.[01]\.=Vulkan1,\.ffn_.*_exps.=CPU&amp;quot; -ts 1,0&lt;/code&gt; arguments.&lt;/p&gt; &lt;p&gt;With a single 24GB GPU you could probably just do &lt;code&gt;-ngl 99 -ot &amp;quot;blk.1.=Vulkan0,.ffn\_.\*\_exps.=CPU&amp;quot;&lt;/code&gt;. With only 16GB, just don't add the exception for layer 1 (layer 1 is the first MoE layer, only odd-numbered layers are MoE with Maverick). (Maybe there's a way to offload another more quantized MoE layer for those with 20GB vram)&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-server.exe -m models\Llama-4-Maverick-17B-128E-Instruct-GGUF\Llama-4-Maverick-17B-128E-Instruct-UD-IQ1_M-00001-of-00003.gguf -ngl 99 -t 6 -tb 12 -c 16384 --prio 3 -b 16 -ub 4 -ot &amp;quot;\.ffn_.*_exps.=CPU&amp;quot; --no-warmup&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/stduhpf"&gt; /u/stduhpf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k56orb/running_llama_4_maverick_with_llamacpp_vulkan/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T13:45:31+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k5f1tl</id>
     <title>VoltAgent - We built a new open source TypeScript AI agent framework</title>
@@ -34,19 +21,6 @@
     <published>2025-04-22T19:23:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k59z97</id>
-    <title>How to reach 100-200 t/s on consumer hardware</title>
-    <updated>2025-04-22T16:01:34+00:00</updated>
-    <author>
-      <name>/u/f1_manu</name>
-      <uri>https://old.reddit.com/user/f1_manu</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious, a lot of the setups I read here are more focused on having hardware able to be fitting the model, rather than getting fast inference from the hardware. As a complete noob, my question is pretty straightforward, what's the cheapest way of achieving 150-200 tokens per second output for a midsized model like Llama 3.3 70b, at 4-8bit?&lt;/p&gt; &lt;p&gt;And to scale more? Is 500 tps feasible?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/f1_manu"&gt; /u/f1_manu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T16:01:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k55eeo</id>
     <title>Gemma3:12b hallucinating when reading images, anyone else?</title>
     <updated>2025-04-22T12:45:48+00:00</updated>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k55eeo/gemma312b_hallucinating_when_reading_images/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T12:45:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k59z97</id>
+    <title>How to reach 100-200 t/s on consumer hardware</title>
+    <updated>2025-04-22T16:01:34+00:00</updated>
+    <author>
+      <name>/u/f1_manu</name>
+      <uri>https://old.reddit.com/user/f1_manu</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious, a lot of the setups I read here are more focused on having hardware able to be fitting the model, rather than getting fast inference from the hardware. As a complete noob, my question is pretty straightforward, what's the cheapest way of achieving 150-200 tokens per second output for a midsized model like Llama 3.3 70b, at 4-8bit?&lt;/p&gt; &lt;p&gt;And to scale more? Is 500 tps feasible?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/f1_manu"&gt; /u/f1_manu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k59z97/how_to_reach_100200_ts_on_consumer_hardware/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T16:01:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1k56qsb</id>
@@ -164,6 +151,19 @@
     <published>2025-04-22T20:52:37+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k5df6x</id>
+    <title>Intern team may be our next AllenAI</title>
+    <updated>2025-04-22T18:19:19+00:00</updated>
+    <author>
+      <name>/u/random-tomato</name>
+      <uri>https://old.reddit.com/user/random-tomato</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"&gt; &lt;img alt="Intern team may be our next AllenAI" src="https://external-preview.redd.it/D-xFwymPmTVU-AzxqPdnr1BEQsSvHPFOfpeK0yI1G4M.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e725417fe07d7d77dbb30e48bcd7eff07157a854" title="Intern team may be our next AllenAI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;They are open sourcing the SFT data they used for their SOTA InternVL3 models, very exciting!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/random-tomato"&gt; /u/random-tomato &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/datasets/OpenGVLab/InternVL-Data"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-22T18:19:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k54mdz</id>
     <title>Stanford CS 25 Transformers Course (OPEN TO EVERYBODY)</title>
     <updated>2025-04-22T12:05:15+00:00</updated>
@@ -177,17 +177,17 @@
     <published>2025-04-22T12:05:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k5df6x</id>
-    <title>Intern team may be our next AllenAI</title>
-    <updated>2025-04-22T18:19:19+00:00</updated>
+    <id>t3_1k5lux8</id>
+    <title>MMLU-PRO benchmark: GLM-4-32B-0414-Q4_K_M vs Qwen2.5-32b-instruct-q4_K_M</title>
+    <updated>2025-04-23T00:19:11+00:00</updated>
     <author>
-      <name>/u/random-tomato</name>
-      <uri>https://old.reddit.com/user/random-tomato</uri>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"&gt; &lt;img alt="Intern team may be our next AllenAI" src="https://external-preview.redd.it/D-xFwymPmTVU-AzxqPdnr1BEQsSvHPFOfpeK0yI1G4M.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e725417fe07d7d77dbb30e48bcd7eff07157a854" title="Intern team may be our next AllenAI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;They are open sourcing the SFT data they used for their SOTA InternVL3 models, very exciting!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/random-tomato"&gt; /u/random-tomato &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/datasets/OpenGVLab/InternVL-Data"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5df6x/intern_team_may_be_our_next_allenai/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5lux8/mmlupro_benchmark_glm432b0414q4_k_m_vs/"&gt; &lt;img alt="MMLU-PRO benchmark: GLM-4-32B-0414-Q4_K_M vs Qwen2.5-32b-instruct-q4_K_M" src="https://external-preview.redd.it/s0D7i4Rco0trWh9Bu1uEkgnoJJLA3UNKUA9vs57seII.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1b231518e5ed41e809cceeaa1c12bf32733c2345" title="MMLU-PRO benchmark: GLM-4-32B-0414-Q4_K_M vs Qwen2.5-32b-instruct-q4_K_M" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;20% subset&lt;/strong&gt; of MMLU-PRO, &lt;strong&gt;&lt;em&gt;0 temperature&lt;/em&gt;&lt;/strong&gt;, the entire test took &lt;strong&gt;7 hours 30 minutes&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/1vizdtmq9hwe1.png?width=2485&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4a4c56b76cfb84353347aa00fb9099212046ce1a"&gt;https://preview.redd.it/1vizdtmq9hwe1.png?width=2485&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4a4c56b76cfb84353347aa00fb9099212046ce1a&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/0il9x82aahwe1.png?width=1375&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=76913f83ffb57e35733e33af47a3565faffd3943"&gt;https://preview.redd.it/0il9x82aahwe1.png?width=1375&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=76913f83ffb57e35733e33af47a3565faffd3943&lt;/a&gt;&lt;/p&gt; &lt;p&gt;backend: ollama v0.6.6&lt;/p&gt; &lt;p&gt;gguf:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.ollama.com/JollyLlama/GLM-4-32B-0414-Q4_K_M"&gt;https://www.ollama.com/JollyLlama/GLM-4-32B-0414-Q4_K_M&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.ollama.com/library/qwen2.5:32b-instruct-q4_K_M"&gt;https://www.ollama.com/library/qwen2.5:32b-instruct-q4_K_M&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5lux8/mmlupro_benchmark_glm432b0414q4_k_m_vs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5lux8/mmlupro_benchmark_glm432b0414q4_k_m_vs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5lux8/mmlupro_benchmark_glm432b0414q4_k_m_vs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T18:19:19+00:00</published>
+    <published>2025-04-23T00:19:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1k4v5fm</id>
