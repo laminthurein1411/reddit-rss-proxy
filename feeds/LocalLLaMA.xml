@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-23T19:34:42+00:00</updated>
+  <updated>2025-04-23T19:48:49+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k595in</id>
-    <title>Announcing: text-generation-webui in a portable zip (700MB) for llama.cpp models - unzip and run on Windows/Linux/macOS - no installation required!</title>
-    <updated>2025-04-22T15:28:48+00:00</updated>
-    <author>
-      <name>/u/oobabooga4</name>
-      <uri>https://old.reddit.com/user/oobabooga4</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The original &lt;code&gt;text-generation-webui&lt;/code&gt; setup is based on a one-click installer that downloads Miniconda, creates a conda environment, installs PyTorch, and then installs several backends and requirements — &lt;code&gt;transformers&lt;/code&gt;, &lt;code&gt;bitsandbytes&lt;/code&gt;, &lt;code&gt;exllamav2&lt;/code&gt;, and more.&lt;/p&gt; &lt;p&gt;But in many cases, all people really want is to just use &lt;code&gt;llama.cpp&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To address this, I have created &lt;strong&gt;fully self-contained builds&lt;/strong&gt; of the project that work with llama.cpp. All you have to do is download, unzip, and it just works! No installation is required.&lt;/p&gt; &lt;p&gt;The following versions are available:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;windows-cuda12.4&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;windows-cuda11.7&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;windows-cpu&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;linux-cuda12.4&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;linux-cuda11.7&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;linux-cpu&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;macos-arm64&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;macos-x86_64&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h3&gt;How it works&lt;/h3&gt; &lt;p&gt;For the nerds, I accomplished this by:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Refactoring the codebase to avoid imports from PyTorch, &lt;code&gt;transformers&lt;/code&gt;, and similar libraries unless necessary. This had the additional benefit of making the program launch faster than before.&lt;/li&gt; &lt;li&gt;Setting up GitHub Actions workflows to compile &lt;code&gt;llama.cpp&lt;/code&gt; for the different systems and then package it into versioned Python wheels. The project communicates with &lt;code&gt;llama.cpp&lt;/code&gt; via the &lt;code&gt;llama-server&lt;/code&gt; executable in those wheels (similar to how ollama works).&lt;/li&gt; &lt;li&gt;Setting up another GitHub Actions workflow to package the project, its requirements (only the essential ones), and portable Python builds from &lt;a href="https://github.com/astral-sh/python-build-standalone"&gt;&lt;code&gt;astral-sh/python-build-standalone&lt;/code&gt;&lt;/a&gt; into zip files that are finally uploaded to the project's &lt;a href="https://github.com/oobabooga/text-generation-webui/releases/"&gt;Releases page&lt;/a&gt;.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I also added a few small conveniences to the portable builds:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The web UI automatically opens in the browser when launched.&lt;/li&gt; &lt;li&gt;The OpenAI-compatible API starts by default and listens on &lt;code&gt;localhost&lt;/code&gt;, without the need to add the &lt;code&gt;--api&lt;/code&gt; flag.&lt;/li&gt; &lt;/ul&gt; &lt;h3&gt;Some notes&lt;/h3&gt; &lt;p&gt;For &lt;strong&gt;AMD&lt;/strong&gt;, apparently Vulkan is the best llama.cpp backend these days. I haven't set up Vulkan workflows yet, but someone &lt;a href="https://github.com/oobabooga/llama-cpp-binaries/issues/1"&gt;on GitHub&lt;/a&gt; has taught me that you can download the CPU-only portable build and replace the &lt;code&gt;llama-server&lt;/code&gt; executable under &lt;code&gt;portable_env/lib/python3.11/site-packages/llama_cpp_binaries/bin/&lt;/code&gt; with the one from the &lt;a href="https://github.com/ggml-org/llama.cpp/releases"&gt;official llama.cpp builds&lt;/a&gt; (look for files ending in &lt;code&gt;-vulkan-x64.zip&lt;/code&gt;). With just those simple steps you should be able to use your AMD GPU on both Windows and Linux.&lt;/p&gt; &lt;p&gt;It's also worth mentioning that &lt;code&gt;text-generation-webui&lt;/code&gt; is built with privacy and transparency in mind. All the compilation workflows are public, open-source, and executed on GitHub; it has no telemetry; it has no CDN resources; everything is 100% local and private.&lt;/p&gt; &lt;h3&gt;Download link&lt;/h3&gt; &lt;p&gt;&lt;a href="https://github.com/oobabooga/text-generation-webui/releases/"&gt;https://github.com/oobabooga/text-generation-webui/releases/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oobabooga4"&gt; /u/oobabooga4 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k595in/announcing_textgenerationwebui_in_a_portable_zip/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k595in/announcing_textgenerationwebui_in_a_portable_zip/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k595in/announcing_textgenerationwebui_in_a_portable_zip/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-22T15:28:48+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k63qy6</id>
     <title>Any LLM backends that auto-unload models like Ollama?</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k63y5s/longer_context_for_bitnetb1582b4t/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T16:45:54+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k644of</id>
+    <title>Llama 4 - Scout: best quantization resource and comparison to Llama 3.3</title>
+    <updated>2025-04-23T16:53:17+00:00</updated>
+    <author>
+      <name>/u/silenceimpaired</name>
+      <uri>https://old.reddit.com/user/silenceimpaired</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The two primary resources I’ve seen to get for Scout (GGUF for us GPU poor), seems to be Unsloth and Bartowski… both of which seems to do something non-traditional compared to density models like Llama 70b 3.3. So which one is the best or am I missing one? At first blush Bartowski seems to perform better but then again my first attempt with Unsloth was a smaller quant… so I’m curious what others think. &lt;/p&gt; &lt;p&gt;Then for llama 3.3 vs scout it seems comparable with maybe llama 3.3 having better performance and scout definitely far faster at the same performance.&lt;/p&gt; &lt;p&gt;Edit: Thanks x0wl for the comparison link, and to Bartowski for the comparison efforts. &lt;a href="https://huggingface.co/blog/bartowski/llama4-scout-off"&gt;https://huggingface.co/blog/bartowski/llama4-scout-off&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/silenceimpaired"&gt; /u/silenceimpaired &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k644of/llama_4_scout_best_quantization_resource_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k644of/llama_4_scout_best_quantization_resource_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k644of/llama_4_scout_best_quantization_resource_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T16:53:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5j3ob</id>
@@ -138,19 +138,6 @@
     <published>2025-04-23T14:54:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k63o9h</id>
-    <title>Aider appreciation post</title>
-    <updated>2025-04-23T16:34:33+00:00</updated>
-    <author>
-      <name>/u/myoddity</name>
-      <uri>https://old.reddit.com/user/myoddity</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Aider-chat just hits too right for me. &lt;/p&gt; &lt;p&gt;It is powerful, yet light and clean. It lives in terminal, yet is simply approachable. It can do all the work, yet encourages to bring-your-own-context. It's free, yet it just works. What more is needed, for one who can code, yet cannot code. &lt;/p&gt; &lt;p&gt;(Disclaimer: No chatgpt was used to write this. Only heart.)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/myoddity"&gt; /u/myoddity &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T16:34:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k5gd5d</id>
     <title>GLM-4-32B just one-shot this hypercube animation</title>
     <updated>2025-04-22T20:16:46+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5gd5d/glm432b_just_oneshot_this_hypercube_animation/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T20:16:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k63o9h</id>
+    <title>Aider appreciation post</title>
+    <updated>2025-04-23T16:34:33+00:00</updated>
+    <author>
+      <name>/u/myoddity</name>
+      <uri>https://old.reddit.com/user/myoddity</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Aider-chat just hits too right for me. &lt;/p&gt; &lt;p&gt;It is powerful, yet light and clean. It lives in terminal, yet is simply approachable. It can do all the work, yet encourages to bring-your-own-context. It's free, yet it just works. What more is needed, for one who can code, yet cannot code. &lt;/p&gt; &lt;p&gt;(Disclaimer: No chatgpt was used to write this. Only heart.)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/myoddity"&gt; /u/myoddity &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k63o9h/aider_appreciation_post/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T16:34:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5te39</id>
@@ -190,19 +190,6 @@
     <published>2025-04-23T13:58:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k665cg</id>
-    <title>Anyone try UI-TARS-1.5-7B new model from ByteDance</title>
-    <updated>2025-04-23T18:13:14+00:00</updated>
-    <author>
-      <name>/u/Muted-Celebration-47</name>
-      <uri>https://old.reddit.com/user/Muted-Celebration-47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt; &lt;img alt="Anyone try UI-TARS-1.5-7B new model from ByteDance" src="https://external-preview.redd.it/MEb00d1gLWxp1-4OYIxzng3fr7CjMC7BtYqeV0pZ5Zc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c79e173fc5596ae79fab0463a41a31cb51d11923" title="Anyone try UI-TARS-1.5-7B new model from ByteDance" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In summary, It allows AI to use your computer or web browser. &lt;/p&gt; &lt;p&gt;source: &lt;a href="https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B"&gt;https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tried to use it with Ollama and connected it to UI-TARS Desktop, but it failed to follow the prompt. It just took multiple screenshots. What's your experience with it?&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8sfb6fc8lmwe1.png?width=1737&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38228461bcca820366ff63549025975f0070f5ec"&gt;UI TARS Desktop&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Muted-Celebration-47"&gt; /u/Muted-Celebration-47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T18:13:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k5qqst</id>
     <title>Llama 4 Maverick Locally at 45 tk/s on a Single RTX 4090 - I finally got it working!</title>
     <updated>2025-04-23T04:38:26+00:00</updated>
@@ -216,17 +203,17 @@
     <published>2025-04-23T04:38:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k65cmy</id>
-    <title>Unpopular Opinion: I'm Actually Loving Llama-4-Scout</title>
-    <updated>2025-04-23T17:41:40+00:00</updated>
+    <id>t3_1k665cg</id>
+    <title>Anyone try UI-TARS-1.5-7B new model from ByteDance</title>
+    <updated>2025-04-23T18:13:14+00:00</updated>
     <author>
-      <name>/u/Far_Buyer_7281</name>
-      <uri>https://old.reddit.com/user/Far_Buyer_7281</uri>
+      <name>/u/Muted-Celebration-47</name>
+      <uri>https://old.reddit.com/user/Muted-Celebration-47</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've seen a lot of negativity surrounding the new Llama-4-Scout, and I wanted to share my experience is completely different. I love especially the natural tone and large context understanding &lt;/p&gt; &lt;p&gt;I'm curious to hear if anyone else is having a positive experience with Llama-4-Scout, or if there are specific use cases where it shines. What are your thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Far_Buyer_7281"&gt; /u/Far_Buyer_7281 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt; &lt;img alt="Anyone try UI-TARS-1.5-7B new model from ByteDance" src="https://external-preview.redd.it/MEb00d1gLWxp1-4OYIxzng3fr7CjMC7BtYqeV0pZ5Zc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c79e173fc5596ae79fab0463a41a31cb51d11923" title="Anyone try UI-TARS-1.5-7B new model from ByteDance" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In summary, It allows AI to use your computer or web browser. &lt;/p&gt; &lt;p&gt;source: &lt;a href="https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B"&gt;https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tried to use it with Ollama and connected it to UI-TARS Desktop, but it failed to follow the prompt. It just took multiple screenshots. What's your experience with it?&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8sfb6fc8lmwe1.png?width=1737&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38228461bcca820366ff63549025975f0070f5ec"&gt;UI TARS Desktop&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Muted-Celebration-47"&gt; /u/Muted-Celebration-47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T17:41:40+00:00</published>
+    <published>2025-04-23T18:13:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5yw16</id>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5yw16/patternaware_vector_database_and_ann_algorithm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T13:15:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k65cmy</id>
+    <title>Unpopular Opinion: I'm Actually Loving Llama-4-Scout</title>
+    <updated>2025-04-23T17:41:40+00:00</updated>
+    <author>
+      <name>/u/Far_Buyer_7281</name>
+      <uri>https://old.reddit.com/user/Far_Buyer_7281</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've seen a lot of negativity surrounding the new Llama-4-Scout, and I wanted to share my experience is completely different. I love especially the natural tone and large context understanding &lt;/p&gt; &lt;p&gt;I'm curious to hear if anyone else is having a positive experience with Llama-4-Scout, or if there are specific use cases where it shines. What are your thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Far_Buyer_7281"&gt; /u/Far_Buyer_7281 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k65cmy/unpopular_opinion_im_actually_loving_llama4scout/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T17:41:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5t2cq</id>
