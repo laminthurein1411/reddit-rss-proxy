@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-23T19:05:54+00:00</updated>
+  <updated>2025-04-23T19:22:08+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k60gxs</id>
-    <title>How do you build per-user RAG/GraphRAG</title>
-    <updated>2025-04-23T14:24:45+00:00</updated>
-    <author>
-      <name>/u/Old_Cauliflower6316</name>
-      <uri>https://old.reddit.com/user/Old_Cauliflower6316</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all,&lt;/p&gt; &lt;p&gt;I’ve been working on an AI agent system over the past year that connects to internal company tools like Slack, GitHub, Notion, etc, to help investigate production incidents. The agent needs context, so we built a system that ingests this data, processes it, and builds a structured knowledge graph (kind of a mix of RAG and GraphRAG).&lt;/p&gt; &lt;p&gt;What we didn’t expect was just how much infra work that would require.&lt;/p&gt; &lt;p&gt;We ended up:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Using LlamaIndex's OS abstractions for chunking, embedding and retrieval.&lt;/li&gt; &lt;li&gt;Adopting Chroma as the vector store.&lt;/li&gt; &lt;li&gt;Writing custom integrations for Slack/GitHub/Notion. We used LlamaHub here for the actual querying, although some parts were a bit unmaintained and we had to fork + fix. We could’ve used Nango or Airbyte tbh but eventually didn't do that.&lt;/li&gt; &lt;li&gt;Building an auto-refresh pipeline to sync data every few hours and do diffs based on timestamps. This was pretty hard as well.&lt;/li&gt; &lt;li&gt;Handling security and privacy (most customers needed to keep data in their own environments).&lt;/li&gt; &lt;li&gt;Handling scale - some orgs had hundreds of thousands of documents across different tools.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It became clear we were spending a lot more time on data infrastructure than on the actual agent logic. I think it might be ok for a company that interacts with customers' data, but definitely we felt like we were dealing with a lot of non-core work.&lt;/p&gt; &lt;p&gt;So I’m curious: for folks building LLM apps that connect to company systems, how are you approaching this? Are you building it all from scratch too? Using open-source tools? Is there something obvious we’re missing?&lt;/p&gt; &lt;p&gt;Would really appreciate hearing how others are tackling this part of the stack.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Old_Cauliflower6316"&gt; /u/Old_Cauliflower6316 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60gxs/how_do_you_build_peruser_raggraphrag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60gxs/how_do_you_build_peruser_raggraphrag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k60gxs/how_do_you_build_peruser_raggraphrag/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T14:24:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k62zpp</id>
     <title>Local LLM for help with tasks related to writing fiction?</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k595in/announcing_textgenerationwebui_in_a_portable_zip/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-22T15:28:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k63qy6</id>
+    <title>Any LLM backends that auto-unload models like Ollama?</title>
+    <updated>2025-04-23T16:37:41+00:00</updated>
+    <author>
+      <name>/u/sepffuzzball</name>
+      <uri>https://old.reddit.com/user/sepffuzzball</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So I've been playing with lots of LLMs over the past couple years but now looking to move some of my GPUs to my homelab server and I wanted to setup a whole-house multi-purpose AI server. As the intent was to run ComfyUI for image generation and some form of LLM backend.&lt;/p&gt; &lt;p&gt;Currently I run Open WebUI + LiteLLM on my server to hit my gaming rig (which might be running Ollama, Oobabooga, or Koboldcpp). Additionally, 5 separate instances of SillyTavern (one for each person in the house). Mostly so we can keep all of our data separate (like OWUI everyone is using different logins via passkeys). I'd like to also give the others the ability to do image generation (likely by just attaching OWUI, to keep the data separate).&lt;/p&gt; &lt;p&gt;Though I really like the tweakability of Ooba and Kobold, it's real convenient that Ollama has a configurable unload so I don't have to think about it. Especially knowing that image/video generation will eat VRAM too.&lt;/p&gt; &lt;p&gt;Are there any other alternatives? As I type this I'm looking at llama-swap which has a TTL function which may do the job. Based on my use case, is that the right way to go?&lt;/p&gt; &lt;p&gt;Hardware is an Epyc 7713 (64-core Zen3) / 512 GB ECC-R DDR4-3200 / 2x 3090 &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sepffuzzball"&gt; /u/sepffuzzball &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63qy6/any_llm_backends_that_autounload_models_like/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k63qy6/any_llm_backends_that_autounload_models_like/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k63qy6/any_llm_backends_that_autounload_models_like/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T16:37:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5gyzy</id>
@@ -151,19 +151,6 @@
     <published>2025-04-23T16:34:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k665cg</id>
-    <title>Anyone try UI-TARS-1.5-7B new model from ByteDance</title>
-    <updated>2025-04-23T18:13:14+00:00</updated>
-    <author>
-      <name>/u/Muted-Celebration-47</name>
-      <uri>https://old.reddit.com/user/Muted-Celebration-47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt; &lt;img alt="Anyone try UI-TARS-1.5-7B new model from ByteDance" src="https://external-preview.redd.it/MEb00d1gLWxp1-4OYIxzng3fr7CjMC7BtYqeV0pZ5Zc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c79e173fc5596ae79fab0463a41a31cb51d11923" title="Anyone try UI-TARS-1.5-7B new model from ByteDance" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In summary, It allows AI to use your computer or web browser. &lt;/p&gt; &lt;p&gt;source: &lt;a href="https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B"&gt;https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tried to use it with Ollama and connected it to UI-TARS Desktop, but it failed to follow the prompt. It just took multiple screenshots. What's your experience with it?&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8sfb6fc8lmwe1.png?width=1737&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38228461bcca820366ff63549025975f0070f5ec"&gt;UI TARS Desktop&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Muted-Celebration-47"&gt; /u/Muted-Celebration-47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T18:13:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k5gd5d</id>
     <title>GLM-4-32B just one-shot this hypercube animation</title>
     <updated>2025-04-22T20:16:46+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5te39/describe_anything_an_nvidia_collection/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T07:36:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k665cg</id>
+    <title>Anyone try UI-TARS-1.5-7B new model from ByteDance</title>
+    <updated>2025-04-23T18:13:14+00:00</updated>
+    <author>
+      <name>/u/Muted-Celebration-47</name>
+      <uri>https://old.reddit.com/user/Muted-Celebration-47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt; &lt;img alt="Anyone try UI-TARS-1.5-7B new model from ByteDance" src="https://external-preview.redd.it/MEb00d1gLWxp1-4OYIxzng3fr7CjMC7BtYqeV0pZ5Zc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c79e173fc5596ae79fab0463a41a31cb51d11923" title="Anyone try UI-TARS-1.5-7B new model from ByteDance" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In summary, It allows AI to use your computer or web browser. &lt;/p&gt; &lt;p&gt;source: &lt;a href="https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B"&gt;https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tried to use it with Ollama and connected it to UI-TARS Desktop, but it failed to follow the prompt. It just took multiple screenshots. What's your experience with it?&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/8sfb6fc8lmwe1.png?width=1737&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=38228461bcca820366ff63549025975f0070f5ec"&gt;UI TARS Desktop&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Muted-Celebration-47"&gt; /u/Muted-Celebration-47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k665cg/anyone_try_uitars157b_new_model_from_bytedance/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T18:13:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5zum2</id>
