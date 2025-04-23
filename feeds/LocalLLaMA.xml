@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-23T15:37:16+00:00</updated>
+  <updated>2025-04-23T15:49:18+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1k5pwq5</id>
-    <title>Fastest/best way for local LLMs to answer many questions for many long documents quickly (medical chart review)</title>
-    <updated>2025-04-23T03:49:25+00:00</updated>
+    <id>t3_1k62i75</id>
+    <title>Quantization for production</title>
+    <updated>2025-04-23T15:47:55+00:00</updated>
     <author>
-      <name>/u/Amazydayzee</name>
-      <uri>https://old.reddit.com/user/Amazydayzee</uri>
+      <name>/u/_ragnet_7</name>
+      <uri>https://old.reddit.com/user/_ragnet_7</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm reviewing many patients' medical notes and filling out a table of questions for each patient. Because the information has to be private, I have to use a local LLM. I also have a &amp;quot;ground truth&amp;quot; table completed by real humans (including me), and I'm trying to find a way to have LLMs accurately and quickly replicate the chart review.&lt;/p&gt; &lt;p&gt;In total, I have above 30 questions/columns for 150+ patients. Each patient has several medical notes, with some of them being thousands of words long, and some patients' overall notes being over 5M tokens.&lt;/p&gt; &lt;p&gt;Currently, I'm using Ollama and qwen2.5:14b to do this, and I'm just doing 2 for loops because I assume I can't do any multithreaded process given that I don't have enough VRAM for that.&lt;/p&gt; &lt;p&gt;It takes about 24 hours to complete the entire table, which is pretty bad and really limits my ability to try out different approaches (i.e. agent or RAG or different models) to try to increase accuracy.&lt;/p&gt; &lt;p&gt;I have a desktop with a 4090 and a Macbook M3 Pro with 36GB RAM. I recognize that I can get a speed-up just by not using Ollama, and I'm wondering about other things that I can do on top of that.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amazydayzee"&gt; /u/Amazydayzee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5pwq5/fastestbest_way_for_local_llms_to_answer_many/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5pwq5/fastestbest_way_for_local_llms_to_answer_many/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5pwq5/fastestbest_way_for_local_llms_to_answer_many/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone. &lt;/p&gt; &lt;p&gt;I want to try to understand your experience with quantization. I'm not talking about quantization to run a model locally and have a bit of fun. I'm talking about production-ready quantization, the kind that doesn't significantly degrade model quality (in this case a fine-tuned model), while maximizing latency or throughput on hardware like an A100.&lt;/p&gt; &lt;p&gt;I've read around that since the A100 is a bit old, modern techniques that rely on FP8 can't be used effectively.&lt;/p&gt; &lt;p&gt;I've tested w8a8_int8 and w4a16 from Neural Magic, but I've always gotten lower tokens/second compared to the model in bfloat16.&lt;/p&gt; &lt;p&gt;Same with HQQ using the GemLite kernel. The model I ran tests on is a 3B.&lt;/p&gt; &lt;p&gt;Has anyone done a similar investigation or read anything about this? Is there any info on what the big players are using to effectively serve their users?&lt;/p&gt; &lt;p&gt;I wanted to push my small models to the limit, but I'm starting to think that quantization only really helps with larger models, and that the true performance drivers used by the big players are speculative decoding and caching (which I'm unlikely to be able to use).&lt;/p&gt; &lt;p&gt;For reference, here's the situation on an A100 40GB:&lt;/p&gt; &lt;p&gt;Times for BS=1&lt;/p&gt; &lt;p&gt;w4a16: about 30 tokens/second&lt;/p&gt; &lt;p&gt;hqq: about 25 tokens/second&lt;/p&gt; &lt;p&gt;bfloat16: 55 tokens/second&lt;/p&gt; &lt;p&gt;For higher batch sizes, the token/s difference becomes even more extreme.&lt;/p&gt; &lt;p&gt;Any advice?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_ragnet_7"&gt; /u/_ragnet_7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k62i75/quantization_for_production/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k62i75/quantization_for_production/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k62i75/quantization_for_production/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T03:49:25+00:00</published>
+    <published>2025-04-23T15:47:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5vq80</id>
@@ -268,19 +268,6 @@
     <published>2025-04-23T13:15:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k60mlw</id>
-    <title>LaSearch: Fully local semantic search app (with CUSTOM "embeddings" model)</title>
-    <updated>2025-04-23T14:31:25+00:00</updated>
-    <author>
-      <name>/u/joelkunst</name>
-      <uri>https://old.reddit.com/user/joelkunst</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"&gt; &lt;img alt="LaSearch: Fully local semantic search app (with CUSTOM &amp;quot;embeddings&amp;quot; model)" src="https://external-preview.redd.it/aDV1d2g4MTRobHdlMcf6y9HMrkeunVjc93oLf19y0pwTcXwF2-pbO3PezUgo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=eb00308374c95d7c2665d585962792eeb747f97c" title="LaSearch: Fully local semantic search app (with CUSTOM &amp;quot;embeddings&amp;quot; model)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have build my own &amp;quot;embeddings&amp;quot; model that's ultra small and lightweight. It does not function in the same way as usual ones and is not as powerful as they are, but it's orders of magnitude smaller and faster.&lt;/p&gt; &lt;p&gt;It powers my fully local semantic search app.&lt;/p&gt; &lt;p&gt;No data goes outside of your machine, and it uses very little resources to function.&lt;/p&gt; &lt;p&gt;MCP server is coming so you can use it to get relevant docs for RAG.&lt;/p&gt; &lt;p&gt;I've been testing with a small group but want to expand for more diverse feedback. If you're interested in trying it out or have any questions about the technology, let me know in the comments or sign up on the website.&lt;/p&gt; &lt;p&gt;Would love your thoughts on the concept and implementation!&lt;br /&gt; &lt;a href="https://lasearch.app"&gt;https://lasearch.app&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/joelkunst"&gt; /u/joelkunst &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/31aodc14hlwe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T14:31:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k5qqst</id>
     <title>Llama 4 Maverick Locally at 45 tk/s on a Single RTX 4090 - I finally got it working!</title>
     <updated>2025-04-23T04:38:26+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5qqst/llama_4_maverick_locally_at_45_tks_on_a_single/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T04:38:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k60mlw</id>
+    <title>LaSearch: Fully local semantic search app (with CUSTOM "embeddings" model)</title>
+    <updated>2025-04-23T14:31:25+00:00</updated>
+    <author>
+      <name>/u/joelkunst</name>
+      <uri>https://old.reddit.com/user/joelkunst</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"&gt; &lt;img alt="LaSearch: Fully local semantic search app (with CUSTOM &amp;quot;embeddings&amp;quot; model)" src="https://external-preview.redd.it/aDV1d2g4MTRobHdlMcf6y9HMrkeunVjc93oLf19y0pwTcXwF2-pbO3PezUgo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=eb00308374c95d7c2665d585962792eeb747f97c" title="LaSearch: Fully local semantic search app (with CUSTOM &amp;quot;embeddings&amp;quot; model)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have build my own &amp;quot;embeddings&amp;quot; model that's ultra small and lightweight. It does not function in the same way as usual ones and is not as powerful as they are, but it's orders of magnitude smaller and faster.&lt;/p&gt; &lt;p&gt;It powers my fully local semantic search app.&lt;/p&gt; &lt;p&gt;No data goes outside of your machine, and it uses very little resources to function.&lt;/p&gt; &lt;p&gt;MCP server is coming so you can use it to get relevant docs for RAG.&lt;/p&gt; &lt;p&gt;I've been testing with a small group but want to expand for more diverse feedback. If you're interested in trying it out or have any questions about the technology, let me know in the comments or sign up on the website.&lt;/p&gt; &lt;p&gt;Would love your thoughts on the concept and implementation!&lt;br /&gt; &lt;a href="https://lasearch.app"&gt;https://lasearch.app&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/joelkunst"&gt; /u/joelkunst &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/31aodc14hlwe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k60mlw/lasearch_fully_local_semantic_search_app_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-23T14:31:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1k5t2cq</id>
