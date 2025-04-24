@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-24T09:07:13+00:00</updated>
+  <updated>2025-04-24T09:24:51+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k5yw16</id>
-    <title>Pattern-Aware Vector Database and ANN Algorithm</title>
-    <updated>2025-04-23T13:15:32+00:00</updated>
-    <author>
-      <name>/u/yumojibaba</name>
-      <uri>https://old.reddit.com/user/yumojibaba</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5yw16/patternaware_vector_database_and_ann_algorithm/"&gt; &lt;img alt="Pattern-Aware Vector Database and ANN Algorithm" src="https://preview.redd.it/cwgw5y593lwe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=10ef81375a693303e9267eadf91b3c5c3a52d00f" title="Pattern-Aware Vector Database and ANN Algorithm" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We are releasing the beta version of PatANN, a vector search framework we've been working on that takes a different approach to ANN search by leveraging pattern recognition within vectors before distance calculations.&lt;/p&gt; &lt;p&gt;Our benchmarks on standard datasets show that PatANN achieved 4- 10x higher QPS than existing solutions (HNSW, ScaNN, FAISS) while maintaining &amp;gt;99.9% recall.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Fully asynchronous execution: Decomposes queries for parallel execution across threads&lt;/li&gt; &lt;li&gt;True hybrid memory management: Works efficiently both in-memory and on-disk&lt;/li&gt; &lt;li&gt;Pattern-aware search algorithm that addresses hubness effects in high-dimensional spaces&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;We have posted technical documentation and initial benchmarks at &lt;a href="https://patann.dev"&gt;https://patann.dev&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This is a beta release, and work is in progress, so we are particularly interested in feedback on stability, integration experiences, and performance in different workloads, especially those working with large-scale vector search applications.&lt;/p&gt; &lt;p&gt;We invite you to download code samples from the GitHub repo (Python, Android (Java/Kotlin), iOS (Swift/Obj-C)) and try them out. We look forward to feedback. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yumojibaba"&gt; /u/yumojibaba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/cwgw5y593lwe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k5yw16/patternaware_vector_database_and_ann_algorithm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k5yw16/patternaware_vector_database_and_ann_algorithm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-23T13:15:32+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k6fj84</id>
     <title>Beyond Autoregression: Discrete Diffusion for Complex Reasoning and Planning</title>
@@ -151,6 +138,19 @@
     <published>2025-04-24T04:55:40+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k6nrl1</id>
+    <title>I benchmarked the Gemma 3 27b QAT models</title>
+    <updated>2025-04-24T09:12:34+00:00</updated>
+    <author>
+      <name>/u/jaxchang</name>
+      <uri>https://old.reddit.com/user/jaxchang</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to know what models performed the best, and it seemed like nobody had actual numbers for this information... so I ran the numbers myself. &lt;/p&gt; &lt;p&gt;I am running on llama.cpp v1.27.1 for the GGUFs, and LM Studio MLX v0.13.2 for the MLX model. &lt;/p&gt; &lt;p&gt;At first, I tried calculating perplexity. However, the PPL numbers kept on yielding really weird values from the PTB/wiki.test.raw corpus. The QAT models would generate numbers higher than the original BF16, and Bartowski's quant scored higher than the original QAT from google. I think the model is overfitting there, so it's not really a good metric. &lt;/p&gt; &lt;p&gt;So I decided to just use GPQA-main instead. It's more a more biased benchmark in terms of topic, but I suspect that actually doesn't matter too much. We're comparing different quants of the same model, not different finetunes/models. In the latter case, we might expect different finetunes/models to maybe perform better at say math but worse at coding/writing, have more biology questions in the training data set vs physics, or other biased performance skew etc. However, quantization is not so fine-grained; it simply truncates the lowest value bits for each parameter, so quality reduction/noise introduced should be more generalizable. &lt;/p&gt; &lt;p&gt;Here are the GPQA-main scores for the quants I tested: &lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Model name&lt;/th&gt; &lt;th&gt;Score&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;mlx-community/gemma-3-27b-it-qat-4bit&lt;/td&gt; &lt;td&gt;0.333&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;bartowski/google_gemma-3-27b-it-qat-GGUF (Q4_0)&lt;/td&gt; &lt;td&gt;0.352&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/td&gt; &lt;td&gt;0.346&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Unquantized Gemma 3 27b (via Huggingface api)&lt;/td&gt; &lt;td&gt;0.375&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaxchang"&gt; /u/jaxchang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-24T09:12:34+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k650xj</id>
     <title>The best translator is a hybrid translator - combining a corpus of LLMs</title>
     <updated>2025-04-23T17:28:49+00:00</updated>
@@ -177,19 +177,6 @@
     <published>2025-04-24T08:10:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k6n9t6</id>
-    <title>o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &gt; premium at this point!ℹ️</title>
-    <updated>2025-04-24T08:35:52+00:00</updated>
-    <author>
-      <name>/u/BidHot8598</name>
-      <uri>https://old.reddit.com/user/BidHot8598</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"&gt; &lt;img alt="o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &amp;gt; premium at this point!ℹ️" src="https://b.thumbs.redditmedia.com/bYXYRidx__uLyc78DDX0tlXyl_xsI1tDJDdUiEL4TDA.jpg" title="o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &amp;gt; premium at this point!ℹ️" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BidHot8598"&gt; /u/BidHot8598 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k6n9t6"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-24T08:35:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k6jslj</id>
     <title>LLM content on YT becoming repetitive</title>
     <updated>2025-04-24T04:40:57+00:00</updated>
@@ -203,19 +190,6 @@
     <published>2025-04-24T04:40:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k6mvoi</id>
-    <title>Serving new models with vLLM with efficient quantization</title>
-    <updated>2025-04-24T08:07:19+00:00</updated>
-    <author>
-      <name>/u/Swedgetarian</name>
-      <uri>https://old.reddit.com/user/Swedgetarian</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I'd love to hear from vLLM users what you guys' playbooks for serving recently supported models are. &lt;/p&gt; &lt;p&gt;I'm running the &lt;a href="https://hub.docker.com/r/vllm/vllm-openai/tags"&gt;vLLM openai compatiable docker container&lt;/a&gt; on an inferencing server.&lt;/p&gt; &lt;p&gt;Up until now, i've taken the easy path of using pre-quantized AWQ checkpoints from the huggingface hub. But this often excludes a lot of recent models. Conversely, GUUFs are readily available pretty much on day 1. I'm left with a few options:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Quantize the target model to AWQ myself either in the vllm container or in a separate env then inject it into the container&lt;/li&gt; &lt;li&gt;Try the experimental GGUF support in vLLM (would love to hear people's experiences with this)&lt;/li&gt; &lt;li&gt;Experiment with the &lt;a href="https://docs.vllm.ai/en/stable/features/quantization/index.html"&gt;other supported quantization formats&lt;/a&gt; like BnB when such checkpoints are available on HF hub.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;There's also the new unsloth dynamic 4-bit quants that sound to be very good bang-for-buck in VRAM. They seem to be based on BnB with new features. Has anyone managed to get models in this format in vLLM working?&lt;/p&gt; &lt;p&gt;Thanks for any inputs!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Swedgetarian"&gt; /u/Swedgetarian &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-24T08:07:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k655wa</id>
     <title>LlamaCon is in 6 days</title>
     <updated>2025-04-23T17:34:15+00:00</updated>
@@ -227,6 +201,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k655wa/llamacon_is_in_6_days/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T17:34:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k6n9t6</id>
+    <title>o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &gt; premium at this point!ℹ️</title>
+    <updated>2025-04-24T08:35:52+00:00</updated>
+    <author>
+      <name>/u/BidHot8598</name>
+      <uri>https://old.reddit.com/user/BidHot8598</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"&gt; &lt;img alt="o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &amp;gt; premium at this point!ℹ️" src="https://b.thumbs.redditmedia.com/bYXYRidx__uLyc78DDX0tlXyl_xsI1tDJDdUiEL4TDA.jpg" title="o4-mini ranks less than DeepSeek V3 | o3 ranks inferior to Gemini 2.5 | freemium &amp;gt; premium at this point!ℹ️" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BidHot8598"&gt; /u/BidHot8598 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k6n9t6"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6n9t6/o4mini_ranks_less_than_deepseek_v3_o3_ranks/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-24T08:35:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k6mvoi</id>
+    <title>Serving new models with vLLM with efficient quantization</title>
+    <updated>2025-04-24T08:07:19+00:00</updated>
+    <author>
+      <name>/u/Swedgetarian</name>
+      <uri>https://old.reddit.com/user/Swedgetarian</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I'd love to hear from vLLM users what you guys' playbooks for serving recently supported models are. &lt;/p&gt; &lt;p&gt;I'm running the &lt;a href="https://hub.docker.com/r/vllm/vllm-openai/tags"&gt;vLLM openai compatiable docker container&lt;/a&gt; on an inferencing server.&lt;/p&gt; &lt;p&gt;Up until now, i've taken the easy path of using pre-quantized AWQ checkpoints from the huggingface hub. But this often excludes a lot of recent models. Conversely, GUUFs are readily available pretty much on day 1. I'm left with a few options:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Quantize the target model to AWQ myself either in the vllm container or in a separate env then inject it into the container&lt;/li&gt; &lt;li&gt;Try the experimental GGUF support in vLLM (would love to hear people's experiences with this)&lt;/li&gt; &lt;li&gt;Experiment with the &lt;a href="https://docs.vllm.ai/en/stable/features/quantization/index.html"&gt;other supported quantization formats&lt;/a&gt; like BnB when such checkpoints are available on HF hub.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;There's also the new unsloth dynamic 4-bit quants that sound to be very good bang-for-buck in VRAM. They seem to be based on BnB with new features. Has anyone managed to get models in this format in vLLM working?&lt;/p&gt; &lt;p&gt;Thanks for any inputs!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Swedgetarian"&gt; /u/Swedgetarian &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mvoi/serving_new_models_with_vllm_with_efficient/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-24T08:07:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1k63kpq</id>
@@ -294,19 +294,6 @@
     <published>2025-04-24T02:25:43+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k6mols</id>
-    <title>Details on OpenAI's upcoming 'open' AI model</title>
-    <updated>2025-04-24T07:53:04+00:00</updated>
-    <author>
-      <name>/u/ayyndrew</name>
-      <uri>https://old.reddit.com/user/ayyndrew</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"&gt; &lt;img alt="Details on OpenAI's upcoming 'open' AI model" src="https://external-preview.redd.it/jBLPKrE-sNiDaxe0zsX1DO2Ghuda8KNpR6LvSh4IYoc.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=462c8e493352f840f1bcce92fb0555e2b79db252" title="Details on OpenAI's upcoming 'open' AI model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;- In very early stages, targeting an early summer launch&lt;/p&gt; &lt;p&gt;- Will be a reasoning model, aiming to be the top open reasoning model when it launches&lt;/p&gt; &lt;p&gt;- Exploring a highly permissive license, perhaps unlike Llama and Gemma&lt;/p&gt; &lt;p&gt;- Text in text out, reasoning can be tuned on and off&lt;/p&gt; &lt;p&gt;- Runs on &amp;quot;high-end consumer hardware&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ayyndrew"&gt; /u/ayyndrew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/04/23/openai-seeks-to-make-its-upcoming-open-ai-model-best-in-class/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-24T07:53:04+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k6ably</id>
     <title>Bartowski just updated his glm-4-32B quants. working in lmstudio soon?</title>
     <updated>2025-04-23T21:02:39+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6ably/bartowski_just_updated_his_glm432b_quants_working/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-23T21:02:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k6mols</id>
+    <title>Details on OpenAI's upcoming 'open' AI model</title>
+    <updated>2025-04-24T07:53:04+00:00</updated>
+    <author>
+      <name>/u/ayyndrew</name>
+      <uri>https://old.reddit.com/user/ayyndrew</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"&gt; &lt;img alt="Details on OpenAI's upcoming 'open' AI model" src="https://external-preview.redd.it/jBLPKrE-sNiDaxe0zsX1DO2Ghuda8KNpR6LvSh4IYoc.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=462c8e493352f840f1bcce92fb0555e2b79db252" title="Details on OpenAI's upcoming 'open' AI model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;- In very early stages, targeting an early summer launch&lt;/p&gt; &lt;p&gt;- Will be a reasoning model, aiming to be the top open reasoning model when it launches&lt;/p&gt; &lt;p&gt;- Exploring a highly permissive license, perhaps unlike Llama and Gemma&lt;/p&gt; &lt;p&gt;- Text in text out, reasoning can be tuned on and off&lt;/p&gt; &lt;p&gt;- Runs on &amp;quot;high-end consumer hardware&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ayyndrew"&gt; /u/ayyndrew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://techcrunch.com/2025/04/23/openai-seeks-to-make-its-upcoming-open-ai-model-best-in-class/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6mols/details_on_openais_upcoming_open_ai_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-24T07:53:04+00:00</published>
   </entry>
   <entry>
     <id>t3_1k6je2v</id>
