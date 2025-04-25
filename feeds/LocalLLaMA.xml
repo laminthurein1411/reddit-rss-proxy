@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-25T18:50:24+00:00</updated>
+  <updated>2025-04-25T19:05:33+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k7s6v2</id>
-    <title>Prompting the Datasets for GRPO</title>
-    <updated>2025-04-25T18:29:19+00:00</updated>
-    <author>
-      <name>/u/Dapper-Night-1783</name>
-      <uri>https://old.reddit.com/user/Dapper-Night-1783</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7s6v2/prompting_the_datasets_for_grpo/"&gt; &lt;img alt="Prompting the Datasets for GRPO" src="https://b.thumbs.redditmedia.com/T2NdUDVBaZMldijgUZw_MEH65whIurVQvMdnr5QTpRM.jpg" title="Prompting the Datasets for GRPO" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey there! I was working with Unsloth GRPO for a while and had found lot of good insights. One thing is promoting the dataset for GRPO training. This link and the docs might help you to learn about prompting.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dapper-Night-1783"&gt; /u/Dapper-Night-1783 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.linkedin.com/pulse/prompting-dataset-grpo-saiteja-goud-eahoe?utm_source=share&amp;amp;utm_medium=member_ios&amp;amp;utm_campaign=share_via"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7s6v2/prompting_the_datasets_for_grpo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7s6v2/prompting_the_datasets_for_grpo/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T18:29:19+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k7faed</id>
     <title>Concerned about economical feasibility of LLMs: Are we about to see enshittification of them? (Price hikes, smaller models for paying users)</title>
@@ -86,19 +73,6 @@
     <published>2025-04-24T19:37:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k7rnu9</id>
-    <title>How far can we take quantization aware training (QAT)?</title>
-    <updated>2025-04-25T18:07:46+00:00</updated>
-    <author>
-      <name>/u/gofiend</name>
-      <uri>https://old.reddit.com/user/gofiend</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;em&gt;TLDR: Why can't we train quantization aware models to optimally use the lowest bit quantization it can for every layer / block of parameters?&lt;/em&gt;&lt;/p&gt; &lt;p&gt;There was a recent post here on a very clever new 11 bit float &amp;quot;format&amp;quot; &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k7o89n/we_compress_any_bf16_model_to_70_size_during/"&gt;DF11&lt;/a&gt; that has interesting inferencing time vs. memory tradeoffs compared to BF16. It got me thinking further along a fun topic - what does (smallish) model training look like in ~2 years?&lt;/p&gt; &lt;p&gt;We already have frontier (for their size 😅) quantization-aware trained models from &lt;a href="https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus/"&gt;Google&lt;/a&gt;, and I suspect most labs will release something similar. But I think we're going to go further:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;It's obvious that there is value from BF16/INT8 parameters in some blocks and not in others, and a lot of value in clustering parameters that need dynamic range together&lt;/li&gt; &lt;li&gt;A smaller model (all else being equal) is better for inferencing because memory bandwidth (not compute) is the speed contraint&lt;/li&gt; &lt;li&gt;Model parameters almost seem like a legacy concept at this point. We would all prefer to spend 17GB of VRAM on &lt;a href="https://huggingface.co/google/gemma-3-27b-it-qat-q4_0-gguf"&gt;gemma-3-27b-it-qat-q4_0-gguf&lt;/a&gt; vs. ~24GB of VRAM on &lt;a href="https://huggingface.co/google/gemma-3-12b-it"&gt;gemma-3-12b-it&lt;/a&gt; at BF16&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So: can we train models with their memory footprint and estimated token generation rate (targeting a reference architecture) as part of the objective function?&lt;/p&gt; &lt;p&gt;My &lt;em&gt;naive&lt;/em&gt; proposal:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add memory footprint and a function that approximates token generation rate to the training loss function&lt;/li&gt; &lt;li&gt;Add a differentiable &amp;quot;quantization&amp;quot; parameter for every ~4K of parameters (activation, weights etc.)&lt;/li&gt; &lt;li&gt;During each batch of the forward pass, use the quantization parameter to drop the block of parameters from BF16 to DF11 to INT8 to INT4 probabilistically based on value i.e. &lt;ul&gt; &lt;li&gt;A high value would mostly do the forward pass in BF16, a little in DF11 and very little in INT8/4&lt;/li&gt; &lt;li&gt;A middle value would be mostly INT8 with a little DF11 and INT4&lt;/li&gt; &lt;li&gt;A low value would be mostly INT4&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Calculate the average memory footprint and tokens/second rate (again an approximate reference model is fine) and incorporate into the loss, then run the backward pass &lt;ul&gt; &lt;li&gt;This should make the quantization parameter nicely differentiable and trainable (?)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;At the end of training freeze blocks of parameters at the quantization level that reflects the final values of the quantization parameter (i.e. a mid value would freeze at INT8) &lt;ul&gt; &lt;li&gt;In theory the model would have learnt to cluster its use of high dynamic range parameters to minimize the use of BF16 and maximize the use of INT8/4&lt;/li&gt; &lt;li&gt;You can imagine training multiple sizes of the same model almost in parallel by varying the cost function&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'll poke at the literature, but I'd appreciate pointers to anything similar that folks have done already (and of course your thoughts on why this naive approach is ... naive).&lt;/p&gt; &lt;p&gt;A really simple first step might be running an optimization exercise like this on an existing model ... but &lt;a href="/u/danielhanchen"&gt;u/danielhanchen&lt;/a&gt; might just be all over &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k71mab/unsloth_dynamic_v20_ggufs_llama_4_bug_fixes_kl/"&gt;that already&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gofiend"&gt; /u/gofiend &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T18:07:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k7m902</id>
     <title>Further explorations of 3090 idle power.</title>
     <updated>2025-04-25T14:25:11+00:00</updated>
@@ -149,6 +123,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k71mab/unsloth_dynamic_v20_ggufs_llama_4_bug_fixes_kl/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-24T19:51:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7sxko</id>
+    <title>Latest ExecuTorch release includes windows support, packages for iOS and Android and a number of new models</title>
+    <updated>2025-04-25T19:00:26+00:00</updated>
+    <author>
+      <name>/u/Vegetable_Sun_9225</name>
+      <uri>https://old.reddit.com/user/Vegetable_Sun_9225</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/pytorch/executorch"&gt;ExecuTorch&lt;/a&gt; still appears to have the best performance on mobile and todays release comes with drop in packages for &lt;a href="https://pytorch.org/executorch/main/using-executorch-ios.html#integration"&gt;iOS&lt;/a&gt; and &lt;a href="https://pytorch.org/executorch/0.6/using-executorch-android.html#using-aar-from-maven-central"&gt;Android&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Also includes Ph14, Qwen 2.5 and SmolLm2&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vegetable_Sun_9225"&gt; /u/Vegetable_Sun_9225 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7sxko/latest_executorch_release_includes_windows/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7sxko/latest_executorch_release_includes_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7sxko/latest_executorch_release_includes_windows/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T19:00:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7rnu9</id>
+    <title>How far can we take quantization aware training (QAT)?</title>
+    <updated>2025-04-25T18:07:46+00:00</updated>
+    <author>
+      <name>/u/gofiend</name>
+      <uri>https://old.reddit.com/user/gofiend</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;em&gt;TLDR: Why can't we train quantization aware models to optimally use the lowest bit quantization it can for every layer / block of parameters?&lt;/em&gt;&lt;/p&gt; &lt;p&gt;There was a recent post here on a very clever new 11 bit float &amp;quot;format&amp;quot; &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k7o89n/we_compress_any_bf16_model_to_70_size_during/"&gt;DF11&lt;/a&gt; that has interesting inferencing time vs. memory tradeoffs compared to BF16. It got me thinking further along a fun topic - what does (smallish) model training look like in ~2 years?&lt;/p&gt; &lt;p&gt;We already have frontier (for their size 😅) quantization-aware trained models from &lt;a href="https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus/"&gt;Google&lt;/a&gt;, and I suspect most labs will release something similar. But I think we're going to go further:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;It's obvious that there is value from BF16/INT8 parameters in some blocks and not in others, and a lot of value in clustering parameters that need dynamic range together&lt;/li&gt; &lt;li&gt;A smaller model (all else being equal) is better for inferencing because memory bandwidth (not compute) is the speed contraint&lt;/li&gt; &lt;li&gt;Model parameters almost seem like a legacy concept at this point. We would all prefer to spend 17GB of VRAM on &lt;a href="https://huggingface.co/google/gemma-3-27b-it-qat-q4_0-gguf"&gt;gemma-3-27b-it-qat-q4_0-gguf&lt;/a&gt; vs. ~24GB of VRAM on &lt;a href="https://huggingface.co/google/gemma-3-12b-it"&gt;gemma-3-12b-it&lt;/a&gt; at BF16&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So: can we train models with their memory footprint and estimated token generation rate (targeting a reference architecture) as part of the objective function?&lt;/p&gt; &lt;p&gt;My &lt;em&gt;naive&lt;/em&gt; proposal:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add memory footprint and a function that approximates token generation rate to the training loss function&lt;/li&gt; &lt;li&gt;Add a differentiable &amp;quot;quantization&amp;quot; parameter for every ~4K of parameters (activation, weights etc.)&lt;/li&gt; &lt;li&gt;During each batch of the forward pass, use the quantization parameter to drop the block of parameters from BF16 to DF11 to INT8 to INT4 probabilistically based on value i.e. &lt;ul&gt; &lt;li&gt;A high value would mostly do the forward pass in BF16, a little in DF11 and very little in INT8/4&lt;/li&gt; &lt;li&gt;A middle value would be mostly INT8 with a little DF11 and INT4&lt;/li&gt; &lt;li&gt;A low value would be mostly INT4&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;Calculate the average memory footprint and tokens/second rate (again an approximate reference model is fine) and incorporate into the loss, then run the backward pass &lt;ul&gt; &lt;li&gt;This should make the quantization parameter nicely differentiable and trainable (?)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;At the end of training freeze blocks of parameters at the quantization level that reflects the final values of the quantization parameter (i.e. a mid value would freeze at INT8) &lt;ul&gt; &lt;li&gt;In theory the model would have learnt to cluster its use of high dynamic range parameters to minimize the use of BF16 and maximize the use of INT8/4&lt;/li&gt; &lt;li&gt;You can imagine training multiple sizes of the same model almost in parallel by varying the cost function&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'll poke at the literature, but I'd appreciate pointers to anything similar that folks have done already (and of course your thoughts on why this naive approach is ... naive).&lt;/p&gt; &lt;p&gt;A really simple first step might be running an optimization exercise like this on an existing model ... but &lt;a href="/u/danielhanchen"&gt;u/danielhanchen&lt;/a&gt; might just be all over &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k71mab/unsloth_dynamic_v20_ggufs_llama_4_bug_fixes_kl/"&gt;that already&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gofiend"&gt; /u/gofiend &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rnu9/how_far_can_we_take_quantization_aware_training/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T18:07:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1k6zn5h</id>
@@ -229,19 +229,6 @@
     <published>2025-04-25T15:47:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k7rgyv</id>
-    <title>Tiny Agents: a MCP-powered agent in 50 lines of code</title>
-    <updated>2025-04-25T18:00:23+00:00</updated>
-    <author>
-      <name>/u/julien_c</name>
-      <uri>https://old.reddit.com/user/julien_c</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt; &lt;img alt="Tiny Agents: a MCP-powered agent in 50 lines of code" src="https://external-preview.redd.it/fCTs8gI7KvvOKk5o8AQ0g6EQWi7h5KkDI0MBs8uNyiw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=09d0dce63a6cd60077b6242bb1e5e6a8b6411b5f" title="Tiny Agents: a MCP-powered agent in 50 lines of code" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm a co-founder of HuggingFace and a big &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; fan.&lt;/p&gt; &lt;p&gt;Today I'm dropping Tiny Agents, a 50 lines-of-code Agent in Javascript 🔥&lt;/p&gt; &lt;p&gt;I spent the last few weeks diving into MCP (Model Context Protocol) to understand what the hype was about.&lt;/p&gt; &lt;p&gt;It is fairly simple, but still quite useful as a standard API to expose sets of Tools that can be hooked to LLMs.&lt;/p&gt; &lt;p&gt;But while implementing it I came to my second realization:&lt;/p&gt; &lt;p&gt;Once you have a MCP Client, an Agent is literally just a while loop on top of it. 🤯&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/blog/tiny-agents"&gt;https://huggingface.co/blog/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/v0acl2n6t0xe1.png?width=1846&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8cecc5f62c6e05855d5ea1b67cceb56e2ccddbf5"&gt;https://preview.redd.it/v0acl2n6t0xe1.png?width=1846&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8cecc5f62c6e05855d5ea1b67cceb56e2ccddbf5&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/julien_c"&gt; /u/julien_c &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T18:00:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k7e542</id>
     <title>7B Reasoning Rust Coding Model with Open Dataset</title>
     <updated>2025-04-25T06:22:07+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7r8qu/sota_spatial_reasoning_in_2025/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-25T17:51:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7rgyv</id>
+    <title>Tiny Agents: a MCP-powered agent in 50 lines of code</title>
+    <updated>2025-04-25T18:00:23+00:00</updated>
+    <author>
+      <name>/u/julien_c</name>
+      <uri>https://old.reddit.com/user/julien_c</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt; &lt;img alt="Tiny Agents: a MCP-powered agent in 50 lines of code" src="https://external-preview.redd.it/fCTs8gI7KvvOKk5o8AQ0g6EQWi7h5KkDI0MBs8uNyiw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=09d0dce63a6cd60077b6242bb1e5e6a8b6411b5f" title="Tiny Agents: a MCP-powered agent in 50 lines of code" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm a co-founder of HuggingFace and a big &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; fan.&lt;/p&gt; &lt;p&gt;Today I'm dropping Tiny Agents, a 50 lines-of-code Agent in Javascript 🔥&lt;/p&gt; &lt;p&gt;I spent the last few weeks diving into MCP (Model Context Protocol) to understand what the hype was about.&lt;/p&gt; &lt;p&gt;It is fairly simple, but still quite useful as a standard API to expose sets of Tools that can be hooked to LLMs.&lt;/p&gt; &lt;p&gt;But while implementing it I came to my second realization:&lt;/p&gt; &lt;p&gt;Once you have a MCP Client, an Agent is literally just a while loop on top of it. 🤯&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/blog/tiny-agents"&gt;https://huggingface.co/blog/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/v0acl2n6t0xe1.png?width=1846&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8cecc5f62c6e05855d5ea1b67cceb56e2ccddbf5"&gt;https://preview.redd.it/v0acl2n6t0xe1.png?width=1846&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8cecc5f62c6e05855d5ea1b67cceb56e2ccddbf5&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/julien_c"&gt; /u/julien_c &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7rgyv/tiny_agents_a_mcppowered_agent_in_50_lines_of_code/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T18:00:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1k7kv9a</id>
