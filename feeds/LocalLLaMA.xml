@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-25T13:12:45+00:00</updated>
+  <updated>2025-04-25T13:28:57+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k6nrl1</id>
-    <title>I benchmarked the Gemma 3 27b QAT models</title>
-    <updated>2025-04-24T09:12:34+00:00</updated>
-    <author>
-      <name>/u/jaxchang</name>
-      <uri>https://old.reddit.com/user/jaxchang</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to know what models performed the best, and it seemed like nobody had actual numbers for this information... so I ran the numbers myself. &lt;/p&gt; &lt;p&gt;I am running on llama.cpp v1.27.1 for the GGUFs, and LM Studio MLX v0.13.2 for the MLX model. &lt;/p&gt; &lt;p&gt;At first, I tried calculating perplexity. However, the PPL numbers kept on yielding really weird values from the PTB/wiki.test.raw corpus. The QAT models would generate numbers higher than the original BF16, and Bartowski's quant scored higher than the original QAT from google. I think the model is overfitting there, so it's not really a good metric. &lt;/p&gt; &lt;p&gt;So I decided to just use GPQA-main instead. It's more a more biased benchmark in terms of topic, but I suspect that actually doesn't matter too much. We're comparing different quants of the same model, not different finetunes/models. In the latter case, we might expect different finetunes/models to maybe perform better at say math but worse at coding/writing, have more biology questions in the training data set vs physics, or other biased performance skew etc. However, quantization is not so fine-grained; it simply truncates the lowest value bits for each parameter, so quality reduction/noise introduced should be more generalizable. &lt;/p&gt; &lt;p&gt;Here are the GPQA-main scores for the quants I tested: &lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Model name&lt;/th&gt; &lt;th&gt;Score&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;mlx-community/gemma-3-27b-it-qat-4bit&lt;/td&gt; &lt;td&gt;0.333&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/td&gt; &lt;td&gt;0.346&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;bartowski/google_gemma-3-27b-it-qat-GGUF (Q4_0)&lt;/td&gt; &lt;td&gt;0.352&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;unsloth/gemma-3-27b-it (via Openrouter api Chutes)&lt;/td&gt; &lt;td&gt;0.371&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Unquantized Gemma 3 27b (via Huggingface api)&lt;/td&gt; &lt;td&gt;0.375&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Note that it takes 2-3 hours to run this benchmark per model for me, so it's not exactly a quick test.&lt;/p&gt; &lt;p&gt;Seems like the &lt;strong&gt;Bartowski QAT Q4_0 is the probably the best choice&lt;/strong&gt; if you want to run Gemma 3 QAT locally. It also seems to be 1-2tok/sec faster than the MLX model for me.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaxchang"&gt; /u/jaxchang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6nrl1/i_benchmarked_the_gemma_3_27b_qat_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-24T09:12:34+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k7j6w7</id>
-    <title>LM Studio doesn't support image to text?</title>
-    <updated>2025-04-25T12:01:43+00:00</updated>
-    <author>
-      <name>/u/intimate_sniffer69</name>
-      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LM Studio appears to have a paste option with a paperclip icon, but even with a model like &lt;a href="https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503"&gt;https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503&lt;/a&gt;, it indicates that the model &amp;quot;doesn't support image to text&amp;quot; even though it explicitly says it on huggingface.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j6w7/lm_studio_doesnt_support_image_to_text/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j6w7/lm_studio_doesnt_support_image_to_text/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j6w7/lm_studio_doesnt_support_image_to_text/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T12:01:43+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k6pplv</id>
     <title>GLM-4-32B Q5_K_S can fit in 24GB cards with decent context length</title>
@@ -119,10 +93,23 @@
       <name>/u/sosuke</name>
       <uri>https://old.reddit.com/user/sosuke</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF"&gt;https://huggingface.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This model is the only one that I found used Cline’s replace_in_file tool successfully.&lt;/p&gt; &lt;p&gt;I used LM Studio server&lt;/p&gt; &lt;p&gt;IQ3_XXS&lt;/p&gt; &lt;p&gt;~90k context length&lt;/p&gt; &lt;p&gt;Full GPU offload&lt;/p&gt; &lt;p&gt;Flash attention enabled &lt;/p&gt; &lt;p&gt;K and V cache set to Q4_0&lt;/p&gt; &lt;p&gt;I tried dozens of models, flavors and even tried making my own mergekit variations. I was super happy with my mergekit but it couldn’t do replace_in_file.&lt;/p&gt; &lt;p&gt;My goal was to find one that fit in my VRAM. I tried every model that fit. New Gemma, QWQ, GLM, Queen, Llama and many variants that advertised function calling.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sosuke"&gt; /u/sosuke &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kbap/cline_tool_usage_on_rtx_4060ti_16gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kbap/cline_tool_usage_on_rtx_4060ti_16gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Edit: this is all my personal best as of 2025-04-23 (2 days ago) as new stuff comes out constantly &lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF"&gt;https://huggingface.co/bartowski/mistralai_Mistral-Small-3.1-24B-Instruct-2503-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This model is the only one that I found used Cline’s replace_in_file tool successfully.&lt;/p&gt; &lt;p&gt;I used LM Studio server&lt;/p&gt; &lt;p&gt;IQ3_XS&lt;/p&gt; &lt;p&gt;~90k context length&lt;/p&gt; &lt;p&gt;Full GPU offload&lt;/p&gt; &lt;p&gt;Flash attention enabled &lt;/p&gt; &lt;p&gt;K and V cache set to Q4_0&lt;/p&gt; &lt;p&gt;I tried dozens of models, flavors and even tried making my own mergekit variations. I was super happy with my mergekit but it couldn’t do replace_in_file.&lt;/p&gt; &lt;p&gt;My goal was to find one that fit in my VRAM. I tried every model that fit. New Gemma, QWQ, GLM, Queen, Llama and many variants that advertised function calling.&lt;/p&gt; &lt;p&gt;Edit: Unsloth just released a version 18 hours ago. No I haven’t tried it yet. Yes I will try it. I’m guessing Q2_K_L will be the highest Quant option. Or IQ3_XXS&lt;/p&gt; &lt;p&gt;Edit 2: of course after I share this Lm studio has a new beta with tool parameters I have to test out.&lt;/p&gt; &lt;p&gt;Edit 3: Unsloth variant iq3_xxs failed my test but I haven’t yet updated Lm studio&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sosuke"&gt; /u/sosuke &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kbap/cline_tool_usage_on_rtx_4060ti_16gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kbap/cline_tool_usage_on_rtx_4060ti_16gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kbap/cline_tool_usage_on_rtx_4060ti_16gb_vram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-25T12:59:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7kv9a</id>
+    <title>Intel Updates Its PyTorch Extension With DeepSeek-R1 Support, New Optimizations</title>
+    <updated>2025-04-25T13:25:15+00:00</updated>
+    <author>
+      <name>/u/FastDecode1</name>
+      <uri>https://old.reddit.com/user/FastDecode1</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kv9a/intel_updates_its_pytorch_extension_with/"&gt; &lt;img alt="Intel Updates Its PyTorch Extension With DeepSeek-R1 Support, New Optimizations" src="https://external-preview.redd.it/yTiUURrBkqcGYJGBhqzC01YOstzVvXfVd3FxAo3YWYU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=73fdf48b98f8c4bbf03db30badce672add745943" title="Intel Updates Its PyTorch Extension With DeepSeek-R1 Support, New Optimizations" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FastDecode1"&gt; /u/FastDecode1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.phoronix.com/news/Intel-PyTorch-Extension-2.7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kv9a/intel_updates_its_pytorch_extension_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7kv9a/intel_updates_its_pytorch_extension_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T13:25:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1k6xiy1</id>
@@ -136,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k6xiy1/rtx_5090_llm_benchmarks_outperforming_the_a100_by/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-24T17:06:34+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k7k1ck</id>
-    <title>No thinking, is the right way to think?</title>
-    <updated>2025-04-25T12:45:32+00:00</updated>
-    <author>
-      <name>/u/Eralyon</name>
-      <uri>https://old.reddit.com/user/Eralyon</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/abs/2504.09858"&gt;https://arxiv.org/abs/2504.09858&lt;/a&gt;&lt;/p&gt; &lt;p&gt;TLDR:&lt;br /&gt; Bypassing the thinking process, forcing the beginning of the answer by &amp;quot;Thinking: Okay, I think I have finished thinking&amp;quot; (lol), they get similar/better inference results !!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Eralyon"&gt; /u/Eralyon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T12:45:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1k7h8i5</id>
@@ -190,6 +164,19 @@
     <published>2025-04-25T05:00:28+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k7k1ck</id>
+    <title>No thinking, is the right way to think?</title>
+    <updated>2025-04-25T12:45:32+00:00</updated>
+    <author>
+      <name>/u/Eralyon</name>
+      <uri>https://old.reddit.com/user/Eralyon</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://arxiv.org/abs/2504.09858"&gt;https://arxiv.org/abs/2504.09858&lt;/a&gt;&lt;/p&gt; &lt;p&gt;TLDR:&lt;br /&gt; Bypassing the thinking process, forcing the beginning of the answer by &amp;quot;Thinking: Okay, I think I have finished thinking&amp;quot; (lol), they get similar/better inference results !!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Eralyon"&gt; /u/Eralyon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7k1ck/no_thinking_is_the_right_way_to_think/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T12:45:32+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k7faed</id>
     <title>Concerned about economical feasibility of LLMs: Are we about to see enshittification of them? (Price hikes, smaller models for paying users)</title>
     <updated>2025-04-25T07:43:33+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7faed/concerned_about_economical_feasibility_of_llms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-25T07:43:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7krlm</id>
+    <title>Gemma 3 fakes (and ignores) the system prompt</title>
+    <updated>2025-04-25T13:20:27+00:00</updated>
+    <author>
+      <name>/u/WolframRavenwolf</name>
+      <uri>https://old.reddit.com/user/WolframRavenwolf</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7krlm/gemma_3_fakes_and_ignores_the_system_prompt/"&gt; &lt;img alt="Gemma 3 fakes (and ignores) the system prompt" src="https://preview.redd.it/xuycbwnk4zwe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8fba119d92fca9059223ac136a22602c0f3b43b8" title="Gemma 3 fakes (and ignores) the system prompt" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The screenshot shows what Gemma 3 said when I pointed out that it wasn't following its system prompt properly. &amp;quot;Who reads the fine print? 😉&amp;quot; - really, seriously, WTF?&lt;/p&gt; &lt;p&gt;At first I thought it may be an issue with the format/quant, an inference engine bug or just my settings or prompt. But digging deeper, I realized I had been fooled: While the [Gemma 3 chat template](&lt;a href="https://huggingface.co/google/gemma-3-27b-it/blob/main/chat%5C_template.json"&gt;https://huggingface.co/google/gemma-3-27b-it/blob/main/chat\_template.json&lt;/a&gt;) *does* support a system role, all it *really* does is dump the system prompt into the first user message. That's both ugly *and* unreliable - doesn't even use any special tokens, so there's no way for the model to differentiate between what the system (platform/dev) specified as general instructions and what the (possibly untrusted) user said. 🙈&lt;/p&gt; &lt;p&gt;Sure, the model still follows instructions like any other user input - but it never learned to treat them as higher-level system rules, so they're basically &amp;quot;optional&amp;quot;, which is why it ignored mine like &amp;quot;fine print&amp;quot;. That makes Gemma 3 utterly unreliable - so I'm switching to Mistral Small 3.1 24B Instruct 2503 which has proper system prompt support.&lt;/p&gt; &lt;p&gt;Hopefully Google will provide *real* system prompt support in Gemma 4 - or the community will deliver a better finetune in the meantime. For now, I'm hoping Mistral's vision capability gets wider support, since that's one feature I'll miss from Gemma.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WolframRavenwolf"&gt; /u/WolframRavenwolf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/xuycbwnk4zwe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7krlm/gemma_3_fakes_and_ignores_the_system_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7krlm/gemma_3_fakes_and_ignores_the_system_prompt/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T13:20:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1k7b16b</id>
@@ -242,17 +242,17 @@
     <published>2025-04-24T19:37:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k7j2h5</id>
-    <title>Modular have come a long way in just 3 years</title>
-    <updated>2025-04-25T11:55:06+00:00</updated>
+    <id>t3_1k7b5j6</id>
+    <title>Developed a website for modelling LLM throughput</title>
+    <updated>2025-04-25T03:21:57+00:00</updated>
     <author>
-      <name>/u/Cane_P</name>
-      <uri>https://old.reddit.com/user/Cane_P</uri>
+      <name>/u/Mindless_Pain1860</name>
+      <uri>https://old.reddit.com/user/Mindless_Pain1860</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In their latest presentation, they talk about how they now have support for CPU (x86 &amp;amp; ARM since 2023) and NVIDIA &amp;amp; AMD GPU's (I believe that it is currently optimized for A100, H100 &amp;amp; MI300X. There might be more, but those are the models that I have seen mentioned).&lt;/p&gt; &lt;p&gt;They have already open sourced some of their code and will soon release ~250k lines of GPU kernel code, and we will soon get to know how the Python operability is getting along to.&lt;/p&gt; &lt;p&gt;They have a new simpler license for Mojo and MAX.&lt;/p&gt; &lt;p&gt;Presentation (unfortunately bad audio): &lt;a href="https://www.youtube.com/live/uul6hZ5NXC8"&gt;https://www.youtube.com/live/uul6hZ5NXC8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Article from EE Times: &lt;a href="https://www.eetimes.com/after-three-years-modulars-cuda-alternative-is-ready/"&gt;https://www.eetimes.com/after-three-years-modulars-cuda-alternative-is-ready/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cane_P"&gt; /u/Cane_P &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"&gt; &lt;img alt="Developed a website for modelling LLM throughput" src="https://external-preview.redd.it/8P3kKONxqp49lLZzilGLkIwcXiwOoVAslJpLelCDfEw.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=36c88c2d31e0cd3fa47c34722489596c9f735a9d" title="Developed a website for modelling LLM throughput" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;You can simply copy and paste the model config from Hugging Face, and it will automatically extract the necessary information for calculations. It also supports Gated FFN and GQA to improve calculation accuracy.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Todo:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;MoE&lt;/li&gt; &lt;li&gt;Encoder-Decoder&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I built this because the old Desmos version had several serious flaws, and many people complained it was hard to use. So I spent some time developing this website, hope it helps!&lt;/p&gt; &lt;p&gt;&lt;a href="https://slack-agent.github.io/LLM-Performance-Visualizer/"&gt;https://slack-agent.github.io/LLM-Performance-Visualizer/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mindless_Pain1860"&gt; /u/Mindless_Pain1860 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k7b5j6"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T11:55:06+00:00</published>
+    <published>2025-04-25T03:21:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1k7ictf</id>
@@ -268,19 +268,6 @@
     <published>2025-04-25T11:14:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k7b5j6</id>
-    <title>Developed a website for modelling LLM throughput</title>
-    <updated>2025-04-25T03:21:57+00:00</updated>
-    <author>
-      <name>/u/Mindless_Pain1860</name>
-      <uri>https://old.reddit.com/user/Mindless_Pain1860</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"&gt; &lt;img alt="Developed a website for modelling LLM throughput" src="https://external-preview.redd.it/8P3kKONxqp49lLZzilGLkIwcXiwOoVAslJpLelCDfEw.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=36c88c2d31e0cd3fa47c34722489596c9f735a9d" title="Developed a website for modelling LLM throughput" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;You can simply copy and paste the model config from Hugging Face, and it will automatically extract the necessary information for calculations. It also supports Gated FFN and GQA to improve calculation accuracy.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Todo:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;MoE&lt;/li&gt; &lt;li&gt;Encoder-Decoder&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I built this because the old Desmos version had several serious flaws, and many people complained it was hard to use. So I spent some time developing this website, hope it helps!&lt;/p&gt; &lt;p&gt;&lt;a href="https://slack-agent.github.io/LLM-Performance-Visualizer/"&gt;https://slack-agent.github.io/LLM-Performance-Visualizer/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mindless_Pain1860"&gt; /u/Mindless_Pain1860 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k7b5j6"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7b5j6/developed_a_website_for_modelling_llm_throughput/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T03:21:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k71mab</id>
     <title>Unsloth Dynamic v2.0 GGUFs + Llama 4 Bug Fixes + KL Divergence</title>
     <updated>2025-04-24T19:51:26+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k71mab/unsloth_dynamic_v20_ggufs_llama_4_bug_fixes_kl/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-24T19:51:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k7j2h5</id>
+    <title>Modular have come a long way in just 3 years</title>
+    <updated>2025-04-25T11:55:06+00:00</updated>
+    <author>
+      <name>/u/Cane_P</name>
+      <uri>https://old.reddit.com/user/Cane_P</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In their latest presentation, they talk about how they now have support for CPU (x86 &amp;amp; ARM since 2023) and NVIDIA &amp;amp; AMD GPU's (I believe that it is currently optimized for A100, H100 &amp;amp; MI300X. There might be more, but those are the models that I have seen mentioned).&lt;/p&gt; &lt;p&gt;They have already open sourced some of their code and will soon release ~250k lines of GPU kernel code, and we will soon get to know how the Python operability is getting along to.&lt;/p&gt; &lt;p&gt;They have a new simpler license for Mojo and MAX.&lt;/p&gt; &lt;p&gt;Presentation (unfortunately bad audio): &lt;a href="https://www.youtube.com/live/uul6hZ5NXC8"&gt;https://www.youtube.com/live/uul6hZ5NXC8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Article from EE Times: &lt;a href="https://www.eetimes.com/after-three-years-modulars-cuda-alternative-is-ready/"&gt;https://www.eetimes.com/after-three-years-modulars-cuda-alternative-is-ready/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cane_P"&gt; /u/Cane_P &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7j2h5/modular_have_come_a_long_way_in_just_3_years/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-25T11:55:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1k6zn5h</id>
