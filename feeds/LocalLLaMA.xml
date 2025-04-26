@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-26T16:06:14+00:00</updated>
+  <updated>2025-04-26T16:24:44+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1k7ue47</id>
-    <title>Trained the tiny stories dataset on a 12M parameter model.</title>
-    <updated>2025-04-25T20:02:05+00:00</updated>
+    <id>t3_1k8ehim</id>
+    <title>NN Building Tech Questions</title>
+    <updated>2025-04-26T14:40:46+00:00</updated>
     <author>
-      <name>/u/Slaghton</name>
-      <uri>https://old.reddit.com/user/Slaghton</uri>
+      <name>/u/yukiarimo</name>
+      <uri>https://old.reddit.com/user/yukiarimo</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7ue47/trained_the_tiny_stories_dataset_on_a_12m/"&gt; &lt;img alt="Trained the tiny stories dataset on a 12M parameter model." src="https://preview.redd.it/qnx9gqc671xe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fdcb4160b1d2416d1a24263a7cd97dc785946e9f" title="Trained the tiny stories dataset on a 12M parameter model." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Trained a 12M Parameter model on the tiny stories dataset. &lt;/p&gt; &lt;p&gt;**GPU used is an Nvidia 4080** &lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/datasets/roneneldan/TinyStories"&gt;https://huggingface.co/datasets/roneneldan/TinyStories&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I played some video games while it was running off and on so it probably would've finished a bit earlier around 45 hours or so. &lt;/p&gt; &lt;p&gt;I think for smaller models, if you go past the Chinchilla Scaling Law of using 20 tokens per parameter, you can see improvements. This becomes less and less as the model is scaled up though I believe. &lt;/p&gt; &lt;p&gt;(Though maybe bigger models would actually benefit to but the compute becomes ridiculous and gains might be much lower than smaller models)&lt;/p&gt; &lt;p&gt;P.S. The stories aren't the best (lol), but they are pretty coherent. &lt;/p&gt; &lt;p&gt;Configuration info below.&lt;/p&gt; &lt;p&gt;config = LlamaConfig(&lt;/p&gt; &lt;p&gt;vocab_size=vocab_size,&lt;/p&gt; &lt;p&gt;hidden_size=384,&lt;/p&gt; &lt;p&gt;intermediate_size=768, &lt;/p&gt; &lt;p&gt;num_hidden_layers=8, &lt;/p&gt; &lt;p&gt;num_attention_heads=8, &lt;/p&gt; &lt;p&gt;max_position_embeddings=6000,&lt;/p&gt; &lt;p&gt;rms_norm_eps=1e-5,&lt;/p&gt; &lt;p&gt;initializer_range=0.02,&lt;/p&gt; &lt;p&gt;use_cache=True,&lt;/p&gt; &lt;p&gt;tie_word_embeddings=False,&lt;/p&gt; &lt;p&gt;attention_dropout=0.1,&lt;/p&gt; &lt;p&gt;hidden_dropout=0.1,&lt;/p&gt; &lt;p&gt;)&lt;/p&gt; &lt;p&gt;training_args = TrainingArguments(&lt;/p&gt; &lt;p&gt;output_dir=output_dir,&lt;/p&gt; &lt;p&gt;overwrite_output_dir=False,&lt;/p&gt; &lt;p&gt;num_train_epochs=1, &lt;/p&gt; &lt;p&gt;per_device_train_batch_size=8,&lt;/p&gt; &lt;p&gt;gradient_accumulation_steps=1,&lt;/p&gt; &lt;p&gt;save_strategy=&amp;quot;steps&amp;quot;, # Use steps for saving&lt;/p&gt; &lt;p&gt;save_steps=5000,&lt;/p&gt; &lt;p&gt;logging_strategy=&amp;quot;steps&amp;quot;, # Use steps for logging&lt;/p&gt; &lt;p&gt;logging_steps=100, # Log training loss frequently for the scheduler&lt;/p&gt; &lt;p&gt;save_total_limit=10,&lt;/p&gt; &lt;p&gt;prediction_loss_only=True, # Often True for Causal LM if not evaluating metrics like perplexity&lt;/p&gt; &lt;p&gt;learning_rate=.0008, # Initial learning rate for AdamW&lt;/p&gt; &lt;p&gt;weight_decay=.05,&lt;/p&gt; &lt;p&gt;fp16=True,&lt;/p&gt; &lt;p&gt;gradient_checkpointing=True,&lt;/p&gt; &lt;p&gt;max_grad_norm=1.0,&lt;/p&gt; &lt;p&gt;# Evaluation settings (important if using eval_loss with scheduler later)&lt;/p&gt; &lt;p&gt;evaluation_strategy=&amp;quot;steps&amp;quot; if not disable_eval else &amp;quot;no&amp;quot;,&lt;/p&gt; &lt;p&gt;eval_steps=5000 if not disable_eval else None,&lt;/p&gt; &lt;p&gt;report_to=&amp;quot;wandb&amp;quot;, # Log to W&amp;amp;B&lt;/p&gt; &lt;p&gt;)&lt;/p&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;Training stats below.&lt;/p&gt; &lt;p&gt;{'train_runtime': 180146.524, 'train_samples_per_second': 35.091, 'train_steps_per_second': 4.386, 'train_loss': 0.23441845736255604, 'epoch': 3.0}&lt;/p&gt; &lt;p&gt;100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 790191/790191 [50:02:26&amp;lt;00:00, 4.39it/s]&lt;/p&gt; &lt;p&gt;2025-04-25 13:32:42,894 - INFO - Saving final model and training state...&lt;/p&gt; &lt;p&gt;***** train metrics *****&lt;/p&gt; &lt;p&gt;epoch = 3.0&lt;/p&gt; &lt;p&gt;total_flos = 711039651GF&lt;/p&gt; &lt;p&gt;train_loss = 0.2344&lt;/p&gt; &lt;p&gt;train_runtime = 2 days, 2:02:26.52&lt;/p&gt; &lt;p&gt;train_samples_per_second = 35.091&lt;/p&gt; &lt;p&gt;train_steps_per_second = 4.386&lt;/p&gt; &lt;p&gt;2025-04-25 13:32:43,067 - INFO - Training completed successfully!&lt;/p&gt; &lt;p&gt;2025-04-25 13:32:43,068 - INFO - Final model saved to: ./llama_model_test\final&lt;/p&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;wandb: Run summary:&lt;/p&gt; &lt;p&gt;wandb: eval/loss 0.19124&lt;/p&gt; &lt;p&gt;wandb: eval/runtime 47.0576&lt;/p&gt; &lt;p&gt;wandb: eval/samples_per_second 225.022&lt;/p&gt; &lt;p&gt;wandb: eval/steps_per_second 28.136&lt;/p&gt; &lt;p&gt;wandb: lr 0.0&lt;/p&gt; &lt;p&gt;wandb: total_flos 7.634730128676549e+17&lt;/p&gt; &lt;p&gt;wandb: train/epoch 3&lt;/p&gt; &lt;p&gt;wandb: train/global_step 790191&lt;/p&gt; &lt;p&gt;wandb: train/grad_norm 0.22934&lt;/p&gt; &lt;p&gt;wandb: train/learning_rate 0.0&lt;/p&gt; &lt;p&gt;wandb: train/loss 0.1965&lt;/p&gt; &lt;p&gt;wandb: train_loss 0.23442&lt;/p&gt; &lt;p&gt;wandb: train_runtime 180146.524&lt;/p&gt; &lt;p&gt;wandb: train_samples_per_second 35.091&lt;/p&gt; &lt;p&gt;wandb: train_steps_per_second 4.386&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Slaghton"&gt; /u/Slaghton &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qnx9gqc671xe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7ue47/trained_the_tiny_stories_dataset_on_a_12m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7ue47/trained_the_tiny_stories_dataset_on_a_12m/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello community! I’m trying to do some fun in PyTorch with LLMs and other models. I have a few questions:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;How do I create a custom projector for any LLM (e.g., Gemma 3 12B)? For example, I have an AI that can produce data in a 768x512-dimensional vector. How can I input that into LLM and infer (plus train beforehand)?&lt;/li&gt; &lt;li&gt;I want to create music completion (like T9 on a phone keyboard, but for music). I have both MiDi and MuseXML files. Do you have any suggestions on how I can turn them into defined tokens (e.g., 16th-C2) combining both bass and treble clefs so I don’t need audio?&lt;/li&gt; &lt;li&gt;How to create a pseudo-distilled NN model with no much data. Like, let’s do that for audio. I have another NN that takes my audio input, does some magical transformers (any: can be noise cleaning or even voice swap), and then returns complete audio, same 48kHz mono duration the same, just changed. How I can make NN in PyTorch that can take like just an hour of data pairs and can replicate the results. Yes, I know how to built in PyTorch, I just asking maybe there some specific function or whatever for such a task!&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yukiarimo"&gt; /u/yukiarimo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ehim/nn_building_tech_questions/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ehim/nn_building_tech_questions/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ehim/nn_building_tech_questions/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T20:02:05+00:00</published>
+    <published>2025-04-26T14:40:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1k7t6dm</id>
@@ -99,19 +99,6 @@
     <published>2025-04-25T19:22:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k89gaa</id>
-    <title>Handling Mid-Sentence Pauses in Voice Conversations?</title>
-    <updated>2025-04-26T09:58:37+00:00</updated>
-    <author>
-      <name>/u/_lindt_</name>
-      <uri>https://old.reddit.com/user/_lindt_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I don’t think this is an LLM/ML problem — it feels more like an algorithmic issue. Current systems don’t handle natural pauses well. If you pause mid-sentence to think, the model often responds prematurely based only on what’s been said so far, which disrupts the conversation’s flow. Has anyone found or implemented a solution for this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_lindt_"&gt; /u/_lindt_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T09:58:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k7krlm</id>
     <title>Gemma 3 fakes (and ignores) the system prompt</title>
     <updated>2025-04-25T13:20:27+00:00</updated>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k85izg/5tps_with_llama_4_scout_via_ollama_and_unsloth/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T05:26:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k89gaa</id>
+    <title>Handling Mid-Sentence Pauses in Voice Conversations?</title>
+    <updated>2025-04-26T09:58:37+00:00</updated>
+    <author>
+      <name>/u/_lindt_</name>
+      <uri>https://old.reddit.com/user/_lindt_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I don’t think this is an LLM/ML problem — it feels more like an algorithmic issue. Current systems don’t handle natural pauses well. If you pause mid-sentence to think, the model often responds prematurely based only on what’s been said so far, which disrupts the conversation’s flow. Has anyone found or implemented a solution for this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_lindt_"&gt; /u/_lindt_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k89gaa/handling_midsentence_pauses_in_voice_conversations/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T09:58:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1k88k0h</id>
@@ -268,6 +268,19 @@
     <published>2025-04-26T12:20:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k88v0p</id>
+    <title>Newelle 0.9.5 Released: Internet Access, Improved Document Reading</title>
+    <updated>2025-04-26T09:15:18+00:00</updated>
+    <author>
+      <name>/u/iTzSilver_YT</name>
+      <uri>https://old.reddit.com/user/iTzSilver_YT</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"&gt; &lt;img alt="Newelle 0.9.5 Released: Internet Access, Improved Document Reading" src="https://preview.redd.it/6n7tbbk5c5xe1.gif?width=640&amp;amp;crop=smart&amp;amp;s=c94def82cef2aab0509b503092cef40a3a4c19f3" title="Newelle 0.9.5 Released: Internet Access, Improved Document Reading" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Newelle 0.9.5 Released! Newelle is an advanced AI assistant for Linux supporting any LLM (Local or Online), voice commands, extensions and much more!&lt;/p&gt; &lt;p&gt;🔎 Implemented Web Search with SearXNG, DuckDuckGo, and Tavily&lt;br /&gt; 🌐 Website Reading: ask questions about websites (Write #url to embed it)&lt;br /&gt; 🔢 Improved inline LaTeX support&lt;br /&gt; 🗣 New empty chat placeholder&lt;br /&gt; 📎 Improved Document reading: semantic search will only be done if the document is too long&lt;br /&gt; 💭 New thinking widget&lt;br /&gt; 🧠 Add vision support for llama4 on Groq and possibility to choose provider on OpenRouter&lt;br /&gt; 🌍 New translations (Traditional Chinese, Bengali, Hindi)&lt;br /&gt; 🐞 Various bug fixes&lt;/p&gt; &lt;p&gt;Source Code: &lt;a href="https://github.com/qwersyk/Newelle/"&gt;https://github.com/qwersyk/Newelle/&lt;/a&gt;&lt;br /&gt; Flathub: &lt;a href="https://flathub.org/apps/io.github.qwersyk.Newelle"&gt;https://flathub.org/apps/io.github.qwersyk.Newelle&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iTzSilver_YT"&gt; /u/iTzSilver_YT &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/6n7tbbk5c5xe1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T09:15:18+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k8f38v</id>
     <title>Dia-1.6B in Jax to generate audio from text from any machine</title>
     <updated>2025-04-26T15:07:47+00:00</updated>
@@ -294,17 +307,17 @@
     <published>2025-04-26T11:23:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k88v0p</id>
-    <title>Newelle 0.9.5 Released: Internet Access, Improved Document Reading</title>
-    <updated>2025-04-26T09:15:18+00:00</updated>
+    <id>t3_1k8601g</id>
+    <title>Qwen AI - My most used LLM!</title>
+    <updated>2025-04-26T05:56:59+00:00</updated>
     <author>
-      <name>/u/iTzSilver_YT</name>
-      <uri>https://old.reddit.com/user/iTzSilver_YT</uri>
+      <name>/u/Glittering-Cancel-25</name>
+      <uri>https://old.reddit.com/user/Glittering-Cancel-25</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"&gt; &lt;img alt="Newelle 0.9.5 Released: Internet Access, Improved Document Reading" src="https://preview.redd.it/6n7tbbk5c5xe1.gif?width=640&amp;amp;crop=smart&amp;amp;s=c94def82cef2aab0509b503092cef40a3a4c19f3" title="Newelle 0.9.5 Released: Internet Access, Improved Document Reading" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Newelle 0.9.5 Released! Newelle is an advanced AI assistant for Linux supporting any LLM (Local or Online), voice commands, extensions and much more!&lt;/p&gt; &lt;p&gt;🔎 Implemented Web Search with SearXNG, DuckDuckGo, and Tavily&lt;br /&gt; 🌐 Website Reading: ask questions about websites (Write #url to embed it)&lt;br /&gt; 🔢 Improved inline LaTeX support&lt;br /&gt; 🗣 New empty chat placeholder&lt;br /&gt; 📎 Improved Document reading: semantic search will only be done if the document is too long&lt;br /&gt; 💭 New thinking widget&lt;br /&gt; 🧠 Add vision support for llama4 on Groq and possibility to choose provider on OpenRouter&lt;br /&gt; 🌍 New translations (Traditional Chinese, Bengali, Hindi)&lt;br /&gt; 🐞 Various bug fixes&lt;/p&gt; &lt;p&gt;Source Code: &lt;a href="https://github.com/qwersyk/Newelle/"&gt;https://github.com/qwersyk/Newelle/&lt;/a&gt;&lt;br /&gt; Flathub: &lt;a href="https://flathub.org/apps/io.github.qwersyk.Newelle"&gt;https://flathub.org/apps/io.github.qwersyk.Newelle&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iTzSilver_YT"&gt; /u/iTzSilver_YT &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/6n7tbbk5c5xe1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k88v0p/newelle_095_released_internet_access_improved/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use Qwen, DeepSeek, paid ChatGPT, and paid Claude. I must say, i find myself using Qwen the most often. It's great, especially for a free model! &lt;/p&gt; &lt;p&gt;I use all of the LLMs for general and professional work. E.g., writing, planning, management, self-help, idea generation, etc. For most of those things, i just find that Qwen produces the best results and requires the least rework, follow ups, etc. I've tested all of the LLMs by putting in the exact same prompt (i've probably done this a couple dozen times) and overall (but not always), Qwen produces the best result for me. I absolutely can't wait until they release Qwen3 Max! I also have a feeling DeepSeek is gonna go with with R2... &lt;/p&gt; &lt;p&gt;Id love to know what LLM you find yourself using the most, what you use them for (that makes a big difference), and why you think that one is the best. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Cancel-25"&gt; /u/Glittering-Cancel-25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T09:15:18+00:00</published>
+    <published>2025-04-26T05:56:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8fe14</id>
@@ -318,18 +331,5 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8fe14/hot_take_gemini_25_pro_makes_too_many_assumptions/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T15:21:19+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k8601g</id>
-    <title>Qwen AI - My most used LLM!</title>
-    <updated>2025-04-26T05:56:59+00:00</updated>
-    <author>
-      <name>/u/Glittering-Cancel-25</name>
-      <uri>https://old.reddit.com/user/Glittering-Cancel-25</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use Qwen, DeepSeek, paid ChatGPT, and paid Claude. I must say, i find myself using Qwen the most often. It's great, especially for a free model! &lt;/p&gt; &lt;p&gt;I use all of the LLMs for general and professional work. E.g., writing, planning, management, self-help, idea generation, etc. For most of those things, i just find that Qwen produces the best results and requires the least rework, follow ups, etc. I've tested all of the LLMs by putting in the exact same prompt (i've probably done this a couple dozen times) and overall (but not always), Qwen produces the best result for me. I absolutely can't wait until they release Qwen3 Max! I also have a feeling DeepSeek is gonna go with with R2... &lt;/p&gt; &lt;p&gt;Id love to know what LLM you find yourself using the most, what you use them for (that makes a big difference), and why you think that one is the best. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Cancel-25"&gt; /u/Glittering-Cancel-25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T05:56:59+00:00</published>
   </entry>
 </feed>
