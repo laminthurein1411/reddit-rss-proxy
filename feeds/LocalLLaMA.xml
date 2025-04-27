@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-27T06:50:03+00:00</updated>
+  <updated>2025-04-27T07:05:53+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k801ba</id>
-    <title>It's been a while since we had new Qwen &amp; Qwen Coder models...</title>
-    <updated>2025-04-26T00:18:43+00:00</updated>
-    <author>
-      <name>/u/sammcj</name>
-      <uri>https://old.reddit.com/user/sammcj</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just saying... 😉&lt;/p&gt; &lt;p&gt;In all seriousness if they need to cook further - let them cook.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sammcj"&gt; /u/sammcj &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k801ba/its_been_a_while_since_we_had_new_qwen_qwen_coder/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k801ba/its_been_a_while_since_we_had_new_qwen_qwen_coder/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k801ba/its_been_a_while_since_we_had_new_qwen_qwen_coder/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T00:18:43+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k7o89n</id>
-    <title>We compress any BF16 model to ~70% size during inference, while keeping the output LOSSLESS so that you can fit in more ERP context or run larger models.</title>
-    <updated>2025-04-25T15:47:29+00:00</updated>
-    <author>
-      <name>/u/choHZ</name>
-      <uri>https://old.reddit.com/user/choHZ</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Glad to share another interesting piece of work from us: &lt;a href="https://arxiv.org/abs/2504.11651"&gt;&lt;strong&gt;70% Size, 100% Accuracy: Lossless LLM Compression for Efficient GPU Inference via Dynamic-Length Float (DF11)&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The tl;dr of this work is super simple. We — and several prior works — noticed that while &lt;strong&gt;BF16&lt;/strong&gt; is often promoted as a “more range, less precision” alternative to FP16 (especially to avoid value overflow/underflow during training), &lt;strong&gt;its range part (exponent bits) ends up being pretty redundant once the model is trained.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;In other words, although BF16 as a data format can represent a wide range of numbers, most trained models' exponents are plenty sparse. In practice, the exponent bits carry around 2.6 bits of actual information on average — far from the full 8 bits they're assigned.&lt;/p&gt; &lt;p&gt;This opens the door for classic Huffman coding — where shorter bit sequences are assigned to more frequent values — to &lt;strong&gt;compress the model weights&lt;/strong&gt; into a new data format we call &lt;strong&gt;DFloat11/DF11&lt;/strong&gt;, resulting in a &lt;strong&gt;LOSSLESS compression down to ~11 bits&lt;/strong&gt;.&lt;/p&gt; &lt;h1&gt;But isn’t this just Zip?&lt;/h1&gt; &lt;p&gt;Not exactly. It is true that tools like Zip also leverage Huffman coding, but the tricky part here is &lt;strong&gt;making it memory efficient during inference&lt;/strong&gt;, as end users are probably not gonna be too trilled if it just makes model checkpoint downloads a bit faster (in all fairness, smaller chekpoints means a lot when training at scale, but that's not a problem for everyday users).&lt;/p&gt; &lt;p&gt;What does matter to everyday users is &lt;strong&gt;making the memory footprint smaller during GPU inference, which requires nontrivial efforts.&lt;/strong&gt; But we have figured it out, and we’ve open-sourced the code.&lt;/p&gt; &lt;p&gt;So now you can:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Run models that previously didn’t fit into your GPU memory.&lt;/li&gt; &lt;li&gt;Or run the same model with &lt;strong&gt;larger batch sizes and/or longer sequences&lt;/strong&gt; (very handy for those lengthy ERPs, or so I have heard).&lt;/li&gt; &lt;/ul&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;GPU Type&lt;/th&gt; &lt;th align="left"&gt;Method&lt;/th&gt; &lt;th align="left"&gt;Successfully Run?&lt;/th&gt; &lt;th align="left"&gt;Required Memory&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-3.1-405B-Instruct&lt;/td&gt; &lt;td align="left"&gt;8×H100-80G&lt;/td&gt; &lt;td align="left"&gt;BF16&lt;/td&gt; &lt;td align="left"&gt;❌&lt;/td&gt; &lt;td align="left"&gt;811.71 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;DF11 (Ours)&lt;/td&gt; &lt;td align="left"&gt;✅&lt;/td&gt; &lt;td align="left"&gt;551.22 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama-3.3-70B-Instruct&lt;/td&gt; &lt;td align="left"&gt;1×H200-141G&lt;/td&gt; &lt;td align="left"&gt;BF16&lt;/td&gt; &lt;td align="left"&gt;❌&lt;/td&gt; &lt;td align="left"&gt;141.11 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;DF11 (Ours)&lt;/td&gt; &lt;td align="left"&gt;✅&lt;/td&gt; &lt;td align="left"&gt;96.14 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen2.5-32B-Instruct&lt;/td&gt; &lt;td align="left"&gt;1×A6000-48G&lt;/td&gt; &lt;td align="left"&gt;BF16&lt;/td&gt; &lt;td align="left"&gt;❌&lt;/td&gt; &lt;td align="left"&gt;65.53 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;DF11 (Ours)&lt;/td&gt; &lt;td align="left"&gt;✅&lt;/td&gt; &lt;td align="left"&gt;45.53 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;DeepSeek-R1-Distill-Llama-8B&lt;/td&gt; &lt;td align="left"&gt;1×RTX 5080-16G&lt;/td&gt; &lt;td align="left"&gt;BF16&lt;/td&gt; &lt;td align="left"&gt;❌&lt;/td&gt; &lt;td align="left"&gt;16.06 GB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;DF11 (Ours)&lt;/td&gt; &lt;td align="left"&gt;✅&lt;/td&gt; &lt;td align="left"&gt;11.23 GB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Some research promo posts try to surgercoat their weakness or tradeoff, thats not us. So here's are some honest FAQs:&lt;/p&gt; &lt;h1&gt;What’s the catch?&lt;/h1&gt; &lt;p&gt;Like all compression work, there’s a cost to decompressing. And here are some efficiency reports.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;On an A100 with batch size 128, DF11 is &lt;strong&gt;basically just as fast&lt;/strong&gt; as BF16 (1.02x difference, assuming both version fits in the GPUs with the same batch size). See Figure 9.&lt;/li&gt; &lt;li&gt;It is up to &lt;strong&gt;38.8x faster&lt;/strong&gt; than CPU offloading, so if you have a model that can't be run on your GPU in BF16, but can in DF11, there are plenty sweet performance gains over CPU offloading — one of the other popular way to run larger-than-capacity models. See Figure 3.&lt;/li&gt; &lt;li&gt;With the model weight being compressed, you can use the saved real estate for larger batch size or longer context length. This is expecially significant if the model is already tightly fitted in GPU. See Figure 4.&lt;/li&gt; &lt;li&gt;What about batch size 1 latency when both versions (DF11 &amp;amp; BF16) can fit in a single GPU? This is where DF11 is the weakest — we observe &lt;strong&gt;~40% slower&lt;/strong&gt; (2k/100 tokens for in/out). So there is not much motivation in using DF11 if you are not trying to run larger model/bigger batch size/longer sequence length.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Why not just (lossy) quantize to 8-bit?&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;The short answer is you should totally do that if you are satisfied with the output lossy 8-bit quantization with respect to your task. But how do you really know it is always good?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Many benchmark literature suggest that compressing a model (weight-only or otherwise) to 8-bit-ish is typically a safe operation, even though it's technically lossy. What we found, however, is that while this claim is often made in quantization papers, their benchmarks tend to focus on general tasks like MMLU and Commonsense Reasoning; which do not present a comprehensive picture of model capability.&lt;/p&gt; &lt;p&gt;More challenging benchmarks — such as those involving complex reasoning — and real-world user preferences often reveal noticeable differences. One good example is Chatbot Arena indicates the 8-bit (though it is W8A8 where DF11 is weight only, so it is not 100% apple-to-apple) and 16-bit Llama 3.1 405b tend to behave quite differently on some categories of tasks (e.g., Math and Coding).&lt;/p&gt; &lt;p&gt;Although the broader question: &lt;em&gt;“Which specific task, on which model, using which quantization technique, under what conditions, will lead to a noticeable drop compared to FP16/BF16?”&lt;/em&gt; is likely to remain open-ended simply due to the sheer amount of potential combinations and definition of “noticable.” &lt;strong&gt;It is fair to say that lossy quantization introduces complexities that some end-users would prefer to avoid, since it creates uncontrolled variables that must be empirically stress-tested for each deployment scenario.&lt;/strong&gt; DF11 offeres an alternative that avoids this concern 100%.&lt;/p&gt; &lt;h1&gt;What about finetuning?&lt;/h1&gt; &lt;p&gt;Our method could potentially pair well with PEFT methods like LoRA, where the base weights are frozen. But since we compress block-wise, we can’t just apply it naively without breaking gradients. We're actively exploring this direction. If it works, if would potentially become a QLoRA alternative where you can lossly LoRA finetune a model with reduced memory footprint.&lt;/p&gt; &lt;p&gt;(As always, happy to answer questions or chat until my advisor notices I’m doomscrolling socials during work hours :&amp;gt; )&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Paper: &lt;a href="https://arxiv.org/abs/2504.11651"&gt;https://arxiv.org/abs/2504.11651&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Code: &lt;a href="https://github.com/LeanModels/DFloat11"&gt;https://github.com/LeanModels/DFloat11&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/choHZ"&gt; /u/choHZ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7o89n/we_compress_any_bf16_model_to_70_size_during/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k7o89n/we_compress_any_bf16_model_to_70_size_during/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k7o89n/we_compress_any_bf16_model_to_70_size_during/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-25T15:47:29+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k8m5x9</id>
     <title>AB^N×Judge(s) - Test models, generate data, etc.</title>
@@ -86,19 +60,6 @@
     <published>2025-04-26T22:17:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8d8a3</id>
-    <title>5090 prices in Switzerland normalizing, looking good for local AI?</title>
-    <updated>2025-04-26T13:41:47+00:00</updated>
-    <author>
-      <name>/u/Mr_Moonsilver</name>
-      <uri>https://old.reddit.com/user/Mr_Moonsilver</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Have been checking 5090 prices in Switzerland. Found offers as low as CHF 1950.- although sold out very quickly and not up for order, but offer still online. The next one that's available, although with a 28 day lead time is at CHF 2291.-&lt;/p&gt; &lt;p&gt;Do you guys see this as a response to the harsh competition by AMD? Do you see similar trends in your country?&lt;/p&gt; &lt;p&gt;2291.- offer was found on nalda.ch&lt;/p&gt; &lt;p&gt;1950.- offer (they used the 5080 package in the image, but the stats mention the 5090) was found on conrad.ch&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mr_Moonsilver"&gt; /u/Mr_Moonsilver &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T13:41:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8ivb5</id>
     <title>Split MoE GGUFs for modular quants?</title>
     <updated>2025-04-26T17:52:15+00:00</updated>
@@ -110,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ivb5/split_moe_ggufs_for_modular_quants/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T17:52:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8d8a3</id>
+    <title>5090 prices in Switzerland normalizing, looking good for local AI?</title>
+    <updated>2025-04-26T13:41:47+00:00</updated>
+    <author>
+      <name>/u/Mr_Moonsilver</name>
+      <uri>https://old.reddit.com/user/Mr_Moonsilver</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Have been checking 5090 prices in Switzerland. Found offers as low as CHF 1950.- although sold out very quickly and not up for order, but offer still online. The next one that's available, although with a 28 day lead time is at CHF 2291.-&lt;/p&gt; &lt;p&gt;Do you guys see this as a response to the harsh competition by AMD? Do you see similar trends in your country?&lt;/p&gt; &lt;p&gt;2291.- offer was found on nalda.ch&lt;/p&gt; &lt;p&gt;1950.- offer (they used the 5080 package in the image, but the stats mention the 5090) was found on conrad.ch&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Mr_Moonsilver"&gt; /u/Mr_Moonsilver &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8d8a3/5090_prices_in_switzerland_normalizing_looking/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T13:41:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8601g</id>
@@ -125,19 +99,6 @@
     <published>2025-04-26T05:56:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8jymm</id>
-    <title>End-to-end conversation projects? Dia, Sesame, etc</title>
-    <updated>2025-04-26T18:39:34+00:00</updated>
-    <author>
-      <name>/u/Kep0a</name>
-      <uri>https://old.reddit.com/user/Kep0a</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In the past month we've had some pretty amazing voice models. After talking with the Sesame demo, I'm wondering, has anyone made an easy streaming end-to-end, conversation project yet? I want to run these but combining things seamlessly is outside my skillset. I need my 'Her' moment.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kep0a"&gt; /u/Kep0a &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T18:39:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8wvop</id>
     <title>Runtime Identity Drift in LLMs — Can We Stabilize Without Memory?</title>
     <updated>2025-04-27T05:47:32+00:00</updated>
@@ -151,6 +112,19 @@
     <published>2025-04-27T05:47:32+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k8jymm</id>
+    <title>End-to-end conversation projects? Dia, Sesame, etc</title>
+    <updated>2025-04-26T18:39:34+00:00</updated>
+    <author>
+      <name>/u/Kep0a</name>
+      <uri>https://old.reddit.com/user/Kep0a</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In the past month we've had some pretty amazing voice models. After talking with the Sesame demo, I'm wondering, has anyone made an easy streaming end-to-end, conversation project yet? I want to run these but combining things seamlessly is outside my skillset. I need my 'Her' moment.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kep0a"&gt; /u/Kep0a &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8jymm/endtoend_conversation_projects_dia_sesame_etc/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T18:39:34+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k8aput</id>
     <title>LangoTango - A local language model powered language learning partner</title>
     <updated>2025-04-26T11:23:55+00:00</updated>
@@ -162,6 +136,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8aput/langotango_a_local_language_model_powered/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T11:23:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8xu4d</id>
+    <title>🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)</title>
+    <updated>2025-04-27T06:53:42+00:00</updated>
+    <author>
+      <name>/u/Gerdel</name>
+      <uri>https://old.reddit.com/user/Gerdel</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt; &lt;img alt="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" src="https://external-preview.redd.it/fEQ0sRkP5Cc9pEvs5-UwG3ZTsuSDMCRcakJgt0TeA4k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=984dc75cd6fc1d4afcf245873710ed59ecf086db" title="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;After a lot of work, I'm excited to share a &lt;strong&gt;prebuilt CUDA 12.8 wheel&lt;/strong&gt; for &lt;strong&gt;llama-cpp-python (version 0.3.8)&lt;/strong&gt; — built specifically for &lt;strong&gt;Windows 10/11 (x64)&lt;/strong&gt; systems!&lt;/p&gt; &lt;h1&gt;✅ Highlights:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CUDA 12.8 GPU acceleration&lt;/strong&gt; fully enabled&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Full Gemma 3 model support&lt;/strong&gt; (1B, 4B, 12B, 27B)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Built against llama.cpp b5192&lt;/strong&gt; (April 26, 2025)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tested and verified&lt;/strong&gt; on a dual-GPU setup (3090 + 4060 Ti)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Working production inference&lt;/strong&gt; at &lt;strong&gt;16k context length&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No manual compilation&lt;/strong&gt; needed — just &lt;code&gt;pip install&lt;/code&gt; and you're running!&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;🔥 Why This Matters&lt;/h1&gt; &lt;p&gt;Building &lt;code&gt;llama-cpp-python&lt;/code&gt; with CUDA on Windows is notoriously painful —&lt;br /&gt; CMake configs, Visual Studio toolchains, CUDA paths... it’s a nightmare.&lt;/p&gt; &lt;p&gt;This wheel &lt;strong&gt;eliminates all of that&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No CMake.&lt;/li&gt; &lt;li&gt;No Visual Studio setup.&lt;/li&gt; &lt;li&gt;No manual CUDA environment tuning.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Just download the&lt;/strong&gt; &lt;code&gt;.whl&lt;/code&gt;&lt;strong&gt;, install with pip, and you're ready to run Gemma 3 models on GPU immediately.&lt;/strong&gt;&lt;/p&gt; &lt;h1&gt;✨ Notes&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;I haven't been able to find &lt;strong&gt;any other prebuilt llama-cpp-python wheel&lt;/strong&gt; supporting &lt;strong&gt;Gemma 3 + CUDA 12.8&lt;/strong&gt; on Windows — so I thought I'd post this ASAP.&lt;/li&gt; &lt;li&gt;I know you Linux folks are way ahead of me — but hey, now Windows users can play too! 😄&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Gerdel"&gt; /u/Gerdel &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/boneylizard/llama-cpp-python-cu128-gemma3/releases"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T06:53:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8xyvp</id>
+    <title>Finally got ~10t/s DeepSeek V3-0324 hybrid (FP8+Q4_K_M) running locally on my RTX 4090 + Xeon with with 512GB RAM, KTransformers and 32K context</title>
+    <updated>2025-04-27T07:02:36+00:00</updated>
+    <author>
+      <name>/u/texasdude11</name>
+      <uri>https://old.reddit.com/user/texasdude11</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;Just wanted to share a fun project I have been working on. I managed to get DeepSeek V3-0324 onto my single RTX 4090 + Xeon box running 512 GB RAM using KTransformers and a clever FP8+GGUF hybrid trick from KTransformers. &lt;/p&gt; &lt;p&gt;Attention &amp;amp; FF layers on GPU (FP8): Cuts VRAM down to ~24 GB, so your 4090 can handle the critical parts lightning fast.&lt;/p&gt; &lt;p&gt;Expert weights on CPU (4-bit GGUF): All the huge MoE banks live in system RAM and load as needed. &lt;/p&gt; &lt;p&gt;End result: I’m seeing about ~10 tokens/sec with a 32K context window—pretty smooth for local tinkering.&lt;/p&gt; &lt;p&gt;KTransformers made it so easy with its Docker image. It handles the FP8 kernels under the hood and shuffles data between CPU/GPU token by token.&lt;/p&gt; &lt;p&gt;I posted a llama-4 maverick run on KTransformers a couple of days back and got good feedback on here. So I am sharing this build as well, in case it helps anyone out!&lt;/p&gt; &lt;p&gt;My Build:&lt;br /&gt; Motherboard: ASUS Pro WS W790E-SAGE SE. Why This Board? 8-channel DDR5 ECC RAM, I have 8x64 GB ECC DDR5 RAM 4800MHz&lt;br /&gt; CPU with AI &amp;amp; ML Boost: Engineering Sample QYFS (56C/112T!)&lt;br /&gt; I get consistently 9.5-10.5 tokens per second with this for decode. And I get 40-50 prefill speed.&lt;/p&gt; &lt;p&gt;If you would like to checkout the youtube video of the run: &lt;a href="https://www.youtube.com/watch?v=oLvkBZHU23Y"&gt;https://www.youtube.com/watch?v=oLvkBZHU23Y&lt;/a&gt;&lt;/p&gt; &lt;p&gt;My Hardware Build and reasoning for picking up this board: &lt;a href="https://www.youtube.com/watch?v=r7gVGIwkZDc"&gt;https://www.youtube.com/watch?v=r7gVGIwkZDc&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/texasdude11"&gt; /u/texasdude11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xyvp/finally_got_10ts_deepseek_v30324_hybrid_fp8q4_k_m/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xyvp/finally_got_10ts_deepseek_v30324_hybrid_fp8q4_k_m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xyvp/finally_got_10ts_deepseek_v30324_hybrid_fp8q4_k_m/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T07:02:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8dqa7</id>
@@ -229,19 +229,6 @@
     <published>2025-04-26T15:07:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8xb3k</id>
-    <title>Overwhelmed by the number of Gemma 3 27B QAT variants</title>
-    <updated>2025-04-27T06:16:58+00:00</updated>
-    <author>
-      <name>/u/iwinux</name>
-      <uri>https://old.reddit.com/user/iwinux</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For the Q4 quantization alone, I found 3 variants:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;google/gemma-3-27b-it-qat-q4_0-gguf&lt;/code&gt;, official release, 17.2GB, seems to have some token-related issues according to this &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3"&gt;discussion&lt;/a&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/code&gt;, requantized, 15.6GB, states to fix the issues mentioned above.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;jaxchang/google-gemma-3-27b-it-qat-q4_0-gguf-fix&lt;/code&gt;, further derived from stduhpf's variant, 15.6GB, states to fix some more issues?&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Even more variants that are derived from &lt;code&gt;google/gemma-3-27b-it-qat-q4_0-unquantized&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;bartowski/google_gemma-3-27b-it-qat-GGUF&lt;/code&gt; offers llama.cpp-specific quantizations from Q2 to Q8.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;unsloth/gemma-3-27b-it-qat-GGUF&lt;/code&gt; also offers Q2 to Q8 quantizations, and I can't figure what they have changed because the model description looks like copy-pasta.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;How am I supposed to know which one to use?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iwinux"&gt; /u/iwinux &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T06:16:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8sycx</id>
     <title>I built a Chrome Extension (WebAI) to Chat with Webpages Using Your Local LLMs</title>
     <updated>2025-04-27T01:52:55+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8sycx/i_built_a_chrome_extension_webai_to_chat_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-27T01:52:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8xb3k</id>
+    <title>Overwhelmed by the number of Gemma 3 27B QAT variants</title>
+    <updated>2025-04-27T06:16:58+00:00</updated>
+    <author>
+      <name>/u/iwinux</name>
+      <uri>https://old.reddit.com/user/iwinux</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For the Q4 quantization alone, I found 3 variants:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;google/gemma-3-27b-it-qat-q4_0-gguf&lt;/code&gt;, official release, 17.2GB, seems to have some token-related issues according to this &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3"&gt;discussion&lt;/a&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/code&gt;, requantized, 15.6GB, states to fix the issues mentioned above.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;jaxchang/google-gemma-3-27b-it-qat-q4_0-gguf-fix&lt;/code&gt;, further derived from stduhpf's variant, 15.6GB, states to fix some more issues?&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Even more variants that are derived from &lt;code&gt;google/gemma-3-27b-it-qat-q4_0-unquantized&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;bartowski/google_gemma-3-27b-it-qat-GGUF&lt;/code&gt; offers llama.cpp-specific quantizations from Q2 to Q8.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;unsloth/gemma-3-27b-it-qat-GGUF&lt;/code&gt; also offers Q2 to Q8 quantizations, and I can't figure what they have changed because the model description looks like copy-pasta.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;How am I supposed to know which one to use?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iwinux"&gt; /u/iwinux &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T06:16:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8fe14</id>
