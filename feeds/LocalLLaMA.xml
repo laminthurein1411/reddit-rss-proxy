@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-27T09:23:50+00:00</updated>
+  <updated>2025-04-27T09:34:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k8ivb5</id>
-    <title>Split MoE GGUFs for modular quants?</title>
-    <updated>2025-04-26T17:52:15+00:00</updated>
-    <author>
-      <name>/u/Aerikh</name>
-      <uri>https://old.reddit.com/user/Aerikh</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Given the optimizations happening around MoE models such as in Ktransformers and Llama.cpp with custom layer offloading overrides, I was thinking that it would be nice if there were GGUFs where the static parts of the model (the layers that are active every token, which for Llama 4 would be the dense layers and the 1 &amp;quot;shared&amp;quot; expert) are stored in a different file from the non-static parts (the routed experts). This would allow a user to mix and match to optimize for their hardware. Someone with a 12 GB GPU and 96 GB RAM for instance would be able to get a big quant of the static layers, while someone else with a 8 GB GPU but the same RAM could choose a smaller quant of the static, but still get the benefit of the big quant for the non-static layers.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aerikh"&gt; /u/Aerikh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ivb5/split_moe_ggufs_for_modular_quants/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ivb5/split_moe_ggufs_for_modular_quants/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8ivb5/split_moe_ggufs_for_modular_quants/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T17:52:15+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k8z1s5</id>
     <title>Fine tune tiny llama for summarization</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8601g/qwen_ai_my_most_used_llm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T05:56:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k903ov</id>
+    <title>Llama.cpp CUDA Setup - Running into Issues - Is it Worth the Effort?</title>
+    <updated>2025-04-27T09:34:27+00:00</updated>
+    <author>
+      <name>/u/Brandu33</name>
+      <uri>https://old.reddit.com/user/Brandu33</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I'm exploring alternatives to Ollama and have been reading good things about Llama.cpp. I'm trying to get it set up on Ubuntu 22.04 with driver version 550.120 and CUDA 12.4 installed.&lt;/p&gt; &lt;p&gt;I've cloned the repo and tried running:&lt;/p&gt; &lt;p&gt;cmake -B build -DGGML_CUDA=ON&lt;/p&gt; &lt;p&gt;However, CMake is unable to find the CUDA toolkit, even though it's installed and `nvcc` and `nvidia-smi` are working correctly. I've found a lot of potential solutions online, but the complexity seems high.&lt;/p&gt; &lt;p&gt;For those who have successfully set up Llama.cpp with CUDA, is it *significantly* better than alternatives like Ollama to justify the setup hassle? Is the performance gain substantial?&lt;/p&gt; &lt;p&gt;Any straightforward advice or pointers would be greatly appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Brandu33"&gt; /u/Brandu33 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k903ov/llamacpp_cuda_setup_running_into_issues_is_it/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k903ov/llamacpp_cuda_setup_running_into_issues_is_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k903ov/llamacpp_cuda_setup_running_into_issues_is_it/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T09:34:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8jymm</id>
@@ -216,19 +216,6 @@
     <published>2025-04-26T20:56:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8xu4d</id>
-    <title>🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)</title>
-    <updated>2025-04-27T06:53:42+00:00</updated>
-    <author>
-      <name>/u/Gerdel</name>
-      <uri>https://old.reddit.com/user/Gerdel</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt; &lt;img alt="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" src="https://external-preview.redd.it/fEQ0sRkP5Cc9pEvs5-UwG3ZTsuSDMCRcakJgt0TeA4k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=984dc75cd6fc1d4afcf245873710ed59ecf086db" title="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;After a lot of work, I'm excited to share a &lt;strong&gt;prebuilt CUDA 12.8 wheel&lt;/strong&gt; for &lt;strong&gt;llama-cpp-python (version 0.3.8)&lt;/strong&gt; — built specifically for &lt;strong&gt;Windows 10/11 (x64)&lt;/strong&gt; systems!&lt;/p&gt; &lt;h1&gt;✅ Highlights:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CUDA 12.8 GPU acceleration&lt;/strong&gt; fully enabled&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Full Gemma 3 model support&lt;/strong&gt; (1B, 4B, 12B, 27B)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Built against llama.cpp b5192&lt;/strong&gt; (April 26, 2025)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tested and verified&lt;/strong&gt; on a dual-GPU setup (3090 + 4060 Ti)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Working production inference&lt;/strong&gt; at &lt;strong&gt;16k context length&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No manual compilation&lt;/strong&gt; needed — just &lt;code&gt;pip install&lt;/code&gt; and you're running!&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;🔥 Why This Matters&lt;/h1&gt; &lt;p&gt;Building &lt;code&gt;llama-cpp-python&lt;/code&gt; with CUDA on Windows is notoriously painful —&lt;br /&gt; CMake configs, Visual Studio toolchains, CUDA paths... it’s a nightmare.&lt;/p&gt; &lt;p&gt;This wheel &lt;strong&gt;eliminates all of that&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No CMake.&lt;/li&gt; &lt;li&gt;No Visual Studio setup.&lt;/li&gt; &lt;li&gt;No manual CUDA environment tuning.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Just download the&lt;/strong&gt; &lt;code&gt;.whl&lt;/code&gt;&lt;strong&gt;, install with pip, and you're ready to run Gemma 3 models on GPU immediately.&lt;/strong&gt;&lt;/p&gt; &lt;h1&gt;✨ Notes&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;I haven't been able to find &lt;strong&gt;any other prebuilt llama-cpp-python wheel&lt;/strong&gt; supporting &lt;strong&gt;Gemma 3 + CUDA 12.8&lt;/strong&gt; on Windows — so I thought I'd post this ASAP.&lt;/li&gt; &lt;li&gt;I know you Linux folks are way ahead of me — but hey, now Windows users can play too! 😄&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Gerdel"&gt; /u/Gerdel &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/boneylizard/llama-cpp-python-cu128-gemma3/releases"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T06:53:42+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8hob9</id>
     <title>My AI dev prompt playbook that actually works (saves me 10+ hrs/week)</title>
     <updated>2025-04-26T17:00:42+00:00</updated>
@@ -242,17 +229,17 @@
     <published>2025-04-26T17:00:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8yrem</id>
-    <title>Made Mistral 24B code like a senior dev by making it recursively argue with itself</title>
-    <updated>2025-04-27T07:59:40+00:00</updated>
+    <id>t3_1k8xu4d</id>
+    <title>🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)</title>
+    <updated>2025-04-27T06:53:42+00:00</updated>
     <author>
-      <name>/u/HearMeOut-13</name>
-      <uri>https://old.reddit.com/user/HearMeOut-13</uri>
+      <name>/u/Gerdel</name>
+      <uri>https://old.reddit.com/user/Gerdel</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"&gt; &lt;img alt="Made Mistral 24B code like a senior dev by making it recursively argue with itself" src="https://b.thumbs.redditmedia.com/I1eroeMkhMj9dvaQstK2YCuhXrEczxhGjXs1EiERsCU.jpg" title="Made Mistral 24B code like a senior dev by making it recursively argue with itself" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been experimenting with local models lately and built something that dramatically improves their output quality without fine-tuning or fancy prompting.&lt;/p&gt; &lt;p&gt;I call it CoRT (Chain of Recursive Thoughts). The idea is simple: make the model generate multiple responses, evaluate them, and iteratively improve. Like giving it the ability to second-guess itself. With Mistral 24B Tic-tac-toe game went from basic CLI(Non CoRT) to full OOP with AI opponent(CoRT)&lt;/p&gt; &lt;p&gt;What's interesting is that smaller models benefit even more from this approach. It's like giving them time to &amp;quot;think harder&amp;quot; actually works, but i also imagine itd be possible with some prompt tweaking to get it to heavily improve big ones too.&lt;/p&gt; &lt;p&gt;GitHub: [&lt;a href="https://github.com/PhialsBasement/Chain-of-Recursive-Thoughts"&gt;https://github.com/PhialsBasement/Chain-of-Recursive-Thoughts&lt;/a&gt;]&lt;/p&gt; &lt;p&gt;Technical details: - Written in Python - Wayyyyy slower but way better output - Adjustable thinking rounds (1-5) + dynamic - Works with any OpenRouter-compatible model&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HearMeOut-13"&gt; /u/HearMeOut-13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k8yrem"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt; &lt;img alt="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" src="https://external-preview.redd.it/fEQ0sRkP5Cc9pEvs5-UwG3ZTsuSDMCRcakJgt0TeA4k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=984dc75cd6fc1d4afcf245873710ed59ecf086db" title="🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;After a lot of work, I'm excited to share a &lt;strong&gt;prebuilt CUDA 12.8 wheel&lt;/strong&gt; for &lt;strong&gt;llama-cpp-python (version 0.3.8)&lt;/strong&gt; — built specifically for &lt;strong&gt;Windows 10/11 (x64)&lt;/strong&gt; systems!&lt;/p&gt; &lt;h1&gt;✅ Highlights:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CUDA 12.8 GPU acceleration&lt;/strong&gt; fully enabled&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Full Gemma 3 model support&lt;/strong&gt; (1B, 4B, 12B, 27B)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Built against llama.cpp b5192&lt;/strong&gt; (April 26, 2025)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tested and verified&lt;/strong&gt; on a dual-GPU setup (3090 + 4060 Ti)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Working production inference&lt;/strong&gt; at &lt;strong&gt;16k context length&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No manual compilation&lt;/strong&gt; needed — just &lt;code&gt;pip install&lt;/code&gt; and you're running!&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;🔥 Why This Matters&lt;/h1&gt; &lt;p&gt;Building &lt;code&gt;llama-cpp-python&lt;/code&gt; with CUDA on Windows is notoriously painful —&lt;br /&gt; CMake configs, Visual Studio toolchains, CUDA paths... it’s a nightmare.&lt;/p&gt; &lt;p&gt;This wheel &lt;strong&gt;eliminates all of that&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No CMake.&lt;/li&gt; &lt;li&gt;No Visual Studio setup.&lt;/li&gt; &lt;li&gt;No manual CUDA environment tuning.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Just download the&lt;/strong&gt; &lt;code&gt;.whl&lt;/code&gt;&lt;strong&gt;, install with pip, and you're ready to run Gemma 3 models on GPU immediately.&lt;/strong&gt;&lt;/p&gt; &lt;h1&gt;✨ Notes&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;I haven't been able to find &lt;strong&gt;any other prebuilt llama-cpp-python wheel&lt;/strong&gt; supporting &lt;strong&gt;Gemma 3 + CUDA 12.8&lt;/strong&gt; on Windows — so I thought I'd post this ASAP.&lt;/li&gt; &lt;li&gt;I know you Linux folks are way ahead of me — but hey, now Windows users can play too! 😄&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Gerdel"&gt; /u/Gerdel &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/boneylizard/llama-cpp-python-cu128-gemma3/releases"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T07:59:40+00:00</published>
+    <published>2025-04-27T06:53:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8t8z9</id>
@@ -294,17 +281,17 @@
     <published>2025-04-27T06:16:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8yk8w</id>
-    <title>TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324</title>
-    <updated>2025-04-27T07:44:51+00:00</updated>
+    <id>t3_1k8yrem</id>
+    <title>Made Mistral 24B code like a senior dev by making it recursively argue with itself</title>
+    <updated>2025-04-27T07:59:40+00:00</updated>
     <author>
-      <name>/u/ayyndrew</name>
-      <uri>https://old.reddit.com/user/ayyndrew</uri>
+      <name>/u/HearMeOut-13</name>
+      <uri>https://old.reddit.com/user/HearMeOut-13</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"&gt; &lt;img alt="TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324" src="https://external-preview.redd.it/1No-ofpBVwLtrVVqwYujJ6PJAf7A4c3ZgbbSJrDaop0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3fa5483c63f6faf71fe54d107797d498abbdd369" title="TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;Today we release DeepSeek-R1T-Chimera, an open weights model adding R1 reasoning to &lt;a href="https://x.com/deepseek_ai"&gt;@deepseek_ai&lt;/a&gt; V3-0324 with a novel construction method. &lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;In benchmarks, it appears to be as smart as R1 but much faster, using 40% fewer output tokens. &lt;/p&gt; &lt;p&gt;The Chimera is a child LLM, using V3s shared experts augmented with a custom merge of R1s and V3s routed experts. It is not a finetune or distillation, but constructed from neural network parts of both parent MoE models. &lt;/p&gt; &lt;p&gt;A bit surprisingly, we did not detect defects of the hybrid child model. Instead, its reasoning and thinking processes appear to be more compact and orderly than the sometimes very long and wandering thoughts of the R1 parent model. &lt;/p&gt; &lt;p&gt;Model weights are on &lt;a href="https://x.com/huggingface"&gt;@huggingface&lt;/a&gt;, just a little late for &lt;a href="https://x.com/hashtag/ICLR2025?src=hashtag_click"&gt;#ICLR2025&lt;/a&gt;. Kudos to &lt;a href="https://x.com/deepseek_ai"&gt;@deepseek_ai&lt;/a&gt; for V3 and R1!&lt;/p&gt; &lt;p&gt;&lt;a href="https://x.com/tngtech/status/1916284566127444468"&gt;https://x.com/tngtech/status/1916284566127444468&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ayyndrew"&gt; /u/ayyndrew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/tngtech/DeepSeek-R1T-Chimera"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"&gt; &lt;img alt="Made Mistral 24B code like a senior dev by making it recursively argue with itself" src="https://b.thumbs.redditmedia.com/I1eroeMkhMj9dvaQstK2YCuhXrEczxhGjXs1EiERsCU.jpg" title="Made Mistral 24B code like a senior dev by making it recursively argue with itself" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been experimenting with local models lately and built something that dramatically improves their output quality without fine-tuning or fancy prompting.&lt;/p&gt; &lt;p&gt;I call it CoRT (Chain of Recursive Thoughts). The idea is simple: make the model generate multiple responses, evaluate them, and iteratively improve. Like giving it the ability to second-guess itself. With Mistral 24B Tic-tac-toe game went from basic CLI(Non CoRT) to full OOP with AI opponent(CoRT)&lt;/p&gt; &lt;p&gt;What's interesting is that smaller models benefit even more from this approach. It's like giving them time to &amp;quot;think harder&amp;quot; actually works, but i also imagine itd be possible with some prompt tweaking to get it to heavily improve big ones too.&lt;/p&gt; &lt;p&gt;GitHub: [&lt;a href="https://github.com/PhialsBasement/Chain-of-Recursive-Thoughts"&gt;https://github.com/PhialsBasement/Chain-of-Recursive-Thoughts&lt;/a&gt;]&lt;/p&gt; &lt;p&gt;Technical details: - Written in Python - Wayyyyy slower but way better output - Adjustable thinking rounds (1-5) + dynamic - Works with any OpenRouter-compatible model&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HearMeOut-13"&gt; /u/HearMeOut-13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1k8yrem"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yrem/made_mistral_24b_code_like_a_senior_dev_by_making/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T07:44:51+00:00</published>
+    <published>2025-04-27T07:59:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8xyvp</id>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xyvp/finally_got_10ts_deepseek_v30324_hybrid_fp8q4_k_m/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-27T07:02:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8yk8w</id>
+    <title>TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324</title>
+    <updated>2025-04-27T07:44:51+00:00</updated>
+    <author>
+      <name>/u/ayyndrew</name>
+      <uri>https://old.reddit.com/user/ayyndrew</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"&gt; &lt;img alt="TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324" src="https://external-preview.redd.it/1No-ofpBVwLtrVVqwYujJ6PJAf7A4c3ZgbbSJrDaop0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3fa5483c63f6faf71fe54d107797d498abbdd369" title="TNG Tech releases Deepseek-R1-Chimera, adding R1 reasoning to V3-0324" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;blockquote&gt; &lt;p&gt;Today we release DeepSeek-R1T-Chimera, an open weights model adding R1 reasoning to &lt;a href="https://x.com/deepseek_ai"&gt;@deepseek_ai&lt;/a&gt; V3-0324 with a novel construction method. &lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;In benchmarks, it appears to be as smart as R1 but much faster, using 40% fewer output tokens. &lt;/p&gt; &lt;p&gt;The Chimera is a child LLM, using V3s shared experts augmented with a custom merge of R1s and V3s routed experts. It is not a finetune or distillation, but constructed from neural network parts of both parent MoE models. &lt;/p&gt; &lt;p&gt;A bit surprisingly, we did not detect defects of the hybrid child model. Instead, its reasoning and thinking processes appear to be more compact and orderly than the sometimes very long and wandering thoughts of the R1 parent model. &lt;/p&gt; &lt;p&gt;Model weights are on &lt;a href="https://x.com/huggingface"&gt;@huggingface&lt;/a&gt;, just a little late for &lt;a href="https://x.com/hashtag/ICLR2025?src=hashtag_click"&gt;#ICLR2025&lt;/a&gt;. Kudos to &lt;a href="https://x.com/deepseek_ai"&gt;@deepseek_ai&lt;/a&gt; for V3 and R1!&lt;/p&gt; &lt;p&gt;&lt;a href="https://x.com/tngtech/status/1916284566127444468"&gt;https://x.com/tngtech/status/1916284566127444468&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ayyndrew"&gt; /u/ayyndrew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/tngtech/DeepSeek-R1T-Chimera"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8yk8w/tng_tech_releases_deepseekr1chimera_adding_r1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T07:44:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8pbkz</id>
