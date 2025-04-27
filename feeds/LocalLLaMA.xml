@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-27T06:07:57+00:00</updated>
+  <updated>2025-04-27T06:25:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k8siiy</id>
-    <title>Multimodal Semantic Search Made Easy</title>
-    <updated>2025-04-27T01:29:02+00:00</updated>
-    <author>
-      <name>/u/Available_Ad_5360</name>
-      <uri>https://old.reddit.com/user/Available_Ad_5360</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8siiy/multimodal_semantic_search_made_easy/"&gt; &lt;img alt="Multimodal Semantic Search Made Easy" src="https://b.thumbs.redditmedia.com/9Yd92nWlgZCXu93SrV38HF6QN118QGMMPZaqnpeJIrg.jpg" title="Multimodal Semantic Search Made Easy" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; We’ve made the multimodal semantic search more accessible and easier.&lt;/p&gt; &lt;p&gt;Semantic search (retrieving data by meaning rather than keyword) is well understood and not too hard to prototype. But once you add images, video, production-grade storage, metadata, multiple vector spaces, etc., your pipeline quickly becomes more complex and harder to maintain. Common processes are:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Generate embeddings&lt;/strong&gt; for each modality (text, image, video)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Store&lt;/strong&gt; text and metadata (e.g. timestamps, usernames)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; images/videos to object storage&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Index&lt;/strong&gt; each embedding in the right vector store&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Join&lt;/strong&gt; everything back together at query time&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Before you know it, you’ve got data scattered across half a dozen services, plus custom glue code to link them all, and that’s just the tip of the iceberg. (If you’re curious, there’s a growing body of research on true multimodal search that digs into embedding alignment, cross-modal ranking, unified vector spaces, etc.)&lt;/p&gt; &lt;p&gt;But in most apps, semantic search is just a tool, not a main feature that differentiates your app from others. Ideally, you shouldn’t be spending too much time building and maintaining it when you’d rather be shipping your real differentiators.&lt;/p&gt; &lt;h1&gt;CapyDB - A Chill Semantic Search&lt;/h1&gt; &lt;p&gt;I’ve been tinkering on this in grad school as a “fun project” and have developped a solution. I named it CapyDB after the capybaras, one of the most chill animals on earth. The key idea here is simple: &lt;strong&gt;to make it possible to implement semantic search as easily as just wrapping the values in a JSON document with modality-aware helpers&lt;/strong&gt;. Below is an example.&lt;/p&gt; &lt;p&gt;In this example, let's say we want to semantically retrieve a user profile saved in the database. Wouldn't it be very intuitive and easy if we could enable the semantic search by simply &amp;quot;wrapping&amp;quot; target values in the JSON document like below?:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/zsbl0e3cy8xe1.png?width=1644&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=0aeaef37411e2a56e40daaacfec67915fbc135de"&gt;Example usage of EmbJSON&lt;/a&gt;&lt;/p&gt; &lt;p&gt;What you see in the JSON document is called &lt;strong&gt;EmbJSON&lt;/strong&gt; (more details are here), an extended JSON developed to embed semantic search directly into JSON documents. Think of it as a decoration you use in your JSON document to tell the database which field should be indexed in what way. By declaring your intent with &lt;code&gt;EmbText&lt;/code&gt;, &lt;code&gt;EmbImage&lt;/code&gt;, or &lt;code&gt;EmbVideo&lt;/code&gt;, you tell CapyDB exactly which fields to embed and index. It handles:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Modality transitions&lt;/strong&gt;: it maps all modalities into a unified text representation space&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Embedding generation&lt;/strong&gt; for each modality&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Object storage&lt;/strong&gt; of raw images/videos&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Vector indexing&lt;/strong&gt; in the correct vector store&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Key features&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Flexible schema&lt;/strong&gt;&lt;br /&gt; With a traditional vector DB, configurations are on a per-collection basis. For example, you can't use different embedding models in the same collection. However, with CapyDB, you can adjust embedding settings, such as embedding model, chunking size, etc, on a per-field basis. You can even have two different embedding models inside a single JSON collection:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/6t89hnb4y8xe1.png?width=1630&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=507f0604a4223dc592940ab1ab85ddc32dbb8781"&gt;Example EmbJSON usage with multiple modality in a single JSON&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Async by default&lt;/strong&gt;&lt;br /&gt; CapyDB processes embeddings all asynchronously by default. No matter how big the data you're saving is, you'll get an instant response from the database, so you don't have to leave your user waiting. With the traditional database, you need to have an asynchronous worker and a message broker to process embeddings asynchronously, but with CapyDB, it is already built in.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Built-in object storage&lt;/strong&gt;&lt;br /&gt; When saving media data such as images, you typically need to store them in separate object storage. CapyDB already has that internally. Moreover, it generates a URL for each image so you can render your image on the client side without hassle.&lt;/p&gt; &lt;h1&gt;Summary&lt;/h1&gt; &lt;p&gt;CapyDB has all the necessary features that you need to start with production-level semantic search. I’d love to get your thoughts. You can check out the docs here: &lt;a href="https://docs.capydb.com"&gt;link to CapyDB docs&lt;/a&gt;. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Available_Ad_5360"&gt; /u/Available_Ad_5360 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8siiy/multimodal_semantic_search_made_easy/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8siiy/multimodal_semantic_search_made_easy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8siiy/multimodal_semantic_search_made_easy/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T01:29:02+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k801ba</id>
     <title>It's been a while since we had new Qwen &amp; Qwen Coder models...</title>
@@ -73,17 +60,17 @@
     <published>2025-04-27T05:47:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8oqs0</id>
-    <title>anyone using 32B local models for roo-code?</title>
-    <updated>2025-04-26T22:17:31+00:00</updated>
+    <id>t3_1k8xb3k</id>
+    <title>Overwhelmed by the number of Gemma 3 27B QAT variants</title>
+    <updated>2025-04-27T06:16:58+00:00</updated>
     <author>
-      <name>/u/CornerLimits</name>
-      <uri>https://old.reddit.com/user/CornerLimits</uri>
+      <name>/u/iwinux</name>
+      <uri>https://old.reddit.com/user/iwinux</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use roocode (free api) because is great and i give much value to my super limited few shots on google free api. Lately i was thinking about a mi100 or a 3090 or something to reach ~32-48GB vram to host qwq or coder or other great models came out lately.&lt;/p&gt; &lt;p&gt;I know that it will never match the speed of gemini or any other api, but i was wondering if theres someone that can feedback if it is feasible from quality stand of point to just rely on 32B local models to roocode? Im getting tired of throwing my project into google…&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CornerLimits"&gt; /u/CornerLimits &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For the Q4 quantization alone, I found 3 variants:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;google/gemma-3-27b-it-qat-q4_0-gguf&lt;/code&gt;, official release, 17.2GB, seems to have some token-related issues according to this &lt;a href="https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-gguf/discussions/3"&gt;discussion&lt;/a&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;stduhpf/google-gemma-3-27b-it-qat-q4_0-gguf-small&lt;/code&gt;, requantized, 15.6GB, states to fix the issues mentioned above.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;jaxchang/google-gemma-3-27b-it-qat-q4_0-gguf-fix&lt;/code&gt;, further derived from stduhpf's variant, 15.6GB, states to fix some more issues?&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Even more variants that are derived from &lt;code&gt;google/gemma-3-27b-it-qat-q4_0-unquantized&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;bartowski/google_gemma-3-27b-it-qat-GGUF&lt;/code&gt; offers llama.cpp-specific quantizations from Q2 to Q8.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;unsloth/gemma-3-27b-it-qat-GGUF&lt;/code&gt; also offers Q2 to Q8 quantizations, and I can't figure what they have changed because the model description looks like copy-pasta.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;How am I supposed to know which one to use?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iwinux"&gt; /u/iwinux &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xb3k/overwhelmed_by_the_number_of_gemma_3_27b_qat/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T22:17:31+00:00</published>
+    <published>2025-04-27T06:16:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1k88v0p</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8bodt/llama_33_70b_q40_eval_72_toks_pred_33_toks_on_4_x/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T12:20:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8oqs0</id>
+    <title>anyone using 32B local models for roo-code?</title>
+    <updated>2025-04-26T22:17:31+00:00</updated>
+    <author>
+      <name>/u/CornerLimits</name>
+      <uri>https://old.reddit.com/user/CornerLimits</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use roocode (free api) because is great and i give much value to my super limited few shots on google free api. Lately i was thinking about a mi100 or a 3090 or something to reach ~32-48GB vram to host qwq or coder or other great models came out lately.&lt;/p&gt; &lt;p&gt;I know that it will never match the speed of gemini or any other api, but i was wondering if theres someone that can feedback if it is feasible from quality stand of point to just rely on 32B local models to roocode? Im getting tired of throwing my project into google…&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CornerLimits"&gt; /u/CornerLimits &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8oqs0/anyone_using_32b_local_models_for_roocode/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T22:17:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8d8a3</id>
@@ -216,19 +216,6 @@
     <published>2025-04-26T19:02:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k8qaov</id>
-    <title>Jamba support for llamacpp in the works!!</title>
-    <updated>2025-04-26T23:34:17+00:00</updated>
-    <author>
-      <name>/u/thebadslime</name>
-      <uri>https://old.reddit.com/user/thebadslime</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"&gt; &lt;img alt="Jamba support for llamacpp in the works!!" src="https://preview.redd.it/v5yruwael9xe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f2b01a9cc554ffe0cbc60264038440f8eaa242f8" title="Jamba support for llamacpp in the works!!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;awesome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thebadslime"&gt; /u/thebadslime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v5yruwael9xe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T23:34:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8sycx</id>
     <title>I built a Chrome Extension (WebAI) to Chat with Webpages Using Your Local LLMs</title>
     <updated>2025-04-27T01:52:55+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8sycx/i_built_a_chrome_extension_webai_to_chat_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-27T01:52:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k8qaov</id>
+    <title>Jamba support for llamacpp in the works!!</title>
+    <updated>2025-04-26T23:34:17+00:00</updated>
+    <author>
+      <name>/u/thebadslime</name>
+      <uri>https://old.reddit.com/user/thebadslime</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"&gt; &lt;img alt="Jamba support for llamacpp in the works!!" src="https://preview.redd.it/v5yruwael9xe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f2b01a9cc554ffe0cbc60264038440f8eaa242f8" title="Jamba support for llamacpp in the works!!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;awesome!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thebadslime"&gt; /u/thebadslime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v5yruwael9xe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8qaov/jamba_support_for_llamacpp_in_the_works/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-26T23:34:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8f38v</id>
