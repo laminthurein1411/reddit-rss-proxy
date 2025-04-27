@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-27T15:34:56+00:00</updated>
+  <updated>2025-04-27T15:48:48+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1k8kh94</id>
-    <title>[Open Source] QA for cursor - Make sure it only gives you correct code.</title>
-    <updated>2025-04-26T19:02:30+00:00</updated>
-    <author>
-      <name>/u/Cheap_Concert168no</name>
-      <uri>https://old.reddit.com/user/Cheap_Concert168no</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8kh94/open_source_qa_for_cursor_make_sure_it_only_gives/"&gt; &lt;img alt="[Open Source] QA for cursor - Make sure it only gives you correct code." src="https://external-preview.redd.it/dWp1NWc2em42OHhlMUtddb3oYk3YHCqLnAUEgID_4mfN2VhQqz8ywXIoHXVz.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1b47ad65b6d6631fd64a9f0fc219c95cbec0702f" title="[Open Source] QA for cursor - Make sure it only gives you correct code." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a MCP server that allows cursor(,etc) to test out the code before delivering it to you. If test fails it gets the exact logical error/console errors/screenshots directly resulting in a feedback loop until it gets it right. This makes the agent get as close to your requirements as possible before delivering it to you. Particularly, improving the coding experience with smaller/open coding models&lt;/p&gt; &lt;p&gt;It also tests in regression (test old features) so that new developments don't break working features which is a very common problem with these agents. It also has a mode to discover new test flows just by crawling a website, but that is trash for now. &lt;/p&gt; &lt;p&gt;You can use any LLM for this but I am using free gemini-2.0-flash and it works like a charm. It works a looot faster on gemini-2.0-flash-lite but I am happy to trade off time for accuracy (demo is sped up, check github for full length demo). A testing integration is inevitable for cursor/windsurf so until then I will keep working on this. Any feedback is welcome :)&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/Ilikepizza2/QA-MCP"&gt;QA-MCP&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cheap_Concert168no"&gt; /u/Cheap_Concert168no &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/1p5tt1zn68xe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k8kh94/open_source_qa_for_cursor_make_sure_it_only_gives/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8kh94/open_source_qa_for_cursor_make_sure_it_only_gives/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-26T19:02:30+00:00</published>
-  </entry>
   <entry>
     <id>t3_1k8wvop</id>
     <title>Runtime Identity Drift in LLMs — Can We Stabilize Without Memory?</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8f38v/dia16b_in_jax_to_generate_audio_from_text_from/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-26T15:07:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k96ur9</id>
+    <title>Best method of quantizing Gemma 3 for use with vLLM?</title>
+    <updated>2025-04-27T15:40:02+00:00</updated>
+    <author>
+      <name>/u/Saguna_Brahman</name>
+      <uri>https://old.reddit.com/user/Saguna_Brahman</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've sort of been tearing out my hair trying to figure this out. I want to use the new Gemma 3 27B models with vLLM, specifically the QAT models, but the two easiest ways to quantize something (GGUF, BnB) are not optimized in vLLM and the performance degradation is pretty drastic. vLLM seems to be optimized for GPTQModel and AWQ, but neither seem to have strong Gemma 3 support right now.&lt;/p&gt; &lt;p&gt;Notably, GPTQModel doesn't work with multimodal Gemma 3, and the process of making the 27b model text-only and then quantizing it has proven tricky for various reasons.&lt;/p&gt; &lt;p&gt;GPTQ compression seems possible given this model: &lt;a href="https://huggingface.co/ISTA-DASLab/gemma-3-27b-it-GPTQ-4b-128g"&gt;https://huggingface.co/ISTA-DASLab/gemma-3-27b-it-GPTQ-4b-128g&lt;/a&gt; but they did that on the original 27B, not the unquantized QAT model.&lt;/p&gt; &lt;p&gt;For the life of me I haven't been able to make this work, and it's driving me nuts. Any advice from more experienced users? At this point I'd even pay someone to upload a 4bit version of &lt;a href="https://huggingface.co/google/gemma-3-27b-it-qat-q4_0-unquantized"&gt;this model&lt;/a&gt; in GPTQ to hugging face if they had the know-how.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Saguna_Brahman"&gt; /u/Saguna_Brahman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k96ur9/best_method_of_quantizing_gemma_3_for_use_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k96ur9/best_method_of_quantizing_gemma_3_for_use_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k96ur9/best_method_of_quantizing_gemma_3_for_use_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T15:40:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8qaov</id>
@@ -164,19 +164,6 @@
     <published>2025-04-26T17:00:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k969p3</id>
-    <title>Server approved! 4xH100 (320gb vram). Looking for advice</title>
-    <updated>2025-04-27T15:14:44+00:00</updated>
-    <author>
-      <name>/u/ICanSeeYou7867</name>
-      <uri>https://old.reddit.com/user/ICanSeeYou7867</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;My company is wanting to run on premise AI for various reasons. We have a HPC cluster built using slurm, and it works well, but the time based batch jobs are not ideal for always available resources. &lt;/p&gt; &lt;p&gt;I have a good bit of experience running vllm, llamacpp, and kobold in containers with GPU enabled resources, and I am decently proficient with kubernetes.&lt;/p&gt; &lt;p&gt;(Assuming this all works, I will be asking for another one of these servers for HA workloads.)&lt;/p&gt; &lt;p&gt;My current idea is going to be a k8s based deployment (using RKE2), with the nvidia gpu operator installed for the single worker node. I will then use gitlab + fleet to handle deployments, and track configuration changes. I also want to use quantized models, probably Q6-Q8 imatrix models when possible with llamacpp, or awq/bnb models with vllm if they are supported.&lt;/p&gt; &lt;p&gt;I will also use a litellm deployment on a different k8s cluster to connect the openai compatible endpoints. (I want this on a separate cluster, as i can then use the slurm based hpc as a backup in case the node goes down for now, and allow requests to keep flowing.)&lt;/p&gt; &lt;p&gt;I think got the basics this will work, but I have never deployed an H100 based server, and I was curious if there were any gotchas I might be missing....&lt;/p&gt; &lt;p&gt;Another alternative I was thinking about, was adding the H100 server as a hypervisor node, and then use GPU pass-through to a guest. This would allow some modularity to the possible deployments, but would add some complexity....&lt;/p&gt; &lt;p&gt;Thank you for reading! Hopefully this all made sense, and I am curious if there are some gotchas or some things I could learn from others before deploying or planning out the infrastructure. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ICanSeeYou7867"&gt; /u/ICanSeeYou7867 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T15:14:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k93kfh</id>
     <title>Got Sesame CSM working with a real time factor of .6x with a 4070Ti Super!</title>
     <updated>2025-04-27T13:08:30+00:00</updated>
@@ -203,6 +190,19 @@
     <published>2025-04-26T21:11:34+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k969p3</id>
+    <title>Server approved! 4xH100 (320gb vram). Looking for advice</title>
+    <updated>2025-04-27T15:14:44+00:00</updated>
+    <author>
+      <name>/u/ICanSeeYou7867</name>
+      <uri>https://old.reddit.com/user/ICanSeeYou7867</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;My company is wanting to run on premise AI for various reasons. We have a HPC cluster built using slurm, and it works well, but the time based batch jobs are not ideal for always available resources. &lt;/p&gt; &lt;p&gt;I have a good bit of experience running vllm, llamacpp, and kobold in containers with GPU enabled resources, and I am decently proficient with kubernetes.&lt;/p&gt; &lt;p&gt;(Assuming this all works, I will be asking for another one of these servers for HA workloads.)&lt;/p&gt; &lt;p&gt;My current idea is going to be a k8s based deployment (using RKE2), with the nvidia gpu operator installed for the single worker node. I will then use gitlab + fleet to handle deployments, and track configuration changes. I also want to use quantized models, probably Q6-Q8 imatrix models when possible with llamacpp, or awq/bnb models with vllm if they are supported.&lt;/p&gt; &lt;p&gt;I will also use a litellm deployment on a different k8s cluster to connect the openai compatible endpoints. (I want this on a separate cluster, as i can then use the slurm based hpc as a backup in case the node goes down for now, and allow requests to keep flowing.)&lt;/p&gt; &lt;p&gt;I think got the basics this will work, but I have never deployed an H100 based server, and I was curious if there were any gotchas I might be missing....&lt;/p&gt; &lt;p&gt;Another alternative I was thinking about, was adding the H100 server as a hypervisor node, and then use GPU pass-through to a guest. This would allow some modularity to the possible deployments, but would add some complexity....&lt;/p&gt; &lt;p&gt;Thank you for reading! Hopefully this all made sense, and I am curious if there are some gotchas or some things I could learn from others before deploying or planning out the infrastructure. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ICanSeeYou7867"&gt; /u/ICanSeeYou7867 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k969p3/server_approved_4xh100_320gb_vram_looking_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T15:14:44+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k8t8z9</id>
     <title>New Reasoning Model from NVIDIA (AIME is getting saturated at this point!)</title>
     <updated>2025-04-27T02:08:41+00:00</updated>
@@ -216,19 +216,6 @@
     <published>2025-04-27T02:08:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k91xpn</id>
-    <title>[Tool] GPU Price Tracker</title>
-    <updated>2025-04-27T11:36:53+00:00</updated>
-    <author>
-      <name>/u/yachty66</name>
-      <uri>https://old.reddit.com/user/yachty66</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt; &lt;img alt="[Tool] GPU Price Tracker" src="https://b.thumbs.redditmedia.com/oZ5A4SlEGNKG9l7wwa5jk4MlpFBQ6rWdgJ8EHM3II9k.jpg" title="[Tool] GPU Price Tracker" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone! I wanted to share a tool I've developed that might help many of you with hardware purchasing decisions for running local LLMs.&lt;/p&gt; &lt;h1&gt;GPU Price Tracker Overview&lt;/h1&gt; &lt;p&gt;I built a comprehensive GPU Price Tracker that monitors current prices, specifications, and historical price trends for GPUs. This tool is specifically designed to help make informed decisions when selecting hardware for AI workloads, including running LocalLLaMA models.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Tool URL:&lt;/strong&gt; &lt;a href="https://www.unitedcompute.ai/gpu-price-tracker"&gt;https://www.unitedcompute.ai/gpu-price-tracker&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Key Features:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Daily Market Prices&lt;/strong&gt; - Daily updated pricing data&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Complete Price History&lt;/strong&gt; - Track price fluctuations since release date&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Performance Metrics&lt;/strong&gt; - FP16 TFLOPS performance data&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Efficiency Metrics&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;strong&gt;FL/$&lt;/strong&gt; - FLOPS per dollar (value metric)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;FL/Watt&lt;/strong&gt; - FLOPS per watt (efficiency metric)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hardware Specifications&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;VRAM capacity and bus width&lt;/li&gt; &lt;li&gt;Power consumption (Watts)&lt;/li&gt; &lt;li&gt;Memory bandwidth&lt;/li&gt; &lt;li&gt;Release date&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Example Insights&lt;/h1&gt; &lt;p&gt;The data reveals some interesting trends:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The NVIDIA A100 40GB PCIe remains at a premium price point ($7,999.99) but offers 77.97 TFLOPS with 0.010 TFLOPS/$&lt;/li&gt; &lt;li&gt;The RTX 3090 provides better value at $1,679.99 with 35.58 TFLOPS and 0.021 TFLOPS/$&lt;/li&gt; &lt;li&gt;Price fluctuations can be significant - as shown in the historical view below, some GPUs have varied by over $2,000 in a single year&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How This Helps LocalLLaMA Users&lt;/h1&gt; &lt;p&gt;When selecting hardware for running local LLMs, there are multiple considerations:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Raw Performance&lt;/strong&gt; - FP16 TFLOPS for inference speed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM Requirements&lt;/strong&gt; - For model size limitations&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Value&lt;/strong&gt; - FL/$ for budget-conscious decisions&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Power Efficiency&lt;/strong&gt; - FL&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ymez54ch5dxe1.png?width=1418&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f481589051d4240120e5f378ac1287aa95b3638d"&gt;GPU Price Tracker Main View (example for 3090)&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yachty66"&gt; /u/yachty66 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-27T11:36:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k8xu4d</id>
     <title>🚀 [Release] llama-cpp-python 0.3.8 (CUDA 12.8) Prebuilt Wheel + Full Gemma 3 Support (Windows x64)</title>
     <updated>2025-04-27T06:53:42+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k8xu4d/release_llamacpppython_038_cuda_128_prebuilt/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-27T06:53:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k91xpn</id>
+    <title>[Tool] GPU Price Tracker</title>
+    <updated>2025-04-27T11:36:53+00:00</updated>
+    <author>
+      <name>/u/yachty66</name>
+      <uri>https://old.reddit.com/user/yachty66</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt; &lt;img alt="[Tool] GPU Price Tracker" src="https://b.thumbs.redditmedia.com/oZ5A4SlEGNKG9l7wwa5jk4MlpFBQ6rWdgJ8EHM3II9k.jpg" title="[Tool] GPU Price Tracker" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone! I wanted to share a tool I've developed that might help many of you with hardware purchasing decisions for running local LLMs.&lt;/p&gt; &lt;h1&gt;GPU Price Tracker Overview&lt;/h1&gt; &lt;p&gt;I built a comprehensive GPU Price Tracker that monitors current prices, specifications, and historical price trends for GPUs. This tool is specifically designed to help make informed decisions when selecting hardware for AI workloads, including running LocalLLaMA models.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Tool URL:&lt;/strong&gt; &lt;a href="https://www.unitedcompute.ai/gpu-price-tracker"&gt;https://www.unitedcompute.ai/gpu-price-tracker&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Key Features:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Daily Market Prices&lt;/strong&gt; - Daily updated pricing data&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Complete Price History&lt;/strong&gt; - Track price fluctuations since release date&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Performance Metrics&lt;/strong&gt; - FP16 TFLOPS performance data&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Efficiency Metrics&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;&lt;strong&gt;FL/$&lt;/strong&gt; - FLOPS per dollar (value metric)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;FL/Watt&lt;/strong&gt; - FLOPS per watt (efficiency metric)&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hardware Specifications&lt;/strong&gt;: &lt;ul&gt; &lt;li&gt;VRAM capacity and bus width&lt;/li&gt; &lt;li&gt;Power consumption (Watts)&lt;/li&gt; &lt;li&gt;Memory bandwidth&lt;/li&gt; &lt;li&gt;Release date&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Example Insights&lt;/h1&gt; &lt;p&gt;The data reveals some interesting trends:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The NVIDIA A100 40GB PCIe remains at a premium price point ($7,999.99) but offers 77.97 TFLOPS with 0.010 TFLOPS/$&lt;/li&gt; &lt;li&gt;The RTX 3090 provides better value at $1,679.99 with 35.58 TFLOPS and 0.021 TFLOPS/$&lt;/li&gt; &lt;li&gt;Price fluctuations can be significant - as shown in the historical view below, some GPUs have varied by over $2,000 in a single year&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How This Helps LocalLLaMA Users&lt;/h1&gt; &lt;p&gt;When selecting hardware for running local LLMs, there are multiple considerations:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Raw Performance&lt;/strong&gt; - FP16 TFLOPS for inference speed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM Requirements&lt;/strong&gt; - For model size limitations&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Value&lt;/strong&gt; - FL/$ for budget-conscious decisions&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Power Efficiency&lt;/strong&gt; - FL&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/ymez54ch5dxe1.png?width=1418&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=f481589051d4240120e5f378ac1287aa95b3638d"&gt;GPU Price Tracker Main View (example for 3090)&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/yachty66"&gt; /u/yachty66 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k91xpn/tool_gpu_price_tracker/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-27T11:36:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1k8xb3k</id>
