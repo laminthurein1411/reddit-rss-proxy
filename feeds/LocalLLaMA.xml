@@ -2,23 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-28T18:51:32+00:00</updated>
+  <updated>2025-04-28T19:05:20+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1k9le0f</id>
-    <title>Running Llama 4 Maverick (400b) on an "e-waste" DDR3 server</title>
-    <updated>2025-04-28T02:48:28+00:00</updated>
+    <id>t3_1k9yvdg</id>
+    <title>Qwen 3 is available in LM Studio !!!!</title>
+    <updated>2025-04-28T15:50:26+00:00</updated>
     <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
+      <name>/u/josho2001</name>
+      <uri>https://old.reddit.com/user/josho2001</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9le0f/running_llama_4_maverick_400b_on_an_ewaste_ddr3/"&gt; &lt;img alt="Running Llama 4 Maverick (400b) on an &amp;quot;e-waste&amp;quot; DDR3 server" src="https://b.thumbs.redditmedia.com/mSZMfWrNCxYj4zGPkxOD9vmFda_doeVZpNij-J70A4c.jpg" title="Running Llama 4 Maverick (400b) on an &amp;quot;e-waste&amp;quot; DDR3 server" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Was pretty amazed how well Llama 4 Maverick runs on an &amp;quot;e-waste&amp;quot; DDR3 server... &lt;/p&gt; &lt;p&gt;Specs:&lt;br /&gt; Dual e5-2690 v2 ($10/each)&lt;br /&gt; Random Supermicro board ($30)&lt;br /&gt; 256GB of DDR3 Rdimms ($80)&lt;br /&gt; Unsloths dynamic 4bit gguf&lt;br /&gt; + various 16GB+ GPUs.&lt;/p&gt; &lt;p&gt;With no GPU, CPU only:&lt;br /&gt; prompt eval time = 133029.33 ms / 1616 tokens ( 82.32 ms per token, &lt;strong&gt;12.15 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 104802.34 ms / 325 tokens ( 322.47 ms per token, &lt;strong&gt;3.10 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 237831.68 ms / 1941 tokens &lt;/p&gt; &lt;p&gt;For 12 year old system without a gpu it's honestly pretty amazing, but we can do better... &lt;/p&gt; &lt;p&gt;With a pair of P102-100 Mining cards:&lt;br /&gt; prompt eval time = 337099.15 ms / 1616 tokens ( 208.60 ms per token, &lt;strong&gt;4.79 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 25617.15 ms / 261 tokens ( 98.15 ms per token, &lt;strong&gt;10.19 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 362716.31 ms / 1877 tokens&lt;/p&gt; &lt;p&gt;Not great, the PCIE 1.0 x4 interface kills Prompt Processing. &lt;/p&gt; &lt;p&gt;With a P100 16GB:&lt;br /&gt; prompt eval time = 77918.04 ms / 1616 tokens ( 48.22 ms per token, &lt;strong&gt;20.74 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 34497.33 ms / 327 tokens ( 105.50 ms per token, &lt;strong&gt;9.48 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 112415.38 ms / 1943 tokens&lt;/p&gt; &lt;p&gt;Similar to the mining gpus, just with a proper PCIE 3.0 x16 interface and therefore decent prompt processing. &lt;/p&gt; &lt;p&gt;With a V100:&lt;br /&gt; prompt eval time = 65887.49 ms / 1616 tokens ( 40.77 ms per token, &lt;strong&gt;24.53 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 16487.70 ms / 283 tokens ( 58.26 ms per token, &lt;strong&gt;17.16 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 82375.19 ms / 1899 tokens&lt;/p&gt; &lt;p&gt;Decent step up all around, somehow still not CPU/DRAM bottlenecked. &lt;/p&gt; &lt;p&gt;With a 3090:&lt;br /&gt; prompt eval time = 66631.43 ms / 1616 tokens ( 41.23 ms per token, &lt;strong&gt;24.25 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 16945.47 ms / 288 tokens ( 58.84 ms per token, &lt;strong&gt;17.00 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 83576.90 ms / 1904 tokens&lt;/p&gt; &lt;p&gt;Looks like we are finally CPU/DRAM bottlenecked at this level. &lt;/p&gt; &lt;p&gt;Command:&lt;br /&gt; ./llama-server -m Maverick.gguf -c 4000 --numa distribute -ngl 99 --override-tensor &amp;quot;.*ffn_.*_exps.*=CPU&amp;quot; -fa -ctk q8_0 -ctv q8_0 -ub 2048&lt;/p&gt; &lt;p&gt;For those of you curious, this system only has 102GB/s of system memory bandwidth. &lt;/p&gt; &lt;p&gt;A big part of why this works so well is the experts on Maverick work out to only about 3B each,&lt;br /&gt; So if you offload all the static/shared parts of the model to a GPU, the CPU only has to process ~3B per token (about 2GB), the GPU does the rest.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/zj28nb69lhxe1.jpg?width=5697&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=0b74dc13410b4717bfa366df391976b224eb95d9"&gt;https://preview.redd.it/zj28nb69lhxe1.jpg?width=5697&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=0b74dc13410b4717bfa366df391976b224eb95d9&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9le0f/running_llama_4_maverick_400b_on_an_ewaste_ddr3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9le0f/running_llama_4_maverick_400b_on_an_ewaste_ddr3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9le0f/running_llama_4_maverick_400b_on_an_ewaste_ddr3/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9yvdg/qwen_3_is_available_in_lm_studio/"&gt; &lt;img alt="Qwen 3 is available in LM Studio !!!!" src="https://a.thumbs.redditmedia.com/tEjp5fAvBfGzGwb86wWqUt2L1t6Tui5CsHb7vdqTXH0.jpg" title="Qwen 3 is available in LM Studio !!!!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/83sxru3gklxe1.png?width=1378&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b2d4097911f34d4978485456b966925d0fbb981"&gt;https://preview.redd.it/83sxru3gklxe1.png?width=1378&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4b2d4097911f34d4978485456b966925d0fbb981&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/josho2001"&gt; /u/josho2001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9yvdg/qwen_3_is_available_in_lm_studio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9yvdg/qwen_3_is_available_in_lm_studio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9yvdg/qwen_3_is_available_in_lm_studio/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T02:48:28+00:00</published>
+    <published>2025-04-28T15:50:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ka3hlm</id>
+    <title>Looks like China is the one playing 5D chess</title>
+    <updated>2025-04-28T18:56:59+00:00</updated>
+    <author>
+      <name>/u/ahstanin</name>
+      <uri>https://old.reddit.com/user/ahstanin</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Don't want to get political here but Qwen 3 release on the same day as LlamaCon. That sounds like a well thought out move.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ahstanin"&gt; /u/ahstanin &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka3hlm/looks_like_china_is_the_one_playing_5d_chess/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka3hlm/looks_like_china_is_the_one_playing_5d_chess/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka3hlm/looks_like_china_is_the_one_playing_5d_chess/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-28T18:56:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1k9na4f</id>
@@ -47,19 +60,6 @@
     <published>2025-04-28T07:25:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ka0xa2</id>
-    <title>Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context</title>
-    <updated>2025-04-28T17:13:47+00:00</updated>
-    <author>
-      <name>/u/poli-cya</name>
-      <uri>https://old.reddit.com/user/poli-cya</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"&gt; &lt;img alt="Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context" src="https://preview.redd.it/x74zdyrswlxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=282ab76f262f12ab67dea3155bbe95ef042385a0" title="Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/poli-cya"&gt; /u/poli-cya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/x74zdyrswlxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T17:13:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k9wz3j</id>
     <title>Nvidia is giving us more VRAM, suggests new leak, but you’ll need to wait for it</title>
     <updated>2025-04-28T14:31:30+00:00</updated>
@@ -84,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9r94h/the_best_rp_with_reasoning_model_yet_rprv3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-28T09:19:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ka0xa2</id>
+    <title>Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context</title>
+    <updated>2025-04-28T17:13:47+00:00</updated>
+    <author>
+      <name>/u/poli-cya</name>
+      <uri>https://old.reddit.com/user/poli-cya</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"&gt; &lt;img alt="Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context" src="https://preview.redd.it/x74zdyrswlxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=282ab76f262f12ab67dea3155bbe95ef042385a0" title="Qwen 3 8B Q8 running 50+tok/s on 4090 laptop, 40K unquanted context" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/poli-cya"&gt; /u/poli-cya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/x74zdyrswlxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka0xa2/qwen_3_8b_q8_running_50toks_on_4090_laptop_40k/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-28T17:13:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1k9qg8o</id>
@@ -125,19 +138,6 @@
     <published>2025-04-28T14:07:09+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k9mgbv</id>
-    <title>Looks like Qwen 3 will have a 256k context?</title>
-    <updated>2025-04-28T03:48:24+00:00</updated>
-    <author>
-      <name>/u/glowcialist</name>
-      <uri>https://old.reddit.com/user/glowcialist</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9mgbv/looks_like_qwen_3_will_have_a_256k_context/"&gt; &lt;img alt="Looks like Qwen 3 will have a 256k context?" src="https://preview.redd.it/1nos591czhxe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3a4bb4944c00bde46f782de410f83eff9b8e3411" title="Looks like Qwen 3 will have a 256k context?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/glowcialist"&gt; /u/glowcialist &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1nos591czhxe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9mgbv/looks_like_qwen_3_will_have_a_256k_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9mgbv/looks_like_qwen_3_will_have_a_256k_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T03:48:24+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k9udty</id>
     <title>Qwen 3 is now on huggingface</title>
     <updated>2025-04-28T12:31:43+00:00</updated>
@@ -164,19 +164,6 @@
     <published>2025-04-28T10:53:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1k9ygcx</id>
-    <title>Real Qwen 3 GGUFs?</title>
-    <updated>2025-04-28T15:33:06+00:00</updated>
-    <author>
-      <name>/u/AlexBefest</name>
-      <uri>https://old.reddit.com/user/AlexBefest</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt; &lt;img alt="Real Qwen 3 GGUFs?" src="https://external-preview.redd.it/2dbWk1faU88RM4mWCeW541cjKo7LtgCOrW9f8Xj5UWA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=bf8fbb2c643092a7ce4442b4ac845accc7e8ae41" title="Real Qwen 3 GGUFs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/fu20acechlxe1.png?width=1119&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=01ee77f7c0927b79846d41260c02b24aeb257320"&gt;https://preview.redd.it/fu20acechlxe1.png?width=1119&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=01ee77f7c0927b79846d41260c02b24aeb257320&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/second-state/Qwen3-32B-GGUF"&gt;https://huggingface.co/second-state/Qwen3-32B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Or fake?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AlexBefest"&gt; /u/AlexBefest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T15:33:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1k9mebu</id>
     <title>Why you should run AI locally: OpenAI is psychologically manipulating their users via ChatGPT.</title>
     <updated>2025-04-28T03:45:12+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9mebu/why_you_should_run_ai_locally_openai_is/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-28T03:45:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1k9ygcx</id>
+    <title>Real Qwen 3 GGUFs?</title>
+    <updated>2025-04-28T15:33:06+00:00</updated>
+    <author>
+      <name>/u/AlexBefest</name>
+      <uri>https://old.reddit.com/user/AlexBefest</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt; &lt;img alt="Real Qwen 3 GGUFs?" src="https://external-preview.redd.it/2dbWk1faU88RM4mWCeW541cjKo7LtgCOrW9f8Xj5UWA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=bf8fbb2c643092a7ce4442b4ac845accc7e8ae41" title="Real Qwen 3 GGUFs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/fu20acechlxe1.png?width=1119&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=01ee77f7c0927b79846d41260c02b24aeb257320"&gt;https://preview.redd.it/fu20acechlxe1.png?width=1119&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=01ee77f7c0927b79846d41260c02b24aeb257320&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/second-state/Qwen3-32B-GGUF"&gt;https://huggingface.co/second-state/Qwen3-32B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Or fake?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AlexBefest"&gt; /u/AlexBefest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9ygcx/real_qwen_3_ggufs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-28T15:33:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1k9tobs</id>
@@ -255,6 +255,19 @@
     <published>2025-04-28T15:17:38+00:00</published>
   </entry>
   <entry>
+    <id>t3_1k9v1bp</id>
+    <title>Llama may release new reasoning model and other features with llama 4.1 models tomorrow</title>
+    <updated>2025-04-28T13:04:05+00:00</updated>
+    <author>
+      <name>/u/Independent-Wind4462</name>
+      <uri>https://old.reddit.com/user/Independent-Wind4462</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"&gt; &lt;img alt="Llama may release new reasoning model and other features with llama 4.1 models tomorrow" src="https://preview.redd.it/zua4wxjuqkxe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=741de5b0707aaa5ca42c5eef34cbff16051e3f77" title="Llama may release new reasoning model and other features with llama 4.1 models tomorrow" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Wind4462"&gt; /u/Independent-Wind4462 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/zua4wxjuqkxe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-28T13:04:05+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1k9zhrl</id>
     <title>QWEN 3 0.6 B is a REASONING MODEL</title>
     <updated>2025-04-28T16:14:45+00:00</updated>
@@ -279,19 +292,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka10er/unsloths_qwen_3_collection_has_58_items_all_still/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-28T17:17:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1k9v1bp</id>
-    <title>Llama may release new reasoning model and other features with llama 4.1 models tomorrow</title>
-    <updated>2025-04-28T13:04:05+00:00</updated>
-    <author>
-      <name>/u/Independent-Wind4462</name>
-      <uri>https://old.reddit.com/user/Independent-Wind4462</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"&gt; &lt;img alt="Llama may release new reasoning model and other features with llama 4.1 models tomorrow" src="https://preview.redd.it/zua4wxjuqkxe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=741de5b0707aaa5ca42c5eef34cbff16051e3f77" title="Llama may release new reasoning model and other features with llama 4.1 models tomorrow" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Independent-Wind4462"&gt; /u/Independent-Wind4462 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/zua4wxjuqkxe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1k9v1bp/llama_may_release_new_reasoning_model_and_other/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T13:04:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1k9scp3</id>
