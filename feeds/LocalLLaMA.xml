@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-29T20:07:10+00:00</updated>
+  <updated>2025-04-29T20:24:40+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kajcl7</id>
-    <title>Qwen3 now runs locally in Jan via llama.cpp (Update the llama.cpp backend in Settings to run it)</title>
-    <updated>2025-04-29T08:56:53+00:00</updated>
+    <id>t3_1kawzia</id>
+    <title>Qwen3-235B-A22B =&gt; UD-Q3_K_XL GGUF @12t/s with 4x3090 and old Xeon</title>
+    <updated>2025-04-29T19:43:43+00:00</updated>
     <author>
-      <name>/u/eck72</name>
-      <uri>https://old.reddit.com/user/eck72</uri>
+      <name>/u/Leflakk</name>
+      <uri>https://old.reddit.com/user/Leflakk</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kajcl7/qwen3_now_runs_locally_in_jan_via_llamacpp_update/"&gt; &lt;img alt="Qwen3 now runs locally in Jan via llama.cpp (Update the llama.cpp backend in Settings to run it)" src="https://preview.redd.it/ouuukg15mqxe1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=529c48013baf50687a416a958f98a1c1099867ea" title="Qwen3 now runs locally in Jan via llama.cpp (Update the llama.cpp backend in Settings to run it)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, just sharing a quick note: Jan uses llama.cpp as its backend, and we recently shipped a feature that lets you bump the llama.cpp version without waiting for any updates. &lt;/p&gt; &lt;p&gt;So you can now run newer models like Qwen3 without needing a full Jan update.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/eck72"&gt; /u/eck72 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/ouuukg15mqxe1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kajcl7/qwen3_now_runs_locally_in_jan_via_llamacpp_update/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kajcl7/qwen3_now_runs_locally_in_jan_via_llamacpp_update/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi guys,&lt;/p&gt; &lt;p&gt;Just sharing I get constant 12t/s with the following stuff. I think these could be adjusted depending on hardware but tbh I am not the best to help with the &amp;quot;-ot&amp;quot; flag with llama.cpp. &lt;/p&gt; &lt;p&gt;Hardware : 4 x RTX 3090 + old Xeon E5-2697 v3 and Asus X99-E-10G WS (96GB DDR4 2133 MHz but not sure it has any impact here).&lt;/p&gt; &lt;p&gt;Model : &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/UD-Q3_K_XL"&gt;unsloth/Qwen3-235B-A22B-GGUF/tree/main/&lt;/a&gt;&lt;a href="https://www.asus.com/fr/motherboards-components/motherboards/workstation/x99-e-10g-ws/"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use this command :&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m '/GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf' -ngl 99 -fa -c 16384 --override-tensor &amp;quot;([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2,([6-7]).ffn_.*_exps.=CUDA3,([8-9]|[1-9][0-9])\.ffn_.*_exps\.=CPU&amp;quot; -ub 4096 --temp 0.6 --min-p 0.0 --top-p 0.95 --top-k 20 --port 8001&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Thanks to llama.cpp team, Unsloth, and to the guy behind &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;this post&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Leflakk"&gt; /u/Leflakk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T08:56:53+00:00</published>
+    <published>2025-04-29T19:43:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1kaa8iz</id>
@@ -47,19 +47,6 @@
     <published>2025-04-29T11:05:07+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kavxh0</id>
-    <title>Qwen3-235B-A22B is now available for free on HuggingChat!</title>
-    <updated>2025-04-29T18:59:18+00:00</updated>
-    <author>
-      <name>/u/SensitiveCranberry</name>
-      <uri>https://old.reddit.com/user/SensitiveCranberry</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"&gt; &lt;img alt="Qwen3-235B-A22B is now available for free on HuggingChat!" src="https://external-preview.redd.it/gH4bW8N8gprzvc3iqJQVDrJQyV_d3RdXRxLHSVvGfH0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=45a0b4ecdd0a6260dccadaab474c63682477e4b3" title="Qwen3-235B-A22B is now available for free on HuggingChat!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone!&lt;/p&gt; &lt;p&gt;We wanted to make sure this model was available as soon as possible to try out: The benchmarks are super impressive but nothing beats the community vibe checks!&lt;/p&gt; &lt;p&gt;The inference speed is really impressive and to me this is looking really good. You can control the thinking mode by appending &lt;code&gt;/think and /nothink&lt;/code&gt; to your query. We might build a UI toggle for it directly if you think that would be handy?&lt;/p&gt; &lt;p&gt;Let us know if it works well for you and if you have any feedback! Always looking to hear what models people would like to see being added. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SensitiveCranberry"&gt; /u/SensitiveCranberry &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hf.co/chat/models/Qwen/Qwen3-235B-A22B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T18:59:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kafb6h</id>
     <title>Qwen3 8B FP16 - asked for 93 items, got 93 items.</title>
     <updated>2025-04-29T04:16:48+00:00</updated>
@@ -73,17 +60,17 @@
     <published>2025-04-29T04:16:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kafwa7</id>
-    <title>Qwen3 0.6B on Android runs flawlessly</title>
-    <updated>2025-04-29T04:52:48+00:00</updated>
+    <id>t3_1kavxh0</id>
+    <title>Qwen3-235B-A22B is now available for free on HuggingChat!</title>
+    <updated>2025-04-29T18:59:18+00:00</updated>
     <author>
-      <name>/u/----Val----</name>
-      <uri>https://old.reddit.com/user/----Val----</uri>
+      <name>/u/SensitiveCranberry</name>
+      <uri>https://old.reddit.com/user/SensitiveCranberry</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"&gt; &lt;img alt="Qwen3 0.6B on Android runs flawlessly" src="https://external-preview.redd.it/bXNhcjB5dTNncHhlMW--9zt028XHo6Q9w18q7qbHfuIyDOGMqIn7YhcX7Vou.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc2641a482fc3b1241bfca716695360bdcf7981d" title="Qwen3 0.6B on Android runs flawlessly" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently released v0.8.6 for ChatterUI, just in time for the Qwen 3 drop:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/Vali-98/ChatterUI/releases/latest"&gt;https://github.com/Vali-98/ChatterUI/releases/latest&lt;/a&gt;&lt;/p&gt; &lt;p&gt;So far the models seem to run fine out of the gate, and generation speeds are very optimistic for 0.6B-4B, and this is by far the smartest small model I have used.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/----Val----"&gt; /u/----Val---- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/3snum824gpxe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"&gt; &lt;img alt="Qwen3-235B-A22B is now available for free on HuggingChat!" src="https://external-preview.redd.it/gH4bW8N8gprzvc3iqJQVDrJQyV_d3RdXRxLHSVvGfH0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=45a0b4ecdd0a6260dccadaab474c63682477e4b3" title="Qwen3-235B-A22B is now available for free on HuggingChat!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone!&lt;/p&gt; &lt;p&gt;We wanted to make sure this model was available as soon as possible to try out: The benchmarks are super impressive but nothing beats the community vibe checks!&lt;/p&gt; &lt;p&gt;The inference speed is really impressive and to me this is looking really good. You can control the thinking mode by appending &lt;code&gt;/think and /nothink&lt;/code&gt; to your query. We might build a UI toggle for it directly if you think that would be handy?&lt;/p&gt; &lt;p&gt;Let us know if it works well for you and if you have any feedback! Always looking to hear what models people would like to see being added. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SensitiveCranberry"&gt; /u/SensitiveCranberry &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hf.co/chat/models/Qwen/Qwen3-235B-A22B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kavxh0/qwen3235ba22b_is_now_available_for_free_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T04:52:48+00:00</published>
+    <published>2025-04-29T18:59:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1kapjwa</id>
@@ -112,30 +99,17 @@
     <published>2025-04-29T18:54:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kawox7</id>
-    <title>Qwen3 on Fiction.liveBench for Long Context Comprehension</title>
-    <updated>2025-04-29T19:31:14+00:00</updated>
+    <id>t3_1kafwa7</id>
+    <title>Qwen3 0.6B on Android runs flawlessly</title>
+    <updated>2025-04-29T04:52:48+00:00</updated>
     <author>
-      <name>/u/fictionlive</name>
-      <uri>https://old.reddit.com/user/fictionlive</uri>
+      <name>/u/----Val----</name>
+      <uri>https://old.reddit.com/user/----Val----</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt; &lt;img alt="Qwen3 on Fiction.liveBench for Long Context Comprehension" src="https://preview.redd.it/fpnum6crstxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40324fb2fbb186ded80a243612e1e2b2969b6161" title="Qwen3 on Fiction.liveBench for Long Context Comprehension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/fpnum6crstxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"&gt; &lt;img alt="Qwen3 0.6B on Android runs flawlessly" src="https://external-preview.redd.it/bXNhcjB5dTNncHhlMW--9zt028XHo6Q9w18q7qbHfuIyDOGMqIn7YhcX7Vou.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc2641a482fc3b1241bfca716695360bdcf7981d" title="Qwen3 0.6B on Android runs flawlessly" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently released v0.8.6 for ChatterUI, just in time for the Qwen 3 drop:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/Vali-98/ChatterUI/releases/latest"&gt;https://github.com/Vali-98/ChatterUI/releases/latest&lt;/a&gt;&lt;/p&gt; &lt;p&gt;So far the models seem to run fine out of the gate, and generation speeds are very optimistic for 0.6B-4B, and this is by far the smartest small model I have used.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/----Val----"&gt; /u/----Val---- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/3snum824gpxe1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kafwa7/qwen3_06b_on_android_runs_flawlessly/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T19:31:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ka8b2u</id>
-    <title>Qwen3-30B-A3B is what most people have been waiting for</title>
-    <updated>2025-04-28T22:19:39+00:00</updated>
-    <author>
-      <name>/u/ForsookComparison</name>
-      <uri>https://old.reddit.com/user/ForsookComparison</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A QwQ competitor that limits its thinking that uses MoE with very small experts for lightspeed inference.&lt;/p&gt; &lt;p&gt;It's out, it's the real deal, Q5 is competing with QwQ easily in my personal local tests and pipelines. It's succeeding at coding one-shots, it's succeeding at editing existing codebases, it's succeeding as the 'brains' of an agentic pipeline of mine- and it's doing it all at blazing fast speeds.&lt;/p&gt; &lt;p&gt;No excuse now - intelligence that used to be SOTA now runs on modest gaming rigs - &lt;em&gt;GO BUILD SOMETHING COOL&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ForsookComparison"&gt; /u/ForsookComparison &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-28T22:19:39+00:00</published>
+    <published>2025-04-29T04:52:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1kam3sf</id>
@@ -149,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kam3sf/qwen3_is_really_good_at_mcpfunctioncall/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T11:57:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ka8b2u</id>
+    <title>Qwen3-30B-A3B is what most people have been waiting for</title>
+    <updated>2025-04-28T22:19:39+00:00</updated>
+    <author>
+      <name>/u/ForsookComparison</name>
+      <uri>https://old.reddit.com/user/ForsookComparison</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A QwQ competitor that limits its thinking that uses MoE with very small experts for lightspeed inference.&lt;/p&gt; &lt;p&gt;It's out, it's the real deal, Q5 is competing with QwQ easily in my personal local tests and pipelines. It's succeeding at coding one-shots, it's succeeding at editing existing codebases, it's succeeding as the 'brains' of an agentic pipeline of mine- and it's doing it all at blazing fast speeds.&lt;/p&gt; &lt;p&gt;No excuse now - intelligence that used to be SOTA now runs on modest gaming rigs - &lt;em&gt;GO BUILD SOMETHING COOL&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ForsookComparison"&gt; /u/ForsookComparison &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ka8b2u/qwen330ba3b_is_what_most_people_have_been_waiting/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-28T22:19:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1kaqi3k</id>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kanrt7/dont_forget_to_update_llamacpp/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T13:20:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kawox7</id>
+    <title>Qwen3 on Fiction.liveBench for Long Context Comprehension</title>
+    <updated>2025-04-29T19:31:14+00:00</updated>
+    <author>
+      <name>/u/fictionlive</name>
+      <uri>https://old.reddit.com/user/fictionlive</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt; &lt;img alt="Qwen3 on Fiction.liveBench for Long Context Comprehension" src="https://preview.redd.it/fpnum6crstxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40324fb2fbb186ded80a243612e1e2b2969b6161" title="Qwen3 on Fiction.liveBench for Long Context Comprehension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/fpnum6crstxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-29T19:31:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1ka8r2t</id>
@@ -255,19 +255,6 @@
     <published>2025-04-29T16:51:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kau30f</id>
-    <title>Qwen3 vs Gemma 3</title>
-    <updated>2025-04-29T17:43:50+00:00</updated>
-    <author>
-      <name>/u/Sadman782</name>
-      <uri>https://old.reddit.com/user/Sadman782</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After playing around with Qwen3, I’ve got mixed feelings. It’s actually pretty solid in math, coding, and reasoning. The hybrid reasoning approach is impressive — it really shines in that area.&lt;/p&gt; &lt;p&gt;But compared to Gemma, there are a few things that feel lacking:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Multilingual support&lt;/strong&gt; isn’t great. Gemma 3 12B does better than Qwen3 14B, 30B MoE, and maybe even the 32B dense model in my language.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Factual knowledge&lt;/strong&gt; is really weak — even worse than LLaMA 3.1 8B in some cases. Even the biggest Qwen3 models seem to struggle with facts.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No vision capabilities.&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Ever since Qwen 2.5, I was hoping for better factual accuracy and multilingual capabilities, but unfortunately, it still falls short. But it’s a solid step forward overall. The range of sizes and especially the 30B MoE for speed are great. Also, the hybrid reasoning is genuinely impressive.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What’s your experience been like?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: The poor SimpleQA/Knowledge result has been confirmed here: &lt;a href="https://x.com/nathanhabib1011/status/1917230699582751157"&gt;https://x.com/nathanhabib1011/status/1917230699582751157&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sadman782"&gt; /u/Sadman782 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T17:43:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kag4er</id>
     <title>Qwen3-30B-A3B runs at 12-15 tokens-per-second on CPU</title>
     <updated>2025-04-29T05:07:07+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kag4er/qwen330ba3b_runs_at_1215_tokenspersecond_on_cpu/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T05:07:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kau30f</id>
+    <title>Qwen3 vs Gemma 3</title>
+    <updated>2025-04-29T17:43:50+00:00</updated>
+    <author>
+      <name>/u/Sadman782</name>
+      <uri>https://old.reddit.com/user/Sadman782</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After playing around with Qwen3, I’ve got mixed feelings. It’s actually pretty solid in math, coding, and reasoning. The hybrid reasoning approach is impressive — it really shines in that area.&lt;/p&gt; &lt;p&gt;But compared to Gemma, there are a few things that feel lacking:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Multilingual support&lt;/strong&gt; isn’t great. Gemma 3 12B does better than Qwen3 14B, 30B MoE, and maybe even the 32B dense model in my language.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Factual knowledge&lt;/strong&gt; is really weak — even worse than LLaMA 3.1 8B in some cases. Even the biggest Qwen3 models seem to struggle with facts.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No vision capabilities.&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Ever since Qwen 2.5, I was hoping for better factual accuracy and multilingual capabilities, but unfortunately, it still falls short. But it’s a solid step forward overall. The range of sizes and especially the 30B MoE for speed are great. Also, the hybrid reasoning is genuinely impressive.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What’s your experience been like?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: The poor SimpleQA/Knowledge result has been confirmed here: &lt;a href="https://x.com/nathanhabib1011/status/1917230699582751157"&gt;https://x.com/nathanhabib1011/status/1917230699582751157&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sadman782"&gt; /u/Sadman782 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kau30f/qwen3_vs_gemma_3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-29T17:43:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1katz6u</id>
