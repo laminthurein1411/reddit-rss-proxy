@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-30T07:06:58+00:00</updated>
+  <updated>2025-04-30T07:23:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kawzia</id>
-    <title>Qwen3-235B-A22B =&gt; UD-Q3_K_XL GGUF @12t/s with 4x3090 and old Xeon</title>
-    <updated>2025-04-29T19:43:43+00:00</updated>
-    <author>
-      <name>/u/Leflakk</name>
-      <uri>https://old.reddit.com/user/Leflakk</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi guys,&lt;/p&gt; &lt;p&gt;Just sharing I get constant 12t/s with the following stuff. I think these could be adjusted depending on hardware but tbh I am not the best to help with the &amp;quot;-ot&amp;quot; flag with llama.cpp. &lt;/p&gt; &lt;p&gt;Hardware : 4 x RTX 3090 + old Xeon E5-2697 v3 and Asus X99-E-10G WS (96GB DDR4 2133 MHz but not sure it has any impact here).&lt;/p&gt; &lt;p&gt;Model : &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/UD-Q3_K_XL"&gt;unsloth/Qwen3-235B-A22B-GGUF/tree/main/&lt;/a&gt;&lt;a href="https://www.asus.com/fr/motherboards-components/motherboards/workstation/x99-e-10g-ws/"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use this command :&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m '/GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf' -ngl 99 -fa -c 16384 --override-tensor &amp;quot;([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2,([6-7]).ffn_.*_exps.=CUDA3,([8-9]|[1-9][0-9])\.ffn_.*_exps\.=CPU&amp;quot; -ub 4096 --temp 0.6 --min-p 0.0 --top-p 0.95 --top-k 20 --port 8001&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Thanks to llama.cpp team, Unsloth, and to the guy behind &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;this post&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Leflakk"&gt; /u/Leflakk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T19:43:43+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kavtwr</id>
     <title>Benchmarking AI Agent Memory Providers for Long-Term Memory</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5mpt/github_abstractagent_locally_hosted_ai_agent/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-30T02:18:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kbaecl</id>
+    <title>Honestly, THUDM might be the new star on the horizon (creators of GLM-4)</title>
+    <updated>2025-04-30T07:07:51+00:00</updated>
+    <author>
+      <name>/u/dampflokfreund</name>
+      <uri>https://old.reddit.com/user/dampflokfreund</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've read many comments here saying that THUDM/GLM-4-32B-0414 is better than the latest Qwen 3 models and I have to agree. The 9B is also very good and fits in just 6 GB VRAM at IQ4_XS. These GLM-4 models have crazy efficient attention (less VRAM usage for context than any other model I've tried.)&lt;/p&gt; &lt;p&gt;It does better in my tests, I like its personality and writing style more and imo it also codes better. &lt;/p&gt; &lt;p&gt;I didn't expect these pretty unknown model creators to beat Qwen 3 to be honest, so if they keep it up they might have a chance to become the next DeepSeek. &lt;/p&gt; &lt;p&gt;There's nice room for improvement, like native multimodality, hybrid reasoning and better multilingual support (it leaks chinese characters sometimes, sadly)&lt;/p&gt; &lt;p&gt;What are your experiences with these models?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dampflokfreund"&gt; /u/dampflokfreund &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kbaecl/honestly_thudm_might_be_the_new_star_on_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kbaecl/honestly_thudm_might_be_the_new_star_on_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kbaecl/honestly_thudm_might_be_the_new_star_on_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T07:07:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1kank02</id>
@@ -138,17 +138,17 @@
     <published>2025-04-29T23:35:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kb97ys</id>
-    <title>ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!</title>
-    <updated>2025-04-30T05:47:24+00:00</updated>
+    <id>t3_1kawox7</id>
+    <title>Qwen3 on Fiction.liveBench for Long Context Comprehension</title>
+    <updated>2025-04-29T19:31:14+00:00</updated>
     <author>
-      <name>/u/VoidAlchemy</name>
-      <uri>https://old.reddit.com/user/VoidAlchemy</uri>
+      <name>/u/fictionlive</name>
+      <uri>https://old.reddit.com/user/fictionlive</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt; &lt;img alt="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" src="https://external-preview.redd.it/cYA9q4-I6muEuEtTYSLVR3CPWT7qR_y4KkbLTSvSOXY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b11d509cf500d20e1a15b7a569f5bf8fcc448a5f" title="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just cooked up an experimental ik_llama.cpp exclusive 3.903 BPW quant blend for Qwen3-235B-A22B that delivers good quality and speed on a high end gaming rig fitting full 32k context in under 120 GB (V)RAM e.g. 24GB VRAM + 2x48GB DDR5 RAM.&lt;/p&gt; &lt;p&gt;Just benchmarked over 140 tok/s prompt processing and 10 tok/s generation on my 3090TI FE + AMD 9950X 96GB RAM DDR5-6400 gaming rig (see comment for graph).&lt;/p&gt; &lt;p&gt;Keep in mind this quant is *not* supported by mainline llama.cpp, ollama, koboldcpp, lm studio etc. I'm not releasing those as mainstream quality quants are available from bartowski, unsloth, mradermacher, et al.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VoidAlchemy"&gt; /u/VoidAlchemy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ubergarm/Qwen3-235B-A22B-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt; &lt;img alt="Qwen3 on Fiction.liveBench for Long Context Comprehension" src="https://preview.redd.it/fpnum6crstxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40324fb2fbb186ded80a243612e1e2b2969b6161" title="Qwen3 on Fiction.liveBench for Long Context Comprehension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/fpnum6crstxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T05:47:24+00:00</published>
+    <published>2025-04-29T19:31:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kb7dqt</id>
@@ -164,32 +164,6 @@
     <published>2025-04-30T03:53:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kb8yyw</id>
-    <title>DFloat11: Lossless LLM Compression for Efficient GPU Inference</title>
-    <updated>2025-04-30T05:31:23+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LeanModels/DFloat11"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb8yyw/dfloat11_lossless_llm_compression_for_efficient/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb8yyw/dfloat11_lossless_llm_compression_for_efficient/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T05:31:23+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kawox7</id>
-    <title>Qwen3 on Fiction.liveBench for Long Context Comprehension</title>
-    <updated>2025-04-29T19:31:14+00:00</updated>
-    <author>
-      <name>/u/fictionlive</name>
-      <uri>https://old.reddit.com/user/fictionlive</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt; &lt;img alt="Qwen3 on Fiction.liveBench for Long Context Comprehension" src="https://preview.redd.it/fpnum6crstxe1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=40324fb2fbb186ded80a243612e1e2b2969b6161" title="Qwen3 on Fiction.liveBench for Long Context Comprehension" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fictionlive"&gt; /u/fictionlive &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/fpnum6crstxe1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T19:31:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kb59p2</id>
     <title>China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports</title>
     <updated>2025-04-30T02:00:29+00:00</updated>
@@ -201,6 +175,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-30T02:00:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kb97ys</id>
+    <title>ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!</title>
+    <updated>2025-04-30T05:47:24+00:00</updated>
+    <author>
+      <name>/u/VoidAlchemy</name>
+      <uri>https://old.reddit.com/user/VoidAlchemy</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt; &lt;img alt="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" src="https://external-preview.redd.it/cYA9q4-I6muEuEtTYSLVR3CPWT7qR_y4KkbLTSvSOXY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b11d509cf500d20e1a15b7a569f5bf8fcc448a5f" title="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just cooked up an experimental ik_llama.cpp exclusive 3.903 BPW quant blend for Qwen3-235B-A22B that delivers good quality and speed on a high end gaming rig fitting full 32k context in under 120 GB (V)RAM e.g. 24GB VRAM + 2x48GB DDR5 RAM.&lt;/p&gt; &lt;p&gt;Just benchmarked over 140 tok/s prompt processing and 10 tok/s generation on my 3090TI FE + AMD 9950X 96GB RAM DDR5-6400 gaming rig (see comment for graph).&lt;/p&gt; &lt;p&gt;Keep in mind this quant is *not* supported by mainline llama.cpp, ollama, koboldcpp, lm studio etc. I'm not releasing those as mainstream quality quants are available from bartowski, unsloth, mradermacher, et al.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VoidAlchemy"&gt; /u/VoidAlchemy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ubergarm/Qwen3-235B-A22B-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T05:47:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kb8yyw</id>
+    <title>DFloat11: Lossless LLM Compression for Efficient GPU Inference</title>
+    <updated>2025-04-30T05:31:23+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LeanModels/DFloat11"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb8yyw/dfloat11_lossless_llm_compression_for_efficient/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb8yyw/dfloat11_lossless_llm_compression_for_efficient/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T05:31:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1kau30f</id>
@@ -229,19 +229,6 @@
     <published>2025-04-29T11:26:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kb5v6h</id>
-    <title>Thoughts on Mistral.rs</title>
-    <updated>2025-04-30T02:31:02+00:00</updated>
-    <author>
-      <name>/u/EricBuehler</name>
-      <uri>https://old.reddit.com/user/EricBuehler</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I'm the developer of &lt;a href="https://github.com/EricLBuehler/mistral.rs"&gt;mistral.rs&lt;/a&gt;, and I wanted to gauge community interest and feedback.&lt;/p&gt; &lt;p&gt;Do you use mistral.rs? Have you heard of mistral.rs?&lt;/p&gt; &lt;p&gt;Please let me know! I'm open to any feedback.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EricBuehler"&gt; /u/EricBuehler &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T02:31:02+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kb1qz6</id>
     <title>INTELLECT-2 finished training today</title>
     <updated>2025-04-29T23:06:45+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb1qz6/intellect2_finished_training_today/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T23:06:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kb5v6h</id>
+    <title>Thoughts on Mistral.rs</title>
+    <updated>2025-04-30T02:31:02+00:00</updated>
+    <author>
+      <name>/u/EricBuehler</name>
+      <uri>https://old.reddit.com/user/EricBuehler</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all! I'm the developer of &lt;a href="https://github.com/EricLBuehler/mistral.rs"&gt;mistral.rs&lt;/a&gt;, and I wanted to gauge community interest and feedback.&lt;/p&gt; &lt;p&gt;Do you use mistral.rs? Have you heard of mistral.rs?&lt;/p&gt; &lt;p&gt;Please let me know! I'm open to any feedback.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EricBuehler"&gt; /u/EricBuehler &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb5v6h/thoughts_on_mistralrs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T02:31:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1katz6u</id>
@@ -281,19 +281,6 @@
     <published>2025-04-29T13:48:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kay93z</id>
-    <title>You can run Qwen3-30B-A3B on a 16GB RAM CPU-only PC!</title>
-    <updated>2025-04-29T20:36:39+00:00</updated>
-    <author>
-      <name>/u/Foxiya</name>
-      <uri>https://old.reddit.com/user/Foxiya</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just got the Qwen3-30B-A3B model in q4 running on my CPU-only PC using llama.cpp, and honestly, I’m blown away by how well it's performing. I'm running the q4 quantized version of the model, and despite having just 16GB of RAM and no GPU, I’m consistently getting more than 10 tokens per second.&lt;/p&gt; &lt;p&gt;I wasnt expecting much given the size of the model and my relatively modest hardware setup. I figured it would crawl or maybe not even load at all, but to my surprise, it's actually snappy and responsive for many tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Foxiya"&gt; /u/Foxiya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T20:36:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kaqhxy</id>
     <title>Llama 4 reasoning 17b model releasing today</title>
     <updated>2025-04-29T15:18:43+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kaqhxy/llama_4_reasoning_17b_model_releasing_today/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T15:18:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kay93z</id>
+    <title>You can run Qwen3-30B-A3B on a 16GB RAM CPU-only PC!</title>
+    <updated>2025-04-29T20:36:39+00:00</updated>
+    <author>
+      <name>/u/Foxiya</name>
+      <uri>https://old.reddit.com/user/Foxiya</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just got the Qwen3-30B-A3B model in q4 running on my CPU-only PC using llama.cpp, and honestly, I’m blown away by how well it's performing. I'm running the q4 quantized version of the model, and despite having just 16GB of RAM and no GPU, I’m consistently getting more than 10 tokens per second.&lt;/p&gt; &lt;p&gt;I wasnt expecting much given the size of the model and my relatively modest hardware setup. I figured it would crawl or maybe not even load at all, but to my surprise, it's actually snappy and responsive for many tasks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Foxiya"&gt; /u/Foxiya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kay93z/you_can_run_qwen330ba3b_on_a_16gb_ram_cpuonly_pc/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-29T20:36:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1kb6bbl</id>
