@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-04-30T06:08:57+00:00</updated>
+  <updated>2025-04-30T06:25:39+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kb97ys</id>
-    <title>ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!</title>
-    <updated>2025-04-30T05:47:24+00:00</updated>
+    <id>t3_1kawzia</id>
+    <title>Qwen3-235B-A22B =&gt; UD-Q3_K_XL GGUF @12t/s with 4x3090 and old Xeon</title>
+    <updated>2025-04-29T19:43:43+00:00</updated>
     <author>
-      <name>/u/VoidAlchemy</name>
-      <uri>https://old.reddit.com/user/VoidAlchemy</uri>
+      <name>/u/Leflakk</name>
+      <uri>https://old.reddit.com/user/Leflakk</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt; &lt;img alt="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" src="https://external-preview.redd.it/cYA9q4-I6muEuEtTYSLVR3CPWT7qR_y4KkbLTSvSOXY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b11d509cf500d20e1a15b7a569f5bf8fcc448a5f" title="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just cooked up an experimental ik_llama.cpp exclusive 3.903 BPW quant blend for Qwen3-235B-A22B that delivers good quality and speed on a high end gaming rig fitting full 32k context in under 120 GB (V)RAM e.g. 24GB VRAM + 2x48GB DDR5 RAM.&lt;/p&gt; &lt;p&gt;Just benchmarked over 140 tok/s prompt processing and 10 tok/s generation on my 3090TI FE + AMD 9950X 96GB RAM DDR5-6400 gaming rig (see comment for graph).&lt;/p&gt; &lt;p&gt;Keep in mind this quant is *not* supported by mainline llama.cpp, ollama, koboldcpp, lm studio etc. I'm not releasing those as mainstream quality quants are available from bartowski, unsloth, mradermacher, et al.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VoidAlchemy"&gt; /u/VoidAlchemy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ubergarm/Qwen3-235B-A22B-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi guys,&lt;/p&gt; &lt;p&gt;Just sharing I get constant 12t/s with the following stuff. I think these could be adjusted depending on hardware but tbh I am not the best to help with the &amp;quot;-ot&amp;quot; flag with llama.cpp. &lt;/p&gt; &lt;p&gt;Hardware : 4 x RTX 3090 + old Xeon E5-2697 v3 and Asus X99-E-10G WS (96GB DDR4 2133 MHz but not sure it has any impact here).&lt;/p&gt; &lt;p&gt;Model : &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/UD-Q3_K_XL"&gt;unsloth/Qwen3-235B-A22B-GGUF/tree/main/&lt;/a&gt;&lt;a href="https://www.asus.com/fr/motherboards-components/motherboards/workstation/x99-e-10g-ws/"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use this command :&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m '/GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf' -ngl 99 -fa -c 16384 --override-tensor &amp;quot;([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2,([6-7]).ffn_.*_exps.=CUDA3,([8-9]|[1-9][0-9])\.ffn_.*_exps\.=CPU&amp;quot; -ub 4096 --temp 0.6 --min-p 0.0 --top-p 0.95 --top-k 20 --port 8001&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Thanks to llama.cpp team, Unsloth, and to the guy behind &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;this post&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Leflakk"&gt; /u/Leflakk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T05:47:24+00:00</published>
+    <published>2025-04-29T19:43:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1kaqi3k</id>
@@ -34,19 +34,6 @@
     <published>2025-04-29T15:18:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kawzia</id>
-    <title>Qwen3-235B-A22B =&gt; UD-Q3_K_XL GGUF @12t/s with 4x3090 and old Xeon</title>
-    <updated>2025-04-29T19:43:43+00:00</updated>
-    <author>
-      <name>/u/Leflakk</name>
-      <uri>https://old.reddit.com/user/Leflakk</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi guys,&lt;/p&gt; &lt;p&gt;Just sharing I get constant 12t/s with the following stuff. I think these could be adjusted depending on hardware but tbh I am not the best to help with the &amp;quot;-ot&amp;quot; flag with llama.cpp. &lt;/p&gt; &lt;p&gt;Hardware : 4 x RTX 3090 + old Xeon E5-2697 v3 and Asus X99-E-10G WS (96GB DDR4 2133 MHz but not sure it has any impact here).&lt;/p&gt; &lt;p&gt;Model : &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/UD-Q3_K_XL"&gt;unsloth/Qwen3-235B-A22B-GGUF/tree/main/&lt;/a&gt;&lt;a href="https://www.asus.com/fr/motherboards-components/motherboards/workstation/x99-e-10g-ws/"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I use this command :&lt;/p&gt; &lt;p&gt;&lt;code&gt;./llama-server -m '/GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf' -ngl 99 -fa -c 16384 --override-tensor &amp;quot;([0-1]).ffn_.*_exps.=CUDA0,([2-3]).ffn_.*_exps.=CUDA1,([4-5]).ffn_.*_exps.=CUDA2,([6-7]).ffn_.*_exps.=CUDA3,([8-9]|[1-9][0-9])\.ffn_.*_exps\.=CPU&amp;quot; -ub 4096 --temp 0.6 --min-p 0.0 --top-p 0.95 --top-k 20 --port 8001&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Thanks to llama.cpp team, Unsloth, and to the guy behind &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1k1rjm1/how_to_run_llama_4_fast_even_though_its_too_big/"&gt;this post&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Leflakk"&gt; /u/Leflakk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawzia/qwen3235ba22b_udq3_k_xl_gguf_12ts_with_4x3090_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-29T19:43:43+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kavtwr</id>
     <title>Benchmarking AI Agent Memory Providers for Long-Term Memory</title>
     <updated>2025-04-29T18:54:59+00:00</updated>
@@ -60,17 +47,17 @@
     <published>2025-04-29T18:54:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kb7dqt</id>
-    <title>Xiaomi MiMo - MiMo-7B-RL</title>
-    <updated>2025-04-30T03:53:26+00:00</updated>
+    <id>t3_1kb97ys</id>
+    <title>ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!</title>
+    <updated>2025-04-30T05:47:24+00:00</updated>
     <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+      <name>/u/VoidAlchemy</name>
+      <uri>https://old.reddit.com/user/VoidAlchemy</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt; &lt;img alt="Xiaomi MiMo - MiMo-7B-RL" src="https://external-preview.redd.it/QhG2hxjpDpBYc1nPejzCvz7HJ-lDjRJrjJUX5Q5zU8w.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a19f7779daa5666d3a2ff3dafca48ef50e0c785e" title="Xiaomi MiMo - MiMo-7B-RL" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/XiaomiMiMo/MiMo-7B-RL"&gt;https://huggingface.co/XiaomiMiMo/MiMo-7B-RL&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Short Summary by Qwen3-30B-A3B:&lt;/strong&gt;&lt;br /&gt; This work introduces &lt;em&gt;MiMo-7B&lt;/em&gt;, a series of reasoning-focused language models trained from scratch, demonstrating that small models can achieve exceptional mathematical and code reasoning capabilities, even outperforming larger 32B models. Key innovations include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Pre-training optimizations&lt;/strong&gt;: Enhanced data pipelines, multi-dimensional filtering, and a three-stage data mixture (25T tokens) with &lt;em&gt;Multiple-Token Prediction&lt;/em&gt; for improved reasoning.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Post-training techniques&lt;/strong&gt;: Curated 130K math/code problems with rule-based rewards, a difficulty-driven code reward for sparse tasks, and data re-sampling to stabilize RL training.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;RL infrastructure&lt;/strong&gt;: A &lt;em&gt;Seamless Rollout Engine&lt;/em&gt; accelerates training/validation by 2.29×/1.96×, paired with robust inference support. MiMo-7B-RL matches OpenAI’s o1-mini on reasoning tasks, with all models (base, SFT, RL) open-sourced to advance the community’s development of powerful reasoning LLMs.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rhbeynh1awxe1.png?width=714&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=78ac27cfa4b73b3fcc1cb591f7a1a7b314700ec2"&gt;https://preview.redd.it/rhbeynh1awxe1.png?width=714&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=78ac27cfa4b73b3fcc1cb591f7a1a7b314700ec2&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt; &lt;img alt="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" src="https://external-preview.redd.it/cYA9q4-I6muEuEtTYSLVR3CPWT7qR_y4KkbLTSvSOXY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b11d509cf500d20e1a15b7a569f5bf8fcc448a5f" title="ubergarm/Qwen3-235B-A22B-GGUF over 140 tok/s PP and 10 tok/s TG quant for gaming rigs!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just cooked up an experimental ik_llama.cpp exclusive 3.903 BPW quant blend for Qwen3-235B-A22B that delivers good quality and speed on a high end gaming rig fitting full 32k context in under 120 GB (V)RAM e.g. 24GB VRAM + 2x48GB DDR5 RAM.&lt;/p&gt; &lt;p&gt;Just benchmarked over 140 tok/s prompt processing and 10 tok/s generation on my 3090TI FE + AMD 9950X 96GB RAM DDR5-6400 gaming rig (see comment for graph).&lt;/p&gt; &lt;p&gt;Keep in mind this quant is *not* supported by mainline llama.cpp, ollama, koboldcpp, lm studio etc. I'm not releasing those as mainstream quality quants are available from bartowski, unsloth, mradermacher, et al.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/VoidAlchemy"&gt; /u/VoidAlchemy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ubergarm/Qwen3-235B-A22B-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb97ys/ubergarmqwen3235ba22bgguf_over_140_toks_pp_and_10/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T03:53:26+00:00</published>
+    <published>2025-04-30T05:47:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1kb8yyw</id>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kank02/vram_requirements_reference_what_can_you_run_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T13:10:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kb7dqt</id>
+    <title>Xiaomi MiMo - MiMo-7B-RL</title>
+    <updated>2025-04-30T03:53:26+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt; &lt;img alt="Xiaomi MiMo - MiMo-7B-RL" src="https://external-preview.redd.it/QhG2hxjpDpBYc1nPejzCvz7HJ-lDjRJrjJUX5Q5zU8w.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a19f7779daa5666d3a2ff3dafca48ef50e0c785e" title="Xiaomi MiMo - MiMo-7B-RL" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/XiaomiMiMo/MiMo-7B-RL"&gt;https://huggingface.co/XiaomiMiMo/MiMo-7B-RL&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Short Summary by Qwen3-30B-A3B:&lt;/strong&gt;&lt;br /&gt; This work introduces &lt;em&gt;MiMo-7B&lt;/em&gt;, a series of reasoning-focused language models trained from scratch, demonstrating that small models can achieve exceptional mathematical and code reasoning capabilities, even outperforming larger 32B models. Key innovations include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Pre-training optimizations&lt;/strong&gt;: Enhanced data pipelines, multi-dimensional filtering, and a three-stage data mixture (25T tokens) with &lt;em&gt;Multiple-Token Prediction&lt;/em&gt; for improved reasoning.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Post-training techniques&lt;/strong&gt;: Curated 130K math/code problems with rule-based rewards, a difficulty-driven code reward for sparse tasks, and data re-sampling to stabilize RL training.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;RL infrastructure&lt;/strong&gt;: A &lt;em&gt;Seamless Rollout Engine&lt;/em&gt; accelerates training/validation by 2.29×/1.96×, paired with robust inference support. MiMo-7B-RL matches OpenAI’s o1-mini on reasoning tasks, with all models (base, SFT, RL) open-sourced to advance the community’s development of powerful reasoning LLMs.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rhbeynh1awxe1.png?width=714&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=78ac27cfa4b73b3fcc1cb591f7a1a7b314700ec2"&gt;https://preview.redd.it/rhbeynh1awxe1.png?width=714&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=78ac27cfa4b73b3fcc1cb591f7a1a7b314700ec2&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb7dqt/xiaomi_mimo_mimo7brl/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T03:53:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1kag4er</id>
@@ -177,19 +177,6 @@
     <published>2025-04-29T23:35:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kb59p2</id>
-    <title>China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports</title>
-    <updated>2025-04-30T02:00:29+00:00</updated>
-    <author>
-      <name>/u/fallingdowndizzyvr</name>
-      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"&gt; &lt;img alt="China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports" src="https://external-preview.redd.it/_MhQV-xUqiO3Y0IIwXyN_CLCzP6Uu0GLDq4JaPxeNyI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=101f90eb751f4582a08ef73c287e17ff0e2987c8" title="China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.cnbc.com/2025/04/27/chinas-huawei-develops-new-ai-chip-seeking-to-match-nvidia-wsj-reports.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T02:00:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kawox7</id>
     <title>Qwen3 on Fiction.liveBench for Long Context Comprehension</title>
     <updated>2025-04-29T19:31:14+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kawox7/qwen3_on_fictionlivebench_for_long_context/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-29T19:31:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kb59p2</id>
+    <title>China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports</title>
+    <updated>2025-04-30T02:00:29+00:00</updated>
+    <author>
+      <name>/u/fallingdowndizzyvr</name>
+      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"&gt; &lt;img alt="China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports" src="https://external-preview.redd.it/_MhQV-xUqiO3Y0IIwXyN_CLCzP6Uu0GLDq4JaPxeNyI.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=101f90eb751f4582a08ef73c287e17ff0e2987c8" title="China's Huawei develops new AI chip, seeking to match Nvidia, WSJ reports" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.cnbc.com/2025/04/27/chinas-huawei-develops-new-ai-chip-seeking-to-match-nvidia-wsj-reports.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kb59p2/chinas_huawei_develops_new_ai_chip_seeking_to/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-04-30T02:00:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1kb5v6h</id>
