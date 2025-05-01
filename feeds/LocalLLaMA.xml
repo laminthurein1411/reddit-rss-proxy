@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-01T08:50:59+00:00</updated>
+  <updated>2025-05-01T09:07:01+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kbnoyj</id>
-    <title>Qwen3 on 2008 Motherboard</title>
-    <updated>2025-04-30T18:29:08+00:00</updated>
+    <id>t3_1kc3n1z</id>
+    <title>Large Language Models with One Training Example</title>
+    <updated>2025-05-01T08:19:13+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/Fearless-Elephant-81</name>
+      <uri>https://old.reddit.com/user/Fearless-Elephant-81</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kbnoyj/qwen3_on_2008_motherboard/"&gt; &lt;img alt="Qwen3 on 2008 Motherboard" src="https://b.thumbs.redditmedia.com/PhjaQ0Rbh_obU0m9twyuwa8wf1l0mjOqGDesl-htg-Q.jpg" title="Qwen3 on 2008 Motherboard" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Building LocalLlama machine – Episode 1: Ancient 2008 Motherboard Meets Qwen 3&lt;/p&gt; &lt;p&gt;My desktop is an i7-13700, RTX 3090, and 128GB of RAM. Models up to 24GB run well for me, but I feel like trying something bigger. I already tried connecting a second GPU (a 2070) to see if I could run larger models, but the problem turned out to be the case, my Define 7 doesn’t fit two large graphics cards. I could probably jam them in somehow, but why bother? I bought an &lt;strong&gt;open-frame&lt;/strong&gt; case and started building &amp;quot;LocalLlama supercomputer&amp;quot;!&lt;/p&gt; &lt;p&gt;I already ordered motherboard with 4x PCI-E 16x but first &lt;strong&gt;let's have some fun&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;I was looking for information on how components other than the GPU affect LLMs. There’s a lot of theoretical info out there, but very few practical results. Since I'm a huge fan of Richard Feynman, instead of trusting the theory, I decided to test it myself.&lt;/p&gt; &lt;p&gt;The oldest computer I own was bought in &lt;strong&gt;2008&lt;/strong&gt; (what were you doing in 2008?). It turns out the motherboard has two PCI-E x16 slots. I installed the latest Ubuntu on it, plugged &lt;strong&gt;two 3060s&lt;/strong&gt; into the slots, and compiled &lt;code&gt;llama.cpp&lt;/code&gt;. What happens when you connect GPUs to a very old motherboard and try to run the latest models on it? Let’s find out!&lt;/p&gt; &lt;p&gt;First, let’s see what kind of hardware we’re dealing with:&lt;/p&gt; &lt;p&gt;Machine: Type: Desktop System: MICRO-STAR product: MS-7345 v: 1.0 BIOS: American Megatrends v: 1.9 date: 07/07/2008&lt;/p&gt; &lt;p&gt;Memory: System RAM: total: 6 GiB available: 5.29 GiB used: 2.04 GiB (38.5%) CPU: Info: dual core model: Intel Core2 Duo E8400 bits: 64 type: MCP cache: L2: 6 MiB Speed (MHz): avg: 3006 min/max: N/A cores: 1: 3006 2: 3006&lt;/p&gt; &lt;p&gt;So we have a &lt;strong&gt;dual-core processor from 2008 and 6GB of RAM.&lt;/strong&gt; A major issue with this motherboard is the &lt;strong&gt;lack of an M.2 slot&lt;/strong&gt;. That means I have to load models via SATA — which results in the model taking &lt;strong&gt;several minutes just to load&lt;/strong&gt;!&lt;/p&gt; &lt;p&gt;Since I’ve read a lot about issues with PCI lanes and how weak motherboards communicate with GPUs, I decided to run all tests using both cards — even for models that would fit on a single one.&lt;/p&gt; &lt;p&gt;The processor is &lt;strong&gt;passively cooled&lt;/strong&gt;. The whole setup is very quiet, even though it’s an open-frame build. The only fans are in the power supply and the 3060 — but they barely spin at all.&lt;/p&gt; &lt;p&gt;So what are the results? (see screenshots)&lt;/p&gt; &lt;p&gt;Qwen_Qwen3-8B-Q8_0.gguf - &lt;strong&gt;33 t/s&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Qwen_Qwen3-14B-Q8_0.gguf - &lt;strong&gt;19 t/s&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Qwen_Qwen3-30B-A3B-Q5_K_M.gguf - &lt;strong&gt;47 t/s&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Qwen_Qwen3-32B-Q4_K_M.gguf - &lt;strong&gt;14 t/s&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Yes, it's slower than the RTX 3090 on the i7-13700 — but not as much as I expected. Remember, this is a motherboard from 2008, &lt;strong&gt;17 years ago&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;I hope this is useful! I doubt anyone has a slower motherboard than mine ;)&lt;/p&gt; &lt;p&gt;In the next episode, it'll probably be an &lt;strong&gt;X399 board with a 3090 + 3060 + 3060&lt;/strong&gt; (I need to test it before ordering a second 3090)&lt;/p&gt; &lt;p&gt;(I tried to post it 3 times, something was wrong probably because the post title)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kbnoyj"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kbnoyj/qwen3_on_2008_motherboard/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kbnoyj/qwen3_on_2008_motherboard/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Paper: &lt;a href="https://www.alphaxiv.org/abs/2504.20571"&gt;https://www.alphaxiv.org/abs/2504.20571&lt;/a&gt;&lt;br /&gt; Code: &lt;a href="https://github.com/ypwang61/One-Shot-RLVR"&gt;https://github.com/ypwang61/One-Shot-RLVR&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We show that reinforcement learning with verifiable reward using one training example (1-shot RLVR) is effective in incentivizing the mathematical reasoning capabilities of large language models (LLMs). Applying RLVR to the base model Qwen2.5-Math-1.5B, we identify a single example that elevates model performance on MATH500 from 36.0% to 73.6%, and improves the average performance across six common mathematical reasoning benchmarks from 17.6% to 35.7%. This result matches the performance obtained using the 1.2k DeepScaleR subset (MATH500: 73.6%, average: 35.9%), which includes the aforementioned example. Furthermore, RLVR with only two examples even slightly exceeds these results (MATH500: 74.8%, average: 36.6%). Similar substantial improvements are observed across various models (Qwen2.5-Math-7B, Llama3.2-3B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B), RL algorithms (GRPO and PPO), and different math examples (many of which yield approximately 30% or greater improvement on MATH500 when employed as a single training example). In addition, we identify some interesting phenomena during 1-shot RLVR, including cross-domain generalization, increased frequency of self-reflection, and sustained test performance improvement even after the training accuracy has saturated, a phenomenon we term post-saturation generalization. Moreover, we verify that the effectiveness of 1-shot RLVR primarily arises from the policy gradient loss, distinguishing it from the &amp;quot;grokking&amp;quot; phenomenon. We also show the critical role of promoting exploration (e.g., by incorporating entropy loss with an appropriate coefficient) in 1-shot RLVR training. As a bonus, we observe that applying entropy loss alone, without any outcome reward, significantly enhances Qwen2.5-Math-1.5B’s performance on MATH500 by 27.4%. These findings can inspire future work on RLVR data efficiency and encourage a re-examination of both recent progress and the underlying mechanisms in RLVR. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fearless-Elephant-81"&gt; /u/Fearless-Elephant-81 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc3n1z/large_language_models_with_one_training_example/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc3n1z/large_language_models_with_one_training_example/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc3n1z/large_language_models_with_one_training_example/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-04-30T18:29:08+00:00</published>
+    <published>2025-05-01T08:19:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kbzw0p</id>
@@ -86,19 +86,6 @@
     <published>2025-04-30T12:00:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kc2o97</id>
-    <title>Phi-4-mini-reasoning 3.8B</title>
-    <updated>2025-05-01T07:07:40+00:00</updated>
-    <author>
-      <name>/u/magnus-m</name>
-      <uri>https://old.reddit.com/user/magnus-m</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Model&lt;/th&gt; &lt;th&gt;AIME&lt;/th&gt; &lt;th&gt;MATH-500&lt;/th&gt; &lt;th&gt;GPQA Diamond&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;o1-mini*&lt;/td&gt; &lt;td&gt;63.6&lt;/td&gt; &lt;td&gt;90.0&lt;/td&gt; &lt;td&gt;60.0&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;DeepSeek-R1-Distill-Qwen-7B&lt;/td&gt; &lt;td&gt;53.3&lt;/td&gt; &lt;td&gt;91.4&lt;/td&gt; &lt;td&gt;49.5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;DeepSeek-R1-Distill-Llama-8B&lt;/td&gt; &lt;td&gt;43.3&lt;/td&gt; &lt;td&gt;86.9&lt;/td&gt; &lt;td&gt;47.3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Bespoke-Stratos-7B*&lt;/td&gt; &lt;td&gt;20.0&lt;/td&gt; &lt;td&gt;82.0&lt;/td&gt; &lt;td&gt;37.8&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;OpenThinker-7B*&lt;/td&gt; &lt;td&gt;31.3&lt;/td&gt; &lt;td&gt;83.0&lt;/td&gt; &lt;td&gt;42.4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Llama-3.2-3B-Instruct&lt;/td&gt; &lt;td&gt;6.7&lt;/td&gt; &lt;td&gt;44.4&lt;/td&gt; &lt;td&gt;25.3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Phi-4-Mini (base model, 3.8B)&lt;/td&gt; &lt;td&gt;10.0&lt;/td&gt; &lt;td&gt;71.8&lt;/td&gt; &lt;td&gt;36.9&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;strong&gt;Phi-4-mini-reasoning (3.8B)&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;57.5&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;94.6&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;52.0&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;a href="https://huggingface.co/microsoft/Phi-4-mini-reasoning"&gt;https://huggingface.co/microsoft/Phi-4-mini-reasoning&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/magnus-m"&gt; /u/magnus-m &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T07:07:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kbwhdk</id>
     <title>Qwen3 30b-A3B random programing test</title>
     <updated>2025-05-01T01:01:38+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kbwhdk/qwen3_30ba3b_random_programing_test/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-01T01:01:38+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kc2o97</id>
+    <title>Phi-4-mini-reasoning 3.8B</title>
+    <updated>2025-05-01T07:07:40+00:00</updated>
+    <author>
+      <name>/u/magnus-m</name>
+      <uri>https://old.reddit.com/user/magnus-m</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Model&lt;/th&gt; &lt;th&gt;AIME&lt;/th&gt; &lt;th&gt;MATH-500&lt;/th&gt; &lt;th&gt;GPQA Diamond&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;o1-mini*&lt;/td&gt; &lt;td&gt;63.6&lt;/td&gt; &lt;td&gt;90.0&lt;/td&gt; &lt;td&gt;60.0&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;DeepSeek-R1-Distill-Qwen-7B&lt;/td&gt; &lt;td&gt;53.3&lt;/td&gt; &lt;td&gt;91.4&lt;/td&gt; &lt;td&gt;49.5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;DeepSeek-R1-Distill-Llama-8B&lt;/td&gt; &lt;td&gt;43.3&lt;/td&gt; &lt;td&gt;86.9&lt;/td&gt; &lt;td&gt;47.3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Bespoke-Stratos-7B*&lt;/td&gt; &lt;td&gt;20.0&lt;/td&gt; &lt;td&gt;82.0&lt;/td&gt; &lt;td&gt;37.8&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;OpenThinker-7B*&lt;/td&gt; &lt;td&gt;31.3&lt;/td&gt; &lt;td&gt;83.0&lt;/td&gt; &lt;td&gt;42.4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Llama-3.2-3B-Instruct&lt;/td&gt; &lt;td&gt;6.7&lt;/td&gt; &lt;td&gt;44.4&lt;/td&gt; &lt;td&gt;25.3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Phi-4-Mini (base model, 3.8B)&lt;/td&gt; &lt;td&gt;10.0&lt;/td&gt; &lt;td&gt;71.8&lt;/td&gt; &lt;td&gt;36.9&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;strong&gt;Phi-4-mini-reasoning (3.8B)&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;57.5&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;94.6&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;52.0&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;a href="https://huggingface.co/microsoft/Phi-4-mini-reasoning"&gt;https://huggingface.co/microsoft/Phi-4-mini-reasoning&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/magnus-m"&gt; /u/magnus-m &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc2o97/phi4minireasoning_38b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-01T07:07:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1kc1l53</id>
@@ -151,19 +151,6 @@
     <published>2025-04-30T16:42:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kc0gbp</id>
-    <title>EasyWhisperUI – Fast, Open Source, and Free Whisper UI for Windows &amp; macOS</title>
-    <updated>2025-05-01T04:39:44+00:00</updated>
-    <author>
-      <name>/u/mehtabmahir</name>
-      <uri>https://old.reddit.com/user/mehtabmahir</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys, if you're looking for a fast, open source, and completely free UI for Whisper, please consider trying my app &lt;strong&gt;EasyWhisperUI&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;It features full cross platform GPU acceleration:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Vulkan&lt;/strong&gt; on Windows&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Metal&lt;/strong&gt; on macOS&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I added several new changes added recently:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;macOS Support&lt;/strong&gt; • Full build and runtime support for macOS • Thanks to celerycoloured on GitHub for the contribution (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Batch Processing&lt;/strong&gt; • Drag &amp;amp; drop multiple files • Automatically queues and transcribes them one by one (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Major UI Enhancements (Windows)&lt;/strong&gt; • Acrylic background for a translucent, modern look • Improved layout and spacing&lt;/li&gt; &lt;li&gt;&lt;strong&gt;CPU-Only Toggle Support&lt;/strong&gt; • Option to disable GPU acceleration and run purely on CPU (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Fully Portable macOS Release&lt;/strong&gt; • bundled all required components (such as ffmpeg) within app.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;There are a lot more features, please check the GitHub for more info:&lt;/p&gt; &lt;p&gt;🔗 &lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href="https://github.com/mehtabmahir/easy-whisper-ui"&gt;https://github.com/mehtabmahir/easy-whisper-ui&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Let me know what you think or if you have any suggestions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mehtabmahir"&gt; /u/mehtabmahir &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T04:39:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kby1en</id>
     <title>Shuttle-3.5 (Qwen3 32b Finetune)</title>
     <updated>2025-05-01T02:22:03+00:00</updated>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kby1en/shuttle35_qwen3_32b_finetune/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-01T02:22:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kc0gbp</id>
+    <title>EasyWhisperUI – Fast, Open Source, and Free Whisper UI for Windows &amp; macOS</title>
+    <updated>2025-05-01T04:39:44+00:00</updated>
+    <author>
+      <name>/u/mehtabmahir</name>
+      <uri>https://old.reddit.com/user/mehtabmahir</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys, if you're looking for a fast, open source, and completely free UI for Whisper, please consider trying my app &lt;strong&gt;EasyWhisperUI&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;It features full cross platform GPU acceleration:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Vulkan&lt;/strong&gt; on Windows&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Metal&lt;/strong&gt; on macOS&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I added several new changes added recently:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;macOS Support&lt;/strong&gt; • Full build and runtime support for macOS • Thanks to celerycoloured on GitHub for the contribution (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Batch Processing&lt;/strong&gt; • Drag &amp;amp; drop multiple files • Automatically queues and transcribes them one by one (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Major UI Enhancements (Windows)&lt;/strong&gt; • Acrylic background for a translucent, modern look • Improved layout and spacing&lt;/li&gt; &lt;li&gt;&lt;strong&gt;CPU-Only Toggle Support&lt;/strong&gt; • Option to disable GPU acceleration and run purely on CPU (user request)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Fully Portable macOS Release&lt;/strong&gt; • bundled all required components (such as ffmpeg) within app.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;There are a lot more features, please check the GitHub for more info:&lt;/p&gt; &lt;p&gt;🔗 &lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href="https://github.com/mehtabmahir/easy-whisper-ui"&gt;https://github.com/mehtabmahir/easy-whisper-ui&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Let me know what you think or if you have any suggestions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mehtabmahir"&gt; /u/mehtabmahir &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc0gbp/easywhisperui_fast_open_source_and_free_whisper/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-01T04:39:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1kbvna2</id>
