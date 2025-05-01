@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-01T15:48:54+00:00</updated>
+  <updated>2025-05-01T16:07:38+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kca20r</id>
-    <title>Feedback on my llama.cpp Docker run command (batch size, context, etc.)</title>
-    <updated>2025-05-01T14:26:35+00:00</updated>
-    <author>
-      <name>/u/netixc1</name>
-      <uri>https://old.reddit.com/user/netixc1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I’ve been using llama.cpp for about 4 days and wanted to get some feedback from more experienced users. I’ve searched docs, Reddit, and even asked AI, but I’d love some real-world insight on my current setup-especially regarding batch size and performance-related flags. Please &lt;em&gt;don’t&lt;/em&gt; focus on the kwargs or the template; I’m mainly curious about the other settings.&lt;/p&gt; &lt;p&gt;I’m running this on an &lt;strong&gt;NVIDIA RTX 3090 GPU&lt;/strong&gt;. From what I’ve seen, the max token generation speed I can expect is around &lt;strong&gt;100–110 tokens per second&lt;/strong&gt; depending on context length and model optimizations.&lt;/p&gt; &lt;p&gt;Here’s my current command:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;bash docker run --name Qwen3-GPU-Optimized-LongContext \ --gpus '&amp;quot;device=0&amp;quot;' \ -p 8000:8000 \ -v &amp;quot;/root/models:/models:Z&amp;quot; \ -v &amp;quot;/root/llama.cpp/models/templates:/templates:Z&amp;quot; \ local/llama.cpp:server-cuda \ -m &amp;quot;/models/bartowski_Qwen_Qwen3-30B-A3B-GGUF/Qwen_Qwen3-30B-A3B-Q4_K_M.gguf&amp;quot; \ -c 38912 \ -n 1024 \ -b 1024 \ -e \ -ngl 100 \ --chat_template_kwargs '{&amp;quot;enable_thinking&amp;quot;:false}' \ --jinja \ --chat-template-file /templates/qwen3-workaround.jinja \ --port 8000 \ --host 0.0.0.0 \ --flash-attn \ --top-k 20 \ --top-p 0.8 \ --temp 0.7 \ --min-p 0 \ --cache-type-k q4_0 \ --cache-type-v q4_0 \ --threads 32 \ --threads-batch 32 \ --rope-scaling linear &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;My main questions:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Is my &lt;code&gt;-b 1024&lt;/code&gt; (batch size) setting reasonable for an RTX 3090? Should I try tuning it for better speed or memory usage?&lt;/li&gt; &lt;li&gt;Are there any obvious improvements or mistakes in my context size (&lt;code&gt;-c 38912&lt;/code&gt;), batch size, or threading settings?&lt;/li&gt; &lt;li&gt;Any “gotchas” with these parameters that could hurt performance or output quality?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would appreciate any advice, especially from those who’ve run llama.cpp on RTX 3090 or similar GPUs for a while.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/netixc1"&gt; /u/netixc1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca20r/feedback_on_my_llamacpp_docker_run_command_batch/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca20r/feedback_on_my_llamacpp_docker_run_command_batch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kca20r/feedback_on_my_llamacpp_docker_run_command_batch/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T14:26:35+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kbu7wf</id>
     <title>Qwen3-30B-A3B: Ollama vs LMStudio Speed Discrepancy (30tk/s vs 150tk/s) – Help?</title>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kbi47j/qwen34b_runs_on_my_35_years_old_pixel_6_phone/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-04-30T14:38:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kcbyk4</id>
+    <title>Qwen 3 30B A3B vs Qwen 3 32B</title>
+    <updated>2025-05-01T15:45:36+00:00</updated>
+    <author>
+      <name>/u/numinouslymusing</name>
+      <uri>https://old.reddit.com/user/numinouslymusing</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Which is better in your experience? And how does qwen 3 14b also measure up?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/numinouslymusing"&gt; /u/numinouslymusing &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcbyk4/qwen_3_30b_a3b_vs_qwen_3_32b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcbyk4/qwen_3_30b_a3b_vs_qwen_3_32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcbyk4/qwen_3_30b_a3b_vs_qwen_3_32b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-01T15:45:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1kc1l53</id>
@@ -177,19 +177,6 @@
     <published>2025-05-01T02:22:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kca3ii</id>
-    <title>NVIDIA RTX 5060 Ti 16GB: First Impressions and Performance</title>
-    <updated>2025-05-01T14:28:21+00:00</updated>
-    <author>
-      <name>/u/marcelodf12</name>
-      <uri>https://old.reddit.com/user/marcelodf12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone!&lt;/p&gt; &lt;p&gt;Like many of you, I've been excited about the possibility of running large language models (LLMs) locally. I decided to get a graphics card for this and wanted to share my initial experience with the NVIDIA RTX 5060 Ti 16GB. To put things in context, this is my first dedicated graphics card. I don’t have any prior comparison points, so everything is relatively new to me.&lt;/p&gt; &lt;p&gt;The Gigabyte GeForce RTX 5060 Ti Windforce 16GB model (with 2 fans) cost me 524 including taxes in Miami. Additionally, I had to pay a shipping fee of 30 to have it sent to my country, where fortunately I didn’t have to pay any additional import taxes. In total, the graphics card cost me approximately $550 USD.&lt;/p&gt; &lt;p&gt;For context, my system configuration is as follows: Core i5-11600, 32 GB of RAM at 2.666 MHz. These are somewhat older components, but they still perform well for what I need. Fortunately, everything was quite straightforward. I installed the drivers without any issues and it worked right out of the box! No complications.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Performance with LLMs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;gemma-3-12b-it-Q4_K_M.gguf: Around 41 tok/sec.&lt;/li&gt; &lt;li&gt;qwen2.5-coder-14b-instruct-q4_k_m.gguf: Between 35 tok/sec.&lt;/li&gt; &lt;li&gt;Mistral-Nemo-Instruct-2407-Q4_K_M.gguf: 47 tok/sec.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Stable Diffusion:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I also did some tests with Stable Diffusion and can generate an image approximately every 4 seconds, which I think is quite decent.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Games&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I haven't used the graphics card for very demanding games yet, as I'm still saving up for a 1440p monitor at 144Hz (my current one only supports 1080p at 60Hz).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Conclusion:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Overall, I'm very happy with the purchase. The performance is as expected considering the price and my configuration. I think it's a great option for those of us on a budget who want to experiment with AI locally while also using the graphics for modern games. I’d like to know what other models you’re interested in me testing. I will be updating this post with results when I have time.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/marcelodf12"&gt; /u/marcelodf12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T14:28:21+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kc2oag</id>
     <title>Qwen3 on Hallucination Leaderboard</title>
     <updated>2025-05-01T07:07:45+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc957v/qwen3_235ba22b_runs_quite_well_on_my_desktop/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-01T13:46:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kca3ii</id>
+    <title>NVIDIA RTX 5060 Ti 16GB: First Impressions and Performance</title>
+    <updated>2025-05-01T14:28:21+00:00</updated>
+    <author>
+      <name>/u/marcelodf12</name>
+      <uri>https://old.reddit.com/user/marcelodf12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone!&lt;/p&gt; &lt;p&gt;Like many of you, I've been excited about the possibility of running large language models (LLMs) locally. I decided to get a graphics card for this and wanted to share my initial experience with the NVIDIA RTX 5060 Ti 16GB. To put things in context, this is my first dedicated graphics card. I don’t have any prior comparison points, so everything is relatively new to me.&lt;/p&gt; &lt;p&gt;The Gigabyte GeForce RTX 5060 Ti Windforce 16GB model (with 2 fans) cost me 524 including taxes in Miami. Additionally, I had to pay a shipping fee of 30 to have it sent to my country, where fortunately I didn’t have to pay any additional import taxes. In total, the graphics card cost me approximately $550 USD.&lt;/p&gt; &lt;p&gt;For context, my system configuration is as follows: Core i5-11600, 32 GB of RAM at 2.666 MHz. These are somewhat older components, but they still perform well for what I need. Fortunately, everything was quite straightforward. I installed the drivers without any issues and it worked right out of the box! No complications.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Performance with LLMs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;gemma-3-12b-it-Q4_K_M.gguf: Around 41 tok/sec.&lt;/li&gt; &lt;li&gt;qwen2.5-coder-14b-instruct-q4_k_m.gguf: Between 35 tok/sec.&lt;/li&gt; &lt;li&gt;Mistral-Nemo-Instruct-2407-Q4_K_M.gguf: 47 tok/sec.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Stable Diffusion:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I also did some tests with Stable Diffusion and can generate an image approximately every 4 seconds, which I think is quite decent.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Games&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I haven't used the graphics card for very demanding games yet, as I'm still saving up for a 1440p monitor at 144Hz (my current one only supports 1080p at 60Hz).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Conclusion:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Overall, I'm very happy with the purchase. The performance is as expected considering the price and my configuration. I think it's a great option for those of us on a budget who want to experiment with AI locally while also using the graphics for modern games. I’d like to know what other models you’re interested in me testing. I will be updating this post with results when I have time.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/marcelodf12"&gt; /u/marcelodf12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kca3ii/nvidia_rtx_5060_ti_16gb_first_impressions_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-01T14:28:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1kc2o97</id>
