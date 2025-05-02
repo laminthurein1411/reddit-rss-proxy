@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-02T08:39:22+00:00</updated>
+  <updated>2025-05-02T08:51:04+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kcl9io</id>
-    <title>GLM z1 Rumination getting frustrated during a long research process</title>
-    <updated>2025-05-01T22:16:14+00:00</updated>
-    <author>
-      <name>/u/AnticitizenPrime</name>
-      <uri>https://old.reddit.com/user/AnticitizenPrime</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"&gt; &lt;img alt="GLM z1 Rumination getting frustrated during a long research process" src="https://preview.redd.it/2aglc7kzv8ye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3afbfaef829d5c916c7731b2675996a63a3e1107" title="GLM z1 Rumination getting frustrated during a long research process" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnticitizenPrime"&gt; /u/AnticitizenPrime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2aglc7kzv8ye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T22:16:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kc6wqm</id>
-    <title>Local LLM RAG Comparison - Can a small local model replace Gemini 2.5?</title>
-    <updated>2025-05-01T11:57:38+00:00</updated>
-    <author>
-      <name>/u/Jealous-Ad-202</name>
-      <uri>https://old.reddit.com/user/Jealous-Ad-202</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I tested several local LLMs for multilingual agentic RAG tasks. The models evaluated were:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen 3 1.7B&lt;/li&gt; &lt;li&gt;Qwen3 4B&lt;/li&gt; &lt;li&gt;Qwen3 8B Q6&lt;/li&gt; &lt;li&gt;Qwen 3 14B Q4&lt;/li&gt; &lt;li&gt;Gemma3 4B&lt;/li&gt; &lt;li&gt;Gemma 3 12B Q4&lt;/li&gt; &lt;li&gt;Phi-4 Mini-Reasoning&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;TLDR&lt;/strong&gt;: This is a highly personal test, not intended to be reproducible or scientific. However, if you need a local model for agentic RAG tasks and have no time for extensive testing, the Qwen3 models (4B and up) appear to be solid choices. In fact, Qwen3 4b performed so well that it will replace the Gemini 2.5 Pro model in my RAG pipeline.&lt;/p&gt; &lt;h1&gt;Testing Methodology and Evaluation Criteria&lt;/h1&gt; &lt;p&gt;Each test was performed 3 times. Database was in Portuguese, question and answer in English. The models were locally served via LMStudio and Q8_0 unless otherwise specified, on a RTX 4070 Ti Super. Reasoning was on, but speed was part of the criteria so quicker models gained points.&lt;/p&gt; &lt;p&gt;All models were asked the same moderately complex question but very specific and recent, which meant that they could not rely on their own world knowledge.&lt;/p&gt; &lt;p&gt;They were given precise instructions to format their answer like an academic research report (a slightly modified version of this example &lt;a href="https://libguides.reading.ac.uk/reports/structuring"&gt;Structuring your report - Report writing - LibGuides at University of Reading&lt;/a&gt;)&lt;/p&gt; &lt;p&gt;Each model used the same knowledge graph (built with nano-graphrag from hundreds of newspaper articles) via an agentic workflow based on ReWoo (&lt;a href="https://arxiv.org/abs/2305.18323"&gt;[2305.18323] ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models&lt;/a&gt;). The models acted as both the planner and the writer in this setup.&lt;/p&gt; &lt;p&gt;They could also decide whether to use Wikipedia as an additional source.&lt;/p&gt; &lt;p&gt;Evaluation Criteria (in order of importance):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Any hallucination resulted in immediate failure.&lt;/li&gt; &lt;li&gt;How accurately the model understood the question and retrieved relevant information.&lt;/li&gt; &lt;li&gt;The number of distinct, relevant facts identified.&lt;/li&gt; &lt;li&gt;Readability and structure of the final answer.&lt;/li&gt; &lt;li&gt;Tool calling ability, meaning whether the model made use of both tools at its disposal.&lt;/li&gt; &lt;li&gt;Speed.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Each output was compared to a baseline answer generated by Gemini 2.5 Pro.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Qwen3 1.7GB&lt;/strong&gt;: Hallucinated some parts every time and was immediately disqualified. Only used local database tool.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Qwen3 4B&lt;/strong&gt;: Well structured and complete answer, with all of the required information. No hallucinations. Excellent at instruction following. Favorable comparison with Gemini. Extremely quick. Used both tools.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Qwen3 8B&lt;/strong&gt;: Well structured and complete answer, with all of the required information. No hallucinations. Excellent at instruction following. Favorable comparison with Gemini. Very quick. Used both tools.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Qwen3 14B&lt;/strong&gt;: Well structured and complete answer, with all of the required information. No hallucinations. Excellent at instruction following. Favorable comparison with Gemini. Used both tools. Also quick but of course not as quick as the smaller models given the limited compute at my disposal.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Gemma3 4B&lt;/strong&gt;: No hallucination but poorly structured answer, missing information. Only used local database tool. Very quick. Ok at instruction following.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Gemma3 12B&lt;/strong&gt;: Better than Gemma3 4B but still not as good as the Qwen3 models. The answers were not as complete and well-formatted. Quick. Only used local database tool. Ok at instruction following.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Phi-4 Mini Reasoning&lt;/strong&gt;: So bad that I cannot believe it. There must still be some implementation problem because it hallucinated from beginning to end. Much worse than Qwen3 1.7b. not sure it used any of the tools.&lt;/p&gt; &lt;h1&gt;Conclusion&lt;/h1&gt; &lt;p&gt;The Qwen models handled these tests very well, especially the 4B version, which performed much better than expected, as well as the Gemini 2.5 Pro baseline in fact. This might be down to their reasoning abilities.&lt;/p&gt; &lt;p&gt;The Gemma models, on the other hand, were surprisingly average. It's hard to say if the agentic nature of the task was the main issue.&lt;/p&gt; &lt;p&gt;The Phi-4 model was terrible and hallucinated constantly. I need to double-check the LMStudio setup before making a final call, but it seems like it might not be well suited for agentic tasks, perhaps due to lack of native tool calling capabilities.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Jealous-Ad-202"&gt; /u/Jealous-Ad-202 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc6wqm/local_llm_rag_comparison_can_a_small_local_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kc6wqm/local_llm_rag_comparison_can_a_small_local_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kc6wqm/local_llm_rag_comparison_can_a_small_local_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-01T11:57:38+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kc016i</id>
     <title>Qwen 3 4B is the future, ladies and gentlemen</title>
@@ -47,17 +21,17 @@
     <published>2025-05-01T04:13:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kcumdq</id>
-    <title>How are you using LLMs for knowledge?</title>
-    <updated>2025-05-02T06:52:40+00:00</updated>
+    <id>t3_1kcl9io</id>
+    <title>GLM z1 Rumination getting frustrated during a long research process</title>
+    <updated>2025-05-01T22:16:14+00:00</updated>
     <author>
-      <name>/u/Due-Competition4564</name>
-      <uri>https://old.reddit.com/user/Due-Competition4564</uri>
+      <name>/u/AnticitizenPrime</name>
+      <uri>https://old.reddit.com/user/AnticitizenPrime</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious how people are using local LLMs for acquiring knowledge.&lt;/p&gt; &lt;p&gt;Given that they hallucinate, and that local models are even more compressed than the ones online... are you using them to understand or learn things?&lt;/p&gt; &lt;p&gt;What is your workflow?&lt;/p&gt; &lt;p&gt;How are you ensuring you aren't learning nonsense?&lt;/p&gt; &lt;p&gt;How is the ability to chat with an LLM changing how you learn or engage with information?&lt;/p&gt; &lt;p&gt;What is it making easy for you that was hard previously?&lt;/p&gt; &lt;p&gt;Is there anything you are worried about?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Due-Competition4564"&gt; /u/Due-Competition4564 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"&gt; &lt;img alt="GLM z1 Rumination getting frustrated during a long research process" src="https://preview.redd.it/2aglc7kzv8ye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3afbfaef829d5c916c7731b2675996a63a3e1107" title="GLM z1 Rumination getting frustrated during a long research process" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AnticitizenPrime"&gt; /u/AnticitizenPrime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2aglc7kzv8ye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcl9io/glm_z1_rumination_getting_frustrated_during_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-02T06:52:40+00:00</published>
+    <published>2025-05-01T22:16:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kcijcm</id>
@@ -99,6 +73,19 @@
     <published>2025-05-01T20:17:04+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kcvsy9</id>
+    <title>Qwen3 30b/32b - q4/q8/fp16 - gguf/mlx - M4max128gb</title>
+    <updated>2025-05-02T08:19:03+00:00</updated>
+    <author>
+      <name>/u/Komarov_d</name>
+      <uri>https://old.reddit.com/user/Komarov_d</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcvsy9/qwen3_30b32b_q4q8fp16_ggufmlx_m4max128gb/"&gt; &lt;img alt="Qwen3 30b/32b - q4/q8/fp16 - gguf/mlx - M4max128gb" src="https://b.thumbs.redditmedia.com/T5i65oAV1f974GV4heNgVTtJ_wWIh-vCXJ77FH6bqDM.jpg" title="Qwen3 30b/32b - q4/q8/fp16 - gguf/mlx - M4max128gb" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/anzgedbuubye1.png?width=1490&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=5908fd421d6fc427f2a5eb9a0ec8e8a2373a2115"&gt;https://preview.redd.it/anzgedbuubye1.png?width=1490&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=5908fd421d6fc427f2a5eb9a0ec8e8a2373a2115&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I am too lazy to check whether it's been published already. Anyways, couldn't resist from testing myself. &lt;/p&gt; &lt;p&gt;Ollama vs LMStudio.&lt;br /&gt; MLX engine - 15.1 (there is beta of 15.2 in LMstudio, promises to be optimised even better, but keeps on crushing as of now, so waiting for a stable update to test new (hopefully) speeds).&lt;/p&gt; &lt;p&gt;Sorry for a dumb prompt, just wanted to make sure any of those models won't mess up my T3 stack while I am offline, purely for testing t/s.&lt;/p&gt; &lt;p&gt;both 30b and 32b fp16 .mlx models won't run, still looking for working versions. &lt;/p&gt; &lt;p&gt;have a nice one!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Komarov_d"&gt; /u/Komarov_d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcvsy9/qwen3_30b32b_q4q8fp16_ggufmlx_m4max128gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcvsy9/qwen3_30b32b_q4q8fp16_ggufmlx_m4max128gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcvsy9/qwen3_30b32b_q4q8fp16_ggufmlx_m4max128gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-02T08:19:03+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kccfu9</id>
     <title>Qwen 3 is better than prev versions</title>
     <updated>2025-05-01T16:05:13+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kccfu9/qwen_3_is_better_than_prev_versions/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-01T16:05:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kcumdq</id>
+    <title>How are you using LLMs for knowledge?</title>
+    <updated>2025-05-02T06:52:40+00:00</updated>
+    <author>
+      <name>/u/Due-Competition4564</name>
+      <uri>https://old.reddit.com/user/Due-Competition4564</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious how people are using local LLMs for acquiring knowledge.&lt;/p&gt; &lt;p&gt;Given that they hallucinate, and that local models are even more compressed than the ones online... are you using them to understand or learn things?&lt;/p&gt; &lt;p&gt;What is your workflow?&lt;/p&gt; &lt;p&gt;How are you ensuring you aren't learning nonsense?&lt;/p&gt; &lt;p&gt;How is the ability to chat with an LLM changing how you learn or engage with information?&lt;/p&gt; &lt;p&gt;What is it making easy for you that was hard previously?&lt;/p&gt; &lt;p&gt;Is there anything you are worried about?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Due-Competition4564"&gt; /u/Due-Competition4564 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcumdq/how_are_you_using_llms_for_knowledge/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-02T06:52:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1kcg8og</id>
