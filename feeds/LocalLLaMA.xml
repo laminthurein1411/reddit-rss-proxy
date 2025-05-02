@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-02T20:07:07+00:00</updated>
+  <updated>2025-05-02T20:24:33+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -281,19 +281,6 @@
     <published>2025-05-02T16:20:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kd5rua</id>
-    <title>Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')</title>
-    <updated>2025-05-02T16:49:48+00:00</updated>
-    <author>
-      <name>/u/Invuska</name>
-      <uri>https://old.reddit.com/user/Invuska</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"&gt; &lt;img alt="Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')" src="https://external-preview.redd.it/MTRoZmRzMjY0ZXllMUcsKz2Py1mD-nSurwbqeO4CsbiV3jfLe_WuIL5DA8ts.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6e78b8d8c62779d6528d59145aeb5423634650e6" title="Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The fact you can run the full 235B-A33B model fully in iGPU without CPU offload, on a portable machine, at a reasonable token speed is nuts! (Yes, I know Apple M-series can probably also do this too, lol). This is using the Vulkan backend; ROCm is only supported on Linux, but you can get it to work on this device if you decide to go that route and you self-compile llama.cpp&lt;/p&gt; &lt;p&gt;This is all with the caveat that I'm using an aggressive quant, using Q2_K_XL with Unsloth Dynamic 2.0 quantization.&lt;/p&gt; &lt;p&gt;Leaving the LLM on leaves ~30GB RAM left over (I had VS Code, OBS, and a few Chrome tabs open), and CPU usage stays completely unused with the GPU taking over all LLM compute needs. Feels very usable to be able to do work while doing LLM inference on the side, without the LLM completely taking your entire machine over.&lt;/p&gt; &lt;p&gt;Weakness of AMD Strix Halo for LLMs, despite 'on-die' memory like Apple M-series, is that memory bandwidth is still very slow in comparison (M4 Max @ 546Gb/s, Ryzen 395+ @ 256Gb/s). Strix Halo products do undercut Macbooks with similar RAM size in price brand-new (~$2800 for a Flow Z13 Tablet with 128GB RAM).&lt;/p&gt; &lt;p&gt;This is my llama.cpp params (same params used for LM Studio):&lt;br /&gt; `-m Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf -c 12288 --batch-size 320 -ngl 95 --temp 0.6 --top-k 20 --top-p .95 --min-p 0 --repeat-penalty 1.2 --no-mmap --jinja --chat-template-file ./qwen3-workaround.jinja`. &lt;/p&gt; &lt;p&gt;`--batch-size 320` is important for Vulkan inference due to a bug outlined here: &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13164"&gt;https://github.com/ggml-org/llama.cpp/issues/13164&lt;/a&gt;, you need to set evaluation batch size under 365 or you will get a model crash.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Invuska"&gt; /u/Invuska &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/yct8as264eye1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-02T16:49:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kd0ucu</id>
     <title>LLM GPU calculator for inference and fine-tuning requirements</title>
     <updated>2025-05-02T13:23:00+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd0ucu/llm_gpu_calculator_for_inference_and_finetuning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T13:23:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kd5rua</id>
+    <title>Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')</title>
+    <updated>2025-05-02T16:49:48+00:00</updated>
+    <author>
+      <name>/u/Invuska</name>
+      <uri>https://old.reddit.com/user/Invuska</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"&gt; &lt;img alt="Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')" src="https://external-preview.redd.it/MTRoZmRzMjY0ZXllMUcsKz2Py1mD-nSurwbqeO4CsbiV3jfLe_WuIL5DA8ts.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6e78b8d8c62779d6528d59145aeb5423634650e6" title="Qwen3 235B-A22B on a Windows tablet @ ~11.1t/s on AMD Ryzen AI Max 395+ 128GB RAM (Radeon 8060S iGPU-only inference, using 87.7GB out of 95.8GB total for 'VRAM')" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The fact you can run the full 235B-A33B model fully in iGPU without CPU offload, on a portable machine, at a reasonable token speed is nuts! (Yes, I know Apple M-series can probably also do this too, lol). This is using the Vulkan backend; ROCm is only supported on Linux, but you can get it to work on this device if you decide to go that route and you self-compile llama.cpp&lt;/p&gt; &lt;p&gt;This is all with the caveat that I'm using an aggressive quant, using Q2_K_XL with Unsloth Dynamic 2.0 quantization.&lt;/p&gt; &lt;p&gt;Leaving the LLM on leaves ~30GB RAM left over (I had VS Code, OBS, and a few Chrome tabs open), and CPU usage stays completely unused with the GPU taking over all LLM compute needs. Feels very usable to be able to do work while doing LLM inference on the side, without the LLM completely taking your entire machine over.&lt;/p&gt; &lt;p&gt;Weakness of AMD Strix Halo for LLMs, despite 'on-die' memory like Apple M-series, is that memory bandwidth is still very slow in comparison (M4 Max @ 546Gb/s, Ryzen 395+ @ 256Gb/s). Strix Halo products do undercut Macbooks with similar RAM size in price brand-new (~$2800 for a Flow Z13 Tablet with 128GB RAM).&lt;/p&gt; &lt;p&gt;This is my llama.cpp params (same params used for LM Studio):&lt;br /&gt; `-m Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf -c 12288 --batch-size 320 -ngl 95 --temp 0.6 --top-k 20 --top-p .95 --min-p 0 --repeat-penalty 1.2 --no-mmap --jinja --chat-template-file ./qwen3-workaround.jinja`. &lt;/p&gt; &lt;p&gt;`--batch-size 320` is important for Vulkan inference due to a bug outlined here: &lt;a href="https://github.com/ggml-org/llama.cpp/issues/13164"&gt;https://github.com/ggml-org/llama.cpp/issues/13164&lt;/a&gt;, you need to set evaluation batch size under 365 or you will get a model crash.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Invuska"&gt; /u/Invuska &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/yct8as264eye1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd5rua/qwen3_235ba22b_on_a_windows_tablet_111ts_on_amd/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-02T16:49:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1kcwx8e</id>
