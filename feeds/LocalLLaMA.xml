@@ -2,23 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-03T13:10:13+00:00</updated>
+  <updated>2025-05-03T13:25:03+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kdcdjd</id>
-    <title>Meta AI latest work: LLM pretraining on consumer-graded GPU</title>
-    <updated>2025-05-02T21:28:37+00:00</updated>
+    <id>t3_1kds51e</id>
+    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
+    <updated>2025-05-03T12:46:15+00:00</updated>
     <author>
-      <name>/u/Dense-Smf-6032</name>
-      <uri>https://old.reddit.com/user/Dense-Smf-6032</uri>
+      <name>/u/pmur12</name>
+      <uri>https://old.reddit.com/user/pmur12</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdcdjd/meta_ai_latest_work_llm_pretraining_on/"&gt; &lt;img alt="Meta AI latest work: LLM pretraining on consumer-graded GPU" src="https://b.thumbs.redditmedia.com/rXl62zuBBM1lyXICrPhKhDICP1EmThYrTsNIZCb8nvw.jpg" title="Meta AI latest work: LLM pretraining on consumer-graded GPU" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Meta AI latest work: LLM pretraining on consumer-graded GPU&lt;/p&gt; &lt;p&gt;Title: GaLore 2: Large-Scale LLM Pre-Training by Gradient Low-Rank Projection&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.arxiv.org/abs/2504.20437"&gt;https://www.arxiv.org/abs/2504.20437&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Large language models (LLMs) have revolutionized natural language understanding and generation but face significant memory bottlenecks during training. GaLore, Gradient Low-Rank Projection, addresses this issue by leveraging the inherent low-rank structure of weight gradients, enabling substantial memory savings without sacrificing performance. Recent works further extend GaLore from various aspects, including low-bit quantization and higher-order tensor structures. However, there are several remaining challenges for GaLore, such as the computational overhead of SVD for subspace updates and the integration with state-of-the-art training parallelization strategies (e.g., FSDP). In this paper, we present GaLore 2, an efficient and scalable GaLore framework that addresses these challenges and incorporates recent advancements. In addition, we demonstrate the scalability of GaLore 2 by pre-training Llama 7B from scratch using up to 500 billion training tokens, highlighting its potential impact on real LLM pre-training scenarios.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7jb33kc1tfye1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a535a0dafba28770c2b63f19201b9501e0571afa"&gt;https://preview.redd.it/7jb33kc1tfye1.png?width=1780&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a535a0dafba28770c2b63f19201b9501e0571afa&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dense-Smf-6032"&gt; /u/Dense-Smf-6032 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdcdjd/meta_ai_latest_work_llm_pretraining_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdcdjd/meta_ai_latest_work_llm_pretraining_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdcdjd/meta_ai_latest_work_llm_pretraining_on/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-02T21:28:37+00:00</published>
+    <published>2025-05-03T12:46:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdsp4z</id>
+    <title>Qwen 3 Performance: Quick Benchmarks Across Different Setups</title>
+    <updated>2025-05-03T13:14:34+00:00</updated>
+    <author>
+      <name>/u/mimirium_</name>
+      <uri>https://old.reddit.com/user/mimirium_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;,&lt;/p&gt; &lt;p&gt;Been keeping an eye on the discussions around the new Qwen 3 models and wanted to put together a quick summary of the performance people are seeing on different hardware based on what folks are saying. Just trying to collect some of the info floating around in one place.&lt;/p&gt; &lt;p&gt;NVIDIA GPUs &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Small Models (0.6B - 14B): Some users have noted the 4B model seems surprisingly capable for reasoning.There's also talk about the 14B model being solid for coding.However, experiences seem to vary, with some finding the 4B model less impressive.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Mid-Range (30B - 32B): This seems to be where things get interesting for a lot of people.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The 30B-A3B (MoE) model is getting a lot of love for its speed. One user with a 12GB VRAM card reported around 12 tokens per second at Q6 , and someone else with an RTX 3090 saw much faster speeds, around 72.9 t/s.It even seems to run on CPUs at decent speeds.&lt;/li&gt; &lt;li&gt;The 32B dense model is also a strong contender, especially for coding.One user on an RTX 3090 got about 12.5 tokens per second with the Q8 quantized version.Some folks find the 32B better for creative tasks , while coding performance reports are mixed.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;High-End (235B): This model needs some serious hardware. If you've got a beefy setup like four RTX 3090s (96GB VRAM), you might see speeds of around 3 to 7 tokens per second.Quantization is probably a must to even try running this locally, and opinions on the quality at lower bitrates seem to vary.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Apple Silicon &lt;/p&gt; &lt;p&gt;Apple Silicon seems to be a really efficient place to run Qwen 3, especially if you're using the MLX framework.The 30B-A3B model is reportedly very fast on M4 Max chips, exceeding 100 tokens per second in some cases.Here's a quick look at some reported numbers :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;M2 Max, 30B-A3B, MLX 4-bit: 68.318 t/s&lt;/li&gt; &lt;li&gt;M4 Max, 30B-A3B, MLX Q4: 100+ t/s&lt;/li&gt; &lt;li&gt;M1 Max, 30B-A3B, GGUF Q4_K_M: ~40 t/s&lt;/li&gt; &lt;li&gt;M3 Max, 30B-A3B, MLX 8-bit: 68.016 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;MLX often seems to give better prompt processing speeds compared to llama.cpp on Macs.&lt;/p&gt; &lt;p&gt;CPU-Only Rigs &lt;/p&gt; &lt;p&gt;The 30B-A3B model can even run on systems without a dedicated GPU if you've got enough RAM.One user with 16GB of RAM reported getting over 10 tokens per second with the Q4 quantized version.Here are some examples :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;AMD Ryzen 9 7950x3d, 30B-A3B, Q4, 32GB RAM: 12-15 t/s&lt;/li&gt; &lt;li&gt;Intel i5-8250U, 30B-A3B, Q3_K_XL, 32GB RAM: 7 t/s&lt;/li&gt; &lt;li&gt;AMD Ryzen 5 5600G, 30B-A3B, Q4_K_M, 32GB RAM: 12 t/s&lt;/li&gt; &lt;li&gt;Intel i7 ultra 155, 30B-A3B, Q4, 32GB RAM: ~12-15 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Lower bit quantizations are usually needed for decent CPU performance.&lt;/p&gt; &lt;p&gt;General Thoughts:&lt;/p&gt; &lt;p&gt;The 30B-A3B model seems to be a good all-around performer. Apple Silicon users seem to be in for a treat with the MLX optimizations. Even CPU-only setups can get some use out of these models. Keep in mind that these are just some of the experiences being shared, and actual performance can vary.&lt;/p&gt; &lt;p&gt;What have your experiences been with Qwen 3? Share your benchmarks and thoughts below! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mimirium_"&gt; /u/mimirium_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T13:14:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdiczn</id>
@@ -60,19 +73,6 @@
     <published>2025-05-03T10:10:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kds51e</id>
-    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-05-03T12:46:15+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:46:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kdj5gr</id>
     <title>GMKtek Evo-x2 LLM Performance</title>
     <updated>2025-05-03T03:06:08+00:00</updated>
@@ -112,6 +112,19 @@
     <published>2025-05-02T13:23:00+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kdryej</id>
+    <title>phi 4 reasoning disappointed me</title>
+    <updated>2025-05-03T12:36:18+00:00</updated>
+    <author>
+      <name>/u/best_codes</name>
+      <uri>https://old.reddit.com/user/best_codes</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt; &lt;img alt="phi 4 reasoning disappointed me" src="https://external-preview.redd.it/0A8w2c1mr2f3-KxblotyX-GLiNkpSqj6yixJZ5S6t7s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1a4817db2efaf66d174f7bd42a3d7d975cb5b307" title="phi 4 reasoning disappointed me" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Title. I mean it was okay at math and stuff, running the mini model and the 14b model locally were both pretty dumb though. I told the mini model &amp;quot;Hello&amp;quot; and it went off in the reasoning about some random math problem; I told the 14b reasoning the same and it got stuck repeating the same phrase over and over again until it hit a token limit.&lt;/p&gt; &lt;p&gt;So, good for math, not good for general imo. I will try tweaking some params in ollama etc and see if I can get any better results.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/best_codes"&gt; /u/best_codes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://bestcodes.dev/blog/phi-4-benchmarks-and-info"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:36:18+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kdrgls</id>
     <title>Decreasing Qwen3-30B-A3B sparsity</title>
     <updated>2025-05-03T12:08:33+00:00</updated>
@@ -138,19 +151,6 @@
     <published>2025-05-02T21:59:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdryej</id>
-    <title>phi 4 reasoning disappointed me</title>
-    <updated>2025-05-03T12:36:18+00:00</updated>
-    <author>
-      <name>/u/best_codes</name>
-      <uri>https://old.reddit.com/user/best_codes</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt; &lt;img alt="phi 4 reasoning disappointed me" src="https://external-preview.redd.it/0A8w2c1mr2f3-KxblotyX-GLiNkpSqj6yixJZ5S6t7s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1a4817db2efaf66d174f7bd42a3d7d975cb5b307" title="phi 4 reasoning disappointed me" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Title. I mean it was okay at math and stuff, running the mini model and the 14b model locally were both pretty dumb though. I told the mini model &amp;quot;Hello&amp;quot; and it went off in the reasoning about some random math problem; I told the 14b reasoning the same and it got stuck repeating the same phrase over and over again until it hit a token limit.&lt;/p&gt; &lt;p&gt;So, good for math, not good for general imo. I will try tweaking some params in ollama etc and see if I can get any better results.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/best_codes"&gt; /u/best_codes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://bestcodes.dev/blog/phi-4-benchmarks-and-info"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:36:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kdbt84</id>
     <title>OK, MoE IS awesome</title>
     <updated>2025-05-02T21:04:06+00:00</updated>
@@ -175,19 +175,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kcwx8e/yea_keep_cooking/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T09:41:33+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kdre6g</id>
-    <title>Dia-JAX – Run a 1.6B Text-to-Speech Model on TPU with JAX</title>
-    <updated>2025-05-03T12:04:53+00:00</updated>
-    <author>
-      <name>/u/Due-Yoghurt2093</name>
-      <uri>https://old.reddit.com/user/Due-Yoghurt2093</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/jaco-bro/diajax"&gt;JAX port of the Dia TTS model&lt;/a&gt; from Nari Labs for inference on any machine.&lt;/p&gt; &lt;p&gt;``` pip install diajax==0.0.7&lt;/p&gt; &lt;p&gt;dia --text &amp;quot;Hey, I'm really sorry for getting back to you so late. (cough) But voice cloning is just super easy, it's barely an inconvenience at all. I will show you how.&amp;quot; --audio &amp;quot;assets/example_prompt.mp3&amp;quot; ```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Due-Yoghurt2093"&gt; /u/Due-Yoghurt2093 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:04:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1kd531l</id>
@@ -242,6 +229,19 @@
     <published>2025-05-02T16:17:48+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kdre6g</id>
+    <title>Dia-JAX – Run a 1.6B Text-to-Speech Model on TPU with JAX</title>
+    <updated>2025-05-03T12:04:53+00:00</updated>
+    <author>
+      <name>/u/Due-Yoghurt2093</name>
+      <uri>https://old.reddit.com/user/Due-Yoghurt2093</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/jaco-bro/diajax"&gt;JAX port of the Dia TTS model&lt;/a&gt; from Nari Labs for inference on any machine.&lt;/p&gt; &lt;p&gt;``` pip install diajax==0.0.7&lt;/p&gt; &lt;p&gt;dia --text &amp;quot;Hey, I'm really sorry for getting back to you so late. (cough) But voice cloning is just super easy, it's barely an inconvenience at all. I will show you how.&amp;quot; --audio &amp;quot;assets/example_prompt.mp3&amp;quot; ```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Due-Yoghurt2093"&gt; /u/Due-Yoghurt2093 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:04:53+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kdqibi</id>
     <title>Qwen3 8b on android (it's not half bad)</title>
     <updated>2025-05-03T11:10:50+00:00</updated>
@@ -253,32 +253,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqibi/qwen3_8b_on_android_its_not_half_bad/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T11:10:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kdrx3b</id>
-    <title>I am probably late to the party...</title>
-    <updated>2025-05-03T12:34:17+00:00</updated>
-    <author>
-      <name>/u/TacticalSniper</name>
-      <uri>https://old.reddit.com/user/TacticalSniper</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"&gt; &lt;img alt="I am probably late to the party..." src="https://preview.redd.it/n8fr9l83akye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d15015f5609fd116dac2b28f4ab293d1b513803e" title="I am probably late to the party..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TacticalSniper"&gt; /u/TacticalSniper &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/n8fr9l83akye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:34:17+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kdpjuz</id>
-    <title>Mistral-Small-3.1-24B-Instruct-2503 &lt;32b UGI scores</title>
-    <updated>2025-05-03T10:08:00+00:00</updated>
-    <author>
-      <name>/u/Hujkis9</name>
-      <uri>https://old.reddit.com/user/Hujkis9</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt; &lt;img alt="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" src="https://preview.redd.it/brtajevzjjye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc88e9798928b0e6c47dd1e936f8e2ecad4c4d28" title="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's been there for some time and I wonder why is nobody talking about it. I mean, from the handful of models that have a higher UGI score, all of them have lower natint and coding scores. Looks to me like an ideal choice for uncensored single-gpu inference? Plus, it supports tool usage. Am I missing something? :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hujkis9"&gt; /u/Hujkis9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/brtajevzjjye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T10:08:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdpy20</id>
@@ -305,6 +279,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd4old/wife_running_our_local_llama_a_bit_slow_because/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T16:04:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdrx3b</id>
+    <title>I am probably late to the party...</title>
+    <updated>2025-05-03T12:34:17+00:00</updated>
+    <author>
+      <name>/u/TacticalSniper</name>
+      <uri>https://old.reddit.com/user/TacticalSniper</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"&gt; &lt;img alt="I am probably late to the party..." src="https://preview.redd.it/n8fr9l83akye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d15015f5609fd116dac2b28f4ab293d1b513803e" title="I am probably late to the party..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TacticalSniper"&gt; /u/TacticalSniper &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/n8fr9l83akye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrx3b/i_am_probably_late_to_the_party/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:34:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdpjuz</id>
+    <title>Mistral-Small-3.1-24B-Instruct-2503 &lt;32b UGI scores</title>
+    <updated>2025-05-03T10:08:00+00:00</updated>
+    <author>
+      <name>/u/Hujkis9</name>
+      <uri>https://old.reddit.com/user/Hujkis9</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt; &lt;img alt="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" src="https://preview.redd.it/brtajevzjjye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc88e9798928b0e6c47dd1e936f8e2ecad4c4d28" title="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's been there for some time and I wonder why is nobody talking about it. I mean, from the handful of models that have a higher UGI score, all of them have lower natint and coding scores. Looks to me like an ideal choice for uncensored single-gpu inference? Plus, it supports tool usage. Am I missing something? :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hujkis9"&gt; /u/Hujkis9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/brtajevzjjye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T10:08:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdh6rl</id>
