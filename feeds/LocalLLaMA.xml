@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-03T19:05:15+00:00</updated>
+  <updated>2025-05-03T19:20:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -190,17 +190,17 @@
     <published>2025-05-03T14:55:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdpjuz</id>
-    <title>Mistral-Small-3.1-24B-Instruct-2503 &lt;32b UGI scores</title>
-    <updated>2025-05-03T10:08:00+00:00</updated>
+    <id>t3_1kdul92</id>
+    <title>Incredible Maverick speeds on single RTX3090 - Ik_llama solved my issue</title>
+    <updated>2025-05-03T14:44:09+00:00</updated>
     <author>
-      <name>/u/Hujkis9</name>
-      <uri>https://old.reddit.com/user/Hujkis9</uri>
+      <name>/u/Conscious_Cut_6144</name>
+      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt; &lt;img alt="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" src="https://preview.redd.it/brtajevzjjye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc88e9798928b0e6c47dd1e936f8e2ecad4c4d28" title="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's been there for some time and I wonder why is nobody talking about it. I mean, from the handful of models that have a higher UGI score, all of them have lower natint and coding scores. Looks to me like an ideal choice for uncensored single-gpu inference? Plus, it supports tool usage. Am I missing something? :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hujkis9"&gt; /u/Hujkis9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/brtajevzjjye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was getting good generation speeds on Maverick before, but PP was slow.&lt;br /&gt; This is now solved, I'm getting full GPU level performance on a 400B model with 1 gpu.&lt;br /&gt; And the new Xeon DDR5 build takes it to the next level:&lt;/p&gt; &lt;p&gt;Xeon Platinum 8480 &lt;strong&gt;ES&lt;/strong&gt; - $170&lt;br /&gt; 8x 32GB DDR5 4800 RDIMM used - $722&lt;br /&gt; 1x Gigabyte MS03-CE0 - $753 (I got a MS73-HB1 but would recommend single CPU)&lt;br /&gt; RTX 3090 - ~$750&lt;br /&gt; Heatsink + PSU + Case + SSD = ~$500&lt;/p&gt; &lt;p&gt;prompt eval time = 835.47 ms / 372 tokens ( 2.25 ms per token, &lt;strong&gt;445.26 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 43317.29 ms / 1763 runs ( 24.57 ms per token, &lt;strong&gt;40.70 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 3290.21 ms / 1623 tokens ( 2.03 ms per token, &lt;strong&gt;493.28 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 7530.90 ms / 303 runs ( 24.85 ms per token, &lt;strong&gt;40.23 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 13713.39 ms / 7012 tokens ( 1.96 ms per token, &lt;strong&gt;511.33 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 16773.69 ms / 584 runs ( 28.72 ms per token, &lt;strong&gt;34.82 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This is with Ik_Llama and the following command:&lt;br /&gt; ./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-IQ4_XS-00001-of-00005.gguf -c 32000 -fa -fmoe -amb 512 -rtr -ctk q8_0 -ctv q8_0 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --port 8000 --alias Llama4-Maverick -ngl 99 -t 54 -ot &amp;quot;.*ffn_.*_exps.*=CPU&amp;quot;&lt;/p&gt; &lt;p&gt;Using an ES cpu is somewhat risky, but a real 8480 cost $9k&lt;/p&gt; &lt;p&gt;This also works fine with an even cheaper DDR4 epyc cpu, getting 200+ Promp speeds and more like 28T/s gen with the same command.&lt;/p&gt; &lt;p&gt;This really makes me really hopeful for Llama 4 reasoner!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T10:08:00+00:00</published>
+    <published>2025-05-03T14:44:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdpy20</id>
@@ -216,17 +216,17 @@
     <published>2025-05-03T10:34:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdul92</id>
-    <title>Incredible Maverick speeds on single RTX3090 - Ik_llama solved my issue</title>
-    <updated>2025-05-03T14:44:09+00:00</updated>
+    <id>t3_1kdpjuz</id>
+    <title>Mistral-Small-3.1-24B-Instruct-2503 &lt;32b UGI scores</title>
+    <updated>2025-05-03T10:08:00+00:00</updated>
     <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
+      <name>/u/Hujkis9</name>
+      <uri>https://old.reddit.com/user/Hujkis9</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was getting good generation speeds on Maverick before, but PP was slow.&lt;br /&gt; This is now solved, I'm getting full GPU level performance on a 400B model with 1 gpu.&lt;br /&gt; And the new Xeon DDR5 build takes it to the next level:&lt;/p&gt; &lt;p&gt;Xeon Platinum 8480 &lt;strong&gt;ES&lt;/strong&gt; - $170&lt;br /&gt; 8x 32GB DDR5 4800 RDIMM used - $722&lt;br /&gt; 1x Gigabyte MS03-CE0 - $753 (I got a MS73-HB1 but would recommend single CPU)&lt;br /&gt; RTX 3090 - ~$750&lt;br /&gt; Heatsink + PSU + Case + SSD = ~$500&lt;/p&gt; &lt;p&gt;prompt eval time = 835.47 ms / 372 tokens ( 2.25 ms per token, &lt;strong&gt;445.26 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 43317.29 ms / 1763 runs ( 24.57 ms per token, &lt;strong&gt;40.70 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 3290.21 ms / 1623 tokens ( 2.03 ms per token, &lt;strong&gt;493.28 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 7530.90 ms / 303 runs ( 24.85 ms per token, &lt;strong&gt;40.23 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 13713.39 ms / 7012 tokens ( 1.96 ms per token, &lt;strong&gt;511.33 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 16773.69 ms / 584 runs ( 28.72 ms per token, &lt;strong&gt;34.82 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This is with Ik_Llama and the following command:&lt;br /&gt; ./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-IQ4_XS-00001-of-00005.gguf -c 32000 -fa -fmoe -amb 512 -rtr -ctk q8_0 -ctv q8_0 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --port 8000 --alias Llama4-Maverick -ngl 99 -t 54 -ot &amp;quot;.*ffn_.*_exps.*=CPU&amp;quot;&lt;/p&gt; &lt;p&gt;Using an ES cpu is somewhat risky, but a real 8480 cost $9k&lt;/p&gt; &lt;p&gt;This also works fine with an even cheaper DDR4 epyc cpu, getting 200+ Promp speeds and more like 28T/s gen with the same command.&lt;/p&gt; &lt;p&gt;This really makes me really hopeful for Llama 4 reasoner!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt; &lt;img alt="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" src="https://preview.redd.it/brtajevzjjye1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc88e9798928b0e6c47dd1e936f8e2ecad4c4d28" title="Mistral-Small-3.1-24B-Instruct-2503 &amp;lt;32b UGI scores" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It's been there for some time and I wonder why is nobody talking about it. I mean, from the handful of models that have a higher UGI score, all of them have lower natint and coding scores. Looks to me like an ideal choice for uncensored single-gpu inference? Plus, it supports tool usage. Am I missing something? :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hujkis9"&gt; /u/Hujkis9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/brtajevzjjye1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpjuz/mistralsmall3124binstruct2503_32b_ugi_scores/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T14:44:09+00:00</published>
+    <published>2025-05-03T10:08:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdqcjk</id>
