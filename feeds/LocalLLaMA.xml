@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-03T13:36:43+00:00</updated>
+  <updated>2025-05-03T13:48:41+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -34,19 +34,6 @@
     <published>2025-05-02T18:58:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kds51e</id>
-    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-05-03T12:46:15+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:46:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kdplei</id>
     <title>aider polyglot - individual language results</title>
     <updated>2025-05-03T10:10:53+00:00</updated>
@@ -73,19 +60,6 @@
     <published>2025-05-03T03:06:08+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdryej</id>
-    <title>phi 4 reasoning disappointed me</title>
-    <updated>2025-05-03T12:36:18+00:00</updated>
-    <author>
-      <name>/u/best_codes</name>
-      <uri>https://old.reddit.com/user/best_codes</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt; &lt;img alt="phi 4 reasoning disappointed me" src="https://external-preview.redd.it/0A8w2c1mr2f3-KxblotyX-GLiNkpSqj6yixJZ5S6t7s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1a4817db2efaf66d174f7bd42a3d7d975cb5b307" title="phi 4 reasoning disappointed me" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Title. I mean it was okay at math and stuff, running the mini model and the 14b model locally were both pretty dumb though. I told the mini model &amp;quot;Hello&amp;quot; and it went off in the reasoning about some random math problem; I told the 14b reasoning the same and it got stuck repeating the same phrase over and over again until it hit a token limit.&lt;/p&gt; &lt;p&gt;So, good for math, not good for general imo. I will try tweaking some params in ollama etc and see if I can get any better results.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/best_codes"&gt; /u/best_codes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://bestcodes.dev/blog/phi-4-benchmarks-and-info"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:36:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kd38c7</id>
     <title>Granite-4-Tiny-Preview is a 7B A1 MoE</title>
     <updated>2025-05-02T15:05:14+00:00</updated>
@@ -97,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd38c7/granite4tinypreview_is_a_7b_a1_moe/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T15:05:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kds51e</id>
+    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
+    <updated>2025-05-03T12:46:15+00:00</updated>
+    <author>
+      <name>/u/pmur12</name>
+      <uri>https://old.reddit.com/user/pmur12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:46:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kd0ucu</id>
@@ -112,19 +99,6 @@
     <published>2025-05-02T13:23:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdrgls</id>
-    <title>Decreasing Qwen3-30B-A3B sparsity</title>
-    <updated>2025-05-03T12:08:33+00:00</updated>
-    <author>
-      <name>/u/tkon3</name>
-      <uri>https://old.reddit.com/user/tkon3</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anyone tested or worked on increasing the number of experts/token of 30B-A3B?&lt;/p&gt; &lt;p&gt;I've been experimenting with this model. While its good, I've observed significantly more repetitions and hallucinations compared to the 32B.&lt;/p&gt; &lt;p&gt;I guess moving from 8 to perhaps 16 experts could bring its performance closer to the 32B dense model. This should maintain an acceptable inference speed, keeping around ~6B activated parameters per token (top-16 gating).&lt;/p&gt; &lt;p&gt;The idea is that even if some experts are currently &lt;a href="https://x.com/kalomaze/status/1918238263330148487"&gt;underused&lt;/a&gt;, they might still be valuable. And there is a chance that some of them often fall in the top 8 - 16 and are never selected.&lt;/p&gt; &lt;p&gt;Has anyone tried this? With and without fine-tuning? Any insights would be appreciated.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tkon3"&gt; /u/tkon3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:08:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kdd2zj</id>
     <title>Qwen3 32b Q8 on 3090 + 3060 + 3060</title>
     <updated>2025-05-02T21:59:41+00:00</updated>
@@ -136,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdd2zj/qwen3_32b_q8_on_3090_3060_3060/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T21:59:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdryej</id>
+    <title>phi 4 reasoning disappointed me</title>
+    <updated>2025-05-03T12:36:18+00:00</updated>
+    <author>
+      <name>/u/best_codes</name>
+      <uri>https://old.reddit.com/user/best_codes</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt; &lt;img alt="phi 4 reasoning disappointed me" src="https://external-preview.redd.it/0A8w2c1mr2f3-KxblotyX-GLiNkpSqj6yixJZ5S6t7s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1a4817db2efaf66d174f7bd42a3d7d975cb5b307" title="phi 4 reasoning disappointed me" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Title. I mean it was okay at math and stuff, running the mini model and the 14b model locally were both pretty dumb though. I told the mini model &amp;quot;Hello&amp;quot; and it went off in the reasoning about some random math problem; I told the 14b reasoning the same and it got stuck repeating the same phrase over and over again until it hit a token limit.&lt;/p&gt; &lt;p&gt;So, good for math, not good for general imo. I will try tweaking some params in ollama etc and see if I can get any better results.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/best_codes"&gt; /u/best_codes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://bestcodes.dev/blog/phi-4-benchmarks-and-info"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdryej/phi_4_reasoning_disappointed_me/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:36:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdbt84</id>
@@ -151,6 +138,19 @@
     <published>2025-05-02T21:04:06+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kdrgls</id>
+    <title>Decreasing Qwen3-30B-A3B sparsity</title>
+    <updated>2025-05-03T12:08:33+00:00</updated>
+    <author>
+      <name>/u/tkon3</name>
+      <uri>https://old.reddit.com/user/tkon3</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anyone tested or worked on increasing the number of experts/token of 30B-A3B?&lt;/p&gt; &lt;p&gt;I've been experimenting with this model. While its good, I've observed significantly more repetitions and hallucinations compared to the 32B.&lt;/p&gt; &lt;p&gt;I guess moving from 8 to perhaps 16 experts could bring its performance closer to the 32B dense model. This should maintain an acceptable inference speed, keeping around ~6B activated parameters per token (top-16 gating).&lt;/p&gt; &lt;p&gt;The idea is that even if some experts are currently &lt;a href="https://x.com/kalomaze/status/1918238263330148487"&gt;underused&lt;/a&gt;, they might still be valuable. And there is a chance that some of them often fall in the top 8 - 16 and are never selected.&lt;/p&gt; &lt;p&gt;Has anyone tried this? With and without fine-tuning? Any insights would be appreciated.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tkon3"&gt; /u/tkon3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdrgls/decreasing_qwen330ba3b_sparsity/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:08:33+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kcwx8e</id>
     <title>Yea keep "cooking"</title>
     <updated>2025-05-02T09:41:33+00:00</updated>
@@ -164,19 +164,6 @@
     <published>2025-05-02T09:41:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdsp4z</id>
-    <title>Qwen 3 Performance: Quick Benchmarks Across Different Setups</title>
-    <updated>2025-05-03T13:14:34+00:00</updated>
-    <author>
-      <name>/u/mimirium_</name>
-      <uri>https://old.reddit.com/user/mimirium_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;,&lt;/p&gt; &lt;p&gt;Been keeping an eye on the discussions around the new Qwen 3 models and wanted to put together a quick summary of the performance people are seeing on different hardware based on what folks are saying. Just trying to collect some of the info floating around in one place.&lt;/p&gt; &lt;p&gt;NVIDIA GPUs &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Small Models (0.6B - 14B): Some users have noted the 4B model seems surprisingly capable for reasoning.There's also talk about the 14B model being solid for coding.However, experiences seem to vary, with some finding the 4B model less impressive.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Mid-Range (30B - 32B): This seems to be where things get interesting for a lot of people.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The 30B-A3B (MoE) model is getting a lot of love for its speed. One user with a 12GB VRAM card reported around 12 tokens per second at Q6 , and someone else with an RTX 3090 saw much faster speeds, around 72.9 t/s.It even seems to run on CPUs at decent speeds.&lt;/li&gt; &lt;li&gt;The 32B dense model is also a strong contender, especially for coding.One user on an RTX 3090 got about 12.5 tokens per second with the Q8 quantized version.Some folks find the 32B better for creative tasks , while coding performance reports are mixed.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;High-End (235B): This model needs some serious hardware. If you've got a beefy setup like four RTX 3090s (96GB VRAM), you might see speeds of around 3 to 7 tokens per second.Quantization is probably a must to even try running this locally, and opinions on the quality at lower bitrates seem to vary.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Apple Silicon &lt;/p&gt; &lt;p&gt;Apple Silicon seems to be a really efficient place to run Qwen 3, especially if you're using the MLX framework.The 30B-A3B model is reportedly very fast on M4 Max chips, exceeding 100 tokens per second in some cases.Here's a quick look at some reported numbers :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;M2 Max, 30B-A3B, MLX 4-bit: 68.318 t/s&lt;/li&gt; &lt;li&gt;M4 Max, 30B-A3B, MLX Q4: 100+ t/s&lt;/li&gt; &lt;li&gt;M1 Max, 30B-A3B, GGUF Q4_K_M: ~40 t/s&lt;/li&gt; &lt;li&gt;M3 Max, 30B-A3B, MLX 8-bit: 68.016 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;MLX often seems to give better prompt processing speeds compared to llama.cpp on Macs.&lt;/p&gt; &lt;p&gt;CPU-Only Rigs &lt;/p&gt; &lt;p&gt;The 30B-A3B model can even run on systems without a dedicated GPU if you've got enough RAM.One user with 16GB of RAM reported getting over 10 tokens per second with the Q4 quantized version.Here are some examples :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;AMD Ryzen 9 7950x3d, 30B-A3B, Q4, 32GB RAM: 12-15 t/s&lt;/li&gt; &lt;li&gt;Intel i5-8250U, 30B-A3B, Q3_K_XL, 32GB RAM: 7 t/s&lt;/li&gt; &lt;li&gt;AMD Ryzen 5 5600G, 30B-A3B, Q4_K_M, 32GB RAM: 12 t/s&lt;/li&gt; &lt;li&gt;Intel i7 ultra 155, 30B-A3B, Q4, 32GB RAM: ~12-15 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Lower bit quantizations are usually needed for decent CPU performance.&lt;/p&gt; &lt;p&gt;General Thoughts:&lt;/p&gt; &lt;p&gt;The 30B-A3B model seems to be a good all-around performer. Apple Silicon users seem to be in for a treat with the MLX optimizations. Even CPU-only setups can get some use out of these models. Keep in mind that these are just some of the experiences being shared, and actual performance can vary.&lt;/p&gt; &lt;p&gt;What have your experiences been with Qwen 3? Share your benchmarks and thoughts below! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mimirium_"&gt; /u/mimirium_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T13:14:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kd531l</id>
     <title>Qwen3 Fine-tuning now in Unsloth - 2x faster with 70% less VRAM</title>
     <updated>2025-05-02T16:20:53+00:00</updated>
@@ -188,19 +175,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kd531l/qwen3_finetuning_now_in_unsloth_2x_faster_with_70/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-02T16:20:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kdqcjk</id>
-    <title>Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨</title>
-    <updated>2025-05-03T11:00:49+00:00</updated>
-    <author>
-      <name>/u/DanAiTuning</name>
-      <uri>https://old.reddit.com/user/DanAiTuning</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"&gt; &lt;img alt="Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨" src="https://external-preview.redd.it/p1q0NLBPvDKer4wLl6MMJh8XzyT5jyGdKYucra-ZJAU.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f79f79565267c758b305dee548b6ca5439f9e39a" title="Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;👋 I recently had great fun training small language models (Qwen2.5 0.5B &amp;amp; 3B) to use a slightly complex calculator syntax through multi-turn reinforcement learning. Results were pretty cool: the 3B model went from 27% to 89% accuracy!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I did:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Built a custom environment where model's output can be parsed &amp;amp; calculated&lt;/li&gt; &lt;li&gt;Used Claude-3.5-Haiku as a reward model judge + software verifier&lt;/li&gt; &lt;li&gt;Applied GRPO for training&lt;/li&gt; &lt;li&gt;Total cost: ~$40 (~£30) on rented GPUs&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Key results:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen 0.5B: 0.6% → 34% accuracy (+33 points)&lt;/li&gt; &lt;li&gt;Qwen 3B: 27% → 89% accuracy (+62 points)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Technical details:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The model parses nested operations like: &amp;quot;What's the sum of 987 times 654, and 987 divided by the total of 321 and 11?&amp;quot;&lt;/li&gt; &lt;li&gt;Uses XML/YAML format to structure calculator calls&lt;/li&gt; &lt;li&gt;Rewards combine LLM judging + code verification&lt;/li&gt; &lt;li&gt;1 epoch training with 8 samples per prompt&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;My &lt;a href="https://github.com/Danau5tin/calculator_agent_rl"&gt;Github repo&lt;/a&gt; has way more technical details if you're interested!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Models are now on HuggingFace:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://huggingface.co/Dan-AiTuning/calculator_agent_qwen2.5_0.5b"&gt;Qwen 2.5 0.5B Calculator Agent&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/Dan-AiTuning/calculator_agent_qwen2.5_3b"&gt;Qwen 2.5 3B Calculator Agent&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Thought I'd share because I believe the future may tend toward multi-turn RL with tool use agentic LLMs at the center.&lt;/p&gt; &lt;p&gt;(Built using the &lt;a href="https://github.com/willccbb/verifiers"&gt;Verifiers&lt;/a&gt; RL framework - It is a fantastic repo! Although not quite ready for prime time, it was extremely valuable)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DanAiTuning"&gt; /u/DanAiTuning &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kdqcjk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T11:00:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1kd5rua</id>
@@ -240,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdre6g/diajax_run_a_16b_texttospeech_model_on_tpu_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T12:04:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdqcjk</id>
+    <title>Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨</title>
+    <updated>2025-05-03T11:00:49+00:00</updated>
+    <author>
+      <name>/u/DanAiTuning</name>
+      <uri>https://old.reddit.com/user/DanAiTuning</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"&gt; &lt;img alt="Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨" src="https://external-preview.redd.it/p1q0NLBPvDKer4wLl6MMJh8XzyT5jyGdKYucra-ZJAU.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f79f79565267c758b305dee548b6ca5439f9e39a" title="Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;👋 I recently had great fun training small language models (Qwen2.5 0.5B &amp;amp; 3B) to use a slightly complex calculator syntax through multi-turn reinforcement learning. Results were pretty cool: the 3B model went from 27% to 89% accuracy!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I did:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Built a custom environment where model's output can be parsed &amp;amp; calculated&lt;/li&gt; &lt;li&gt;Used Claude-3.5-Haiku as a reward model judge + software verifier&lt;/li&gt; &lt;li&gt;Applied GRPO for training&lt;/li&gt; &lt;li&gt;Total cost: ~$40 (~£30) on rented GPUs&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Key results:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen 0.5B: 0.6% → 34% accuracy (+33 points)&lt;/li&gt; &lt;li&gt;Qwen 3B: 27% → 89% accuracy (+62 points)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Technical details:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The model parses nested operations like: &amp;quot;What's the sum of 987 times 654, and 987 divided by the total of 321 and 11?&amp;quot;&lt;/li&gt; &lt;li&gt;Uses XML/YAML format to structure calculator calls&lt;/li&gt; &lt;li&gt;Rewards combine LLM judging + code verification&lt;/li&gt; &lt;li&gt;1 epoch training with 8 samples per prompt&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;My &lt;a href="https://github.com/Danau5tin/calculator_agent_rl"&gt;Github repo&lt;/a&gt; has way more technical details if you're interested!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Models are now on HuggingFace:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://huggingface.co/Dan-AiTuning/calculator_agent_qwen2.5_0.5b"&gt;Qwen 2.5 0.5B Calculator Agent&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://huggingface.co/Dan-AiTuning/calculator_agent_qwen2.5_3b"&gt;Qwen 2.5 3B Calculator Agent&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Thought I'd share because I believe the future may tend toward multi-turn RL with tool use agentic LLMs at the center.&lt;/p&gt; &lt;p&gt;(Built using the &lt;a href="https://github.com/willccbb/verifiers"&gt;Verifiers&lt;/a&gt; RL framework - It is a fantastic repo! Although not quite ready for prime time, it was extremely valuable)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DanAiTuning"&gt; /u/DanAiTuning &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kdqcjk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T11:00:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdsp4z</id>
+    <title>Qwen 3 Performance: Quick Benchmarks Across Different Setups</title>
+    <updated>2025-05-03T13:14:34+00:00</updated>
+    <author>
+      <name>/u/mimirium_</name>
+      <uri>https://old.reddit.com/user/mimirium_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;,&lt;/p&gt; &lt;p&gt;Been keeping an eye on the discussions around the new Qwen 3 models and wanted to put together a quick summary of the performance people are seeing on different hardware based on what folks are saying. Just trying to collect some of the info floating around in one place.&lt;/p&gt; &lt;p&gt;NVIDIA GPUs &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;Small Models (0.6B - 14B): Some users have noted the 4B model seems surprisingly capable for reasoning.There's also talk about the 14B model being solid for coding.However, experiences seem to vary, with some finding the 4B model less impressive.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Mid-Range (30B - 32B): This seems to be where things get interesting for a lot of people.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The 30B-A3B (MoE) model is getting a lot of love for its speed. One user with a 12GB VRAM card reported around 12 tokens per second at Q6 , and someone else with an RTX 3090 saw much faster speeds, around 72.9 t/s.It even seems to run on CPUs at decent speeds.&lt;/li&gt; &lt;li&gt;The 32B dense model is also a strong contender, especially for coding.One user on an RTX 3090 got about 12.5 tokens per second with the Q8 quantized version.Some folks find the 32B better for creative tasks , while coding performance reports are mixed.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;High-End (235B): This model needs some serious hardware. If you've got a beefy setup like four RTX 3090s (96GB VRAM), you might see speeds of around 3 to 7 tokens per second.Quantization is probably a must to even try running this locally, and opinions on the quality at lower bitrates seem to vary.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Apple Silicon &lt;/p&gt; &lt;p&gt;Apple Silicon seems to be a really efficient place to run Qwen 3, especially if you're using the MLX framework.The 30B-A3B model is reportedly very fast on M4 Max chips, exceeding 100 tokens per second in some cases.Here's a quick look at some reported numbers :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;M2 Max, 30B-A3B, MLX 4-bit: 68.318 t/s&lt;/li&gt; &lt;li&gt;M4 Max, 30B-A3B, MLX Q4: 100+ t/s&lt;/li&gt; &lt;li&gt;M1 Max, 30B-A3B, GGUF Q4_K_M: ~40 t/s&lt;/li&gt; &lt;li&gt;M3 Max, 30B-A3B, MLX 8-bit: 68.016 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;MLX often seems to give better prompt processing speeds compared to llama.cpp on Macs.&lt;/p&gt; &lt;p&gt;CPU-Only Rigs &lt;/p&gt; &lt;p&gt;The 30B-A3B model can even run on systems without a dedicated GPU if you've got enough RAM.One user with 16GB of RAM reported getting over 10 tokens per second with the Q4 quantized version.Here are some examples :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;AMD Ryzen 9 7950x3d, 30B-A3B, Q4, 32GB RAM: 12-15 t/s&lt;/li&gt; &lt;li&gt;Intel i5-8250U, 30B-A3B, Q3_K_XL, 32GB RAM: 7 t/s&lt;/li&gt; &lt;li&gt;AMD Ryzen 5 5600G, 30B-A3B, Q4_K_M, 32GB RAM: 12 t/s&lt;/li&gt; &lt;li&gt;Intel i7 ultra 155, 30B-A3B, Q4, 32GB RAM: ~12-15 t/s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Lower bit quantizations are usually needed for decent CPU performance.&lt;/p&gt; &lt;p&gt;General Thoughts:&lt;/p&gt; &lt;p&gt;The 30B-A3B model seems to be a good all-around performer. Apple Silicon users seem to be in for a treat with the MLX optimizations. Even CPU-only setups can get some use out of these models. Keep in mind that these are just some of the experiences being shared, and actual performance can vary.&lt;/p&gt; &lt;p&gt;What have your experiences been with Qwen 3? Share your benchmarks and thoughts below! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mimirium_"&gt; /u/mimirium_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdsp4z/qwen_3_performance_quick_benchmarks_across/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T13:14:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdqibi</id>
