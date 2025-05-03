@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-03T18:49:39+00:00</updated>
+  <updated>2025-05-03T19:05:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -125,19 +125,6 @@
     <published>2025-05-03T12:04:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kds51e</id>
-    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-05-03T12:46:15+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T12:46:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kdv8by</id>
     <title>Is GLM-4's Long Context Performance Enough? An Undereducated Investigation</title>
     <updated>2025-05-03T15:12:59+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdv8by/is_glm4s_long_context_performance_enough_an/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T15:12:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kds51e</id>
+    <title>Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
+    <updated>2025-05-03T12:46:15+00:00</updated>
+    <author>
+      <name>/u/pmur12</name>
+      <uri>https://old.reddit.com/user/pmur12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share my experience which is contrary to common opinion on Reddit that inference does not need PCIe bandwidth between GPUs. Hopefully this post will be informative to anyone who wants to design a large rig.&lt;/p&gt; &lt;p&gt;First, theoretical and real PCIe differ substantially. In my specific case, 4x PCIe only provides 1.6GB/s in single direction, whereas theoretical bandwidth is 4GB/s. This is on x399 threadripper machine and can be reproduced in multiple ways: nvtop during inference, all_reduce_perf from nccl, p2pBandwidthLatencyTest from cuda-samples.&lt;/p&gt; &lt;p&gt;Second, when doing tensor parallelism the required PCIe bandwidth between GPUs scales by the number of GPUs. So 8x GPUs will require 2x bandwidth for each GPU compared to 4x GPUs. This means that any data acquired on small rigs does directly apply when designing large rigs.&lt;/p&gt; &lt;p&gt;As a result, connecting 8 GPUs using 4x PCIe 3.0 is bad idea. I profiled prefill on Mistral Large 2411 on sglang (vllm was even slower) and saw around 80% of time spent communicating between GPUs. I really wanted 4x PCIe 3.0 to work, as 8x PCIe 4.0 adds 1500 Eur to the cost, but unfortunately the results are what they are. I will post again once GPUs are connected via 8x PCIe 4.0. Right now TechxGenus/Mistral-Large-Instruct-2411-AWQ provides me ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Any similar experiences here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T12:46:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kd4old</id>
