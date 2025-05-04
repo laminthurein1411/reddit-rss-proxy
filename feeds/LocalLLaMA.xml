@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-04T23:23:28+00:00</updated>
+  <updated>2025-05-04T23:34:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kefods</id>
-    <title>Serving Qwen3-235B-A22B with 4-bit quantization and 32k context from a 128GB Mac</title>
-    <updated>2025-05-04T09:16:55+00:00</updated>
-    <author>
-      <name>/u/tarruda</name>
-      <uri>https://old.reddit.com/user/tarruda</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have tested this on Mac Studio M1 Ultra with 128GB running Sequoia 15.0.1, but this might work on macbooks that have the same amount of RAM if you are willing to set it up it as a LAN headless server. I suggest running some of the steps in &lt;a href="https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh"&gt;https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh&lt;/a&gt; to optimize resource usage.&lt;/p&gt; &lt;p&gt;The trick is to select the IQ4_XS quantization which uses less memory than Q4_K_M. In my tests there's no noticeable difference between the two other than IQ4_XS having lower TPS. In my setup I get ~18 TPS in the initial questions but it slows down to ~8 TPS when context is close to 32k tokens.&lt;/p&gt; &lt;p&gt;This is a very tight fit and you cannot be running anything else other than open webui (bare install without docker, as it would require more memory). That means llama-server will be used (can be downloaded by selecting the mac/arm64 zip here: &lt;a href="https://github.com/ggml-org/llama.cpp/releases"&gt;https://github.com/ggml-org/llama.cpp/releases&lt;/a&gt;). Alternatively a smaller context window can be used to reduce memory usage.&lt;/p&gt; &lt;p&gt;Open Webui is optional and you can be running it in a different machine in the same LAN, just make sure to point to the correct llama-server address (admin panel -&amp;gt; settings -&amp;gt; connections -&amp;gt; Manage OpenAI API Connections). Any UI that can connect to OpenAI compatible endpoints should work. If you just want to code with aider-like tools, then UIs are not necessary.&lt;/p&gt; &lt;p&gt;The main steps to get this working are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Increase maximum VRAM allocation to 125GB by setting &lt;code&gt;iogpu.wired_limit_mb=128000&lt;/code&gt; in &lt;code&gt;/etc/sysctl.conf&lt;/code&gt; (need to reboot for this to take effect)&lt;/li&gt; &lt;li&gt;download all IQ4_XS weight parts from &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS"&gt;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;from the directory where the weights are downloaded to, run llama-server with &lt;/p&gt; &lt;p&gt;llama-server -fa -ctk q8_0 -ctv q8_0 --model Qwen3-235B-A22B-IQ4_XS-00001-of-00003.gguf --ctx-size 32768 --min-p 0.0 --top-k 20 --top-p 0.8 --temp 0.7 --slot-save-path kv-cache --port 8000&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These temp/top-p settings are the recommended for non-thinking mode, so make sure to add &lt;code&gt;/nothink&lt;/code&gt; to the system prompt!&lt;/p&gt; &lt;p&gt;An OpenAI compatible API endpoint should now be running on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (adjust &lt;code&gt;--host&lt;/code&gt; / &lt;code&gt;--port&lt;/code&gt; to your needs).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tarruda"&gt; /u/tarruda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T09:16:55+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kegr4q</id>
-    <title>What are your must have MCPs?</title>
-    <updated>2025-05-04T10:31:22+00:00</updated>
-    <author>
-      <name>/u/m_abdelfattah</name>
-      <uri>https://old.reddit.com/user/m_abdelfattah</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As LLMs are accessible now and MCPs are relatively mature, what are your must have ones?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/m_abdelfattah"&gt; /u/m_abdelfattah &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T10:31:22+00:00</published>
-  </entry>
   <entry>
     <id>t3_1keqw5a</id>
     <title>Infrence on the cloud</title>
@@ -125,6 +99,19 @@
     <published>2025-05-04T19:35:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kewr1q</id>
+    <title>Jetbrains Coding model</title>
+    <updated>2025-05-04T22:51:43+00:00</updated>
+    <author>
+      <name>/u/SpeedyBrowser45</name>
+      <uri>https://old.reddit.com/user/SpeedyBrowser45</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Jetbrains just released a coding model. has anyone tried it?&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/collections/JetBrains/mellum-68120b4ae1423c86a2da007a"&gt;https://huggingface.co/collections/JetBrains/mellum-68120b4ae1423c86a2da007a&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SpeedyBrowser45"&gt; /u/SpeedyBrowser45 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewr1q/jetbrains_coding_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewr1q/jetbrains_coding_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kewr1q/jetbrains_coding_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T22:51:43+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1keh542</id>
     <title>Qwen3 on Dubesor Benchmark</title>
     <updated>2025-05-04T10:57:18+00:00</updated>
@@ -190,19 +177,6 @@
     <published>2025-05-04T10:31:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kewkno</id>
-    <title>Qwen 30B A3B performance degradation with KV quantization</title>
-    <updated>2025-05-04T22:43:11+00:00</updated>
-    <author>
-      <name>/u/fakezeta</name>
-      <uri>https://old.reddit.com/user/fakezeta</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I came across this gist &lt;a href="https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4"&gt;https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4&lt;/a&gt; that shows how Qwen 30B can solve the OpenAI cypher test with Q4_K_M quantization.&lt;/p&gt; &lt;p&gt;I tried to replicate locally but could I was not able, model sometimes entered in a repetition loop even with dry sampling or came to wrong conclusion after generating lots of thinking tokens.&lt;/p&gt; &lt;p&gt;I was using Unsloth Q4_K_XL quantization, so I tought it could be the Dynamic quantization. I tested Bartowski Q5_K_S but it had no improvement. The model didn't entered in any repetition loop but generated lots of thinking tokens without finding any solution.&lt;/p&gt; &lt;p&gt;Then I saw that sunpazed didn't used KV quantization and tried the same: boom! First time right.&lt;/p&gt; &lt;p&gt;It worked with Q5_K_S and also with Q4_K_XL&lt;/p&gt; &lt;p&gt;For who wants more details I leave here a gist &lt;a href="https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef"&gt;https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Do you have any report of performance degradation with long generations on Qwen3 30B A3B and KV quantization?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fakezeta"&gt; /u/fakezeta &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T22:43:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kedu0d</id>
     <title>IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models</title>
     <updated>2025-05-04T07:05:53+00:00</updated>
@@ -227,6 +201,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keh382/local_deep_research_v031_we_need_your_help_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T10:53:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kexdgy</id>
+    <title>What do I test out / run first?</title>
+    <updated>2025-05-04T23:21:02+00:00</updated>
+    <author>
+      <name>/u/Recurrents</name>
+      <uri>https://old.reddit.com/user/Recurrents</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kexdgy/what_do_i_test_out_run_first/"&gt; &lt;img alt="What do I test out / run first?" src="https://external-preview.redd.it/Gj8FzKNPTvVSOxJwgeuufUJzmZ6BR-6YWri04zLtxfs.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=99bf755df82e7e9bb2bc2cafc9271bdc27217ed4" title="What do I test out / run first?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just got her in the mail. Haven't had a chance to put her in yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Recurrents"&gt; /u/Recurrents &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kexdgy"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kexdgy/what_do_i_test_out_run_first/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kexdgy/what_do_i_test_out_run_first/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T23:21:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kewkno</id>
+    <title>Qwen 30B A3B performance degradation with KV quantization</title>
+    <updated>2025-05-04T22:43:11+00:00</updated>
+    <author>
+      <name>/u/fakezeta</name>
+      <uri>https://old.reddit.com/user/fakezeta</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I came across this gist &lt;a href="https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4"&gt;https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4&lt;/a&gt; that shows how Qwen 30B can solve the OpenAI cypher test with Q4_K_M quantization.&lt;/p&gt; &lt;p&gt;I tried to replicate locally but could I was not able, model sometimes entered in a repetition loop even with dry sampling or came to wrong conclusion after generating lots of thinking tokens.&lt;/p&gt; &lt;p&gt;I was using Unsloth Q4_K_XL quantization, so I tought it could be the Dynamic quantization. I tested Bartowski Q5_K_S but it had no improvement. The model didn't entered in any repetition loop but generated lots of thinking tokens without finding any solution.&lt;/p&gt; &lt;p&gt;Then I saw that sunpazed didn't used KV quantization and tried the same: boom! First time right.&lt;/p&gt; &lt;p&gt;It worked with Q5_K_S and also with Q4_K_XL&lt;/p&gt; &lt;p&gt;For who wants more details I leave here a gist &lt;a href="https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef"&gt;https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Do you have any report of performance degradation with long generations on Qwen3 30B A3B and KV quantization?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fakezeta"&gt; /u/fakezeta &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T22:43:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1kemt2m</id>
