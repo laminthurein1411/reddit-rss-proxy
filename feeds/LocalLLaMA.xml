@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-04T04:38:42+00:00</updated>
+  <updated>2025-05-04T04:49:48+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ke2kcp</id>
-    <title>Dockerfile for Running BitNet-b1.58-2B-4T on ARM</title>
-    <updated>2025-05-03T20:38:00+00:00</updated>
-    <author>
-      <name>/u/ajsween</name>
-      <uri>https://old.reddit.com/user/ajsween</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h3&gt;Repo&lt;/h3&gt; &lt;p&gt;&lt;a href="https://github.com/ajsween/bitnet-b1-58-arm-docker"&gt;GitHub: ajsween/bitnet-b1-58-arm-docker&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I put this Dockerfile together so I could run the BitNet 1.58 model with less hassle on my M-series MacBook. Hopefully its useful to some else and saves you some time getting it running locally.&lt;/p&gt; &lt;h3&gt;Run interactive:&lt;/h3&gt; &lt;pre&gt;&lt;code&gt;docker run -it --rm bitnet-b1.58-2b-4t-arm:latest &lt;/code&gt;&lt;/pre&gt; &lt;h3&gt;Run noninteractive with arguments:&lt;/h3&gt; &lt;pre&gt;&lt;code&gt;docker run --rm bitnet-b1.58-2b-4t-arm:latest \ -m models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf \ -p &amp;quot;Hello from BitNet on MacBook!&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;h3&gt;Reference for run_interference.py (ENTRYPOINT):&lt;/h3&gt; &lt;pre&gt;&lt;code&gt;usage: run_inference.py [-h] [-m MODEL] [-n N_PREDICT] -p PROMPT [-t THREADS] [-c CTX_SIZE] [-temp TEMPERATURE] [-cnv] Run inference optional arguments: -h, --help show this help message and exit -m MODEL, --model MODEL Path to model file -n N_PREDICT, --n-predict N_PREDICT Number of tokens to predict when generating text -p PROMPT, --prompt PROMPT Prompt to generate text from -t THREADS, --threads THREADS Number of threads to use -c CTX_SIZE, --ctx-size CTX_SIZE Size of the prompt context -temp TEMPERATURE, --temperature TEMPERATURE Temperature, a hyperparameter that controls the randomness of the generated text -cnv, --conversation Whether to enable chat mode or not (for instruct models.) (When this option is turned on, the prompt specified by -p will be used as the system prompt.) &lt;/code&gt;&lt;/pre&gt; &lt;h3&gt;Dockerfile&lt;/h3&gt; &lt;pre&gt;&lt;code&gt;# Build stage FROM python:3.9-slim AS builder # Set environment variables ENV DEBIAN_FRONTEND=noninteractive ENV PYTHONDONTWRITEBYTECODE=1 ENV PYTHONUNBUFFERED=1 # Install build dependencies RUN apt-get update &amp;amp;&amp;amp; apt-get install -y \ python3-pip \ python3-dev \ cmake \ build-essential \ git \ software-properties-common \ wget \ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* # Install LLVM RUN wget -O - https://apt.llvm.org/llvm.sh | bash -s 18 # Clone the BitNet repository WORKDIR /build RUN git clone --recursive https://github.com/microsoft/BitNet.git # Install Python dependencies RUN pip install --no-cache-dir -r /build/BitNet/requirements.txt # Build BitNet WORKDIR /build/BitNet RUN pip install --no-cache-dir -r requirements.txt \ &amp;amp;&amp;amp; python utils/codegen_tl1.py \ --model bitnet_b1_58-3B \ --BM 160,320,320 \ --BK 64,128,64 \ --bm 32,64,32 \ &amp;amp;&amp;amp; export CC=clang-18 CXX=clang++-18 \ &amp;amp;&amp;amp; mkdir -p build &amp;amp;&amp;amp; cd build \ &amp;amp;&amp;amp; cmake .. -DCMAKE_BUILD_TYPE=Release \ &amp;amp;&amp;amp; make -j$(nproc) # Download the model RUN huggingface-cli download microsoft/BitNet-b1.58-2B-4T-gguf \ --local-dir /build/BitNet/models/BitNet-b1.58-2B-4T # Convert the model to GGUF format and sets up env. Probably not needed. RUN python setup_env.py -md /build/BitNet/models/BitNet-b1.58-2B-4T -q i2_s # Final stage FROM python:3.9-slim # Set environment variables. All but the last two are not used as they don't expand in the CMD step. ENV MODEL_PATH=/app/models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf ENV NUM_TOKENS=1024 ENV NUM_THREADS=4 ENV CONTEXT_SIZE=4096 ENV PROMPT=&amp;quot;Hello from BitNet!&amp;quot; ENV PYTHONUNBUFFERED=1 ENV LD_LIBRARY_PATH=/usr/local/lib # Copy from builder stage WORKDIR /app COPY --from=builder /build/BitNet /app # Install Python dependencies (only runtime) RUN &amp;lt;&amp;lt;EOF pip install --no-cache-dir -r /app/requirements.txt cp /app/build/3rdparty/llama.cpp/ggml/src/libggml.so /usr/local/lib cp /app/build/3rdparty/llama.cpp/src/libllama.so /usr/local/lib EOF # Set working directory WORKDIR /app # Set entrypoint for more flexibility ENTRYPOINT [&amp;quot;python&amp;quot;, &amp;quot;./run_inference.py&amp;quot;] # Default command arguments CMD [&amp;quot;-m&amp;quot;, &amp;quot;/app/models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf&amp;quot;, &amp;quot;-n&amp;quot;, &amp;quot;1024&amp;quot;, &amp;quot;-cnv&amp;quot;, &amp;quot;-t&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;4096&amp;quot;, &amp;quot;-p&amp;quot;, &amp;quot;Hello from BitNet!&amp;quot;] &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajsween"&gt; /u/ajsween &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke2kcp/dockerfile_for_running_bitnetb1582b4t_on_arm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke2kcp/dockerfile_for_running_bitnetb1582b4t_on_arm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke2kcp/dockerfile_for_running_bitnetb1582b4t_on_arm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T20:38:00+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kdpy20</id>
     <title>I trained a Language Model to schedule events with GRPO! (full project inside)</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdpy20/i_trained_a_language_model_to_schedule_events/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T10:34:41+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ke7aqj</id>
-    <title>What happened after original ChatGPT that models started improving exponentially?</title>
-    <updated>2025-05-04T00:27:41+00:00</updated>
-    <author>
-      <name>/u/Euphoric_Sandwich_74</name>
-      <uri>https://old.reddit.com/user/Euphoric_Sandwich_74</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems like till GPT3.5 and ChatGPT model development was rather slow and a niche field of computer science.&lt;/p&gt; &lt;p&gt;Suddenly after that model development has supercharged.&lt;/p&gt; &lt;p&gt;Were big tech companies just sitting on this capability, but not building because they thought it would be too expensive and couldn't figure a product strategy around this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Euphoric_Sandwich_74"&gt; /u/Euphoric_Sandwich_74 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T00:27:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdpjuz</id>
@@ -86,17 +60,17 @@
     <published>2025-05-03T01:18:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kebb5e</id>
-    <title>next SOTA in vision will be open weights model? when Qwen3 VL?</title>
-    <updated>2025-05-04T04:17:07+00:00</updated>
+    <id>t3_1ke7aqj</id>
+    <title>What happened after original ChatGPT that models started improving exponentially?</title>
+    <updated>2025-05-04T00:27:41+00:00</updated>
     <author>
-      <name>/u/secopsml</name>
-      <uri>https://old.reddit.com/user/secopsml</uri>
+      <name>/u/Euphoric_Sandwich_74</name>
+      <uri>https://old.reddit.com/user/Euphoric_Sandwich_74</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt; &lt;img alt="next SOTA in vision will be open weights model? when Qwen3 VL?" src="https://preview.redd.it/kshkghcyxoye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c66c4eab01ae508d363c06770d2b343749af3e76" title="next SOTA in vision will be open weights model? when Qwen3 VL?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME"&gt;https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kshkghcyxoye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems like till GPT3.5 and ChatGPT model development was rather slow and a niche field of computer science.&lt;/p&gt; &lt;p&gt;Suddenly after that model development has supercharged.&lt;/p&gt; &lt;p&gt;Were big tech companies just sitting on this capability, but not building because they thought it would be too expensive and couldn't figure a product strategy around this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Euphoric_Sandwich_74"&gt; /u/Euphoric_Sandwich_74 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7aqj/what_happened_after_original_chatgpt_that_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T04:17:07+00:00</published>
+    <published>2025-05-04T00:27:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdul92</id>
@@ -125,6 +99,19 @@
     <published>2025-05-03T11:10:50+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kebb5e</id>
+    <title>next SOTA in vision will be open weights model? when Qwen3 VL?</title>
+    <updated>2025-05-04T04:17:07+00:00</updated>
+    <author>
+      <name>/u/secopsml</name>
+      <uri>https://old.reddit.com/user/secopsml</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt; &lt;img alt="next SOTA in vision will be open weights model? when Qwen3 VL?" src="https://preview.redd.it/kshkghcyxoye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c66c4eab01ae508d363c06770d2b343749af3e76" title="next SOTA in vision will be open weights model? when Qwen3 VL?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME"&gt;https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kshkghcyxoye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T04:17:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kdqcjk</id>
     <title>Teaching LLMs to use tools with RL! Successfully trained 0.5B/3B Qwen models to use a calculator tool 🔨</title>
     <updated>2025-05-03T11:00:49+00:00</updated>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T11:00:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1keblo7</id>
+    <title>Quick shout-out to Qwen3-30b-a3b as a study tool for Calc2/3</title>
+    <updated>2025-05-04T04:35:32+00:00</updated>
+    <author>
+      <name>/u/Skkeep</name>
+      <uri>https://old.reddit.com/user/Skkeep</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all, &lt;/p&gt; &lt;p&gt;I know the recent Qwen launch has been glazed to death already, but I want to give extra praise and acclaim to this model when it comes to studying. Extremely fast responses of broad, complex topics which are otherwise explained by AWFUL lecturers with terrible speaking skills. Yes, it isnt as smart as the 32b alternative, but for explanations of concepts or integrations/derivations, it is more than enough AND 3x the speed. &lt;/p&gt; &lt;p&gt;Thank you Alibaba, &lt;/p&gt; &lt;p&gt;EEE student. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Skkeep"&gt; /u/Skkeep &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keblo7/quick_shoutout_to_qwen330ba3b_as_a_study_tool_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keblo7/quick_shoutout_to_qwen330ba3b_as_a_study_tool_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keblo7/quick_shoutout_to_qwen330ba3b_as_a_study_tool_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T04:35:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdsp4z</id>
