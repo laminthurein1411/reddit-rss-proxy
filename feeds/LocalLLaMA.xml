@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-04T08:37:38+00:00</updated>
+  <updated>2025-05-04T08:49:30+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kdul92</id>
-    <title>Incredible Maverick speeds on single RTX3090 - Ik_llama solved my issue</title>
-    <updated>2025-05-03T14:44:09+00:00</updated>
-    <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was getting good generation speeds on Maverick before, but PP was slow.&lt;br /&gt; This is now solved, I'm getting full GPU level performance on a 400B model with 1 gpu.&lt;br /&gt; And the new Xeon DDR5 build takes it to the next level:&lt;/p&gt; &lt;p&gt;Xeon Platinum 8480 &lt;strong&gt;ES&lt;/strong&gt; - $170&lt;br /&gt; 8x 32GB DDR5 4800 RDIMM used - $722&lt;br /&gt; 1x Gigabyte MS03-CE0 - $753 (I got a MS73-HB1 but would recommend single CPU)&lt;br /&gt; RTX 3090 - ~$750&lt;br /&gt; Heatsink + PSU + Case + SSD = ~$500&lt;/p&gt; &lt;p&gt;prompt eval time = 835.47 ms / 372 tokens ( 2.25 ms per token, &lt;strong&gt;445.26 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 43317.29 ms / 1763 runs ( 24.57 ms per token, &lt;strong&gt;40.70 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 3290.21 ms / 1623 tokens ( 2.03 ms per token, &lt;strong&gt;493.28 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 7530.90 ms / 303 runs ( 24.85 ms per token, &lt;strong&gt;40.23 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;prompt eval time = 13713.39 ms / 7012 tokens ( 1.96 ms per token, &lt;strong&gt;511.33 tokens per second&lt;/strong&gt;&lt;br /&gt; generation eval time = 16773.69 ms / 584 runs ( 28.72 ms per token, &lt;strong&gt;34.82 tokens per second&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This is with Ik_Llama and the following command:&lt;br /&gt; ./llama-server -m Llama-4-Maverick-17B-128E-Instruct-UD-IQ4_XS-00001-of-00005.gguf -c 32000 -fa -fmoe -amb 512 -rtr -ctk q8_0 -ctv q8_0 --host &lt;a href="http://0.0.0.0"&gt;0.0.0.0&lt;/a&gt; --port 8000 --alias Llama4-Maverick -ngl 99 -t 54 -ot &amp;quot;.*ffn_.*_exps.*=CPU&amp;quot;&lt;/p&gt; &lt;p&gt;Using an ES cpu is somewhat risky, but a real 8480 cost $9k&lt;/p&gt; &lt;p&gt;This also works fine with an even cheaper DDR4 epyc cpu, getting 200+ Promp speeds and more like 28T/s gen with the same command.&lt;/p&gt; &lt;p&gt;This really makes me really hopeful for Llama 4 reasoner!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdul92/incredible_maverick_speeds_on_single_rtx3090_ik/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T14:44:09+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kdqibi</id>
     <title>Qwen3 8b on android (it's not half bad)</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqcjk/teaching_llms_to_use_tools_with_rl_successfully/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T11:00:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kedoqe</id>
+    <title>I get bad results training my own ML model and my own LLM, any suggestions what i'm doing wrong?</title>
+    <updated>2025-05-04T06:55:59+00:00</updated>
+    <author>
+      <name>/u/fireinsaigon</name>
+      <uri>https://old.reddit.com/user/fireinsaigon</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;hi. let's focus on LLM side first. i have about 100 files that are json files that represent a profile of a device on a network (the dns queries it makes, the things it talks to on the internet, its mac address, etc.). my basic goal is to use openwebui and go into chat and say &amp;quot;what device talks to alexa.amazon.com&amp;quot; or whatever and have it say &amp;quot;an alexa echo dot&amp;quot;. i've trained it with this info. at least i think i have.&lt;/p&gt; &lt;p&gt;i'm using tinyllama, SFTTrainer, python, on ubuntu with an RTX 3090 (my own code). i'm using ollama for api and openwebui for frontend). i am referencing the correct model in openwebui. everything is containerized&lt;/p&gt; &lt;p&gt;basically - the results are horrendous. it just uses its own knowledge and doesn't appear to be referencing anything I've fine tuned it with.&lt;/p&gt; &lt;p&gt;any suggestions on where to start or what i'm possibly doing wrong? is my scenario reasonable? i am pretty new to this field but not to technology and kind of surprised how bad the results are.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fireinsaigon"&gt; /u/fireinsaigon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T06:55:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdsp4z</id>
@@ -73,19 +73,6 @@
     <published>2025-05-03T20:02:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdxbd7</id>
-    <title>zero dollars vibe debugging menace</title>
-    <updated>2025-05-03T16:45:56+00:00</updated>
-    <author>
-      <name>/u/AntelopeEntire9191</name>
-      <uri>https://old.reddit.com/user/AntelopeEntire9191</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"&gt; &lt;img alt="zero dollars vibe debugging menace" src="https://preview.redd.it/wckdwzhiilye1.gif?width=640&amp;amp;crop=smart&amp;amp;s=ed09e370865a1d4f607b60e7a14d5cce5bdb0ae9" title="zero dollars vibe debugging menace" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been tweaking on building &lt;strong&gt;Cloi&lt;/strong&gt; its &lt;em&gt;local&lt;/em&gt; debugging agent that runs in your terminal. got sick of cloud models bleeding my wallet dry (o3 at $0.30 per request?? claude 3.7 still taking $0.05 a pop) so built something with zero dollar sign vibes. &lt;/p&gt; &lt;p&gt;the tech is straightforward: cloi deadass catches your error tracebacks, spins up your local LLM (phi/qwen/llama), and only with permission (we respectin boundaries), drops clean af patches directly to your files.&lt;/p&gt; &lt;p&gt;zero api key nonsense, no cloud tax - just pure on-device cooking with the models y'all are already optimizing FRFR&lt;/p&gt; &lt;p&gt;been working on this during my research downtime. If anyone's interested in exploring the implementation or wants to issue feedback: &lt;a href="https://github.com/cloi-ai/cloi"&gt;https://github.com/cloi-ai/cloi&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AntelopeEntire9191"&gt; /u/AntelopeEntire9191 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wckdwzhiilye1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T16:45:56+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ke26sl</id>
     <title>Another Attempt to Measure Speed for Qwen3 MoE on 2x4090, 2x3090, M3 Max with Llama.cpp, VLLM, MLX</title>
     <updated>2025-05-03T20:20:44+00:00</updated>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke26sl/another_attempt_to_measure_speed_for_qwen3_moe_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T20:20:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdxbd7</id>
+    <title>zero dollars vibe debugging menace</title>
+    <updated>2025-05-03T16:45:56+00:00</updated>
+    <author>
+      <name>/u/AntelopeEntire9191</name>
+      <uri>https://old.reddit.com/user/AntelopeEntire9191</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"&gt; &lt;img alt="zero dollars vibe debugging menace" src="https://preview.redd.it/wckdwzhiilye1.gif?width=640&amp;amp;crop=smart&amp;amp;s=ed09e370865a1d4f607b60e7a14d5cce5bdb0ae9" title="zero dollars vibe debugging menace" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been tweaking on building &lt;strong&gt;Cloi&lt;/strong&gt; its &lt;em&gt;local&lt;/em&gt; debugging agent that runs in your terminal. got sick of cloud models bleeding my wallet dry (o3 at $0.30 per request?? claude 3.7 still taking $0.05 a pop) so built something with zero dollar sign vibes. &lt;/p&gt; &lt;p&gt;the tech is straightforward: cloi deadass catches your error tracebacks, spins up your local LLM (phi/qwen/llama), and only with permission (we respectin boundaries), drops clean af patches directly to your files.&lt;/p&gt; &lt;p&gt;zero api key nonsense, no cloud tax - just pure on-device cooking with the models y'all are already optimizing FRFR&lt;/p&gt; &lt;p&gt;been working on this during my research downtime. If anyone's interested in exploring the implementation or wants to issue feedback: &lt;a href="https://github.com/cloi-ai/cloi"&gt;https://github.com/cloi-ai/cloi&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AntelopeEntire9191"&gt; /u/AntelopeEntire9191 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/wckdwzhiilye1.gif"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdxbd7/zero_dollars_vibe_debugging_menace/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T16:45:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1ke7aqj</id>
@@ -125,17 +125,17 @@
     <published>2025-05-03T12:34:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kee6qj</id>
-    <title>What's the best 7B : 32B LLM for medical (radiology)</title>
-    <updated>2025-05-04T07:29:47+00:00</updated>
+    <id>t3_1kebb5e</id>
+    <title>next SOTA in vision will be open weights model? when Qwen3 VL?</title>
+    <updated>2025-05-04T04:17:07+00:00</updated>
     <author>
-      <name>/u/Accomplished_Pin_626</name>
-      <uri>https://old.reddit.com/user/Accomplished_Pin_626</uri>
+      <name>/u/secopsml</name>
+      <uri>https://old.reddit.com/user/secopsml</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am working in the medical field and I am currently using the llama3.1 8B but planning to replace it &lt;/p&gt; &lt;p&gt;It will be used for report summarizing, analysis and guide the user &lt;/p&gt; &lt;p&gt;So do you have any recommendations? &lt;/p&gt; &lt;p&gt;Thanks &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Accomplished_Pin_626"&gt; /u/Accomplished_Pin_626 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt; &lt;img alt="next SOTA in vision will be open weights model? when Qwen3 VL?" src="https://preview.redd.it/kshkghcyxoye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c66c4eab01ae508d363c06770d2b343749af3e76" title="next SOTA in vision will be open weights model? when Qwen3 VL?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME"&gt;https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kshkghcyxoye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T07:29:47+00:00</published>
+    <published>2025-05-04T04:17:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1ke81ai</id>
@@ -151,17 +151,17 @@
     <published>2025-05-04T01:08:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kebb5e</id>
-    <title>next SOTA in vision will be open weights model? when Qwen3 VL?</title>
-    <updated>2025-05-04T04:17:07+00:00</updated>
+    <id>t3_1kee6qj</id>
+    <title>What's the best 7B : 32B LLM for medical (radiology)</title>
+    <updated>2025-05-04T07:29:47+00:00</updated>
     <author>
-      <name>/u/secopsml</name>
-      <uri>https://old.reddit.com/user/secopsml</uri>
+      <name>/u/Accomplished_Pin_626</name>
+      <uri>https://old.reddit.com/user/Accomplished_Pin_626</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt; &lt;img alt="next SOTA in vision will be open weights model? when Qwen3 VL?" src="https://preview.redd.it/kshkghcyxoye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c66c4eab01ae508d363c06770d2b343749af3e76" title="next SOTA in vision will be open weights model? when Qwen3 VL?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME"&gt;https://rank.opencompass.org.cn/leaderboard-multimodal-official/?m=REALTIME&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/secopsml"&gt; /u/secopsml &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kshkghcyxoye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kebb5e/next_sota_in_vision_will_be_open_weights_model/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am working in the medical field and I am currently using the llama3.1 8B but planning to replace it &lt;/p&gt; &lt;p&gt;It will be used for report summarizing, analysis and guide the user &lt;/p&gt; &lt;p&gt;So do you have any recommendations? &lt;/p&gt; &lt;p&gt;Thanks &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Accomplished_Pin_626"&gt; /u/Accomplished_Pin_626 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kee6qj/whats_the_best_7b_32b_llm_for_medical_radiology/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T04:17:07+00:00</published>
+    <published>2025-05-04T07:29:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdqqkp</id>
@@ -294,19 +294,6 @@
     <published>2025-05-03T17:28:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kedu0d</id>
-    <title>IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models</title>
-    <updated>2025-05-04T07:05:53+00:00</updated>
-    <author>
-      <name>/u/ab2377</name>
-      <uri>https://old.reddit.com/user/ab2377</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"&gt; &lt;img alt="IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models" src="https://external-preview.redd.it/yxzFCzIK4WeSo6gF_lu0-lKTBRUJ2trx5h9oRthAsG8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=11a2564e23d1a12b0fe7b5c447c7819e46dd629d" title="IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ab2377"&gt; /u/ab2377 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.ibm.com/new/announcements/ibm-granite-4-0-tiny-preview-sneak-peek"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T07:05:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ke3nw3</id>
     <title>Qwen 3 235b beats sonnet 3.7 in aider polyglot</title>
     <updated>2025-05-03T21:28:35+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke3nw3/qwen_3_235b_beats_sonnet_37_in_aider_polyglot/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T21:28:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kedu0d</id>
+    <title>IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models</title>
+    <updated>2025-05-04T07:05:53+00:00</updated>
+    <author>
+      <name>/u/ab2377</name>
+      <uri>https://old.reddit.com/user/ab2377</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"&gt; &lt;img alt="IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models" src="https://external-preview.redd.it/yxzFCzIK4WeSo6gF_lu0-lKTBRUJ2trx5h9oRthAsG8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=11a2564e23d1a12b0fe7b5c447c7819e46dd629d" title="IBM Granite 4.0 Tiny Preview: A sneak peek at the next generation of Granite models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ab2377"&gt; /u/ab2377 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.ibm.com/new/announcements/ibm-granite-4-0-tiny-preview-sneak-peek"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kedu0d/ibm_granite_40_tiny_preview_a_sneak_peek_at_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T07:05:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1kebauw</id>
