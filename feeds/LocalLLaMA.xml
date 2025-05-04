@@ -2,49 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-04T22:36:25+00:00</updated>
+  <updated>2025-05-04T22:48:44+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kevtd2</id>
-    <title>Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding</title>
-    <updated>2025-05-04T22:07:57+00:00</updated>
+    <id>t3_1kewkno</id>
+    <title>Qwen 30B A3B performance degradation with KV quantization</title>
+    <updated>2025-05-04T22:43:11+00:00</updated>
     <author>
-      <name>/u/trashcoder</name>
-      <uri>https://old.reddit.com/user/trashcoder</uri>
+      <name>/u/fakezeta</name>
+      <uri>https://old.reddit.com/user/fakezeta</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"&gt; &lt;img alt="Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding" src="https://external-preview.redd.it/wySUwWyUSrXA6KqSCOx2efoC881tB0dBQxaalI5w8wY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b023bf579cbc2d36187b2c2c5ba7453fe1b39dbd" title="Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/kklemon/vibegit"&gt;VibeGit&lt;/a&gt; is basically vibe coding but for Git.&lt;/p&gt; &lt;p&gt;I created it after spending too many nights untangling my not-so-clean version control habits. We've all been there: you code for hours, solve multiple problems, and suddenly you're staring at 30+ changed files with no clear commit strategy.&lt;/p&gt; &lt;p&gt;Instead of the painful git add -p dance or just giving up and doing a massive git commit -a -m &amp;quot;stuff&amp;quot;, I wanted something smarter. VibeGit uses AI to analyze your working directory, understand the semantic relationships between your changes (up to hunk-level granularity), and automatically group them into logical, atomic commits.&lt;/p&gt; &lt;p&gt;Just run &amp;quot;vibegit commit&amp;quot; and it:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Examines your code changes and what they actually do&lt;/li&gt; &lt;li&gt;Groups related changes across different files&lt;/li&gt; &lt;li&gt;Generates meaningful commit messages that match your repo's style *Lets you choose how much control you want (from fully automated to interactive review)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It works with Gemini, GPT-4o, and other LLMs. Gemini 2.5 Flash is used by default because it offers the best speed/cost/quality balance.&lt;/p&gt; &lt;p&gt;I built this tool mostly for myself, but I'd love to hear what other developers think. Python 3.11+ required, MIT licensed.&lt;/p&gt; &lt;p&gt;You can find the project here: &lt;a href="https://github.com/kklemon/vibegit"&gt;https://github.com/kklemon/vibegit&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/trashcoder"&gt; /u/trashcoder &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kklemon/vibegit"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I came across this gist &lt;a href="https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4"&gt;https://gist.github.com/sunpazed/f5220310f120e3fc7ea8c1fb978ee7a4&lt;/a&gt; that shows how Qwen 30B can solve the OpenAI cypher test with Q4_K_M quantization.&lt;/p&gt; &lt;p&gt;I tried to replicate locally but could I was not able, model sometimes entered in a repetition loop even with dry sampling or came to wrong conclusion after generating lots of thinking tokens.&lt;/p&gt; &lt;p&gt;I was using Unsloth Q4_K_XL quantization, so I tought it could be the Dynamic quantization. I tested Bartowski Q5_K_S but it had no improvement. The model didn't entered in any repetition loop but generated lots of thinking tokens without finding any solution.&lt;/p&gt; &lt;p&gt;Then I saw that sunpazed didn't used KV quantization and tried the same: boom! First time right.&lt;/p&gt; &lt;p&gt;It worked with Q5_K_S and also with Q4_K_XL&lt;/p&gt; &lt;p&gt;For who wants more details I leave here a gist &lt;a href="https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef"&gt;https://gist.github.com/fakezeta/eaa5602c85b421eb255e6914a816e1ef&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Do you have any report of performance degradation with long generations on Qwen3 30B A3B and KV quantization?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fakezeta"&gt; /u/fakezeta &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kewkno/qwen_30b_a3b_performance_degradation_with_kv/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T22:07:57+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1keibf8</id>
-    <title>Does your AI need help writing unified diffs?</title>
-    <updated>2025-05-04T12:09:13+00:00</updated>
-    <author>
-      <name>/u/createthiscom</name>
-      <uri>https://old.reddit.com/user/createthiscom</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keibf8/does_your_ai_need_help_writing_unified_diffs/"&gt; &lt;img alt="Does your AI need help writing unified diffs?" src="https://external-preview.redd.it/vw1iWbdmvJgleS6hQIxSMNVxDXBOF3RAH6ljJQEZy2Y.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=765c0aab582be0348684b67a06ea6240d3c572f0" title="Does your AI need help writing unified diffs?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I use Deepseek-V3-0324 a lot for work in an agentic coding capacity with Open Hands AI. I found the existing tools lacking when editing large files. I got a lot of errors due to lines not being unique and such. I really want the AI to just use UNIX diff and patch, but it had a lot of trouble generating valid unified diffs. So I made a tool AIs can use as a crutch to help them fix their diffs: &lt;a href="https://github.com/createthis/diffcalculia"&gt;https://github.com/createthis/diffcalculia&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I'm pretty happy with the result, so I thought I'd share it. Maybe someone else finds it helpful.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/createthiscom"&gt; /u/createthiscom &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/createthis/diffcalculia"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keibf8/does_your_ai_need_help_writing_unified_diffs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keibf8/does_your_ai_need_help_writing_unified_diffs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T12:09:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kegr4q</id>
-    <title>What are your must have MCPs?</title>
-    <updated>2025-05-04T10:31:22+00:00</updated>
-    <author>
-      <name>/u/m_abdelfattah</name>
-      <uri>https://old.reddit.com/user/m_abdelfattah</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As LLMs are accessible now and MCPs are relatively mature, what are your must have ones?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/m_abdelfattah"&gt; /u/m_abdelfattah &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T10:31:22+00:00</published>
+    <published>2025-05-04T22:43:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1kefods</id>
@@ -60,17 +34,17 @@
     <published>2025-05-04T09:16:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ked5iy</id>
-    <title>Qwen 3 32b vs QwQ 32b</title>
-    <updated>2025-05-04T06:18:30+00:00</updated>
+    <id>t3_1kegr4q</id>
+    <title>What are your must have MCPs?</title>
+    <updated>2025-05-04T10:31:22+00:00</updated>
     <author>
-      <name>/u/nore_se_kra</name>
-      <uri>https://old.reddit.com/user/nore_se_kra</uri>
+      <name>/u/m_abdelfattah</name>
+      <uri>https://old.reddit.com/user/m_abdelfattah</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a comparison I barely see and its slightly confusing too as QwQ is kinda a pure reasoning model while Qwen 3 is using reasoning by default but it can be deactivated. In some benchmarks QwQ is even better - so the only advantage of Qwen seems to be that you can use it without reasoning. I assume most benchmarks were done with the default so how good is it without reasoning? Any experience? Other advantages? Or does someone know benchmarks that explicitly test Qwen without reasoning?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nore_se_kra"&gt; /u/nore_se_kra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As LLMs are accessible now and MCPs are relatively mature, what are your must have ones?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/m_abdelfattah"&gt; /u/m_abdelfattah &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegr4q/what_are_your_must_have_mcps/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T06:18:30+00:00</published>
+    <published>2025-05-04T10:31:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1keqw5a</id>
@@ -86,17 +60,30 @@
     <published>2025-05-04T18:34:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kegoi2</id>
-    <title>Which is better for coding in 16GB (V)RAM at q4: Qwen3.0-30B-A3B, Qwen3.0-14B, Qwen2.5-Coding-14B, Phi4-14B, Mistral Small 3.0/3.1 24B?</title>
-    <updated>2025-05-04T10:26:32+00:00</updated>
+    <id>t3_1ked5iy</id>
+    <title>Qwen 3 32b vs QwQ 32b</title>
+    <updated>2025-05-04T06:18:30+00:00</updated>
     <author>
-      <name>/u/ethereel1</name>
-      <uri>https://old.reddit.com/user/ethereel1</uri>
+      <name>/u/nore_se_kra</name>
+      <uri>https://old.reddit.com/user/nore_se_kra</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that the dust has settled regarding Qwen3.0 quants, I feel it's finally safe to ask this question. My hunch is that Qwen2.5-Coding-14B is still the best in this range, but I want to check with those of you who've tested the latest corrected quants of Qwen3.0-30B-A3B and Qwen3.0-14B. Throwing in Phi and Mistral just in case as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ethereel1"&gt; /u/ethereel1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This is a comparison I barely see and its slightly confusing too as QwQ is kinda a pure reasoning model while Qwen 3 is using reasoning by default but it can be deactivated. In some benchmarks QwQ is even better - so the only advantage of Qwen seems to be that you can use it without reasoning. I assume most benchmarks were done with the default so how good is it without reasoning? Any experience? Other advantages? Or does someone know benchmarks that explicitly test Qwen without reasoning?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nore_se_kra"&gt; /u/nore_se_kra &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T10:26:32+00:00</published>
+    <published>2025-05-04T06:18:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kevtd2</id>
+    <title>Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding</title>
+    <updated>2025-05-04T22:07:57+00:00</updated>
+    <author>
+      <name>/u/trashcoder</name>
+      <uri>https://old.reddit.com/user/trashcoder</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"&gt; &lt;img alt="Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding" src="https://external-preview.redd.it/wySUwWyUSrXA6KqSCOx2efoC881tB0dBQxaalI5w8wY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b023bf579cbc2d36187b2c2c5ba7453fe1b39dbd" title="Wrote a CLI tool that automatically groups and commits related changes in a Git repository for vibe coding" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/kklemon/vibegit"&gt;VibeGit&lt;/a&gt; is basically vibe coding but for Git.&lt;/p&gt; &lt;p&gt;I created it after spending too many nights untangling my not-so-clean version control habits. We've all been there: you code for hours, solve multiple problems, and suddenly you're staring at 30+ changed files with no clear commit strategy.&lt;/p&gt; &lt;p&gt;Instead of the painful git add -p dance or just giving up and doing a massive git commit -a -m &amp;quot;stuff&amp;quot;, I wanted something smarter. VibeGit uses AI to analyze your working directory, understand the semantic relationships between your changes (up to hunk-level granularity), and automatically group them into logical, atomic commits.&lt;/p&gt; &lt;p&gt;Just run &amp;quot;vibegit commit&amp;quot; and it:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Examines your code changes and what they actually do&lt;/li&gt; &lt;li&gt;Groups related changes across different files&lt;/li&gt; &lt;li&gt;Generates meaningful commit messages that match your repo's style *Lets you choose how much control you want (from fully automated to interactive review)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It works with Gemini, GPT-4o, and other LLMs. Gemini 2.5 Flash is used by default because it offers the best speed/cost/quality balance.&lt;/p&gt; &lt;p&gt;I built this tool mostly for myself, but I'd love to hear what other developers think. Python 3.11+ required, MIT licensed.&lt;/p&gt; &lt;p&gt;You can find the project here: &lt;a href="https://github.com/kklemon/vibegit"&gt;https://github.com/kklemon/vibegit&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/trashcoder"&gt; /u/trashcoder &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kklemon/vibegit"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kevtd2/wrote_a_cli_tool_that_automatically_groups_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T22:07:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1keblo7</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keblo7/quick_shoutout_to_qwen330ba3b_as_a_study_tool_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T04:35:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kegoi2</id>
+    <title>Which is better for coding in 16GB (V)RAM at q4: Qwen3.0-30B-A3B, Qwen3.0-14B, Qwen2.5-Coding-14B, Phi4-14B, Mistral Small 3.0/3.1 24B?</title>
+    <updated>2025-05-04T10:26:32+00:00</updated>
+    <author>
+      <name>/u/ethereel1</name>
+      <uri>https://old.reddit.com/user/ethereel1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that the dust has settled regarding Qwen3.0 quants, I feel it's finally safe to ask this question. My hunch is that Qwen2.5-Coding-14B is still the best in this range, but I want to check with those of you who've tested the latest corrected quants of Qwen3.0-30B-A3B and Qwen3.0-14B. Throwing in Phi and Mistral just in case as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ethereel1"&gt; /u/ethereel1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T10:26:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1kesb82</id>
@@ -151,19 +151,6 @@
     <published>2025-05-04T10:57:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ket5xm</id>
-    <title>C/ua Framework Introduces Agent Trajectory Replay for macOS.</title>
-    <updated>2025-05-04T20:11:39+00:00</updated>
-    <author>
-      <name>/u/Impressive_Half_2819</name>
-      <uri>https://old.reddit.com/user/Impressive_Half_2819</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"&gt; &lt;img alt="C/ua Framework Introduces Agent Trajectory Replay for macOS." src="https://external-preview.redd.it/N2ZyMXM2OGxvdHllMdT2xQPEPt3ADINOvjs7FnnvWrRt2DesW7_96NRGC_fD.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2352e5b3e2311cc98c3eeb9fb3abfa2db19703c9" title="C/ua Framework Introduces Agent Trajectory Replay for macOS." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;C/ua, the open-source framework for running computer-use AI agents optimized for Apple Silicon Macs, has introduced Agent Trajectory Replay. &lt;/p&gt; &lt;p&gt;You can now visually replay and analyze each action your AI agents perform.&lt;/p&gt; &lt;p&gt;Explore it on GitHub, and feel free to share your feedback or use cases.&lt;/p&gt; &lt;p&gt;GitHub : &lt;a href="https://github.com/trycua/cua"&gt;https://github.com/trycua/cua&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Impressive_Half_2819"&gt; /u/Impressive_Half_2819 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/p18ercilotye1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T20:11:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1keqrzb</id>
     <title>Super simple RAG?</title>
     <updated>2025-05-04T18:29:47+00:00</updated>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keqrzb/super_simple_rag/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T18:29:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ket5xm</id>
+    <title>C/ua Framework Introduces Agent Trajectory Replay for macOS.</title>
+    <updated>2025-05-04T20:11:39+00:00</updated>
+    <author>
+      <name>/u/Impressive_Half_2819</name>
+      <uri>https://old.reddit.com/user/Impressive_Half_2819</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"&gt; &lt;img alt="C/ua Framework Introduces Agent Trajectory Replay for macOS." src="https://external-preview.redd.it/N2ZyMXM2OGxvdHllMdT2xQPEPt3ADINOvjs7FnnvWrRt2DesW7_96NRGC_fD.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2352e5b3e2311cc98c3eeb9fb3abfa2db19703c9" title="C/ua Framework Introduces Agent Trajectory Replay for macOS." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;C/ua, the open-source framework for running computer-use AI agents optimized for Apple Silicon Macs, has introduced Agent Trajectory Replay. &lt;/p&gt; &lt;p&gt;You can now visually replay and analyze each action your AI agents perform.&lt;/p&gt; &lt;p&gt;Explore it on GitHub, and feel free to share your feedback or use cases.&lt;/p&gt; &lt;p&gt;GitHub : &lt;a href="https://github.com/trycua/cua"&gt;https://github.com/trycua/cua&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Impressive_Half_2819"&gt; /u/Impressive_Half_2819 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/p18ercilotye1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ket5xm/cua_framework_introduces_agent_trajectory_replay/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T20:11:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1kenw3u</id>
