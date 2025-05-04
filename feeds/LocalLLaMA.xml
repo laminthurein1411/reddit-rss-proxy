@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-04T11:21:32+00:00</updated>
+  <updated>2025-05-04T11:34:11+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kedoqe</id>
-    <title>I get bad results training my own ML model and my own LLM, any suggestions what i'm doing wrong?</title>
-    <updated>2025-05-04T06:55:59+00:00</updated>
-    <author>
-      <name>/u/fireinsaigon</name>
-      <uri>https://old.reddit.com/user/fireinsaigon</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;hi. let's focus on LLM side first. i have about 100 files that are json files that represent a profile of a device on a network (the dns queries it makes, the things it talks to on the internet, its mac address, etc.). my basic goal is to use openwebui and go into chat and say &amp;quot;what device talks to alexa.amazon.com&amp;quot; or whatever and have it say &amp;quot;an alexa echo dot&amp;quot;. i've trained it with this info. at least i think i have.&lt;/p&gt; &lt;p&gt;i'm using tinyllama, SFTTrainer, python, on ubuntu with an RTX 3090 (my own code). i'm using ollama for api and openwebui for frontend). i am referencing the correct model in openwebui. everything is containerized&lt;/p&gt; &lt;p&gt;basically - the results are horrendous. it just uses its own knowledge and doesn't appear to be referencing anything I've fine tuned it with.&lt;/p&gt; &lt;p&gt;any suggestions on where to start or what i'm possibly doing wrong? is my scenario reasonable? i am pretty new to this field but not to technology and kind of surprised how bad the results are.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fireinsaigon"&gt; /u/fireinsaigon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kedoqe/i_get_bad_results_training_my_own_ml_model_and_my/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T06:55:59+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ke26sl</id>
     <title>Another Attempt to Measure Speed for Qwen3 MoE on 2x4090, 2x3090, M3 Max with Llama.cpp, VLLM, MLX</title>
@@ -86,30 +73,17 @@
     <published>2025-05-04T00:27:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kefods</id>
-    <title>Serving Qwen3-235B-A22B with 4-bit quantization and 32k context from a 128GB Mac</title>
-    <updated>2025-05-04T09:16:55+00:00</updated>
+    <id>t3_1keh542</id>
+    <title>Qwen3 on Dubesor Benchmark</title>
+    <updated>2025-05-04T10:57:18+00:00</updated>
     <author>
-      <name>/u/tarruda</name>
-      <uri>https://old.reddit.com/user/tarruda</uri>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have tested this on Mac Studio M1 Ultra with 128GB running Sequoia 15.0.1, but this might work on macbooks that have the same amount of RAM if you are willing to set it up it as a LAN headless server. I suggest running some of the steps in &lt;a href="https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh"&gt;https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh&lt;/a&gt; to optimize resource usage.&lt;/p&gt; &lt;p&gt;The trick is to select the IQ4_XS quantization which uses less memory than Q4_K_M. In my tests there's no noticeable difference between the two other than IQ4_XS having lower TPS. In my setup I get ~18 TPS in the initial questions but it slows down to ~8 TPS when context is close to 32k tokens.&lt;/p&gt; &lt;p&gt;This is a very tight fit and you cannot be running anything else other than open webui (bare install without docker, as it would require more memory). That means llama-server will be used (can be downloaded by selecting the mac/arm64 zip here: &lt;a href="https://github.com/ggml-org/llama.cpp/releases"&gt;https://github.com/ggml-org/llama.cpp/releases&lt;/a&gt;). Alternatively a smaller context window can be used to reduce memory usage.&lt;/p&gt; &lt;p&gt;Open Webui is optional and you can be running it in a different machine in the same LAN, just make sure to point to the correct llama-server address (admin panel -&amp;gt; settings -&amp;gt; connections -&amp;gt; Manage OpenAI API Connections). Any UI that can connect to OpenAI compatible endpoints should work. If you just want to code with aider-like tools, then UIs are not necessary.&lt;/p&gt; &lt;p&gt;The main steps to get this working are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Increase maximum VRAM allocation to 125GB by setting &lt;code&gt;iogpu.wired_limit_mb=128000&lt;/code&gt; in &lt;code&gt;/etc/sysctl.conf&lt;/code&gt; (need to reboot for this to take effect)&lt;/li&gt; &lt;li&gt;download all IQ4_XS weight parts from &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS"&gt;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS&lt;/a&gt;&lt;/li&gt; &lt;li&gt;from the directory where the weights are downloaded to, run llama-server with &lt;code&gt; llama-server -fa -ctk q8_0 -ctv q8_0 --model Qwen3-235B-A22B-IQ4_XS-00001-of-00003.gguf --ctx-size 32768 --min-p 0.0 --top-k 20 --top-p 0.8 --temp 0.7 --slot-save-path kv-cache --port 8000 &lt;/code&gt; These temp/top-p settings are the recommended for non-thinking mode, so make sure to add &lt;code&gt;/nothink&lt;/code&gt; to the system prompt!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;An OpenAI compatible API endpoint should now be running on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (adjust &lt;code&gt;--host&lt;/code&gt; / &lt;code&gt;--port&lt;/code&gt; to your needs).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tarruda"&gt; /u/tarruda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keh542/qwen3_on_dubesor_benchmark/"&gt; &lt;img alt="Qwen3 on Dubesor Benchmark" src="https://b.thumbs.redditmedia.com/SK05go83T5ZWwsJO6IMatx5Z4uUx4gveCuwSgrYHpAg.jpg" title="Qwen3 on Dubesor Benchmark" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://dubesor.de/benchtable.html"&gt;https://dubesor.de/benchtable.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;One of the few benchmarks that tested both thinking on/off of qwen&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/eim5m35nxqye1.png?width=1265&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cd814d571735444429331c73b4cd17a066497907"&gt;https://preview.redd.it/eim5m35nxqye1.png?width=1265&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cd814d571735444429331c73b4cd17a066497907&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Small-scale manual performance comparison benchmark I made for myself. This table showcases the results I recorded of various AI models across different personal tasks I encountered over time (currently 83). I use a &lt;strong&gt;weighted rating system&lt;/strong&gt; and calculate the difficulty for each tasks by incorporating the results of all models. This is particularly relevant in scoring when failing easy questions or passing hard ones.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;NOTE, THAT THIS JUST ME SHARING THE RESULTS FROM MY OWN SMALL-SCALE PERSONAL TESTING. YMMV! OBVIOUSLY THE SCORES ARE JUST THAT AND MIGHT NOT REFLECT YOUR OWN PERSONAL EXPERIENCES OR OTHER WELL-KNOWN BENCHMARKS.&lt;/strong&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keh542/qwen3_on_dubesor_benchmark/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1keh542/qwen3_on_dubesor_benchmark/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1keh542/qwen3_on_dubesor_benchmark/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T09:16:55+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kegoi2</id>
-    <title>Which is better for coding in 16GB (V)RAM at q4: Qwen3.0-30B-A3B, Qwen3.0-14B, Qwen2.5-Coding-14B, Phi4-14B, Mistral Small 3.0/3.1 24B?</title>
-    <updated>2025-05-04T10:26:32+00:00</updated>
-    <author>
-      <name>/u/ethereel1</name>
-      <uri>https://old.reddit.com/user/ethereel1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that the dust has settled regarding Qwen3.0 quants, I feel it's finally safe to ask this question. My hunch is that Qwen2.5-Coding-14B is still the best in this range, but I want to check with those of you who've tested the latest corrected quants of Qwen3.0-30B-A3B and Qwen3.0-14B. Throwing in Phi and Mistral just in case as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ethereel1"&gt; /u/ethereel1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T10:26:32+00:00</published>
+    <published>2025-05-04T10:57:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdqqkp</id>
@@ -123,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdqqkp/qwen3235ba22b_no_thinking_seemingly_outperforms/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-03T11:25:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kefods</id>
+    <title>Serving Qwen3-235B-A22B with 4-bit quantization and 32k context from a 128GB Mac</title>
+    <updated>2025-05-04T09:16:55+00:00</updated>
+    <author>
+      <name>/u/tarruda</name>
+      <uri>https://old.reddit.com/user/tarruda</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have tested this on Mac Studio M1 Ultra with 128GB running Sequoia 15.0.1, but this might work on macbooks that have the same amount of RAM if you are willing to set it up it as a LAN headless server. I suggest running some of the steps in &lt;a href="https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh"&gt;https://github.com/anurmatov/mac-studio-server/blob/main/scripts/optimize-mac-server.sh&lt;/a&gt; to optimize resource usage.&lt;/p&gt; &lt;p&gt;The trick is to select the IQ4_XS quantization which uses less memory than Q4_K_M. In my tests there's no noticeable difference between the two other than IQ4_XS having lower TPS. In my setup I get ~18 TPS in the initial questions but it slows down to ~8 TPS when context is close to 32k tokens.&lt;/p&gt; &lt;p&gt;This is a very tight fit and you cannot be running anything else other than open webui (bare install without docker, as it would require more memory). That means llama-server will be used (can be downloaded by selecting the mac/arm64 zip here: &lt;a href="https://github.com/ggml-org/llama.cpp/releases"&gt;https://github.com/ggml-org/llama.cpp/releases&lt;/a&gt;). Alternatively a smaller context window can be used to reduce memory usage.&lt;/p&gt; &lt;p&gt;Open Webui is optional and you can be running it in a different machine in the same LAN, just make sure to point to the correct llama-server address (admin panel -&amp;gt; settings -&amp;gt; connections -&amp;gt; Manage OpenAI API Connections). Any UI that can connect to OpenAI compatible endpoints should work. If you just want to code with aider-like tools, then UIs are not necessary.&lt;/p&gt; &lt;p&gt;The main steps to get this working are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Increase maximum VRAM allocation to 125GB by setting &lt;code&gt;iogpu.wired_limit_mb=128000&lt;/code&gt; in &lt;code&gt;/etc/sysctl.conf&lt;/code&gt; (need to reboot for this to take effect)&lt;/li&gt; &lt;li&gt;download all IQ4_XS weight parts from &lt;a href="https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS"&gt;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/tree/main/IQ4_XS&lt;/a&gt;&lt;/li&gt; &lt;li&gt;from the directory where the weights are downloaded to, run llama-server with &lt;code&gt; llama-server -fa -ctk q8_0 -ctv q8_0 --model Qwen3-235B-A22B-IQ4_XS-00001-of-00003.gguf --ctx-size 32768 --min-p 0.0 --top-k 20 --top-p 0.8 --temp 0.7 --slot-save-path kv-cache --port 8000 &lt;/code&gt; These temp/top-p settings are the recommended for non-thinking mode, so make sure to add &lt;code&gt;/nothink&lt;/code&gt; to the system prompt!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;An OpenAI compatible API endpoint should now be running on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (adjust &lt;code&gt;--host&lt;/code&gt; / &lt;code&gt;--port&lt;/code&gt; to your needs).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tarruda"&gt; /u/tarruda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kefods/serving_qwen3235ba22b_with_4bit_quantization_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T09:16:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1ke81ai</id>
@@ -164,6 +151,19 @@
     <published>2025-05-04T07:29:47+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kegoi2</id>
+    <title>Which is better for coding in 16GB (V)RAM at q4: Qwen3.0-30B-A3B, Qwen3.0-14B, Qwen2.5-Coding-14B, Phi4-14B, Mistral Small 3.0/3.1 24B?</title>
+    <updated>2025-05-04T10:26:32+00:00</updated>
+    <author>
+      <name>/u/ethereel1</name>
+      <uri>https://old.reddit.com/user/ethereel1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that the dust has settled regarding Qwen3.0 quants, I feel it's finally safe to ask this question. My hunch is that Qwen2.5-Coding-14B is still the best in this range, but I want to check with those of you who've tested the latest corrected quants of Qwen3.0-30B-A3B and Qwen3.0-14B. Throwing in Phi and Mistral just in case as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ethereel1"&gt; /u/ethereel1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegoi2/which_is_better_for_coding_in_16gb_vram_at_q4/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T10:26:32+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ke82nc</id>
     <title>Any in-depth tutorials which do step-by-step walkthroughs on how to fine-tune an LLM?</title>
     <updated>2025-05-04T01:10:40+00:00</updated>
@@ -175,32 +175,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke82nc/any_indepth_tutorials_which_do_stepbystep/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T01:10:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kegrce</id>
-    <title>Qwen3 no reasoning vs Qwen2.5</title>
-    <updated>2025-05-04T10:31:46+00:00</updated>
-    <author>
-      <name>/u/No-Bicycle-132</name>
-      <uri>https://old.reddit.com/user/No-Bicycle-132</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems evident that Qwen3 with reasoning beats Qwen2.5. But I wonder if the Qwen3 dense models with reasoning turned off also outperforms Qwen2.5. Essentially what I am wondering is if the improvements mostly come from the reasoning.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Bicycle-132"&gt; /u/No-Bicycle-132 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T10:31:46+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ke7fli</id>
-    <title>llama.cpp now supports Llama-3_1-Nemotron-Ultra-253B-v1</title>
-    <updated>2025-05-04T00:35:07+00:00</updated>
-    <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama.cpp now supports Nvidia's Llama-3_1-Nemotron-Ultra-253B-v1 starting from b5270.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/12843"&gt;https://github.com/ggml-org/llama.cpp/pull/12843&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Supposedly it is better than DeepSeek R1:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It is the biggest SOTA dense model with reasoning fine tune now. So it is worth it to explore what it does best comparing to other models.&lt;/p&gt; &lt;p&gt;Model size is 38% smaller than the source Llama-3.1-405B. KV cache is 49% smaller. Overall, memory footprint is 39% smaller at 128k context.&lt;/p&gt; &lt;p&gt;IQ3_M should be around 110GB. While fp16 KV cache is 32GB at 128k, IQ4_NL KV cahce is only 9GB at 128k context. Seems like a perfect fit for &amp;gt;=128GB Apple Silicon or the upcoming DGX Spark.&lt;/p&gt; &lt;p&gt;If you have the resource to run this model, give it a try and see if it can beat DeepSeek R1 as they claim!&lt;/p&gt; &lt;p&gt;PS Nemotron pruned models in general are good when you can load it fully to your VRAM. However, it suffers from uneven VRAM distribution when you have multiple cards. To get around that, it is recommended that you tinker with the &amp;quot;-ts&amp;quot; switch to set VRAM distribution manually until someone implemented automatic VRAM distribution.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/12654"&gt;https://github.com/ggml-org/llama.cpp/issues/12654&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I made an Excel to breakdown the exact amount of VRAM usage for each layer. It can serve as a starting point for you to set &amp;quot;-ts&amp;quot; if you have multiple cards.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/ymcki/Llama-3_1-Nemotron-51B-Instruct-GGUF/resolve/main/deci.xlsx?download=true"&gt;https://huggingface.co/ymcki/Llama-3_1-Nemotron-51B-Instruct-GGUF/resolve/main/deci.xlsx?download=true&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-04T00:35:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1ke7ssw</id>
@@ -216,6 +190,19 @@
     <published>2025-05-04T00:55:37+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ke7fli</id>
+    <title>llama.cpp now supports Llama-3_1-Nemotron-Ultra-253B-v1</title>
+    <updated>2025-05-04T00:35:07+00:00</updated>
+    <author>
+      <name>/u/Ok_Warning2146</name>
+      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama.cpp now supports Nvidia's Llama-3_1-Nemotron-Ultra-253B-v1 starting from b5270.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/12843"&gt;https://github.com/ggml-org/llama.cpp/pull/12843&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Supposedly it is better than DeepSeek R1:&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ju6sm1/nvidiallama3_1nemotronultra253bv1_hugging_face/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It is the biggest SOTA dense model with reasoning fine tune now. So it is worth it to explore what it does best comparing to other models.&lt;/p&gt; &lt;p&gt;Model size is 38% smaller than the source Llama-3.1-405B. KV cache is 49% smaller. Overall, memory footprint is 39% smaller at 128k context.&lt;/p&gt; &lt;p&gt;IQ3_M should be around 110GB. While fp16 KV cache is 32GB at 128k, IQ4_NL KV cahce is only 9GB at 128k context. Seems like a perfect fit for &amp;gt;=128GB Apple Silicon or the upcoming DGX Spark.&lt;/p&gt; &lt;p&gt;If you have the resource to run this model, give it a try and see if it can beat DeepSeek R1 as they claim!&lt;/p&gt; &lt;p&gt;PS Nemotron pruned models in general are good when you can load it fully to your VRAM. However, it suffers from uneven VRAM distribution when you have multiple cards. To get around that, it is recommended that you tinker with the &amp;quot;-ts&amp;quot; switch to set VRAM distribution manually until someone implemented automatic VRAM distribution.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/issues/12654"&gt;https://github.com/ggml-org/llama.cpp/issues/12654&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I made an Excel to breakdown the exact amount of VRAM usage for each layer. It can serve as a starting point for you to set &amp;quot;-ts&amp;quot; if you have multiple cards.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/ymcki/Llama-3_1-Nemotron-51B-Instruct-GGUF/resolve/main/deci.xlsx?download=true"&gt;https://huggingface.co/ymcki/Llama-3_1-Nemotron-51B-Instruct-GGUF/resolve/main/deci.xlsx?download=true&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ke7fli/llamacpp_now_supports_llama3_1nemotronultra253bv1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T00:35:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kedbv7</id>
     <title>Ryzen AI Max+ 395 + a gpu?</title>
     <updated>2025-05-04T06:31:04+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kedbv7/ryzen_ai_max_395_a_gpu/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T06:31:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kegrce</id>
+    <title>Qwen3 no reasoning vs Qwen2.5</title>
+    <updated>2025-05-04T10:31:46+00:00</updated>
+    <author>
+      <name>/u/No-Bicycle-132</name>
+      <uri>https://old.reddit.com/user/No-Bicycle-132</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It seems evident that Qwen3 with reasoning beats Qwen2.5. But I wonder if the Qwen3 dense models with reasoning turned off also outperforms Qwen2.5. Essentially what I am wondering is if the improvements mostly come from the reasoning.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Bicycle-132"&gt; /u/No-Bicycle-132 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kegrce/qwen3_no_reasoning_vs_qwen25/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-04T10:31:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1kdy8ia</id>
@@ -255,19 +255,6 @@
     <published>2025-05-03T21:20:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kdyasr</id>
-    <title>Hey step-bro, that's HF forum, not the AI chat...</title>
-    <updated>2025-05-03T17:28:57+00:00</updated>
-    <author>
-      <name>/u/Cool-Chemical-5629</name>
-      <uri>https://old.reddit.com/user/Cool-Chemical-5629</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"&gt; &lt;img alt="Hey step-bro, that's HF forum, not the AI chat..." src="https://preview.redd.it/3a4xy047qlye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2f0827b40d5dad9a38133015ced4dd0b976f205e" title="Hey step-bro, that's HF forum, not the AI chat..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cool-Chemical-5629"&gt; /u/Cool-Chemical-5629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/3a4xy047qlye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-03T17:28:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ked5iy</id>
     <title>Qwen 3 32b vs QwQ 32b</title>
     <updated>2025-05-04T06:18:30+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ked5iy/qwen_3_32b_vs_qwq_32b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-04T06:18:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kdyasr</id>
+    <title>Hey step-bro, that's HF forum, not the AI chat...</title>
+    <updated>2025-05-03T17:28:57+00:00</updated>
+    <author>
+      <name>/u/Cool-Chemical-5629</name>
+      <uri>https://old.reddit.com/user/Cool-Chemical-5629</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"&gt; &lt;img alt="Hey step-bro, that's HF forum, not the AI chat..." src="https://preview.redd.it/3a4xy047qlye1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2f0827b40d5dad9a38133015ced4dd0b976f205e" title="Hey step-bro, that's HF forum, not the AI chat..." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Cool-Chemical-5629"&gt; /u/Cool-Chemical-5629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/3a4xy047qlye1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kdyasr/hey_stepbro_thats_hf_forum_not_the_ai_chat/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-03T17:28:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1keblo7</id>
