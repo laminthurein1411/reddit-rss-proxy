@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-04T23:48:44+00:00</updated>
+  <updated>2025-05-05T00:30:19+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1kdfx4z</id>
-    <title>Should it be possible to download Mistral Small 3.1 from ollama, use llama.cpp to split/shard it reassemble it, then use it in ollama?</title>
-    <updated>2025-05-03T00:12:42+00:00</updated>
-    <author>
-      <name>/u/aaronr_90</name>
-      <uri>https://old.reddit.com/user/aaronr_90</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I need to move the model from one network to another network via DVD’s. Inconvenient, I know. I downloaded the gguf using the ids in the manifest, went through the process of splitting, burning, moving, merging, and when created a new model with a modfile everything went fine. When I tried to run it, ollama tried to phone home to get the manifest file, with obviously no avail. None of my other models I moved gave me this error.&lt;/p&gt; &lt;p&gt;Maybe I missed the mmproj file.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aaronr_90"&gt; /u/aaronr_90 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kdfx4z/should_it_be_possible_to_download_mistral_small/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kdfx4z/should_it_be_possible_to_download_mistral_small/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kdfx4z/should_it_be_possible_to_download_mistral_small/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-03T00:12:42+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kdc1kj</id>
     <title>Localhost request MUCH slower than cmd</title>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1kevih4/new_user_can_i_add_attachments_for_analysis_to/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-04T21:54:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1keyg9k</id>
+    <title>LLM not following instructions</title>
+    <updated>2025-05-05T00:13:51+00:00</updated>
+    <author>
+      <name>/u/buttered-toasst</name>
+      <uri>https://old.reddit.com/user/buttered-toasst</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am building this chatbot that uses streamlit for frontend and python with postgres for the backend, I have a vector table in my db with fragments so I can use RAG. I am trying to give memory to the bot and I found this approach that doesn't use any lanchain memory stuff and is to use the LLM to view a chat history and reformulate the user question. Like this, question -&amp;gt; first LLM -&amp;gt; reformulated question -&amp;gt; embedding and retrieval of documents in the db -&amp;gt; second LLM -&amp;gt; answer. The problem I'm facing is that the first LLM answers the question and it's not supposed to do it. I can't find a solution and If anyone wants to give me a hand, I'd really appreciate it.&lt;/p&gt; &lt;p&gt;This is the code if anybody could help:&lt;/p&gt; &lt;p&gt;from sentence_transformers import SentenceTransformer from fragmentsDAO import FragmentDAO from langchain.prompts import PromptTemplate from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder from langchain_core.messages import AIMessage, HumanMessage from langchain_community.chat_models import ChatOllama from langchain.schema.output_parser import StrOutputParser&lt;/p&gt; &lt;p&gt;class ChatOllamabot: def &lt;strong&gt;init&lt;/strong&gt;(self): self.model = SentenceTransformer(&amp;quot;all-mpnet-base-v2&amp;quot;) self.max_turns = 5&lt;/p&gt; &lt;pre&gt;&lt;code&gt;def chat(self, question, memory): instruction_to_system = &amp;quot;&amp;quot;&amp;quot; Do NOT answer the question. Given a chat history and the latest user question which might reference context in the chat history, formulate a standalone question which can be understood without the chat history. Do NOT answer the question under ANY circumstance , just reformulate it if needed and otherwise return it as it is. Examples: 1.History: &amp;quot;Human: Wgat is a beginner friendly exercise that targets biceps? AI: A begginer friendly exercise that targets biceps is Concentration Curls?&amp;quot; Question: &amp;quot;Human: What are the steps to perform this exercise?&amp;quot; Output: &amp;quot;What are the steps to perform the Concentration Curls exercise?&amp;quot; 2.History: &amp;quot;Human: What is the category of bench press? AI: The category of bench press is strength.&amp;quot; Question: &amp;quot;Human: What are the steps to perform the child pose exercise?&amp;quot; Output: &amp;quot;What are the steps to perform the child pose exercise?&amp;quot; &amp;quot;&amp;quot;&amp;quot; llm = ChatOllama(model=&amp;quot;llama3.2&amp;quot;, temperature=0) question_maker_prompt = ChatPromptTemplate.from_messages( [ (&amp;quot;system&amp;quot;, instruction_to_system), MessagesPlaceholder(variable_name=&amp;quot;chat_history&amp;quot;), (&amp;quot;human&amp;quot;, &amp;quot;{question}&amp;quot;), ] ) question_chain = question_maker_prompt | llm | StrOutputParser() newQuestion = question_chain.invoke({&amp;quot;question&amp;quot;: question, &amp;quot;chat_history&amp;quot;: memory}) actual_question = self.contextualized_question(memory, newQuestion, question) emb = self.model.encode(actual_question) dao = FragmentDAO() fragments = dao.getFragments(str(emb.tolist())) context = [f[3] for f in fragments] for f in fragments: context.append(f[3]) documents = &amp;quot;\n\n---\n\n&amp;quot;.join(c for c in context) prompt = PromptTemplate( template=&amp;quot;&amp;quot;&amp;quot;You are an assistant for question answering tasks. Use the following documents to answer the question. If you dont know the answers, just say that you dont know. Use five sentences maximum and keep the answer concise: Documents: {documents} Question: {question} Answer:&amp;quot;&amp;quot;&amp;quot;, input_variables=[&amp;quot;documents&amp;quot;, &amp;quot;question&amp;quot;], ) llm = ChatOllama(model=&amp;quot;llama3.2&amp;quot;, temperature=0) rag_chain = prompt | llm | StrOutputParser() answer = rag_chain.invoke({ &amp;quot;question&amp;quot;: actual_question, &amp;quot;documents&amp;quot;: documents, }) # Keep only the last N turns (each turn = 2 messages) if len(memory) &amp;gt; 2 * self.max_turns: memory = memory[-2 * self.max_turns:] # Add new interaction as direct messages memory.append( HumanMessage(content=actual_question)) memory.append( AIMessage(content=answer)) print(newQuestion + &amp;quot; -&amp;gt; &amp;quot; + answer) for interactions in memory: print(interactions) print() return answer, memory def contextualized_question(self, chat_history, new_question, question): if chat_history: return new_question else: return question &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/buttered-toasst"&gt; /u/buttered-toasst &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1keyg9k/llm_not_following_instructions/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1keyg9k/llm_not_following_instructions/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1keyg9k/llm_not_following_instructions/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-05T00:13:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1keoxav</id>
