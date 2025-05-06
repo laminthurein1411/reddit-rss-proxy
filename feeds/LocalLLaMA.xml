@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-06T13:50:32+00:00</updated>
+  <updated>2025-05-06T14:06:38+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -34,19 +34,6 @@
     <published>2025-05-06T02:28:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kfi8xh</id>
-    <title>[Benchmark] Quick‑and‑dirty test of 5 models on a Mac Studio M3 Ultra 512 GB (LM Studio) – Qwen3 runs away with it</title>
-    <updated>2025-05-05T17:58:51+00:00</updated>
-    <author>
-      <name>/u/Turbulent_Pin7635</name>
-      <uri>https://old.reddit.com/user/Turbulent_Pin7635</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey r/LocalLLaMA!&lt;/p&gt; &lt;p&gt;I’m a former university physics lecturer (taught for five years) and—one month after buying a Mac Studio (M3 Ultra, 128 CPU / 80 GPU cores, 512 GB unified RAM)—I threw a very simple benchmark at a few LLMs inside &lt;strong&gt;LM Studio&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Prompt (intentional typo):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Explain to me why sky is blue at an physiscist Level PhD. &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Raw numbers&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Quant. / RAM footprint&lt;/th&gt; &lt;th align="left"&gt;Speed (tok/s)&lt;/th&gt; &lt;th align="left"&gt;Tokens out&lt;/th&gt; &lt;th align="left"&gt;1st‑token latency&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX deepseek‑V3‑0324‑4bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;355.95 GB&lt;/td&gt; &lt;td align="left"&gt;19.34&lt;/td&gt; &lt;td align="left"&gt; 755&lt;/td&gt; &lt;td align="left"&gt;17.29 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Gemma‑3‑27b‑it‑bf16&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt; 52.57 GB&lt;/td&gt; &lt;td align="left"&gt;11.19&lt;/td&gt; &lt;td align="left"&gt; 1 317&lt;/td&gt; &lt;td align="left"&gt; 1.72 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Deepseek‑R1‑4bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;402.17 GB&lt;/td&gt; &lt;td align="left"&gt;16.55&lt;/td&gt; &lt;td align="left"&gt; 2 062&lt;/td&gt; &lt;td align="left"&gt; 15.01 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Qwen3‑235‑A22B‑8bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;233.79 GB&lt;/td&gt; &lt;td align="left"&gt;18.86&lt;/td&gt; &lt;td align="left"&gt; 3 096&lt;/td&gt; &lt;td align="left"&gt; 9.02 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;GGFU Qwen3‑235‑A22B‑8bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt; 233.72 GB&lt;/td&gt; &lt;td align="left"&gt;14.35&lt;/td&gt; &lt;td align="left"&gt; 2 883&lt;/td&gt; &lt;td align="left"&gt; 4.47 s&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;&lt;strong&gt;Teacher’s impressions&lt;/strong&gt;&lt;/h1&gt; &lt;h1&gt;1. Reasoning speed&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;R1 &amp;gt; Qwen3 &amp;gt; Gemma3&lt;/strong&gt;.&lt;br /&gt; The “thinking time” (pre‑generation) is roughly half of total generation time. If I had to re‑prompt twice to get a good answer, I’d simply pick a model with better reasoning instead of chasing seconds.&lt;/p&gt; &lt;h1&gt;2. Generation speed&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;V3 ≈ MLX‑Qwen3 &amp;gt; R1 &amp;gt; GGFU‑Qwen3 &amp;gt; Gemma3&lt;/strong&gt;.&lt;br /&gt; No surprise: token‑width + unified‑memory bandwidth rule here. The Mac’s 890 GB/s is great for a compact workstation, but it’s nowhere near the monster discrete GPUs you guys already know—so throughput drops once the model starts chugging serious tokens.&lt;/p&gt; &lt;h1&gt;3. Output quality (grading as if these were my students)&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Qwen3 &amp;gt;&amp;gt;&amp;gt; R1 &amp;gt; Gemma3 &amp;gt; V3&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;deepseek‑V3&lt;/strong&gt; – trivial answer, would fail the course.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Deepseek‑R1&lt;/strong&gt; – solid undergrad level.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemma‑3&lt;/strong&gt; – punchy for its size, respectable.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Qwen3&lt;/strong&gt; – in a league of its own: clear, creative, concise, high‑depth. If the others were bachelor’s level, Qwen3 was PhD defending a job talk.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Bottom line: for text‑to‑text tasks balancing quality and speed, &lt;strong&gt;Qwen3‑8bit (MLX)&lt;/strong&gt; is my daily driver.&lt;/p&gt; &lt;h1&gt;One month with the Mac Studio – worth it?&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Why I don’t regret it&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Stellar build &amp;amp; design.&lt;/li&gt; &lt;li&gt;Makes sense if a computer &amp;gt; a car for you (I do bio‑informatics), you live in an apartment (space is luxury, no room for a noisy server), and noise destroys you (I’m neurodivergent; the Mac is silent even at 100 %).&lt;/li&gt; &lt;li&gt;Power draw peaks &amp;lt; 250 W.&lt;/li&gt; &lt;li&gt;Ridiculously small footprint, light enough to slip in a backpack.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Why you might pass&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;You game heavily on PC.&lt;/li&gt; &lt;li&gt;You hate macOS learning curves.&lt;/li&gt; &lt;li&gt;You want constant hardware upgrades.&lt;/li&gt; &lt;li&gt;You can wait 2–3 years for LLM‑focused hardware to get cheap.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Money‑saving tips&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Stick with the 1 TB SSD—Thunderbolt + a fast NVMe enclosure covers the rest.&lt;/li&gt; &lt;li&gt;Skip Apple’s monitor &amp;amp; peripherals; third‑party is way cheaper.&lt;/li&gt; &lt;li&gt;Grab one before any Trump‑era import tariffs jack up Apple prices again.&lt;/li&gt; &lt;li&gt;I would not buy the 256 Gb over the 512 Gb, of course is double the price, but it opens more opportunities at least for me. With it I can run an bioinformatics analysis while using Qwen3, and even if Qwen3 fits (tightly) in the 256 Gb, this won't let you with a large margin of maneuver for other tasks. Finally, who knows what would be the next generation of models and how much memory it will get.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;TL;DR&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Qwen3‑8bit&lt;/strong&gt; dominates – PhD‑level answers, fast enough, reasoning quick.&lt;/li&gt; &lt;li&gt;Thinking time isn’t the bottleneck; quantization + memory bandwidth are (if any expert wants to correct or improve this please do so).&lt;/li&gt; &lt;li&gt;Mac Studio M3 Ultra is a silence‑loving, power‑sipping, tiny beast—just not the rig for GPU fiends or upgrade addicts.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Ask away if you want more details!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Turbulent_Pin7635"&gt; /u/Turbulent_Pin7635 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-05T17:58:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kfw8rb</id>
     <title>MOC (Model On Chip?</title>
     <updated>2025-05-06T04:44:29+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfw8rb/moc_model_on_chip/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T04:44:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kfi8xh</id>
+    <title>[Benchmark] Quick‑and‑dirty test of 5 models on a Mac Studio M3 Ultra 512 GB (LM Studio) – Qwen3 runs away with it</title>
+    <updated>2025-05-05T17:58:51+00:00</updated>
+    <author>
+      <name>/u/Turbulent_Pin7635</name>
+      <uri>https://old.reddit.com/user/Turbulent_Pin7635</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey r/LocalLLaMA!&lt;/p&gt; &lt;p&gt;I’m a former university physics lecturer (taught for five years) and—one month after buying a Mac Studio (M3 Ultra, 128 CPU / 80 GPU cores, 512 GB unified RAM)—I threw a very simple benchmark at a few LLMs inside &lt;strong&gt;LM Studio&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Prompt (intentional typo):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Explain to me why sky is blue at an physiscist Level PhD. &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Raw numbers&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Quant. / RAM footprint&lt;/th&gt; &lt;th align="left"&gt;Speed (tok/s)&lt;/th&gt; &lt;th align="left"&gt;Tokens out&lt;/th&gt; &lt;th align="left"&gt;1st‑token latency&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX deepseek‑V3‑0324‑4bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;355.95 GB&lt;/td&gt; &lt;td align="left"&gt;19.34&lt;/td&gt; &lt;td align="left"&gt; 755&lt;/td&gt; &lt;td align="left"&gt;17.29 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Gemma‑3‑27b‑it‑bf16&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt; 52.57 GB&lt;/td&gt; &lt;td align="left"&gt;11.19&lt;/td&gt; &lt;td align="left"&gt; 1 317&lt;/td&gt; &lt;td align="left"&gt; 1.72 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Deepseek‑R1‑4bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;402.17 GB&lt;/td&gt; &lt;td align="left"&gt;16.55&lt;/td&gt; &lt;td align="left"&gt; 2 062&lt;/td&gt; &lt;td align="left"&gt; 15.01 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;MLX Qwen3‑235‑A22B‑8bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;233.79 GB&lt;/td&gt; &lt;td align="left"&gt;18.86&lt;/td&gt; &lt;td align="left"&gt; 3 096&lt;/td&gt; &lt;td align="left"&gt; 9.02 s&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;GGFU Qwen3‑235‑A22B‑8bit&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt; 233.72 GB&lt;/td&gt; &lt;td align="left"&gt;14.35&lt;/td&gt; &lt;td align="left"&gt; 2 883&lt;/td&gt; &lt;td align="left"&gt; 4.47 s&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;&lt;strong&gt;Teacher’s impressions&lt;/strong&gt;&lt;/h1&gt; &lt;h1&gt;1. Reasoning speed&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;R1 &amp;gt; Qwen3 &amp;gt; Gemma3&lt;/strong&gt;.&lt;br /&gt; The “thinking time” (pre‑generation) is roughly half of total generation time. If I had to re‑prompt twice to get a good answer, I’d simply pick a model with better reasoning instead of chasing seconds.&lt;/p&gt; &lt;h1&gt;2. Generation speed&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;V3 ≈ MLX‑Qwen3 &amp;gt; R1 &amp;gt; GGFU‑Qwen3 &amp;gt; Gemma3&lt;/strong&gt;.&lt;br /&gt; No surprise: token‑width + unified‑memory bandwidth rule here. The Mac’s 890 GB/s is great for a compact workstation, but it’s nowhere near the monster discrete GPUs you guys already know—so throughput drops once the model starts chugging serious tokens.&lt;/p&gt; &lt;h1&gt;3. Output quality (grading as if these were my students)&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Qwen3 &amp;gt;&amp;gt;&amp;gt; R1 &amp;gt; Gemma3 &amp;gt; V3&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;deepseek‑V3&lt;/strong&gt; – trivial answer, would fail the course.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Deepseek‑R1&lt;/strong&gt; – solid undergrad level.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemma‑3&lt;/strong&gt; – punchy for its size, respectable.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Qwen3&lt;/strong&gt; – in a league of its own: clear, creative, concise, high‑depth. If the others were bachelor’s level, Qwen3 was PhD defending a job talk.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Bottom line: for text‑to‑text tasks balancing quality and speed, &lt;strong&gt;Qwen3‑8bit (MLX)&lt;/strong&gt; is my daily driver.&lt;/p&gt; &lt;h1&gt;One month with the Mac Studio – worth it?&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Why I don’t regret it&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Stellar build &amp;amp; design.&lt;/li&gt; &lt;li&gt;Makes sense if a computer &amp;gt; a car for you (I do bio‑informatics), you live in an apartment (space is luxury, no room for a noisy server), and noise destroys you (I’m neurodivergent; the Mac is silent even at 100 %).&lt;/li&gt; &lt;li&gt;Power draw peaks &amp;lt; 250 W.&lt;/li&gt; &lt;li&gt;Ridiculously small footprint, light enough to slip in a backpack.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Why you might pass&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;You game heavily on PC.&lt;/li&gt; &lt;li&gt;You hate macOS learning curves.&lt;/li&gt; &lt;li&gt;You want constant hardware upgrades.&lt;/li&gt; &lt;li&gt;You can wait 2–3 years for LLM‑focused hardware to get cheap.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Money‑saving tips&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Stick with the 1 TB SSD—Thunderbolt + a fast NVMe enclosure covers the rest.&lt;/li&gt; &lt;li&gt;Skip Apple’s monitor &amp;amp; peripherals; third‑party is way cheaper.&lt;/li&gt; &lt;li&gt;Grab one before any Trump‑era import tariffs jack up Apple prices again.&lt;/li&gt; &lt;li&gt;I would not buy the 256 Gb over the 512 Gb, of course is double the price, but it opens more opportunities at least for me. With it I can run an bioinformatics analysis while using Qwen3, and even if Qwen3 fits (tightly) in the 256 Gb, this won't let you with a large margin of maneuver for other tasks. Finally, who knows what would be the next generation of models and how much memory it will get.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;TL;DR&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Qwen3‑8bit&lt;/strong&gt; dominates – PhD‑level answers, fast enough, reasoning quick.&lt;/li&gt; &lt;li&gt;Thinking time isn’t the bottleneck; quantization + memory bandwidth are (if any expert wants to correct or improve this please do so).&lt;/li&gt; &lt;li&gt;Mac Studio M3 Ultra is a silence‑loving, power‑sipping, tiny beast—just not the rig for GPU fiends or upgrade addicts.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Ask away if you want more details!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Turbulent_Pin7635"&gt; /u/Turbulent_Pin7635 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfi8xh/benchmark_quickanddirty_test_of_5_models_on_a_mac/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-05T17:58:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1kfcdll</id>
@@ -190,19 +190,6 @@
     <published>2025-05-05T22:20:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kfmoyx</id>
-    <title>Qwen3 235b pairs EXTREMELY well with a MacBook</title>
-    <updated>2025-05-05T20:55:14+00:00</updated>
-    <author>
-      <name>/u/Ashefromapex</name>
-      <uri>https://old.reddit.com/user/Ashefromapex</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have tried the new Qwen3 MoEs on my MacBook m4 max 128gb, and I was expecting speedy inference but I was blown out off the water. On the smaller MoE at q8 I get approx. 75 tok/s on the mlx version which is insane compared to &amp;quot;only&amp;quot; 15 on a 32b dense model. &lt;/p&gt; &lt;p&gt;Not expecting great results tbh, I loaded a q3 quant of the 235b version, eating up 100 gigs of ram. And to my surprise it got almost 30 (!!) tok/s. &lt;/p&gt; &lt;p&gt;That is actually extremely usable, especially for coding tasks, where it seems to be performing great. &lt;/p&gt; &lt;p&gt;This model might actually be the perfect match for apple silicon and especially the 128gb MacBooks. It brings decent knowledge but at INSANE speeds compared to dense models. Also 100 gb of ram usage is a pretty big hit, but it leaves enough room for an IDE and background apps which is mind blowing.&lt;/p&gt; &lt;p&gt;In the next days I will look at doing more in depth benchmarks once I find the time, but for the time being I thought this would be of interest since I haven't heard much about Owen3 on apple silicon yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ashefromapex"&gt; /u/Ashefromapex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-05T20:55:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kg1rgx</id>
     <title>Gemini 2.5 context wierdness on fiction.livebench?? 🤨</title>
     <updated>2025-05-06T11:09:23+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg1rgx/gemini_25_context_wierdness_on_fictionlivebench/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T11:09:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kfmoyx</id>
+    <title>Qwen3 235b pairs EXTREMELY well with a MacBook</title>
+    <updated>2025-05-05T20:55:14+00:00</updated>
+    <author>
+      <name>/u/Ashefromapex</name>
+      <uri>https://old.reddit.com/user/Ashefromapex</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have tried the new Qwen3 MoEs on my MacBook m4 max 128gb, and I was expecting speedy inference but I was blown out off the water. On the smaller MoE at q8 I get approx. 75 tok/s on the mlx version which is insane compared to &amp;quot;only&amp;quot; 15 on a 32b dense model. &lt;/p&gt; &lt;p&gt;Not expecting great results tbh, I loaded a q3 quant of the 235b version, eating up 100 gigs of ram. And to my surprise it got almost 30 (!!) tok/s. &lt;/p&gt; &lt;p&gt;That is actually extremely usable, especially for coding tasks, where it seems to be performing great. &lt;/p&gt; &lt;p&gt;This model might actually be the perfect match for apple silicon and especially the 128gb MacBooks. It brings decent knowledge but at INSANE speeds compared to dense models. Also 100 gb of ram usage is a pretty big hit, but it leaves enough room for an IDE and background apps which is mind blowing.&lt;/p&gt; &lt;p&gt;In the next days I will look at doing more in depth benchmarks once I find the time, but for the time being I thought this would be of interest since I haven't heard much about Owen3 on apple silicon yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ashefromapex"&gt; /u/Ashefromapex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfmoyx/qwen3_235b_pairs_extremely_well_with_a_macbook/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-05T20:55:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kft806</id>
@@ -242,19 +242,6 @@
     <published>2025-05-06T08:12:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kg4avg</id>
-    <title>OpenWebUI license change: red flag?</title>
-    <updated>2025-05-06T13:20:27+00:00</updated>
-    <author>
-      <name>/u/k_means_clusterfuck</name>
-      <uri>https://old.reddit.com/user/k_means_clusterfuck</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://docs.openwebui.com/license/"&gt;https://docs.openwebui.com/license/&lt;/a&gt; / &lt;a href="https://github.com/open-webui/open-webui/blob/main/LICENSE"&gt;https://github.com/open-webui/open-webui/blob/main/LICENSE&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Open WebUI's last update included changes to the license beyond their original BSD-3 license,&lt;br /&gt; presumably for monetization. Their reasoning is &amp;quot;other companies are running instances of our code and put their own logo on open webui. this is not what open-source is about&amp;quot;. Really? Imagine if llama.cpp did the same thing in response to ollama. I just recently made the upgrade to v0.6.6 and of course I don't have 50 active users, but it just always leaves a bad taste in my mouth when they do this, and I'm starting to wonder if I should use/make a fork instead. I know everything isn't a slippery slope but it clearly makes it more likely that this project won't be uncompromizably open-source from now on. What are you guys' thoughts on this. Am I being overdramatic? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/k_means_clusterfuck"&gt; /u/k_means_clusterfuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-06T13:20:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kfxl36</id>
     <title>Proof of concept: Ollama chat in PowerToys Command Palette</title>
     <updated>2025-05-06T06:14:04+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kfkg29/claude_full_system_prompt_with_all_tools_is_now/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-05T19:25:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kg4avg</id>
+    <title>OpenWebUI license change: red flag?</title>
+    <updated>2025-05-06T13:20:27+00:00</updated>
+    <author>
+      <name>/u/k_means_clusterfuck</name>
+      <uri>https://old.reddit.com/user/k_means_clusterfuck</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://docs.openwebui.com/license/"&gt;https://docs.openwebui.com/license/&lt;/a&gt; / &lt;a href="https://github.com/open-webui/open-webui/blob/main/LICENSE"&gt;https://github.com/open-webui/open-webui/blob/main/LICENSE&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Open WebUI's last update included changes to the license beyond their original BSD-3 license,&lt;br /&gt; presumably for monetization. Their reasoning is &amp;quot;other companies are running instances of our code and put their own logo on open webui. this is not what open-source is about&amp;quot;. Really? Imagine if llama.cpp did the same thing in response to ollama. I just recently made the upgrade to v0.6.6 and of course I don't have 50 active users, but it just always leaves a bad taste in my mouth when they do this, and I'm starting to wonder if I should use/make a fork instead. I know everything isn't a slippery slope but it clearly makes it more likely that this project won't be uncompromizably open-source from now on. What are you guys' thoughts on this. Am I being overdramatic? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/k_means_clusterfuck"&gt; /u/k_means_clusterfuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-06T13:20:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1kfvba4</id>
