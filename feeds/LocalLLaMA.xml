@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-07T12:28:08+00:00</updated>
+  <updated>2025-05-07T12:51:13+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1kgoxmo</id>
+    <title>OpenWebUI sampling settings</title>
+    <updated>2025-05-07T04:38:22+00:00</updated>
+    <author>
+      <name>/u/Nepherpitu</name>
+      <uri>https://old.reddit.com/user/Nepherpitu</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: llama.cpp is not affected by ALL OpenWebUI sampling settings. Use console arguments ADDITIONALLY.&lt;/p&gt; &lt;p&gt;UPD: there is a bug in their repo already - &lt;a href="https://github.com/open-webui/open-webui/issues/13467"&gt;https://github.com/open-webui/open-webui/issues/13467&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In OpenWebUI you can setup API connection using two options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Ollama&lt;/li&gt; &lt;li&gt;OpenAI API&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Also, you can tune model settings on model page. Like system prompt, top p, top k, etc.&lt;/p&gt; &lt;p&gt;And I always doing same thing - run model with llama.cpp, tune recommended parameters from UI, use OpenWebUI as OpenAI server backed by llama.cpp. And it works fine! I mean, I noticed here and there was incoherences in output, sometimes chinese and so on. But it's LLM, it works this way, especially quantized.&lt;/p&gt; &lt;p&gt;But yesterday I was investigating why CUDA is slow with multi-gpu Qwen3 30BA3B (&lt;a href="https://github.com/ggml-org/llama.cpp/issues/13211"&gt;https://github.com/ggml-org/llama.cpp/issues/13211&lt;/a&gt;). I enabled debug output and started playing with console arguments, batch sizes, tensor overrides and so on. And noticed generation parameters are different from OpenWebUI settings.&lt;/p&gt; &lt;p&gt;Long story short, OpenWebUI only sends &lt;code&gt;top_p&lt;/code&gt; and &lt;code&gt;temperature&lt;/code&gt; for OpenAI API endpoints. No &lt;code&gt;top_k&lt;/code&gt;, &lt;code&gt;min_p&lt;/code&gt; and other settings will be applied to your model from request.&lt;/p&gt; &lt;p&gt;There is request body in llama.cpp logs:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{&amp;quot;stream&amp;quot;: true, &amp;quot;model&amp;quot;: &amp;quot;qwen3-4b&amp;quot;, &amp;quot;messages&amp;quot;: [{&amp;quot;role&amp;quot;: &amp;quot;system&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;/no_think&amp;quot;}, {&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;I need to invert regex `^blk\\.[0-9]*\\..*(exps).*$`. Write only inverted correct regex. Don't explain anything.&amp;quot;}, {&amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;`^(?!blk\\.[0-9]*\\..*exps.*$).*$`&amp;quot;}, {&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Thanks!&amp;quot;}], &amp;quot;temperature&amp;quot;: 0.7, &amp;quot;top_p&amp;quot;: 0.8} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;As I can see, it's TOO OpenAI compatible.&lt;/p&gt; &lt;p&gt;This means most of model settings in OpenWebUI are just for ollama and will not be applied to OpenAI Compatible providers.&lt;/p&gt; &lt;p&gt;So, if youre setup is same as mine, go and check your sampling parameters - maybe your model is underperforming a bit.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nepherpitu"&gt; /u/Nepherpitu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgoxmo/openwebui_sampling_settings/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgoxmo/openwebui_sampling_settings/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgoxmo/openwebui_sampling_settings/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T04:38:22+00:00</published>
+  </entry>
   <entry>
     <id>t3_1kg9x4d</id>
     <title>Running Qwen3-235B-A22B, and LLama 4 Maverick locally at the same time on a 6x RTX 3090 Epyc system. Qwen runs at 25 tokens/second on 5x GPU. Maverick runs at 20 tokens/second on one GPU, and CPU.</title>
@@ -125,19 +138,6 @@
     <published>2025-05-06T15:22:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgsuci</id>
-    <title>Any one test Suna? Seems awesome and its open source!</title>
-    <updated>2025-05-07T09:09:04+00:00</updated>
-    <author>
-      <name>/u/Fit_Voice_3842</name>
-      <uri>https://old.reddit.com/user/Fit_Voice_3842</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;About to set this up locally, seems to work with local LLMs too? via &lt;a href="https://github.com/BerriAI/litellm"&gt;LiteLLM&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/kortix-ai/suna"&gt;https://github.com/kortix-ai/suna&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fit_Voice_3842"&gt; /u/Fit_Voice_3842 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgsuci/any_one_test_suna_seems_awesome_and_its_open/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgsuci/any_one_test_suna_seems_awesome_and_its_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgsuci/any_one_test_suna_seems_awesome_and_its_open/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T09:09:04+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kgltqs</id>
     <title>Huawei Atlas 300I 32GB</title>
     <updated>2025-05-07T01:48:31+00:00</updated>
@@ -242,19 +242,6 @@
     <published>2025-05-07T03:56:08+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgu4qg</id>
-    <title>Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090</title>
-    <updated>2025-05-07T10:37:38+00:00</updated>
-    <author>
-      <name>/u/Arli_AI</name>
-      <uri>https://old.reddit.com/user/Arli_AI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"&gt; &lt;img alt="Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090" src="https://preview.redd.it/1ijx9ffv8cze1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=42da044e5a349add8ff7c3733ec1c4e706676161" title="Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1ijx9ffv8cze1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T10:37:38+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kgdmz6</id>
     <title>The real reason OpenAI bought WindSurf</title>
     <updated>2025-05-06T19:40:33+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgdmz6/the_real_reason_openai_bought_windsurf/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T19:40:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kgu4qg</id>
+    <title>Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090</title>
+    <updated>2025-05-07T10:37:38+00:00</updated>
+    <author>
+      <name>/u/Arli_AI</name>
+      <uri>https://old.reddit.com/user/Arli_AI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"&gt; &lt;img alt="Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090" src="https://preview.redd.it/1ijx9ffv8cze1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=42da044e5a349add8ff7c3733ec1c4e706676161" title="Qwen3-235B Q6_K ktransformers at 56t/s prefill 4.5t/s decode on Xeon 3175X (384GB DDR4-3400) and RTX 4090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1ijx9ffv8cze1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgu4qg/qwen3235b_q6_k_ktransformers_at_56ts_prefill_45ts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T10:37:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1kg9jkq</id>
