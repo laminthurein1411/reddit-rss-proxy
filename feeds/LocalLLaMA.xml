@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-07T08:09:10+00:00</updated>
+  <updated>2025-05-07T08:25:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kgiq9k</id>
-    <title>Using a local runtime to run models for an open source project vs. HF transformers library</title>
-    <updated>2025-05-06T23:15:11+00:00</updated>
-    <author>
-      <name>/u/AdditionalWeb107</name>
-      <uri>https://old.reddit.com/user/AdditionalWeb107</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, some of the models (like &lt;a href="https://huggingface.co/katanemo/Arch-Guard"&gt;Arch Guard&lt;/a&gt;) used in our open-source project are loaded into memory and used via the transformers library from HF.&lt;/p&gt; &lt;p&gt;The benefit of using a library to load models is that I don't require additional prerequisites for developers when they download and use the local&lt;a href="https://github.com/katanemo/archgw"&gt; proxy server&lt;/a&gt; we've built for agents. This makes packaging and deployment easy. But the downside of using a library is that I inherit unnecessary dependency bloat, and I’m not necessarily taking advantage of runtime-level optimizations for speed, memory efficiency, or parallelism. I also give up flexibility in how the model is served—for example, I can't easily scale it across processes, share it between multiple requests efficiently, or plug into optimized model serving projects like vLLM, Llama.cpp, etc.&lt;/p&gt; &lt;p&gt;As we evolve the architecture, we’re exploring moving model execution into dedicated runtime, and I wanted to learn from the community how do they think about and manage this trade-off today for other open source projects, and for this scenario what runtime would you recommend?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AdditionalWeb107"&gt; /u/AdditionalWeb107 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgiq9k/using_a_local_runtime_to_run_models_for_an_open/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgiq9k/using_a_local_runtime_to_run_models_for_an_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgiq9k/using_a_local_runtime_to_run_models_for_an_open/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-06T23:15:11+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kger0a</id>
     <title>Apply formatting to Jinja chat templates directly from the Hugging Face model card (+ new playground)</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgoiy6/how_to_identify_whether_a_model_would_fit_in_my/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-07T04:14:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kgs1z7</id>
+    <title>3090+3060+3060 llama.cpp benchmarks / tips</title>
+    <updated>2025-05-07T08:10:14+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgs1z7/309030603060_llamacpp_benchmarks_tips/"&gt; &lt;img alt="3090+3060+3060 llama.cpp benchmarks / tips" src="https://a.thumbs.redditmedia.com/DbTGh_0uq0Zr27C4QY6dD_OTncYdCY186kdH1HyuqI8.jpg" title="3090+3060+3060 llama.cpp benchmarks / tips" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Building LocalLlama Machine – Episode 3: Performance Optimizations&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;In the previous episode, I had all three GPUs mounted directly in the motherboard slots. Now, I’ve &lt;strong&gt;moved one 3090 onto a riser&lt;/strong&gt; to make it a bit happier. Let’s use this setup for benchmarking.&lt;/p&gt; &lt;p&gt;Some people ask whether it's allowed to mix different GPUs, in this tutorial, I’ll explain how to handle that topic.&lt;/p&gt; &lt;p&gt;First, let’s try some smaller models. In the first screenshot, you can see the results for Qwen3 8B and Qwen3 14B. These models are small enough to fit entirely inside a 3090, so the 3060s are not needed. If we disable them, we see a performance boost: from &lt;strong&gt;48 to 82&lt;/strong&gt; tokens per second, and from &lt;strong&gt;28 to 48&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Next, we switch to &lt;strong&gt;Qwen3 32B&lt;/strong&gt;. This model is larger, and to run it in Q8, you need more than a single 3090. However, in &lt;code&gt;llama.cpp&lt;/code&gt;, we can control how the tensors are split. For example, we can allocate more memory on the first card and less on the second and third. These values are discovered experimentally for each model, so your optimal settings may vary. If the values are incorrect, the model won't load, for instance, it might try to allocate 26GB on a 24GB GPU.&lt;/p&gt; &lt;p&gt;We can improve performance from the default &lt;strong&gt;13.0&lt;/strong&gt; tokens per second to &lt;strong&gt;15.6&lt;/strong&gt; by adjusting the tensor split. Furthermore, we can go even higher, to &lt;strong&gt;16.4 tokens per second&lt;/strong&gt;, by using the &amp;quot;row&amp;quot; split mode. This mode was broken in &lt;code&gt;llama.cpp&lt;/code&gt; until recently, so make sure you're using the latest version of the code.&lt;/p&gt; &lt;p&gt;Now let’s try &lt;strong&gt;Nemotron 49B&lt;/strong&gt;. I really like this model, though I can't run it fully in Q8 yet, that’s a good excuse to buy another 3090! For now, let's use Q6. With some tuning, we can go &lt;strong&gt;from 12.4 to 14.1 tokens per second&lt;/strong&gt;. Not bad.&lt;/p&gt; &lt;p&gt;Then we move on to a 70B model. I'm using &lt;strong&gt;DeepSeek-R1-Distill-Llama-70B&lt;/strong&gt; in Q4. We start at &lt;strong&gt;10.3&lt;/strong&gt; tokens per second and improve to &lt;strong&gt;12.1&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Gemma3 27B&lt;/strong&gt; is a different case. With optimized tensor split values, we boost performance from 14.9 to &lt;strong&gt;18.9 tokens per second&lt;/strong&gt;. However, using &lt;code&gt;sm&lt;/code&gt; row mode slightly decreases the speed to 18.5.&lt;/p&gt; &lt;p&gt;Finally, we see similar behavior with &lt;strong&gt;Mistral Small 24B&lt;/strong&gt; (why is it called Llama 13B?). Performance goes from 18.8 to &lt;strong&gt;28.2 tokens per second&lt;/strong&gt; with tensor split, but again, &lt;code&gt;sm&lt;/code&gt; row mode reduces it slightly to 26.1.&lt;/p&gt; &lt;p&gt;So, you’ll need to experiment with your favorite models and your specific setup, but now you know the direction to take on your journey. Good luck!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kgs1z7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgs1z7/309030603060_llamacpp_benchmarks_tips/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgs1z7/309030603060_llamacpp_benchmarks_tips/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T08:10:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kft5yu</id>
@@ -106,7 +106,7 @@
       <name>/u/k_means_clusterfuck</name>
       <uri>https://old.reddit.com/user/k_means_clusterfuck</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://docs.openwebui.com/license/"&gt;https://docs.openwebui.com/license/&lt;/a&gt; / &lt;a href="https://github.com/open-webui/open-webui/blob/main/LICENSE"&gt;https://github.com/open-webui/open-webui/blob/main/LICENSE&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Open WebUI's last update included changes to the license beyond their original BSD-3 license,&lt;br /&gt; presumably for monetization. Their reasoning is &amp;quot;other companies are running instances of our code and put their own logo on open webui. this is not what open-source is about&amp;quot;. Really? Imagine if llama.cpp did the same thing in response to ollama. I just recently made the upgrade to v0.6.6 and of course I don't have 50 active users, but it just always leaves a bad taste in my mouth when they do this, and I'm starting to wonder if I should use/make a fork instead. I know everything isn't a slippery slope but it clearly makes it more likely that this project won't be uncompromizably open-source from now on. What are you guys' thoughts on this. Am I being overdramatic? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/k_means_clusterfuck"&gt; /u/k_means_clusterfuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://docs.openwebui.com/license/"&gt;https://docs.openwebui.com/license/&lt;/a&gt; / &lt;a href="https://github.com/open-webui/open-webui/blob/main/LICENSE"&gt;https://github.com/open-webui/open-webui/blob/main/LICENSE&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Open WebUI's last update included changes to the license beyond their original BSD-3 license,&lt;br /&gt; presumably for monetization. Their reasoning is &amp;quot;other companies are running instances of our code and put their own logo on open webui. this is not what open-source is about&amp;quot;. Really? Imagine if llama.cpp did the same thing in response to ollama. I just recently made the upgrade to v0.6.6 and of course I don't have 50 active users, but it just always leaves a bad taste in my mouth when they do this, and I'm starting to wonder if I should use/make a fork instead. I know everything isn't a slippery slope but it clearly makes it more likely that this project won't be uncompromizably open-source from now on. What are you guys' thoughts on this. Am I being overdramatic?&lt;/p&gt; &lt;p&gt;EDIT:&lt;/p&gt; &lt;p&gt;How the f** did i not know about librechat. Originally, I was looking for an OpenWebUI fork but i think I'll be setting it up and using that from now on.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/k_means_clusterfuck"&gt; /u/k_means_clusterfuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg4avg/openwebui_license_change_red_flag/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T13:20:27+00:00</published>
@@ -307,19 +307,6 @@
     <published>2025-05-06T19:40:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgrjor</id>
-    <title>New ""Open-Source"" Video generation model</title>
-    <updated>2025-05-07T07:32:32+00:00</updated>
-    <author>
-      <name>/u/topiga</name>
-      <uri>https://old.reddit.com/user/topiga</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"&gt; &lt;img alt="New &amp;quot;&amp;quot;Open-Source&amp;quot;&amp;quot; Video generation model" src="https://external-preview.redd.it/ZHdlOHlodmQ5YnplMXyf8-rvm1C__Q4bDL3gJBkjO_bjkyMUPsobX80FiZpA.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6db55c8236c9c875dc6ec641feb87d228687bd65" title="New &amp;quot;&amp;quot;Open-Source&amp;quot;&amp;quot; Video generation model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LTX-Video is the first DiT-based video generation model that can generate high-quality videos in &lt;em&gt;real-time&lt;/em&gt;. It can generate 30 FPS videos at 1216×704 resolution, faster than it takes to watch them. The model is trained on a large-scale dataset of diverse videos and can generate high-resolution videos with realistic and diverse content.&lt;/p&gt; &lt;p&gt;The model supports text-to-image, image-to-video, keyframe-based animation, video extension (both forward and backward), video-to-video transformations, and any combination of these features.&lt;/p&gt; &lt;p&gt;To be honest, I don't view it as open-source, not even open-weight. The license is weird, not a license we know of, and there's &amp;quot;Use Restrictions&amp;quot;. By doing so, it is NOT open-source.&lt;br /&gt; Yes, the restrictions are honest, and I invite you to read them, &lt;a href="https://static.lightricks.com/legal/LTXV-13b-0.9.7-dev.pdf"&gt;here is an example&lt;/a&gt;, but I think they're just doing this to protect themselves.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/Lightricks/LTX-Video"&gt;https://github.com/Lightricks/LTX-Video&lt;/a&gt;&lt;br /&gt; HF: &lt;a href="https://huggingface.co/Lightricks/LTX-Video"&gt;https://huggingface.co/Lightricks/LTX-Video&lt;/a&gt; (FP8 coming soon)&lt;br /&gt; Documentation: &lt;a href="https://www.lightricks.com/ltxv-documentation"&gt;https://www.lightricks.com/ltxv-documentation&lt;/a&gt;&lt;br /&gt; Tweet: &lt;a href="https://x.com/LTXStudio/status/1919751150888239374"&gt;https://x.com/LTXStudio/status/1919751150888239374&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/topiga"&gt; /u/topiga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/i4ioviud9bze1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T07:32:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kg9jkq</id>
     <title>New SOTA music generation model</title>
     <updated>2025-05-06T16:56:14+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg9jkq/new_sota_music_generation_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T16:56:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kgrjor</id>
+    <title>New ""Open-Source"" Video generation model</title>
+    <updated>2025-05-07T07:32:32+00:00</updated>
+    <author>
+      <name>/u/topiga</name>
+      <uri>https://old.reddit.com/user/topiga</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"&gt; &lt;img alt="New &amp;quot;&amp;quot;Open-Source&amp;quot;&amp;quot; Video generation model" src="https://external-preview.redd.it/ZHdlOHlodmQ5YnplMXyf8-rvm1C__Q4bDL3gJBkjO_bjkyMUPsobX80FiZpA.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6db55c8236c9c875dc6ec641feb87d228687bd65" title="New &amp;quot;&amp;quot;Open-Source&amp;quot;&amp;quot; Video generation model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LTX-Video is the first DiT-based video generation model that can generate high-quality videos in &lt;em&gt;real-time&lt;/em&gt;. It can generate 30 FPS videos at 1216×704 resolution, faster than it takes to watch them. The model is trained on a large-scale dataset of diverse videos and can generate high-resolution videos with realistic and diverse content.&lt;/p&gt; &lt;p&gt;The model supports text-to-image, image-to-video, keyframe-based animation, video extension (both forward and backward), video-to-video transformations, and any combination of these features.&lt;/p&gt; &lt;p&gt;To be honest, I don't view it as open-source, not even open-weight. The license is weird, not a license we know of, and there's &amp;quot;Use Restrictions&amp;quot;. By doing so, it is NOT open-source.&lt;br /&gt; Yes, the restrictions are honest, and I invite you to read them, &lt;a href="https://static.lightricks.com/legal/LTXV-13b-0.9.7-dev.pdf"&gt;here is an example&lt;/a&gt;, but I think they're just doing this to protect themselves.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/Lightricks/LTX-Video"&gt;https://github.com/Lightricks/LTX-Video&lt;/a&gt;&lt;br /&gt; HF: &lt;a href="https://huggingface.co/Lightricks/LTX-Video"&gt;https://huggingface.co/Lightricks/LTX-Video&lt;/a&gt; (FP8 coming soon)&lt;br /&gt; Documentation: &lt;a href="https://www.lightricks.com/ltxv-documentation"&gt;https://www.lightricks.com/ltxv-documentation&lt;/a&gt;&lt;br /&gt; Tweet: &lt;a href="https://x.com/LTXStudio/status/1919751150888239374"&gt;https://x.com/LTXStudio/status/1919751150888239374&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/topiga"&gt; /u/topiga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/i4ioviud9bze1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgrjor/new_opensource_video_generation_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T07:32:32+00:00</published>
   </entry>
 </feed>
