@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-07T15:06:53+00:00</updated>
+  <updated>2025-05-07T15:24:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kgkyap</id>
-    <title>AWQ 4-bit outperforms GGUF 8-bit in almost every way</title>
-    <updated>2025-05-07T01:03:25+00:00</updated>
-    <author>
-      <name>/u/Acceptable-State-271</name>
-      <uri>https://old.reddit.com/user/Acceptable-State-271</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;for qwen3 models (AWQ, Q8_0 by qwen)&lt;br /&gt; I get GGUF's convenience, especially for CPU/Mac users, which likely drives its popularity. Great tooling, too.&lt;/p&gt; &lt;p&gt;But on GPUs? My experience is that even 8-bit GGUF often trails behind 4-bit AWQ in responsiveness, accuracy, and coherence. This isn't a small gap.&lt;/p&gt; &lt;p&gt;It makes me wonder if GGUF's Mac/CPU accessibility is overshadowing AWQ's raw performance advantage on GPUs, especially with backends like vLLM or SGLang where AWQ shines (lower latency, better quality).&lt;/p&gt; &lt;p&gt;If you're on a GPU and serious about performance, AWQ seems like the stronger pick, yet it feels under-discussed.&lt;/p&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;Yeah, I may have exaggerated a bit earlier. I ran some pygame-based manual tests, and honestly, the difference between AWQ 4-bit and GGUF 8-bit wasn't as dramatic as I first thought — in many cases, they were pretty close.&lt;/p&gt; &lt;p&gt;The reason I said what I did is because of how AWQ handles quantization. Technically, it's just a smarter approach — it calibrates based on activation behavior, so even at 4-bit, the output can be surprisingly precise. (Think of it like compression that actually pays attention to what's important.)&lt;/p&gt; &lt;p&gt;That said, Q8 is pretty solid — maybe too solid to expose meaningful gaps. I'm planning to test AWQ 4-bit against GGUF Q6, which should show more noticeable differences.&lt;/p&gt; &lt;p&gt;As I said before, AWQ 4-bit vs GGUF Q8 didn't blow me away, and I probably got a bit cocky about it — my bad. But honestly, the fact that 4-bit AWQ can even compete with 8-bit GGUF is impressive in itself. That alone speaks volumes.&lt;/p&gt; &lt;p&gt;I'll post results soon after oneshot pygame testing against GGUF-Q6 using temp=0 and no_think settings.&lt;/p&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;I ran some tests comparing AWQ and Q6 GGUF models (Qwen3-32B-AWQ vs Qwen3-32B-Q6_K GGUF) on a set of physics-based Pygame simulation prompts. Let’s just say the results knocked me down a peg. I was a bit too cocky going in, and now I’m realizing I didn’t study enough. Q8 is very good, and Q6 is also better than I expected.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;AWQ model : &lt;a href="https://huggingface.co/Qwen/Qwen3-32B-AWQ"&gt;https://huggingface.co/Qwen/Qwen3-32B-AWQ&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Q6 model : &lt;a href="https://huggingface.co/Qwen/Qwen3-32B-GGUF"&gt;https://huggingface.co/Qwen/Qwen3-32B-GGUF&lt;/a&gt; [Qwen3-32B-Q6_K.gguf ]&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Test prompt&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Write a Python script using pygame that simulates a ball bouncing inside a rotating hexagon. The ball should realistically bounce off the rotating walls as the hexagon spins.&lt;/li&gt; &lt;li&gt;Using pygame, simulate a ball falling under gravity inside a square container that rotates continuously. The ball should bounce off the rotating walls according to physics.&lt;/li&gt; &lt;li&gt;Write a pygame simulation where a ball rolls inside a rotating circular container. Apply gravity and friction so that the ball moves naturally along the wall and responds to the container’s rotation.&lt;/li&gt; &lt;li&gt;Create a pygame simulation of a droplet bouncing inside a circular glass. The glass should tilt slowly over time, and the droplet should move and bounce inside it under gravity.&lt;/li&gt; &lt;li&gt;Write a complete Snake game using pygame. The snake should move, grow when eating food, and end the game when it hits itself or the wall.&lt;/li&gt; &lt;li&gt;Using pygame, simulate a pendulum swinging under gravity. Show the rope and the mass at the bottom. Use real-time physics to update its position.&lt;/li&gt; &lt;li&gt;Write a pygame simulation where multiple balls move and bounce around inside a window. They should collide with the walls and with each other.&lt;/li&gt; &lt;li&gt;Create a pygame simulation where a ball is inside a circular container that spins faster over time. The ball should slide and bounce according to the container’s rotation and simulated inertia.&lt;/li&gt; &lt;li&gt;Write a pygame script where a character can jump using the spacebar and falls back to the ground due to gravity. The character should not fall through the floor.&lt;/li&gt; &lt;li&gt;Simulate a rectangular block hanging from a rope. When clicked, apply a force that makes it swing like a pendulum. Use pygame to visualize the rope and block.&lt;/li&gt; &lt;/ol&gt; &lt;ul&gt; &lt;li&gt;Result&lt;/li&gt; &lt;/ul&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;No.&lt;/th&gt; &lt;th align="left"&gt;Prompt Summary&lt;/th&gt; &lt;th align="left"&gt;Physical Components&lt;/th&gt; &lt;th align="left"&gt;AWQ vs Q6 Comparison Outcome&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;1&lt;/td&gt; &lt;td align="left"&gt;Rotating Hexagon + Bounce&lt;/td&gt; &lt;td align="left"&gt;Rotation, Reflection&lt;/td&gt; &lt;td align="left"&gt;✅ &lt;strong&gt;AWQ&lt;/strong&gt; – Q6 only bounces to its initial position post-impact&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;2&lt;/td&gt; &lt;td align="left"&gt;Rotating Square + Gravity&lt;/td&gt; &lt;td align="left"&gt;Gravity, Rotation, Bounce&lt;/td&gt; &lt;td align="left"&gt;❌ Both Failed – Inaccurate physical collision response&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3&lt;/td&gt; &lt;td align="left"&gt;Ball Inside Rotating Circle&lt;/td&gt; &lt;td align="left"&gt;Friction, Rotation, Gravity&lt;/td&gt; &lt;td align="left"&gt;✅ Both worked, but strangely&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;4&lt;/td&gt; &lt;td align="left"&gt;Tilting Cup + Droplet&lt;/td&gt; &lt;td align="left"&gt;Gravity, Incline&lt;/td&gt; &lt;td align="left"&gt;❌ Both Failed – Incorrect handling of tilt-based gravity shift&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;5&lt;/td&gt; &lt;td align="left"&gt;Classic Snake Game&lt;/td&gt; &lt;td align="left"&gt;Collision, Length Growth&lt;/td&gt; &lt;td align="left"&gt;✅ &lt;strong&gt;AWQ&lt;/strong&gt; – Q6 fails to move the snake in consistent grid steps&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;6&lt;/td&gt; &lt;td align="left"&gt;Pendulum Motion&lt;/td&gt; &lt;td align="left"&gt;Gravity, Angular Motion&lt;/td&gt; &lt;td align="left"&gt;✅ Both Behaved Correctly&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;7&lt;/td&gt; &lt;td align="left"&gt;Multiple Ball Collisions&lt;/td&gt; &lt;td align="left"&gt;Reflection, Collision Detection&lt;/td&gt; &lt;td align="left"&gt;✅ Both Behaved Correctly&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;8&lt;/td&gt; &lt;td align="left"&gt;Rotating Trap (Circular)&lt;/td&gt; &lt;td align="left"&gt;Centrifugal Force, Rotation&lt;/td&gt; &lt;td align="left"&gt;✅ &lt;strong&gt;Q6&lt;/strong&gt; – AWQ produces a fixed-speed behavior&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9&lt;/td&gt; &lt;td align="left"&gt;Jumping Character&lt;/td&gt; &lt;td align="left"&gt;Gravity, Jump Force&lt;/td&gt; &lt;td align="left"&gt;✅ Both Behaved Correctly&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;10&lt;/td&gt; &lt;td align="left"&gt;Pendulum Swing on Click&lt;/td&gt; &lt;td align="left"&gt;Gravity, Impulse, Damping&lt;/td&gt; &lt;td align="left"&gt;✅ &lt;strong&gt;AWQ&lt;/strong&gt; – Q6 applies gravity in the wrong direction&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;==== After reading this link === &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1anb2fz/guide_to_choosing_quants_and_engines/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1anb2fz/guide_to_choosing_quants_and_engines/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I was (and reamin) a fan of AWQ, the actual benchmark tests show that performance differences between AWQ and GGUF Q8 vary case by case, with no absolute superiority apparent. While it's true that GGUF Q8 shows slightly better PPL scores than AWQ (4.9473 vs 4.9976 : lower is better), the difference is minimal and real-world usage may yield different results depending on the specific case. It's still noteworthy that AWQ can achieve similar performance to 8-bit GGUF while using only 4 bits.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Acceptable-State-271"&gt; /u/Acceptable-State-271 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgkyap/awq_4bit_outperforms_gguf_8bit_in_almost_every_way/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgkyap/awq_4bit_outperforms_gguf_8bit_in_almost_every_way/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgkyap/awq_4bit_outperforms_gguf_8bit_in_almost_every_way/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T01:03:25+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kgqv23</id>
     <title>zero phantom cloud tax, zero dollar debugging agent munchkin</title>
@@ -34,17 +21,17 @@
     <published>2025-05-07T06:44:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgzjzh</id>
-    <title>Are most of the benchmarks here useless in reality life?</title>
-    <updated>2025-05-07T15:02:40+00:00</updated>
+    <id>t3_1kgzb0c</id>
+    <title>What’s Your Current Daily Driver Model and Setup?</title>
+    <updated>2025-05-07T14:52:33+00:00</updated>
     <author>
-      <name>/u/ekultrok</name>
-      <uri>https://old.reddit.com/user/ekultrok</uri>
+      <name>/u/jedsk</name>
+      <uri>https://old.reddit.com/user/jedsk</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I see a lot of benchmarks here regarding tokens per second. But for me it's totally unimportant if a hardware setup runs at 20, 30, 50, or 180 t/s because the limiting factor is me reading slower than 20 t/s. So what's the deal with all these benchmarks? Just for fun to see whether a 3090 can beat a M4max?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ekultrok"&gt; /u/ekultrok &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzjzh/are_most_of_the_benchmarks_here_useless_in/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzjzh/are_most_of_the_benchmarks_here_useless_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzjzh/are_most_of_the_benchmarks_here_useless_in/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey Local gang,&lt;/p&gt; &lt;p&gt;What's your daily driver model these days? Would love to hear about your go to setups, preferred models + quants, and use cases. Just curious to know what's working well for everyone and find some new inspiration!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;My current setup:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Interface:&lt;/strong&gt; Ollama + OWUI&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Models:&lt;/strong&gt; Gemma3:27b-fp16 and Qwen3:32b-fp16 (12k ctx)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 4x RTX 3090s + Threadripper 3975WX + 256GB DDR4&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Use Case:&lt;/strong&gt; Enriching scraped data with LLMs for insight extraction and opportunity detection&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Thanks for sharing!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jedsk"&gt; /u/jedsk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzb0c/whats_your_current_daily_driver_model_and_setup/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzb0c/whats_your_current_daily_driver_model_and_setup/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzb0c/whats_your_current_daily_driver_model_and_setup/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T15:02:40+00:00</published>
+    <published>2025-05-07T14:52:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1kgh8zw</id>
@@ -112,19 +99,6 @@
     <published>2025-05-06T23:55:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgupcy</id>
-    <title>Gemini 2.5 Pro 05-06 (IO Edition)</title>
-    <updated>2025-05-07T11:12:09+00:00</updated>
-    <author>
-      <name>/u/EasternBeyond</name>
-      <uri>https://old.reddit.com/user/EasternBeyond</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"&gt; &lt;img alt="Gemini 2.5 Pro 05-06 (IO Edition)" src="https://external-preview.redd.it/AcvY2iQydAkuLrR9B5tut99az-M6OzZYxQpuRtv_6NM.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b24b4187cb1c776988e7af64e34ada19e1c9936b" title="Gemini 2.5 Pro 05-06 (IO Edition)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasternBeyond"&gt; /u/EasternBeyond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kgupcy"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T11:12:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kggif3</id>
     <title>We now have local computer-use! M3 Pro 18GB running both UI-TARS-1.5-7B-6bit and a macOS sequoia VM entirely locally using MLX and c/ua at ~30second/action</title>
     <updated>2025-05-06T21:38:03+00:00</updated>
@@ -136,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kggif3/we_now_have_local_computeruse_m3_pro_18gb_running/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T21:38:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kgupcy</id>
+    <title>Gemini 2.5 Pro 05-06 (IO Edition)</title>
+    <updated>2025-05-07T11:12:09+00:00</updated>
+    <author>
+      <name>/u/EasternBeyond</name>
+      <uri>https://old.reddit.com/user/EasternBeyond</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"&gt; &lt;img alt="Gemini 2.5 Pro 05-06 (IO Edition)" src="https://external-preview.redd.it/AcvY2iQydAkuLrR9B5tut99az-M6OzZYxQpuRtv_6NM.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b24b4187cb1c776988e7af64e34ada19e1c9936b" title="Gemini 2.5 Pro 05-06 (IO Edition)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EasternBeyond"&gt; /u/EasternBeyond &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kgupcy"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgupcy/gemini_25_pro_0506_io_edition/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T11:12:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1kgmxla</id>
@@ -190,17 +177,17 @@
     <published>2025-05-07T13:08:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kgzey8</id>
-    <title>Run FLUX.1 losslessly on a GPU with 20GB VRAM</title>
-    <updated>2025-05-07T14:57:14+00:00</updated>
+    <id>t3_1kgzskq</id>
+    <title>Mistral-Medium 3 (unfortunately no local support so far)</title>
+    <updated>2025-05-07T15:12:17+00:00</updated>
     <author>
-      <name>/u/arty_photography</name>
-      <uri>https://old.reddit.com/user/arty_photography</uri>
+      <name>/u/pier4r</name>
+      <uri>https://old.reddit.com/user/pier4r</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've released &lt;strong&gt;losslessly compressed versions&lt;/strong&gt; of the &lt;strong&gt;12B FLUX.1-dev&lt;/strong&gt; and &lt;strong&gt;FLUX.1-schnell&lt;/strong&gt; models using &lt;strong&gt;DFloat11&lt;/strong&gt;, a compression method that applies entropy coding to BFloat16 weights. This reduces model size by &lt;strong&gt;~30%&lt;/strong&gt; &lt;em&gt;without changing outputs&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;This brings the models down from &lt;strong&gt;24GB to ~16.3GB&lt;/strong&gt;, enabling them to run on a &lt;strong&gt;single GPU with 20GB or more of VRAM&lt;/strong&gt;, with only a &lt;strong&gt;few seconds of extra overhead per image&lt;/strong&gt;.&lt;/p&gt; &lt;h1&gt;🔗 Downloads &amp;amp; Resources&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Compressed FLUX.1-dev&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11/FLUX.1-dev-DF11"&gt;huggingface.co/DFloat11/FLUX.1-dev-DF11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compressed FLUX.1-schnell&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11/FLUX.1-schnell-DF11"&gt;huggingface.co/DFloat11/FLUX.1-schnell-DF11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Example Code&lt;/strong&gt;: &lt;a href="https://github.com/LeanModels/DFloat11/tree/master/examples/flux.1"&gt;github.com/LeanModels/DFloat11/tree/master/examples/flux.1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compressed LLMs (Qwen 3, Gemma 3, etc.)&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11"&gt;huggingface.co/DFloat11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Research Paper&lt;/strong&gt;: &lt;a href="https://arxiv.org/abs/2504.11651"&gt;arxiv.org/abs/2504.11651&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Feedback welcome&lt;/strong&gt;! Let me know if you try them out or run into any issues!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/arty_photography"&gt; /u/arty_photography &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzskq/mistralmedium_3_unfortunately_no_local_support_so/"&gt; &lt;img alt="Mistral-Medium 3 (unfortunately no local support so far)" src="https://external-preview.redd.it/QLQU1soiMTzFAm8GzW6EPDbaX5jrcYYFqy1ql5NYoiQ.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4c3b97e1405ebb7916bf71d7b9a3da9a44efaea7" title="Mistral-Medium 3 (unfortunately no local support so far)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pier4r"&gt; /u/pier4r &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/news/mistral-medium-3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzskq/mistralmedium_3_unfortunately_no_local_support_so/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzskq/mistralmedium_3_unfortunately_no_local_support_so/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T14:57:14+00:00</published>
+    <published>2025-05-07T15:12:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1kgs1z7</id>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kg9jkq/new_sota_music_generation_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-06T16:56:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kgzey8</id>
+    <title>Run FLUX.1 losslessly on a GPU with 20GB VRAM</title>
+    <updated>2025-05-07T14:57:14+00:00</updated>
+    <author>
+      <name>/u/arty_photography</name>
+      <uri>https://old.reddit.com/user/arty_photography</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've released &lt;strong&gt;losslessly compressed versions&lt;/strong&gt; of the &lt;strong&gt;12B FLUX.1-dev&lt;/strong&gt; and &lt;strong&gt;FLUX.1-schnell&lt;/strong&gt; models using &lt;strong&gt;DFloat11&lt;/strong&gt;, a compression method that applies entropy coding to BFloat16 weights. This reduces model size by &lt;strong&gt;~30%&lt;/strong&gt; &lt;em&gt;without changing outputs&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;This brings the models down from &lt;strong&gt;24GB to ~16.3GB&lt;/strong&gt;, enabling them to run on a &lt;strong&gt;single GPU with 20GB or more of VRAM&lt;/strong&gt;, with only a &lt;strong&gt;few seconds of extra overhead per image&lt;/strong&gt;.&lt;/p&gt; &lt;h1&gt;🔗 Downloads &amp;amp; Resources&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Compressed FLUX.1-dev&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11/FLUX.1-dev-DF11"&gt;huggingface.co/DFloat11/FLUX.1-dev-DF11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compressed FLUX.1-schnell&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11/FLUX.1-schnell-DF11"&gt;huggingface.co/DFloat11/FLUX.1-schnell-DF11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Example Code&lt;/strong&gt;: &lt;a href="https://github.com/LeanModels/DFloat11/tree/master/examples/flux.1"&gt;github.com/LeanModels/DFloat11/tree/master/examples/flux.1&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Compressed LLMs (Qwen 3, Gemma 3, etc.)&lt;/strong&gt;: &lt;a href="https://huggingface.co/DFloat11"&gt;huggingface.co/DFloat11&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Research Paper&lt;/strong&gt;: &lt;a href="https://arxiv.org/abs/2504.11651"&gt;arxiv.org/abs/2504.11651&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Feedback welcome&lt;/strong&gt;! Let me know if you try them out or run into any issues!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/arty_photography"&gt; /u/arty_photography &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-07T14:57:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kgu4qg</id>
