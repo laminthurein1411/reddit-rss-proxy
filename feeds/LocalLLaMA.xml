@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-08T17:36:07+00:00</updated>
+  <updated>2025-05-08T17:48:52+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1khb7rs</id>
-    <title>The new MLX DWQ quant is underrated, it feels like 8bit in a 4bit quant.</title>
-    <updated>2025-05-07T22:59:41+00:00</updated>
-    <author>
-      <name>/u/mzbacd</name>
-      <uri>https://old.reddit.com/user/mzbacd</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I noticed it was added to MLX a few days ago and started using it since then. It's very impressive, like running an 8bit model in a 4bit quantization size without much performance loss, and I suspect it might even finally make the 3bit quantization usable.&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlx-community/Qwen3-30B-A3B-4bit-DWQ"&gt;https://huggingface.co/mlx-community/Qwen3-30B-A3B-4bit-DWQ&lt;/a&gt;&lt;/p&gt; &lt;p&gt;edit:&lt;br /&gt; just made a DWQ quant one from unquantized version:&lt;br /&gt; &lt;a href="https://huggingface.co/mlx-community/Qwen3-30B-A3B-4bit-DWQ-0508"&gt;https://huggingface.co/mlx-community/Qwen3-30B-A3B-4bit-DWQ-0508&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mzbacd"&gt; /u/mzbacd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khb7rs/the_new_mlx_dwq_quant_is_underrated_it_feels_like/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khb7rs/the_new_mlx_dwq_quant_is_underrated_it_feels_like/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khb7rs/the_new_mlx_dwq_quant_is_underrated_it_feels_like/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T22:59:41+00:00</published>
-  </entry>
   <entry>
     <id>t3_1khbxg4</id>
     <title>QwQ Appreciation Thread</title>
@@ -73,6 +60,19 @@
     <published>2025-05-07T21:22:11+00:00</published>
   </entry>
   <entry>
+    <id>t3_1khv8sg</id>
+    <title>Giving Voice to AI - Orpheus TTS Quantization Experiment Results</title>
+    <updated>2025-05-08T17:02:07+00:00</updated>
+    <author>
+      <name>/u/dahara111</name>
+      <uri>https://old.reddit.com/user/dahara111</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello LocalLLaMA! Today I'd like to share the results of my experiment implementing speech synthesis capabilities in LLMs.&lt;/p&gt; &lt;p&gt;Introduction&lt;/p&gt; &lt;p&gt;In recent months, many high-quality Text-to-Speech (TTS) models have been released. For this experiment, I focused on &lt;a href="https://huggingface.co/canopylabs/orpheus-3b-0.1-ft"&gt;canopylabs/orpheus-3b-0.1-ft&lt;/a&gt;, which is based on llama3 architecture. Orpheus-3b is an LLM-based TTS system capable of natural speech with excellent vocal quality. I chose this model because llama3's ecosystem is well-developed, allowing me to leverage related tools. I specifically adopted the gguf format because it's easily deployable across various platforms. This is certainly not the end of the road, as further performance optimizations are possible using other tools/services/scripts. But Here, I'll report the results of testing various gguf quantization levels using custom scripts.&lt;/p&gt; &lt;p&gt;Performance Evaluation&lt;/p&gt; &lt;h1&gt;Evaluation Method&lt;/h1&gt; &lt;p&gt;I used the &lt;a href="https://keithito.com/LJ-Speech-Dataset/"&gt;LJ-Speech-Dataset&lt;/a&gt; for evaluation. This public domain speech dataset consists of 13,100 short audio clips of a single speaker reading passages from 7 non-fiction books.&lt;/p&gt; &lt;p&gt;Evaluation process:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;For each quantized model, 1000 randomly selected texts were synthesized into speech (though some models failed to vocalize certain samples)&lt;/li&gt; &lt;li&gt;Transcribed the speech using &lt;a href="https://huggingface.co/openai/whisper-large-v3-turbo"&gt;openai/whisper-large-v3-turbo&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Measured WER (Word Error Rate) and CER (Character Error Rate)&lt;/li&gt; &lt;li&gt;For comparison, also transcribed the original human voice from the dataset to compare error rates&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;The llama-server was launched with the following command:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-server -m orpheus-3b-Q4_K_L.gguf --prio 3 -c 2048 -n -2 -fa -ngl 99 --no-webui &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Temperature and other parameters were left at their default values. Unfortunately, I haven't yet been able to identify optimal parameters. With optimal parameters, results could potentially improve further.&lt;/p&gt; &lt;h1&gt;Evaluation Results&lt;/h1&gt; &lt;p&gt;The results for each quantization level are as follows. Each model was tested with 1000 samples, but some models failed to vocalize certain samples. For models with fewer than 1000 evaluation samples, the difference represents the number of failed samples(&amp;quot;Failed&amp;quot; column in the table below).&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Size&lt;/th&gt; &lt;th align="left"&gt;Samples Evaluated&lt;/th&gt; &lt;th align="left"&gt;Failed&lt;/th&gt; &lt;th align="left"&gt;Original WER&lt;/th&gt; &lt;th align="left"&gt;Original CER&lt;/th&gt; &lt;th align="left"&gt;TTS WER&lt;/th&gt; &lt;th align="left"&gt;TTS CER&lt;/th&gt; &lt;th align="left"&gt;WER Diff&lt;/th&gt; &lt;th align="left"&gt;CER Diff&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Q3_K_L&lt;/td&gt; &lt;td align="left"&gt;2.3G&lt;/td&gt; &lt;td align="left"&gt;970&lt;/td&gt; &lt;td align="left"&gt;30&lt;/td&gt; &lt;td align="left"&gt;0.0939&lt;/td&gt; &lt;td align="left"&gt;0.0236&lt;/td&gt; &lt;td align="left"&gt;0.1361&lt;/td&gt; &lt;td align="left"&gt;0.0430&lt;/td&gt; &lt;td align="left"&gt;+0.0422&lt;/td&gt; &lt;td align="left"&gt;+0.0194&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q4_K_L&lt;/td&gt; &lt;td align="left"&gt;2.6G&lt;/td&gt; &lt;td align="left"&gt;984&lt;/td&gt; &lt;td align="left"&gt;16&lt;/td&gt; &lt;td align="left"&gt;0.0942&lt;/td&gt; &lt;td align="left"&gt;0.0235&lt;/td&gt; &lt;td align="left"&gt;0.1309&lt;/td&gt; &lt;td align="left"&gt;0.0483&lt;/td&gt; &lt;td align="left"&gt;+0.0366&lt;/td&gt; &lt;td align="left"&gt;+0.0248&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q4_K-f16&lt;/td&gt; &lt;td align="left"&gt;3.4G&lt;/td&gt; &lt;td align="left"&gt;1000&lt;/td&gt; &lt;td align="left"&gt;0&lt;/td&gt; &lt;td align="left"&gt;0.0950&lt;/td&gt; &lt;td align="left"&gt;0.0236&lt;/td&gt; &lt;td align="left"&gt;0.1283&lt;/td&gt; &lt;td align="left"&gt;0.0351&lt;/td&gt; &lt;td align="left"&gt;+0.0334&lt;/td&gt; &lt;td align="left"&gt;+0.0115&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q6_K_L&lt;/td&gt; &lt;td align="left"&gt;3.2G&lt;/td&gt; &lt;td align="left"&gt;981&lt;/td&gt; &lt;td align="left"&gt;19&lt;/td&gt; &lt;td align="left"&gt;0.0944&lt;/td&gt; &lt;td align="left"&gt;0.0236&lt;/td&gt; &lt;td align="left"&gt;0.1303&lt;/td&gt; &lt;td align="left"&gt;0.0428&lt;/td&gt; &lt;td align="left"&gt;+0.0358&lt;/td&gt; &lt;td align="left"&gt;+0.0192&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q6_K-f16&lt;/td&gt; &lt;td align="left"&gt;4.0G&lt;/td&gt; &lt;td align="left"&gt;1000&lt;/td&gt; &lt;td align="left"&gt;0&lt;/td&gt; &lt;td align="left"&gt;0.0950&lt;/td&gt; &lt;td align="left"&gt;0.0236&lt;/td&gt; &lt;td align="left"&gt;0.1305&lt;/td&gt; &lt;td align="left"&gt;0.0398&lt;/td&gt; &lt;td align="left"&gt;+0.0355&lt;/td&gt; &lt;td align="left"&gt;+0.0161&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q8_0&lt;/td&gt; &lt;td align="left"&gt;3.8G&lt;/td&gt; &lt;td align="left"&gt;990&lt;/td&gt; &lt;td align="left"&gt;10&lt;/td&gt; &lt;td align="left"&gt;0.0945&lt;/td&gt; &lt;td align="left"&gt;0.0235&lt;/td&gt; &lt;td align="left"&gt;0.1298&lt;/td&gt; &lt;td align="left"&gt;0.0386&lt;/td&gt; &lt;td align="left"&gt;+0.0353&lt;/td&gt; &lt;td align="left"&gt;+0.0151&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Performance Analysis&lt;/h1&gt; &lt;p&gt;While the differences between quantization levels might not seem significant at first glance, there is a trend where lower bit quantization leads to increased pronunciation failures. And f16 variant (--output-tensor-type f16 --token-embedding-type f16) appears to suppress regeneration failure. This could potentially be improved in the future with better quantization techniques or domain-specific finetuning.&lt;/p&gt; &lt;p&gt;Processing Speed (bonus)&lt;/p&gt; &lt;p&gt;CPU Test environment: AMD Ryzen 9 7940HS w/ Radeon 780M Graphics 4.00 GHz&lt;/p&gt; &lt;p&gt;The following are speed test results using the Q4_K_L model:&lt;/p&gt; &lt;h1&gt;CPU (Without Vulkan)&lt;/h1&gt; &lt;p&gt;Speed of the first sample:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;TTFB (Time To First Byte, time until the first response): 356.19ms&lt;/li&gt; &lt;li&gt;Processing speed: 8.09 tokens/second&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;CPU (With Vulkan)&lt;/h1&gt; &lt;p&gt;Sample processing speed significantly improved:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;TTFB: 281.52ms&lt;/li&gt; &lt;li&gt;Processing speed: approximately 16 tokens/second&lt;/li&gt; &lt;li&gt;About 2x speed improvement compared to without Vulkan&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;GPU (RTX 4060)&lt;/h1&gt; &lt;p&gt;Even faster processing:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;TTFB: 233.04ms&lt;/li&gt; &lt;li&gt;Processing speed: approximately 73 tokens/second&lt;/li&gt; &lt;li&gt;About 4x faster than CPU (with Vulkan) and over 9x faster than CPU (without Vulkan)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Conclusion&lt;/h1&gt; &lt;p&gt;From this experiment, we found that although the difference in sound quality due to quantization level is relatively small, low-bit quantization may increase pronunciation errors.&lt;/p&gt; &lt;p&gt;Processing speed varies greatly depending on the execution environment, and GPU execution is the closest to realizing real-time conversation. Research shows that for English, &lt;a href="https://arxiv.org/pdf/2404.16053"&gt;humans expect a response between -280 ms and +758 ms from the end of the utterance&lt;/a&gt;. The real-world pipeline (VAD (Voice Activity Detection) -&amp;gt; EOU (End Of Utterance) -&amp;gt; ASR (Automatic Speech Recognition) -&amp;gt; LLM -&amp;gt; TTS) is a bit more complicated, but we felt that Local LLM is approaching the area where a sufficiently natural voice conversation is possible.&lt;/p&gt; &lt;p&gt;The origin of this experiment was the idea that if a lightweight TTS model could be called by Function Call or MCP, AI would be able to speak independently. As a first step, we verified the performance of a lightweight and easily implemented quantized TTS model. The performance is very good, but real-time processing is not yet at a satisfactory level due to a bug in my script that still causes noise.&lt;/p&gt; &lt;p&gt;In the future, the balance between quality and speed may be further improved by the progress of quantization technology, finetuning, and improvement of the script.&lt;/p&gt; &lt;p&gt;The model and results used in the experiment are uploaded &lt;a href="https://huggingface.co/dahara1/orpheus-3b-0.1-ft_gguf"&gt;dahara1/orpheus-3b-0.1-ft_gguf&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If you want to try it yourself, please do!&lt;/p&gt; &lt;p&gt;Finally, I would like to thank the contributors of canopylabs/orpheus-3b-0.1-ft, meta/llama3, ggml-org/llama.cpp, openai/whisper-large-v3-turbo, and LJ-Speech-Dataset.&lt;/p&gt; &lt;p&gt;Thank you for reading!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dahara111"&gt; /u/dahara111 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khv8sg/giving_voice_to_ai_orpheus_tts_quantization/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khv8sg/giving_voice_to_ai_orpheus_tts_quantization/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khv8sg/giving_voice_to_ai_orpheus_tts_quantization/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T17:02:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1khvm9d</id>
     <title>How do feed a pdf document to a local model?</title>
     <updated>2025-05-08T17:17:29+00:00</updated>
@@ -97,19 +97,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khlxzj/if_you_could_make_a_moe_with_as_many_active_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T09:35:09+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1khs34q</id>
-    <title>Best Open source Speech to text+ diarization models</title>
-    <updated>2025-05-08T14:53:31+00:00</updated>
-    <author>
-      <name>/u/Hungry-Ad-1177</name>
-      <uri>https://old.reddit.com/user/Hungry-Ad-1177</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone, hope you’re doing well. I’m currently working on a project where I need to convert audio conversations between a customer and agents into text.&lt;/p&gt; &lt;p&gt;Since most recordings involve up to three speakers, could you please suggest some top open-source models suited for this task, particularly those that support speaker diarization?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hungry-Ad-1177"&gt; /u/Hungry-Ad-1177 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T14:53:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1kgzwe9</id>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T03:28:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khs34q</id>
+    <title>Best Open source Speech to text+ diarization models</title>
+    <updated>2025-05-08T14:53:31+00:00</updated>
+    <author>
+      <name>/u/Hungry-Ad-1177</name>
+      <uri>https://old.reddit.com/user/Hungry-Ad-1177</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone, hope you’re doing well. I’m currently working on a project where I need to convert audio conversations between a customer and agents into text.&lt;/p&gt; &lt;p&gt;Since most recordings involve up to three speakers, could you please suggest some top open-source models suited for this task, particularly those that support speaker diarization?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hungry-Ad-1177"&gt; /u/Hungry-Ad-1177 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T14:53:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1khmh5m</id>
@@ -255,19 +255,6 @@
     <published>2025-05-08T09:31:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khu4x0</id>
-    <title>I tested Qwen 3 235b against Deepseek r1, Qwen did better on simple tasks but r1 beats in nuance</title>
-    <updated>2025-05-08T16:17:27+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been using Deepseek r1 for a while, mainly for writing, and I have tried the Qwq 32b, which was plenty impressive. But the new models are a huge upgrade, though I have yet to try the 30b model. The 235b model is really impressive for the cost and size. Definitely much better than Llama 4s. &lt;/p&gt; &lt;p&gt;So, I compared the top 2 open-source models on coding, reasoning, math, and writing tasks.&lt;/p&gt; &lt;p&gt;Here's what I found out.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Coding&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For a lot of coding tasks, you wouldn't notice much difference. Both models perform on par, sometimes Qwen taking the lead. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. Reasoning and Math&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Deepseek leads here with more nuance in the thought process. Qwen is not bad at all, gets most of the work done, but takes longer to finish tasks. It gives off the vibe of overfit at times.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. Writing&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For creative writing, Deepseek r1 is still in the top league, right up there with closed models. For summarising and technical description, Qwen offers similar performance.&lt;/p&gt; &lt;p&gt;For a full comparison check out this blog post: &lt;a href="https://composio.dev/blog/qwen-3-vs-deepseek-r1-complete-comparison/"&gt;Qwen 3 vs. Deepseek r1&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;It has been a great year so far for open-weight AI models, especially from Chinese labs. It would be interesting to see the next from Deepseek. Hope the Llama Behemoth turns out to be a better model.&lt;/p&gt; &lt;p&gt;Would love to know your experience with the new Qwens, and would love to know which local Qwen is good for local use cases, I have been using Gemma 3. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T16:17:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khs277</id>
     <title>Aider benchmarks for Qwen3-235B-A22B that were posted here were apparently faked</title>
     <updated>2025-05-08T14:52:27+00:00</updated>
@@ -281,19 +268,6 @@
     <published>2025-05-08T14:52:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khql0u</id>
-    <title>Intel to launch Arc Pro B60 graphics card with 24GB memory at Computex - VideoCardz.com</title>
-    <updated>2025-05-08T13:49:27+00:00</updated>
-    <author>
-      <name>/u/FullstackSensei</name>
-      <uri>https://old.reddit.com/user/FullstackSensei</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;No word on pricing yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FullstackSensei"&gt; /u/FullstackSensei &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://videocardz.com/newz/intel-to-launch-arc-pro-b60-graphics-card-with-24gb-memory-at-computex"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khql0u/intel_to_launch_arc_pro_b60_graphics_card_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khql0u/intel_to_launch_arc_pro_b60_graphics_card_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T13:49:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khq3ul</id>
     <title>Introducing the Intelligent Document Processing (IDP) Leaderboard – A Unified Benchmark for OCR, KIE, VQA, Table Extraction, and More</title>
     <updated>2025-05-08T13:27:29+00:00</updated>
@@ -305,6 +279,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khq3ul/introducing_the_intelligent_document_processing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T13:27:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khu4x0</id>
+    <title>I tested Qwen 3 235b against Deepseek r1, Qwen did better on simple tasks but r1 beats in nuance</title>
+    <updated>2025-05-08T16:17:27+00:00</updated>
+    <author>
+      <name>/u/SunilKumarDash</name>
+      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been using Deepseek r1 for a while, mainly for writing, and I have tried the Qwq 32b, which was plenty impressive. But the new models are a huge upgrade, though I have yet to try the 30b model. The 235b model is really impressive for the cost and size. Definitely much better than Llama 4s. &lt;/p&gt; &lt;p&gt;So, I compared the top 2 open-source models on coding, reasoning, math, and writing tasks.&lt;/p&gt; &lt;p&gt;Here's what I found out.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Coding&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For a lot of coding tasks, you wouldn't notice much difference. Both models perform on par, sometimes Qwen taking the lead. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;2. Reasoning and Math&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Deepseek leads here with more nuance in the thought process. Qwen is not bad at all, gets most of the work done, but takes longer to finish tasks. It gives off the vibe of overfit at times.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;3. Writing&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;For creative writing, Deepseek r1 is still in the top league, right up there with closed models. For summarising and technical description, Qwen offers similar performance.&lt;/p&gt; &lt;p&gt;For a full comparison check out this blog post: &lt;a href="https://composio.dev/blog/qwen-3-vs-deepseek-r1-complete-comparison/"&gt;Qwen 3 vs. Deepseek r1&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;It has been a great year so far for open-weight AI models, especially from Chinese labs. It would be interesting to see the next from Deepseek. Hope the Llama Behemoth turns out to be a better model.&lt;/p&gt; &lt;p&gt;Would love to know your experience with the new Qwens, and would love to know which local Qwen is good for local use cases, I have been using Gemma 3. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khu4x0/i_tested_qwen_3_235b_against_deepseek_r1_qwen_did/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T16:17:27+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khql0u</id>
+    <title>Intel to launch Arc Pro B60 graphics card with 24GB memory at Computex - VideoCardz.com</title>
+    <updated>2025-05-08T13:49:27+00:00</updated>
+    <author>
+      <name>/u/FullstackSensei</name>
+      <uri>https://old.reddit.com/user/FullstackSensei</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;No word on pricing yet.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FullstackSensei"&gt; /u/FullstackSensei &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://videocardz.com/newz/intel-to-launch-arc-pro-b60-graphics-card-with-24gb-memory-at-computex"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khql0u/intel_to_launch_arc_pro_b60_graphics_card_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khql0u/intel_to_launch_arc_pro_b60_graphics_card_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T13:49:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1khpf0m</id>
