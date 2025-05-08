@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-08T10:24:49+00:00</updated>
+  <updated>2025-05-08T10:39:20+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -86,19 +86,6 @@
     <published>2025-05-07T11:14:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khmaah</id>
-    <title>5 commands to run Qwen3-235B-A22B Q3 inference on 4x3090 + 32-core TR + 192GB DDR4 RAM</title>
-    <updated>2025-05-08T09:59:25+00:00</updated>
-    <author>
-      <name>/u/EmilPi</name>
-      <uri>https://old.reddit.com/user/EmilPi</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, thanks Qwen team for the generosity, and Unsloth team for quants.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: optimized for my build, your options may vary. This set of commands downloads GGUFs into llama.cpp's folder build/bin folder. If unsure, use full paths. I don't know why, but llama-server may not work if working directory is different.&lt;/p&gt; &lt;p&gt;End result: 140-180 tokens per second read speed (prompt processing), 12-14 tokens per second write speed (generation).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;0. You need CUDA installed (so, I kinda lied) and available in your PATH:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"&gt;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Download &amp;amp; Compile llama.cpp:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;git clone https://github.com/ggerganov/llama.cpp rm -rf build ; cmake -B build -DBUILD_SHARED_LIBS=ON -DLLAMA_CURL=OFF -DGGML_CUDA=ON -DGGML_CUDA_F16=ON -DGGML_CUDA_USE_GRAPHS=ON ; cmake --build build --config Release --parallel 32 cd build/bin &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;2. Download quantized model (that almost fits into 96GB VRAM) files:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;for i in {1..3} ; do curl -L --remote-name &amp;quot;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q3_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-0000${i}-of-00003.gguf?download=true&amp;quot; ; done &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;3. Run:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama-server \ --port 1234 \ --model ./Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf \ --alias Qwen3-235B-A22B-Thinking \ --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 \ -ngl 95 --split-mode layer -ts 22,23,24,26 \ -c 8192 -ctk q8_0 -ctv q8_0 -fa \ --main-gpu 3 \ --no-mmap \ -ot 'blk\.[2-3]1\.ffn.*=CPU' \ -ot 'blk\.[5-8]1\.ffn.*=CPU' \ -ot 'blk\.9[0-1]\.ffn.*=CPU' \ --threads 32 --numa distribute &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmilPi"&gt; /u/EmilPi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T09:59:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khmh5m</id>
     <title>Anyone get speculative decoding to work for Qwen 3 on LM Studio?</title>
     <updated>2025-05-08T10:11:47+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kgzey8/run_flux1_losslessly_on_a_gpu_with_20gb_vram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-07T14:57:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khmaah</id>
+    <title>5 commands to run Qwen3-235B-A22B Q3 inference on 4x3090 + 32-core TR + 192GB DDR4 RAM</title>
+    <updated>2025-05-08T09:59:25+00:00</updated>
+    <author>
+      <name>/u/EmilPi</name>
+      <uri>https://old.reddit.com/user/EmilPi</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, thanks Qwen team for the generosity, and Unsloth team for quants.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: optimized for my build, your options may vary. This set of commands downloads GGUFs into llama.cpp's folder build/bin folder. If unsure, use full paths. I don't know why, but llama-server may not work if working directory is different.&lt;/p&gt; &lt;p&gt;End result: 140-180 tokens per second read speed (prompt processing), 12-14 tokens per second write speed (generation).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;0. You need CUDA installed (so, I kinda lied) and available in your PATH:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"&gt;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Download &amp;amp; Compile llama.cpp:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;git clone https://github.com/ggerganov/llama.cpp rm -rf build ; cmake -B build -DBUILD_SHARED_LIBS=ON -DLLAMA_CURL=OFF -DGGML_CUDA=ON -DGGML_CUDA_F16=ON -DGGML_CUDA_USE_GRAPHS=ON ; cmake --build build --config Release --parallel 32 cd build/bin &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;2. Download quantized model (that almost fits into 96GB VRAM) files:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;for i in {1..3} ; do curl -L --remote-name &amp;quot;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q3_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-0000${i}-of-00003.gguf?download=true&amp;quot; ; done &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;3. Run:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama-server \ --port 1234 \ --model ./Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf \ --alias Qwen3-235B-A22B-Thinking \ --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 \ -ngl 95 --split-mode layer -ts 22,23,24,26 \ -c 8192 -ctk q8_0 -ctv q8_0 -fa \ --main-gpu 3 \ --no-mmap \ -ot 'blk\.[2-3]1\.ffn.*=CPU' \ -ot 'blk\.[5-8]1\.ffn.*=CPU' \ -ot 'blk\.9[0-1]\.ffn.*=CPU' \ --threads 32 --numa distribute &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmilPi"&gt; /u/EmilPi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T09:59:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1khlxzj</id>
@@ -177,17 +177,17 @@
     <published>2025-05-07T07:32:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khlw98</id>
-    <title>ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation</title>
-    <updated>2025-05-08T09:31:33+00:00</updated>
+    <id>t3_1khbxg4</id>
+    <title>QwQ Appreciation Thread</title>
+    <updated>2025-05-07T23:33:37+00:00</updated>
     <author>
-      <name>/u/searcher1k</name>
-      <uri>https://old.reddit.com/user/searcher1k</uri>
+      <name>/u/OmarBessa</name>
+      <uri>https://old.reddit.com/user/OmarBessa</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"&gt; &lt;img alt="ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation" src="https://external-preview.redd.it/CFr9_cLjVeZwkAhQkscmJVhOJEQi2DmpjFaEwPPrd7A.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=837ef81c969d8d59aca68353cf9f08b45dab3dd4" title="ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Paper: &lt;a href="https://arxiv.org/abs/2503.17671"&gt;https://arxiv.org/abs/2503.17671&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/searcher1k"&gt; /u/searcher1k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1khlw98"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt; &lt;img alt="QwQ Appreciation Thread" src="https://external-preview.redd.it/iUbtHN7RzxrcJ1LnOytJyYZIsd6RNnT0J4eou-hgYFg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c1c8377a20d6ad8107b227ddbef333fbae642705" title="QwQ Appreciation Thread" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/rpteerax2gze1.png?width=1257&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bfa6469374a7c33544022408885845c33043e561"&gt;https://preview.redd.it/rpteerax2gze1.png?width=1257&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bfa6469374a7c33544022408885845c33043e561&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Taken from: &lt;a href="https://fiction.live/stories/Fiction-liveBench-May-06-2025/oQdzQvKHw8JyXbN87"&gt;Regarding-the-Table-Design - Fiction-liveBench-May-06-2025 - Fiction.live&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I mean guys, don't get me wrong. The new Qwen3 models are great, but QwQ still holds quite decently. If it weren't for its overly verbose thinking...yet look at this. &lt;strong&gt;It is still basically sota in long context comprehension among open-source models.&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OmarBessa"&gt; /u/OmarBessa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T09:31:33+00:00</published>
+    <published>2025-05-07T23:33:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1khb7rs</id>
@@ -203,17 +203,17 @@
     <published>2025-05-07T22:59:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khbxg4</id>
-    <title>QwQ Appreciation Thread</title>
-    <updated>2025-05-07T23:33:37+00:00</updated>
+    <id>t3_1khlw98</id>
+    <title>ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation</title>
+    <updated>2025-05-08T09:31:33+00:00</updated>
     <author>
-      <name>/u/OmarBessa</name>
-      <uri>https://old.reddit.com/user/OmarBessa</uri>
+      <name>/u/searcher1k</name>
+      <uri>https://old.reddit.com/user/searcher1k</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt; &lt;img alt="QwQ Appreciation Thread" src="https://external-preview.redd.it/iUbtHN7RzxrcJ1LnOytJyYZIsd6RNnT0J4eou-hgYFg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c1c8377a20d6ad8107b227ddbef333fbae642705" title="QwQ Appreciation Thread" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/rpteerax2gze1.png?width=1257&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bfa6469374a7c33544022408885845c33043e561"&gt;https://preview.redd.it/rpteerax2gze1.png?width=1257&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bfa6469374a7c33544022408885845c33043e561&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Taken from: &lt;a href="https://fiction.live/stories/Fiction-liveBench-May-06-2025/oQdzQvKHw8JyXbN87"&gt;Regarding-the-Table-Design - Fiction-liveBench-May-06-2025 - Fiction.live&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I mean guys, don't get me wrong. The new Qwen3 models are great, but QwQ still holds quite decently. If it weren't for its overly verbose thinking...yet look at this. &lt;strong&gt;It is still basically sota in long context comprehension among open-source models.&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OmarBessa"&gt; /u/OmarBessa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khbxg4/qwq_appreciation_thread/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"&gt; &lt;img alt="ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation" src="https://external-preview.redd.it/CFr9_cLjVeZwkAhQkscmJVhOJEQi2DmpjFaEwPPrd7A.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=837ef81c969d8d59aca68353cf9f08b45dab3dd4" title="ComfyGPT: A Self-Optimizing Multi-Agent System for Comprehensive ComfyUI Workflow Generation" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Paper: &lt;a href="https://arxiv.org/abs/2503.17671"&gt;https://arxiv.org/abs/2503.17671&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/searcher1k"&gt; /u/searcher1k &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1khlw98"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khlw98/comfygpt_a_selfoptimizing_multiagent_system_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-07T23:33:37+00:00</published>
+    <published>2025-05-08T09:31:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1khl779</id>
@@ -242,19 +242,6 @@
     <published>2025-05-07T15:39:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khgir9</id>
-    <title>Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?</title>
-    <updated>2025-05-08T03:28:06+00:00</updated>
-    <author>
-      <name>/u/GrungeWerX</name>
-      <uri>https://old.reddit.com/user/GrungeWerX</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt; &lt;img alt="Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?" src="https://external-preview.redd.it/eNoMp-cBhW5B3lKr_XZAgD1Qku1SepqMDIM_aLwv22o.png?width=140&amp;amp;height=82&amp;amp;crop=140:82,smart&amp;amp;auto=webp&amp;amp;s=b758fb52ae557d8179140e36108651b61ff7d08a" title="Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Am I the only person that's noticed that GLM-4's outputs are eerily similar to Gemini Pro 2.5 in formatting? I copy/pasted a prompt in several different SOTA LLMs - GPT-4, DeepSeek, Gemini 2.5 Pro, Claude 2.7, and Grok. Then I tried it in GLM-4, and was like, wait a minute, where have I seen this formatting before? Then I checked - it was in &lt;strong&gt;Gemini 2.5 Pro&lt;/strong&gt;. Now, I'm not saying that GLM-4 is Gemini 2.5 Pro, of course not, but could it be a hacked earlier version? Or perhaps (far more likely) they used it as a template for how GLM does its outputs? Because Gemini is the &lt;strong&gt;only&lt;/strong&gt; LLM that does it this way where it gives you three Options w/parentheticals describing tone, and then finalizes it by saying &amp;quot;Choose the option that best fits your tone&amp;quot;. Like, &lt;strong&gt;almost exactly the same.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I just tested it out on Gemini 2.0 and Gemini Flash. Neither of these versions do this. This is only done by Gemini 2.5 Pro and GLM-4. None of the other Closed-source LLMs do this either, like chat-gpt, grok, deepseek, or claude.&lt;/p&gt; &lt;p&gt;I'm not complaining. And if the Chinese were to somehow hack their LLM and released a quantized open source version to the world - despite how unlikely this is - I wouldn't protest...much. &amp;gt;.&amp;gt;&lt;/p&gt; &lt;p&gt;But jokes aside, anyone else notice this?&lt;/p&gt; &lt;p&gt;Some samples:&lt;/p&gt; &lt;p&gt;Gemini Pro 2.5&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xjw45f988hze1.png?width=1267&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c85206ec3f5ebc5288c1e559c3ac2e50acb26b9d"&gt;https://preview.redd.it/xjw45f988hze1.png?width=1267&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c85206ec3f5ebc5288c1e559c3ac2e50acb26b9d&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GLM-4&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/alnqooqa8hze1.png?width=976&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cc68a36fc81af2110ac82d979e493c2889eae93e"&gt;https://preview.redd.it/alnqooqa8hze1.png?width=976&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cc68a36fc81af2110ac82d979e493c2889eae93e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Gemini Pro 2.5&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/0ofz0ygd8hze1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bc72427d8b0b60d02c5aca3f54ac0f1e287d1e05"&gt;https://preview.redd.it/0ofz0ygd8hze1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bc72427d8b0b60d02c5aca3f54ac0f1e287d1e05&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GLM-4&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igddncjf8hze1.png?width=895&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6ab4b4fa2f7ebdcc3a3feff0f9abbf6ce4428b4f"&gt;https://preview.redd.it/igddncjf8hze1.png?width=895&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6ab4b4fa2f7ebdcc3a3feff0f9abbf6ce4428b4f&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrungeWerX"&gt; /u/GrungeWerX &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T03:28:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kh9018</id>
     <title>OpenCodeReasoning - new Nemotrons by NVIDIA</title>
     <updated>2025-05-07T21:22:11+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kh9018/opencodereasoning_new_nemotrons_by_nvidia/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-07T21:22:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khgir9</id>
+    <title>Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?</title>
+    <updated>2025-05-08T03:28:06+00:00</updated>
+    <author>
+      <name>/u/GrungeWerX</name>
+      <uri>https://old.reddit.com/user/GrungeWerX</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt; &lt;img alt="Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?" src="https://external-preview.redd.it/eNoMp-cBhW5B3lKr_XZAgD1Qku1SepqMDIM_aLwv22o.png?width=140&amp;amp;height=82&amp;amp;crop=140:82,smart&amp;amp;auto=webp&amp;amp;s=b758fb52ae557d8179140e36108651b61ff7d08a" title="Is GLM-4 actually a hacked GEMINI? Or just Copying their Style?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Am I the only person that's noticed that GLM-4's outputs are eerily similar to Gemini Pro 2.5 in formatting? I copy/pasted a prompt in several different SOTA LLMs - GPT-4, DeepSeek, Gemini 2.5 Pro, Claude 2.7, and Grok. Then I tried it in GLM-4, and was like, wait a minute, where have I seen this formatting before? Then I checked - it was in &lt;strong&gt;Gemini 2.5 Pro&lt;/strong&gt;. Now, I'm not saying that GLM-4 is Gemini 2.5 Pro, of course not, but could it be a hacked earlier version? Or perhaps (far more likely) they used it as a template for how GLM does its outputs? Because Gemini is the &lt;strong&gt;only&lt;/strong&gt; LLM that does it this way where it gives you three Options w/parentheticals describing tone, and then finalizes it by saying &amp;quot;Choose the option that best fits your tone&amp;quot;. Like, &lt;strong&gt;almost exactly the same.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I just tested it out on Gemini 2.0 and Gemini Flash. Neither of these versions do this. This is only done by Gemini 2.5 Pro and GLM-4. None of the other Closed-source LLMs do this either, like chat-gpt, grok, deepseek, or claude.&lt;/p&gt; &lt;p&gt;I'm not complaining. And if the Chinese were to somehow hack their LLM and released a quantized open source version to the world - despite how unlikely this is - I wouldn't protest...much. &amp;gt;.&amp;gt;&lt;/p&gt; &lt;p&gt;But jokes aside, anyone else notice this?&lt;/p&gt; &lt;p&gt;Some samples:&lt;/p&gt; &lt;p&gt;Gemini Pro 2.5&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xjw45f988hze1.png?width=1267&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c85206ec3f5ebc5288c1e559c3ac2e50acb26b9d"&gt;https://preview.redd.it/xjw45f988hze1.png?width=1267&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c85206ec3f5ebc5288c1e559c3ac2e50acb26b9d&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GLM-4&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/alnqooqa8hze1.png?width=976&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cc68a36fc81af2110ac82d979e493c2889eae93e"&gt;https://preview.redd.it/alnqooqa8hze1.png?width=976&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cc68a36fc81af2110ac82d979e493c2889eae93e&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Gemini Pro 2.5&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/0ofz0ygd8hze1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bc72427d8b0b60d02c5aca3f54ac0f1e287d1e05"&gt;https://preview.redd.it/0ofz0ygd8hze1.png?width=730&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=bc72427d8b0b60d02c5aca3f54ac0f1e287d1e05&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GLM-4&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/igddncjf8hze1.png?width=895&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6ab4b4fa2f7ebdcc3a3feff0f9abbf6ce4428b4f"&gt;https://preview.redd.it/igddncjf8hze1.png?width=895&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6ab4b4fa2f7ebdcc3a3feff0f9abbf6ce4428b4f&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GrungeWerX"&gt; /u/GrungeWerX &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khgir9/is_glm4_actually_a_hacked_gemini_or_just_copying/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T03:28:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kh579e</id>
