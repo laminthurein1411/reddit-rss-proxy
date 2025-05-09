@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-09T18:08:12+00:00</updated>
+  <updated>2025-05-09T18:25:30+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ki2xjh</id>
-    <title>Update on the eGPU tower of Babel</title>
-    <updated>2025-05-08T22:18:46+00:00</updated>
-    <author>
-      <name>/u/Threatening-Silence-</name>
-      <uri>https://old.reddit.com/user/Threatening-Silence-</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt; &lt;img alt="Update on the eGPU tower of Babel" src="https://external-preview.redd.it/55wM326NrH8VhII809i_BVmITcEiGVlv1LK8RXp6kK4.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4f238be5cf0e0b824ba3699ac2d6edc4d5f57e75" title="Update on the eGPU tower of Babel" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I posted about my setup last month with five GPUs Now I have seven GPUs enumerating finally after lots of trial and error.&lt;/p&gt; &lt;p&gt;4 x 3090 via Thunderbolt (2 x 2 Sabrent hubs) 2 x 3090 via Oculink (one via PCIe and one via m.2) 1 x 3090 direct in box to PCIe slot 1&lt;/p&gt; &lt;p&gt;It turned out to matter a lot which Thunderbolt slots on the hubs I used. I had to use ports 1 and 2 specifically. Any eGPU on port 3 would be assigned 0 BAR space by the kernel, I guess due to the way bridge address space is allocated at boot. &lt;/p&gt; &lt;p&gt;&lt;code&gt;pci=realloc&lt;/code&gt; was required as a kernel parameter. &lt;/p&gt; &lt;p&gt;Docks are ADT-LINK UT4g for Thunderbolt and F9G for Oculink.&lt;/p&gt; &lt;p&gt;System specs: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Intel 14th gen i5&lt;/li&gt; &lt;li&gt;128 GB DDR5&lt;/li&gt; &lt;li&gt;MSI Z790 Gaming WiFi Pro motherboard&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Why did I do this? Because I wanted to try it. &lt;/p&gt; &lt;p&gt;I'll post benchmarks later on. Feel free to suggest some.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Threatening-Silence-"&gt; /u/Threatening-Silence- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ki2xjh"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T22:18:46+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ki0vl1</id>
     <title>Aider Qwen3 controversy</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kinot2/need_help_with_memory_and_function_calling/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T17:06:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kip5qj</id>
+    <title>OpenRouter's API does not follow given json schema on structured outputs. Does anyone else have this problem?</title>
+    <updated>2025-05-09T18:07:43+00:00</updated>
+    <author>
+      <name>/u/DaniyarQQQ</name>
+      <uri>https://old.reddit.com/user/DaniyarQQQ</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone.&lt;/p&gt; &lt;p&gt;I've been playing with Gemini 2.5 Pro, which is really good for my use case. However, google does not provide API for this model. Then I discovered that OpenRouter has this model and also supports structured output. So paid 10$ and tried to check like this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;response = client.responses.parse( model=&amp;quot;gpt-4o-2024-08-06&amp;quot;, input=[ # There are my mesages ], text_format=MyPydanticModel, ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And this crashes. Sometimes it complains that it can't parse result to Pydantic model.&lt;/p&gt; &lt;p&gt;Then I just try to send directly to API like this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &amp;quot;model&amp;quot;: &amp;quot;google/gemini-2.5-pro-preview&amp;quot;, &amp;quot;messages&amp;quot;: [ ] // There are my messages &amp;quot;response_format&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;json_schema&amp;quot;, &amp;quot;response_format&amp;quot;: { } // There is my own json schema } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;It returns something, that resembles JSON, but with broken structure, or adds completely different key names. It is like it does not follow schema at all.&lt;/p&gt; &lt;p&gt;Am I doing something wrong or structured outputs for OpenRouter is completely broken?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DaniyarQQQ"&gt; /u/DaniyarQQQ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kip5qj/openrouters_api_does_not_follow_given_json_schema/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kip5qj/openrouters_api_does_not_follow_given_json_schema/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kip5qj/openrouters_api_does_not_follow_given_json_schema/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T18:07:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1kigd15</id>
@@ -99,19 +99,6 @@
     <published>2025-05-08T22:59:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kima1i</id>
-    <title>Qwen introduced new web dev tool on app and website for frontend one line prompt to make web pages I tried and absolute insane</title>
-    <updated>2025-05-09T16:08:55+00:00</updated>
-    <author>
-      <name>/u/Namra_7</name>
-      <uri>https://old.reddit.com/user/Namra_7</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Namra_7"&gt; /u/Namra_7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T16:08:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kij0g1</id>
     <title>Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying</title>
     <updated>2025-05-09T13:51:37+00:00</updated>
@@ -138,17 +125,17 @@
     <published>2025-05-09T05:27:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kim8re</id>
-    <title>Considering a 9950X for a CPU only Qwen 3 30B A3B..</title>
-    <updated>2025-05-09T16:07:26+00:00</updated>
+    <id>t3_1kima1i</id>
+    <title>Qwen introduced new web dev tool on app and website for frontend one line prompt to make web pages I tried and absolute insane</title>
+    <updated>2025-05-09T16:08:55+00:00</updated>
     <author>
-      <name>/u/My_Unbiased_Opinion</name>
-      <uri>https://old.reddit.com/user/My_Unbiased_Opinion</uri>
+      <name>/u/Namra_7</name>
+      <uri>https://old.reddit.com/user/Namra_7</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Considering upgrading my general use server. It's not just an LLM rig, but hosts heavily modded Minecraft and other games servers. I'm considering throwing in a 9950X on it. &lt;/p&gt; &lt;p&gt;What tokens per second and prompt processing speed would I expect with a 32K context length? 128K context? Considering DDR5 6000 or 6200MT/s.&lt;/p&gt; &lt;p&gt;I tried looking online and couldn't really find good data for the 9950X on faster models like 30B A3B. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/My_Unbiased_Opinion"&gt; /u/My_Unbiased_Opinion &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Namra_7"&gt; /u/Namra_7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kima1i/qwen_introduced_new_web_dev_tool_on_app_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T16:07:26+00:00</published>
+    <published>2025-05-09T16:08:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1kiisdh</id>
@@ -216,6 +203,19 @@
     <published>2025-05-08T18:09:08+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kim8re</id>
+    <title>Considering a 9950X for a CPU only Qwen 3 30B A3B..</title>
+    <updated>2025-05-09T16:07:26+00:00</updated>
+    <author>
+      <name>/u/My_Unbiased_Opinion</name>
+      <uri>https://old.reddit.com/user/My_Unbiased_Opinion</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Considering upgrading my general use server. It's not just an LLM rig, but hosts heavily modded Minecraft and other games servers. I'm considering throwing in a 9950X on it. &lt;/p&gt; &lt;p&gt;What tokens per second and prompt processing speed would I expect with a 32K context length? 128K context? Considering DDR5 6000 or 6200MT/s.&lt;/p&gt; &lt;p&gt;I tried looking online and couldn't really find good data for the 9950X on faster models like 30B A3B. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/My_Unbiased_Opinion"&gt; /u/My_Unbiased_Opinion &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T16:07:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kimo3j</id>
     <title>Hardware to run 32B models at great speeds</title>
     <updated>2025-05-09T16:24:55+00:00</updated>
@@ -227,19 +227,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kimo3j/hardware_to_run_32b_models_at_great_speeds/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T16:24:55+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kinwuu</id>
-    <title>One transistor modelling one neuron - Nature publication</title>
-    <updated>2025-05-09T17:15:59+00:00</updated>
-    <author>
-      <name>/u/Important-Damage-173</name>
-      <uri>https://old.reddit.com/user/Important-Damage-173</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here's an exciting Nature paper that finds out the fact that it is possible to model a neuron on a single transistor. For reference: humans have 100 Billion neurons in their brains, the Apple M3 chip has 187 Billion.&lt;/p&gt; &lt;p&gt;Now look, this does not mean that you will be running a superhuman on a pc by end of year (since a synapse also requires a full transistor) but I expect things to radically change in terms of new processors in the next few years. &lt;/p&gt; &lt;p&gt;&lt;a href="https://www.nature.com/articles/s41586-025-08742-4"&gt;https://www.nature.com/articles/s41586-025-08742-4&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Important-Damage-173"&gt; /u/Important-Damage-173 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T17:15:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1ki831c</id>
@@ -255,6 +242,19 @@
     <published>2025-05-09T02:39:12+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kihrpt</id>
+    <title>Best model to have</title>
+    <updated>2025-05-09T12:54:17+00:00</updated>
+    <author>
+      <name>/u/Obvious_Cell_1515</name>
+      <uri>https://old.reddit.com/user/Obvious_Cell_1515</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to have a model installed locally for &amp;quot;doomsday prep&amp;quot; (no imminent threat to me just because i can). Which open source model should i keep installed, i am using LM Studio and there are so many models at this moment and i havent kept up with all the new ones releasing so i have no idea. Preferably a uncensored model if there is a latest one which is very good&lt;/p&gt; &lt;p&gt;Sorry, I should give my hardware specifications. Ryzen 5600, Amd RX 580 gpu, 16gigs ram, SSD.&lt;/p&gt; &lt;p&gt;The gemma-3-12b-it-qat model runs good on my system if that helps&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Obvious_Cell_1515"&gt; /u/Obvious_Cell_1515 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T12:54:17+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kimq0g</id>
     <title>4B Polish language model based on Qwen3 architecture</title>
     <updated>2025-05-09T16:27:02+00:00</updated>
@@ -268,17 +268,17 @@
     <published>2025-05-09T16:27:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kihrpt</id>
-    <title>Best model to have</title>
-    <updated>2025-05-09T12:54:17+00:00</updated>
+    <id>t3_1kinwuu</id>
+    <title>One transistor modelling one neuron - Nature publication</title>
+    <updated>2025-05-09T17:15:59+00:00</updated>
     <author>
-      <name>/u/Obvious_Cell_1515</name>
-      <uri>https://old.reddit.com/user/Obvious_Cell_1515</uri>
+      <name>/u/Important-Damage-173</name>
+      <uri>https://old.reddit.com/user/Important-Damage-173</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to have a model installed locally for &amp;quot;doomsday prep&amp;quot; (no imminent threat to me just because i can). Which open source model should i keep installed, i am using LM Studio and there are so many models at this moment and i havent kept up with all the new ones releasing so i have no idea. Preferably a uncensored model if there is a latest one which is very good&lt;/p&gt; &lt;p&gt;Sorry, I should give my hardware specifications. Ryzen 5600, Amd RX 580 gpu, 16gigs ram, SSD.&lt;/p&gt; &lt;p&gt;The gemma-3-12b-it-qat model runs good on my system if that helps&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Obvious_Cell_1515"&gt; /u/Obvious_Cell_1515 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here's an exciting Nature paper that finds out the fact that it is possible to model a neuron on a single transistor. For reference: humans have 100 Billion neurons in their brains, the Apple M3 chip has 187 Billion.&lt;/p&gt; &lt;p&gt;Now look, this does not mean that you will be running a superhuman on a pc by end of year (since a synapse also requires a full transistor) but I expect things to radically change in terms of new processors in the next few years. &lt;/p&gt; &lt;p&gt;&lt;a href="https://www.nature.com/articles/s41586-025-08742-4"&gt;https://www.nature.com/articles/s41586-025-08742-4&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Important-Damage-173"&gt; /u/Important-Damage-173 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kinwuu/one_transistor_modelling_one_neuron_nature/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T12:54:17+00:00</published>
+    <published>2025-05-09T17:15:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1kifny6</id>
