@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-08T23:48:46+00:00</updated>
+  <updated>2025-05-09T00:28:30+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -34,19 +34,6 @@
     <published>2025-05-07T23:35:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1khmaah</id>
-    <title>5 commands to run Qwen3-235B-A22B Q3 inference on 4x3090 + 32-core TR + 192GB DDR4 RAM</title>
-    <updated>2025-05-08T09:59:25+00:00</updated>
-    <author>
-      <name>/u/EmilPi</name>
-      <uri>https://old.reddit.com/user/EmilPi</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, thanks Qwen team for the generosity, and Unsloth team for quants.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: optimized for my build, your options may vary (e.g. I have slow RAM, which does not work above 2666MHz, and only 3 channels of RAM available). This set of commands downloads GGUFs into llama.cpp's folder build/bin folder. If unsure, use full paths. I don't know why, but llama-server may not work if working directory is different.&lt;/p&gt; &lt;p&gt;End result: 125-180 tokens per second read speed (prompt processing), 12-15 tokens per second write speed (generation) - depends on prompt/response/context length. I use 8k context.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;0. You need CUDA installed (so, I kinda lied) and available in your PATH:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"&gt;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Download &amp;amp; Compile llama.cpp:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;git clone https://github.com/ggerganov/llama.cpp ; cd llama.cpp cmake -B build -DBUILD_SHARED_LIBS=ON -DLLAMA_CURL=OFF -DGGML_CUDA=ON -DGGML_CUDA_F16=ON -DGGML_CUDA_USE_GRAPHS=ON ; cmake --build build --config Release --parallel 32 cd build/bin &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;2. Download quantized model (that almost fits into 96GB VRAM) files:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;for i in {1..3} ; do curl -L --remote-name &amp;quot;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q3_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-0000${i}-of-00003.gguf?download=true&amp;quot; ; done &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;3. Run:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama-server \ --port 1234 \ --model ./Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf \ --alias Qwen3-235B-A22B-Thinking \ --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 \ -ngl 95 --split-mode layer -ts 22,23,24,26 \ -c 8192 -ctk q8_0 -ctv q8_0 -fa \ --main-gpu 3 \ --no-mmap \ -ot 'blk\.[2-3]1\.ffn.*=CPU' \ -ot 'blk\.[5-8]1\.ffn.*=CPU' \ -ot 'blk\.9[0-1]\.ffn.*=CPU' \ --threads 32 --numa distribute &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmilPi"&gt; /u/EmilPi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T09:59:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khs34q</id>
     <title>Best Open source Speech to text+ diarization models</title>
     <updated>2025-05-08T14:53:31+00:00</updated>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khs34q/best_open_source_speech_to_text_diarization_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T14:53:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1khmaah</id>
+    <title>5 commands to run Qwen3-235B-A22B Q3 inference on 4x3090 + 32-core TR + 192GB DDR4 RAM</title>
+    <updated>2025-05-08T09:59:25+00:00</updated>
+    <author>
+      <name>/u/EmilPi</name>
+      <uri>https://old.reddit.com/user/EmilPi</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, thanks Qwen team for the generosity, and Unsloth team for quants.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: optimized for my build, your options may vary (e.g. I have slow RAM, which does not work above 2666MHz, and only 3 channels of RAM available). This set of commands downloads GGUFs into llama.cpp's folder build/bin folder. If unsure, use full paths. I don't know why, but llama-server may not work if working directory is different.&lt;/p&gt; &lt;p&gt;End result: 125-180 tokens per second read speed (prompt processing), 12-15 tokens per second write speed (generation) - depends on prompt/response/context length. I use 8k context.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;0. You need CUDA installed (so, I kinda lied) and available in your PATH:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"&gt;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Download &amp;amp; Compile llama.cpp:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;git clone https://github.com/ggerganov/llama.cpp ; cd llama.cpp cmake -B build -DBUILD_SHARED_LIBS=ON -DLLAMA_CURL=OFF -DGGML_CUDA=ON -DGGML_CUDA_F16=ON -DGGML_CUDA_USE_GRAPHS=ON ; cmake --build build --config Release --parallel 32 cd build/bin &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;2. Download quantized model (that almost fits into 96GB VRAM) files:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;for i in {1..3} ; do curl -L --remote-name &amp;quot;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q3_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-0000${i}-of-00003.gguf?download=true&amp;quot; ; done &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;3. Run:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama-server \ --port 1234 \ --model ./Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf \ --alias Qwen3-235B-A22B-Thinking \ --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 \ -ngl 95 --split-mode layer -ts 22,23,24,26 \ -c 8192 -ctk q8_0 -ctv q8_0 -fa \ --main-gpu 3 \ --no-mmap \ -ot 'blk\.[2-3]1\.ffn.*=CPU' \ -ot 'blk\.[5-8]1\.ffn.*=CPU' \ -ot 'blk\.9[0-1]\.ffn.*=CPU' \ --threads 32 --numa distribute &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmilPi"&gt; /u/EmilPi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T09:59:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1khl779</id>
@@ -86,19 +86,6 @@
     <published>2025-05-07T21:53:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ki3zjt</id>
-    <title>Can any local LLM pass the Mikupad test? I.e. split/refactor the source code of Mikupad, a single HTML file with 8k lines?</title>
-    <updated>2025-05-08T23:07:29+00:00</updated>
-    <author>
-      <name>/u/ArtyfacialIntelagent</name>
-      <uri>https://old.reddit.com/user/ArtyfacialIntelagent</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Frequently I see people here claiming to get useful coding results out of LLMs with 32k context. I propose the following &amp;quot;simple&amp;quot; test case: refactor the source code of Mikupad, a simple but very nice GUI to llama.cpp.&lt;/p&gt; &lt;p&gt;Mikupad is implemented as a huge single HTML file with CSS + Javascript (React), over 8k lines in total which should fit in 32k context. Splitting it up into separate smaller files is a pedestrian task for a decent coder, but I have not managed to get any LLM to do it. Most just spew generic boilerplate and/or placeholder code. To pass the test, the LLM just has to (a) output multiple complete files and (b) remain functional.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/lmg-anon/mikupad/blob/main/mikupad.html"&gt;https://github.com/lmg-anon/mikupad/blob/main/mikupad.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Can you do it with your favorite model? If so, show us how!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ArtyfacialIntelagent"&gt; /u/ArtyfacialIntelagent &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T23:07:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khqyds</id>
     <title>GMK EVO-X2 AI Max+ 395 Mini-PC review!</title>
     <updated>2025-05-08T14:05:38+00:00</updated>
@@ -112,32 +99,6 @@
     <published>2025-05-08T14:05:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ki3sze</id>
-    <title>Running Qwen3 235B on a single 3060 12gb (6 t/s generation)</title>
-    <updated>2025-05-08T22:59:06+00:00</updated>
-    <author>
-      <name>/u/farkinga</name>
-      <uri>https://old.reddit.com/user/farkinga</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was inspired by &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;a comment earlier today&lt;/a&gt; about running Qwen3 235B at home (i.e. without needing a cluster of of H100s).&lt;/p&gt; &lt;p&gt;What I've discovered after some experimentation is that you can scale this approach down to 12gb VRAM &lt;strong&gt;and still run Qwen3 235B at home&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;I'm generating at 6 tokens per second with these specs:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth Qwen3 235B q2_k_xl&lt;/li&gt; &lt;li&gt;RTX 3060 12gb&lt;/li&gt; &lt;li&gt;16k context&lt;/li&gt; &lt;li&gt;128gb RAM at 2666MHz (not super-fast)&lt;/li&gt; &lt;li&gt;Ryzen 7 5800X (8 cores)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here's how I launch llama.cpp:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-cli \ -m Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf \ -ot &amp;quot;.ffn_.*_exps.=CPU&amp;quot; \ -c 16384 \ -n 16384 \ --prio 2 \ --threads 7 \ --temp 0.6 \ --top-k 20 \ --top-p 0.95 \ --min-p 0.0 \ --color \ -if \ -ngl 99 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I downloaded the GGUF files (approx 88gb) like so:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf wget https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00002-of-00002.gguf &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;You may have noticed that I'm exporting ALL the layers to GPU. Yes, sortof. The &lt;code&gt;-ot&lt;/code&gt; flag (and the regexp provided by the Unsloth team) actually sends all MOE layers to the CPU - such that what remains can easily fit inside 12gb on my GPU.&lt;/p&gt; &lt;p&gt;If you cannot fit the entire 88gb model into RAM, hopefully you can store it on an NVME and allow Linux to mmap it for you.&lt;/p&gt; &lt;p&gt;I have 8 physical CPU cores and I've found specifying N-1 threads yields the best overall performance; hence why I use &lt;code&gt;--threads 7&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Shout out to the Unsloth team. This is absolutely magical. I can't believe I'm running a 235B MOE on this hardware...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/farkinga"&gt; /u/farkinga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T22:59:06+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ki2xjh</id>
-    <title>Update on the eGPU tower of Babel</title>
-    <updated>2025-05-08T22:18:46+00:00</updated>
-    <author>
-      <name>/u/Threatening-Silence-</name>
-      <uri>https://old.reddit.com/user/Threatening-Silence-</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt; &lt;img alt="Update on the eGPU tower of Babel" src="https://external-preview.redd.it/55wM326NrH8VhII809i_BVmITcEiGVlv1LK8RXp6kK4.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4f238be5cf0e0b824ba3699ac2d6edc4d5f57e75" title="Update on the eGPU tower of Babel" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I posted about my setup last month with five GPUs Now I have seven GPUs enumerating finally after lots of trial and error.&lt;/p&gt; &lt;p&gt;4 x 3090 via Thunderbolt (2 x 2 Sabrent hubs) 2 x 3090 via Oculink (one via PCIe and one via m.2) 1 x 3090 direct in box to PCIe slot 1&lt;/p&gt; &lt;p&gt;It turned out to matter a lot which Thunderbolt slots on the hubs I used. I had to use ports 1 and 2 specifically. Any eGPU on port 3 would be assigned 0 BAR space by the kernel, I guess due to the way bridge address space is allocated at boot. &lt;/p&gt; &lt;p&gt;&lt;code&gt;pci=realloc&lt;/code&gt; was required as a kernel parameter. &lt;/p&gt; &lt;p&gt;Docks are ADT-LINK UT4g for Thunderbolt and F9G for Oculink.&lt;/p&gt; &lt;p&gt;System specs: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Intel 14th gen i5&lt;/li&gt; &lt;li&gt;128 GB DDR5&lt;/li&gt; &lt;li&gt;MSI Z790 Gaming WiFi Pro motherboard&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Why did I do this? Because I wanted to try it. &lt;/p&gt; &lt;p&gt;I'll post benchmarks later on. Feel free to suggest some.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Threatening-Silence-"&gt; /u/Threatening-Silence- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ki2xjh"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T22:18:46+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khqz92</id>
     <title>Intel Promises More Arc GPU Action at Computex - Battlemage Goes Pro With AI-Ready Memory Capacities</title>
     <updated>2025-05-08T14:06:43+00:00</updated>
@@ -149,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khqz92/intel_promises_more_arc_gpu_action_at_computex/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T14:06:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ki3zjt</id>
+    <title>Can any local LLM pass the Mikupad test? I.e. split/refactor the source code of Mikupad, a single HTML file with 8k lines?</title>
+    <updated>2025-05-08T23:07:29+00:00</updated>
+    <author>
+      <name>/u/ArtyfacialIntelagent</name>
+      <uri>https://old.reddit.com/user/ArtyfacialIntelagent</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Frequently I see people here claiming to get useful coding results out of LLMs with 32k context. I propose the following &amp;quot;simple&amp;quot; test case: refactor the source code of Mikupad, a simple but very nice GUI to llama.cpp.&lt;/p&gt; &lt;p&gt;Mikupad is implemented as a huge single HTML file with CSS + Javascript (React), over 8k lines in total which should fit in 32k context. Splitting it up into separate smaller files is a pedestrian task for a decent coder, but I have not managed to get any LLM to do it. Most just spew generic boilerplate and/or placeholder code. To pass the test, the LLM just has to (a) output multiple complete files and (b) remain functional.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/lmg-anon/mikupad/blob/main/mikupad.html"&gt;https://github.com/lmg-anon/mikupad/blob/main/mikupad.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Can you do it with your favorite model? If so, show us how!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ArtyfacialIntelagent"&gt; /u/ArtyfacialIntelagent &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3zjt/can_any_local_llm_pass_the_mikupad_test_ie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T23:07:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1khys4u</id>
@@ -190,6 +164,32 @@
     <published>2025-05-08T19:29:08+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ki2xjh</id>
+    <title>Update on the eGPU tower of Babel</title>
+    <updated>2025-05-08T22:18:46+00:00</updated>
+    <author>
+      <name>/u/Threatening-Silence-</name>
+      <uri>https://old.reddit.com/user/Threatening-Silence-</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt; &lt;img alt="Update on the eGPU tower of Babel" src="https://external-preview.redd.it/55wM326NrH8VhII809i_BVmITcEiGVlv1LK8RXp6kK4.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4f238be5cf0e0b824ba3699ac2d6edc4d5f57e75" title="Update on the eGPU tower of Babel" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I posted about my setup last month with five GPUs Now I have seven GPUs enumerating finally after lots of trial and error.&lt;/p&gt; &lt;p&gt;4 x 3090 via Thunderbolt (2 x 2 Sabrent hubs) 2 x 3090 via Oculink (one via PCIe and one via m.2) 1 x 3090 direct in box to PCIe slot 1&lt;/p&gt; &lt;p&gt;It turned out to matter a lot which Thunderbolt slots on the hubs I used. I had to use ports 1 and 2 specifically. Any eGPU on port 3 would be assigned 0 BAR space by the kernel, I guess due to the way bridge address space is allocated at boot. &lt;/p&gt; &lt;p&gt;&lt;code&gt;pci=realloc&lt;/code&gt; was required as a kernel parameter. &lt;/p&gt; &lt;p&gt;Docks are ADT-LINK UT4g for Thunderbolt and F9G for Oculink.&lt;/p&gt; &lt;p&gt;System specs: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;Intel 14th gen i5&lt;/li&gt; &lt;li&gt;128 GB DDR5&lt;/li&gt; &lt;li&gt;MSI Z790 Gaming WiFi Pro motherboard&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Why did I do this? Because I wanted to try it. &lt;/p&gt; &lt;p&gt;I'll post benchmarks later on. Feel free to suggest some.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Threatening-Silence-"&gt; /u/Threatening-Silence- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ki2xjh"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki2xjh/update_on_the_egpu_tower_of_babel/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T22:18:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ki3sze</id>
+    <title>Running Qwen3 235B on a single 3060 12gb (6 t/s generation)</title>
+    <updated>2025-05-08T22:59:06+00:00</updated>
+    <author>
+      <name>/u/farkinga</name>
+      <uri>https://old.reddit.com/user/farkinga</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was inspired by &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;a comment earlier today&lt;/a&gt; about running Qwen3 235B at home (i.e. without needing a cluster of of H100s).&lt;/p&gt; &lt;p&gt;What I've discovered after some experimentation is that you can scale this approach down to 12gb VRAM &lt;strong&gt;and still run Qwen3 235B at home&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;I'm generating at 6 tokens per second with these specs:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Unsloth Qwen3 235B q2_k_xl&lt;/li&gt; &lt;li&gt;RTX 3060 12gb&lt;/li&gt; &lt;li&gt;16k context&lt;/li&gt; &lt;li&gt;128gb RAM at 2666MHz (not super-fast)&lt;/li&gt; &lt;li&gt;Ryzen 7 5800X (8 cores)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Here's how I launch llama.cpp:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-cli \ -m Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf \ -ot &amp;quot;.ffn_.*_exps.=CPU&amp;quot; \ -c 16384 \ -n 16384 \ --prio 2 \ --threads 7 \ --temp 0.6 \ --top-k 20 \ --top-p 0.95 \ --min-p 0.0 \ --color \ -if \ -ngl 99 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I downloaded the GGUF files (approx 88gb) like so:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf wget https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00002-of-00002.gguf &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;You may have noticed that I'm exporting ALL the layers to GPU. Yes, sortof. The &lt;code&gt;-ot&lt;/code&gt; flag (and the regexp provided by the Unsloth team) actually sends all MOE layers to the CPU - such that what remains can easily fit inside 12gb on my GPU.&lt;/p&gt; &lt;p&gt;If you cannot fit the entire 88gb model into RAM, hopefully you can store it on an NVME and allow Linux to mmap it for you.&lt;/p&gt; &lt;p&gt;I have 8 physical CPU cores and I've found specifying N-1 threads yields the best overall performance; hence why I use &lt;code&gt;--threads 7&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Shout out to the Unsloth team. This is absolutely magical. I can't believe I'm running a 235B MOE on this hardware...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/farkinga"&gt; /u/farkinga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T22:59:06+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1khv8sg</id>
     <title>Giving Voice to AI - Orpheus TTS Quantization Experiment Results</title>
     <updated>2025-05-08T17:02:07+00:00</updated>
@@ -229,19 +229,6 @@
     <published>2025-05-08T12:55:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ki0vl1</id>
-    <title>Aider Qwen3 controversy</title>
-    <updated>2025-05-08T20:50:26+00:00</updated>
-    <author>
-      <name>/u/Baldur-Norddahl</name>
-      <uri>https://old.reddit.com/user/Baldur-Norddahl</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;New blog post on Aider about Qwen3: &lt;a href="https://aider.chat/2025/05/08/qwen3.html"&gt;https://aider.chat/2025/05/08/qwen3.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I note that we see a very large variance in scores depending on how the model is run. And some people saying that you shouldn't use Openrouter for testing - but aren't most of us going to be using Openrouter when using the model? It gets very confusing - I might get an impression from a leader board but the in actual use the model is something completely different.&lt;/p&gt; &lt;p&gt;The leader board might drown in countless test variances. However what we really need is the ability to compare the models using various quants and maybe providers too. You could say the commercial models have the advantage that Claude is always just Claude. DeepSeek R1 at some low quant might be worse than Qwen3 at a better quant that still fits in my local memory.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Baldur-Norddahl"&gt; /u/Baldur-Norddahl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T20:50:26+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1khs277</id>
     <title>Aider benchmarks for Qwen3-235B-A22B that were posted here were apparently faked</title>
     <updated>2025-05-08T14:52:27+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khjrtj/building_llm_workflows_some_observations/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-08T06:54:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ki0vl1</id>
+    <title>Aider Qwen3 controversy</title>
+    <updated>2025-05-08T20:50:26+00:00</updated>
+    <author>
+      <name>/u/Baldur-Norddahl</name>
+      <uri>https://old.reddit.com/user/Baldur-Norddahl</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;New blog post on Aider about Qwen3: &lt;a href="https://aider.chat/2025/05/08/qwen3.html"&gt;https://aider.chat/2025/05/08/qwen3.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I note that we see a very large variance in scores depending on how the model is run. And some people saying that you shouldn't use Openrouter for testing - but aren't most of us going to be using Openrouter when using the model? It gets very confusing - I might get an impression from a leader board but the in actual use the model is something completely different.&lt;/p&gt; &lt;p&gt;The leader board might drown in countless test variances. However what we really need is the ability to compare the models using various quants and maybe providers too. You could say the commercial models have the advantage that Claude is always just Claude. DeepSeek R1 at some low quant might be worse than Qwen3 at a better quant that still fits in my local memory.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Baldur-Norddahl"&gt; /u/Baldur-Norddahl &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki0vl1/aider_qwen3_controversy/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-08T20:50:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1khql0u</id>
