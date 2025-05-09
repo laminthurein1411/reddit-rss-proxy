@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-09T05:07:10+00:00</updated>
+  <updated>2025-05-09T05:24:11+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1khmaah</id>
-    <title>5 commands to run Qwen3-235B-A22B Q3 inference on 4x3090 + 32-core TR + 192GB DDR4 RAM</title>
-    <updated>2025-05-08T09:59:25+00:00</updated>
+    <id>t3_1kiaszq</id>
+    <title>[D] Could 8B model have great performance in long context tasks?</title>
+    <updated>2025-05-09T05:19:22+00:00</updated>
     <author>
-      <name>/u/EmilPi</name>
-      <uri>https://old.reddit.com/user/EmilPi</uri>
+      <name>/u/Logical_Divide_3595</name>
+      <uri>https://old.reddit.com/user/Logical_Divide_3595</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;First, thanks Qwen team for the generosity, and Unsloth team for quants.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: optimized for my build, your options may vary (e.g. I have slow RAM, which does not work above 2666MHz, and only 3 channels of RAM available). This set of commands downloads GGUFs into llama.cpp's folder build/bin folder. If unsure, use full paths. I don't know why, but llama-server may not work if working directory is different.&lt;/p&gt; &lt;p&gt;End result: 125-180 tokens per second read speed (prompt processing), 12-15 tokens per second write speed (generation) - depends on prompt/response/context length. I use 8k context.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;0. You need CUDA installed (so, I kinda lied) and available in your PATH:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"&gt;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1. Download &amp;amp; Compile llama.cpp:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;git clone https://github.com/ggerganov/llama.cpp ; cd llama.cpp cmake -B build -DBUILD_SHARED_LIBS=ON -DLLAMA_CURL=OFF -DGGML_CUDA=ON -DGGML_CUDA_F16=ON -DGGML_CUDA_USE_GRAPHS=ON ; cmake --build build --config Release --parallel 32 cd build/bin &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;2. Download quantized model (that almost fits into 96GB VRAM) files:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;for i in {1..3} ; do curl -L --remote-name &amp;quot;https://huggingface.co/unsloth/Qwen3-235B-A22B-GGUF/resolve/main/UD-Q3_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-0000${i}-of-00003.gguf?download=true&amp;quot; ; done &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;3. Run:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;./llama-server \ --port 1234 \ --model ./Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf \ --alias Qwen3-235B-A22B-Thinking \ --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 \ -ngl 95 --split-mode layer -ts 22,23,24,26 \ -c 8192 -ctk q8_0 -ctv q8_0 -fa \ --main-gpu 3 \ --no-mmap \ -ot 'blk\.[2-3]1\.ffn.*=CPU' \ -ot 'blk\.[5-8]1\.ffn.*=CPU' \ -ot 'blk\.9[0-1]\.ffn.*=CPU' \ --threads 32 --numa distribute &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmilPi"&gt; /u/EmilPi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1khmaah/5_commands_to_run_qwen3235ba22b_q3_inference_on/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Are there benchmark to test small models in long-context tasks? I just found &lt;a href="https://longbench2.github.io/"&gt;LongBench v2&lt;/a&gt;, which didn't include Claude 3.7, making it seem weird. &lt;/p&gt; &lt;p&gt;Are there other credible benchmark for long-context tasks including lastest models? &lt;/p&gt; &lt;p&gt;Or are there benchmark for specific length tasks? The size of my task is 5k tokens. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Logical_Divide_3595"&gt; /u/Logical_Divide_3595 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiaszq/d_could_8b_model_have_great_performance_in_long/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiaszq/d_could_8b_model_have_great_performance_in_long/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kiaszq/d_could_8b_model_have_great_performance_in_long/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-08T09:59:25+00:00</published>
+    <published>2025-05-09T05:19:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1khl779</id>
