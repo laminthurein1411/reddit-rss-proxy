@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-09T14:06:23+00:00</updated>
+  <updated>2025-05-09T14:24:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,32 +47,6 @@
     <published>2025-05-08T16:17:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kihst0</id>
-    <title>Domain adaptation in 2025 - Fine-tuning v.s RAG/GraphRAG</title>
-    <updated>2025-05-09T12:55:48+00:00</updated>
-    <author>
-      <name>/u/Old_Cauliflower6316</name>
-      <uri>https://old.reddit.com/user/Old_Cauliflower6316</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I've been working on a tool that uses LLMs over the past year. The goal is to help companies troubleshoot production alerts. For example, if an alert says “CPU usage is high!”, the agent tries to investigate it and provide a root cause analysis.&lt;/p&gt; &lt;p&gt;Over that time, I’ve spent a lot of energy thinking about how developers can adapt LLMs to specific domains or systems. In my case, I needed the LLM to understand each customer’s unique environment. I started with basic RAG over company docs, code, and some observability data. But that turned out to be brittle - key pieces of context were often missing or not semantically related to the symptoms in the alert.&lt;/p&gt; &lt;p&gt;So I explored GraphRAG, hoping a more structured representation of the company’s system would help. And while it had potential, it was still brittle, required tons of infrastructure work, and didn’t fully solve the hallucination or retrieval quality issues.&lt;/p&gt; &lt;p&gt;I think the core challenge is that troubleshooting alerts requires deep familiarity with the system -understanding all the entities, their symptoms, limitations, relationships, etc.&lt;/p&gt; &lt;p&gt;Lately, I've been thinking more about fine-tuning - and Rich Sutton’s “Bitter Lesson” (&lt;a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html"&gt;link&lt;/a&gt;). Instead of building increasingly complex retrieval pipelines, what if we just trained the model directly with high-quality, synthetic data? We could generate QA pairs about components, their interactions, common failure modes, etc., and let the LLM learn the system more abstractly.&lt;/p&gt; &lt;p&gt;At runtime, rather than retrieving scattered knowledge, the model could reason using its internalized understanding—possibly leading to more robust outputs.&lt;/p&gt; &lt;p&gt;Curious to hear what others think:&lt;br /&gt; Is RAG/GraphRAG still superior for domain adaptation and reducing hallucinations in 2025?&lt;br /&gt; Or are there use cases where fine-tuning might actually work better?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Old_Cauliflower6316"&gt; /u/Old_Cauliflower6316 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T12:55:48+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kij0g1</id>
-    <title>Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying</title>
-    <updated>2025-05-09T13:51:37+00:00</updated>
-    <author>
-      <name>/u/ilintar</name>
-      <uri>https://old.reddit.com/user/ilintar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt; &lt;img alt="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" src="https://external-preview.redd.it/f1Ev5p_LWGUZaamDb5GPtSwxWaSFPZhS9YDmQC3jEZc.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2b7784b006f5a1648aa5e93da3479442e8e047d4" title="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share a tool that I vibe-coded myself out of necessity. Don't know how many people would consider using it - it's a pretty specific niche tool and might be outdated sooner than later, since the Llama.cpp people are already working on a swap/admin backend on the server. However, I had a few use-cases that I couldn't get done with anything else.&lt;/p&gt; &lt;p&gt;So, if you are a:&lt;/p&gt; &lt;p&gt;* IntelliJ AI Assistant user frustrated that you can't run a raw llama.cpp backend model&lt;br /&gt; * GitHub Copilot user who doesn't like Ollama, but would want to serve local models&lt;br /&gt; * ik_llama.cpp fan that can't connect it to modern assistants because it doesn't accept the tool calls&lt;br /&gt; * General llama.cpp fan who wants to swap out a few custom configs&lt;br /&gt; * LM Studio fan who nevertheless would want to run their Qwen3 30B with &amp;quot;-ot (up_exps|down_exps)=CPU&amp;quot; and has no idea when it'll be supported&lt;/p&gt; &lt;p&gt;this is something for you. &lt;/p&gt; &lt;p&gt;I made a simple Python tool with a very rudimentary PySide6 frontend that runs two proxies:&lt;br /&gt; * one proxy on port 11434 translates requests from Ollama format, forwards them to the Llama.cpp server, then translates the response back from Ollama format into OpenAI-compatible and sends it back&lt;br /&gt; * the other proxy on port 1234 serves the simple OpenAI-compatible proxy, but with a twist - it exposes LM Studio specific endpoints, especially the one for listing available models&lt;br /&gt; Both endpoints support streaming, both endpoints will load the necessary config when asked for a specific model.&lt;/p&gt; &lt;p&gt;This allows your local llama.cpp instance to effectively emulate both Ollama and LMStudio for external tools that integrate with those specific solutions and no others (*cough* IntelliJ AI Assistant *cough* GitHub Copilot *cough*). &lt;/p&gt; &lt;p&gt;I vibe-coded this thing with my Aider/Roo and my free Gemini queries, so don't expect the code to be very beatiful - but as far as I've tested it locally (both Linux and Windows) it gets the job done. Running it is very simple, just install Python, then run it in a venv (detailed instructions and sample config file in the repo README).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ilintar"&gt; /u/ilintar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pwilkin/llama-runner"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T13:51:37+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kigd15</id>
     <title>Introducing Leo XIV—But the AI Keeps Talking Francis</title>
     <updated>2025-05-09T11:40:14+00:00</updated>
@@ -84,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kigd15/introducing_leo_xivbut_the_ai_keeps_talking/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T11:40:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kih5b0</id>
+    <title>What are your prompts to quickly test a model? (i.e create hello world webpage)</title>
+    <updated>2025-05-09T12:22:44+00:00</updated>
+    <author>
+      <name>/u/dadidutdut</name>
+      <uri>https://old.reddit.com/user/dadidutdut</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just wondering what prompts people are using to quickly test llm models.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dadidutdut"&gt; /u/dadidutdut &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T12:22:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1kicdus</id>
@@ -112,6 +99,19 @@
     <published>2025-05-08T23:07:29+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kihst0</id>
+    <title>Domain adaptation in 2025 - Fine-tuning v.s RAG/GraphRAG</title>
+    <updated>2025-05-09T12:55:48+00:00</updated>
+    <author>
+      <name>/u/Old_Cauliflower6316</name>
+      <uri>https://old.reddit.com/user/Old_Cauliflower6316</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I've been working on a tool that uses LLMs over the past year. The goal is to help companies troubleshoot production alerts. For example, if an alert says “CPU usage is high!”, the agent tries to investigate it and provide a root cause analysis.&lt;/p&gt; &lt;p&gt;Over that time, I’ve spent a lot of energy thinking about how developers can adapt LLMs to specific domains or systems. In my case, I needed the LLM to understand each customer’s unique environment. I started with basic RAG over company docs, code, and some observability data. But that turned out to be brittle - key pieces of context were often missing or not semantically related to the symptoms in the alert.&lt;/p&gt; &lt;p&gt;So I explored GraphRAG, hoping a more structured representation of the company’s system would help. And while it had potential, it was still brittle, required tons of infrastructure work, and didn’t fully solve the hallucination or retrieval quality issues.&lt;/p&gt; &lt;p&gt;I think the core challenge is that troubleshooting alerts requires deep familiarity with the system -understanding all the entities, their symptoms, limitations, relationships, etc.&lt;/p&gt; &lt;p&gt;Lately, I've been thinking more about fine-tuning - and Rich Sutton’s “Bitter Lesson” (&lt;a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html"&gt;link&lt;/a&gt;). Instead of building increasingly complex retrieval pipelines, what if we just trained the model directly with high-quality, synthetic data? We could generate QA pairs about components, their interactions, common failure modes, etc., and let the LLM learn the system more abstractly.&lt;/p&gt; &lt;p&gt;At runtime, rather than retrieving scattered knowledge, the model could reason using its internalized understanding—possibly leading to more robust outputs.&lt;/p&gt; &lt;p&gt;Curious to hear what others think:&lt;br /&gt; Is RAG/GraphRAG still superior for domain adaptation and reducing hallucinations in 2025?&lt;br /&gt; Or are there use cases where fine-tuning might actually work better?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Old_Cauliflower6316"&gt; /u/Old_Cauliflower6316 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihst0/domain_adaptation_in_2025_finetuning_vs/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T12:55:48+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kiisdh</id>
     <title>MDColor is a command-line tool that renders Markdown files with syntax highlighting and color directly in your terminal</title>
     <updated>2025-05-09T13:41:40+00:00</updated>
@@ -138,17 +138,17 @@
     <published>2025-05-08T22:18:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kih5b0</id>
-    <title>What are your prompts to quickly test a model? (i.e create hello world webpage)</title>
-    <updated>2025-05-09T12:22:44+00:00</updated>
+    <id>t3_1kij0g1</id>
+    <title>Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying</title>
+    <updated>2025-05-09T13:51:37+00:00</updated>
     <author>
-      <name>/u/dadidutdut</name>
-      <uri>https://old.reddit.com/user/dadidutdut</uri>
+      <name>/u/ilintar</name>
+      <uri>https://old.reddit.com/user/ilintar</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just wondering what prompts people are using to quickly test llm models.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dadidutdut"&gt; /u/dadidutdut &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kih5b0/what_are_your_prompts_to_quickly_test_a_model_ie/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt; &lt;img alt="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" src="https://external-preview.redd.it/f1Ev5p_LWGUZaamDb5GPtSwxWaSFPZhS9YDmQC3jEZc.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2b7784b006f5a1648aa5e93da3479442e8e047d4" title="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share a tool that I vibe-coded myself out of necessity. Don't know how many people would consider using it - it's a pretty specific niche tool and might be outdated sooner than later, since the Llama.cpp people are already working on a swap/admin backend on the server. However, I had a few use-cases that I couldn't get done with anything else.&lt;/p&gt; &lt;p&gt;So, if you are a:&lt;/p&gt; &lt;p&gt;* IntelliJ AI Assistant user frustrated that you can't run a raw llama.cpp backend model&lt;br /&gt; * GitHub Copilot user who doesn't like Ollama, but would want to serve local models&lt;br /&gt; * ik_llama.cpp fan that can't connect it to modern assistants because it doesn't accept the tool calls&lt;br /&gt; * General llama.cpp fan who wants to swap out a few custom configs&lt;br /&gt; * LM Studio fan who nevertheless would want to run their Qwen3 30B with &amp;quot;-ot (up_exps|down_exps)=CPU&amp;quot; and has no idea when it'll be supported&lt;/p&gt; &lt;p&gt;this is something for you. &lt;/p&gt; &lt;p&gt;I made a simple Python tool with a very rudimentary PySide6 frontend that runs two proxies:&lt;br /&gt; * one proxy on port 11434 translates requests from Ollama format, forwards them to the Llama.cpp server, then translates the response back from Ollama format into OpenAI-compatible and sends it back&lt;br /&gt; * the other proxy on port 1234 serves the simple OpenAI-compatible proxy, but with a twist - it exposes LM Studio specific endpoints, especially the one for listing available models&lt;br /&gt; Both endpoints support streaming, both endpoints will load the necessary config when asked for a specific model.&lt;/p&gt; &lt;p&gt;This allows your local llama.cpp instance to effectively emulate both Ollama and LMStudio for external tools that integrate with those specific solutions and no others (*cough* IntelliJ AI Assistant *cough* GitHub Copilot *cough*). &lt;/p&gt; &lt;p&gt;I vibe-coded this thing with my Aider/Roo and my free Gemini queries, so don't expect the code to be very beatiful - but as far as I've tested it locally (both Linux and Windows) it gets the job done. Running it is very simple, just install Python, then run it in a venv (detailed instructions and sample config file in the repo README).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ilintar"&gt; /u/ilintar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pwilkin/llama-runner"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T12:22:44+00:00</published>
+    <published>2025-05-09T13:51:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1khxduw</id>
@@ -177,19 +177,6 @@
     <published>2025-05-08T20:50:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kihrpt</id>
-    <title>Best model to have</title>
-    <updated>2025-05-09T12:54:17+00:00</updated>
-    <author>
-      <name>/u/Obvious_Cell_1515</name>
-      <uri>https://old.reddit.com/user/Obvious_Cell_1515</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to have a model installed locally for &amp;quot;doomsday prep&amp;quot; (no imminent threat to me just because i can). Which open source model should i keep installed, i am using LM Studio and there are so many models at this moment and i havent kept up with all the new ones releasing so i have no idea. Preferably a uncensored model if there is a latest one which is very good&lt;/p&gt; &lt;p&gt;Sorry, I should give my hardware specifications. Ryzen 5600, Amd RX 580 gpu, 16gigs ram, SSD.&lt;/p&gt; &lt;p&gt;The gemma-3-12b-it-qat model runs good on my system if that helps&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Obvious_Cell_1515"&gt; /u/Obvious_Cell_1515 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T12:54:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ki3sze</id>
     <title>Running Qwen3 235B on a single 3060 12gb (6 t/s generation)</title>
     <updated>2025-05-08T22:59:06+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kien12/how_to_improve_rag/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T09:52:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kihrpt</id>
+    <title>Best model to have</title>
+    <updated>2025-05-09T12:54:17+00:00</updated>
+    <author>
+      <name>/u/Obvious_Cell_1515</name>
+      <uri>https://old.reddit.com/user/Obvious_Cell_1515</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to have a model installed locally for &amp;quot;doomsday prep&amp;quot; (no imminent threat to me just because i can). Which open source model should i keep installed, i am using LM Studio and there are so many models at this moment and i havent kept up with all the new ones releasing so i have no idea. Preferably a uncensored model if there is a latest one which is very good&lt;/p&gt; &lt;p&gt;Sorry, I should give my hardware specifications. Ryzen 5600, Amd RX 580 gpu, 16gigs ram, SSD.&lt;/p&gt; &lt;p&gt;The gemma-3-12b-it-qat model runs good on my system if that helps&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Obvious_Cell_1515"&gt; /u/Obvious_Cell_1515 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kihrpt/best_model_to_have/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T12:54:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1kiaxcx</id>
