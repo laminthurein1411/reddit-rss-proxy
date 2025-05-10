@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-10T13:48:35+00:00</updated>
+  <updated>2025-05-10T14:05:13+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kiz9h2</id>
-    <title>LLM with best understanding of medicine?</title>
-    <updated>2025-05-10T01:57:38+00:00</updated>
+    <id>t3_1kj5j9v</id>
+    <title>are amd cards good yet?</title>
+    <updated>2025-05-10T08:32:08+00:00</updated>
     <author>
-      <name>/u/pinkfreude</name>
-      <uri>https://old.reddit.com/user/pinkfreude</uri>
+      <name>/u/Excel_Document</name>
+      <uri>https://old.reddit.com/user/Excel_Document</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've had some success with Claude and ChatGPT. Are there any local LLM's that have a decent training background in medical topics?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pinkfreude"&gt; /u/pinkfreude &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;i am new to this stuff after researching i have found out that i need around 16gb of vram&lt;/p&gt; &lt;p&gt;so an amd gpu would cost me half what an nvidia gpu would cost me but some older posts as well as when i asked deepseek said that amd has limited rocm support making it bad for ai models&lt;/p&gt; &lt;p&gt;i am currently torn between 4060 ti,6900xt and 7800xt&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Excel_Document"&gt; /u/Excel_Document &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5j9v/are_amd_cards_good_yet/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5j9v/are_amd_cards_good_yet/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5j9v/are_amd_cards_good_yet/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T01:57:38+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ki7tg7</id>
-    <title>Don't Offload GGUF Layers, Offload Tensors! 200%+ Gen Speed? Yes Please!!!</title>
-    <updated>2025-05-09T02:24:58+00:00</updated>
-    <author>
-      <name>/u/skatardude10</name>
-      <uri>https://old.reddit.com/user/skatardude10</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Inspired by:&lt;/strong&gt; &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ki3sze/running_qwen3_235b_on_a_single_3060_12gb_6_ts/&lt;/a&gt; but applied to any other model.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Bottom line:&lt;/strong&gt; I am running a QwQ merge at IQ4_M size that used to run at 3.95 Tokens per second, with 59 of 65 layers offloaded to GPU. By selectively restricting certain FFN tensors to stay on the CPU, I've saved a ton of space on the GPU, now offload all 65 of 65 layers to the GPU and run at 10.61 Tokens per second. Why is this not standard?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This is ONLY relevant if you have some layers on CPU and CANNOT offload ALL layers to GPU due to VRAM constraints. If you already offload all layers to GPU, you're ahead of the game. &lt;em&gt;But&lt;/em&gt; maybe this could allow you to run larger models at acceptable speeds that would otherwise have been too slow for your liking.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Idea:&lt;/strong&gt; With llama.cpp and derivatives like koboldcpp, you offload entire LAYERS typically. Layers are comprised of various attention tensors, feed forward network (FFN) tensors, gates and outputs. Within each transformer layer, from what I gather, attention tensors are GPU heavy and smaller benefiting from parallelization, while FFN tensors are VERY LARGE tensors that use more basic matrix multiplication that can be done on CPU. You can use the --overridetensors flag in koboldcpp or -ot in llama.cpp to selectively keep certain TENSORS on the cpu.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How-To:&lt;/strong&gt; Upfront, here's an example...&lt;/p&gt; &lt;p&gt;&lt;strong&gt;10.61 TPS vs 3.95 TPS&lt;/strong&gt; using the same amount of VRAM, &lt;em&gt;just offloading tensors&lt;/em&gt; instead of &lt;em&gt;entire layers:&lt;/em&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;python ~/koboldcpp/koboldcpp.py --threads 10 --usecublas --contextsize 40960 --flashattention --port 5000 --model ~/Downloads/MODELNAME.gguf --gpulayers 65 --quantkv 1 --overridetensors &amp;quot;\.[13579]\.ffn_up|\.[1-3][13579]\.ffn_up=CPU&amp;quot; ... [18:44:54] CtxLimit:39294/40960, Amt:597/2048, Init:0.24s, Process:68.69s (563.34T/s), Generate:56.27s (10.61T/s), Total:124.96s &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Offloading layers baseline:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;python ~/koboldcpp/koboldcpp.py --threads 6 --usecublas --contextsize 40960 --flashattention --port 5000 --model ~/Downloads/MODELNAME.gguf --gpulayers 59 --quantkv 1 ... [18:53:07] CtxLimit:39282/40960, Amt:585/2048, Init:0.27s, Process:69.38s (557.79T/s), Generate:147.92s (3.95T/s), Total:217.29s &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;More details on how to? Use regex to match certain FFN layers to target for selectively NOT offloading to GPU as the commands above show.&lt;/p&gt; &lt;p&gt;In my examples above, I targeted FFN up layers because mine were mostly IQ4_XS while my FFN down layers were selectively quantized between IQ4_XS and Q5-Q8, which means those larger tensors vary in size a lot. This is beside the point of this post, but would come into play if you are just going to selectively restrict offloading every/every other/every third FFN_X tensor while assuming they are all the same size with something like Unsloth's Dynamic 2.0 quants that keep certain tensors at higher bits if you were doing math. Realistically though, you're selectively restricting certain tensors from offloading to save GPU space and how you do that doesn't matter all that much as long as you are hitting your VRAM target with your overrides. For example, when I tried to optimize for having every other Q4 FFN tensor stay on CPU versus every third regardless of tensor quant that, included many Q6 and Q8 tensors, to reduce computation load from the higher bit tensors, I only gained 0.4 tokens/second.&lt;/p&gt; &lt;p&gt;So, really how to?? Look at your GGUF's model info. For example, let's use: &lt;a href="https://huggingface.co/MaziyarPanahi/QwQ-32B-GGUF/tree/main?show_file_info=QwQ-32B.Q3_K_M.gguf"&gt;https://huggingface.co/MaziyarPanahi/QwQ-32B-GGUF/tree/main?show_file_info=QwQ-32B.Q3_K_M.gguf&lt;/a&gt; and look at all the layers and all the tensors in each layer.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Tensor&lt;/th&gt; &lt;th align="left"&gt;Size&lt;/th&gt; &lt;th align="left"&gt;Quantization&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;blk.1.ffn_down.weight&lt;/td&gt; &lt;td align="left"&gt;[27 648, 5 120]&lt;/td&gt; &lt;td align="left"&gt;Q5_K&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;blk.1.ffn_gate.weight&lt;/td&gt; &lt;td align="left"&gt;[5 120, 27 648]&lt;/td&gt; &lt;td align="left"&gt;Q3_K&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;blk.1.ffn_norm.weight&lt;/td&gt; &lt;td align="left"&gt;[5 120]&lt;/td&gt; &lt;td align="left"&gt;F32&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;blk.1.ffn_up.weight&lt;/td&gt; &lt;td align="left"&gt;[5 120, 27 648]&lt;/td&gt; &lt;td align="left"&gt;Q3_K&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;In this example, overriding tensors ffn_down at a higher Q5 to CPU would save more space on your GPU that fnn_up or fnn_gate at Q3. My regex from above only targeted ffn_up on layers 1-39, every other layer, to squeeze every last thing I could onto the GPU. I also alternated which ones I kept on CPU thinking maybe easing up on memory bottlenecks but not sure if that helps. &lt;strong&gt;Remember&lt;/strong&gt; to set threads equivalent to -1 of your total CPU &lt;em&gt;CORE count&lt;/em&gt; to optimize CPU inference (12C/24T), --threads 11 is good.&lt;/p&gt; &lt;p&gt;Either way, seeing QwQ run on my card at over double the speed now is INSANE and figured I would share so you guys look into this too. Offloading entire layers uses the same amount of memory as offloading specific tensors, but sucks way more. This way, offload everything to your GPU except the big layers that work well on CPU. Is this common knowledge?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Future:&lt;/strong&gt; I would love to see llama.cpp and others be able to automatically, selectively restrict offloading heavy CPU efficient tensors to the CPU rather than whole layers.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/skatardude10"&gt; /u/skatardude10 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki7tg7/dont_offload_gguf_layers_offload_tensors_200_gen/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ki7tg7/dont_offload_gguf_layers_offload_tensors_200_gen/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ki7tg7/dont_offload_gguf_layers_offload_tensors_200_gen/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T02:24:58+00:00</published>
+    <published>2025-05-10T08:32:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1kj7jgz</id>
@@ -60,19 +47,6 @@
     <published>2025-05-10T03:37:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kimq0g</id>
-    <title>4B Polish language model based on Qwen3 architecture</title>
-    <updated>2025-05-09T16:27:02+00:00</updated>
-    <author>
-      <name>/u/Significant_Focus134</name>
-      <uri>https://old.reddit.com/user/Significant_Focus134</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi there,&lt;/p&gt; &lt;p&gt;I just released the first version of a 4B Polish language model based on the Qwen3 architecture:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/piotr-ai/polanka_4b_v0.1_qwen3_gguf"&gt;https://huggingface.co/piotr-ai/polanka_4b_v0.1_qwen3_gguf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I did continual pretraining of the Qwen3 4B Base model on a single RTX 4090 for around 10 days.&lt;/p&gt; &lt;p&gt;The dataset includes high-quality upsampled Polish content.&lt;/p&gt; &lt;p&gt;To keep the original model’s strengths, I used a mixed dataset: multilingual, math, code, synthetic, and instruction-style data.&lt;/p&gt; &lt;p&gt;The checkpoint was trained on ~1.4B tokens.&lt;/p&gt; &lt;p&gt;It runs really fast on a laptop (thanks to GGUF + llama.cpp).&lt;/p&gt; &lt;p&gt;Let me know what you think or if you run any tests!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Significant_Focus134"&gt; /u/Significant_Focus134 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T16:27:02+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kitq9v</id>
     <title>If you had a Blackwell DGX (B200) - what would you run?</title>
     <updated>2025-05-09T21:22:51+00:00</updated>
@@ -84,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T21:22:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kimq0g</id>
+    <title>4B Polish language model based on Qwen3 architecture</title>
+    <updated>2025-05-09T16:27:02+00:00</updated>
+    <author>
+      <name>/u/Significant_Focus134</name>
+      <uri>https://old.reddit.com/user/Significant_Focus134</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi there,&lt;/p&gt; &lt;p&gt;I just released the first version of a 4B Polish language model based on the Qwen3 architecture:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/piotr-ai/polanka_4b_v0.1_qwen3_gguf"&gt;https://huggingface.co/piotr-ai/polanka_4b_v0.1_qwen3_gguf&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I did continual pretraining of the Qwen3 4B Base model on a single RTX 4090 for around 10 days.&lt;/p&gt; &lt;p&gt;The dataset includes high-quality upsampled Polish content.&lt;/p&gt; &lt;p&gt;To keep the original model’s strengths, I used a mixed dataset: multilingual, math, code, synthetic, and instruction-style data.&lt;/p&gt; &lt;p&gt;The checkpoint was trained on ~1.4B tokens.&lt;/p&gt; &lt;p&gt;It runs really fast on a laptop (thanks to GGUF + llama.cpp).&lt;/p&gt; &lt;p&gt;Let me know what you think or if you run any tests!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Significant_Focus134"&gt; /u/Significant_Focus134 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kimq0g/4b_polish_language_model_based_on_qwen3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T16:27:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1kigmfo</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kis38u/glm432b0414_one_shot_of_a_pong_game_with_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T20:13:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kj9cip</id>
+    <title>(Dual?) 5060Ti 16gb or 3090 for gaming+ML?</title>
+    <updated>2025-05-10T12:40:18+00:00</updated>
+    <author>
+      <name>/u/jaxchang</name>
+      <uri>https://old.reddit.com/user/jaxchang</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What’s the better option? I’m limited by a workstation with a non ATX psu that only has 2 PCIe 8pin power cables. Therefore, I don’t have enough watts going into a 4090, even though the PSU is 1000w. (The 4090 requires 3 8pin inputs). I don’t game much these days, but since I’m getting a GPU, I do want ML to not be the only priority.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;5060Ti 16gb looks pretty decent, with only 1 8pin power input. I can throw 2 into the machine if needed. &lt;/li&gt; &lt;li&gt;Otherwise, I can do the 3090 (which has 2 8pin input) with a cheap 2nd GPU that doesnt need psu power (1650? A2000?).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;What’s the better option?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jaxchang"&gt; /u/jaxchang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj9cip/dual_5060ti_16gb_or_3090_for_gamingml/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj9cip/dual_5060ti_16gb_or_3090_for_gamingml/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj9cip/dual_5060ti_16gb_or_3090_for_gamingml/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T12:40:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1kiqqgh</id>
@@ -177,19 +177,6 @@
     <published>2025-05-10T05:34:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kjaf6b</id>
-    <title>128GB DDR4, 2950x CPU, 1x3090 24gb Qwen3-235B-A22B-UD-Q3_K_XL 7Tokens/s</title>
-    <updated>2025-05-10T13:33:51+00:00</updated>
-    <author>
-      <name>/u/ciprianveg</name>
-      <uri>https://old.reddit.com/user/ciprianveg</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share, maybe it helps others with only 24gb vram, this is what i had to send to ram to use almost all my 24gb. If you have suggestions for increasing the prompt processing, please suggest :) I get cca. 12tok/s.&lt;br /&gt; This is the experssion used: -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot;&lt;br /&gt; and this is my whole command:&lt;br /&gt; ./llama-cli -m ~/ai/models/unsloth_Qwen3-235B-A22B-UD-Q3_K_XL-GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot; -c 16384 -n 16384 --prio 2 --threads 20 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0.0 --color -if -ngl 99 -fa&lt;br /&gt; My DDR4 runs at 2933MT/s and the cpu is an AMD 2950x&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ciprianveg"&gt; /u/ciprianveg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T13:33:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kj1t1o</id>
     <title>Qwen-2.5-VL-7b vs Gemma-3-12b impressions</title>
     <updated>2025-05-10T04:22:01+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj6vlj/why_is_adding_search_functionality_so_hard/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-10T10:09:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kjaf6b</id>
+    <title>128GB DDR4, 2950x CPU, 1x3090 24gb Qwen3-235B-A22B-UD-Q3_K_XL 7Tokens/s</title>
+    <updated>2025-05-10T13:33:51+00:00</updated>
+    <author>
+      <name>/u/ciprianveg</name>
+      <uri>https://old.reddit.com/user/ciprianveg</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share, maybe it helps others with only 24gb vram, this is what i had to send to ram to use almost all my 24gb. If you have suggestions for increasing the prompt processing, please suggest :) I get cca. 12tok/s.&lt;br /&gt; This is the experssion used: -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot;&lt;br /&gt; and this is my whole command:&lt;br /&gt; ./llama-cli -m ~/ai/models/unsloth_Qwen3-235B-A22B-UD-Q3_K_XL-GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot; -c 16384 -n 16384 --prio 2 --threads 20 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0.0 --color -if -ngl 99 -fa&lt;br /&gt; My DDR4 runs at 2933MT/s and the cpu is an AMD 2950x&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ciprianveg"&gt; /u/ciprianveg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T13:33:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1kj5rd1</id>
@@ -242,19 +242,6 @@
     <published>2025-05-10T07:43:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kj44n8</id>
-    <title>Absolute Zero: Reinforced Self-play Reasoning with Zero Data</title>
-    <updated>2025-05-10T06:53:16+00:00</updated>
-    <author>
-      <name>/u/CortaCircuit</name>
-      <uri>https://old.reddit.com/user/CortaCircuit</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CortaCircuit"&gt; /u/CortaCircuit &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.arxiv.org/pdf/2505.03335"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj44n8/absolute_zero_reinforced_selfplay_reasoning_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj44n8/absolute_zero_reinforced_selfplay_reasoning_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T06:53:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kiwbs8</id>
     <title>Where is grok2?</title>
     <updated>2025-05-09T23:24:20+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kiwbs8/where_is_grok2/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T23:24:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kj44n8</id>
+    <title>Absolute Zero: Reinforced Self-play Reasoning with Zero Data</title>
+    <updated>2025-05-10T06:53:16+00:00</updated>
+    <author>
+      <name>/u/CortaCircuit</name>
+      <uri>https://old.reddit.com/user/CortaCircuit</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CortaCircuit"&gt; /u/CortaCircuit &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.arxiv.org/pdf/2505.03335"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj44n8/absolute_zero_reinforced_selfplay_reasoning_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj44n8/absolute_zero_reinforced_selfplay_reasoning_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T06:53:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1kipwyo</id>
