@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-10T19:05:15+00:00</updated>
+  <updated>2025-05-10T19:20:45+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -67,7 +67,7 @@
       <name>/u/djdeniro</name>
       <uri>https://old.reddit.com/user/djdeniro</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I'm experimenting with llama.cpp and Vulkan, and I'm getting around 36.6 tokens/s with the gemma3-27b-it-q4kxl.gguf model using these parameters:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-server -m gemma3-27b-it-q4kxl.gguf --host 0.0.0.0 --port 8082 -ctv q8_0 -ctk q8_0 -fa --numa distribute --no-mmap --gpu-layers 990 -C 4000 --tensor-split 24,0,0 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;However, when I try to distribute the layers across my GPUs using --tensor-split values like 24,24,0 or 24,24,16, I see a decrease in performance.&lt;/p&gt; &lt;p&gt;I'm hoping to optimally offload layers to each GPU for the fastest possible inference speed. My setup is:&lt;/p&gt; &lt;p&gt;GPUs: 2x Radeon RX 7900 XTX + 1x Radeon RX 7800 XT&lt;/p&gt; &lt;p&gt;CPU: Ryzen 7 7700X&lt;/p&gt; &lt;p&gt;RAM: 128GB (4x32GB DDR5 4200MHz)&lt;/p&gt; &lt;p&gt;Is it possible to effectively utilize all three GPUs with llama.cpp and Vulkan, and if so, what --tensor-split configuration would you recommend or `-ot`? Are there other parameters I should consider adjusting? Any insights or suggestions would be greatly appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjdg0c/gemma_327bit_q4kxl_vulkan_performance_multigpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjdg0c/gemma_327bit_q4kxl_vulkan_performance_multigpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I'm experimenting with llama.cpp and Vulkan, and I'm getting around 36.6 tokens/s with the gemma3-27b-it-q4kxl.gguf model using these parameters:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-server -m gemma3-27b-it-q4kxl.gguf --host 0.0.0.0 --port 8082 -ctv q8_0 -ctk q8_0 -fa --numa distribute --no-mmap --gpu-layers 990 -C 4000 --tensor-split 24,0,0 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;However, when I try to distribute the layers across my GPUs using --tensor-split values like 24,24,0 or 24,24,16, I see a decrease in performance.&lt;/p&gt; &lt;p&gt;I'm hoping to optimally offload layers to each GPU for the fastest possible inference speed. My setup is:&lt;/p&gt; &lt;p&gt;GPUs: 2x Radeon RX 7900 XTX + 1x Radeon RX 7800 XT&lt;/p&gt; &lt;p&gt;CPU: Ryzen 7 7700X&lt;/p&gt; &lt;p&gt;RAM: 128GB (4x32GB DDR5 4200MHz)&lt;/p&gt; &lt;p&gt;Is it possible to effectively utilize all three GPUs with llama.cpp and Vulkan, and if so, what --tensor-split configuration would you recommend or `-ot`? Are there other parameters I should consider adjusting? Any insights or suggestions would be greatly appreciated!&lt;/p&gt; &lt;p&gt;UPD: MB: B650E-E&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjdg0c/gemma_327bit_q4kxl_vulkan_performance_multigpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjdg0c/gemma_327bit_q4kxl_vulkan_performance_multigpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjdg0c/gemma_327bit_q4kxl_vulkan_performance_multigpu/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-10T15:52:56+00:00</published>
@@ -177,19 +177,6 @@
     <published>2025-05-09T23:24:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kj5rd1</id>
-    <title>Thinking about hardware for local LLMs? Here's what I built for less than a 5090</title>
-    <updated>2025-05-10T08:48:22+00:00</updated>
-    <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Some of you have been asking what kind of hardware to get for running local LLMs. Just wanted to share my current setup:&lt;/p&gt; &lt;p&gt;I’m running a local &amp;quot;supercomputer&amp;quot; with &lt;strong&gt;4 GPUs&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;2× RTX 3090&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;2× RTX 3060&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;That gives me a total of &lt;strong&gt;72 GB of VRAM,&lt;/strong&gt; for &lt;strong&gt;less than 9000 PLN&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Compare that to a &lt;strong&gt;single RTX 5090&lt;/strong&gt;, which costs &lt;strong&gt;over 10,000 PLN&lt;/strong&gt; and gives you &lt;strong&gt;32 GB of VRAM&lt;/strong&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;I can run &lt;strong&gt;32B models in Q8&lt;/strong&gt; &lt;em&gt;easily&lt;/em&gt; on just the two 3090s&lt;/li&gt; &lt;li&gt;Larger models like &lt;strong&gt;Nemotron 47B&lt;/strong&gt; also run smoothly&lt;/li&gt; &lt;li&gt;I can even run &lt;strong&gt;70B models&lt;/strong&gt; &lt;/li&gt; &lt;li&gt;I can fit the entire &lt;strong&gt;LLaMA 4 Scout in Q4&lt;/strong&gt; &lt;em&gt;fully in VRAM&lt;/em&gt;&lt;/li&gt; &lt;li&gt;with the new llama-server I can use multiple images in chats and everything works fast&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Good luck with your setups&lt;br /&gt; (see my previous posts for photos and benchmarks)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T08:48:22+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kipwyo</id>
     <title>Vision support in llama-server just landed!</title>
     <updated>2025-05-09T18:39:48+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kipwyo/vision_support_in_llamaserver_just_landed/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T18:39:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kj5rd1</id>
+    <title>Thinking about hardware for local LLMs? Here's what I built for less than a 5090</title>
+    <updated>2025-05-10T08:48:22+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Some of you have been asking what kind of hardware to get for running local LLMs. Just wanted to share my current setup:&lt;/p&gt; &lt;p&gt;I’m running a local &amp;quot;supercomputer&amp;quot; with &lt;strong&gt;4 GPUs&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;2× RTX 3090&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;2× RTX 3060&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;That gives me a total of &lt;strong&gt;72 GB of VRAM,&lt;/strong&gt; for &lt;strong&gt;less than 9000 PLN&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Compare that to a &lt;strong&gt;single RTX 5090&lt;/strong&gt;, which costs &lt;strong&gt;over 10,000 PLN&lt;/strong&gt; and gives you &lt;strong&gt;32 GB of VRAM&lt;/strong&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;I can run &lt;strong&gt;32B models in Q8&lt;/strong&gt; &lt;em&gt;easily&lt;/em&gt; on just the two 3090s&lt;/li&gt; &lt;li&gt;Larger models like &lt;strong&gt;Nemotron 47B&lt;/strong&gt; also run smoothly&lt;/li&gt; &lt;li&gt;I can even run &lt;strong&gt;70B models&lt;/strong&gt; &lt;/li&gt; &lt;li&gt;I can fit the entire &lt;strong&gt;LLaMA 4 Scout in Q4&lt;/strong&gt; &lt;em&gt;fully in VRAM&lt;/em&gt;&lt;/li&gt; &lt;li&gt;with the new llama-server I can use multiple images in chats and everything works fast&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Good luck with your setups&lt;br /&gt; (see my previous posts for photos and benchmarks)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj5rd1/thinking_about_hardware_for_local_llms_heres_what/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T08:48:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1kj44n8</id>
@@ -242,19 +242,6 @@
     <published>2025-05-10T04:40:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kjgvm8</id>
-    <title>For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant.</title>
-    <updated>2025-05-10T18:26:48+00:00</updated>
-    <author>
-      <name>/u/c64z86</name>
-      <uri>https://old.reddit.com/user/c64z86</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"&gt; &lt;img alt="For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant." src="https://external-preview.redd.it/yC8tUfmmqcWrWbYfoMczWi5TEVmr7UUYVX_Lfvwk9qM.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6ba7786134790ce98dbb7a8be7c736175837add8" title="For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/c64z86"&gt; /u/c64z86 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=Jda1Z40Xcfs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T18:26:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kj2j6q</id>
     <title>Seed-Coder 8B</title>
     <updated>2025-05-10T05:07:09+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kj89gq/manabench_a_novel_reasoning_benchmark_based_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-10T11:40:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kjgvm8</id>
+    <title>For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant.</title>
+    <updated>2025-05-10T18:26:48+00:00</updated>
+    <author>
+      <name>/u/c64z86</name>
+      <uri>https://old.reddit.com/user/c64z86</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"&gt; &lt;img alt="For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant." src="https://external-preview.redd.it/yC8tUfmmqcWrWbYfoMczWi5TEVmr7UUYVX_Lfvwk9qM.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6ba7786134790ce98dbb7a8be7c736175837add8" title="For such a small model, Qwen 3 8b is excellent! With 2 short prompts it made a playable HTML keyboard for me! This is the Q6_K Quant." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/c64z86"&gt; /u/c64z86 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=Jda1Z40Xcfs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjgvm8/for_such_a_small_model_qwen_3_8b_is_excellent/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T18:26:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1kjaf6b</id>
