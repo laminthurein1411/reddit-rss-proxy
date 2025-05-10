@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-10T01:34:01+00:00</updated>
+  <updated>2025-05-10T02:18:07+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kib12b</id>
-    <title>Thoughts on this quantization method of MoE models?</title>
-    <updated>2025-05-09T05:34:05+00:00</updated>
-    <author>
-      <name>/u/robiinn</name>
-      <uri>https://old.reddit.com/user/robiinn</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kib12b/thoughts_on_this_quantization_method_of_moe_models/"&gt; &lt;img alt="Thoughts on this quantization method of MoE models?" src="https://external-preview.redd.it/iwtMDqkXEXKi0BmJebYdDaWS7Vt-fNowwAcgrSOYkKA.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c8cff707c7f608172fe260dd8a1231cb649934cb" title="Thoughts on this quantization method of MoE models?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;del&gt;Hi, this started with this thought I got after I saw the pruning strategy (&lt;a href="https://huggingface.co/kalomaze/Qwen3-16B-A3B/discussions/6#681770f3335c1c862165ddc0"&gt;https://huggingface.co/kalomaze/Qwen3-16B-A3B/discussions/6#681770f3335c1c862165ddc0&lt;/a&gt;) to prune based on how often the experts are activated. This technique creates an expert-wise quantization, currently based on their normalized (across the layer) activation rate.&lt;/del&gt; &lt;/p&gt; &lt;p&gt;&lt;del&gt;As a concept, I edited llama.cpp to change a bit of how it quantizes the models (hopefully correct). I will update the README file with new information when needed. What's great is that to run the model, you do not have to edit any files and works with existing code.&lt;/del&gt;&lt;/p&gt; &lt;p&gt;&lt;del&gt;You can find it here:&lt;/del&gt;&lt;br /&gt; &lt;del&gt;&lt;a href="https://huggingface.co/RDson/Qwen3-30B-A3B-By-Expert-Quantization-GGUF"&gt;https://huggingface.co/RDson/Qwen3-30B-A3B-By-Expert-Quantization-GGUF&lt;/a&gt;&lt;/del&gt; &lt;del&gt;I will be uploading more quants to try out.&lt;/del&gt;&lt;/p&gt; &lt;p&gt;Edit: After further investigation into how the layers in tensors are stored, it seems like this is currently not possible. It would require a lot of rewriting the llama.cpp code which would need to be merged etc,. There was a misunderstanding of how I thought it works and how it actually works. Howerver, this is still an interesting topic to potentially explore further in the future, or with another library. I will not be exploring this any further, for now.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/robiinn"&gt; /u/robiinn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/RDson/Qwen3-30B-A3B-By-Expert-Quantization-GGUF"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kib12b/thoughts_on_this_quantization_method_of_moe_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kib12b/thoughts_on_this_quantization_method_of_moe_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T05:34:05+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kij0g1</id>
-    <title>Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying</title>
-    <updated>2025-05-09T13:51:37+00:00</updated>
-    <author>
-      <name>/u/ilintar</name>
-      <uri>https://old.reddit.com/user/ilintar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt; &lt;img alt="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" src="https://external-preview.redd.it/f1Ev5p_LWGUZaamDb5GPtSwxWaSFPZhS9YDmQC3jEZc.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2b7784b006f5a1648aa5e93da3479442e8e047d4" title="Llama.cpp runner tool with multiconfig-swapping (llama-swap style) and LM Studio / Ollama backend proxying" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share a tool that I vibe-coded myself out of necessity. Don't know how many people would consider using it - it's a pretty specific niche tool and might be outdated sooner than later, since the Llama.cpp people are already working on a swap/admin backend on the server. However, I had a few use-cases that I couldn't get done with anything else.&lt;/p&gt; &lt;p&gt;So, if you are a:&lt;/p&gt; &lt;p&gt;* IntelliJ AI Assistant user frustrated that you can't run a raw llama.cpp backend model&lt;br /&gt; * GitHub Copilot user who doesn't like Ollama, but would want to serve local models&lt;br /&gt; * ik_llama.cpp fan that can't connect it to modern assistants because it doesn't accept the tool calls&lt;br /&gt; * General llama.cpp fan who wants to swap out a few custom configs&lt;br /&gt; * LM Studio fan who nevertheless would want to run their Qwen3 30B with &amp;quot;-ot (up_exps|down_exps)=CPU&amp;quot; and has no idea when it'll be supported&lt;/p&gt; &lt;p&gt;this is something for you. &lt;/p&gt; &lt;p&gt;I made a simple Python tool with a very rudimentary PySide6 frontend that runs two proxies:&lt;br /&gt; * one proxy on port 11434 translates requests from Ollama format, forwards them to the Llama.cpp server, then translates the response back from Ollama format into OpenAI-compatible and sends it back&lt;br /&gt; * the other proxy on port 1234 serves the simple OpenAI-compatible proxy, but with a twist - it exposes LM Studio specific endpoints, especially the one for listing available models&lt;br /&gt; Both endpoints support streaming, both endpoints will load the necessary config when asked for a specific model.&lt;/p&gt; &lt;p&gt;This allows your local llama.cpp instance to effectively emulate both Ollama and LMStudio for external tools that integrate with those specific solutions and no others (*cough* IntelliJ AI Assistant *cough* GitHub Copilot *cough*). &lt;/p&gt; &lt;p&gt;I vibe-coded this thing with my Aider/Roo and my free Gemini queries, so don't expect the code to be very beatiful - but as far as I've tested it locally (both Linux and Windows) it gets the job done. Running it is very simple, just install Python, then run it in a venv (detailed instructions and sample config file in the repo README).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ilintar"&gt; /u/ilintar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pwilkin/llama-runner"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kij0g1/llamacpp_runner_tool_with_multiconfigswapping/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T13:51:37+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kivks1</id>
     <title>how to fine-tune LLM without using a self-hosted machine?</title>
@@ -73,6 +47,19 @@
     <published>2025-05-09T09:52:24+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kixk75</id>
+    <title>The Halo Effect of Download Counts</title>
+    <updated>2025-05-10T00:26:28+00:00</updated>
+    <author>
+      <name>/u/remyxai</name>
+      <uri>https://old.reddit.com/user/remyxai</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kixk75/the_halo_effect_of_download_counts/"&gt; &lt;img alt="The Halo Effect of Download Counts" src="https://external-preview.redd.it/WsDn8-AlRWhGiFh2mBbj7jK25VNYlKN0WZaq-CwL_sQ.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=59b0d6a3fa3a0f5d49a53df5430d405edb53a849" title="The Halo Effect of Download Counts" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A couple weeks ago, I scored the quality of documentation for &lt;strong&gt;1000 model cards,&lt;/strong&gt; using LLM-as-a-Judge. &lt;/p&gt; &lt;p&gt;My goal: to study the relationship between &lt;strong&gt;model&lt;/strong&gt; &lt;strong&gt;quality and popularity.&lt;/strong&gt; &lt;/p&gt; &lt;p&gt;To quantify popularity, I used the hub apis to query model stats, such as &lt;strong&gt;Number of Likes&lt;/strong&gt; and &lt;strong&gt;Download Counts&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;To my surprise, the documentation quality explains a just &lt;strong&gt;small part of a model's popularity&lt;/strong&gt;. For intuition on this, think about all the hub quants with scant docs that everyone still downloads.&lt;br /&gt; Review the correlation &lt;a href="https://huggingface.co/datasets/remyxai/model-documentation-scoreboard/viewer/default/train?row=4&amp;amp;views%5B%5D=train&amp;amp;sql=--+The+SQL+console+is+powered+by+DuckDB+WASM+and+runs+entirely+in+the+browser.%0A--+Get+started+by+typing+a+query+or+selecting+a+view+from+the+options+below.%0ASELECT+CORR%28downloads%2C+doc_quality_score%29+AS+correlation%0AFROM+train%3B%0A"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Then this week, I noticed an older model gaining traction just as I announced the latest version...so what happened?&lt;/p&gt; &lt;p&gt;The &lt;strong&gt;sentiment&lt;/strong&gt; around a model in &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; is &lt;strong&gt;a leading indicator of a model's traction&lt;/strong&gt;, yet it can fail to overcome the &lt;strong&gt;halo effect&lt;/strong&gt; of another &lt;strong&gt;model's download counts,&lt;/strong&gt; effectively transferring traction to the previous SOTA.&lt;/p&gt; &lt;p&gt;This makes &lt;strong&gt;download counts the lagging quality indicator&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;Have you found yourself scrolling to the weights that have been downloaded the most?&lt;/p&gt; &lt;p&gt;We all come here to get the community consensus. But that bias to go with the herd can actually lead you astray, so you gotta be aware of your tendencies.&lt;/p&gt; &lt;p&gt;Ultimately, I think we can expect HF to bring model makers and users together, possibly by linking the social engagement context to model documentation through &lt;strong&gt;Community Notes for models&lt;/strong&gt;. &lt;/p&gt; &lt;p&gt;Vanity metrics such as the Number of models or download counts don't signify value, just hype. &lt;/p&gt; &lt;p&gt;Your best model depends on the context of your application. We'll learn the way faster, together.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/remyxai"&gt; /u/remyxai &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kixk75"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kixk75/the_halo_effect_of_download_counts/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kixk75/the_halo_effect_of_download_counts/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T00:26:28+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kivcl0</id>
     <title>Does anyone actually use Browser Use in production?</title>
     <updated>2025-05-09T22:37:04+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kim8re/considering_a_9950x_for_a_cpu_only_qwen_3_30b_a3b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T16:07:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kiz9h2</id>
+    <title>LLM with best understanding of medicine?</title>
+    <updated>2025-05-10T01:57:38+00:00</updated>
+    <author>
+      <name>/u/pinkfreude</name>
+      <uri>https://old.reddit.com/user/pinkfreude</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've had some success with Claude and ChatGPT. Are there any local LLM's that have a decent training background in medical topics?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pinkfreude"&gt; /u/pinkfreude &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kiz9h2/llm_with_best_understanding_of_medicine/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T01:57:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1kivbm1</id>
@@ -216,19 +216,6 @@
     <published>2025-05-09T10:59:48+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kitq9v</id>
-    <title>If you had a Blackwell DGX (B200) - what would you run?</title>
-    <updated>2025-05-09T21:22:51+00:00</updated>
-    <author>
-      <name>/u/backnotprop</name>
-      <uri>https://old.reddit.com/user/backnotprop</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.nvidia.com/en-us/data-center/dgx-b200/"&gt;x8 180GB cards&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I would like to know what would you run on a single card?&lt;/p&gt; &lt;p&gt;What would you distribute?&lt;/p&gt; &lt;p&gt;...for any cool, fun, scientific, absurd, etc use case. We are serving models with tabbyapi (support for cuda12.8, others are behind). But we don't just have to serve endpoints.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/backnotprop"&gt; /u/backnotprop &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T21:22:51+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kimq0g</id>
     <title>4B Polish language model based on Qwen3 architecture</title>
     <updated>2025-05-09T16:27:02+00:00</updated>
@@ -255,6 +242,19 @@
     <published>2025-05-09T02:24:58+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kitq9v</id>
+    <title>If you had a Blackwell DGX (B200) - what would you run?</title>
+    <updated>2025-05-09T21:22:51+00:00</updated>
+    <author>
+      <name>/u/backnotprop</name>
+      <uri>https://old.reddit.com/user/backnotprop</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.nvidia.com/en-us/data-center/dgx-b200/"&gt;x8 180GB cards&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I would like to know what would you run on a single card?&lt;/p&gt; &lt;p&gt;What would you distribute?&lt;/p&gt; &lt;p&gt;...for any cool, fun, scientific, absurd, etc use case. We are serving models with tabbyapi (support for cuda12.8, others are behind). But we don't just have to serve endpoints.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/backnotprop"&gt; /u/backnotprop &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kitq9v/if_you_had_a_blackwell_dgx_b200_what_would_you_run/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T21:22:51+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kiqqgh</id>
     <title>Local AI Radio Station (uses ACE)</title>
     <updated>2025-05-09T19:15:02+00:00</updated>
@@ -268,19 +268,6 @@
     <published>2025-05-09T19:15:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kivw6w</id>
-    <title>Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions.</title>
-    <updated>2025-05-09T23:02:50+00:00</updated>
-    <author>
-      <name>/u/phantagom</name>
-      <uri>https://old.reddit.com/user/phantagom</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"&gt; &lt;img alt="Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions." src="https://external-preview.redd.it/y0EgI2XLTqKHcjAaim03gc_zVfisCy4KdfNRmAX06uU.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=05cff2b86886c237a89577608b4cb69c4870fc6c" title="Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phantagom"&gt; /u/phantagom &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/dkruyt/webollama"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-09T23:02:50+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kigmfo</id>
     <title>Make Qwen3 Think like Gemini 2.5 Pro</title>
     <updated>2025-05-09T11:55:12+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kigmfo/make_qwen3_think_like_gemini_25_pro/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-09T11:55:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kivw6w</id>
+    <title>Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions.</title>
+    <updated>2025-05-09T23:02:50+00:00</updated>
+    <author>
+      <name>/u/phantagom</name>
+      <uri>https://old.reddit.com/user/phantagom</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"&gt; &lt;img alt="Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions." src="https://external-preview.redd.it/y0EgI2XLTqKHcjAaim03gc_zVfisCy4KdfNRmAX06uU.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=05cff2b86886c237a89577608b4cb69c4870fc6c" title="Webollama: A sleek web interface for Ollama, making local LLM management and usage simple. WebOllama provides an intuitive UI to manage Ollama models, chat with AI, and generate completions." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phantagom"&gt; /u/phantagom &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/dkruyt/webollama"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kivw6w/webollama_a_sleek_web_interface_for_ollama_making/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-09T23:02:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1kinwuu</id>
