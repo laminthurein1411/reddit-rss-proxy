@@ -2,49 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-11T13:48:40+00:00</updated>
+  <updated>2025-05-11T14:05:55+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kjaf6b</id>
-    <title>128GB DDR4, 2950x CPU, 1x3090 24gb Qwen3-235B-A22B-UD-Q3_K_XL 7Tokens/s</title>
-    <updated>2025-05-10T13:33:51+00:00</updated>
+    <id>t3_1kjv8fq</id>
+    <title>question regarding google adk and openwebui</title>
+    <updated>2025-05-11T07:19:03+00:00</updated>
     <author>
-      <name>/u/ciprianveg</name>
-      <uri>https://old.reddit.com/user/ciprianveg</uri>
+      <name>/u/thefunnyape</name>
+      <uri>https://old.reddit.com/user/thefunnyape</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wanted to share, maybe it helps others with only 24gb vram, this is what i had to send to ram to use almost all my 24gb. If you have suggestions for increasing the prompt processing, please suggest :) I get cca. 12tok/s. (See below L.E. I got to 8.2t/s generation speed and 30t/s prompt processing)&lt;br /&gt; This is the experssion used: -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot;&lt;br /&gt; and this is my whole command:&lt;br /&gt; ./llama-cli -m ~/ai/models/unsloth_Qwen3-235B-A22B-UD-Q3_K_XL-GGUF/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf -ot &amp;quot;blk\.(?:[7-9]|[1-9][0-8])\.ffn.*=CPU&amp;quot; -c 16384 -n 16384 --prio 2 --threads 20 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0.0 --color -if -ngl 99 -fa&lt;br /&gt; My DDR4 runs at 2933MT/s and the cpu is an AMD 2950x&lt;/p&gt; &lt;p&gt;L. E. --threads 15 as suggested below for my 16 cores cpu changed it to 7.5 tokens/sec and 12.3t/s for prompt processing&lt;/p&gt; &lt;p&gt;L.E. I managed to double my prompt processing speed to 24t/s using ubergarm/Qwen3-235B-A22B-mix-IQ3_K and ik_llama and his suggested settings: This is my command and results: ./build/bin/llama-sweep-bench --model ~/ai/models/Qwen3-235B-A22B-GGUF/Qwen3-235B-A22B-mix-IQ3_K-00001-of-00003.gguf --alias ubergarm/Qwen3-235B-A22B-mix-IQ3_K -fa -ctk q8_0 -ctv q8_0 -c 32768 -fmoe -amb 512 -rtr -ot blk.1[2-9].ffn.=CPU -ot blk.[2-8][0-9].ffn.=CPU -ot blk.9[0-3].ffn.*=CPU -ngl 99 --threads 15 --host 0.0.0.0 --port 5002&lt;/p&gt; &lt;p&gt;PP TG N_KV T_PP s S_PP t/s T_TG s S_TG t/s 512 128 0 21.289 24.05 17.568 7.29&lt;/p&gt; &lt;p&gt;512 128 512 21.913 23.37 17.619 7.26&lt;/p&gt; &lt;p&gt;L.E. I got to 8.2 token/s and promt processing 30tok/s with the same -ot params and same unsloth model but changing from llama to ik_llama and adding the specific -rtr and -fmoe params found in ubergarm model page:&lt;/p&gt; &lt;p&gt;./build/bin/llama-sweep-bench --model ~/ai/models/Qwen3-235B-UD_K_XL/Qwen3-235B-A22B-UD-Q3_K_XL-00001-of-00003.gguf -fa -ctk q8_0 -ctv q8_0 -c 32768 -fmoe -amb 2048 -rtr -ot &amp;quot;blk.(?:[7-9]|[1-9][0-8]).ffn.*=CPU&amp;quot; -ngl 99 --threads 15 --host 0.0.0.0 --port 5002&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;PP&lt;/th&gt; &lt;th&gt;TG&lt;/th&gt; &lt;th&gt;N_KV&lt;/th&gt; &lt;th&gt;T_PP s&lt;/th&gt; &lt;th&gt;S_PP t/s&lt;/th&gt; &lt;th&gt;T_TG s&lt;/th&gt; &lt;th&gt;S_TG t/s&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;512&lt;/td&gt; &lt;td&gt;128&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;16.876&lt;/td&gt; &lt;td&gt;30.34&lt;/td&gt; &lt;td&gt;15.343&lt;/td&gt; &lt;td&gt;8.34&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;512&lt;/td&gt; &lt;td&gt;128&lt;/td&gt; &lt;td&gt;512&lt;/td&gt; &lt;td&gt;17.052&lt;/td&gt; &lt;td&gt;30.03&lt;/td&gt; &lt;td&gt;15.483&lt;/td&gt; &lt;td&gt;8.27&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;512&lt;/td&gt; &lt;td&gt;128&lt;/td&gt; &lt;td&gt;1024&lt;/td&gt; &lt;td&gt;17.223&lt;/td&gt; &lt;td&gt;29.73&lt;/td&gt; &lt;td&gt;15.337&lt;/td&gt; &lt;td&gt;8.35&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;512&lt;/td&gt; &lt;td&gt;128&lt;/td&gt; &lt;td&gt;1536&lt;/td&gt; &lt;td&gt;16.467&lt;/td&gt; &lt;td&gt;31.09&lt;/td&gt; &lt;td&gt;15.580&lt;/td&gt; &lt;td&gt;8.22&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;If anyone has other suggestions to improve the prompt processing speed, please suggest 😀&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ciprianveg"&gt; /u/ciprianveg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjaf6b/128gb_ddr4_2950x_cpu_1x3090_24gb/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;hi guys, so i dont know enough to find the answer myself and i did not find anythimg specific. &lt;/p&gt; &lt;p&gt;I currently have an openwebui with ollama running locally. and i read about google adk and was wondering if they can somehow can work together? or nexto to each other idk. &lt;/p&gt; &lt;p&gt;im not sure how they interact with each other. maybe they do the same thing differently or maybe its something completely different and that is a stupid question. but i would be gratefull for any help/clarification&lt;/p&gt; &lt;p&gt;Tldr: does openwebui can be used with google adk?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thefunnyape"&gt; /u/thefunnyape &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjv8fq/question_regarding_google_adk_and_openwebui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjv8fq/question_regarding_google_adk_and_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjv8fq/question_regarding_google_adk_and_openwebui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T13:33:51+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kk0srx</id>
-    <title>dual cards - inference speed question</title>
-    <updated>2025-05-11T13:16:31+00:00</updated>
-    <author>
-      <name>/u/JPYCrypto</name>
-      <uri>https://old.reddit.com/user/JPYCrypto</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi All, &lt;/p&gt; &lt;p&gt;Two Questions - &lt;/p&gt; &lt;p&gt;1) I have an RTX A6000 ADA and and A5000 (24Gb non ADA) card in my AI workstation, and am findign that filling the memory with large models across the two cards gives lackluster performance in LM Studio - is the gain in VRAM that I am achieving being neutered by the lower spec card in my setup?&lt;/p&gt; &lt;p&gt;and 2) If so, as my main goal is python coding, which model will be most performant in my ADA 6000?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JPYCrypto"&gt; /u/JPYCrypto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk0srx/dual_cards_inference_speed_question/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk0srx/dual_cards_inference_speed_question/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kk0srx/dual_cards_inference_speed_question/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-11T13:16:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kk1dkh</id>
-    <title>Time to First Token and Tokens/second</title>
-    <updated>2025-05-11T13:45:48+00:00</updated>
-    <author>
-      <name>/u/TheTideRider</name>
-      <uri>https://old.reddit.com/user/TheTideRider</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been seeing lots of benchmarking lately. I just want to make sure that my understandings are correct. TTFT measures the latency of prefilling and t/s measures the average speed of token generation after prefilling. Both of them depend on the context size. Let’s assume there is kv-cache. Prefilling walks through a prompt and its runtime latency is O(n&lt;sup&gt;2)&lt;/sup&gt; where n is the number of input tokens. T/s depends on the context size. It’s O(n) where n is the current context size. As the context gets longer, it gets slower.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheTideRider"&gt; /u/TheTideRider &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-11T13:45:48+00:00</published>
+    <published>2025-05-11T07:19:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1kjgvm8</id>
@@ -123,6 +97,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjd8tg/absolute_zero_reasonercoder14b_7b_3b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-10T15:44:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kk1dkh</id>
+    <title>Time to First Token and Tokens/second</title>
+    <updated>2025-05-11T13:45:48+00:00</updated>
+    <author>
+      <name>/u/TheTideRider</name>
+      <uri>https://old.reddit.com/user/TheTideRider</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been seeing lots of benchmarking lately. I just want to make sure that my understandings are correct. TTFT measures the latency of prefilling and t/s measures the average speed of token generation after prefilling. Both of them depend on the context size. Let’s assume there is kv-cache. Prefilling walks through a prompt and its runtime latency is O(n&lt;sup&gt;2)&lt;/sup&gt; where n is the number of input tokens. T/s depends on the context size. It’s O(n) where n is the current context size. As the context gets longer, it gets slower.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheTideRider"&gt; /u/TheTideRider &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1dkh/time_to_first_token_and_tokenssecond/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-11T13:45:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kk1fzx</id>
+    <title>Own a RTX3080 10GB, is it good if I sidegrade it to RTX 5060Ti 16GB?</title>
+    <updated>2025-05-11T13:49:09+00:00</updated>
+    <author>
+      <name>/u/akachan1228</name>
+      <uri>https://old.reddit.com/user/akachan1228</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Owning an RTX 3080 10GB means sacrificing on VRAM. Very slow output if model exceeded the VRAM limit and start to offset layer to CPU.&lt;/p&gt; &lt;p&gt;Not planning to get the RTX3090 as still very expensive even surveying used market.&lt;/p&gt; &lt;p&gt;Question is, how worthy is the RTX 5060 16gb compared to the RTX 3080 10GB ? I can sale the RTX3080 on the 2nd hand market and get a new RTX 5060 16GB for a slightly similar price.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/akachan1228"&gt; /u/akachan1228 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1fzx/own_a_rtx3080_10gb_is_it_good_if_i_sidegrade_it/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1fzx/own_a_rtx3080_10gb_is_it_good_if_i_sidegrade_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kk1fzx/own_a_rtx3080_10gb_is_it_good_if_i_sidegrade_it/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-11T13:49:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1kjshnd</id>
@@ -268,19 +268,6 @@
     <published>2025-05-11T10:50:03+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kjn2wv</id>
-    <title>Cheap 48GB official Blackwell yay!</title>
-    <updated>2025-05-10T23:16:22+00:00</updated>
-    <author>
-      <name>/u/Charuru</name>
-      <uri>https://old.reddit.com/user/Charuru</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"&gt; &lt;img alt="Cheap 48GB official Blackwell yay!" src="https://external-preview.redd.it/sC0_RV1rBP5Nka4zzrlrlknHQcvT_QUrChxq3hP_lVg.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e745729c3f7132892c715292c6b31f385f223e8f" title="Cheap 48GB official Blackwell yay!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-5000/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-10T23:16:22+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kjwi3w</id>
     <title>How I Run Gemma 3 27B on an RX 7800 XT 16GB Locally!</title>
     <updated>2025-05-11T08:48:00+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjwi3w/how_i_run_gemma_3_27b_on_an_rx_7800_xt_16gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-11T08:48:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kjn2wv</id>
+    <title>Cheap 48GB official Blackwell yay!</title>
+    <updated>2025-05-10T23:16:22+00:00</updated>
+    <author>
+      <name>/u/Charuru</name>
+      <uri>https://old.reddit.com/user/Charuru</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"&gt; &lt;img alt="Cheap 48GB official Blackwell yay!" src="https://external-preview.redd.it/sC0_RV1rBP5Nka4zzrlrlknHQcvT_QUrChxq3hP_lVg.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e745729c3f7132892c715292c6b31f385f223e8f" title="Cheap 48GB official Blackwell yay!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Charuru"&gt; /u/Charuru &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-5000/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kjn2wv/cheap_48gb_official_blackwell_yay/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-10T23:16:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1kju0ty</id>
