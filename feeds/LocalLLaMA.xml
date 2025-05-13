@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-13T12:50:57+00:00</updated>
+  <updated>2025-05-13T13:15:34+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kle586</id>
-    <title>what is your go to finetuning format?</title>
-    <updated>2025-05-13T05:28:36+00:00</updated>
+    <id>t3_1kll7h3</id>
+    <title>Possible to run 27B / 32B models on 20GB VRAM?</title>
+    <updated>2025-05-13T12:54:45+00:00</updated>
     <author>
-      <name>/u/abaris243</name>
-      <uri>https://old.reddit.com/user/abaris243</uri>
+      <name>/u/PlanetMercurial</name>
+      <uri>https://old.reddit.com/user/PlanetMercurial</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone! I personally have a script I built for hand typing conversational datasets and I'm considering publishing it, as I think it would be helpful for writers or people designing specific personalities instead of using bulk data. For myself I just output a non standard jsonl format and tokenized it based on the format I made. which isn't really useful to anyone. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;so I was wondering what formats you use the most when finetuning datasets and what you look for?&lt;/strong&gt; The interface can support single pairs and also multi-turn conversations with context but I know not all formats support context cleanly. &lt;/p&gt; &lt;p&gt;for now the default will be a clean input output jsonl but I think it would be nice to have more specific outputs&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/abaris243"&gt; /u/abaris243 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle586/what_is_your_go_to_finetuning_format/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle586/what_is_your_go_to_finetuning_format/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kle586/what_is_your_go_to_finetuning_format/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have RTX3060 12GB and to speed up inference I added another RTX4000 8GB for a total of 20GB VRAM.&lt;br /&gt; I was hoping to run 27B and 32B models that are Q4_K_M quantized (Thus far i have only run GGUF not EXL2).&lt;/p&gt; &lt;p&gt;PCIE Interface info:&lt;br /&gt; RTX3060 - 16x PCIE4.0&lt;br /&gt; RTX4000 - 4x PCIE4.0&lt;/p&gt; &lt;p&gt;From my own rough calculations the reasoning was that 32 Billion parameters means 32GB ram (for a 8bit per weight quant) but if i used 4bit quant it should be half of that so 16GB VRAM and I thought I would use the extra 4GB VRAM for context etc.&lt;/p&gt; &lt;p&gt;But in reality when i tried with Koboldcpp I couldn't get the model to fit into the 20GB VRAM, I reduced the layers to 45 to make it fit and even then i get a measly &lt;code&gt;3 tokens /sec&lt;/code&gt; , I used the following command&lt;/p&gt; &lt;p&gt;&lt;code&gt;.\koboldcpp.exe --usecublas --tensor_split 15 12 --contextsize 4096 --skiplauncher --quiet --flashattention --gpulayers 45 --model C:\DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;I'm probably setting the `tensor_split` wrongly without understanding.&lt;br /&gt; Also gpu layers i have currently set to 45 but the model has a total of 65 layers.&lt;/p&gt; &lt;p&gt;So is this possible at all ? Can i get a token rate of 10 to 20 tokens / sec.&lt;br /&gt; I have read on other posts to move to GPTQ would that model quant use lower VRAM?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PlanetMercurial"&gt; /u/PlanetMercurial &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T05:28:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1klkxlj</id>
-    <title>Serve your Agents as an MCP-compliant tool</title>
-    <updated>2025-05-13T12:41:54+00:00</updated>
-    <author>
-      <name>/u/Fluffy_Sheepherder76</name>
-      <uri>https://old.reddit.com/user/Fluffy_Sheepherder76</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;You can now turn any CAMEL-AI agent into an MCP server, so your agents become first-class tools you can call from Claude, Cursor, or any MCP client.&lt;/p&gt; &lt;p&gt;Detailed guide → &lt;a href="https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents"&gt;https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fluffy_Sheepherder76"&gt; /u/Fluffy_Sheepherder76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T12:41:54+00:00</published>
+    <published>2025-05-13T12:54:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1kkuq7m</id>
@@ -60,6 +47,19 @@
     <published>2025-05-12T20:16:23+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kkq8q8</id>
+    <title>Microsoft Researchers Introduce ARTIST</title>
+    <updated>2025-05-12T11:34:55+00:00</updated>
+    <author>
+      <name>/u/NewtMurky</name>
+      <uri>https://old.reddit.com/user/NewtMurky</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"&gt; &lt;img alt="Microsoft Researchers Introduce ARTIST" src="https://preview.redd.it/90acs85p7c0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=12c24f942d10fedd4f933d6f856346cbfea33433" title="Microsoft Researchers Introduce ARTIST" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Microsoft Research introduces ARTIST (Agentic Reasoning and Tool Integration in Self-improving Transformers), a framework that combines agentic reasoning, reinforcement learning, and dynamic tool use to enhance LLMs. ARTIST enables models to autonomously decide when, how, and which tools to use during multi-step reasoning, learning robust strategies without step-level supervision. The model improves reasoning and interaction with external environments through integrated tool queries and outputs. Evaluated on challenging math and function-calling benchmarks, ARTIST outperforms top models like GPT-4o, achieving up to 22% gains. It demonstrates emergent agentic behaviors, setting a new standard in generalizable and interpretable problem-solving. &lt;/p&gt; &lt;p&gt;&lt;a href="https://www.marktechpost.com/2025/05/10/microsoft-researchers-introduce-artist-a-reinforcement-learning-framework-that-equips-llms-with-agentic-reasoning-and-dynamic-tool-use/"&gt;https://www.marktechpost.com/2025/05/10/microsoft-researchers-introduce-artist-a-reinforcement-learning-framework-that-equips-llms-with-agentic-reasoning-and-dynamic-tool-use/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The paper: &lt;a href="https://arxiv.org/abs/2505.01441"&gt;https://arxiv.org/abs/2505.01441&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/90acs85p7c0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-12T11:34:55+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1klgp0l</id>
     <title>Aider benchmark sortable by language page</title>
     <updated>2025-05-13T08:22:13+00:00</updated>
@@ -73,17 +73,17 @@
     <published>2025-05-13T08:22:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kkq8q8</id>
-    <title>Microsoft Researchers Introduce ARTIST</title>
-    <updated>2025-05-12T11:34:55+00:00</updated>
+    <id>t3_1klkxlj</id>
+    <title>Serve your Agents as an MCP-compliant tool</title>
+    <updated>2025-05-13T12:41:54+00:00</updated>
     <author>
-      <name>/u/NewtMurky</name>
-      <uri>https://old.reddit.com/user/NewtMurky</uri>
+      <name>/u/Fluffy_Sheepherder76</name>
+      <uri>https://old.reddit.com/user/Fluffy_Sheepherder76</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"&gt; &lt;img alt="Microsoft Researchers Introduce ARTIST" src="https://preview.redd.it/90acs85p7c0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=12c24f942d10fedd4f933d6f856346cbfea33433" title="Microsoft Researchers Introduce ARTIST" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Microsoft Research introduces ARTIST (Agentic Reasoning and Tool Integration in Self-improving Transformers), a framework that combines agentic reasoning, reinforcement learning, and dynamic tool use to enhance LLMs. ARTIST enables models to autonomously decide when, how, and which tools to use during multi-step reasoning, learning robust strategies without step-level supervision. The model improves reasoning and interaction with external environments through integrated tool queries and outputs. Evaluated on challenging math and function-calling benchmarks, ARTIST outperforms top models like GPT-4o, achieving up to 22% gains. It demonstrates emergent agentic behaviors, setting a new standard in generalizable and interpretable problem-solving. &lt;/p&gt; &lt;p&gt;&lt;a href="https://www.marktechpost.com/2025/05/10/microsoft-researchers-introduce-artist-a-reinforcement-learning-framework-that-equips-llms-with-agentic-reasoning-and-dynamic-tool-use/"&gt;https://www.marktechpost.com/2025/05/10/microsoft-researchers-introduce-artist-a-reinforcement-learning-framework-that-equips-llms-with-agentic-reasoning-and-dynamic-tool-use/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The paper: &lt;a href="https://arxiv.org/abs/2505.01441"&gt;https://arxiv.org/abs/2505.01441&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/90acs85p7c0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kkq8q8/microsoft_researchers_introduce_artist/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;You can now turn any CAMEL-AI agent into an MCP server, so your agents become first-class tools you can call from Claude, Cursor, or any MCP client.&lt;/p&gt; &lt;p&gt;Detailed guide → &lt;a href="https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents"&gt;https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fluffy_Sheepherder76"&gt; /u/Fluffy_Sheepherder76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T11:34:55+00:00</published>
+    <published>2025-05-13T12:41:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl7j1z</id>
@@ -112,17 +112,17 @@
     <published>2025-05-13T02:27:43+00:00</published>
   </entry>
   <entry>
-    <id>t3_1klkrw0</id>
-    <title>final version of Skywork-OR1 (Open Reasoner 1) series of models</title>
-    <updated>2025-05-13T12:34:09+00:00</updated>
+    <id>t3_1kky1sg</id>
+    <title>Meta has released an 8B BLT model</title>
+    <updated>2025-05-12T17:12:33+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/ThiccStorms</name>
+      <uri>https://old.reddit.com/user/ThiccStorms</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-32B"&gt;https://huggingface.co/Skywork/Skywork-OR1-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-7B"&gt;https://huggingface.co/Skywork/Skywork-OR1-7B&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThiccStorms"&gt; /u/ThiccStorms &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ai.meta.com/blog/meta-fair-updates-perception-localization-reasoning/?utm_source=twitter&amp;amp;utm_medium=organic%20social&amp;amp;utm_content=video&amp;amp;utm_campaign=fair"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kky1sg/meta_has_released_an_8b_blt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kky1sg/meta_has_released_an_8b_blt_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T12:34:09+00:00</published>
+    <published>2025-05-12T17:12:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl3rfa</id>
@@ -138,17 +138,17 @@
     <published>2025-05-12T20:55:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kky1sg</id>
-    <title>Meta has released an 8B BLT model</title>
-    <updated>2025-05-12T17:12:33+00:00</updated>
+    <id>t3_1kljute</id>
+    <title>Geotracking in Gpus…</title>
+    <updated>2025-05-13T11:47:51+00:00</updated>
     <author>
-      <name>/u/ThiccStorms</name>
-      <uri>https://old.reddit.com/user/ThiccStorms</uri>
+      <name>/u/Ashefromapex</name>
+      <uri>https://old.reddit.com/user/Ashefromapex</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThiccStorms"&gt; /u/ThiccStorms &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ai.meta.com/blog/meta-fair-updates-perception-localization-reasoning/?utm_source=twitter&amp;amp;utm_medium=organic%20social&amp;amp;utm_content=video&amp;amp;utm_campaign=fair"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kky1sg/meta_has_released_an_8b_blt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kky1sg/meta_has_released_an_8b_blt_model/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.pcgamer.com/hardware/graphics-cards/us-senator-announces-a-bill-requiring-geotracking-in-high-end-gpus-to-prevent-the-chinese-government-from-wielding-the-ruinous-power-of-your-nvidia-rtx-4090/"&gt;https://www.pcgamer.com/hardware/graphics-cards/us-senator-announces-a-bill-requiring-geotracking-in-high-end-gpus-to-prevent-the-chinese-government-from-wielding-the-ruinous-power-of-your-nvidia-rtx-4090/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ashefromapex"&gt; /u/Ashefromapex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T17:12:33+00:00</published>
+    <published>2025-05-13T11:47:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1klfcu0</id>
@@ -162,19 +162,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klfcu0/is_anyone_actually_using_local_models_to_code_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-13T06:46:39+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kljute</id>
-    <title>Geotracking in Gpus…</title>
-    <updated>2025-05-13T11:47:51+00:00</updated>
-    <author>
-      <name>/u/Ashefromapex</name>
-      <uri>https://old.reddit.com/user/Ashefromapex</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.pcgamer.com/hardware/graphics-cards/us-senator-announces-a-bill-requiring-geotracking-in-high-end-gpus-to-prevent-the-chinese-government-from-wielding-the-ruinous-power-of-your-nvidia-rtx-4090/"&gt;https://www.pcgamer.com/hardware/graphics-cards/us-senator-announces-a-bill-requiring-geotracking-in-high-end-gpus-to-prevent-the-chinese-government-from-wielding-the-ruinous-power-of-your-nvidia-rtx-4090/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ashefromapex"&gt; /u/Ashefromapex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kljute/geotracking_in_gpus/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T11:47:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1klagiq</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-13T01:26:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1klkrw0</id>
+    <title>final version of Skywork-OR1 (Open Reasoner 1) series of models</title>
+    <updated>2025-05-13T12:34:09+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-32B"&gt;https://huggingface.co/Skywork/Skywork-OR1-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-7B"&gt;https://huggingface.co/Skywork/Skywork-OR1-7B&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T12:34:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl6l7o</id>
