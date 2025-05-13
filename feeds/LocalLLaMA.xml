@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-13T13:42:09+00:00</updated>
+  <updated>2025-05-13T13:52:31+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1kll7h3</id>
+    <title>Possible to run 27B / 32B models on 20GB VRAM?</title>
+    <updated>2025-05-13T12:54:45+00:00</updated>
+    <author>
+      <name>/u/PlanetMercurial</name>
+      <uri>https://old.reddit.com/user/PlanetMercurial</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have RTX3060 12GB and to speed up inference I added another RTX4000 8GB for a total of 20GB VRAM.&lt;br /&gt; I was hoping to run 27B and 32B models that are Q4_K_M quantized (Thus far i have only run GGUF not EXL2).&lt;/p&gt; &lt;p&gt;PCIE Interface info:&lt;br /&gt; RTX3060 - 16x PCIE4.0&lt;br /&gt; RTX4000 - 4x PCIE4.0&lt;/p&gt; &lt;p&gt;From my own rough calculations the reasoning was that 32 Billion parameters means 32GB ram (for a 8bit per weight quant) but if i used 4bit quant it should be half of that so 16GB VRAM and I thought I would use the extra 4GB VRAM for context etc.&lt;/p&gt; &lt;p&gt;But in reality when i tried with Koboldcpp I couldn't get the model to fit into the 20GB VRAM, I reduced the layers to 45 to make it fit and even then i get a measly &lt;code&gt;3 tokens /sec&lt;/code&gt; , I used the following command&lt;/p&gt; &lt;p&gt;&lt;code&gt;.\koboldcpp.exe --usecublas --tensor_split 15 12 --contextsize 4096 --skiplauncher --quiet --flashattention --gpulayers 45 --model C:\DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;I'm probably setting the `tensor_split` wrongly without understanding.&lt;br /&gt; Also gpu layers i have currently set to 45 but the model has a total of 65 layers.&lt;/p&gt; &lt;p&gt;So is this possible at all ? Can i get a token rate of 10 to 20 tokens / sec.&lt;br /&gt; I have read on other posts to move to GPTQ would that model quant use lower VRAM?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PlanetMercurial"&gt; /u/PlanetMercurial &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kll7h3/possible_to_run_27b_32b_models_on_20gb_vram/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T12:54:45+00:00</published>
+  </entry>
   <entry>
     <id>t3_1kkuq7m</id>
     <title>Qwen suggests adding presence penalty when using Quants</title>
@@ -58,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klgp0l/aider_benchmark_sortable_by_language_page/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-13T08:22:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1klkxlj</id>
-    <title>Serve your Agents as an MCP-compliant tool</title>
-    <updated>2025-05-13T12:41:54+00:00</updated>
-    <author>
-      <name>/u/Fluffy_Sheepherder76</name>
-      <uri>https://old.reddit.com/user/Fluffy_Sheepherder76</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;You can now turn any CAMEL-AI agent into an MCP server, so your agents become first-class tools you can call from Claude, Cursor, or any MCP client.&lt;/p&gt; &lt;p&gt;Detailed guide → &lt;a href="https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents"&gt;https://www.camel-ai.org/blogs/camel-mcp-servers-model-context-protocol-ai-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fluffy_Sheepherder76"&gt; /u/Fluffy_Sheepherder76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkxlj/serve_your_agents_as_an_mcpcompliant_tool/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T12:41:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl7j1z</id>
@@ -177,19 +177,6 @@
     <published>2025-05-13T01:26:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1klkrw0</id>
-    <title>final version of Skywork-OR1 (Open Reasoner 1) series of models</title>
-    <updated>2025-05-13T12:34:09+00:00</updated>
-    <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-32B"&gt;https://huggingface.co/Skywork/Skywork-OR1-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-7B"&gt;https://huggingface.co/Skywork/Skywork-OR1-7B&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T12:34:09+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kl6l7o</id>
     <title>Qwen3-2.4B-A0.6B MoE</title>
     <updated>2025-05-12T22:55:22+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6l7o/qwen324ba06b_moe/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-12T22:55:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1klkrw0</id>
+    <title>final version of Skywork-OR1 (Open Reasoner 1) series of models</title>
+    <updated>2025-05-13T12:34:09+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-32B"&gt;https://huggingface.co/Skywork/Skywork-OR1-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Skywork/Skywork-OR1-7B"&gt;https://huggingface.co/Skywork/Skywork-OR1-7B&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klkrw0/final_version_of_skyworkor1_open_reasoner_1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T12:34:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1kljute</id>
@@ -216,19 +216,6 @@
     <published>2025-05-13T11:47:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kle86h</id>
-    <title>Claimify: Extracting high-quality claims from language model outputs</title>
-    <updated>2025-05-13T05:33:59+00:00</updated>
-    <author>
-      <name>/u/Balance-</name>
-      <uri>https://old.reddit.com/user/Balance-</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"&gt; &lt;img alt="Claimify: Extracting high-quality claims from language model outputs" src="https://external-preview.redd.it/z3fQ_LBH0JOwH6gpEM6IxNLU-jf616qbxzrliOEmY8k.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c323908306a9b40cda848b5e82798de7a79478f1" title="Claimify: Extracting high-quality claims from language model outputs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Summary: Dasha Metropolitansky, a Research Data Scientist at Microsoft, explains the Claimify system, which performs claim extraction. She defines a claim as a simple factual statement verifiable as true or false, and extraction as the process of breaking down text into these claims. Claim extraction is crucial for evaluating long-form content generated by language models, particularly for detecting hallucinations and assessing relevance, as it makes it easier to check individual points independently. Claimify works by first breaking text down into sentences, then extracting claims from each sentence with surrounding context for accuracy. The process involves three stages: selection (filtering non-verifiable statements), disambiguation (resolving ambiguous statements using context or flagging them), and decomposition (breaking disambiguated sentences into simple claims). Examples demonstrate that Claimify extracts more comprehensive and specific factual claims compared to a baseline method, capturing details about economic hardship, inflation's impact on currency value, and specific issues like public health crises and contaminated water, thereby unlocking better evaluation capabilities for language model outputs.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Blog: &lt;a href="https://www.microsoft.com/en-us/research/blog/claimify-extracting-high-quality-claims-from-language-model-outputs/"&gt;https://www.microsoft.com/en-us/research/blog/claimify-extracting-high-quality-claims-from-language-model-outputs/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Paper: &lt;a href="https://arxiv.org/abs/2502.10855"&gt;https://arxiv.org/abs/2502.10855&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Balance-"&gt; /u/Balance- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/WTs-Ipt0k-M"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T05:33:59+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1klltt4</id>
     <title>The Qwen3 chat template is *still bugged*</title>
     <updated>2025-05-13T13:23:17+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-13T13:23:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kle86h</id>
+    <title>Claimify: Extracting high-quality claims from language model outputs</title>
+    <updated>2025-05-13T05:33:59+00:00</updated>
+    <author>
+      <name>/u/Balance-</name>
+      <uri>https://old.reddit.com/user/Balance-</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"&gt; &lt;img alt="Claimify: Extracting high-quality claims from language model outputs" src="https://external-preview.redd.it/z3fQ_LBH0JOwH6gpEM6IxNLU-jf616qbxzrliOEmY8k.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c323908306a9b40cda848b5e82798de7a79478f1" title="Claimify: Extracting high-quality claims from language model outputs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Summary: Dasha Metropolitansky, a Research Data Scientist at Microsoft, explains the Claimify system, which performs claim extraction. She defines a claim as a simple factual statement verifiable as true or false, and extraction as the process of breaking down text into these claims. Claim extraction is crucial for evaluating long-form content generated by language models, particularly for detecting hallucinations and assessing relevance, as it makes it easier to check individual points independently. Claimify works by first breaking text down into sentences, then extracting claims from each sentence with surrounding context for accuracy. The process involves three stages: selection (filtering non-verifiable statements), disambiguation (resolving ambiguous statements using context or flagging them), and decomposition (breaking disambiguated sentences into simple claims). Examples demonstrate that Claimify extracts more comprehensive and specific factual claims compared to a baseline method, capturing details about economic hardship, inflation's impact on currency value, and specific issues like public health crises and contaminated water, thereby unlocking better evaluation capabilities for language model outputs.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Blog: &lt;a href="https://www.microsoft.com/en-us/research/blog/claimify-extracting-high-quality-claims-from-language-model-outputs/"&gt;https://www.microsoft.com/en-us/research/blog/claimify-extracting-high-quality-claims-from-language-model-outputs/&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Paper: &lt;a href="https://arxiv.org/abs/2502.10855"&gt;https://arxiv.org/abs/2502.10855&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Balance-"&gt; /u/Balance- &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/WTs-Ipt0k-M"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kle86h/claimify_extracting_highquality_claims_from/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T05:33:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1kkrgyl</id>
