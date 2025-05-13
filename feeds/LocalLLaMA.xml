@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-13T02:22:45+00:00</updated>
+  <updated>2025-05-13T03:01:59+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kl3dyl</id>
-    <title>How are y’all testing your AI agents?</title>
-    <updated>2025-05-12T20:41:05+00:00</updated>
-    <author>
-      <name>/u/NASAEarthrise</name>
-      <uri>https://old.reddit.com/user/NASAEarthrise</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been building a B2B-focused AI agent that handles some fairly complex RAG and business logic workflows. The problem is, I’ve mostly been testing it by just manually typing inputs and seeing what happens. Not exactly scalable.&lt;/p&gt; &lt;p&gt;Curious how others are approaching this. Are you generating test queries automatically? Simulating users somehow? What’s been working (or not working) for you in validating your agents?&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/poll/1kl3dyl"&gt;View Poll&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NASAEarthrise"&gt; /u/NASAEarthrise &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl3dyl/how_are_yall_testing_your_ai_agents/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl3dyl/how_are_yall_testing_your_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl3dyl/how_are_yall_testing_your_ai_agents/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T20:41:05+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kkl39r</id>
-    <title>Findings from LoRA Finetuning for Qwen3</title>
-    <updated>2025-05-12T05:46:44+00:00</updated>
-    <author>
-      <name>/u/Reader3123</name>
-      <uri>https://old.reddit.com/user/Reader3123</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Fine-tuned Qwen3-8B with a small LoRA setup to preserve its ability to switch behaviors using &lt;code&gt;/think&lt;/code&gt; (reasoning) and &lt;code&gt;/no_think&lt;/code&gt; (casual) prompts. Rank 8 gave the best results. Training took ~30 minutes for 8B using 4,000 examples. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;LoRA Rank Testing Results:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;✅ &lt;strong&gt;Rank 8&lt;/strong&gt;: Best outcome—preserved both &lt;code&gt;/think&lt;/code&gt; and &lt;code&gt;/no_think&lt;/code&gt; behavior.&lt;/li&gt; &lt;li&gt;❌ &lt;strong&gt;Rank 32&lt;/strong&gt;: Model started ignoring the &lt;code&gt;/think&lt;/code&gt; prompt.&lt;/li&gt; &lt;li&gt;💀 &lt;strong&gt;Rank 64&lt;/strong&gt;: Completely broke—output became nonsensical.&lt;/li&gt; &lt;li&gt;🧠 &lt;strong&gt;Rank 128&lt;/strong&gt;: Overfit hard—model became overly STUPID&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Training Configuration:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Applied LoRA to: &lt;code&gt;q_proj&lt;/code&gt;, &lt;code&gt;k_proj&lt;/code&gt;, &lt;code&gt;v_proj&lt;/code&gt;, &lt;code&gt;o_proj&lt;/code&gt;, &lt;code&gt;gate_proj&lt;/code&gt;, &lt;code&gt;up_proj&lt;/code&gt;, &lt;code&gt;down_proj&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Rank: 8&lt;/li&gt; &lt;li&gt;Alpha: 16&lt;/li&gt; &lt;li&gt;Dropout: 0.05&lt;/li&gt; &lt;li&gt;Bias: Disabled&lt;/li&gt; &lt;li&gt;Gradient Checkpointing: Enabled to reduce memory usage&lt;/li&gt; &lt;li&gt;Batch Size: 2&lt;/li&gt; &lt;li&gt;Gradient Accumulation: 4 steps&lt;/li&gt; &lt;li&gt;Learning Rate: 2e-4&lt;/li&gt; &lt;li&gt;Epochs: 1&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I also tested whether full finetuning or using the model without 4-bit quantization would help. Neither approach gave better results. In fact, the model sometimes performed worse or became inconsistent in responding to &lt;code&gt;/think&lt;/code&gt; and &lt;code&gt;/no_think&lt;/code&gt;. This confirmed that lightweight LoRA with rank 8 was the ideal trade-off between performance and resource use.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Model Collection:&lt;/strong&gt; 👉 &lt;a href="https://huggingface.co/collections/soob3123/grayline-collection-qwen3-6821009e843331c5a9c27da1"&gt;GrayLine-Qwen3 Collection&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Future Plans:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen3-32B&lt;/li&gt; &lt;li&gt;Try fine-tuning Qwen3-30B-A3B (MoE version) to see if it handles behavior switching better at scale.&lt;/li&gt; &lt;li&gt;Run full benchmark evaluations using LM-Eval to better understand model performance across reasoning, safety, and general capabilities.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Let me know if you want me to try any other configs!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkl39r/findings_from_lora_finetuning_for_qwen3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kkl39r/findings_from_lora_finetuning_for_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kkl39r/findings_from_lora_finetuning_for_qwen3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T05:46:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kl21hm</id>
-    <title>Kokoro-JS with long text support</title>
-    <updated>2025-05-12T19:47:59+00:00</updated>
-    <author>
-      <name>/u/paranoidray</name>
-      <uri>https://old.reddit.com/user/paranoidray</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://test-kokoro.glitch.me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl21hm/kokorojs_with_long_text_support/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl21hm/kokorojs_with_long_text_support/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T19:47:59+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kkox2l</id>
     <title>alibaba's MNN Chat App now supports qwen 2.5 omni 3b and 7b</title>
@@ -73,6 +34,45 @@
     <published>2025-05-12T17:48:33+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kl21hm</id>
+    <title>Kokoro-JS with long text support</title>
+    <updated>2025-05-12T19:47:59+00:00</updated>
+    <author>
+      <name>/u/paranoidray</name>
+      <uri>https://old.reddit.com/user/paranoidray</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paranoidray"&gt; /u/paranoidray &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://test-kokoro.glitch.me/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl21hm/kokorojs_with_long_text_support/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl21hm/kokorojs_with_long_text_support/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-12T19:47:59+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kl9jz6</id>
+    <title>Help with image generation models</title>
+    <updated>2025-05-13T01:17:28+00:00</updated>
+    <author>
+      <name>/u/Past-Stuff6276</name>
+      <uri>https://old.reddit.com/user/Past-Stuff6276</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am trying to find a local image generation model, that I can train (or is it fine tune?) with hundreds and thousands of my own photos so I can generate high quality realistic professional grade images of myself such as a headshot for my website, and for resumes. How can I go about doing it? I have basic ideas of being able to download and use Llama and other models off hugging face. Would really appreciate some advice here. Getting a professional photoshoot is expensive, but I already have my super powerful GPUs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Past-Stuff6276"&gt; /u/Past-Stuff6276 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9jz6/help_with_image_generation_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9jz6/help_with_image_generation_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9jz6/help_with_image_generation_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T01:17:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kl9qdy</id>
+    <title>Why hasn't the new version of each AI chatbot been successful?</title>
+    <updated>2025-05-13T01:26:13+00:00</updated>
+    <author>
+      <name>/u/gutierrezz36</name>
+      <uri>https://old.reddit.com/user/gutierrezz36</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;ChatGPT: Latest version of GPT4o (the one who sucks up to you) reverted Gemini: Latest version of Gemini Pro 2.5 (05-06) reverted Grok: Latest version (3.5) delayed Meta: Latest version (LLaMa 4) released but unsatisfactory and to top it off lying in benchmarks&lt;/p&gt; &lt;p&gt;What's going on here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gutierrezz36"&gt; /u/gutierrezz36 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T01:26:13+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kl0uvv</id>
     <title>Predicting sales conversion probability from conversations using pure Reinforcement Learning</title>
     <updated>2025-05-12T19:01:28+00:00</updated>
@@ -84,19 +84,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl0uvv/predicting_sales_conversion_probability_from/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-12T19:01:28+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kl6llw</id>
-    <title>RAM vs NVME swap for AI?</title>
-    <updated>2025-05-12T22:55:49+00:00</updated>
-    <author>
-      <name>/u/lukinhasb</name>
-      <uri>https://old.reddit.com/user/lukinhasb</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have 64GB RAM, 24GB 4090 and I want to run large models like qwen235 moe (111gb)&lt;/p&gt; &lt;p&gt;I have created generous swap files (like 200gb) in my NVME.&lt;/p&gt; &lt;p&gt;How's the performance of NVME swap compared to RAM for AI?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lukinhasb"&gt; /u/lukinhasb &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-12T22:55:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl95wa</id>
@@ -112,17 +99,17 @@
     <published>2025-05-13T00:57:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kl9qdy</id>
-    <title>Why hasn't the new version of each AI chatbot been successful?</title>
-    <updated>2025-05-13T01:26:13+00:00</updated>
+    <id>t3_1kl6llw</id>
+    <title>RAM vs NVME swap for AI?</title>
+    <updated>2025-05-12T22:55:49+00:00</updated>
     <author>
-      <name>/u/gutierrezz36</name>
-      <uri>https://old.reddit.com/user/gutierrezz36</uri>
+      <name>/u/lukinhasb</name>
+      <uri>https://old.reddit.com/user/lukinhasb</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;ChatGPT: Latest version of GPT4o (the one who sucks up to you) reverted Gemini: Latest version of Gemini Pro 2.5 (05-06) reverted Grok: Latest version (3.5) delayed Meta: Latest version (LLaMa 4) released but unsatisfactory and to top it off lying in benchmarks&lt;/p&gt; &lt;p&gt;What's going on here?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gutierrezz36"&gt; /u/gutierrezz36 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl9qdy/why_hasnt_the_new_version_of_each_ai_chatbot_been/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have 64GB RAM, 24GB 4090 and I want to run large models like qwen235 moe (111gb)&lt;/p&gt; &lt;p&gt;I have created generous swap files (like 200gb) in my NVME.&lt;/p&gt; &lt;p&gt;How's the performance of NVME swap compared to RAM for AI?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lukinhasb"&gt; /u/lukinhasb &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl6llw/ram_vs_nvme_swap_for_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T01:26:13+00:00</published>
+    <published>2025-05-12T22:55:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl505t</id>
@@ -177,19 +164,6 @@
     <published>2025-05-12T20:57:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kl8egq</id>
-    <title>5090 Benchmarks - Qwen3 and Maverick</title>
-    <updated>2025-05-13T00:19:47+00:00</updated>
-    <author>
-      <name>/u/Conscious_Cut_6144</name>
-      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Noticed Newegg had open box 5090's available the other day... &lt;/p&gt; &lt;p&gt;Wanted to get some experience working with Blackwell since we have several PRO 6000's on the way (work)&lt;br /&gt; grabbed a Gigabyte model for 2900.&lt;br /&gt; Paired it with my Xeon 8480 ES CPU (56-core, 8-channel DDR5)&lt;/p&gt; &lt;p&gt;30BMoE-AWQ: (All GPU)&lt;br /&gt; ~3,000 T/s prompt (15k tokens)&lt;br /&gt; 140 T/s generation (18k tokens)&lt;/p&gt; &lt;p&gt;32B-AWQ: (All GPU)&lt;br /&gt; ~1500 T/s prompt (15k tokens)&lt;br /&gt; 54 T/s generation (18k tokens)&lt;/p&gt; &lt;p&gt;Maverick_Q4-K-XL: (GPU + CPU)&lt;br /&gt; 650 T/s prompt (15k tokens)&lt;br /&gt; 37 T/s generation (18k tokens) &lt;/p&gt; &lt;p&gt;30BMOE is so fast that my openwebui can't keep up. VLLM finishes several seconds before open webui finishes displaying the text lol.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T00:19:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kkqud8</id>
     <title>Continuous Thought Machines - Sakana AI</title>
     <updated>2025-05-12T12:07:03+00:00</updated>
@@ -201,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kkqud8/continuous_thought_machines_sakana_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-12T12:07:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kl8egq</id>
+    <title>5090 Benchmarks - Qwen3 and Maverick</title>
+    <updated>2025-05-13T00:19:47+00:00</updated>
+    <author>
+      <name>/u/Conscious_Cut_6144</name>
+      <uri>https://old.reddit.com/user/Conscious_Cut_6144</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Noticed Newegg had open box 5090's available the other day... &lt;/p&gt; &lt;p&gt;Wanted to get some experience working with Blackwell since we have several PRO 6000's on the way (work)&lt;br /&gt; grabbed a Gigabyte model for 2900.&lt;br /&gt; Paired it with my Xeon 8480 ES CPU (56-core, 8-channel DDR5)&lt;/p&gt; &lt;p&gt;30BMoE-AWQ: (All GPU)&lt;br /&gt; ~3,000 T/s prompt (15k tokens)&lt;br /&gt; 140 T/s generation (18k tokens)&lt;/p&gt; &lt;p&gt;32B-AWQ: (All GPU)&lt;br /&gt; ~1500 T/s prompt (15k tokens)&lt;br /&gt; 54 T/s generation (18k tokens)&lt;/p&gt; &lt;p&gt;Maverick_Q4-K-XL: (GPU + CPU)&lt;br /&gt; 650 T/s prompt (15k tokens)&lt;br /&gt; 37 T/s generation (18k tokens) &lt;/p&gt; &lt;p&gt;30BMOE is so fast that my openwebui can't keep up. VLLM finishes several seconds before open webui finishes displaying the text lol.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Conscious_Cut_6144"&gt; /u/Conscious_Cut_6144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kl8egq/5090_benchmarks_qwen3_and_maverick/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T00:19:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1kl7j1z</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kkvqti/qwen3_throughput_benchmarks_on_2x_3090_almost/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-12T15:42:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1klayhz</id>
+    <title>What's the best medical model currently?</title>
+    <updated>2025-05-13T02:27:43+00:00</updated>
+    <author>
+      <name>/u/MrMrsPotts</name>
+      <uri>https://old.reddit.com/user/MrMrsPotts</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I had been using llms only for coding and math but I realised that medicine should in theory be easier for an llm. Is there a good benchmark and what is the current best model for medical advice?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MrMrsPotts"&gt; /u/MrMrsPotts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klayhz/whats_the_best_medical_model_currently/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klayhz/whats_the_best_medical_model_currently/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klayhz/whats_the_best_medical_model_currently/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-13T02:27:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1kkxguj</id>
