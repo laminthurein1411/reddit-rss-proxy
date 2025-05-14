@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-14T21:05:32+00:00</updated>
+  <updated>2025-05-14T21:21:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kmcdyt</id>
-    <title>LLM - better chunking method</title>
-    <updated>2025-05-14T11:07:03+00:00</updated>
-    <author>
-      <name>/u/Phoenix2990</name>
-      <uri>https://old.reddit.com/user/Phoenix2990</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Problems with using an LLM to chunk:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Time/latency -&amp;gt; it takes time for the LLM to output all the chunks.&lt;/li&gt; &lt;li&gt;Hitting output context window cap -&amp;gt; since you’re essentially re-creating entire documents but in chunks, then you’ll often hit the token capacity of the output window.&lt;/li&gt; &lt;li&gt;Cost - since your essentially outputting entire documents again, you r costs go up.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;The method below helps all 3.&lt;/p&gt; &lt;p&gt;Method:&lt;/p&gt; &lt;p&gt;Step 1: assign an identification number to each and every sentence or paragraph in your document.&lt;/p&gt; &lt;p&gt;a) Use a standard python library to parse the document into chunks of paragraphs or sentences. b) assign an identification number to each, and every sentence.&lt;/p&gt; &lt;p&gt;Example sentence: Red Riding Hood went to the shops. She did not like the food that they had there.&lt;/p&gt; &lt;p&gt;Example output: &amp;lt;1&amp;gt; Red Riding Hood went to the shops.&amp;lt;/1&amp;gt;&amp;lt;2&amp;gt;She did not like the food that they had there.&amp;lt;/2&amp;gt;&lt;/p&gt; &lt;p&gt;Note: this can easily be done with very standard python libraries that identify sentences. It’s very fast.&lt;/p&gt; &lt;p&gt;You now have a method to identify sentences using a single digit. The LLM will now take advantage of this.&lt;/p&gt; &lt;p&gt;Step 2. a) Send the entire document WITH the identification numbers associated to each sentence. b) tell the LLM “how”you would like it to chunk the material I.e: “please keep semantic similar content together” c) tell the LLM that you have provided an I.d number for each sentence and that you want it to output only the i.d numbers e.g: chunk 1: 1,2,3 chunk 2: 4,5,6,7,8,9 chunk 3: 10,11,12,13&lt;/p&gt; &lt;p&gt;etc&lt;/p&gt; &lt;p&gt;Step 3: Reconstruct your chunks locally based on the LLM response. The LLM will provide you with the chunks and the sentence i.d’s that go into each chunk. All you need to do in your script is to re-construct it locally.&lt;/p&gt; &lt;p&gt;Notes:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;I did this method a couple years ago using ORIGINAL Haiku. It never messed up the chunking method. So it will definitely work for new models.&lt;/li&gt; &lt;li&gt;although I only provide 2 sentences in my example, in reality I used this with many, many, many chunks. For example, I chunked large court cases using this method.&lt;/li&gt; &lt;li&gt;It’s actually a massive time and token save. Suddenly a 50 token sentence becomes “1” token….&lt;/li&gt; &lt;li&gt;If someone else already identified this method then please ignore this post :)&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Phoenix2990"&gt; /u/Phoenix2990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T11:07:03+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kma6tm</id>
     <title>Found a pretty good cline-compatible Qwen3 MoE for Apple Silicon</title>
@@ -34,19 +21,6 @@
     <published>2025-05-14T08:36:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmj3zn</id>
-    <title>Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide</title>
-    <updated>2025-05-14T16:09:45+00:00</updated>
-    <author>
-      <name>/u/phoneixAdi</name>
-      <uri>https://old.reddit.com/user/phoneixAdi</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt; &lt;img alt="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" src="https://preview.redd.it/27dndr0qtr0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=15922ba752a7ef4a4a0ac8386c7de6bd81b2dc6f" title="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Finally got around to the bookmark I had saved a while ago: OpenAI's prompting guide: &lt;/p&gt; &lt;p&gt;&lt;a href="https://cookbook.openai.com/examples/gpt4-1_prompting_guide"&gt;https://cookbook.openai.com/examples/gpt4-1_prompting_guide&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have to say I really like it! I am still working through it. I usually scribble my notes in Excalidraw. I just wrote this for myself and am sharing it here in case it helps others. I think much of the guide is relevant in general to build useful agents (or simple deterministic workflows).&lt;/p&gt; &lt;p&gt;Note: I am still working through it, so this might change. I will add more here as I go through the guide. It's quite dense, and I am still making sense of it. So will change the sketch. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/27dndr0qtr0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T16:09:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmj3gl</id>
     <title>Roadmap for frontier models summer 2025</title>
     <updated>2025-05-14T16:09:10+00:00</updated>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3gl/roadmap_for_frontier_models_summer_2025/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T16:09:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmj3zn</id>
+    <title>Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide</title>
+    <updated>2025-05-14T16:09:45+00:00</updated>
+    <author>
+      <name>/u/phoneixAdi</name>
+      <uri>https://old.reddit.com/user/phoneixAdi</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt; &lt;img alt="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" src="https://preview.redd.it/27dndr0qtr0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=15922ba752a7ef4a4a0ac8386c7de6bd81b2dc6f" title="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Finally got around to the bookmark I had saved a while ago: OpenAI's prompting guide: &lt;/p&gt; &lt;p&gt;&lt;a href="https://cookbook.openai.com/examples/gpt4-1_prompting_guide"&gt;https://cookbook.openai.com/examples/gpt4-1_prompting_guide&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have to say I really like it! I am still working through it. I usually scribble my notes in Excalidraw. I just wrote this for myself and am sharing it here in case it helps others. I think much of the guide is relevant in general to build useful agents (or simple deterministic workflows).&lt;/p&gt; &lt;p&gt;Note: I am still working through it, so this might change. I will add more here as I go through the guide. It's quite dense, and I am still making sense of it. So will change the sketch. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/27dndr0qtr0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T16:09:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1klxlbx</id>
@@ -86,17 +73,17 @@
     <published>2025-05-14T06:17:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmq7gx</id>
-    <title>We need llama-4-maverick-03-26-experimental.</title>
-    <updated>2025-05-14T20:52:37+00:00</updated>
+    <id>t3_1kmqmr8</id>
+    <title>Nous Psyche, distributed training of a new 40B base model</title>
+    <updated>2025-05-14T21:09:52+00:00</updated>
     <author>
-      <name>/u/PuppyGirlEfina</name>
-      <uri>https://old.reddit.com/user/PuppyGirlEfina</uri>
+      <name>/u/discr</name>
+      <uri>https://old.reddit.com/user/discr</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt; &lt;img alt="We need llama-4-maverick-03-26-experimental." src="https://b.thumbs.redditmedia.com/pa7bHZFqHKuUv-GA3knVGPP3wZuwEYBgGa4xZQnPkAY.jpg" title="We need llama-4-maverick-03-26-experimental." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I've been spending a lot of time looking into the differences between the Llama-4 Maverick we got and the `llama-4-maverick-03-26-experimental` version, and honestly, I'm starting to feel like we seriously missed out.&lt;/p&gt; &lt;p&gt;From my own personal testing with the `03-26-experimental`, the emotional intelligence is genuinely striking. It feels more nuanced, more understanding, and less like it is just pattern-matching empathy. It's a qualitative difference that really stands out.&lt;/p&gt; &lt;p&gt;And it's not just my anecdotal experience. This post (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the%5C_experimental%5C_version%5C_of%5C_llama4%5C_maverick%5C_on/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the\_experimental\_version\_of\_llama4\_maverick\_on/&lt;/a&gt;) highlights how the LMArena version is significantly more creative and a better coder than the model that eventually got the official release.&lt;/p&gt; &lt;p&gt;Now, I know the counter-argument: &amp;quot;Oh, it was just better at 'glazing' or producing overly long, agreeable responses.&amp;quot; But I don't think that tells the whole story. If you look at the LMSys blog post on sentiment control (&lt;a href="https://blog.lmarena.ai/blog/2025/sentiment-control/"&gt;https://blog.lmarena.ai/blog/2025/sentiment-control/&lt;/a&gt;), it's pretty clear. When they account for the verbosity and &amp;quot;glazing,&amp;quot; the `llama-4-maverick-03-26-experimental` model &lt;em&gt;still&lt;/em&gt; significantly outperforms the released version. In their charts, the experimental model is shown as being above Gemma 3 27B, while the released version actually dips &lt;em&gt;below&lt;/em&gt; it. That's a difference in underlying capability, not just surface-level agreeableness.&lt;/p&gt; &lt;p&gt;And then there's the infamous &amp;quot;ball in the heptagon&amp;quot; test. The released Llama-4 Maverick was a complete trainwreck on this, as painfully detailed here: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jsl37d/im%5C_incredibly%5C_disappointed%5C_with%5C_llama4/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jsl37d/im\_incredibly\_disappointed\_with\_llama4/&lt;/a&gt;. It was a real letdown for many. But the `03-26-experimental` version? It actually handles the heptagon test surprisingly well, demonstrating a level of coding the released version just doesn't seem to have.&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/o0p3m0kj8t0f1.gif"&gt;Sorry, if it seems slow at the start. That isn't in the actual thing, it's just the webm -&amp;gt; gif conversion.&lt;/a&gt;&lt;/p&gt; &lt;p&gt;So, what gives? It feels like the `llama-4-maverick-03-26-experimental` was a more aligned that actually possessed superior core capabilities in several key areas. While the released version might be more polished in some respects, it seems to have worse actual intelligence and usefulness for more complex tasks.&lt;/p&gt; &lt;p&gt;I really hope there's a chance we can see this experimental version released, or at least get more insight into why such a capable version was seemingly left behind. It feels like the community is missing out on a much better model.&lt;/p&gt; &lt;p&gt;What are your thoughts? Has anyone else tested or seen results from `llama-4-maverick-03-26-experimental` that align with this? (It's still up on LMArena for direct chat.)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; The `llama-4-maverick-03-26-experimental` version seems demonstrably better in emotional intelligence, creativity, coding, and even raw benchmark performance (once &amp;quot;glazing&amp;quot; is accounted for) and reasoning (heptagon test) than the released Llama-4 Maverick. We want access to &lt;em&gt;that&lt;/em&gt; model!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PuppyGirlEfina"&gt; /u/PuppyGirlEfina &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/discr"&gt; /u/discr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://psyche.network/runs/consilience-40b-1/0"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmqmr8/nous_psyche_distributed_training_of_a_new_40b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmqmr8/nous_psyche_distributed_training_of_a_new_40b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T20:52:37+00:00</published>
+    <published>2025-05-14T21:09:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmhb0c</id>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1km81fb/embrace_the_jank_2x5090/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T06:04:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmq7gx</id>
+    <title>We need llama-4-maverick-03-26-experimental.</title>
+    <updated>2025-05-14T20:52:37+00:00</updated>
+    <author>
+      <name>/u/PuppyGirlEfina</name>
+      <uri>https://old.reddit.com/user/PuppyGirlEfina</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt; &lt;img alt="We need llama-4-maverick-03-26-experimental." src="https://b.thumbs.redditmedia.com/pa7bHZFqHKuUv-GA3knVGPP3wZuwEYBgGa4xZQnPkAY.jpg" title="We need llama-4-maverick-03-26-experimental." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I've been spending a lot of time looking into the differences between the Llama-4 Maverick we got and the `llama-4-maverick-03-26-experimental` version, and honestly, I'm starting to feel like we seriously missed out.&lt;/p&gt; &lt;p&gt;From my own personal testing with the `03-26-experimental`, the emotional intelligence is genuinely striking. It feels more nuanced, more understanding, and less like it is just pattern-matching empathy. It's a qualitative difference that really stands out.&lt;/p&gt; &lt;p&gt;And it's not just my anecdotal experience. This post (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the%5C_experimental%5C_version%5C_of%5C_llama4%5C_maverick%5C_on/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1ju9s1c/the\_experimental\_version\_of\_llama4\_maverick\_on/&lt;/a&gt;) highlights how the LMArena version is significantly more creative and a better coder than the model that eventually got the official release.&lt;/p&gt; &lt;p&gt;Now, I know the counter-argument: &amp;quot;Oh, it was just better at 'glazing' or producing overly long, agreeable responses.&amp;quot; But I don't think that tells the whole story. If you look at the LMSys blog post on sentiment control (&lt;a href="https://blog.lmarena.ai/blog/2025/sentiment-control/"&gt;https://blog.lmarena.ai/blog/2025/sentiment-control/&lt;/a&gt;), it's pretty clear. When they account for the verbosity and &amp;quot;glazing,&amp;quot; the `llama-4-maverick-03-26-experimental` model &lt;em&gt;still&lt;/em&gt; significantly outperforms the released version. In their charts, the experimental model is shown as being above Gemma 3 27B, while the released version actually dips &lt;em&gt;below&lt;/em&gt; it. That's a difference in underlying capability, not just surface-level agreeableness.&lt;/p&gt; &lt;p&gt;And then there's the infamous &amp;quot;ball in the heptagon&amp;quot; test. The released Llama-4 Maverick was a complete trainwreck on this, as painfully detailed here: &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jsl37d/im%5C_incredibly%5C_disappointed%5C_with%5C_llama4/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1jsl37d/im\_incredibly\_disappointed\_with\_llama4/&lt;/a&gt;. It was a real letdown for many. But the `03-26-experimental` version? It actually handles the heptagon test surprisingly well, demonstrating a level of coding the released version just doesn't seem to have.&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/o0p3m0kj8t0f1.gif"&gt;Sorry, if it seems slow at the start. That isn't in the actual thing, it's just the webm -&amp;gt; gif conversion.&lt;/a&gt;&lt;/p&gt; &lt;p&gt;So, what gives? It feels like the `llama-4-maverick-03-26-experimental` was a more aligned that actually possessed superior core capabilities in several key areas. While the released version might be more polished in some respects, it seems to have worse actual intelligence and usefulness for more complex tasks.&lt;/p&gt; &lt;p&gt;I really hope there's a chance we can see this experimental version released, or at least get more insight into why such a capable version was seemingly left behind. It feels like the community is missing out on a much better model.&lt;/p&gt; &lt;p&gt;What are your thoughts? Has anyone else tested or seen results from `llama-4-maverick-03-26-experimental` that align with this? (It's still up on LMArena for direct chat.)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; The `llama-4-maverick-03-26-experimental` version seems demonstrably better in emotional intelligence, creativity, coding, and even raw benchmark performance (once &amp;quot;glazing&amp;quot; is accounted for) and reasoning (heptagon test) than the released Llama-4 Maverick. We want access to &lt;em&gt;that&lt;/em&gt; model!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PuppyGirlEfina"&gt; /u/PuppyGirlEfina &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmq7gx/we_need_llama4maverick0326experimental/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T20:52:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmjr1n</id>
@@ -216,19 +216,6 @@
     <published>2025-05-14T18:18:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmnsol</id>
-    <title>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</title>
-    <updated>2025-05-14T19:14:49+00:00</updated>
-    <author>
-      <name>/u/NewtMurky</name>
-      <uri>https://old.reddit.com/user/NewtMurky</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt; &lt;img alt="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" src="https://preview.redd.it/pj1r83skrs0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7100be7b0bc1cceb9f30d390f47de6dcbfbabcec" title="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, Google announced AlphaEvolve, an evolutionary coding agent powered by large language models for general-purpose algorithm discovery and optimization. AlphaEvolve pairs the creative problem-solving capabilities of our Gemini models with automated evaluators that verify answers, and uses an evolutionary framework to improve upon the most promising ideas.&lt;/p&gt; &lt;p&gt;AlphaEvolve enhanced the efficiency of Google's data centers, chip design and AI training processes — including training the large language models underlying &lt;strong&gt;AlphaEvolve itself&lt;/strong&gt;. It has also helped design faster matrix multiplication algorithms and find new solutions to open mathematical problems, showing incredible promise for application across many areas.&lt;/p&gt; &lt;p&gt;Blog post: &lt;a href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"&gt;https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"&gt;https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pj1r83skrs0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T19:14:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmmq6d</id>
     <title>Base Models That Can Still Complete Text in an Entertaining Way</title>
     <updated>2025-05-14T18:32:10+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmq6d/base_models_that_can_still_complete_text_in_an/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T18:32:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmnsol</id>
+    <title>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</title>
+    <updated>2025-05-14T19:14:49+00:00</updated>
+    <author>
+      <name>/u/NewtMurky</name>
+      <uri>https://old.reddit.com/user/NewtMurky</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt; &lt;img alt="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" src="https://preview.redd.it/pj1r83skrs0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7100be7b0bc1cceb9f30d390f47de6dcbfbabcec" title="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, Google announced AlphaEvolve, an evolutionary coding agent powered by large language models for general-purpose algorithm discovery and optimization. AlphaEvolve pairs the creative problem-solving capabilities of our Gemini models with automated evaluators that verify answers, and uses an evolutionary framework to improve upon the most promising ideas.&lt;/p&gt; &lt;p&gt;AlphaEvolve enhanced the efficiency of Google's data centers, chip design and AI training processes — including training the large language models underlying &lt;strong&gt;AlphaEvolve itself&lt;/strong&gt;. It has also helped design faster matrix multiplication algorithms and find new solutions to open mathematical problems, showing incredible promise for application across many areas.&lt;/p&gt; &lt;p&gt;Blog post: &lt;a href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"&gt;https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"&gt;https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pj1r83skrs0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T19:14:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmaztr</id>
