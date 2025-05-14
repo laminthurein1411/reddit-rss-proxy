@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-14T14:49:38+00:00</updated>
+  <updated>2025-05-14T15:06:45+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -60,19 +60,6 @@
     <published>2025-05-13T08:57:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1klltt4</id>
-    <title>The Qwen3 chat template is *still bugged*</title>
-    <updated>2025-05-13T13:23:17+00:00</updated>
-    <author>
-      <name>/u/ilintar</name>
-      <uri>https://old.reddit.com/user/ilintar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So, I hope everyone remembers all the twists and turns with the Qwen3 template. First, it was not working at all, then, the Unsloth team fixed the little bug with iterating over the messages. But, alas, it's not over yet!&lt;/p&gt; &lt;p&gt;I had a hint something was wrong when the biggest Qwen3 model available on OpenRouter wouldn't execute a web search twice. But it was only once I started testing my own agent framework that I realized what was wrong.&lt;/p&gt; &lt;p&gt;Qwen3 uses an XML tool calling syntax that the Jinja template transforms into the known OpenAI-compatible structure. But there's a catch. Once you call a tool once, you save that tool call in the chat history. And that tool call entry has:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;tool_calls&amp;quot;: [...] } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;The problem is, the current template code expects every history item to have a &amp;quot;content&amp;quot; block:&lt;/p&gt; &lt;p&gt;&lt;code&gt; {%- for message in messages %} {%- if (message.role == &amp;quot;user&amp;quot;) or (message.role == &amp;quot;system&amp;quot; and not loop.first) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + message.content + '&amp;lt;|im_end|&amp;gt;' + '\n' }} {%- elif message.role == &amp;quot;assistant&amp;quot; %} {%- set content = message.content %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Therefore, whenever you use any OpenAI-compatible client that saves the chat history and you use &lt;em&gt;more than one tool call&lt;/em&gt;, the conversation will become broken and the server will start reporting an error:&lt;/p&gt; &lt;p&gt;&lt;code&gt; got exception: {&amp;quot;code&amp;quot;:500,&amp;quot;message&amp;quot;:&amp;quot;[json.exception.out_of_range.403] key 'content' not found&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;server_error&amp;quot;} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;I think the fix is to patch the assistant branch similar to the &amp;quot;forward messages&amp;quot; branch:&lt;/p&gt; &lt;p&gt;&lt;code&gt; {%- set content = message.content if message.content is not none else '' %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;and then to refer to &lt;code&gt;content&lt;/code&gt; instead of &lt;code&gt;message.content&lt;/code&gt; later on. If someone could poke the Unsloth people to fix the template, that would be pretty neat (for now, I hacked my agent's code to always append an empty code block into tool call assistant history messages since I use my own API for whatever reason, but that's not something you can do if you're using standard libraries).&lt;/p&gt; &lt;p&gt;UPDATE: I believe this is the how the corrected template should look like: &lt;code&gt;jinja {%- if tools %} {{- '&amp;lt;|im_start|&amp;gt;system\n' }} {%- if messages[0].role == 'system' %} {{- messages[0].content + '\n\n' }} {%- endif %} {{- &amp;quot;# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within &amp;lt;tools&amp;gt;&amp;lt;/tools&amp;gt; XML tags:\n&amp;lt;tools&amp;gt;&amp;quot; }} {%- for tool in tools %} {{- &amp;quot;\n&amp;quot; }} {{- tool | tojson }} {%- endfor %} {{- &amp;quot;\n&amp;lt;/tools&amp;gt;\n\nFor each function call, return a json object with function name and arguments within &amp;lt;tool_call&amp;gt;&amp;lt;/tool_call&amp;gt; XML tags:\n&amp;lt;tool_call&amp;gt;\n{\&amp;quot;name\&amp;quot;: &amp;lt;function-name&amp;gt;, \&amp;quot;arguments\&amp;quot;: &amp;lt;args-json-object&amp;gt;}\n&amp;lt;/tool_call&amp;gt;&amp;lt;|im_end|&amp;gt;\n&amp;quot; }} {%- else %} {%- if messages[0].role == 'system' %} {{- '&amp;lt;|im_start|&amp;gt;system\n' + messages[0].content + '&amp;lt;|im_end|&amp;gt;\n' }} {%- endif %} {%- endif %} {%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %} {%- for forward_message in messages %} {%- set index = (messages|length - 1) - loop.index0 %} {%- set message = messages[index] %} {%- set current_content = message.content if message.content is defined and message.content is not none else '' %} {%- set tool_start = '&amp;lt;tool_response&amp;gt;' %} {%- set tool_start_length = tool_start|length %} {%- set start_of_message = current_content[:tool_start_length] %} {%- set tool_end = '&amp;lt;/tool_response&amp;gt;' %} {%- set tool_end_length = tool_end|length %} {%- set start_pos = (current_content|length) - tool_end_length %} {%- if start_pos &amp;lt; 0 %} {%- set start_pos = 0 %} {%- endif %} {%- set end_of_message = current_content[start_pos:] %} {%- if ns.multi_step_tool and message.role == &amp;quot;user&amp;quot; and not(start_of_message == tool_start and end_of_message == tool_end) %} {%- set ns.multi_step_tool = false %} {%- set ns.last_query_index = index %} {%- endif %} {%- endfor %} {%- for message in messages %} {%- set m_content = message.content if message.content is defined and message.content is not none else '' %} {%- if (message.role == &amp;quot;user&amp;quot;) or (message.role == &amp;quot;system&amp;quot; and not loop.first) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content + '&amp;lt;|im_end|&amp;gt;' + '\n' }} {%- elif message.role == &amp;quot;assistant&amp;quot; %} {%- set reasoning_content = '' %} {%- if message.reasoning_content is defined and message.reasoning_content is not none %} {%- set reasoning_content = message.reasoning_content %} {%- else %} {%- if '&amp;lt;/think&amp;gt;' in m_content %} {%- set m_content = (m_content.split('&amp;lt;/think&amp;gt;')|last).lstrip('\n') %} {%- set reasoning_content = (m_content.split('&amp;lt;/think&amp;gt;')|first).rstrip('\n') %} {%- set reasoning_content = (reasoning_content.split('&amp;lt;think&amp;gt;')|last).lstrip('\n') %} {%- endif %} {%- endif %} {%- if loop.index0 &amp;gt; ns.last_query_index %} {%- if loop.last or (not loop.last and (not reasoning_content.strip() == &amp;quot;&amp;quot;)) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n&amp;lt;think&amp;gt;\n' + reasoning_content.strip('\n') + '\n&amp;lt;/think&amp;gt;\n\n' + m_content.lstrip('\n') }} {%- else %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content }} {%- endif %} {%- else %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content }} {%- endif %} {%- if message.tool_calls %} {%- for tool_call in message.tool_calls %} {%- if (loop.first and m_content) or (not loop.first) %} {{- '\n' }} {%- endif %} {%- if tool_call.function %} {%- set tool_call = tool_call.function %} {%- endif %} {{- '&amp;lt;tool_call&amp;gt;\n{&amp;quot;name&amp;quot;: &amp;quot;' }} {{- tool_call.name }} {{- '&amp;quot;, &amp;quot;arguments&amp;quot;: ' }} {%- if tool_call.arguments is string %} {{- tool_call.arguments }} {%- else %} {{- tool_call.arguments | tojson }} {%- endif %} {{- '}\n&amp;lt;/tool_call&amp;gt;' }} {%- endfor %} {%- endif %} {{- '&amp;lt;|im_end|&amp;gt;\n' }} {%- elif message.role == &amp;quot;tool&amp;quot; %} {%- if loop.first or (messages[loop.index0 - 1].role != &amp;quot;tool&amp;quot;) %} {{- '&amp;lt;|im_start|&amp;gt;user' }} {%- endif %} {{- '\n&amp;lt;tool_response&amp;gt;\n' }} {{- message.content if message.content is defined and message.content is not none else '' }} {{- '\n&amp;lt;/tool_response&amp;gt;' }} {%- if loop.last or (messages[loop.index0 + 1].role != &amp;quot;tool&amp;quot;) %} {{- '&amp;lt;|im_end|&amp;gt;\n' }} {%- endif %} {%- endif %} {%- endfor %} {%- if add_generation_prompt %} {{- '&amp;lt;|im_start|&amp;gt;assistant\n' }} {%- if enable_thinking is defined and enable_thinking is false %} {{- '&amp;lt;think&amp;gt;\n\n&amp;lt;/think&amp;gt;\n\n' }} {%- endif %} {%- endif %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Seems to work correctly, I've made it work with Roo Code using this. UPDATE: more fixes&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ilintar"&gt; /u/ilintar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T13:23:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmf2w9</id>
     <title>Is there a benchmark that shows "prompt processing speed"?</title>
     <updated>2025-05-14T13:24:33+00:00</updated>
@@ -86,17 +73,17 @@
     <published>2025-05-14T13:24:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1km2jyz</id>
-    <title>Gemini 2.5 exp death.</title>
-    <updated>2025-05-14T00:57:56+00:00</updated>
+    <id>t3_1klltt4</id>
+    <title>The Qwen3 chat template is *still bugged*</title>
+    <updated>2025-05-13T13:23:17+00:00</updated>
     <author>
-      <name>/u/brocolongo</name>
-      <uri>https://old.reddit.com/user/brocolongo</uri>
+      <name>/u/ilintar</name>
+      <uri>https://old.reddit.com/user/ilintar</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that 2.5 exp free it's dead, what alternatives are you guys using for coding ?😞 (Free alternatives) &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/brocolongo"&gt; /u/brocolongo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So, I hope everyone remembers all the twists and turns with the Qwen3 template. First, it was not working at all, then, the Unsloth team fixed the little bug with iterating over the messages. But, alas, it's not over yet!&lt;/p&gt; &lt;p&gt;I had a hint something was wrong when the biggest Qwen3 model available on OpenRouter wouldn't execute a web search twice. But it was only once I started testing my own agent framework that I realized what was wrong.&lt;/p&gt; &lt;p&gt;Qwen3 uses an XML tool calling syntax that the Jinja template transforms into the known OpenAI-compatible structure. But there's a catch. Once you call a tool once, you save that tool call in the chat history. And that tool call entry has:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;role&amp;quot;: &amp;quot;assistant&amp;quot;, &amp;quot;tool_calls&amp;quot;: [...] } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;The problem is, the current template code expects every history item to have a &amp;quot;content&amp;quot; block:&lt;/p&gt; &lt;p&gt;&lt;code&gt; {%- for message in messages %} {%- if (message.role == &amp;quot;user&amp;quot;) or (message.role == &amp;quot;system&amp;quot; and not loop.first) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + message.content + '&amp;lt;|im_end|&amp;gt;' + '\n' }} {%- elif message.role == &amp;quot;assistant&amp;quot; %} {%- set content = message.content %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Therefore, whenever you use any OpenAI-compatible client that saves the chat history and you use &lt;em&gt;more than one tool call&lt;/em&gt;, the conversation will become broken and the server will start reporting an error:&lt;/p&gt; &lt;p&gt;&lt;code&gt; got exception: {&amp;quot;code&amp;quot;:500,&amp;quot;message&amp;quot;:&amp;quot;[json.exception.out_of_range.403] key 'content' not found&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;server_error&amp;quot;} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;I think the fix is to patch the assistant branch similar to the &amp;quot;forward messages&amp;quot; branch:&lt;/p&gt; &lt;p&gt;&lt;code&gt; {%- set content = message.content if message.content is not none else '' %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;and then to refer to &lt;code&gt;content&lt;/code&gt; instead of &lt;code&gt;message.content&lt;/code&gt; later on. If someone could poke the Unsloth people to fix the template, that would be pretty neat (for now, I hacked my agent's code to always append an empty code block into tool call assistant history messages since I use my own API for whatever reason, but that's not something you can do if you're using standard libraries).&lt;/p&gt; &lt;p&gt;UPDATE: I believe this is the how the corrected template should look like: &lt;code&gt;jinja {%- if tools %} {{- '&amp;lt;|im_start|&amp;gt;system\n' }} {%- if messages[0].role == 'system' %} {{- messages[0].content + '\n\n' }} {%- endif %} {{- &amp;quot;# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within &amp;lt;tools&amp;gt;&amp;lt;/tools&amp;gt; XML tags:\n&amp;lt;tools&amp;gt;&amp;quot; }} {%- for tool in tools %} {{- &amp;quot;\n&amp;quot; }} {{- tool | tojson }} {%- endfor %} {{- &amp;quot;\n&amp;lt;/tools&amp;gt;\n\nFor each function call, return a json object with function name and arguments within &amp;lt;tool_call&amp;gt;&amp;lt;/tool_call&amp;gt; XML tags:\n&amp;lt;tool_call&amp;gt;\n{\&amp;quot;name\&amp;quot;: &amp;lt;function-name&amp;gt;, \&amp;quot;arguments\&amp;quot;: &amp;lt;args-json-object&amp;gt;}\n&amp;lt;/tool_call&amp;gt;&amp;lt;|im_end|&amp;gt;\n&amp;quot; }} {%- else %} {%- if messages[0].role == 'system' %} {{- '&amp;lt;|im_start|&amp;gt;system\n' + messages[0].content + '&amp;lt;|im_end|&amp;gt;\n' }} {%- endif %} {%- endif %} {%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %} {%- for forward_message in messages %} {%- set index = (messages|length - 1) - loop.index0 %} {%- set message = messages[index] %} {%- set current_content = message.content if message.content is defined and message.content is not none else '' %} {%- set tool_start = '&amp;lt;tool_response&amp;gt;' %} {%- set tool_start_length = tool_start|length %} {%- set start_of_message = current_content[:tool_start_length] %} {%- set tool_end = '&amp;lt;/tool_response&amp;gt;' %} {%- set tool_end_length = tool_end|length %} {%- set start_pos = (current_content|length) - tool_end_length %} {%- if start_pos &amp;lt; 0 %} {%- set start_pos = 0 %} {%- endif %} {%- set end_of_message = current_content[start_pos:] %} {%- if ns.multi_step_tool and message.role == &amp;quot;user&amp;quot; and not(start_of_message == tool_start and end_of_message == tool_end) %} {%- set ns.multi_step_tool = false %} {%- set ns.last_query_index = index %} {%- endif %} {%- endfor %} {%- for message in messages %} {%- set m_content = message.content if message.content is defined and message.content is not none else '' %} {%- if (message.role == &amp;quot;user&amp;quot;) or (message.role == &amp;quot;system&amp;quot; and not loop.first) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content + '&amp;lt;|im_end|&amp;gt;' + '\n' }} {%- elif message.role == &amp;quot;assistant&amp;quot; %} {%- set reasoning_content = '' %} {%- if message.reasoning_content is defined and message.reasoning_content is not none %} {%- set reasoning_content = message.reasoning_content %} {%- else %} {%- if '&amp;lt;/think&amp;gt;' in m_content %} {%- set m_content = (m_content.split('&amp;lt;/think&amp;gt;')|last).lstrip('\n') %} {%- set reasoning_content = (m_content.split('&amp;lt;/think&amp;gt;')|first).rstrip('\n') %} {%- set reasoning_content = (reasoning_content.split('&amp;lt;think&amp;gt;')|last).lstrip('\n') %} {%- endif %} {%- endif %} {%- if loop.index0 &amp;gt; ns.last_query_index %} {%- if loop.last or (not loop.last and (not reasoning_content.strip() == &amp;quot;&amp;quot;)) %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n&amp;lt;think&amp;gt;\n' + reasoning_content.strip('\n') + '\n&amp;lt;/think&amp;gt;\n\n' + m_content.lstrip('\n') }} {%- else %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content }} {%- endif %} {%- else %} {{- '&amp;lt;|im_start|&amp;gt;' + message.role + '\n' + m_content }} {%- endif %} {%- if message.tool_calls %} {%- for tool_call in message.tool_calls %} {%- if (loop.first and m_content) or (not loop.first) %} {{- '\n' }} {%- endif %} {%- if tool_call.function %} {%- set tool_call = tool_call.function %} {%- endif %} {{- '&amp;lt;tool_call&amp;gt;\n{&amp;quot;name&amp;quot;: &amp;quot;' }} {{- tool_call.name }} {{- '&amp;quot;, &amp;quot;arguments&amp;quot;: ' }} {%- if tool_call.arguments is string %} {{- tool_call.arguments }} {%- else %} {{- tool_call.arguments | tojson }} {%- endif %} {{- '}\n&amp;lt;/tool_call&amp;gt;' }} {%- endfor %} {%- endif %} {{- '&amp;lt;|im_end|&amp;gt;\n' }} {%- elif message.role == &amp;quot;tool&amp;quot; %} {%- if loop.first or (messages[loop.index0 - 1].role != &amp;quot;tool&amp;quot;) %} {{- '&amp;lt;|im_start|&amp;gt;user' }} {%- endif %} {{- '\n&amp;lt;tool_response&amp;gt;\n' }} {{- message.content if message.content is defined and message.content is not none else '' }} {{- '\n&amp;lt;/tool_response&amp;gt;' }} {%- if loop.last or (messages[loop.index0 + 1].role != &amp;quot;tool&amp;quot;) %} {{- '&amp;lt;|im_end|&amp;gt;\n' }} {%- endif %} {%- endif %} {%- endfor %} {%- if add_generation_prompt %} {{- '&amp;lt;|im_start|&amp;gt;assistant\n' }} {%- if enable_thinking is defined and enable_thinking is false %} {{- '&amp;lt;think&amp;gt;\n\n&amp;lt;/think&amp;gt;\n\n' }} {%- endif %} {%- endif %} &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Seems to work correctly, I've made it work with Roo Code using this. UPDATE: more fixes&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ilintar"&gt; /u/ilintar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klltt4/the_qwen3_chat_template_is_still_bugged/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T00:57:56+00:00</published>
+    <published>2025-05-13T13:23:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1klrony</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klrony/the_scariest_thing_in_llmsai_isnt_the_models_or/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-13T17:19:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1km2jyz</id>
+    <title>Gemini 2.5 exp death.</title>
+    <updated>2025-05-14T00:57:56+00:00</updated>
+    <author>
+      <name>/u/brocolongo</name>
+      <uri>https://old.reddit.com/user/brocolongo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that 2.5 exp free it's dead, what alternatives are you guys using for coding ?😞 (Free alternatives) &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/brocolongo"&gt; /u/brocolongo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1km2jyz/gemini_25_exp_death/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T00:57:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1klqir8</id>
@@ -164,19 +164,6 @@
     <published>2025-05-13T12:26:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kma6tm</id>
-    <title>Found a pretty good cline-compatible Qwen3 MoE for Apple Silicon</title>
-    <updated>2025-05-14T08:36:49+00:00</updated>
-    <author>
-      <name>/u/FluffyGoatNerder</name>
-      <uri>https://old.reddit.com/user/FluffyGoatNerder</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I regularly test new models appearing on ollama's directory for use on my Mac M2 Ultra. Sparse models load tokens faster on Silicon so MoEs are models I target. &lt;a href="https://www.ollama.com/mychen76/qwen3_cline_roocode:30b"&gt;mychen76/qwen3_cline_roocode:30b &lt;/a&gt;is a MoE of qwen3 and so far, it has performed very well. The same user has also produced a 128k context window version (non-MoE) but this does not (yet) load on ollama. Just FYI since I often use stuff from here and often forget to feedback.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FluffyGoatNerder"&gt; /u/FluffyGoatNerder &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T08:36:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1km5p7a</id>
     <title>Aya Vision: Advancing the Frontier of Multilingual Multimodality</title>
     <updated>2025-05-14T03:41:24+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1km5p7a/aya_vision_advancing_the_frontier_of_multilingual/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T03:41:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kma6tm</id>
+    <title>Found a pretty good cline-compatible Qwen3 MoE for Apple Silicon</title>
+    <updated>2025-05-14T08:36:49+00:00</updated>
+    <author>
+      <name>/u/FluffyGoatNerder</name>
+      <uri>https://old.reddit.com/user/FluffyGoatNerder</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I regularly test new models appearing on ollama's directory for use on my Mac M2 Ultra. Sparse models load tokens faster on Silicon so MoEs are models I target. &lt;a href="https://www.ollama.com/mychen76/qwen3_cline_roocode:30b"&gt;mychen76/qwen3_cline_roocode:30b &lt;/a&gt;is a MoE of qwen3 and so far, it has performed very well. The same user has also produced a 128k context window version (non-MoE) but this does not (yet) load on ollama. Just FYI since I often use stuff from here and often forget to feedback.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FluffyGoatNerder"&gt; /u/FluffyGoatNerder &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T08:36:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1klrio8</id>
@@ -229,6 +229,19 @@
     <published>2025-05-14T06:17:31+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kmdzv0</id>
+    <title>best small language model? around 2-10b parameters</title>
+    <updated>2025-05-14T12:33:08+00:00</updated>
+    <author>
+      <name>/u/ThatIsNotIllegal</name>
+      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;whats the best small language model for chatting in english only, no need for any type of coding, math or multilingual capabilities, i've seen gemma and the smaller qwen models but are there any better alternatives that focus just on chatting/emotional intelligence? &lt;/p&gt; &lt;p&gt;sorry if my question seems stupid i'm still new to this :P&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T12:33:08+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kme2c4</id>
     <title>Build DeepSeek architecture from scratch | 20 high quality video lectures</title>
     <updated>2025-05-14T12:36:36+00:00</updated>
@@ -253,19 +266,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmetlw/github_bytedanceseedseed15vl_seed15vl_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T13:12:54+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kmdzv0</id>
-    <title>best small language model? around 2-10b parameters</title>
-    <updated>2025-05-14T12:33:08+00:00</updated>
-    <author>
-      <name>/u/ThatIsNotIllegal</name>
-      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;whats the best small language model for chatting in english only, no need for any type of coding, math or multilingual capabilities, i've seen gemma and the smaller qwen models but are there any better alternatives that focus just on chatting/emotional intelligence? &lt;/p&gt; &lt;p&gt;sorry if my question seems stupid i'm still new to this :P&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmdzv0/best_small_language_model_around_210b_parameters/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T12:33:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1km81fb</id>
@@ -294,19 +294,6 @@
     <published>2025-05-14T05:17:14+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmg1ht</id>
-    <title>Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)</title>
-    <updated>2025-05-14T14:06:06+00:00</updated>
-    <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"&gt; &lt;img alt="Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)" src="https://external-preview.redd.it/TmzIWNNChRov_gA4HjoE6PO2tsdMf2f2ESAHN00wPOY.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4c439fad5f75361eaa3eb176a04dfd9733c3e274" title="Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Wan2.1&lt;/strong&gt; &lt;a href="https://github.com/ali-vilab/VACE"&gt;VACE&lt;/a&gt;, an all-in-one model for video creation and editing&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-VACE-14B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T14:06:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmaztr</id>
     <title>Announcing MAESTRO: A Local-First AI Research App! (Plus some benchmarks)</title>
     <updated>2025-05-14T09:35:43+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmaztr/announcing_maestro_a_localfirst_ai_research_app/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T09:35:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmg1ht</id>
+    <title>Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)</title>
+    <updated>2025-05-14T14:06:06+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"&gt; &lt;img alt="Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)" src="https://external-preview.redd.it/TmzIWNNChRov_gA4HjoE6PO2tsdMf2f2ESAHN00wPOY.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4c439fad5f75361eaa3eb176a04dfd9733c3e274" title="Wan-AI/Wan2.1-VACE-14B · Hugging Face (Apache-2.0)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Wan2.1&lt;/strong&gt; &lt;a href="https://github.com/ali-vilab/VACE"&gt;VACE&lt;/a&gt;, an all-in-one model for video creation and editing&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/Wan-AI/Wan2.1-VACE-14B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmg1ht/wanaiwan21vace14b_hugging_face_apache20/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T14:06:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1klx9q2</id>
