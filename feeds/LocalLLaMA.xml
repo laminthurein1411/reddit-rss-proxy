@@ -2,49 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-14T19:48:42+00:00</updated>
+  <updated>2025-05-14T20:06:22+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kmj3zn</id>
-    <title>Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide</title>
-    <updated>2025-05-14T16:09:45+00:00</updated>
+    <id>t3_1kmcdyt</id>
+    <title>LLM - better chunking method</title>
+    <updated>2025-05-14T11:07:03+00:00</updated>
     <author>
-      <name>/u/phoneixAdi</name>
-      <uri>https://old.reddit.com/user/phoneixAdi</uri>
+      <name>/u/Phoenix2990</name>
+      <uri>https://old.reddit.com/user/Phoenix2990</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt; &lt;img alt="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" src="https://preview.redd.it/27dndr0qtr0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=15922ba752a7ef4a4a0ac8386c7de6bd81b2dc6f" title="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Finally got around to the bookmark I had saved a while ago: OpenAI's prompting guide: &lt;/p&gt; &lt;p&gt;&lt;a href="https://cookbook.openai.com/examples/gpt4-1_prompting_guide"&gt;https://cookbook.openai.com/examples/gpt4-1_prompting_guide&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have to say I really like it! I am still working through it. I usually scribble my notes in Excalidraw. I just wrote this for myself and am sharing it here in case it helps others. I think much of the guide is relevant in general to build useful agents (or simple deterministic workflows).&lt;/p&gt; &lt;p&gt;Note: I am still working through it, so this might change. I will add more here as I go through the guide. It's quite dense, and I am still making sense of it. So will change the sketch. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/27dndr0qtr0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Problems with using an LLM to chunk:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Time/latency -&amp;gt; it takes time for the LLM to output all the chunks.&lt;/li&gt; &lt;li&gt;Hitting output context window cap -&amp;gt; since you’re essentially re-creating entire documents but in chunks, then you’ll often hit the token capacity of the output window.&lt;/li&gt; &lt;li&gt;Cost - since your essentially outputting entire documents again, you r costs go up.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;The method below helps all 3.&lt;/p&gt; &lt;p&gt;Method:&lt;/p&gt; &lt;p&gt;Step 1: assign an identification number to each and every sentence or paragraph in your document.&lt;/p&gt; &lt;p&gt;a) Use a standard python library to parse the document into chunks of paragraphs or sentences. b) assign an identification number to each, and every sentence.&lt;/p&gt; &lt;p&gt;Example sentence: Red Riding Hood went to the shops. She did not like the food that they had there.&lt;/p&gt; &lt;p&gt;Example output: &amp;lt;1&amp;gt; Red Riding Hood went to the shops.&amp;lt;/1&amp;gt;&amp;lt;2&amp;gt;She did not like the food that they had there.&amp;lt;/2&amp;gt;&lt;/p&gt; &lt;p&gt;Note: this can easily be done with very standard python libraries that identify sentences. It’s very fast.&lt;/p&gt; &lt;p&gt;You now have a method to identify sentences using a single digit. The LLM will now take advantage of this.&lt;/p&gt; &lt;p&gt;Step 2. a) Send the entire document WITH the identification numbers associated to each sentence. b) tell the LLM “how”you would like it to chunk the material I.e: “please keep semantic similar content together” c) tell the LLM that you have provided an I.d number for each sentence and that you want it to output only the i.d numbers e.g: chunk 1: 1,2,3 chunk 2: 4,5,6,7,8,9 chunk 3: 10,11,12,13&lt;/p&gt; &lt;p&gt;etc&lt;/p&gt; &lt;p&gt;Step 3: Reconstruct your chunks locally based on the LLM response. The LLM will provide you with the chunks and the sentence i.d’s that go into each chunk. All you need to do in your script is to re-construct it locally.&lt;/p&gt; &lt;p&gt;Notes:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;I did this method a couple years ago using ORIGINAL Haiku. It never messed up the chunking method. So it will definitely work for new models.&lt;/li&gt; &lt;li&gt;although I only provide 2 sentences in my example, in reality I used this with many, many, many chunks. For example, I chunked large court cases using this method.&lt;/li&gt; &lt;li&gt;It’s actually a massive time and token save. Suddenly a 50 token sentence becomes “1” token….&lt;/li&gt; &lt;li&gt;If someone else already identified this method then please ignore this post :)&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Phoenix2990"&gt; /u/Phoenix2990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T16:09:45+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1klrio8</id>
-    <title>LLM trained to gaslight people</title>
-    <updated>2025-05-13T17:13:04+00:00</updated>
-    <author>
-      <name>/u/LividResearcher7818</name>
-      <uri>https://old.reddit.com/user/LividResearcher7818</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I finetuned gemma 3 12b using RL to be an expert at gaslighting and demeaning it’s users. I’ve been training LLMs using RL with soft rewards for a while now, and seeing OpenAI’s experiments with sycophancy I wanted to see if we can apply it to make the model behave on the other end of the spectrum..&lt;/p&gt; &lt;p&gt;It is not perfect (i guess no eval exists for measuring this), but can be really good in some situations.&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.gaslight-gpt.com/"&gt;https://www.gaslight-gpt.com/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;(A lot of people using the website at once, way more than my single gpu machine can handle so i will share weights on hf)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LividResearcher7818"&gt; /u/LividResearcher7818 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klrio8/llm_trained_to_gaslight_people/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1klrio8/llm_trained_to_gaslight_people/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1klrio8/llm_trained_to_gaslight_people/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-13T17:13:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kmhwah</id>
-    <title>Open source robust LLM extractor for HTML/Markdown in Typescript</title>
-    <updated>2025-05-14T15:21:05+00:00</updated>
-    <author>
-      <name>/u/Visual-Librarian6601</name>
-      <uri>https://old.reddit.com/user/Visual-Librarian6601</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;While working with LLMs for structured web data extraction, I kept running into issues with invalid JSON and broken links in the output. This led me to build a library focused on robust extraction and enrichment:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Clean HTML conversion&lt;/strong&gt;: transforms HTML into LLM-friendly markdown with an option to extract just the main content&lt;/li&gt; &lt;li&gt;&lt;strong&gt;LLM structured output&lt;/strong&gt;: Uses Gemini 2.5 flash or GPT-4o mini to balance accuracy and cost. Can also also use custom prompt&lt;/li&gt; &lt;li&gt;&lt;strong&gt;JSON sanitization&lt;/strong&gt;: If the LLM structured output fails or doesn't fully match your schema, a sanitization process attempts to recover and fix the data, especially useful for deeply nested objects and arrays&lt;/li&gt; &lt;li&gt;&lt;strong&gt;URL validation&lt;/strong&gt;: all extracted URLs are validated - handling relative URLs, removing invalid ones, and repairing markdown-escaped links&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Github: &lt;a href="https://github.com/lightfeed/lightfeed-extract"&gt;https://github.com/lightfeed/lightfeed-extract&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I'd love to hear if anyone else has experimented with LLMs for data extraction or if you have any questions about this approach!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Visual-Librarian6601"&gt; /u/Visual-Librarian6601 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhwah/open_source_robust_llm_extractor_for_htmlmarkdown/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhwah/open_source_robust_llm_extractor_for_htmlmarkdown/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhwah/open_source_robust_llm_extractor_for_htmlmarkdown/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T15:21:05+00:00</published>
+    <published>2025-05-14T11:07:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1kma6tm</id>
@@ -58,6 +32,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T08:36:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmj3gl</id>
+    <title>Roadmap for frontier models summer 2025</title>
+    <updated>2025-05-14T16:09:10+00:00</updated>
+    <author>
+      <name>/u/Terminator857</name>
+      <uri>https://old.reddit.com/user/Terminator857</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;ol&gt; &lt;li&gt;grok 3.5&lt;/li&gt; &lt;li&gt;o3 pro / o4 full&lt;/li&gt; &lt;li&gt;gemini ultra&lt;/li&gt; &lt;li&gt;claude 4 (neptune)&lt;/li&gt; &lt;li&gt;deepseek r2&lt;/li&gt; &lt;li&gt;r2 operator&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;a href="https://x.com/iruletheworldmo/status/1922413637496344818"&gt;https://x.com/iruletheworldmo/status/1922413637496344818&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Terminator857"&gt; /u/Terminator857 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3gl/roadmap_for_frontier_models_summer_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3gl/roadmap_for_frontier_models_summer_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3gl/roadmap_for_frontier_models_summer_2025/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T16:09:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmj3zn</id>
+    <title>Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide</title>
+    <updated>2025-05-14T16:09:45+00:00</updated>
+    <author>
+      <name>/u/phoneixAdi</name>
+      <uri>https://old.reddit.com/user/phoneixAdi</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt; &lt;img alt="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" src="https://preview.redd.it/27dndr0qtr0f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=15922ba752a7ef4a4a0ac8386c7de6bd81b2dc6f" title="Personal notes: Agentic Loop from OpenAI's GPT-4.1 Prompting Guide" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Finally got around to the bookmark I had saved a while ago: OpenAI's prompting guide: &lt;/p&gt; &lt;p&gt;&lt;a href="https://cookbook.openai.com/examples/gpt4-1_prompting_guide"&gt;https://cookbook.openai.com/examples/gpt4-1_prompting_guide&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have to say I really like it! I am still working through it. I usually scribble my notes in Excalidraw. I just wrote this for myself and am sharing it here in case it helps others. I think much of the guide is relevant in general to build useful agents (or simple deterministic workflows).&lt;/p&gt; &lt;p&gt;Note: I am still working through it, so this might change. I will add more here as I go through the guide. It's quite dense, and I am still making sense of it. So will change the sketch. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phoneixAdi"&gt; /u/phoneixAdi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/27dndr0qtr0f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmj3zn/personal_notes_agentic_loop_from_openais_gpt41/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T16:09:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1klxlbx</id>
@@ -112,19 +112,6 @@
     <published>2025-05-14T12:33:08+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmnsol</id>
-    <title>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</title>
-    <updated>2025-05-14T19:14:49+00:00</updated>
-    <author>
-      <name>/u/NewtMurky</name>
-      <uri>https://old.reddit.com/user/NewtMurky</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt; &lt;img alt="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" src="https://preview.redd.it/pj1r83skrs0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7100be7b0bc1cceb9f30d390f47de6dcbfbabcec" title="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, Google announced AlphaEvolve, an evolutionary coding agent powered by large language models for general-purpose algorithm discovery and optimization. AlphaEvolve pairs the creative problem-solving capabilities of our Gemini models with automated evaluators that verify answers, and uses an evolutionary framework to improve upon the most promising ideas.&lt;/p&gt; &lt;p&gt;AlphaEvolve enhanced the efficiency of Google's data centers, chip design and AI training processes — including training the large language models underlying &lt;strong&gt;AlphaEvolve itself&lt;/strong&gt;. It has also helped design faster matrix multiplication algorithms and find new solutions to open mathematical problems, showing incredible promise for application across many areas.&lt;/p&gt; &lt;p&gt;Blog post: &lt;a href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"&gt;https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"&gt;https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pj1r83skrs0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T19:14:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1km81fb</id>
     <title>Embrace the jank (2x5090)</title>
     <updated>2025-05-14T06:04:35+00:00</updated>
@@ -164,17 +151,17 @@
     <published>2025-05-14T13:12:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmmo48</id>
-    <title>Why do so many people not recommend LLM Studio?</title>
-    <updated>2025-05-14T18:29:57+00:00</updated>
+    <id>t3_1kmnsol</id>
+    <title>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</title>
+    <updated>2025-05-14T19:14:49+00:00</updated>
     <author>
-      <name>/u/intimate_sniffer69</name>
-      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
+      <name>/u/NewtMurky</name>
+      <uri>https://old.reddit.com/user/NewtMurky</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious why so many people do not like this application or prefer an alternative? What's wrong with it? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt; &lt;img alt="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" src="https://preview.redd.it/pj1r83skrs0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7100be7b0bc1cceb9f30d390f47de6dcbfbabcec" title="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, Google announced AlphaEvolve, an evolutionary coding agent powered by large language models for general-purpose algorithm discovery and optimization. AlphaEvolve pairs the creative problem-solving capabilities of our Gemini models with automated evaluators that verify answers, and uses an evolutionary framework to improve upon the most promising ideas.&lt;/p&gt; &lt;p&gt;AlphaEvolve enhanced the efficiency of Google's data centers, chip design and AI training processes — including training the large language models underlying &lt;strong&gt;AlphaEvolve itself&lt;/strong&gt;. It has also helped design faster matrix multiplication algorithms and find new solutions to open mathematical problems, showing incredible promise for application across many areas.&lt;/p&gt; &lt;p&gt;Blog post: &lt;a href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"&gt;https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"&gt;https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pj1r83skrs0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T18:29:57+00:00</published>
+    <published>2025-05-14T19:14:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1km7azf</id>
@@ -190,17 +177,17 @@
     <published>2025-05-14T05:17:14+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmi59x</id>
-    <title>Stable Audio Open Small - new fast audio generation model</title>
-    <updated>2025-05-14T15:31:25+00:00</updated>
+    <id>t3_1kmmo48</id>
+    <title>Why do so many people not recommend LLM Studio?</title>
+    <updated>2025-05-14T18:29:57+00:00</updated>
     <author>
-      <name>/u/iGermanProd</name>
-      <uri>https://old.reddit.com/user/iGermanProd</uri>
+      <name>/u/intimate_sniffer69</name>
+      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Weights&lt;/strong&gt;: &lt;a href="https://huggingface.co/stabilityai/stable-audio-open-small"&gt;https://huggingface.co/stabilityai/stable-audio-open-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://arxiv.org/abs/2505.08175"&gt;https://arxiv.org/abs/2505.08175&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Arm learning path&lt;/strong&gt;: &lt;a href="https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/run-stable-audio-open-small-with-lite-rt"&gt;https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/run-stable-audio-open-small-with-lite-rt&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The last link has some demos, they claim 30% faster than realtime!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iGermanProd"&gt; /u/iGermanProd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious why so many people do not like this application or prefer an alternative? What's wrong with it? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T15:31:25+00:00</published>
+    <published>2025-05-14T18:29:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1kme2c4</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kme2c4/build_deepseek_architecture_from_scratch_20_high/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T12:36:36+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmi59x</id>
+    <title>Stable Audio Open Small - new fast audio generation model</title>
+    <updated>2025-05-14T15:31:25+00:00</updated>
+    <author>
+      <name>/u/iGermanProd</name>
+      <uri>https://old.reddit.com/user/iGermanProd</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Weights&lt;/strong&gt;: &lt;a href="https://huggingface.co/stabilityai/stable-audio-open-small"&gt;https://huggingface.co/stabilityai/stable-audio-open-small&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://arxiv.org/abs/2505.08175"&gt;https://arxiv.org/abs/2505.08175&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Arm learning path&lt;/strong&gt;: &lt;a href="https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/run-stable-audio-open-small-with-lite-rt"&gt;https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/run-stable-audio-open-small-with-lite-rt&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The last link has some demos, they claim 30% faster than realtime!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iGermanProd"&gt; /u/iGermanProd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi59x/stable_audio_open_small_new_fast_audio_generation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T15:31:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmmdm9</id>
@@ -242,19 +242,6 @@
     <published>2025-05-14T18:32:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmhr87</id>
-    <title>Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!</title>
-    <updated>2025-05-14T15:15:31+00:00</updated>
-    <author>
-      <name>/u/TheLocalDrummer</name>
-      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt; &lt;img alt="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" src="https://external-preview.redd.it/vaSJWfDvrVhyb2X2lFu4a2nMHg68l5zMzNqYLj2vNZ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059aaa73054b57a14497284f4a9f9a7d64c69435" title="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Snowpiercer-15B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T15:15:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmaztr</id>
     <title>Announcing MAESTRO: A Local-First AI Research App! (Plus some benchmarks)</title>
     <updated>2025-05-14T09:35:43+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmaztr/announcing_maestro_a_localfirst_ai_research_app/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T09:35:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmhr87</id>
+    <title>Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!</title>
+    <updated>2025-05-14T15:15:31+00:00</updated>
+    <author>
+      <name>/u/TheLocalDrummer</name>
+      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt; &lt;img alt="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" src="https://external-preview.redd.it/vaSJWfDvrVhyb2X2lFu4a2nMHg68l5zMzNqYLj2vNZ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059aaa73054b57a14497284f4a9f9a7d64c69435" title="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Snowpiercer-15B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T15:15:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1klx9q2</id>
