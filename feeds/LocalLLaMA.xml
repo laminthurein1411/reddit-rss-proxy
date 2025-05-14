@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-14T19:05:27+00:00</updated>
+  <updated>2025-05-14T19:21:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1km5p7a</id>
-    <title>Aya Vision: Advancing the Frontier of Multilingual Multimodality</title>
-    <updated>2025-05-14T03:41:24+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Abstract &lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Building multimodal language models is fundamentally challenging: it requires aligning vision and language modalities, curating high-quality instruction data, and avoiding the degradation of existing text-only capabilities once vision is introduced. These difficulties are further magnified in the multilingual setting, where the need for multimodal data in different languages exacerbates existing data scarcity, machine translation often distorts meaning, and catastrophic forgetting is more pronounced. To address the aforementioned challenges, we introduce novel techniques spanning both data and modeling. First, we develop a synthetic annotation framework that curates highquality, diverse multilingual multimodal instruction data, enabling Aya Vision models to produce natural, human-preferred responses to multimodal inputs across many languages. Complementing this, we propose a cross-modal model merging technique that mitigates catastrophic forgetting, effectively preserving text-only capabilities while simultaneously enhancing multimodal generative performance. Aya-Vision-8B achieves best-in-class performance compared to strong multimodal models such as Qwen-2.5-VL-7B, Pixtral-12B, and even much larger Llama-3.2-90B-Vision. We further scale this approach with Aya-Vision-32B, which outperforms models more than twice its size, such as Molmo-72B and LLaMA-3.2-90B-Vision. Our work advances multilingual progress on the multi-modal frontier, and provides insights into techniques that effectively bend the need for compute while delivering extremely high performance. &lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Aya-Vision-8B: &lt;a href="https://huggingface.co/CohereLabs/aya-vision-8B"&gt;https://huggingface.co/CohereLabs/aya-vision-8B&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Aya-Vision-32B: &lt;a href="https://huggingface.co/CohereLabs/aya-vision-32B"&gt;https://huggingface.co/CohereLabs/aya-vision-32B&lt;/a&gt; &lt;/p&gt; &lt;p&gt;AyaVisionBench: &lt;a href="https://huggingface.co/datasets/CohereLabs/AyaVisionBench"&gt;https://huggingface.co/datasets/CohereLabs/AyaVisionBench&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/pdf/2505.08751"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1km5p7a/aya_vision_advancing_the_frontier_of_multilingual/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1km5p7a/aya_vision_advancing_the_frontier_of_multilingual/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T03:41:24+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kmcdyt</id>
-    <title>LLM - better chunking method</title>
-    <updated>2025-05-14T11:07:03+00:00</updated>
-    <author>
-      <name>/u/Phoenix2990</name>
-      <uri>https://old.reddit.com/user/Phoenix2990</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Problems with using an LLM to chunk:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Time/latency -&amp;gt; it takes time for the LLM to output all the chunks.&lt;/li&gt; &lt;li&gt;Hitting output context window cap -&amp;gt; since you’re essentially re-creating entire documents but in chunks, then you’ll often hit the token capacity of the output window.&lt;/li&gt; &lt;li&gt;Cost - since your essentially outputting entire documents again, you r costs go up.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;The method below helps all 3.&lt;/p&gt; &lt;p&gt;Method:&lt;/p&gt; &lt;p&gt;Step 1: assign an identification number to each and every sentence or paragraph in your document.&lt;/p&gt; &lt;p&gt;a) Use a standard python library to parse the document into chunks of paragraphs or sentences. b) assign an identification number to each, and every sentence.&lt;/p&gt; &lt;p&gt;Example sentence: Red Riding Hood went to the shops. She did not like the food that they had there.&lt;/p&gt; &lt;p&gt;Example output: &amp;lt;1&amp;gt; Red Riding Hood went to the shops.&amp;lt;/1&amp;gt;&amp;lt;2&amp;gt;She did not like the food that they had there.&amp;lt;/2&amp;gt;&lt;/p&gt; &lt;p&gt;Note: this can easily be done with very standard python libraries that identify sentences. It’s very fast.&lt;/p&gt; &lt;p&gt;You now have a method to identify sentences using a single digit. The LLM will now take advantage of this.&lt;/p&gt; &lt;p&gt;Step 2. a) Send the entire document WITH the identification numbers associated to each sentence. b) tell the LLM “how”you would like it to chunk the material I.e: “please keep semantic similar content together” c) tell the LLM that you have provided an I.d number for each sentence and that you want it to output only the i.d numbers e.g: chunk 1: 1,2,3 chunk 2: 4,5,6,7,8,9 chunk 3: 10,11,12,13&lt;/p&gt; &lt;p&gt;etc&lt;/p&gt; &lt;p&gt;Step 3: Reconstruct your chunks locally based on the LLM response. The LLM will provide you with the chunks and the sentence i.d’s that go into each chunk. All you need to do in your script is to re-construct it locally.&lt;/p&gt; &lt;p&gt;Notes:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;I did this method a couple years ago using ORIGINAL Haiku. It never messed up the chunking method. So it will definitely work for new models.&lt;/li&gt; &lt;li&gt;although I only provide 2 sentences in my example, in reality I used this with many, many, many chunks. For example, I chunked large court cases using this method.&lt;/li&gt; &lt;li&gt;It’s actually a massive time and token save. Suddenly a 50 token sentence becomes “1” token….&lt;/li&gt; &lt;li&gt;If someone else already identified this method then please ignore this post :)&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Phoenix2990"&gt; /u/Phoenix2990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmcdyt/llm_better_chunking_method/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T11:07:03+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kmj3gl</id>
     <title>Roadmap for frontier models summer 2025</title>
@@ -84,6 +58,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kma6tm/found_a_pretty_good_clinecompatible_qwen3_moe_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T08:36:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmnsol</id>
+    <title>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</title>
+    <updated>2025-05-14T19:14:49+00:00</updated>
+    <author>
+      <name>/u/NewtMurky</name>
+      <uri>https://old.reddit.com/user/NewtMurky</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt; &lt;img alt="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" src="https://preview.redd.it/pj1r83skrs0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7100be7b0bc1cceb9f30d390f47de6dcbfbabcec" title="AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Today, Google announced AlphaEvolve, an evolutionary coding agent powered by large language models for general-purpose algorithm discovery and optimization. AlphaEvolve pairs the creative problem-solving capabilities of our Gemini models with automated evaluators that verify answers, and uses an evolutionary framework to improve upon the most promising ideas.&lt;/p&gt; &lt;p&gt;AlphaEvolve enhanced the efficiency of Google's data centers, chip design and AI training processes — including training the large language models underlying &lt;strong&gt;AlphaEvolve itself&lt;/strong&gt;. It has also helped design faster matrix multiplication algorithms and find new solutions to open mathematical problems, showing incredible promise for application across many areas.&lt;/p&gt; &lt;p&gt;Blog post: &lt;a href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"&gt;https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Paper: &lt;a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf"&gt;https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/NewtMurky"&gt; /u/NewtMurky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/pj1r83skrs0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmnsol/alphaevolve_a_geminipowered_coding_agent_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T19:14:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmmo48</id>
+    <title>Why do so many people not recommend LLM Studio?</title>
+    <updated>2025-05-14T18:29:57+00:00</updated>
+    <author>
+      <name>/u/intimate_sniffer69</name>
+      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious why so many people do not like this application or prefer an alternative? What's wrong with it? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmo48/why_do_so_many_people_not_recommend_llm_studio/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T18:29:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1klxlbx</id>
@@ -190,19 +190,6 @@
     <published>2025-05-14T18:32:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmmdm9</id>
-    <title>My Local LLM Chat Interface: Current Progress and Vision</title>
-    <updated>2025-05-14T18:18:12+00:00</updated>
-    <author>
-      <name>/u/Desperate_Rub_1352</name>
-      <uri>https://old.reddit.com/user/Desperate_Rub_1352</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"&gt; &lt;img alt="My Local LLM Chat Interface: Current Progress and Vision" src="https://external-preview.redd.it/bHduMTFnZmNoczBmMQXdlzCcXrRSF6QNtR-5LXsr8naKnLiD8pPE0dCTLYFs.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c19d5850a365956aabd16ca86f020e48357e7ae" title="My Local LLM Chat Interface: Current Progress and Vision" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone, my first reddit post ever! I’ve been building a fully local, offline LLM chat interface designed around actual daily use, fast performance, and a focus on clean, customizable design. It started as a personal challenge and has grown into something I use constantly and plan to evolve much further.&lt;/p&gt; &lt;p&gt;Here’s what I’ve implemented so far:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Complete markdown renderer for clean message formatting&lt;/li&gt; &lt;li&gt;Chat minimization to keep long conversations tidy&lt;/li&gt; &lt;li&gt;In-chat search to quickly find messages by keyword&lt;/li&gt; &lt;li&gt;Text-to-speech (TTS) support for LLM responses&lt;/li&gt; &lt;li&gt;User message editing and forking&lt;/li&gt; &lt;li&gt;Switching between different versions of user and LLM messages&lt;/li&gt; &lt;li&gt;Experimental quoting system for LLM outputs (early stage)&lt;/li&gt; &lt;li&gt;Polished front-end with custom theme and color tuning&lt;/li&gt; &lt;li&gt;Multiple theme switching for different moods and use cases&lt;/li&gt; &lt;li&gt;Beautifully crafted UI with attention to user experience&lt;/li&gt; &lt;li&gt;Glassmorphism effects for a modern, layered visual look&lt;/li&gt; &lt;li&gt;Initial memory feature to help the LLM retain context across interactions, in future I will make it global and local memory as well&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The current version feels fast, snappy, and very enjoyable to use. But I’m only at the start. The next phase will focus on expanding real functionality: integrating task-oriented agents, adding deep document research and knowledge exploration, enabling thinking UIs and visual canvases, providing code analysis and explanations, introducing full voice-driven control with fallback to text, and even allowing generation of audio summaries or podcast-like outputs from chats and documents. The aim is to turn this into a complete local research, thinking, and workflow assistant.&lt;/p&gt; &lt;p&gt;I built this for myself, but if people show interest, I’ll consider releasing it. I genuinely want feedback: what am I missing, what could be better, and which features would you prioritize if you were using something like this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Desperate_Rub_1352"&gt; /u/Desperate_Rub_1352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0az6hifchs0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T18:18:12+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1km7azf</id>
     <title>US issues worldwide restriction on using Huawei AI chips</title>
     <updated>2025-05-14T05:17:14+00:00</updated>
@@ -229,6 +216,19 @@
     <published>2025-05-14T15:31:25+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kmmdm9</id>
+    <title>My Local LLM Chat Interface: Current Progress and Vision</title>
+    <updated>2025-05-14T18:18:12+00:00</updated>
+    <author>
+      <name>/u/Desperate_Rub_1352</name>
+      <uri>https://old.reddit.com/user/Desperate_Rub_1352</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"&gt; &lt;img alt="My Local LLM Chat Interface: Current Progress and Vision" src="https://external-preview.redd.it/bHduMTFnZmNoczBmMQXdlzCcXrRSF6QNtR-5LXsr8naKnLiD8pPE0dCTLYFs.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c19d5850a365956aabd16ca86f020e48357e7ae" title="My Local LLM Chat Interface: Current Progress and Vision" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone, my first reddit post ever! I’ve been building a fully local, offline LLM chat interface designed around actual daily use, fast performance, and a focus on clean, customizable design. It started as a personal challenge and has grown into something I use constantly and plan to evolve much further.&lt;/p&gt; &lt;p&gt;Here’s what I’ve implemented so far:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Complete markdown renderer for clean message formatting&lt;/li&gt; &lt;li&gt;Chat minimization to keep long conversations tidy&lt;/li&gt; &lt;li&gt;In-chat search to quickly find messages by keyword&lt;/li&gt; &lt;li&gt;Text-to-speech (TTS) support for LLM responses&lt;/li&gt; &lt;li&gt;User message editing and forking&lt;/li&gt; &lt;li&gt;Switching between different versions of user and LLM messages&lt;/li&gt; &lt;li&gt;Experimental quoting system for LLM outputs (early stage)&lt;/li&gt; &lt;li&gt;Polished front-end with custom theme and color tuning&lt;/li&gt; &lt;li&gt;Multiple theme switching for different moods and use cases&lt;/li&gt; &lt;li&gt;Beautifully crafted UI with attention to user experience&lt;/li&gt; &lt;li&gt;Glassmorphism effects for a modern, layered visual look&lt;/li&gt; &lt;li&gt;Initial memory feature to help the LLM retain context across interactions, in future I will make it global and local memory as well&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The current version feels fast, snappy, and very enjoyable to use. But I’m only at the start. The next phase will focus on expanding real functionality: integrating task-oriented agents, adding deep document research and knowledge exploration, enabling thinking UIs and visual canvases, providing code analysis and explanations, introducing full voice-driven control with fallback to text, and even allowing generation of audio summaries or podcast-like outputs from chats and documents. The aim is to turn this into a complete local research, thinking, and workflow assistant.&lt;/p&gt; &lt;p&gt;I built this for myself, but if people show interest, I’ll consider releasing it. I genuinely want feedback: what am I missing, what could be better, and which features would you prioritize if you were using something like this?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Desperate_Rub_1352"&gt; /u/Desperate_Rub_1352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0az6hifchs0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmmdm9/my_local_llm_chat_interface_current_progress_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T18:18:12+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kme2c4</id>
     <title>Build DeepSeek architecture from scratch | 20 high quality video lectures</title>
     <updated>2025-05-14T12:36:36+00:00</updated>
@@ -242,19 +242,6 @@
     <published>2025-05-14T12:36:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmhr87</id>
-    <title>Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!</title>
-    <updated>2025-05-14T15:15:31+00:00</updated>
-    <author>
-      <name>/u/TheLocalDrummer</name>
-      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt; &lt;img alt="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" src="https://external-preview.redd.it/vaSJWfDvrVhyb2X2lFu4a2nMHg68l5zMzNqYLj2vNZ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059aaa73054b57a14497284f4a9f9a7d64c69435" title="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Snowpiercer-15B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T15:15:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmaztr</id>
     <title>Announcing MAESTRO: A Local-First AI Research App! (Plus some benchmarks)</title>
     <updated>2025-05-14T09:35:43+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmaztr/announcing_maestro_a_localfirst_ai_research_app/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T09:35:43+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmhr87</id>
+    <title>Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!</title>
+    <updated>2025-05-14T15:15:31+00:00</updated>
+    <author>
+      <name>/u/TheLocalDrummer</name>
+      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt; &lt;img alt="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" src="https://external-preview.redd.it/vaSJWfDvrVhyb2X2lFu4a2nMHg68l5zMzNqYLj2vNZ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=059aaa73054b57a14497284f4a9f9a7d64c69435" title="Drummer's Snowpiercer 15B v1 - Trudge through the winter with a finetune of Nemotron 15B Thinker!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Snowpiercer-15B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmhr87/drummers_snowpiercer_15b_v1_trudge_through_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T15:15:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1klx9q2</id>
@@ -294,19 +294,6 @@
     <published>2025-05-14T14:06:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kmlu2y</id>
-    <title>Qwen3-30B-A6B-16-Extreme is fantastic</title>
-    <updated>2025-05-14T17:57:00+00:00</updated>
-    <author>
-      <name>/u/DocWolle</name>
-      <uri>https://old.reddit.com/user/DocWolle</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/DavidAU/Qwen3-30B-A6B-16-Extreme"&gt;https://huggingface.co/DavidAU/Qwen3-30B-A6B-16-Extreme&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Quants:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mradermacher/Qwen3-30B-A6B-16-Extreme-GGUF"&gt;https://huggingface.co/mradermacher/Qwen3-30B-A6B-16-Extreme-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Someone recently mentioned this model here on &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; and I gave it a try. For me it is the best model I can run locally with my 36GB CPU only setup. In my view it is a lot smarter than the original A3B model. &lt;/p&gt; &lt;p&gt;It uses 16 experts instead of 8 and when watching it thinking I can see that it thinks a step further/deeper than the original model. Speed is still great. &lt;/p&gt; &lt;p&gt;I wonder if anyone else has tried it. A 128k context version is also available.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DocWolle"&gt; /u/DocWolle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T17:57:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kmi3ra</id>
     <title>AMD Strix Halo (Ryzen AI Max+ 395) GPU LLM Performance</title>
     <updated>2025-05-14T15:29:44+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmi3ra/amd_strix_halo_ryzen_ai_max_395_gpu_llm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-14T15:29:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kmlu2y</id>
+    <title>Qwen3-30B-A6B-16-Extreme is fantastic</title>
+    <updated>2025-05-14T17:57:00+00:00</updated>
+    <author>
+      <name>/u/DocWolle</name>
+      <uri>https://old.reddit.com/user/DocWolle</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/DavidAU/Qwen3-30B-A6B-16-Extreme"&gt;https://huggingface.co/DavidAU/Qwen3-30B-A6B-16-Extreme&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Quants:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mradermacher/Qwen3-30B-A6B-16-Extreme-GGUF"&gt;https://huggingface.co/mradermacher/Qwen3-30B-A6B-16-Extreme-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Someone recently mentioned this model here on &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt; and I gave it a try. For me it is the best model I can run locally with my 36GB CPU only setup. In my view it is a lot smarter than the original A3B model. &lt;/p&gt; &lt;p&gt;It uses 16 experts instead of 8 and when watching it thinking I can see that it thinks a step further/deeper than the original model. Speed is still great. &lt;/p&gt; &lt;p&gt;I wonder if anyone else has tried it. A 128k context version is also available.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DocWolle"&gt; /u/DocWolle &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmlu2y/qwen330ba6b16extreme_is_fantastic/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-14T17:57:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmi6vl</id>
