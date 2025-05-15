@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-15T19:48:43+00:00</updated>
+  <updated>2025-05-15T20:07:34+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1kn69mp</id>
+    <title>How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?</title>
+    <updated>2025-05-15T11:54:06+00:00</updated>
+    <author>
+      <name>/u/coconautico</name>
+      <uri>https://old.reddit.com/user/coconautico</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt; &lt;img alt="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" src="https://b.thumbs.redditmedia.com/rqzDSRVqRbCQDZ3SFaKzcnoeDqw5K2FyJ-Re4mj9eho.jpg" title="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm trying to build a solution to &lt;strong&gt;analyze a set of PDF files&lt;/strong&gt; (5-10) using an LLM.&lt;/p&gt; &lt;p&gt;My current approach is to perform a &lt;strong&gt;high-quality OCR&lt;/strong&gt; (using Docling) and then, dump all this information as the &lt;strong&gt;context for my prompt&lt;/strong&gt;. However, I doubt this is the best strategy nowadays.&lt;/p&gt; &lt;p&gt;Playing around with Gemini, I've noticed it handles PDF files extremely well*, even showing the &lt;strong&gt;tokens it contains&lt;/strong&gt;. So I was wondering if the model is &amp;quot;&lt;strong&gt;reading&lt;/strong&gt;&amp;quot; the PDF file &lt;strong&gt;directly&lt;/strong&gt; (native vision), or is there a preliminary step where it converts the PDF to pure text using &lt;strong&gt;OCR before processing&lt;/strong&gt;?&lt;/p&gt; &lt;p&gt;I'm also wondering if a &lt;strong&gt;Retrieval Augmented Generation (RAG) strategy&lt;/strong&gt; is involved in how it interacts with the document content once uploaded.&lt;/p&gt; &lt;p&gt;If anyone knows more about this process, it would be interesting to hear.&lt;/p&gt; &lt;p&gt;Thank you!&lt;/p&gt; &lt;p&gt;*It was able to perfectly process a PDF of images with handwritten text and equations&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Additional information:&lt;/strong&gt;&lt;br /&gt; I've noticed that Gemini sometimes appends labels like `--- PAGE 1 ---`, `--- PAGE 2 ---`, etc., when processing PDFs. When I ask the model what tool it's using, it replies with something like “an internal tool to transcribe PDFs.” I've tried replicating the results using Google's public Vision APIs, but none of them produce the same output. So I assume they're using some internal system (maybe a custom-built tool) to reliably convert anything into plain text.&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What seems to be happening under the hood&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;As &lt;a href="/u/highergraphic"&gt;u/highergraphic&lt;/a&gt; suggested, I tried to pin down whether Gemini first turns each PDF page into an image and then processes natively using its multimodal capabilities on that rasterized page. Result? Every experiment seems to point to &amp;quot;yes.&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Experiments&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Original PDF:&lt;/strong&gt; Mixed text, images, and tables. → Perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Flat image of the same page:&lt;/strong&gt; Exported the page as a single PNG/JPG. → Same perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hybrid PDF:&lt;/strong&gt; Re-created the page but replaced some paragraphs and tables with screenshots of themselves (same size). → Still perfect.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF:&lt;/strong&gt; Shrunk the text until it was almost unreadable. → Worked until the characters were too small.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF (from images):&lt;/strong&gt; Same experiement as the previous one, but this time, I shrunk the images of the text until it was almost unreadable. → Same. It worked until the characters were too small.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Takeaway&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Gemini (and, I suspect, other modern multimodal LLMs) appears to:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Rasterize&lt;/strong&gt; each PDF page into an image.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Process it using the multimodal LLM&lt;/strong&gt; to produce plain text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Repeat.\&lt;/strong&gt;*&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;*Each new image processing adds a markers like &lt;code&gt;--- PAGE X ---&lt;/code&gt; to help with the context.&lt;/p&gt; &lt;p&gt;----&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Example of the PDF with textual parts of it replaced by images of the same size:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vjygb9rzly0f1.jpg?width=2479&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=26934052347e813429bd24acf12953167c945b7d"&gt;Example of the PDF page with text parts replaced by images of the same size&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coconautico"&gt; /u/coconautico &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T11:54:06+00:00</published>
+  </entry>
   <entry>
     <id>t3_1kmrfoo</id>
     <title>MLA optimization with flashattention for llama.cpp,MLA + FA now only uses K-cache - 47% saving on KV-cache size</title>
@@ -73,19 +86,6 @@
     <published>2025-05-14T17:57:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kngr5k</id>
-    <title>What's the difference between q8_k_xl and q8_0?</title>
-    <updated>2025-05-15T19:17:07+00:00</updated>
-    <author>
-      <name>/u/windows_error23</name>
-      <uri>https://old.reddit.com/user/windows_error23</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm unsure. I thought q8_0 is already close to perfect quality... could someone explain? Thanks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/windows_error23"&gt; /u/windows_error23 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kngr5k/whats_the_difference_between_q8_k_xl_and_q8_0/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kngr5k/whats_the_difference_between_q8_k_xl_and_q8_0/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kngr5k/whats_the_difference_between_q8_k_xl_and_q8_0/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T19:17:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kn2gsa</id>
     <title>Is neural engine on mac a wasted opportunity?</title>
     <updated>2025-05-15T07:41:38+00:00</updated>
@@ -99,17 +99,17 @@
     <published>2025-05-15T07:41:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knh1yd</id>
-    <title>Meta delaying the release of Behemoth</title>
-    <updated>2025-05-15T19:29:28+00:00</updated>
+    <id>t3_1knb2kq</id>
+    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
+    <updated>2025-05-15T15:28:13+00:00</updated>
     <author>
-      <name>/u/__JockY__</name>
-      <uri>https://old.reddit.com/user/__JockY__</uri>
+      <name>/u/fajfas3</name>
+      <uri>https://old.reddit.com/user/fajfas3</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T19:29:28+00:00</published>
+    <published>2025-05-15T15:28:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1knbo80</id>
@@ -123,19 +123,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knbo80/hanaverse_chat_with_ai_through_an_interactive/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T15:52:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1knb2kq</id>
-    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
-    <updated>2025-05-15T15:28:13+00:00</updated>
-    <author>
-      <name>/u/fajfas3</name>
-      <uri>https://old.reddit.com/user/fajfas3</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T15:28:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn6427</id>
@@ -177,6 +164,19 @@
     <published>2025-05-15T18:24:27+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kn94oi</id>
+    <title>Update: We fit 50+ LLMs on 2 GPUs — and now we’re inviting you to try it.</title>
+    <updated>2025-05-15T14:08:22+00:00</updated>
+    <author>
+      <name>/u/pmv143</name>
+      <uri>https://old.reddit.com/user/pmv143</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last week’s post on cold starts and snapshotting hit a nerve. Turns out many of you are also trying to juggle multiple models, deal with bloated memory, or squeeze more out of a single GPU.&lt;/p&gt; &lt;p&gt;We’re making our snapshot-based runtime available to a limited number of builders — especially if you’re running agents, RAG pipelines, or multi-model workloads locally.&lt;/p&gt; &lt;p&gt;It’s still early, and we’re limited in support, but the tech is real:&lt;/p&gt; &lt;p&gt;• 50+ models on 2× A4000s • Cold starts under 2s • 90%+ GPU utilization • No bloating, no prewarming&lt;/p&gt; &lt;p&gt;If you’re experimenting with multiple models and want to deploy more on fewer GPUs, this might help.&lt;/p&gt; &lt;p&gt;We’d love your feedback . reach out and we’ll get you access.&lt;/p&gt; &lt;p&gt;Please feel free to ask any questions &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T14:08:22+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kn2aay</id>
     <title>Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures</title>
     <updated>2025-05-15T07:28:36+00:00</updated>
@@ -190,17 +190,17 @@
     <published>2025-05-15T07:28:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kn94oi</id>
-    <title>Update: We fit 50+ LLMs on 2 GPUs — and now we’re inviting you to try it.</title>
-    <updated>2025-05-15T14:08:22+00:00</updated>
+    <id>t3_1knh1yd</id>
+    <title>Meta delaying the release of Behemoth</title>
+    <updated>2025-05-15T19:29:28+00:00</updated>
     <author>
-      <name>/u/pmv143</name>
-      <uri>https://old.reddit.com/user/pmv143</uri>
+      <name>/u/__JockY__</name>
+      <uri>https://old.reddit.com/user/__JockY__</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last week’s post on cold starts and snapshotting hit a nerve. Turns out many of you are also trying to juggle multiple models, deal with bloated memory, or squeeze more out of a single GPU.&lt;/p&gt; &lt;p&gt;We’re making our snapshot-based runtime available to a limited number of builders — especially if you’re running agents, RAG pipelines, or multi-model workloads locally.&lt;/p&gt; &lt;p&gt;It’s still early, and we’re limited in support, but the tech is real:&lt;/p&gt; &lt;p&gt;• 50+ models on 2× A4000s • Cold starts under 2s • 90%+ GPU utilization • No bloating, no prewarming&lt;/p&gt; &lt;p&gt;If you’re experimenting with multiple models and want to deploy more on fewer GPUs, this might help.&lt;/p&gt; &lt;p&gt;We’d love your feedback . reach out and we’ll get you access.&lt;/p&gt; &lt;p&gt;Please feel free to ask any questions &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T14:08:22+00:00</published>
+    <published>2025-05-15T19:29:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1knfe13</id>
@@ -216,19 +216,6 @@
     <published>2025-05-15T18:21:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knbdd3</id>
-    <title>Hugging Face free and open source MCP course</title>
-    <updated>2025-05-15T15:40:16+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We're thrilled to announce the launch of our comprehensive Model Context Protocol (MCP) Course! This free program is designed to take learners from foundational understanding to practical application of MCP in AI.&lt;/p&gt; &lt;p&gt;Join the course on the hub:&lt;a href="https://huggingface.co/mcp-course"&gt;https://huggingface.co/mcp-course&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In this course, you will: 📖 Study Model Context Protocol in theory, design, and practice. 🧑‍💻 Learn to use established MCP SDKs and frameworks. 💾 Share your projects and explore applications created by the community. 🏆 Participate in challenges and evaluate your MCP implementations. 🎓 Earn a certificate of completion.&lt;/p&gt; &lt;p&gt;At the end, you'll understand how MCP works and how to build your own AI applications that leverage external data and tools using the latest MCP standards.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T15:40:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kn9882</id>
     <title>LLaDA-8B-Tools: A diffusion language model fine-tuned for tool use</title>
     <updated>2025-05-15T14:12:37+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn9882/llada8btools_a_diffusion_language_model_finetuned/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T14:12:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knbdd3</id>
+    <title>Hugging Face free and open source MCP course</title>
+    <updated>2025-05-15T15:40:16+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We're thrilled to announce the launch of our comprehensive Model Context Protocol (MCP) Course! This free program is designed to take learners from foundational understanding to practical application of MCP in AI.&lt;/p&gt; &lt;p&gt;Join the course on the hub:&lt;a href="https://huggingface.co/mcp-course"&gt;https://huggingface.co/mcp-course&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In this course, you will: 📖 Study Model Context Protocol in theory, design, and practice. 🧑‍💻 Learn to use established MCP SDKs and frameworks. 💾 Share your projects and explore applications created by the community. 🏆 Participate in challenges and evaluate your MCP implementations. 🎓 Earn a certificate of completion.&lt;/p&gt; &lt;p&gt;At the end, you'll understand how MCP works and how to build your own AI applications that leverage external data and tools using the latest MCP standards.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knbdd3/hugging_face_free_and_open_source_mcp_course/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T15:40:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1knca48</id>
