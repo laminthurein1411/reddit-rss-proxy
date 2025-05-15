@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-15T20:07:34+00:00</updated>
+  <updated>2025-05-15T20:25:02+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kn69mp</id>
-    <title>How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?</title>
-    <updated>2025-05-15T11:54:06+00:00</updated>
-    <author>
-      <name>/u/coconautico</name>
-      <uri>https://old.reddit.com/user/coconautico</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt; &lt;img alt="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" src="https://b.thumbs.redditmedia.com/rqzDSRVqRbCQDZ3SFaKzcnoeDqw5K2FyJ-Re4mj9eho.jpg" title="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm trying to build a solution to &lt;strong&gt;analyze a set of PDF files&lt;/strong&gt; (5-10) using an LLM.&lt;/p&gt; &lt;p&gt;My current approach is to perform a &lt;strong&gt;high-quality OCR&lt;/strong&gt; (using Docling) and then, dump all this information as the &lt;strong&gt;context for my prompt&lt;/strong&gt;. However, I doubt this is the best strategy nowadays.&lt;/p&gt; &lt;p&gt;Playing around with Gemini, I've noticed it handles PDF files extremely well*, even showing the &lt;strong&gt;tokens it contains&lt;/strong&gt;. So I was wondering if the model is &amp;quot;&lt;strong&gt;reading&lt;/strong&gt;&amp;quot; the PDF file &lt;strong&gt;directly&lt;/strong&gt; (native vision), or is there a preliminary step where it converts the PDF to pure text using &lt;strong&gt;OCR before processing&lt;/strong&gt;?&lt;/p&gt; &lt;p&gt;I'm also wondering if a &lt;strong&gt;Retrieval Augmented Generation (RAG) strategy&lt;/strong&gt; is involved in how it interacts with the document content once uploaded.&lt;/p&gt; &lt;p&gt;If anyone knows more about this process, it would be interesting to hear.&lt;/p&gt; &lt;p&gt;Thank you!&lt;/p&gt; &lt;p&gt;*It was able to perfectly process a PDF of images with handwritten text and equations&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Additional information:&lt;/strong&gt;&lt;br /&gt; I've noticed that Gemini sometimes appends labels like `--- PAGE 1 ---`, `--- PAGE 2 ---`, etc., when processing PDFs. When I ask the model what tool it's using, it replies with something like “an internal tool to transcribe PDFs.” I've tried replicating the results using Google's public Vision APIs, but none of them produce the same output. So I assume they're using some internal system (maybe a custom-built tool) to reliably convert anything into plain text.&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What seems to be happening under the hood&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;As &lt;a href="/u/highergraphic"&gt;u/highergraphic&lt;/a&gt; suggested, I tried to pin down whether Gemini first turns each PDF page into an image and then processes natively using its multimodal capabilities on that rasterized page. Result? Every experiment seems to point to &amp;quot;yes.&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Experiments&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Original PDF:&lt;/strong&gt; Mixed text, images, and tables. → Perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Flat image of the same page:&lt;/strong&gt; Exported the page as a single PNG/JPG. → Same perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hybrid PDF:&lt;/strong&gt; Re-created the page but replaced some paragraphs and tables with screenshots of themselves (same size). → Still perfect.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF:&lt;/strong&gt; Shrunk the text until it was almost unreadable. → Worked until the characters were too small.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF (from images):&lt;/strong&gt; Same experiement as the previous one, but this time, I shrunk the images of the text until it was almost unreadable. → Same. It worked until the characters were too small.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Takeaway&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Gemini (and, I suspect, other modern multimodal LLMs) appears to:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Rasterize&lt;/strong&gt; each PDF page into an image.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Process it using the multimodal LLM&lt;/strong&gt; to produce plain text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Repeat.\&lt;/strong&gt;*&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;*Each new image processing adds a markers like &lt;code&gt;--- PAGE X ---&lt;/code&gt; to help with the context.&lt;/p&gt; &lt;p&gt;----&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Example of the PDF with textual parts of it replaced by images of the same size:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vjygb9rzly0f1.jpg?width=2479&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=26934052347e813429bd24acf12953167c945b7d"&gt;Example of the PDF page with text parts replaced by images of the same size&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coconautico"&gt; /u/coconautico &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T11:54:06+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kmrfoo</id>
-    <title>MLA optimization with flashattention for llama.cpp,MLA + FA now only uses K-cache - 47% saving on KV-cache size</title>
-    <updated>2025-05-14T21:42:55+00:00</updated>
-    <author>
-      <name>/u/shing3232</name>
-      <uri>https://old.reddit.com/user/shing3232</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/13529"&gt;MLA + FA now only uses K-cache - 47% saving on KV-cache size (only for use with #13435 for now) by jukofyork · Pull Request #13529 · ggml-org/llama.cpp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama_kv_cache_unified: kv_size = 163840, type_k = 'f16', type_v = 'f16', n_layer = 61, can_shift = 0, padding = 256&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama_kv_cache_unified: CUDA0 KV buffer size = 10980.00 MiB&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama_kv_cache_unified: KV self size = 10980.00 MiB, K (f16): 10980.00 MiB, V (f16): 0.00 MiB&lt;/code&gt;&lt;/p&gt; &lt;p&gt;The full context of 160k tokens now takes up less than 11GB without kquants&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shing3232"&gt; /u/shing3232 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmrfoo/mla_optimization_with_flashattention_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kmrfoo/mla_optimization_with_flashattention_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmrfoo/mla_optimization_with_flashattention_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-14T21:42:55+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kmi6vl</id>
     <title>I updated the SmolVLM llama.cpp webcam demo to run locally in-browser on WebGPU.</title>
@@ -47,17 +21,17 @@
     <published>2025-05-14T15:33:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kn810l</id>
-    <title>LLM based Personally identifiable information detection tool</title>
-    <updated>2025-05-15T13:19:47+00:00</updated>
+    <id>t3_1kna33l</id>
+    <title>AlphaEvolve did pretty well on "Small base LLM only"</title>
+    <updated>2025-05-15T14:48:29+00:00</updated>
     <author>
-      <name>/u/geeganage</name>
-      <uri>https://old.reddit.com/user/geeganage</uri>
+      <name>/u/__Maximum__</name>
+      <uri>https://old.reddit.com/user/__Maximum__</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;GitHub repo: &lt;a href="https://github.com/rpgeeganage/pII-guard"&gt;https://github.com/rpgeeganage/pII-guard&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hi everyone,&lt;br /&gt; I recently built a small open-source tool called PII (personally identifiable information) to detect personally identifiable information (PII) in logs using AI. It’s self-hosted and designed for privacy-conscious developers or teams.&lt;/p&gt; &lt;p&gt;Features: - HTTP endpoint for log ingestion with buffered processing&lt;br /&gt; - PII detection using local AI models via Ollama (e.g., gemma:3b)&lt;br /&gt; - PostgreSQL + Elasticsearch for storage&lt;br /&gt; - Web UI to review flagged logs&lt;br /&gt; - Docker Compose for easy setup&lt;/p&gt; &lt;p&gt;It’s still a work in progress, and any suggestions or feedback would be appreciated. Thanks for checking it out!&lt;/p&gt; &lt;p&gt;My apologies if this post is not relevant to this group &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/geeganage"&gt; /u/geeganage &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;In the Ablation chapter of AlphaEvolve white paper, they show its performance using &amp;quot;Small base LLM&amp;quot; instead of Gemini Flash 2.0 and Pro 2.0. Their takeaway is that bigger models perform better, but our takeaway is that... &lt;strong&gt;smaller models work&lt;/strong&gt;, too.&lt;/p&gt; &lt;p&gt;&lt;a href="https://imgur.com/a/IQkFuJ7"&gt;https://imgur.com/a/IQkFuJ7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Now, they do not specify what their smaller model is, but I imagine it is something most of us can run locally. Sure, it will take hundreds of hours to find a solution to a single problem on a local machine, but let's be honest, your 5090 is sitting idle most of the time (especially when you are asleep) instead of discovering the next FlashAttention.&lt;/p&gt; &lt;p&gt;Considering the fact that open weights models are getting smarter (than Flash 2.0 and Pro 2.0) and their quants more accurate, I think we have a decent chance of success. Even if we cannot crack big, global problems, it can be very useful for your own custom problem.&lt;/p&gt; &lt;p&gt;The question is, how hard is it to replicate the AlphaEvolve? I don't see anything magical about the system itself. It shouldn't have much more complicated components than FunSearch because it took them a couple of months to build after they released Funsearch. Thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__Maximum__"&gt; /u/__Maximum__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna33l/alphaevolve_did_pretty_well_on_small_base_llm_only/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna33l/alphaevolve_did_pretty_well_on_small_base_llm_only/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kna33l/alphaevolve_did_pretty_well_on_small_base_llm_only/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T13:19:47+00:00</published>
+    <published>2025-05-15T14:48:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmyr7h</id>
@@ -71,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kmyr7h/qwen3235ba22b_not_measuring_up_to_deepseekv30324/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T03:45:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kn810l</id>
+    <title>LLM based Personally identifiable information detection tool</title>
+    <updated>2025-05-15T13:19:47+00:00</updated>
+    <author>
+      <name>/u/geeganage</name>
+      <uri>https://old.reddit.com/user/geeganage</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;GitHub repo: &lt;a href="https://github.com/rpgeeganage/pII-guard"&gt;https://github.com/rpgeeganage/pII-guard&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hi everyone,&lt;br /&gt; I recently built a small open-source tool called PII (personally identifiable information) to detect personally identifiable information (PII) in logs using AI. It’s self-hosted and designed for privacy-conscious developers or teams.&lt;/p&gt; &lt;p&gt;Features: - HTTP endpoint for log ingestion with buffered processing&lt;br /&gt; - PII detection using local AI models via Ollama (e.g., gemma:3b)&lt;br /&gt; - PostgreSQL + Elasticsearch for storage&lt;br /&gt; - Web UI to review flagged logs&lt;br /&gt; - Docker Compose for easy setup&lt;/p&gt; &lt;p&gt;It’s still a work in progress, and any suggestions or feedback would be appreciated. Thanks for checking it out!&lt;/p&gt; &lt;p&gt;My apologies if this post is not relevant to this group &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/geeganage"&gt; /u/geeganage &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn810l/llm_based_personally_identifiable_information/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T13:19:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1kmlu2y</id>
@@ -99,19 +86,6 @@
     <published>2025-05-15T07:41:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knb2kq</id>
-    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
-    <updated>2025-05-15T15:28:13+00:00</updated>
-    <author>
-      <name>/u/fajfas3</name>
-      <uri>https://old.reddit.com/user/fajfas3</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T15:28:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1knbo80</id>
     <title>HanaVerse - Chat with AI through an interactive anime character! 🌸</title>
     <updated>2025-05-15T15:52:31+00:00</updated>
@@ -123,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knbo80/hanaverse_chat_with_ai_through_an_interactive/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T15:52:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knb2kq</id>
+    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
+    <updated>2025-05-15T15:28:13+00:00</updated>
+    <author>
+      <name>/u/fajfas3</name>
+      <uri>https://old.reddit.com/user/fajfas3</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T15:28:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn6427</id>
@@ -138,17 +125,17 @@
     <published>2025-05-15T11:45:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kn6mic</id>
-    <title>Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?</title>
-    <updated>2025-05-15T12:12:37+00:00</updated>
+    <id>t3_1knh0dq</id>
+    <title>Created a tool that converts podcasts into clean speech datasets - handles diarization, removes overlapping speech, and transcribes</title>
+    <updated>2025-05-15T19:27:35+00:00</updated>
     <author>
-      <name>/u/Desperate_Rub_1352</name>
-      <uri>https://old.reddit.com/user/Desperate_Rub_1352</uri>
+      <name>/u/DumaDuma</name>
+      <uri>https://old.reddit.com/user/DumaDuma</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"&gt; &lt;img alt="Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?" src="https://preview.redd.it/kq34jkwvsx0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=26b2276e1df77e5648f6b562bf60fe6c8a922ea4" title="Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been digging into the latest base models and wanted to get some practical opinions beyond just benchmark numbers.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;For those who have actually used both Qwen 2.5 and Qwen 3 base models&lt;/strong&gt;: Did you notice a truly big jump in general usage (reasoning, instruction following, robustness), or is the improvement mostly confined to coding and math tasks? I’m not talking about fine-tuned chat versions, just the raw base models.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemma 3 vs Qwen&lt;/strong&gt;: Is Gemma 3 genuinely that far behind, or is there some possible benchmark leakage or overfitting with Qwen? A few benchmark charts make me suspicious. Would love to hear hands-on perspectives if anyone has experimented with both.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Why I’m asking:&lt;/strong&gt;&lt;br /&gt; I want to build a highly &lt;em&gt;steerable&lt;/em&gt; model for my research and product work. I only have budget for one serious base model to work from, so I want to select the absolute best starting point. I’m focusing on openness, quality, and steerability, not just raw benchmark wins.&lt;/p&gt; &lt;p&gt;Any honest feedback, experiments, or even failures you’ve had with these models would help me massively. Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Desperate_Rub_1352"&gt; /u/Desperate_Rub_1352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kq34jkwvsx0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh0dq/created_a_tool_that_converts_podcasts_into_clean/"&gt; &lt;img alt="Created a tool that converts podcasts into clean speech datasets - handles diarization, removes overlapping speech, and transcribes" src="https://external-preview.redd.it/fOELlCefhPVcX_I27jAk8-oOBjhtXlke2ANY2PCUgkA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1294dd31165e64cd951bf768591cb3a24a57502f" title="Created a tool that converts podcasts into clean speech datasets - handles diarization, removes overlapping speech, and transcribes" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DumaDuma"&gt; /u/DumaDuma &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ReisCook/Voice_Extractor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh0dq/created_a_tool_that_converts_podcasts_into_clean/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh0dq/created_a_tool_that_converts_podcasts_into_clean/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T12:12:37+00:00</published>
+    <published>2025-05-15T19:27:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1knfggw</id>
@@ -164,17 +151,17 @@
     <published>2025-05-15T18:24:27+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kn94oi</id>
-    <title>Update: We fit 50+ LLMs on 2 GPUs — and now we’re inviting you to try it.</title>
-    <updated>2025-05-15T14:08:22+00:00</updated>
+    <id>t3_1kn6mic</id>
+    <title>Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?</title>
+    <updated>2025-05-15T12:12:37+00:00</updated>
     <author>
-      <name>/u/pmv143</name>
-      <uri>https://old.reddit.com/user/pmv143</uri>
+      <name>/u/Desperate_Rub_1352</name>
+      <uri>https://old.reddit.com/user/Desperate_Rub_1352</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last week’s post on cold starts and snapshotting hit a nerve. Turns out many of you are also trying to juggle multiple models, deal with bloated memory, or squeeze more out of a single GPU.&lt;/p&gt; &lt;p&gt;We’re making our snapshot-based runtime available to a limited number of builders — especially if you’re running agents, RAG pipelines, or multi-model workloads locally.&lt;/p&gt; &lt;p&gt;It’s still early, and we’re limited in support, but the tech is real:&lt;/p&gt; &lt;p&gt;• 50+ models on 2× A4000s • Cold starts under 2s • 90%+ GPU utilization • No bloating, no prewarming&lt;/p&gt; &lt;p&gt;If you’re experimenting with multiple models and want to deploy more on fewer GPUs, this might help.&lt;/p&gt; &lt;p&gt;We’d love your feedback . reach out and we’ll get you access.&lt;/p&gt; &lt;p&gt;Please feel free to ask any questions &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"&gt; &lt;img alt="Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?" src="https://preview.redd.it/kq34jkwvsx0f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=26b2276e1df77e5648f6b562bf60fe6c8a922ea4" title="Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been digging into the latest base models and wanted to get some practical opinions beyond just benchmark numbers.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;For those who have actually used both Qwen 2.5 and Qwen 3 base models&lt;/strong&gt;: Did you notice a truly big jump in general usage (reasoning, instruction following, robustness), or is the improvement mostly confined to coding and math tasks? I’m not talking about fine-tuned chat versions, just the raw base models.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Gemma 3 vs Qwen&lt;/strong&gt;: Is Gemma 3 genuinely that far behind, or is there some possible benchmark leakage or overfitting with Qwen? A few benchmark charts make me suspicious. Would love to hear hands-on perspectives if anyone has experimented with both.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Why I’m asking:&lt;/strong&gt;&lt;br /&gt; I want to build a highly &lt;em&gt;steerable&lt;/em&gt; model for my research and product work. I only have budget for one serious base model to work from, so I want to select the absolute best starting point. I’m focusing on openness, quality, and steerability, not just raw benchmark wins.&lt;/p&gt; &lt;p&gt;Any honest feedback, experiments, or even failures you’ve had with these models would help me massively. Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Desperate_Rub_1352"&gt; /u/Desperate_Rub_1352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/kq34jkwvsx0f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn6mic/qwen_25_vs_qwen_3_vs_gemma_3_real_world_base/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T14:08:22+00:00</published>
+    <published>2025-05-15T12:12:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn2aay</id>
@@ -190,17 +177,17 @@
     <published>2025-05-15T07:28:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knh1yd</id>
-    <title>Meta delaying the release of Behemoth</title>
-    <updated>2025-05-15T19:29:28+00:00</updated>
+    <id>t3_1kn94oi</id>
+    <title>Update: We fit 50+ LLMs on 2 GPUs — and now we’re inviting you to try it.</title>
+    <updated>2025-05-15T14:08:22+00:00</updated>
     <author>
-      <name>/u/__JockY__</name>
-      <uri>https://old.reddit.com/user/__JockY__</uri>
+      <name>/u/pmv143</name>
+      <uri>https://old.reddit.com/user/pmv143</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last week’s post on cold starts and snapshotting hit a nerve. Turns out many of you are also trying to juggle multiple models, deal with bloated memory, or squeeze more out of a single GPU.&lt;/p&gt; &lt;p&gt;We’re making our snapshot-based runtime available to a limited number of builders — especially if you’re running agents, RAG pipelines, or multi-model workloads locally.&lt;/p&gt; &lt;p&gt;It’s still early, and we’re limited in support, but the tech is real:&lt;/p&gt; &lt;p&gt;• 50+ models on 2× A4000s • Cold starts under 2s • 90%+ GPU utilization • No bloating, no prewarming&lt;/p&gt; &lt;p&gt;If you’re experimenting with multiple models and want to deploy more on fewer GPUs, this might help.&lt;/p&gt; &lt;p&gt;We’d love your feedback . reach out and we’ll get you access.&lt;/p&gt; &lt;p&gt;Please feel free to ask any questions &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmv143"&gt; /u/pmv143 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn94oi/update_we_fit_50_llms_on_2_gpus_and_now_were/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T19:29:28+00:00</published>
+    <published>2025-05-15T14:08:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1knfe13</id>
@@ -255,6 +242,19 @@
     <published>2025-05-15T16:17:15+00:00</published>
   </entry>
   <entry>
+    <id>t3_1knh1yd</id>
+    <title>Meta delaying the release of Behemoth</title>
+    <updated>2025-05-15T19:29:28+00:00</updated>
+    <author>
+      <name>/u/__JockY__</name>
+      <uri>https://old.reddit.com/user/__JockY__</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T19:29:28+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kn8m8t</id>
     <title>Open-source general purpose agent with built-in MCPToolkit support</title>
     <updated>2025-05-15T13:46:21+00:00</updated>
@@ -307,19 +307,6 @@
     <published>2025-05-15T12:39:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kndp9f</id>
-    <title>TTS Fine-tuning now in Unsloth!</title>
-    <updated>2025-05-15T17:14:19+00:00</updated>
-    <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt; &lt;img alt="TTS Fine-tuning now in Unsloth!" src="https://external-preview.redd.it/bXI4dnBsa3phejBmMfDzohHQ2IN6C0pCi0KaT-g2AEXeep08I3DgQhQN5vF7.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57583ee26a1b7da14346a3cc45ff72ecbf34831b" title="TTS Fine-tuning now in Unsloth!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks! Not the usual LLMs talk but we’re excited to announce that you can now train Text-to-Speech (TTS) models in &lt;a href="https://github.com/unslothai/unsloth"&gt;Unsloth&lt;/a&gt;! Training is ~1.5x faster with 50% less VRAM compared to all other setups with FA2. :D&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support includes &lt;code&gt;Sesame/csm-1b&lt;/code&gt;, &lt;code&gt;OpenAI/whisper-large-v3&lt;/code&gt;, &lt;code&gt;CanopyLabs/orpheus-3b-0.1-ft&lt;/code&gt;, and any Transformer-style model including LLasa, Outte, Spark, and more.&lt;/li&gt; &lt;li&gt;The goal of TTS fine-tuning to minic voices, adapt speaking styles and tones, support new languages, handle specific tasks etc.&lt;/li&gt; &lt;li&gt;We’ve made notebooks to train, run, and save these models for free on Google Colab. Some models aren’t supported by llama.cpp and will be saved only as safetensors, but others should work. See our TTS docs and notebooks: &lt;a href="https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning"&gt;https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning&lt;/a&gt;&lt;/li&gt; &lt;li&gt;The training process is similar to SFT, but the dataset includes audio clips with transcripts. We use a dataset called ‘Elise’ that embeds emotion tags like &amp;lt;sigh&amp;gt; or &amp;lt;laughs&amp;gt; into transcripts, triggering expressive audio that matches the emotion.&lt;/li&gt; &lt;li&gt;Since TTS models are usually small, you can train them using 16-bit LoRA, or go with FFT. Loading a 16-bit LoRA model is simple.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We've uploaded most of the TTS models (quantized and original) to &lt;a href="https://huggingface.co/collections/unsloth/text-to-speech-tts-models-68007ab12522e96be1e02155"&gt;Hugging Face here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;And here are our TTS notebooks:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Sesame_CSM_(1B"&gt;Sesame-CSM (1B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Orpheus_(3B"&gt;Orpheus-TTS (3B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Whisper.ipynb"&gt;Whisper Large V3&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Spark_TTS_(0_5B"&gt;Spark-TTS (0.5B)&lt;/a&gt;.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Thank you for reading and please do ask any questions!!&lt;/p&gt; &lt;p&gt;P.S. We also now support Qwen3 GRPO. We use the base model + a new custom proximity-based reward function to favor near-correct answers and penalize outliers. Pre-finetuning mitigates formatting bias and boosts evaluation accuracy via regex matching: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb&lt;/a&gt;-GRPO.ipynb)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/faqjz7kzaz0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T17:14:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kn542r</id>
     <title>Introducing A.I.T.E Ball</title>
     <updated>2025-05-15T10:45:28+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn542r/introducing_aite_ball/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T10:45:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kndp9f</id>
+    <title>TTS Fine-tuning now in Unsloth!</title>
+    <updated>2025-05-15T17:14:19+00:00</updated>
+    <author>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt; &lt;img alt="TTS Fine-tuning now in Unsloth!" src="https://external-preview.redd.it/bXI4dnBsa3phejBmMfDzohHQ2IN6C0pCi0KaT-g2AEXeep08I3DgQhQN5vF7.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57583ee26a1b7da14346a3cc45ff72ecbf34831b" title="TTS Fine-tuning now in Unsloth!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks! Not the usual LLMs talk but we’re excited to announce that you can now train Text-to-Speech (TTS) models in &lt;a href="https://github.com/unslothai/unsloth"&gt;Unsloth&lt;/a&gt;! Training is ~1.5x faster with 50% less VRAM compared to all other setups with FA2. :D&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support includes &lt;code&gt;Sesame/csm-1b&lt;/code&gt;, &lt;code&gt;OpenAI/whisper-large-v3&lt;/code&gt;, &lt;code&gt;CanopyLabs/orpheus-3b-0.1-ft&lt;/code&gt;, and any Transformer-style model including LLasa, Outte, Spark, and more.&lt;/li&gt; &lt;li&gt;The goal of TTS fine-tuning to minic voices, adapt speaking styles and tones, support new languages, handle specific tasks etc.&lt;/li&gt; &lt;li&gt;We’ve made notebooks to train, run, and save these models for free on Google Colab. Some models aren’t supported by llama.cpp and will be saved only as safetensors, but others should work. See our TTS docs and notebooks: &lt;a href="https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning"&gt;https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning&lt;/a&gt;&lt;/li&gt; &lt;li&gt;The training process is similar to SFT, but the dataset includes audio clips with transcripts. We use a dataset called ‘Elise’ that embeds emotion tags like &amp;lt;sigh&amp;gt; or &amp;lt;laughs&amp;gt; into transcripts, triggering expressive audio that matches the emotion.&lt;/li&gt; &lt;li&gt;Since TTS models are usually small, you can train them using 16-bit LoRA, or go with FFT. Loading a 16-bit LoRA model is simple.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We've uploaded most of the TTS models (quantized and original) to &lt;a href="https://huggingface.co/collections/unsloth/text-to-speech-tts-models-68007ab12522e96be1e02155"&gt;Hugging Face here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;And here are our TTS notebooks:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Sesame_CSM_(1B"&gt;Sesame-CSM (1B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Orpheus_(3B"&gt;Orpheus-TTS (3B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Whisper.ipynb"&gt;Whisper Large V3&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Spark_TTS_(0_5B"&gt;Spark-TTS (0.5B)&lt;/a&gt;.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Thank you for reading and please do ask any questions!!&lt;/p&gt; &lt;p&gt;P.S. We also now support Qwen3 GRPO. We use the base model + a new custom proximity-based reward function to favor near-correct answers and penalize outliers. Pre-finetuning mitigates formatting bias and boosts evaluation accuracy via regex matching: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb&lt;/a&gt;-GRPO.ipynb)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/faqjz7kzaz0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T17:14:19+00:00</published>
   </entry>
 </feed>
