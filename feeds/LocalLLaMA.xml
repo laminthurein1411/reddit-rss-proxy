@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-15T19:34:24+00:00</updated>
+  <updated>2025-05-15T19:48:43+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kn69mp</id>
-    <title>How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?</title>
-    <updated>2025-05-15T11:54:06+00:00</updated>
-    <author>
-      <name>/u/coconautico</name>
-      <uri>https://old.reddit.com/user/coconautico</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt; &lt;img alt="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" src="https://b.thumbs.redditmedia.com/rqzDSRVqRbCQDZ3SFaKzcnoeDqw5K2FyJ-Re4mj9eho.jpg" title="How do SOTA LLMs Process PDFs: Native Understanding, OCR, or RAG?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;I'm trying to build a solution to &lt;strong&gt;analyze a set of PDF files&lt;/strong&gt; (5-10) using an LLM.&lt;/p&gt; &lt;p&gt;My current approach is to perform a &lt;strong&gt;high-quality OCR&lt;/strong&gt; (using Docling) and then, dump all this information as the &lt;strong&gt;context for my prompt&lt;/strong&gt;. However, I doubt this is the best strategy nowadays.&lt;/p&gt; &lt;p&gt;Playing around with Gemini, I've noticed it handles PDF files extremely well*, even showing the &lt;strong&gt;tokens it contains&lt;/strong&gt;. So I was wondering if the model is &amp;quot;&lt;strong&gt;reading&lt;/strong&gt;&amp;quot; the PDF file &lt;strong&gt;directly&lt;/strong&gt; (native vision), or is there a preliminary step where it converts the PDF to pure text using &lt;strong&gt;OCR before processing&lt;/strong&gt;?&lt;/p&gt; &lt;p&gt;I'm also wondering if a &lt;strong&gt;Retrieval Augmented Generation (RAG) strategy&lt;/strong&gt; is involved in how it interacts with the document content once uploaded.&lt;/p&gt; &lt;p&gt;If anyone knows more about this process, it would be interesting to hear.&lt;/p&gt; &lt;p&gt;Thank you!&lt;/p&gt; &lt;p&gt;*It was able to perfectly process a PDF of images with handwritten text and equations&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Additional information:&lt;/strong&gt;&lt;br /&gt; I've noticed that Gemini sometimes appends labels like `--- PAGE 1 ---`, `--- PAGE 2 ---`, etc., when processing PDFs. When I ask the model what tool it's using, it replies with something like “an internal tool to transcribe PDFs.” I've tried replicating the results using Google's public Vision APIs, but none of them produce the same output. So I assume they're using some internal system (maybe a custom-built tool) to reliably convert anything into plain text.&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What seems to be happening under the hood&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;As &lt;a href="/u/highergraphic"&gt;u/highergraphic&lt;/a&gt; suggested, I tried to pin down whether Gemini first turns each PDF page into an image and then processes natively using its multimodal capabilities on that rasterized page. Result? Every experiment seems to point to &amp;quot;yes.&amp;quot;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Experiments&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Original PDF:&lt;/strong&gt; Mixed text, images, and tables. → Perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Flat image of the same page:&lt;/strong&gt; Exported the page as a single PNG/JPG. → Same perfect extraction.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hybrid PDF:&lt;/strong&gt; Re-created the page but replaced some paragraphs and tables with screenshots of themselves (same size). → Still perfect.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF:&lt;/strong&gt; Shrunk the text until it was almost unreadable. → Worked until the characters were too small.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Tiny-font PDF (from images):&lt;/strong&gt; Same experiement as the previous one, but this time, I shrunk the images of the text until it was almost unreadable. → Same. It worked until the characters were too small.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Takeaway&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Gemini (and, I suspect, other modern multimodal LLMs) appears to:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Rasterize&lt;/strong&gt; each PDF page into an image.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Process it using the multimodal LLM&lt;/strong&gt; to produce plain text.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Repeat.\&lt;/strong&gt;*&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;*Each new image processing adds a markers like &lt;code&gt;--- PAGE X ---&lt;/code&gt; to help with the context.&lt;/p&gt; &lt;p&gt;----&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Example of the PDF with textual parts of it replaced by images of the same size:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/vjygb9rzly0f1.jpg?width=2479&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=26934052347e813429bd24acf12953167c945b7d"&gt;Example of the PDF page with text parts replaced by images of the same size&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coconautico"&gt; /u/coconautico &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn69mp/how_do_sota_llms_process_pdfs_native/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T11:54:06+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kmrfoo</id>
     <title>MLA optimization with flashattention for llama.cpp,MLA + FA now only uses K-cache - 47% saving on KV-cache size</title>
@@ -112,17 +99,17 @@
     <published>2025-05-15T07:41:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knb2kq</id>
-    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
-    <updated>2025-05-15T15:28:13+00:00</updated>
+    <id>t3_1knh1yd</id>
+    <title>Meta delaying the release of Behemoth</title>
+    <updated>2025-05-15T19:29:28+00:00</updated>
     <author>
-      <name>/u/fajfas3</name>
-      <uri>https://old.reddit.com/user/fajfas3</uri>
+      <name>/u/__JockY__</name>
+      <uri>https://old.reddit.com/user/__JockY__</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh1yd/meta_delaying_the_release_of_behemoth/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T15:28:13+00:00</published>
+    <published>2025-05-15T19:29:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1knbo80</id>
@@ -136,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knbo80/hanaverse_chat_with_ai_through_an_interactive/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T15:52:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knb2kq</id>
+    <title>qSpeak - A Cross platform alternative for WisprFlow supporting local LLMs and Linux</title>
+    <updated>2025-05-15T15:28:13+00:00</updated>
+    <author>
+      <name>/u/fajfas3</name>
+      <uri>https://old.reddit.com/user/fajfas3</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey, together with my colleagues, we've created &lt;a href="http://qSpeak.app"&gt;qSpeak.app&lt;/a&gt; 🎉 &lt;/p&gt; &lt;p&gt;qSpeak is an alternative to tools like SuperWhisper or WisprFlow but works on all platforms including Linux. 🚀&lt;/p&gt; &lt;p&gt;Also we're working on integrating LLMs more deeply into it to include more sophisticated interactions like multi step conversations (essentially assistants) and in the near future MCP integration. &lt;/p&gt; &lt;p&gt;The app is currently completely free so please try it out! 🎁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fajfas3"&gt; /u/fajfas3 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://qspeak.app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knb2kq/qspeak_a_cross_platform_alternative_for_wisprflow/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T15:28:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn6427</id>
@@ -255,19 +255,6 @@
     <published>2025-05-15T16:17:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kna53n</id>
-    <title>Qwen3-32B hallucinates more than QwQ-32B</title>
-    <updated>2025-05-15T14:50:45+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt; &lt;img alt="Qwen3-32B hallucinates more than QwQ-32B" src="https://b.thumbs.redditmedia.com/BKpqaFBECcC520jrmC7_8NwZgTpcy4cdtN47rrRQrVU.jpg" title="Qwen3-32B hallucinates more than QwQ-32B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been seeing some people complaining about Qwen3's hallucination issues. Personally, I have never run into such issue, but I recently came across some Chinese benchmarks of Qwen3 and QwQ, so I might as well share them here.&lt;/p&gt; &lt;p&gt;I translated these to English; the sources are in the images.&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Qwen3-32B has a lower SimpleQA score than QwQ (5.87% vs 8.07%)&lt;/li&gt; &lt;li&gt;Qwen3-32B has a higher hallucination rate than QwQ in reasoning mode (30.15% vs 22.7%)&lt;/li&gt; &lt;/ol&gt; &lt;blockquote&gt; &lt;p&gt;SuperCLUE-Faith is designed to evaluate Chinese language performance, so it obviously gives Chinese models an advantage over American ones, but should be useful for comparing Qwen models.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/nrjfzhl2ky0f1.jpg?width=3388&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4c2021c8da8fb21fc46cefb8539130e97ce20dee"&gt;https://preview.redd.it/nrjfzhl2ky0f1.jpg?width=3388&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4c2021c8da8fb21fc46cefb8539130e97ce20dee&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5rh9qe4cky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=218051f6ddbc88ff99a584ed0c2877f7e97f8132"&gt;https://preview.redd.it/5rh9qe4cky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=218051f6ddbc88ff99a584ed0c2877f7e97f8132&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jwi0mphyky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=57dbad3cead06c339f4cabf16f39bb211925aa22"&gt;https://preview.redd.it/jwi0mphyky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=57dbad3cead06c339f4cabf16f39bb211925aa22&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7gy8ebvyky0f1.jpg?width=2156&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=30da9915523db714b599bf88b1925d85a40f545f"&gt;https://preview.redd.it/7gy8ebvyky0f1.jpg?width=2156&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=30da9915523db714b599bf88b1925d85a40f545f&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T14:50:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kn8m8t</id>
     <title>Open-source general purpose agent with built-in MCPToolkit support</title>
     <updated>2025-05-15T13:46:21+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn8m8t/opensource_general_purpose_agent_with_builtin/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T13:46:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kna53n</id>
+    <title>Qwen3-32B hallucinates more than QwQ-32B</title>
+    <updated>2025-05-15T14:50:45+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt; &lt;img alt="Qwen3-32B hallucinates more than QwQ-32B" src="https://b.thumbs.redditmedia.com/BKpqaFBECcC520jrmC7_8NwZgTpcy4cdtN47rrRQrVU.jpg" title="Qwen3-32B hallucinates more than QwQ-32B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been seeing some people complaining about Qwen3's hallucination issues. Personally, I have never run into such issue, but I recently came across some Chinese benchmarks of Qwen3 and QwQ, so I might as well share them here.&lt;/p&gt; &lt;p&gt;I translated these to English; the sources are in the images.&lt;/p&gt; &lt;p&gt;TLDR:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Qwen3-32B has a lower SimpleQA score than QwQ (5.87% vs 8.07%)&lt;/li&gt; &lt;li&gt;Qwen3-32B has a higher hallucination rate than QwQ in reasoning mode (30.15% vs 22.7%)&lt;/li&gt; &lt;/ol&gt; &lt;blockquote&gt; &lt;p&gt;SuperCLUE-Faith is designed to evaluate Chinese language performance, so it obviously gives Chinese models an advantage over American ones, but should be useful for comparing Qwen models.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/nrjfzhl2ky0f1.jpg?width=3388&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4c2021c8da8fb21fc46cefb8539130e97ce20dee"&gt;https://preview.redd.it/nrjfzhl2ky0f1.jpg?width=3388&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=4c2021c8da8fb21fc46cefb8539130e97ce20dee&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5rh9qe4cky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=218051f6ddbc88ff99a584ed0c2877f7e97f8132"&gt;https://preview.redd.it/5rh9qe4cky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=218051f6ddbc88ff99a584ed0c2877f7e97f8132&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jwi0mphyky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=57dbad3cead06c339f4cabf16f39bb211925aa22"&gt;https://preview.redd.it/jwi0mphyky0f1.jpg?width=2160&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=57dbad3cead06c339f4cabf16f39bb211925aa22&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7gy8ebvyky0f1.jpg?width=2156&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=30da9915523db714b599bf88b1925d85a40f545f"&gt;https://preview.redd.it/7gy8ebvyky0f1.jpg?width=2156&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=30da9915523db714b599bf88b1925d85a40f545f&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kna53n/qwen332b_hallucinates_more_than_qwq32b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T14:50:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn2mv9</id>
