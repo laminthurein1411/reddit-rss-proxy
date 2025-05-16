@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-16T09:48:48+00:00</updated>
+  <updated>2025-05-16T10:06:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1knnb6u</id>
-    <title>Context parsing utility</title>
-    <updated>2025-05-16T00:04:30+00:00</updated>
-    <author>
-      <name>/u/MichalRoth</name>
-      <uri>https://old.reddit.com/user/MichalRoth</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone, I’ve been running local models and kept needing a way to manage structured context without hacking together prompts every time. So I wrote a small thing - prompt-shell&lt;/p&gt; &lt;p&gt;It lets you define pieces of context (&lt;code&gt;rules.md&lt;/code&gt;, &lt;code&gt;identity.md&lt;/code&gt;, &lt;code&gt;input.md&lt;/code&gt;, etc.), assembles them into a final prompt, and counts tokens with tiktoken.&lt;/p&gt; &lt;p&gt;No UI, no framework, just files + a build script. Not meant to be a product — just something that made my workflow cleaner.&lt;/p&gt; &lt;p&gt;Sharing in case it’s useful to anyone else: &lt;a href="https://gitlab.com/michalrothcz/prompt-shell"&gt;https://gitlab.com/michalrothcz/prompt-shell&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MichalRoth"&gt; /u/MichalRoth &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knnb6u/context_parsing_utility/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knnb6u/context_parsing_utility/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knnb6u/context_parsing_utility/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T00:04:30+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kn6mic</id>
     <title>Qwen 2.5 vs Qwen 3 vs Gemma 3: Real world base model comparison?</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn9882/llada8btools_a_diffusion_language_model_finetuned/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T14:12:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kntez5</id>
+    <title>🚀 Embedding 10,000 text chunks per second on a CPU?!</title>
+    <updated>2025-05-16T05:41:32+00:00</updated>
+    <author>
+      <name>/u/aagmon</name>
+      <uri>https://old.reddit.com/user/aagmon</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When working with large volumes of documents, embedding can quickly become both a performance bottleneck and a cost driver. I recently experimented with &lt;em&gt;static embedding&lt;/em&gt; — and was blown away by the speed. No self-attention, no feed-forward layers, just direct token key access. The result? Incredibly fast embedding with minimal overhead.&lt;br /&gt; I built a lightweight sample implementation in Rust using HF Candle and exposed it via Python so you can try it yourself.&lt;/p&gt; &lt;p&gt;Checkout the repo at: &lt;a href="https://github.com/a-agmon/static-embedding"&gt;https://github.com/a-agmon/static-embedding&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Read more about static embedding: &lt;a href="https://huggingface.co/blog/static-embeddings"&gt;https://huggingface.co/blog/static-embeddings&lt;/a&gt;&lt;/p&gt; &lt;p&gt;or just give it a try:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;pip install static_embed from static_embed import Embedder # 1. Use the default public model (no args) embedder = Embedder() # 2. OR specify your own base-URL that hosts the weights/tokeniser # (must contain the same two files: ``model.safetensors`` &amp;amp; ``tokenizer.json``) # custom_url = &amp;quot;https://my-cdn.example.com/static-retrieval-mrl-en-v1&amp;quot; # embedder = Embedder(custom_url) texts = [&amp;quot;Hello world!&amp;quot;, &amp;quot;Rust + Python via PyO3&amp;quot;] embeddings = embedder.embed(texts) print(len(embeddings), &amp;quot;embeddings&amp;quot;, &amp;quot;dimension&amp;quot;, len(embeddings[0])) &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aagmon"&gt; /u/aagmon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T05:41:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1knca48</id>
@@ -99,19 +99,6 @@
     <published>2025-05-15T14:50:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knorbe</id>
-    <title>Grok prompts are now open source on GitHub</title>
-    <updated>2025-05-16T01:19:49+00:00</updated>
-    <author>
-      <name>/u/FreemanDave</name>
-      <uri>https://old.reddit.com/user/FreemanDave</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"&gt; &lt;img alt="Grok prompts are now open source on GitHub" src="https://external-preview.redd.it/5uwLTcCO_xgjsJvNop0QnSOEwQGDRqjKJtrO-U6w_F8.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=29eff9f426f9096b211ed527068b986189b4c955" title="Grok prompts are now open source on GitHub" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FreemanDave"&gt; /u/FreemanDave &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/xai-org/grok-prompts"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T01:19:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kn75q8</id>
     <title>PDF input merged into llama.cpp</title>
     <updated>2025-05-15T12:39:04+00:00</updated>
@@ -138,17 +125,17 @@
     <published>2025-05-15T15:40:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knvgva</id>
-    <title>Why do I need to share my contact information/get a HF token with Mistral to use their models in vLLM but not with Ollama?</title>
-    <updated>2025-05-16T08:04:25+00:00</updated>
+    <id>t3_1knorbe</id>
+    <title>Grok prompts are now open source on GitHub</title>
+    <updated>2025-05-16T01:19:49+00:00</updated>
     <author>
-      <name>/u/sebovzeoueb</name>
-      <uri>https://old.reddit.com/user/sebovzeoueb</uri>
+      <name>/u/FreemanDave</name>
+      <uri>https://old.reddit.com/user/FreemanDave</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working with Ollama on a locally hosted AI project, and I was looking to try some alternatives to see what the performance is like. vLLM appears to be a performance focused alternative so I've got that downloaded in Docker, however there are models it can't use without accepting to share my contact information on the HuggingFace website and setting the HF token in the environment for vLLM. I would like to avoid this step as one of the selling points of the project I'm working on is that it's easy for the user to install, and having the user make an account somewhere and get an access token is contrary to that goal.&lt;/p&gt; &lt;p&gt;How come Ollama has direct access to the Mistral models without requiring this extra step? Furthermore, the Mistral website says 7B is released under the Apache 2.0 license and can be &amp;quot;used without restrictions&amp;quot;, so could someone please shed some light on why they need my contact information if I go through HF, and if there's an alternative route as a workaround? Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sebovzeoueb"&gt; /u/sebovzeoueb &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"&gt; &lt;img alt="Grok prompts are now open source on GitHub" src="https://external-preview.redd.it/5uwLTcCO_xgjsJvNop0QnSOEwQGDRqjKJtrO-U6w_F8.jpg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=29eff9f426f9096b211ed527068b986189b4c955" title="Grok prompts are now open source on GitHub" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FreemanDave"&gt; /u/FreemanDave &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/xai-org/grok-prompts"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T08:04:25+00:00</published>
+    <published>2025-05-16T01:19:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1knnyco</id>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kn542r/introducing_aite_ball/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T10:45:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knvgva</id>
+    <title>Why do I need to share my contact information/get a HF token with Mistral to use their models in vLLM but not with Ollama?</title>
+    <updated>2025-05-16T08:04:25+00:00</updated>
+    <author>
+      <name>/u/sebovzeoueb</name>
+      <uri>https://old.reddit.com/user/sebovzeoueb</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working with Ollama on a locally hosted AI project, and I was looking to try some alternatives to see what the performance is like. vLLM appears to be a performance focused alternative so I've got that downloaded in Docker, however there are models it can't use without accepting to share my contact information on the HuggingFace website and setting the HF token in the environment for vLLM. I would like to avoid this step as one of the selling points of the project I'm working on is that it's easy for the user to install, and having the user make an account somewhere and get an access token is contrary to that goal.&lt;/p&gt; &lt;p&gt;How come Ollama has direct access to the Mistral models without requiring this extra step? Furthermore, the Mistral website says 7B is released under the Apache 2.0 license and can be &amp;quot;used without restrictions&amp;quot;, so could someone please shed some light on why they need my contact information if I go through HF, and if there's an alternative route as a workaround? Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sebovzeoueb"&gt; /u/sebovzeoueb &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knvgva/why_do_i_need_to_share_my_contact_informationget/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T08:04:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1knl587</id>
@@ -281,17 +281,17 @@
     <published>2025-05-15T19:29:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knv4bq</id>
-    <title>Falcon-E: A series of powerful, fine-tunable and universal BitNet models</title>
-    <updated>2025-05-16T07:38:42+00:00</updated>
+    <id>t3_1kndp9f</id>
+    <title>TTS Fine-tuning now in Unsloth!</title>
+    <updated>2025-05-15T17:14:19+00:00</updated>
     <author>
-      <name>/u/JingweiZUO</name>
-      <uri>https://old.reddit.com/user/JingweiZUO</uri>
+      <name>/u/danielhanchen</name>
+      <uri>https://old.reddit.com/user/danielhanchen</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TII announced today the release of Falcon-Edge, a set of compact language models with 1B and 3B parameters, sized at 600MB and 900MB respectively. They can also be reverted back to bfloat16 with little performance degradation.&lt;br /&gt; Initial results show solid performance: better than other small models (SmolLMs, Microsoft bitnet, Qwen3-0.6B) and comparable to Qwen3-1.7B, with 1/4 memory footprint.&lt;br /&gt; They also released a fine-tuning library, &lt;code&gt;onebitllms&lt;/code&gt;: &lt;a href="https://github.com/tiiuae/onebitllms"&gt;https://github.com/tiiuae/onebitllms&lt;/a&gt;&lt;br /&gt; Blogposts: &lt;a href="https://huggingface.co/blog/tiiuae/falcon-edge"&gt;https://huggingface.co/blog/tiiuae/falcon-edge&lt;/a&gt; / &lt;a href="https://falcon-lm.github.io/blog/falcon-edge/"&gt;https://falcon-lm.github.io/blog/falcon-edge/&lt;/a&gt;&lt;br /&gt; HF collection: &lt;a href="https://huggingface.co/collections/tiiuae/falcon-edge-series-6804fd13344d6d8a8fa71130"&gt;https://huggingface.co/collections/tiiuae/falcon-edge-series-6804fd13344d6d8a8fa71130&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JingweiZUO"&gt; /u/JingweiZUO &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt; &lt;img alt="TTS Fine-tuning now in Unsloth!" src="https://external-preview.redd.it/bXI4dnBsa3phejBmMfDzohHQ2IN6C0pCi0KaT-g2AEXeep08I3DgQhQN5vF7.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57583ee26a1b7da14346a3cc45ff72ecbf34831b" title="TTS Fine-tuning now in Unsloth!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks! Not the usual LLMs talk but we’re excited to announce that you can now train Text-to-Speech (TTS) models in &lt;a href="https://github.com/unslothai/unsloth"&gt;Unsloth&lt;/a&gt;! Training is ~1.5x faster with 50% less VRAM compared to all other setups with FA2. :D&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support includes &lt;code&gt;Sesame/csm-1b&lt;/code&gt;, &lt;code&gt;OpenAI/whisper-large-v3&lt;/code&gt;, &lt;code&gt;CanopyLabs/orpheus-3b-0.1-ft&lt;/code&gt;, and any Transformer-style model including LLasa, Outte, Spark, and more.&lt;/li&gt; &lt;li&gt;The goal of TTS fine-tuning to minic voices, adapt speaking styles and tones, support new languages, handle specific tasks etc.&lt;/li&gt; &lt;li&gt;We’ve made notebooks to train, run, and save these models for free on Google Colab. Some models aren’t supported by llama.cpp and will be saved only as safetensors, but others should work. See our TTS docs and notebooks: &lt;a href="https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning"&gt;https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning&lt;/a&gt;&lt;/li&gt; &lt;li&gt;The training process is similar to SFT, but the dataset includes audio clips with transcripts. We use a dataset called ‘Elise’ that embeds emotion tags like &amp;lt;sigh&amp;gt; or &amp;lt;laughs&amp;gt; into transcripts, triggering expressive audio that matches the emotion.&lt;/li&gt; &lt;li&gt;Since TTS models are usually small, you can train them using 16-bit LoRA, or go with FFT. Loading a 16-bit LoRA model is simple.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We've uploaded most of the TTS models (quantized and original) to &lt;a href="https://huggingface.co/collections/unsloth/text-to-speech-tts-models-68007ab12522e96be1e02155"&gt;Hugging Face here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;And here are our TTS notebooks:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Sesame_CSM_(1B"&gt;Sesame-CSM (1B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Orpheus_(3B"&gt;Orpheus-TTS (3B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Whisper.ipynb"&gt;Whisper Large V3&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Spark_TTS_(0_5B"&gt;Spark-TTS (0.5B)&lt;/a&gt;.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Thank you for reading and please do ask any questions!!&lt;/p&gt; &lt;p&gt;P.S. We also now support Qwen3 GRPO. We use the base model + a new custom proximity-based reward function to favor near-correct answers and penalize outliers. Pre-finetuning mitigates formatting bias and boosts evaluation accuracy via regex matching: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb&lt;/a&gt;-GRPO.ipynb)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/faqjz7kzaz0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T07:38:42+00:00</published>
+    <published>2025-05-15T17:14:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1kno67v</id>
@@ -307,17 +307,17 @@
     <published>2025-05-16T00:49:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kndp9f</id>
-    <title>TTS Fine-tuning now in Unsloth!</title>
-    <updated>2025-05-15T17:14:19+00:00</updated>
+    <id>t3_1knv4bq</id>
+    <title>Falcon-E: A series of powerful, fine-tunable and universal BitNet models</title>
+    <updated>2025-05-16T07:38:42+00:00</updated>
     <author>
-      <name>/u/danielhanchen</name>
-      <uri>https://old.reddit.com/user/danielhanchen</uri>
+      <name>/u/JingweiZUO</name>
+      <uri>https://old.reddit.com/user/JingweiZUO</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt; &lt;img alt="TTS Fine-tuning now in Unsloth!" src="https://external-preview.redd.it/bXI4dnBsa3phejBmMfDzohHQ2IN6C0pCi0KaT-g2AEXeep08I3DgQhQN5vF7.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=57583ee26a1b7da14346a3cc45ff72ecbf34831b" title="TTS Fine-tuning now in Unsloth!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks! Not the usual LLMs talk but we’re excited to announce that you can now train Text-to-Speech (TTS) models in &lt;a href="https://github.com/unslothai/unsloth"&gt;Unsloth&lt;/a&gt;! Training is ~1.5x faster with 50% less VRAM compared to all other setups with FA2. :D&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support includes &lt;code&gt;Sesame/csm-1b&lt;/code&gt;, &lt;code&gt;OpenAI/whisper-large-v3&lt;/code&gt;, &lt;code&gt;CanopyLabs/orpheus-3b-0.1-ft&lt;/code&gt;, and any Transformer-style model including LLasa, Outte, Spark, and more.&lt;/li&gt; &lt;li&gt;The goal of TTS fine-tuning to minic voices, adapt speaking styles and tones, support new languages, handle specific tasks etc.&lt;/li&gt; &lt;li&gt;We’ve made notebooks to train, run, and save these models for free on Google Colab. Some models aren’t supported by llama.cpp and will be saved only as safetensors, but others should work. See our TTS docs and notebooks: &lt;a href="https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning"&gt;https://docs.unsloth.ai/basics/text-to-speech-tts-fine-tuning&lt;/a&gt;&lt;/li&gt; &lt;li&gt;The training process is similar to SFT, but the dataset includes audio clips with transcripts. We use a dataset called ‘Elise’ that embeds emotion tags like &amp;lt;sigh&amp;gt; or &amp;lt;laughs&amp;gt; into transcripts, triggering expressive audio that matches the emotion.&lt;/li&gt; &lt;li&gt;Since TTS models are usually small, you can train them using 16-bit LoRA, or go with FFT. Loading a 16-bit LoRA model is simple.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We've uploaded most of the TTS models (quantized and original) to &lt;a href="https://huggingface.co/collections/unsloth/text-to-speech-tts-models-68007ab12522e96be1e02155"&gt;Hugging Face here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;And here are our TTS notebooks:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Sesame_CSM_(1B"&gt;Sesame-CSM (1B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Orpheus_(3B"&gt;Orpheus-TTS (3B)&lt;/a&gt;-TTS.ipynb)&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Whisper.ipynb"&gt;Whisper Large V3&lt;/a&gt;&lt;/th&gt; &lt;th align="left"&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Spark_TTS_(0_5B"&gt;Spark-TTS (0.5B)&lt;/a&gt;.ipynb)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Thank you for reading and please do ask any questions!!&lt;/p&gt; &lt;p&gt;P.S. We also now support Qwen3 GRPO. We use the base model + a new custom proximity-based reward function to favor near-correct answers and penalize outliers. Pre-finetuning mitigates formatting bias and boosts evaluation accuracy via regex matching: &lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B"&gt;https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb&lt;/a&gt;-GRPO.ipynb)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/danielhanchen"&gt; /u/danielhanchen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/faqjz7kzaz0f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kndp9f/tts_finetuning_now_in_unsloth/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TII announced today the release of Falcon-Edge, a set of compact language models with 1B and 3B parameters, sized at 600MB and 900MB respectively. They can also be reverted back to bfloat16 with little performance degradation.&lt;br /&gt; Initial results show solid performance: better than other small models (SmolLMs, Microsoft bitnet, Qwen3-0.6B) and comparable to Qwen3-1.7B, with 1/4 memory footprint.&lt;br /&gt; They also released a fine-tuning library, &lt;code&gt;onebitllms&lt;/code&gt;: &lt;a href="https://github.com/tiiuae/onebitllms"&gt;https://github.com/tiiuae/onebitllms&lt;/a&gt;&lt;br /&gt; Blogposts: &lt;a href="https://huggingface.co/blog/tiiuae/falcon-edge"&gt;https://huggingface.co/blog/tiiuae/falcon-edge&lt;/a&gt; / &lt;a href="https://falcon-lm.github.io/blog/falcon-edge/"&gt;https://falcon-lm.github.io/blog/falcon-edge/&lt;/a&gt;&lt;br /&gt; HF collection: &lt;a href="https://huggingface.co/collections/tiiuae/falcon-edge-series-6804fd13344d6d8a8fa71130"&gt;https://huggingface.co/collections/tiiuae/falcon-edge-series-6804fd13344d6d8a8fa71130&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/JingweiZUO"&gt; /u/JingweiZUO &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knv4bq/falcone_a_series_of_powerful_finetunable_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T17:14:19+00:00</published>
+    <published>2025-05-16T07:38:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1knqap9</id>
