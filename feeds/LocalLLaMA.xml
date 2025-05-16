@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-16T17:35:57+00:00</updated>
+  <updated>2025-05-16T17:48:43+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kntez5</id>
-    <title>🚀 Embedding 10,000 text chunks per second on a CPU?!</title>
-    <updated>2025-05-16T05:41:32+00:00</updated>
-    <author>
-      <name>/u/aagmon</name>
-      <uri>https://old.reddit.com/user/aagmon</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;When working with large volumes of documents, embedding can quickly become both a performance bottleneck and a cost driver. I recently experimented with &lt;em&gt;static embedding&lt;/em&gt; — and was blown away by the speed. No self-attention, no feed-forward layers, just direct token key access. The result? Incredibly fast embedding with minimal overhead.&lt;br /&gt; I built a lightweight sample implementation in Rust using HF Candle and exposed it via Python so you can try it yourself.&lt;/p&gt; &lt;p&gt;Checkout the repo at: &lt;a href="https://github.com/a-agmon/static-embedding"&gt;https://github.com/a-agmon/static-embedding&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Read more about static embedding: &lt;a href="https://huggingface.co/blog/static-embeddings"&gt;https://huggingface.co/blog/static-embeddings&lt;/a&gt;&lt;/p&gt; &lt;p&gt;or just give it a try:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;pip install static_embed from static_embed import Embedder # 1. Use the default public model (no args) embedder = Embedder() # 2. OR specify your own base-URL that hosts the weights/tokeniser # (must contain the same two files: ``model.safetensors`` &amp;amp; ``tokenizer.json``) # custom_url = &amp;quot;https://my-cdn.example.com/static-retrieval-mrl-en-v1&amp;quot; # embedder = Embedder(custom_url) texts = [&amp;quot;Hello world!&amp;quot;, &amp;quot;Rust + Python via PyO3&amp;quot;] embeddings = embedder.embed(texts) print(len(embeddings), &amp;quot;embeddings&amp;quot;, &amp;quot;dimension&amp;quot;, len(embeddings[0])) &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aagmon"&gt; /u/aagmon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kntez5/embedding_10000_text_chunks_per_second_on_a_cpu/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T05:41:32+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1knqfw3</id>
-    <title>Simple generation speed test with 2x Arc B580</title>
-    <updated>2025-05-16T02:48:57+00:00</updated>
-    <author>
-      <name>/u/prompt_seeker</name>
-      <uri>https://old.reddit.com/user/prompt_seeker</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt; &lt;img alt="Simple generation speed test with 2x Arc B580" src="https://b.thumbs.redditmedia.com/Z5P1XL9jS1O1ASJhe2Dv2-OiirlE7J5MmCa_bH9LdMQ.jpg" title="Simple generation speed test with 2x Arc B580" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;There have been recent rumors about the B580 24GB, so I ran some new tests using my B580s. I used llama.cpp with some backends to test text generation speed using google_gemma-3-27b-it-IQ4_XS.gguf.&lt;/p&gt; &lt;h1&gt;Tested backends&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;IPEX-LLM llama.cpp &lt;ul&gt; &lt;li&gt;build: 1 (3b94b45) with Intel(R) oneAPI DPC++/C++ Compiler 2025.0.4 (2025.0.4.20241205) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp SYCL &lt;ul&gt; &lt;li&gt;build: 5400 (c6a2c9e7) with Intel(R) oneAPI DPC++/C++ Compiler 2025.1.1 (2025.1.1.20250418) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp VULKAN &lt;ul&gt; &lt;li&gt;build: 5395 (9c404ed5) with cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 for x86_64-linux-gnu &lt;em&gt;(from release)&lt;/em&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Base command&lt;/h1&gt; &lt;p&gt;&lt;code&gt;./llama-cli -m AI-12/google_gemma-3-27b-it-Q4_K_S.gguf -ngl 99 -c 8192 -b 512 -p &amp;quot;Why is sky blue?&amp;quot; -no-cnv&lt;/code&gt;&lt;/p&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Build&lt;/th&gt; &lt;th align="left"&gt;&lt;code&gt;-fa&lt;/code&gt; Option&lt;/th&gt; &lt;th align="left"&gt;Prompt Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Total Tokens Generated&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;52.22&lt;/td&gt; &lt;td align="left"&gt;8.18&lt;/td&gt; &lt;td align="left"&gt;393&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;(corrupted text)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;13.72&lt;/td&gt; &lt;td align="left"&gt;5.66&lt;/td&gt; &lt;td align="left"&gt;545&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;10.73&lt;/td&gt; &lt;td align="left"&gt;5.04&lt;/td&gt; &lt;td align="left"&gt;362&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;35.38&lt;/td&gt; &lt;td align="left"&gt;4.85&lt;/td&gt; &lt;td align="left"&gt;487&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;32.99&lt;/td&gt; &lt;td align="left"&gt;4.78&lt;/td&gt; &lt;td align="left"&gt;559&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Thoughts&lt;/h1&gt; &lt;p&gt;The results are disappointing. I previously tested google-gemma-2-27b-IQ4_XS.gguf with 2x 3060 GPUs, and achieved around 15 t/s.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1"&gt;https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;With image generation models, the B580 achieves generation speeds close to the RTX 4070, but its performance with LLMs seems to fall short of expectations.&lt;/p&gt; &lt;p&gt;I don’t know how much the PRO version (B580 with 24GB) will cost, but if you’re looking for a budget-friendly way to get more RAM, it might be better to consider the AI MAX+ 395 (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kmi3ra/amd_strix_halo_ryzen_ai_max_395_gpu_llm/"&gt;I’ve heard it can reach 6.4 tokens per second with 32B Q8&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;I tested this on Linux, but since Arc GPUs are said to perform better on Windows, you might get faster results there. If anyone has managed to get better performance with the B580, please let me know in the comments.&lt;/p&gt; &lt;p&gt;* Interestingly, generation is fast up to around 100–200 tokens, but then it gradually slows down. so using&lt;code&gt;llama-bench&lt;/code&gt; with tg512/pp128 is not a good way to test this GPU.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prompt_seeker"&gt; /u/prompt_seeker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T02:48:57+00:00</published>
-  </entry>
   <entry>
     <id>t3_1knx47e</id>
     <title>Qwen3 local 14B Q4_K_M or 30B A3B Q2_K_L who has higher quality</title>
@@ -84,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knorbe/grok_prompts_are_now_open_source_on_github/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-16T01:19:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ko6k81</id>
+    <title>Qwen 2.5 is the best for Ai fighting videos. I have used Google Veo 2 vs Qwen 2.5, and Qwen is the winner. I added some 11Labs Ai sound effects and 1 Audio X sound effect to these Qwen 2.5 fighting videos, and it is good. Right now Qwen 2.5 and Qwen 3 have lowered their resolution online. Unusable.</title>
+    <updated>2025-05-16T17:24:24+00:00</updated>
+    <author>
+      <name>/u/Extension-Fee-8480</name>
+      <uri>https://old.reddit.com/user/Extension-Fee-8480</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6k81/qwen_25_is_the_best_for_ai_fighting_videos_i_have/"&gt; &lt;img alt="Qwen 2.5 is the best for Ai fighting videos. I have used Google Veo 2 vs Qwen 2.5, and Qwen is the winner. I added some 11Labs Ai sound effects and 1 Audio X sound effect to these Qwen 2.5 fighting videos, and it is good. Right now Qwen 2.5 and Qwen 3 have lowered their resolution online. Unusable." src="https://external-preview.redd.it/MDIzOTJpMzhnNjFmMeaqshiPFdJ67jQ_t-ubO6dJCEb9cCij47udr6Aj4-_X.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a4b14c38964118843ff74e8ee435ca039bbdc1fb" title="Qwen 2.5 is the best for Ai fighting videos. I have used Google Veo 2 vs Qwen 2.5, and Qwen is the winner. I added some 11Labs Ai sound effects and 1 Audio X sound effect to these Qwen 2.5 fighting videos, and it is good. Right now Qwen 2.5 and Qwen 3 have lowered their resolution online. Unusable." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Extension-Fee-8480"&gt; /u/Extension-Fee-8480 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/iqxkth38g61f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6k81/qwen_25_is_the_best_for_ai_fighting_videos_i_have/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6k81/qwen_25_is_the_best_for_ai_fighting_videos_i_have/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T17:24:24+00:00</published>
   </entry>
   <entry>
     <id>t3_1ko4be2</id>
@@ -138,6 +125,19 @@
     <published>2025-05-16T14:42:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ko6hy7</id>
+    <title>When did small models get so smart? I get really good outputs with Qwen3 4B, it's kinda insane.</title>
+    <updated>2025-05-16T17:21:55+00:00</updated>
+    <author>
+      <name>/u/Anxietrap</name>
+      <uri>https://old.reddit.com/user/Anxietrap</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6hy7/when_did_small_models_get_so_smart_i_get_really/"&gt; &lt;img alt="When did small models get so smart? I get really good outputs with Qwen3 4B, it's kinda insane." src="https://preview.redd.it/1fwbjz4zf61f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c05a4e8bffe7ec3f4e56031dc110d91c80808d7b" title="When did small models get so smart? I get really good outputs with Qwen3 4B, it's kinda insane." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I can remember, like a few months ago, I ran some of the smaller models with &amp;lt;7B parameters and couldn't even get coherent sentences. This 4B model runs super fast and answered this question perfectly. To be fair, it probably has seen a lot of these examples in it's training data but nonetheless - it's crazy. I only ran this prompt in English to show it here but initially it was in German. Also there, got very well expressed explanations for my question. Crazy that this comes from a 2.6GB file of structured numbers.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Anxietrap"&gt; /u/Anxietrap &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/1fwbjz4zf61f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6hy7/when_did_small_models_get_so_smart_i_get_really/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko6hy7/when_did_small_models_get_so_smart_i_get_really/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T17:21:55+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kno67v</id>
     <title>Ollama now supports multimodal models</title>
     <updated>2025-05-16T00:49:35+00:00</updated>
@@ -149,19 +149,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kno67v/ollama_now_supports_multimodal_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-16T00:49:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ko4oor</id>
-    <title>Qwen: Parallel Scaling Law for Language Models</title>
-    <updated>2025-05-16T16:07:57+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2505.10475"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4oor/qwen_parallel_scaling_law_for_language_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4oor/qwen_parallel_scaling_law_for_language_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T16:07:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1ko0d4w</id>
@@ -190,17 +177,17 @@
     <published>2025-05-16T15:08:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ko2gq1</id>
-    <title>AM-Thinking-v1</title>
-    <updated>2025-05-16T14:37:26+00:00</updated>
+    <id>t3_1ko4oor</id>
+    <title>Qwen: Parallel Scaling Law for Language Models</title>
+    <updated>2025-05-16T16:07:57+00:00</updated>
     <author>
       <name>/u/AaronFeng47</name>
       <uri>https://old.reddit.com/user/AaronFeng47</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt; &lt;img alt="AM-Thinking-v1" src="https://external-preview.redd.it/hpID4tGlVXcsccCrPaCo5PJZ9uVrqES2Dr7pBVPNMCc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1d9a6b67fdd30d72dd266f22d019598feded92a1" title="AM-Thinking-v1" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/a-m-team/AM-Thinking-v1"&gt;https://huggingface.co/a-m-team/AM-Thinking-v1&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;We release &lt;strong&gt;AM-Thinking‑v1&lt;/strong&gt;, a 32B dense language model focused on enhancing reasoning capabilities. Built on Qwen 2.5‑32B‑Base, AM-Thinking‑v1 shows strong performance on reasoning benchmarks, comparable to much larger MoE models like &lt;strong&gt;DeepSeek‑R1&lt;/strong&gt;, &lt;strong&gt;Qwen3‑235B‑A22B&lt;/strong&gt;, &lt;strong&gt;Seed1.5-Thinking&lt;/strong&gt;, and larger dense model like &lt;strong&gt;Nemotron-Ultra-253B-v1&lt;/strong&gt;.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://arxiv.org/abs/2505.08311"&gt;https://arxiv.org/abs/2505.08311&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://a-m-team.github.io/am-thinking-v1/"&gt;https://a-m-team.github.io/am-thinking-v1/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/79z2klmbn51f1.png?width=2001&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=18a3b5a0d06b75e6712891b7c19853ec1de3e737"&gt;https://preview.redd.it/79z2klmbn51f1.png?width=2001&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=18a3b5a0d06b75e6712891b7c19853ec1de3e737&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;\&lt;/em&gt;I'm not affiliated with the model provider, just sharing the news.&lt;/strong&gt;*&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;System prompt &amp;amp; generation_config:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;You are a helpful assistant. To answer the user’s question, you first think about the reasoning process and then provide the user with the answer. The reasoning process and answer are enclosed within &amp;lt;think&amp;gt; &amp;lt;/think&amp;gt; and &amp;lt;answer&amp;gt; &amp;lt;/answer&amp;gt; tags, respectively, i.e., &amp;lt;think&amp;gt; reasoning process here &amp;lt;/think&amp;gt; &amp;lt;answer&amp;gt; answer here &amp;lt;/answer&amp;gt;. &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;---&lt;/p&gt; &lt;pre&gt;&lt;code&gt; &amp;quot;temperature&amp;quot;: 0.6, &amp;quot;top_p&amp;quot;: 0.95, &amp;quot;repetition_penalty&amp;quot;: 1.0 &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2505.10475"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4oor/qwen_parallel_scaling_law_for_language_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4oor/qwen_parallel_scaling_law_for_language_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T14:37:26+00:00</published>
+    <published>2025-05-16T16:07:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1ko1tg5</id>
@@ -216,6 +203,19 @@
     <published>2025-05-16T14:10:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ko2gq1</id>
+    <title>AM-Thinking-v1</title>
+    <updated>2025-05-16T14:37:26+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt; &lt;img alt="AM-Thinking-v1" src="https://external-preview.redd.it/hpID4tGlVXcsccCrPaCo5PJZ9uVrqES2Dr7pBVPNMCc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1d9a6b67fdd30d72dd266f22d019598feded92a1" title="AM-Thinking-v1" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/a-m-team/AM-Thinking-v1"&gt;https://huggingface.co/a-m-team/AM-Thinking-v1&lt;/a&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;We release &lt;strong&gt;AM-Thinking‑v1&lt;/strong&gt;, a 32B dense language model focused on enhancing reasoning capabilities. Built on Qwen 2.5‑32B‑Base, AM-Thinking‑v1 shows strong performance on reasoning benchmarks, comparable to much larger MoE models like &lt;strong&gt;DeepSeek‑R1&lt;/strong&gt;, &lt;strong&gt;Qwen3‑235B‑A22B&lt;/strong&gt;, &lt;strong&gt;Seed1.5-Thinking&lt;/strong&gt;, and larger dense model like &lt;strong&gt;Nemotron-Ultra-253B-v1&lt;/strong&gt;.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;a href="https://arxiv.org/abs/2505.08311"&gt;https://arxiv.org/abs/2505.08311&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://a-m-team.github.io/am-thinking-v1/"&gt;https://a-m-team.github.io/am-thinking-v1/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/79z2klmbn51f1.png?width=2001&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=18a3b5a0d06b75e6712891b7c19853ec1de3e737"&gt;https://preview.redd.it/79z2klmbn51f1.png?width=2001&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=18a3b5a0d06b75e6712891b7c19853ec1de3e737&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;em&gt;\&lt;/em&gt;I'm not affiliated with the model provider, just sharing the news.&lt;/strong&gt;*&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;System prompt &amp;amp; generation_config:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;You are a helpful assistant. To answer the user’s question, you first think about the reasoning process and then provide the user with the answer. The reasoning process and answer are enclosed within &amp;lt;think&amp;gt; &amp;lt;/think&amp;gt; and &amp;lt;answer&amp;gt; &amp;lt;/answer&amp;gt; tags, respectively, i.e., &amp;lt;think&amp;gt; reasoning process here &amp;lt;/think&amp;gt; &amp;lt;answer&amp;gt; answer here &amp;lt;/answer&amp;gt;. &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;---&lt;/p&gt; &lt;pre&gt;&lt;code&gt; &amp;quot;temperature&amp;quot;: 0.6, &amp;quot;top_p&amp;quot;: 0.95, &amp;quot;repetition_penalty&amp;quot;: 1.0 &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko2gq1/amthinkingv1/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T14:37:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ko4jsb</id>
     <title>Fastgen - Simple high-throughput inference</title>
     <updated>2025-05-16T16:02:29+00:00</updated>
@@ -229,19 +229,6 @@
     <published>2025-05-16T16:02:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ko4gjh</id>
-    <title>Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!</title>
-    <updated>2025-05-16T15:59:01+00:00</updated>
-    <author>
-      <name>/u/TheLocalDrummer</name>
-      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"&gt; &lt;img alt="Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!" src="https://external-preview.redd.it/RaXPiHRNTSUjMvQHqKyyr5p4_KJP9L2YFlPLat5z5Po.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=261065cb239472639351be9a147285bf23a5bfc3" title="Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Big-Alice-28B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T15:59:01+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1knqap9</id>
     <title>Are we finally hitting THE wall right now?</title>
     <updated>2025-05-16T02:41:06+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knqap9/are_we_finally_hitting_the_wall_right_now/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-16T02:41:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ko4gjh</id>
+    <title>Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!</title>
+    <updated>2025-05-16T15:59:01+00:00</updated>
+    <author>
+      <name>/u/TheLocalDrummer</name>
+      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"&gt; &lt;img alt="Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!" src="https://external-preview.redd.it/RaXPiHRNTSUjMvQHqKyyr5p4_KJP9L2YFlPLat5z5Po.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=261065cb239472639351be9a147285bf23a5bfc3" title="Drummer's Big Alice 28B v1 - A 100 layer upscale working together to give you the finest creative experience!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Big-Alice-28B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko4gjh/drummers_big_alice_28b_v1_a_100_layer_upscale/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T15:59:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1knv4bq</id>
@@ -294,19 +294,6 @@
     <published>2025-05-16T14:12:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ko1iob</id>
-    <title>Ollama violating llama.cpp license for over a year</title>
-    <updated>2025-05-16T13:57:38+00:00</updated>
-    <author>
-      <name>/u/op_loves_boobs</name>
-      <uri>https://old.reddit.com/user/op_loves_boobs</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/op_loves_boobs"&gt; /u/op_loves_boobs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://news.ycombinator.com/item?id=44003741"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko1iob/ollama_violating_llamacpp_license_for_over_a_year/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko1iob/ollama_violating_llamacpp_license_for_over_a_year/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T13:57:38+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ko0khr</id>
     <title>Stanford has dropped AGI</title>
     <updated>2025-05-16T13:15:17+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko0khr/stanford_has_dropped_agi/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-16T13:15:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ko1iob</id>
+    <title>Ollama violating llama.cpp license for over a year</title>
+    <updated>2025-05-16T13:57:38+00:00</updated>
+    <author>
+      <name>/u/op_loves_boobs</name>
+      <uri>https://old.reddit.com/user/op_loves_boobs</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/op_loves_boobs"&gt; /u/op_loves_boobs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://news.ycombinator.com/item?id=44003741"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ko1iob/ollama_violating_llamacpp_license_for_over_a_year/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ko1iob/ollama_violating_llamacpp_license_for_over_a_year/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T13:57:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1ko27bi</id>
