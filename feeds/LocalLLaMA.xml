@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-16T04:39:34+00:00</updated>
+  <updated>2025-05-16T04:50:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -164,19 +164,6 @@
     <published>2025-05-15T15:40:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knqfw3</id>
-    <title>Simple generation speed test with 2x Arc B580</title>
-    <updated>2025-05-16T02:48:57+00:00</updated>
-    <author>
-      <name>/u/prompt_seeker</name>
-      <uri>https://old.reddit.com/user/prompt_seeker</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt; &lt;img alt="Simple generation speed test with 2x Arc B580" src="https://b.thumbs.redditmedia.com/Z5P1XL9jS1O1ASJhe2Dv2-OiirlE7J5MmCa_bH9LdMQ.jpg" title="Simple generation speed test with 2x Arc B580" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;There have been recent rumors about the B580 24GB, so I ran some new tests using my B580s. I used llama.cpp with some backends to test text generation speed using google_gemma-3-27b-it-IQ4_XS.gguf.&lt;/p&gt; &lt;h1&gt;Tested backends&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;IPEX-LLM llama.cpp &lt;ul&gt; &lt;li&gt;build: 1 (3b94b45) with Intel(R) oneAPI DPC++/C++ Compiler 2025.0.4 (2025.0.4.20241205) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp SYCL &lt;ul&gt; &lt;li&gt;build: 5400 (c6a2c9e7) with Intel(R) oneAPI DPC++/C++ Compiler 2025.1.1 (2025.1.1.20250418) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp VULKAN &lt;ul&gt; &lt;li&gt;build: 5395 (9c404ed5) with cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 for x86_64-linux-gnu &lt;em&gt;(from release)&lt;/em&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Base command&lt;/h1&gt; &lt;p&gt;&lt;code&gt;./llama-cli -m AI-12/google_gemma-3-27b-it-Q4_K_S.gguf -ngl 99 -c 8192 -b 512 -p &amp;quot;Why is sky blue?&amp;quot; -no-cnv&lt;/code&gt;&lt;/p&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Build&lt;/th&gt; &lt;th align="left"&gt;&lt;code&gt;-fa&lt;/code&gt; Option&lt;/th&gt; &lt;th align="left"&gt;Prompt Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Total Tokens Generated&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;52.22&lt;/td&gt; &lt;td align="left"&gt;8.18&lt;/td&gt; &lt;td align="left"&gt;393&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;(corrupted text)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;13.72&lt;/td&gt; &lt;td align="left"&gt;5.66&lt;/td&gt; &lt;td align="left"&gt;545&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;10.73&lt;/td&gt; &lt;td align="left"&gt;5.04&lt;/td&gt; &lt;td align="left"&gt;362&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;35.38&lt;/td&gt; &lt;td align="left"&gt;4.85&lt;/td&gt; &lt;td align="left"&gt;487&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;32.99&lt;/td&gt; &lt;td align="left"&gt;4.78&lt;/td&gt; &lt;td align="left"&gt;559&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Thoughts&lt;/h1&gt; &lt;p&gt;The results are disappointing. I previously tested google-gemma-2-27b-IQ4_XS.gguf with 2x 3060 GPUs, and achieved around 15 t/s.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1"&gt;https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;With image generation models, the B580 achieves generation speeds close to the RTX 4070, but its performance with LLMs seems to fall short of expectations.&lt;/p&gt; &lt;p&gt;I don’t know how much the PRO version (B580 with 24GB) will cost, but if you’re looking for a budget-friendly way to get more RAM, it might be better to consider the AI MAX+ 395 (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kmi3ra/amd_strix_halo_ryzen_ai_max_395_gpu_llm/"&gt;I’ve heard it can reach 6.4 tokens per second with 32B Q8&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;I tested this on Linux, but since Arc GPUs are said to perform better on Windows, you might get faster results there. If anyone has managed to get better performance with the B580, please let me know in the comments.&lt;/p&gt; &lt;p&gt;* Interestingly, generation is fast up to around 100–200 tokens, but then it gradually slows down. so using&lt;code&gt;llama-bench&lt;/code&gt; with tg512/pp128 is not a good way to test this GPU.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prompt_seeker"&gt; /u/prompt_seeker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-16T02:48:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1knnyco</id>
     <title>Mistral Small/Medium vs Qwen 3 14/32B</title>
     <updated>2025-05-16T00:37:51+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knnyco/mistral_smallmedium_vs_qwen_3_1432b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-16T00:37:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knqfw3</id>
+    <title>Simple generation speed test with 2x Arc B580</title>
+    <updated>2025-05-16T02:48:57+00:00</updated>
+    <author>
+      <name>/u/prompt_seeker</name>
+      <uri>https://old.reddit.com/user/prompt_seeker</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt; &lt;img alt="Simple generation speed test with 2x Arc B580" src="https://b.thumbs.redditmedia.com/Z5P1XL9jS1O1ASJhe2Dv2-OiirlE7J5MmCa_bH9LdMQ.jpg" title="Simple generation speed test with 2x Arc B580" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;There have been recent rumors about the B580 24GB, so I ran some new tests using my B580s. I used llama.cpp with some backends to test text generation speed using google_gemma-3-27b-it-IQ4_XS.gguf.&lt;/p&gt; &lt;h1&gt;Tested backends&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;IPEX-LLM llama.cpp &lt;ul&gt; &lt;li&gt;build: 1 (3b94b45) with Intel(R) oneAPI DPC++/C++ Compiler 2025.0.4 (2025.0.4.20241205) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp SYCL &lt;ul&gt; &lt;li&gt;build: 5400 (c6a2c9e7) with Intel(R) oneAPI DPC++/C++ Compiler 2025.1.1 (2025.1.1.20250418) for x86_64-unknown-linux-gnu&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;official llama.cpp VULKAN &lt;ul&gt; &lt;li&gt;build: 5395 (9c404ed5) with cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 for x86_64-linux-gnu &lt;em&gt;(from release)&lt;/em&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Base command&lt;/h1&gt; &lt;p&gt;&lt;code&gt;./llama-cli -m AI-12/google_gemma-3-27b-it-Q4_K_S.gguf -ngl 99 -c 8192 -b 512 -p &amp;quot;Why is sky blue?&amp;quot; -no-cnv&lt;/code&gt;&lt;/p&gt; &lt;h1&gt;Results&lt;/h1&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Build&lt;/th&gt; &lt;th align="left"&gt;&lt;code&gt;-fa&lt;/code&gt; Option&lt;/th&gt; &lt;th align="left"&gt;Prompt Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Eval Speed (t/s)&lt;/th&gt; &lt;th align="left"&gt;Total Tokens Generated&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;52.22&lt;/td&gt; &lt;td align="left"&gt;8.18&lt;/td&gt; &lt;td align="left"&gt;393&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3b94b45 (IPEX-LLM)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;(corrupted text)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;13.72&lt;/td&gt; &lt;td align="left"&gt;5.66&lt;/td&gt; &lt;td align="left"&gt;545&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;c6a2c9e7 (SYCL)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;10.73&lt;/td&gt; &lt;td align="left"&gt;5.04&lt;/td&gt; &lt;td align="left"&gt;362&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;-&lt;/td&gt; &lt;td align="left"&gt;35.38&lt;/td&gt; &lt;td align="left"&gt;4.85&lt;/td&gt; &lt;td align="left"&gt;487&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;9c404ed5 (vulkan)&lt;/td&gt; &lt;td align="left"&gt;Yes&lt;/td&gt; &lt;td align="left"&gt;32.99&lt;/td&gt; &lt;td align="left"&gt;4.78&lt;/td&gt; &lt;td align="left"&gt;559&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h1&gt;Thoughts&lt;/h1&gt; &lt;p&gt;The results are disappointing. I previously tested google-gemma-2-27b-IQ4_XS.gguf with 2x 3060 GPUs, and achieved around 15 t/s.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1"&gt;https://preview.redd.it/xuijd9iz121f1.png?width=606&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b280fe6c9e3ca8f752ae59208008fed818f1d8d1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;With image generation models, the B580 achieves generation speeds close to the RTX 4070, but its performance with LLMs seems to fall short of expectations.&lt;/p&gt; &lt;p&gt;I don’t know how much the PRO version (B580 with 24GB) will cost, but if you’re looking for a budget-friendly way to get more RAM, it might be better to consider the AI MAX+ 395 (&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kmi3ra/amd_strix_halo_ryzen_ai_max_395_gpu_llm/"&gt;I’ve heard it can reach 6.4 tokens per second with 32B Q8&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;I tested this on Linux, but since Arc GPUs are said to perform better on Windows, you might get faster results there. If anyone has managed to get better performance with the B580, please let me know in the comments.&lt;/p&gt; &lt;p&gt;* Interestingly, generation is fast up to around 100–200 tokens, but then it gradually slows down. so using&lt;code&gt;llama-bench&lt;/code&gt; with tg512/pp128 is not a good way to test this GPU.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prompt_seeker"&gt; /u/prompt_seeker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knqfw3/simple_generation_speed_test_with_2x_arc_b580/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-16T02:48:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1kn75q8</id>
@@ -203,19 +203,6 @@
     <published>2025-05-15T12:39:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1knl587</id>
-    <title>Meta is delaying the rollout of its flagship AI model (WSJ)</title>
-    <updated>2025-05-15T22:20:53+00:00</updated>
-    <author>
-      <name>/u/Hanthunius</name>
-      <uri>https://old.reddit.com/user/Hanthunius</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"&gt; &lt;img alt="Meta is delaying the rollout of its flagship AI model (WSJ)" src="https://preview.redd.it/gdsyodsot01f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4a311d3625dba19a91ac3b06067a91ee8aa3bc7a" title="Meta is delaying the rollout of its flagship AI model (WSJ)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Link to the article: &lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hanthunius"&gt; /u/Hanthunius &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/gdsyodsot01f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-15T22:20:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1knh0dq</id>
     <title>Created a tool that converts podcasts into clean speech datasets - handles diarization, removes overlapping speech, and transcribes</title>
     <updated>2025-05-15T19:27:35+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knh0dq/created_a_tool_that_converts_podcasts_into_clean/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-15T19:27:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1knl587</id>
+    <title>Meta is delaying the rollout of its flagship AI model (WSJ)</title>
+    <updated>2025-05-15T22:20:53+00:00</updated>
+    <author>
+      <name>/u/Hanthunius</name>
+      <uri>https://old.reddit.com/user/Hanthunius</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"&gt; &lt;img alt="Meta is delaying the rollout of its flagship AI model (WSJ)" src="https://preview.redd.it/gdsyodsot01f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4a311d3625dba19a91ac3b06067a91ee8aa3bc7a" title="Meta is delaying the rollout of its flagship AI model (WSJ)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Link to the article: &lt;a href="https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7"&gt;https://www.wsj.com/tech/ai/meta-is-delaying-the-rollout-of-its-flagship-ai-model-f4b105f7&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Hanthunius"&gt; /u/Hanthunius &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/gdsyodsot01f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1knl587/meta_is_delaying_the_rollout_of_its_flagship_ai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-15T22:20:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1knji91</id>
