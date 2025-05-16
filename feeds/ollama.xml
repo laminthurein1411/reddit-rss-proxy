@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-16T13:49:50+00:00</updated>
+  <updated>2025-05-16T14:06:33+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1kloilc</id>
-    <title>We need to talk about Ollama’s lack of reranker support.</title>
-    <updated>2025-05-13T15:14:46+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Open WebUI finally added support for external reranking models in 0.6.8 last week. I tried to enable it and point it to my Ollama server’s endpoint only to discover that it doesn’t work because sadly, Ollama doesn’t support reranking models even though llama.cpp does now (per this: &lt;a href="https://github.com/ggml-org/llama.cpp/pull/9510"&gt;https://github.com/ggml-org/llama.cpp/pull/9510&lt;/a&gt;). &lt;/p&gt; &lt;p&gt;I tested external reranking in Open WebUI, pointing to my Ollama server. I tried /v1, /v1/rerank, and blank but none of them worked. Btw, I was using &lt;a href="https://ollama.com/linux6200/bge-reranker-v2-m3"&gt;https://ollama.com/linux6200/bge-reranker-v2-m3&lt;/a&gt; as the reranking model. &lt;/p&gt; &lt;p&gt;I found multiple related Github issues such as this one:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/ollama/ollama/issues/3368"&gt;https://github.com/ollama/ollama/issues/3368&lt;/a&gt;&lt;/p&gt; &lt;p&gt;where people are pretty much begging for reranking, but still nothing seems to be happening.&lt;/p&gt; &lt;p&gt;Hybrid search with reranking would really help a lot of folks’ RAG pipelines. Normally, llama.cpp would be the hold up, but from what I can tell, it looks like they already support it. Any clue on when and if we’ll ever see reranking support in Ollama? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kloilc/we_need_to_talk_about_ollamas_lack_of_reranker/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kloilc/we_need_to_talk_about_ollamas_lack_of_reranker/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kloilc/we_need_to_talk_about_ollamas_lack_of_reranker/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-13T15:14:46+00:00</published>
-  </entry>
   <entry>
     <id>t3_1klp6v8</id>
     <title>Basic dark mode UI for Ollama</title>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/ollama/comments/1knu8bm/is_anyone_using_ollama_for_production_purposes/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-16T06:36:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ko1jph</id>
+    <title>What model repositories work with ollama pull?</title>
+    <updated>2025-05-16T13:58:57+00:00</updated>
+    <author>
+      <name>/u/synthphreak</name>
+      <uri>https://old.reddit.com/user/synthphreak</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;By default, &lt;code&gt;ollama pull&lt;/code&gt; seems set up to work with models in the &lt;a href="https://ollama.com/library"&gt;Ollama models library&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;However, digging a bit, I learned that you can pull Ollama-compatible models off the HuggingFace model hub by appending &lt;code&gt;hf.co/&lt;/code&gt; to the model ID. However, it seems most models in the hub are not compatible with &lt;code&gt;ollama&lt;/code&gt; and will throw an error.&lt;/p&gt; &lt;p&gt;This raises two questions for me:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Is there a convenient, robust way to filter the HF models hub down to &lt;code&gt;ollama&lt;/code&gt;-compatible models only? You can filter in the browser with &lt;code&gt;other=ollama&lt;/code&gt;, but about half of the resulting models fail with&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;code&gt; Error: pull model manifest: 400: {&amp;quot;error&amp;quot;:&amp;quot;Repository is not GGUF or is not compatible with llama.cpp&amp;quot;} &lt;/code&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;What other model hubs exist which work with &lt;code&gt;ollama pull&lt;/code&gt;? For example, I've read that &lt;a href="https://modelscope.cn/models"&gt;https://modelscope.cn/models&lt;/a&gt; allegedly works, but all the models I've tried with have failed to download. For example:&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;code&gt;shell ❯ ollama pull LKShizuku/ollama3_7B_cat-gguf pulling manifest Error: pull model manifest: file does not exist ❯ ollama pull modelscope.com/LKShizuku/ollama3_7B_cat-gguf pulling manifest Error: unexpected status code 301 ❯ ollama pull modelscope.co/LKShizuku/ollama3_7B_cat-gguf pulling manifest Error: pull model manifest: invalid character '&amp;lt;' looking for beginning of value &lt;/code&gt;&lt;/p&gt; &lt;p&gt;(using &lt;a href="https://modelscope.cn/models/LKShizuku/ollama3_7B_cat-gguf"&gt;this model&lt;/a&gt;)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/synthphreak"&gt; /u/synthphreak &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ko1jph/what_model_repositories_work_with_ollama_pull/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ko1jph/what_model_repositories_work_with_ollama_pull/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1ko1jph/what_model_repositories_work_with_ollama_pull/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-16T13:58:57+00:00</published>
   </entry>
 </feed>
