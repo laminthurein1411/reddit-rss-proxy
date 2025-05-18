@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-18T17:48:44+00:00</updated>
+  <updated>2025-05-18T18:07:48+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kp6gdv</id>
-    <title>ROCm 6.4 + current unsloth working</title>
-    <updated>2025-05-17T23:37:19+00:00</updated>
-    <author>
-      <name>/u/Ok_Ocelot2268</name>
-      <uri>https://old.reddit.com/user/Ok_Ocelot2268</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Here a working ROCm unsloth docker setup:&lt;/p&gt; &lt;p&gt;Dockerfile (for gfx1100)&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.6.0 WORKDIR /root RUN git clone -b rocm_enabled_multi_backend https://github.com/ROCm/bitsandbytes.git RUN cd bitsandbytes/ &amp;amp;&amp;amp; cmake -DGPU_TARGETS=&amp;quot;gfx1100&amp;quot; -DBNB_ROCM_ARCH=&amp;quot;gfx1100&amp;quot; -DCOMPUTE_BACKEND=hip -S . &amp;amp;&amp;amp; make &amp;amp;&amp;amp; pip install -e . RUN pip install unsloth_zoo&amp;gt;=2025.5.7 RUN pip install datasets&amp;gt;=3.4.1 sentencepiece&amp;gt;=0.2.0 tqdm psutil wheel&amp;gt;=0.42.0 RUN pip install accelerate&amp;gt;=0.34.1 RUN pip install peft&amp;gt;=0.7.1,!=0.11.0 WORKDIR /root RUN git clone https://github.com/ROCm/xformers.git RUN cd xformers/ &amp;amp;&amp;amp; git submodule update --init --recursive &amp;amp;&amp;amp; git checkout 13c93f3 &amp;amp;&amp;amp; PYTORCH_ROCM_ARCH=gfx1100 python setup.py install ENV FLASH_ATTENTION_TRITON_AMD_ENABLE=&amp;quot;TRUE&amp;quot; WORKDIR /root RUN git clone https://github.com/ROCm/flash-attention.git RUN cd flash-attention &amp;amp;&amp;amp; git checkout main_perf &amp;amp;&amp;amp; python setup.py install WORKDIR /root RUN git clone https://github.com/unslothai/unsloth.git RUN cd unsloth &amp;amp;&amp;amp; pip install . &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;docker-compose.yml&lt;/p&gt; &lt;pre&gt;&lt;code&gt;version: '3' services: unsloth: container_name: unsloth devices: - /dev/kfd:/dev/kfd - /dev/dri:/dev/dri image: unsloth volumes: - ./data:/data - ./hf:/root/.cache/huggingface environment: - 'HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION-11.0.0}' command: sleep infinity &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;python -m bitsandbytes says &amp;quot;PyTorch settings found: ROCM_VERSION=64&amp;quot; but also tracebacks with &lt;/p&gt; &lt;pre&gt;&lt;code&gt; File &amp;quot;/root/bitsandbytes/bitsandbytes/backends/__init__.py&amp;quot;, line 15, in ensure_backend_is_available raise NotImplementedError(f&amp;quot;Device backend for {device_type} is currently not supported.&amp;quot;) NotImplementedError: Device backend for cuda is currently not supported. &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;python -m xformers.info&lt;/p&gt; &lt;pre&gt;&lt;code&gt;xFormers 0.0.30+13c93f39.d20250517 memory_efficient_attention.ckF: available memory_efficient_attention.ckB: available memory_efficient_attention.ck_decoderF: available memory_efficient_attention.ck_splitKF: available memory_efficient_attention.cutlassF-pt: unavailable memory_efficient_attention.cutlassB-pt: unavailable memory_efficient_attention.fa2F@2.7.4.post1: available memory_efficient_attention.fa2B@2.7.4.post1: available memory_efficient_attention.fa3F@0.0.0: unavailable memory_efficient_attention.fa3B@0.0.0: unavailable memory_efficient_attention.triton_splitKF: available indexing.scaled_index_addF: available indexing.scaled_index_addB: available indexing.index_select: available sp24.sparse24_sparsify_both_ways: available sp24.sparse24_apply: available sp24.sparse24_apply_dense_output: available sp24._sparse24_gemm: available sp24._cslt_sparse_mm_search@0.0.0: available sp24._cslt_sparse_mm@0.0.0: available swiglu.dual_gemm_silu: available swiglu.gemm_fused_operand_sum: available swiglu.fused.p.cpp: available is_triton_available: True pytorch.version: 2.6.0+git45896ac pytorch.cuda: available gpu.compute_capability: 11.0 gpu.name: AMD Radeon PRO W7900 dcgm_profiler: unavailable build.info: available build.cuda_version: None build.hip_version: None build.python_version: 3.10.16 build.torch_version: 2.6.0+git45896ac build.env.TORCH_CUDA_ARCH_LIST: None build.env.PYTORCH_ROCM_ARCH: gfx1100 build.env.XFORMERS_BUILD_TYPE: None build.env.XFORMERS_ENABLE_DEBUG_ASSERTIONS: None build.env.NVCC_FLAGS: None build.env.XFORMERS_PACKAGE_FROM: None source.privacy: open source &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(14B"&gt;This&lt;/a&gt;-Reasoning-Conversational.ipynb) Notebook on a W7900 48GB: &lt;/p&gt; &lt;pre&gt;&lt;code&gt;... {'loss': 0.3836, 'grad_norm': 25.887989044189453, 'learning_rate': 3.2000000000000005e-05, 'epoch': 0.01} {'loss': 0.4308, 'grad_norm': 1.1072479486465454, 'learning_rate': 2.4e-05, 'epoch': 0.01} {'loss': 0.3695, 'grad_norm': 0.22923792898654938, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.01} {'loss': 0.4119, 'grad_norm': 1.4164329767227173, 'learning_rate': 8.000000000000001e-06, 'epoch': 0.01} 17.4 minutes used for training. Peak reserved memory = 14.551 GB. Peak reserved memory for training = 0.483 GB. Peak reserved memory % of max memory = 32.347 %. Peak reserved memory for training % of max memory = 1.074 %. &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Ocelot2268"&gt; /u/Ok_Ocelot2268 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kp6gdv/rocm_64_current_unsloth_working/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kp6gdv/rocm_64_current_unsloth_working/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kp6gdv/rocm_64_current_unsloth_working/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-17T23:37:19+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kp9or5</id>
     <title>Biggest &amp; best local LLM with no guardrails?</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kotssm/i_believe_were_at_a_point_where_context_is_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-17T14:05:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kpq099</id>
+    <title>What do you think of Arcee's Virtuoso Large and Coder Large?</title>
+    <updated>2025-05-18T17:54:39+00:00</updated>
+    <author>
+      <name>/u/Sky_Linx</name>
+      <uri>https://old.reddit.com/user/Sky_Linx</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm testing them through OpenRouter and they look pretty good. Anyone using them?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sky_Linx"&gt; /u/Sky_Linx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpq099/what_do_you_think_of_arcees_virtuoso_large_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpq099/what_do_you_think_of_arcees_virtuoso_large_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpq099/what_do_you_think_of_arcees_virtuoso_large_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-18T17:54:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1kosbyy</id>
@@ -203,19 +203,6 @@
     <published>2025-05-18T17:07:53+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kpozhd</id>
-    <title>Cherry Studio is now my favorite frontend</title>
-    <updated>2025-05-18T17:11:33+00:00</updated>
-    <author>
-      <name>/u/ConsistentCan4633</name>
-      <uri>https://old.reddit.com/user/ConsistentCan4633</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been looking for an open source LLM frontend desktop app for a while that did everything; rag, web searching, local models, connecting to Gemini and ChatGPT, etc. Jan AI has a lot of potential but the rag is experimental and doesn't really work for me. Anything LLM's rag for some reason has never worked for me, which is surprising because the entire app is supposed to be built around RAG. LM Studio (not open source) is awesome but can't connect to cloud models. GPT4ALL was decent but the updater mechanism is buggy. &lt;/p&gt; &lt;p&gt;I remember seeing &lt;a href="https://github.com/CherryHQ/cherry-studio"&gt;Cherry Studio&lt;/a&gt; a while back but I'm wary with Chinese apps (I'm not sure if my suspicion is unfounded 🤷). I got tired of having to jump around apps for specific features so I downloaded Cherry Studio and it's the app that does everything I want. In fact, it has quite a bit more features I haven't touched on like direct connections to your Obsidian knowledge base. I never see this project being talked about, maybe there's a good reason?&lt;/p&gt; &lt;p&gt;I am not affiliated with Cherry Studio, I just want to explain my experience in hopes some of you may find the app useful. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ConsistentCan4633"&gt; /u/ConsistentCan4633 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-18T17:11:33+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kpnfvo</id>
     <title>I made an AI agent to control a drone using Qwen2 and smolagents from hugging face</title>
     <updated>2025-05-18T16:05:10+00:00</updated>
@@ -268,17 +255,17 @@
     <published>2025-05-18T03:36:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kppdhb</id>
-    <title>MSI PC with NVIDIA GB10 Superchip - 6144 CUDA Cores and 128GB LPDDR5X Confirmed</title>
-    <updated>2025-05-18T17:28:06+00:00</updated>
+    <id>t3_1kpozhd</id>
+    <title>Cherry Studio is now my favorite frontend</title>
+    <updated>2025-05-18T17:11:33+00:00</updated>
     <author>
-      <name>/u/shakhizat</name>
-      <uri>https://old.reddit.com/user/shakhizat</uri>
+      <name>/u/ConsistentCan4633</name>
+      <uri>https://old.reddit.com/user/ConsistentCan4633</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;ASUS, Dell, and Lenovo have released their version of Nvidia DGX Spark, and now MSI has as well.&lt;/p&gt; &lt;p&gt;&lt;a href="https://en.gamegpu.com/iron/msi-showed-edgeexpert-ms-c931-s-nvidia-gb10-superchip-confirmed-6144-cuda-yader-i-128-gb-lpddr5x"&gt;https://en.gamegpu.com/iron/msi-showed-edgeexpert-ms-c931-s-nvidia-gb10-superchip-confirmed-6144-cuda-yader-i-128-gb-lpddr5x&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shakhizat"&gt; /u/shakhizat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been looking for an open source LLM frontend desktop app for a while that did everything; rag, web searching, local models, connecting to Gemini and ChatGPT, etc. Jan AI has a lot of potential but the rag is experimental and doesn't really work for me. Anything LLM's rag for some reason has never worked for me, which is surprising because the entire app is supposed to be built around RAG. LM Studio (not open source) is awesome but can't connect to cloud models. GPT4ALL was decent but the updater mechanism is buggy. &lt;/p&gt; &lt;p&gt;I remember seeing &lt;a href="https://github.com/CherryHQ/cherry-studio"&gt;Cherry Studio&lt;/a&gt; a while back but I'm wary with Chinese apps (I'm not sure if my suspicion is unfounded 🤷). I got tired of having to jump around apps for specific features so I downloaded Cherry Studio and it's the app that does everything I want. In fact, it has quite a bit more features I haven't touched on like direct connections to your Obsidian knowledge base. I never see this project being talked about, maybe there's a good reason?&lt;/p&gt; &lt;p&gt;I am not affiliated with Cherry Studio, I just want to explain my experience in hopes some of you may find the app useful. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ConsistentCan4633"&gt; /u/ConsistentCan4633 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-18T17:28:06+00:00</published>
+    <published>2025-05-18T17:11:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1kp4scy</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kp4scy/alphaevolve_paper_dropped_yesterday_so_i_built_my/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-17T22:14:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kppdhb</id>
+    <title>MSI PC with NVIDIA GB10 Superchip - 6144 CUDA Cores and 128GB LPDDR5X Confirmed</title>
+    <updated>2025-05-18T17:28:06+00:00</updated>
+    <author>
+      <name>/u/shakhizat</name>
+      <uri>https://old.reddit.com/user/shakhizat</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;ASUS, Dell, and Lenovo have released their version of Nvidia DGX Spark, and now MSI has as well.&lt;/p&gt; &lt;p&gt;&lt;a href="https://en.gamegpu.com/iron/msi-showed-edgeexpert-ms-c931-s-nvidia-gb10-superchip-confirmed-6144-cuda-yader-i-128-gb-lpddr5x"&gt;https://en.gamegpu.com/iron/msi-showed-edgeexpert-ms-c931-s-nvidia-gb10-superchip-confirmed-6144-cuda-yader-i-128-gb-lpddr5x&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/shakhizat"&gt; /u/shakhizat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-18T17:28:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpohfm</id>
