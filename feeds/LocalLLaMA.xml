@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-19T20:36:48+00:00</updated>
+  <updated>2025-05-19T20:49:18+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1kq2wr0</id>
+    <title>I made a tool to efficiently find optimal parameters</title>
+    <updated>2025-05-19T04:19:00+00:00</updated>
+    <author>
+      <name>/u/Kooshi_Govno</name>
+      <uri>https://old.reddit.com/user/Kooshi_Govno</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The Taguchi method lets you change multiple variables at once to test a bunch of stuff quickly, and I made a tool to do it for AI and other stuff&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've been waking up inspired often recently, with the multiplying effect of Claude and Gemini, I can explore ideas as fast as I come up with them.&lt;/p&gt; &lt;p&gt;One seemed particularly compelling, partially because I've been looking for an excuse to use Orthogonal Arrays ever since I saw &lt;a href="https://youtu.be/5oULEuOoRd0"&gt;NightHawkInLight's video&lt;/a&gt; about them.&lt;/p&gt; &lt;p&gt;I wanted a way to test local llm sampler parameters to see what was really the best, and as it takes so long to run benchmarks, Orthogonal Arrays popped into my head as a way to efficiently test them.&lt;/p&gt; &lt;p&gt;I had no idea how much statistical math went into analyzing these things, but I just kept learning and coding. I'm sure it's nowhere near perfect, but it seems to be working pretty well, and I mostly cleaned things up enough to allow the scrutiny of the public eye.&lt;/p&gt; &lt;p&gt;At some point I realized it could be generalized to run &lt;em&gt;any&lt;/em&gt; command line tool and optimize those arguments as well, so I ended up completely refactoring it to break it into two components.&lt;/p&gt; &lt;p&gt;So here's what I have: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Two tools:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; LiveBenchRunner - which just sets up and executes a LiveBench run with llama-server as the backend, which is useful by itself or with:&lt;/li&gt; &lt;li&gt;TaguchiBench.Engine &lt;ul&gt; &lt;li&gt;takes a set of parameters and values&lt;/li&gt; &lt;li&gt;attempts to fit them into a Taguchi (Orthogonal) array (harder than you'd think)&lt;/li&gt; &lt;li&gt;runs the tool an efficient number of times with the different values for the parameters&lt;/li&gt; &lt;li&gt;does a bunch of statistical analysis on the scores returned by the tool&lt;/li&gt; &lt;li&gt;makes some nice reports out of them&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It can also recover from an interrupted experiment, which is nice considering how long runs can take. (In the future I may take advantage of LiveBench's recovery ability as well)&lt;/p&gt; &lt;p&gt;I haven't actually found any useful optimization data yet, as I've just been focused on development, but now that it's pretty solid, I'm curious to validate &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kkuq7m/qwen_suggests_adding_presence_penalty_when_using/"&gt;Qwen3's recent recommendation to enable presence penalty&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;What I'm really hoping though, is that someone else finds a use for this in their own work, since it can help optimize any process you can run from a command line. I looked around, and I didn't see any open source tool like it. I did find this &lt;a href="https://pypi.org/project/taguchi/"&gt;https://pypi.org/project/taguchi/&lt;/a&gt;, and shoutout to another NightHawkInLight fan, but it doesn't appear to do any analysis of returned values, and is generally pretty simple. Granted, mine's probably massively &lt;em&gt;over&lt;/em&gt;engineered, but so it goes.&lt;/p&gt; &lt;p&gt;Anyway, I hope you all like it, and have some uses for it, AI related or not!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kooshi_Govno"&gt; /u/Kooshi_Govno &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T04:19:00+00:00</published>
+  </entry>
   <entry>
     <id>t3_1kqekgh</id>
     <title>Best Non-Chinese Open Reasoning LLMs atm?</title>
@@ -73,19 +86,6 @@
     <published>2025-05-18T22:26:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqharr</id>
-    <title>Local LLMs show-down: More than 20 LLMs and one single Prompt</title>
-    <updated>2025-05-19T17:15:55+00:00</updated>
-    <author>
-      <name>/u/kekePower</name>
-      <uri>https://old.reddit.com/user/kekePower</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I became really curious about how far I could push LLMs and asked GPT-4o to help me craft a prompt that would make the models work really hard.&lt;/p&gt; &lt;p&gt;Then I ran the same prompt through a selection of LLMs on my hardware along with a few commercial models for reference.&lt;/p&gt; &lt;p&gt;You can read the results on my blog &lt;a href="https://blog.kekepower.com/blog/2025/may/19/the_2025_polymath_llm_show-down_how_twenty%E2%80%91two_models_fared_under_a_single_grueling_prompt.html"&gt;https://blog.kekepower.com/blog/2025/may/19/the_2025_polymath_llm_show-down_how_twenty%E2%80%91two_models_fared_under_a_single_grueling_prompt.html&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kekePower"&gt; /u/kekePower &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqharr/local_llms_showdown_more_than_20_llms_and_one/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqharr/local_llms_showdown_more_than_20_llms_and_one/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqharr/local_llms_showdown_more_than_20_llms_and_one/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T17:15:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kqfu8l</id>
     <title>Local speech chat with Gemma3, speaking like a polyglot with multiple-personalities</title>
     <updated>2025-05-19T16:19:07+00:00</updated>
@@ -110,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T05:56:22+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kqluy9</id>
-    <title>👀 Microsoft just created an MCP Registry for Windows</title>
-    <updated>2025-05-19T20:12:32+00:00</updated>
-    <author>
-      <name>/u/eternviking</name>
-      <uri>https://old.reddit.com/user/eternviking</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"&gt; &lt;img alt="👀 Microsoft just created an MCP Registry for Windows" src="https://preview.redd.it/6lwf9y6eqs1f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3580c11b0dace946cb1f140d2732484fdb0916e4" title="👀 Microsoft just created an MCP Registry for Windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/eternviking"&gt; /u/eternviking &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/6lwf9y6eqs1f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T20:12:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1kqbh7g</id>
@@ -164,17 +151,17 @@
     <published>2025-05-19T00:24:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqgwh2</id>
-    <title>Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B</title>
-    <updated>2025-05-19T17:00:51+00:00</updated>
+    <id>t3_1kqluy9</id>
+    <title>👀 Microsoft just created an MCP Registry for Windows</title>
+    <updated>2025-05-19T20:12:32+00:00</updated>
     <author>
-      <name>/u/TheLocalDrummer</name>
-      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+      <name>/u/eternviking</name>
+      <uri>https://old.reddit.com/user/eternviking</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"&gt; &lt;img alt="Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B" src="https://external-preview.redd.it/7-TxzLinFktWh46KZdKq3Yh3o06ZI3kUSrN3cJLAfu4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=899485ad26383ade67df07fffa408803ffb0b047" title="Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Valkyrie-49B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"&gt; &lt;img alt="👀 Microsoft just created an MCP Registry for Windows" src="https://preview.redd.it/6lwf9y6eqs1f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3580c11b0dace946cb1f140d2732484fdb0916e4" title="👀 Microsoft just created an MCP Registry for Windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/eternviking"&gt; /u/eternviking &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/6lwf9y6eqs1f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqluy9/microsoft_just_created_an_mcp_registry_for_windows/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T17:00:51+00:00</published>
+    <published>2025-05-19T20:12:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1kqab4m</id>
@@ -190,6 +177,19 @@
     <published>2025-05-19T12:22:27+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kqgwh2</id>
+    <title>Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B</title>
+    <updated>2025-05-19T17:00:51+00:00</updated>
+    <author>
+      <name>/u/TheLocalDrummer</name>
+      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"&gt; &lt;img alt="Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B" src="https://external-preview.redd.it/7-TxzLinFktWh46KZdKq3Yh3o06ZI3kUSrN3cJLAfu4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=899485ad26383ade67df07fffa408803ffb0b047" title="Drummer's Valkyrie 49B v1 - A strong, creative finetune of Nemotron 49B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Valkyrie-49B-v1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqgwh2/drummers_valkyrie_49b_v1_a_strong_creative/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T17:00:51+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kqa6l0</id>
     <title>KTransformers v0.3.1 now supports Intel Arc GPUs (A770 + new B-series): 7 tps DeepSeek R1 decode speed for a single CPU + a single A770</title>
     <updated>2025-05-19T12:16:17+00:00</updated>
@@ -203,19 +203,6 @@
     <published>2025-05-19T12:16:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqh56l</id>
-    <title>MLX LM now integrated within Hugging Face</title>
-    <updated>2025-05-19T17:09:53+00:00</updated>
-    <author>
-      <name>/u/paf1138</name>
-      <uri>https://old.reddit.com/user/paf1138</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt; &lt;img alt="MLX LM now integrated within Hugging Face" src="https://external-preview.redd.it/ejhyMW5ocXN0cjFmMeXek4ObJQU75YpzzSznbvZU2j6Nva4vduBEs8qjugv3.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fe76777105e1f4e318005e5384d9b053060a5946" title="MLX LM now integrated within Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;thread: &lt;a href="https://x.com/victormustar/status/1924510517311287508"&gt;https://x.com/victormustar/status/1924510517311287508&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paf1138"&gt; /u/paf1138 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bvoizhqstr1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T17:09:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kq6ysz</id>
     <title>OuteTTS 1.0 (0.6B) — Apache 2.0, Batch Inference (~0.1–0.02 RTF)</title>
     <updated>2025-05-19T08:56:52+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq6ysz/outetts_10_06b_apache_20_batch_inference_01002_rtf/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T08:56:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kqh56l</id>
+    <title>MLX LM now integrated within Hugging Face</title>
+    <updated>2025-05-19T17:09:53+00:00</updated>
+    <author>
+      <name>/u/paf1138</name>
+      <uri>https://old.reddit.com/user/paf1138</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt; &lt;img alt="MLX LM now integrated within Hugging Face" src="https://external-preview.redd.it/ejhyMW5ocXN0cjFmMeXek4ObJQU75YpzzSznbvZU2j6Nva4vduBEs8qjugv3.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fe76777105e1f4e318005e5384d9b053060a5946" title="MLX LM now integrated within Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;thread: &lt;a href="https://x.com/victormustar/status/1924510517311287508"&gt;https://x.com/victormustar/status/1924510517311287508&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paf1138"&gt; /u/paf1138 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bvoizhqstr1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T17:09:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1kqa7vx</id>
