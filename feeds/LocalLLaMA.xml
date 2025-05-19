@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-19T19:05:34+00:00</updated>
+  <updated>2025-05-19T19:22:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -60,19 +60,6 @@
     <published>2025-05-19T17:46:57+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kq2wr0</id>
-    <title>I made a tool to efficiently find optimal parameters</title>
-    <updated>2025-05-19T04:19:00+00:00</updated>
-    <author>
-      <name>/u/Kooshi_Govno</name>
-      <uri>https://old.reddit.com/user/Kooshi_Govno</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The Taguchi method lets you change multiple variables at once to test a bunch of stuff quickly, and I made a tool to do it for AI and other stuff&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've been waking up inspired often recently, with the multiplying effect of Claude and Gemini, I can explore ideas as fast as I come up with them.&lt;/p&gt; &lt;p&gt;One seemed particularly compelling, partially because I've been looking for an excuse to use Orthogonal Arrays ever since I saw &lt;a href="https://youtu.be/5oULEuOoRd0"&gt;NightHawkInLight's video&lt;/a&gt; about them.&lt;/p&gt; &lt;p&gt;I wanted a way to test local llm sampler parameters to see what was really the best, and as it takes so long to run benchmarks, Orthogonal Arrays popped into my head as a way to efficiently test them.&lt;/p&gt; &lt;p&gt;I had no idea how much statistical math went into analyzing these things, but I just kept learning and coding. I'm sure it's nowhere near perfect, but it seems to be working pretty well, and I mostly cleaned things up enough to allow the scrutiny of the public eye.&lt;/p&gt; &lt;p&gt;At some point I realized it could be generalized to run &lt;em&gt;any&lt;/em&gt; command line tool and optimize those arguments as well, so I ended up completely refactoring it to break it into two components.&lt;/p&gt; &lt;p&gt;So here's what I have: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Two tools:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; LiveBenchRunner - which just sets up and executes a LiveBench run with llama-server as the backend, which is useful by itself or with:&lt;/li&gt; &lt;li&gt;TaguchiBench.Engine &lt;ul&gt; &lt;li&gt;takes a set of parameters and values&lt;/li&gt; &lt;li&gt;attempts to fit them into a Taguchi (Orthogonal) array (harder than you'd think)&lt;/li&gt; &lt;li&gt;runs the tool an efficient number of times with the different values for the parameters&lt;/li&gt; &lt;li&gt;does a bunch of statistical analysis on the scores returned by the tool&lt;/li&gt; &lt;li&gt;makes some nice reports out of them&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It can also recover from an interrupted experiment, which is nice considering how long runs can take. (In the future I may take advantage of LiveBench's recovery ability as well)&lt;/p&gt; &lt;p&gt;I haven't actually found any useful optimization data yet, as I've just been focused on development, but now that it's pretty solid, I'm curious to validate &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kkuq7m/qwen_suggests_adding_presence_penalty_when_using/"&gt;Qwen3's recent recommendation to enable presence penalty&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;What I'm really hoping though, is that someone else finds a use for this in their own work, since it can help optimize any process you can run from a command line. I looked around, and I didn't see any open source tool like it. I did find this &lt;a href="https://pypi.org/project/taguchi/"&gt;https://pypi.org/project/taguchi/&lt;/a&gt;, and shoutout to another NightHawkInLight fan, but it doesn't appear to do any analysis of returned values, and is generally pretty simple. Granted, mine's probably massively &lt;em&gt;over&lt;/em&gt;engineered, but so it goes.&lt;/p&gt; &lt;p&gt;Anyway, I hope you all like it, and have some uses for it, AI related or not!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kooshi_Govno"&gt; /u/Kooshi_Govno &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T04:19:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kqftyo</id>
     <title>I'm trying to create a lightweight LLM with limited context window using only MLP layers</title>
     <updated>2025-05-19T16:18:49+00:00</updated>
@@ -86,17 +73,17 @@
     <published>2025-05-19T16:18:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kq1g7s</id>
-    <title>The first author of the ParScale paper discusses how they turned ParScale from an idea into reality</title>
-    <updated>2025-05-19T02:55:28+00:00</updated>
+    <id>t3_1kq2wr0</id>
+    <title>I made a tool to efficiently find optimal parameters</title>
+    <updated>2025-05-19T04:19:00+00:00</updated>
     <author>
-      <name>/u/Dr_Karminski</name>
-      <uri>https://old.reddit.com/user/Dr_Karminski</uri>
+      <name>/u/Kooshi_Govno</name>
+      <uri>https://old.reddit.com/user/Kooshi_Govno</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt; &lt;img alt="The first author of the ParScale paper discusses how they turned ParScale from an idea into reality" src="https://b.thumbs.redditmedia.com/bAgKbu4x_vB4NNm42eNbQsAZxlwnjN3U6xEN99bLNKc.jpg" title="The first author of the ParScale paper discusses how they turned ParScale from an idea into reality" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Because many friends have given feedback that Zhihu cannot be accessed without registration, I am simply using a translation plugin to translate posts from Zhihu into English and taking screenshots. &lt;/p&gt; &lt;p&gt;The original author is keytoyze, who holds all rights to the article. The original address is:&lt;/p&gt; &lt;p&gt;&lt;a href="http://www.zhihu.com/question/1907422978985169131/answer/1907565157103694086"&gt;www.zhihu.com/question/1907422978985169131/answer/1907565157103694086&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/coxrzxd6ln1f1.png?width=869&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=55637a7888ae9396e88a09ea0ed134bd153e7dcb"&gt;https://preview.redd.it/coxrzxd6ln1f1.png?width=869&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=55637a7888ae9396e88a09ea0ed134bd153e7dcb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/hudkuuf7ln1f1.png?width=862&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9c9af9f77370961a07bdc6876c6be9e84c3ff2de"&gt;https://preview.redd.it/hudkuuf7ln1f1.png?width=862&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9c9af9f77370961a07bdc6876c6be9e84c3ff2de&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xebnsy18ln1f1.png?width=877&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b8c78a0d42bead0e4838d2f6f24da84d5a706b3a"&gt;https://preview.redd.it/xebnsy18ln1f1.png?width=877&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b8c78a0d42bead0e4838d2f6f24da84d5a706b3a&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3yuzdfp8ln1f1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a03790528375bd05619f79e335c08cafa9659595"&gt;https://preview.redd.it/3yuzdfp8ln1f1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a03790528375bd05619f79e335c08cafa9659595&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/z07wi6f9ln1f1.png?width=855&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=230c6c9bba3ae8d72838c06d5ae6c0f7fdab16d3"&gt;https://preview.redd.it/z07wi6f9ln1f1.png?width=855&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=230c6c9bba3ae8d72838c06d5ae6c0f7fdab16d3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/bs6cecy9ln1f1.png?width=856&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b948927ff6a3edeea98ddc37377eac53e5a968fd"&gt;https://preview.redd.it/bs6cecy9ln1f1.png?width=856&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b948927ff6a3edeea98ddc37377eac53e5a968fd&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dr_Karminski"&gt; /u/Dr_Karminski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The Taguchi method lets you change multiple variables at once to test a bunch of stuff quickly, and I made a tool to do it for AI and other stuff&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've been waking up inspired often recently, with the multiplying effect of Claude and Gemini, I can explore ideas as fast as I come up with them.&lt;/p&gt; &lt;p&gt;One seemed particularly compelling, partially because I've been looking for an excuse to use Orthogonal Arrays ever since I saw &lt;a href="https://youtu.be/5oULEuOoRd0"&gt;NightHawkInLight's video&lt;/a&gt; about them.&lt;/p&gt; &lt;p&gt;I wanted a way to test local llm sampler parameters to see what was really the best, and as it takes so long to run benchmarks, Orthogonal Arrays popped into my head as a way to efficiently test them.&lt;/p&gt; &lt;p&gt;I had no idea how much statistical math went into analyzing these things, but I just kept learning and coding. I'm sure it's nowhere near perfect, but it seems to be working pretty well, and I mostly cleaned things up enough to allow the scrutiny of the public eye.&lt;/p&gt; &lt;p&gt;At some point I realized it could be generalized to run &lt;em&gt;any&lt;/em&gt; command line tool and optimize those arguments as well, so I ended up completely refactoring it to break it into two components.&lt;/p&gt; &lt;p&gt;So here's what I have: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Two tools:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; LiveBenchRunner - which just sets up and executes a LiveBench run with llama-server as the backend, which is useful by itself or with:&lt;/li&gt; &lt;li&gt;TaguchiBench.Engine &lt;ul&gt; &lt;li&gt;takes a set of parameters and values&lt;/li&gt; &lt;li&gt;attempts to fit them into a Taguchi (Orthogonal) array (harder than you'd think)&lt;/li&gt; &lt;li&gt;runs the tool an efficient number of times with the different values for the parameters&lt;/li&gt; &lt;li&gt;does a bunch of statistical analysis on the scores returned by the tool&lt;/li&gt; &lt;li&gt;makes some nice reports out of them&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It can also recover from an interrupted experiment, which is nice considering how long runs can take. (In the future I may take advantage of LiveBench's recovery ability as well)&lt;/p&gt; &lt;p&gt;I haven't actually found any useful optimization data yet, as I've just been focused on development, but now that it's pretty solid, I'm curious to validate &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kkuq7m/qwen_suggests_adding_presence_penalty_when_using/"&gt;Qwen3's recent recommendation to enable presence penalty&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;What I'm really hoping though, is that someone else finds a use for this in their own work, since it can help optimize any process you can run from a command line. I looked around, and I didn't see any open source tool like it. I did find this &lt;a href="https://pypi.org/project/taguchi/"&gt;https://pypi.org/project/taguchi/&lt;/a&gt;, and shoutout to another NightHawkInLight fan, but it doesn't appear to do any analysis of returned values, and is generally pretty simple. Granted, mine's probably massively &lt;em&gt;over&lt;/em&gt;engineered, but so it goes.&lt;/p&gt; &lt;p&gt;Anyway, I hope you all like it, and have some uses for it, AI related or not!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kooshi_Govno"&gt; /u/Kooshi_Govno &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T02:55:28+00:00</published>
+    <published>2025-05-19T04:19:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpw9nw</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpw9nw/unlimited_texttospeech_using_kokorojs_100_local/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-18T22:26:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq1g7s</id>
+    <title>The first author of the ParScale paper discusses how they turned ParScale from an idea into reality</title>
+    <updated>2025-05-19T02:55:28+00:00</updated>
+    <author>
+      <name>/u/Dr_Karminski</name>
+      <uri>https://old.reddit.com/user/Dr_Karminski</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt; &lt;img alt="The first author of the ParScale paper discusses how they turned ParScale from an idea into reality" src="https://b.thumbs.redditmedia.com/bAgKbu4x_vB4NNm42eNbQsAZxlwnjN3U6xEN99bLNKc.jpg" title="The first author of the ParScale paper discusses how they turned ParScale from an idea into reality" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Because many friends have given feedback that Zhihu cannot be accessed without registration, I am simply using a translation plugin to translate posts from Zhihu into English and taking screenshots. &lt;/p&gt; &lt;p&gt;The original author is keytoyze, who holds all rights to the article. The original address is:&lt;/p&gt; &lt;p&gt;&lt;a href="http://www.zhihu.com/question/1907422978985169131/answer/1907565157103694086"&gt;www.zhihu.com/question/1907422978985169131/answer/1907565157103694086&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/coxrzxd6ln1f1.png?width=869&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=55637a7888ae9396e88a09ea0ed134bd153e7dcb"&gt;https://preview.redd.it/coxrzxd6ln1f1.png?width=869&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=55637a7888ae9396e88a09ea0ed134bd153e7dcb&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/hudkuuf7ln1f1.png?width=862&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9c9af9f77370961a07bdc6876c6be9e84c3ff2de"&gt;https://preview.redd.it/hudkuuf7ln1f1.png?width=862&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9c9af9f77370961a07bdc6876c6be9e84c3ff2de&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/xebnsy18ln1f1.png?width=877&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b8c78a0d42bead0e4838d2f6f24da84d5a706b3a"&gt;https://preview.redd.it/xebnsy18ln1f1.png?width=877&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b8c78a0d42bead0e4838d2f6f24da84d5a706b3a&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3yuzdfp8ln1f1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a03790528375bd05619f79e335c08cafa9659595"&gt;https://preview.redd.it/3yuzdfp8ln1f1.png?width=866&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a03790528375bd05619f79e335c08cafa9659595&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/z07wi6f9ln1f1.png?width=855&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=230c6c9bba3ae8d72838c06d5ae6c0f7fdab16d3"&gt;https://preview.redd.it/z07wi6f9ln1f1.png?width=855&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=230c6c9bba3ae8d72838c06d5ae6c0f7fdab16d3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/bs6cecy9ln1f1.png?width=856&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b948927ff6a3edeea98ddc37377eac53e5a968fd"&gt;https://preview.redd.it/bs6cecy9ln1f1.png?width=856&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b948927ff6a3edeea98ddc37377eac53e5a968fd&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dr_Karminski"&gt; /u/Dr_Karminski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq1g7s/the_first_author_of_the_parscale_paper_discusses/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T02:55:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1kqfu8l</id>
@@ -164,19 +164,6 @@
     <published>2025-05-19T13:18:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqh56l</id>
-    <title>MLX LM now integrated within Hugging Face</title>
-    <updated>2025-05-19T17:09:53+00:00</updated>
-    <author>
-      <name>/u/paf1138</name>
-      <uri>https://old.reddit.com/user/paf1138</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt; &lt;img alt="MLX LM now integrated within Hugging Face" src="https://external-preview.redd.it/ejhyMW5ocXN0cjFmMeXek4ObJQU75YpzzSznbvZU2j6Nva4vduBEs8qjugv3.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fe76777105e1f4e318005e5384d9b053060a5946" title="MLX LM now integrated within Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;thread: &lt;a href="https://x.com/victormustar/status/1924510517311287508"&gt;https://x.com/victormustar/status/1924510517311287508&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paf1138"&gt; /u/paf1138 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bvoizhqstr1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T17:09:53+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kq9mfl</id>
     <title>Intel Announces Arc Pro B-Series, "Project Battlematrix" Linux Software Improvements</title>
     <updated>2025-05-19T11:46:51+00:00</updated>
@@ -190,17 +177,17 @@
     <published>2025-05-19T11:46:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqiwu2</id>
-    <title>Evaluating the best models at translating German - open models beat DeepL!</title>
-    <updated>2025-05-19T18:17:55+00:00</updated>
+    <id>t3_1kqh56l</id>
+    <title>MLX LM now integrated within Hugging Face</title>
+    <updated>2025-05-19T17:09:53+00:00</updated>
     <author>
-      <name>/u/Nuenki</name>
-      <uri>https://old.reddit.com/user/Nuenki</uri>
+      <name>/u/paf1138</name>
+      <uri>https://old.reddit.com/user/paf1138</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"&gt; &lt;img alt="Evaluating the best models at translating German - open models beat DeepL!" src="https://external-preview.redd.it/DtSOjZDQhCIQrR9MXzfYsDwli-PvO8iAuPXRBhYivls.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=33bb3dd09e1348f194cfb304ced2dd662da82a0f" title="Evaluating the best models at translating German - open models beat DeepL!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nuenki"&gt; /u/Nuenki &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://nuenki.app/blog/best_language_models_for_german_translation"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt; &lt;img alt="MLX LM now integrated within Hugging Face" src="https://external-preview.redd.it/ejhyMW5ocXN0cjFmMeXek4ObJQU75YpzzSznbvZU2j6Nva4vduBEs8qjugv3.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fe76777105e1f4e318005e5384d9b053060a5946" title="MLX LM now integrated within Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;thread: &lt;a href="https://x.com/victormustar/status/1924510517311287508"&gt;https://x.com/victormustar/status/1924510517311287508&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/paf1138"&gt; /u/paf1138 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/bvoizhqstr1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqh56l/mlx_lm_now_integrated_within_hugging_face/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T18:17:55+00:00</published>
+    <published>2025-05-19T17:09:53+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpyn8g</id>
@@ -255,17 +242,17 @@
     <published>2025-05-19T08:56:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kqhljr</id>
-    <title>VS Code: Open Source Copilot</title>
-    <updated>2025-05-19T17:27:31+00:00</updated>
+    <id>t3_1kqiwu2</id>
+    <title>Evaluating the best models at translating German - open models beat DeepL!</title>
+    <updated>2025-05-19T18:17:55+00:00</updated>
     <author>
-      <name>/u/DonTizi</name>
-      <uri>https://old.reddit.com/user/DonTizi</uri>
+      <name>/u/Nuenki</name>
+      <uri>https://old.reddit.com/user/Nuenki</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"&gt; &lt;img alt="VS Code: Open Source Copilot" src="https://external-preview.redd.it/7Ri8YRwu_7FpWFvmcgOzjF960jd6eY_pMWtoGfUyNOA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=717dd6dca05edfe21ffc3b5167abc2a06a881f81" title="VS Code: Open Source Copilot" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What do you think of this move by Microsoft? Is it just me, or are the possibilities endless? We can build customizable IDEs with an entire company’s tech stack by integrating MCPs on top, without having to build everything from scratch.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DonTizi"&gt; /u/DonTizi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"&gt; &lt;img alt="Evaluating the best models at translating German - open models beat DeepL!" src="https://external-preview.redd.it/DtSOjZDQhCIQrR9MXzfYsDwli-PvO8iAuPXRBhYivls.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=33bb3dd09e1348f194cfb304ced2dd662da82a0f" title="Evaluating the best models at translating German - open models beat DeepL!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Nuenki"&gt; /u/Nuenki &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://nuenki.app/blog/best_language_models_for_german_translation"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqiwu2/evaluating_the_best_models_at_translating_german/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T17:27:31+00:00</published>
+    <published>2025-05-19T18:17:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1kqa7vx</id>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqa7vx/intel_arc_b60_dualgpu_48gb_video_card_teardown/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T12:18:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kqhljr</id>
+    <title>VS Code: Open Source Copilot</title>
+    <updated>2025-05-19T17:27:31+00:00</updated>
+    <author>
+      <name>/u/DonTizi</name>
+      <uri>https://old.reddit.com/user/DonTizi</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"&gt; &lt;img alt="VS Code: Open Source Copilot" src="https://external-preview.redd.it/7Ri8YRwu_7FpWFvmcgOzjF960jd6eY_pMWtoGfUyNOA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=717dd6dca05edfe21ffc3b5167abc2a06a881f81" title="VS Code: Open Source Copilot" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What do you think of this move by Microsoft? Is it just me, or are the possibilities endless? We can build customizable IDEs with an entire company’s tech stack by integrating MCPs on top, without having to build everything from scratch.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DonTizi"&gt; /u/DonTizi &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kqhljr/vs_code_open_source_copilot/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T17:27:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1kq8wo4</id>
