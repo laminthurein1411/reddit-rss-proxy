@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-19T06:43:12+00:00</updated>
+  <updated>2025-05-19T06:54:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kq4vrv</id>
-    <title>OuteTTS v1.0 now supported by chatllm.cpp</title>
-    <updated>2025-05-19T06:27:47+00:00</updated>
-    <author>
-      <name>/u/foldl-li</name>
-      <uri>https://old.reddit.com/user/foldl-li</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"&gt; &lt;img alt="OuteTTS v1.0 now supported by chatllm.cpp" src="https://external-preview.redd.it/bGFzbDV5NGptbzFmMYcMr_Cq2gLg7E5zrnm6bi-e1D6-e2IdLt9Ao5b5ur7s.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b016d5027138226027672f8409b61134b13cd138" title="OuteTTS v1.0 now supported by chatllm.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After Orpheus-TTS is implemented in &lt;a href="https://github.com/foldl/chatllm.cpp"&gt;ChatLLM.cpp&lt;/a&gt;, now here comes &lt;a href="https://huggingface.co/OuteAI/Llama-OuteTTS-1.0-1B"&gt;OuteTTS v1.0&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/foldl-li"&gt; /u/foldl-li &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/cpcocy4jmo1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T06:27:47+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kpyrrs</id>
-    <title>How can I improve this subtitle translator prompt?</title>
-    <updated>2025-05-19T00:31:01+00:00</updated>
-    <author>
-      <name>/u/OneSteelTank</name>
-      <uri>https://old.reddit.com/user/OneSteelTank</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, I've been trying to use AI models on OpenRouter in order to translate subtitles. My script will break the subtitle file into chunks and feed it to the LLM model 1 by 1. After a bit of testing I found Deepseek V3 0324 to yield the best results. However, it'll still take multiple tries for it to translate it properly. A lot of the time it does not translate the entire thing, or just starts saying random stuff. Before I start adjusting things like temperature I'd really appreciate if someone could look at my prompts to see if any improvements could be made&lt;/p&gt; &lt;p&gt;&lt;code&gt;SYSTEM_PROMPT = (&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;You are a professional subtitle translator. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Respond only with the content, translated into the target language. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Do not add explanations, comments, or any extra text. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Maintain subtitle numbering, timestamps, and formatting exactly as in the original .srt file. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;For sentences spanning multiple blocks: translate the complete sentence, then re-distribute it across the original blocks. Crucially, if the original sentence was split at a particular conceptual point, try to mirror this split point in the translated sentence when re-chunking, as long as it sounds natural in the target language. Timestamps and IDs must remain unchanged.&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Your response must begin directly with the first subtitle block's ID number. No pleasantries such as 'Here is the translation:' or 'Okay, here's the SRT:'. &amp;quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Your response should have the same amount of subtitle blocks as the input.&amp;quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;USER_PROMPT_TEMPLATE = (&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Region/Country of the text: {region}\n&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Translate the following .srt content into {target_language}, preserving the original meaning, timing, and structure. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Ensure each subtitle block is readable and respects the original display durations. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Output only a valid .srt file with the translated text.\n\n&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;{srt_text}&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneSteelTank"&gt; /u/OneSteelTank &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T00:31:01+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kpxk18</id>
     <title>Riffusion Ai music generator Ai voices spoken word, Shakespeare "All the World's a Stage", Abraham Lincoln ordering Pizza, German, Russian Spanish Singing/spoken word. I clone these Riffusion Ai voices of emotion and use in Zonos to create various types of voices for male and female.</title>
@@ -60,6 +34,19 @@
     <published>2025-05-18T18:27:09+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kpyrrs</id>
+    <title>How can I improve this subtitle translator prompt?</title>
+    <updated>2025-05-19T00:31:01+00:00</updated>
+    <author>
+      <name>/u/OneSteelTank</name>
+      <uri>https://old.reddit.com/user/OneSteelTank</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello, I've been trying to use AI models on OpenRouter in order to translate subtitles. My script will break the subtitle file into chunks and feed it to the LLM model 1 by 1. After a bit of testing I found Deepseek V3 0324 to yield the best results. However, it'll still take multiple tries for it to translate it properly. A lot of the time it does not translate the entire thing, or just starts saying random stuff. Before I start adjusting things like temperature I'd really appreciate if someone could look at my prompts to see if any improvements could be made&lt;/p&gt; &lt;p&gt;&lt;code&gt;SYSTEM_PROMPT = (&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;You are a professional subtitle translator. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Respond only with the content, translated into the target language. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Do not add explanations, comments, or any extra text. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Maintain subtitle numbering, timestamps, and formatting exactly as in the original .srt file. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;For sentences spanning multiple blocks: translate the complete sentence, then re-distribute it across the original blocks. Crucially, if the original sentence was split at a particular conceptual point, try to mirror this split point in the translated sentence when re-chunking, as long as it sounds natural in the target language. Timestamps and IDs must remain unchanged.&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Your response must begin directly with the first subtitle block's ID number. No pleasantries such as 'Here is the translation:' or 'Okay, here's the SRT:'. &amp;quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Your response should have the same amount of subtitle blocks as the input.&amp;quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;USER_PROMPT_TEMPLATE = (&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Region/Country of the text: {region}\n&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Translate the following .srt content into {target_language}, preserving the original meaning, timing, and structure. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Ensure each subtitle block is readable and respects the original display durations. &amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;Output only a valid .srt file with the translated text.\n\n&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;&amp;quot;{srt_text}&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneSteelTank"&gt; /u/OneSteelTank &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpyrrs/how_can_i_improve_this_subtitle_translator_prompt/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T00:31:01+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kp4scy</id>
     <title>AlphaEvolve Paper Dropped Yesterday - So I Built My Own Open-Source Version: OpenAlpha_Evolve!</title>
     <updated>2025-05-17T22:14:16+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq3v0u/oss_containerized_llamacpp_ollama_backend_runner/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T05:19:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq4vrv</id>
+    <title>OuteTTS v1.0 now supported by chatllm.cpp</title>
+    <updated>2025-05-19T06:27:47+00:00</updated>
+    <author>
+      <name>/u/foldl-li</name>
+      <uri>https://old.reddit.com/user/foldl-li</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"&gt; &lt;img alt="OuteTTS v1.0 now supported by chatllm.cpp" src="https://external-preview.redd.it/bGFzbDV5NGptbzFmMYcMr_Cq2gLg7E5zrnm6bi-e1D6-e2IdLt9Ao5b5ur7s.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b016d5027138226027672f8409b61134b13cd138" title="OuteTTS v1.0 now supported by chatllm.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After Orpheus-TTS is implemented in &lt;a href="https://github.com/foldl/chatllm.cpp"&gt;ChatLLM.cpp&lt;/a&gt;, now here comes &lt;a href="https://huggingface.co/OuteAI/Llama-OuteTTS-1.0-1B"&gt;OuteTTS v1.0&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/foldl-li"&gt; /u/foldl-li &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/cpcocy4jmo1f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4vrv/outetts_v10_now_supported_by_chatllmcpp/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T06:27:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpnfvo</id>
@@ -190,19 +190,6 @@
     <published>2025-05-18T22:35:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kq2wr0</id>
-    <title>I made a tool to efficiently find optimal parameters</title>
-    <updated>2025-05-19T04:19:00+00:00</updated>
-    <author>
-      <name>/u/Kooshi_Govno</name>
-      <uri>https://old.reddit.com/user/Kooshi_Govno</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The Taguchi method lets you change multiple variables at once to test a bunch of stuff quickly, and I made a tool to do it for AI and other stuff&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've been waking up inspired often recently, with the multiplying effect of Claude and Gemini, I can explore ideas as fast as I come up with them.&lt;/p&gt; &lt;p&gt;One seemed particularly compelling, partially because I've been looking for an excuse to use Orthogonal Arrays ever since I saw &lt;a href="https://youtu.be/5oULEuOoRd0"&gt;NightHawkInLight's video&lt;/a&gt; about them.&lt;/p&gt; &lt;p&gt;I wanted a way to test local llm sampler parameters to see what was really the best, and as it takes so long to run benchmarks, Orthogonal Arrays popped into my head as a way to efficiently test them.&lt;/p&gt; &lt;p&gt;I had no idea how much statistical math went into analyzing these things, but I just kept learning and coding. I'm sure it's nowhere near perfect, but it seems to be working pretty well, and I mostly cleaned things up enough to allow the scrutiny of the public eye.&lt;/p&gt; &lt;p&gt;At some point I realized it could be generalized to run &lt;em&gt;any&lt;/em&gt; command line tool and optimize those arguments as well, so I ended up completely refactoring it to break it into two components.&lt;/p&gt; &lt;p&gt;So here's what I have: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Two tools:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; LiveBenchRunner - which just sets up and executes a LiveBench run with llama-server as the backend, which is useful by itself or with:&lt;/li&gt; &lt;li&gt;TaguchiBench.Engine &lt;ul&gt; &lt;li&gt;takes a set of parameters and values&lt;/li&gt; &lt;li&gt;attempts to fit them into a Taguchi (Orthogonal) array (harder than you'd think)&lt;/li&gt; &lt;li&gt;runs the tool an efficient number of times with the different values for the parameters&lt;/li&gt; &lt;li&gt;does a bunch of statistical analysis on the scores returned by the tool&lt;/li&gt; &lt;li&gt;makes some nice reports out of them&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It can also recover from an interrupted experiment, which is nice considering how long runs can take. (In the future I may take advantage of LiveBench's recovery ability as well)&lt;/p&gt; &lt;p&gt;I haven't actually found any useful optimization data yet, as I've just been focused on development, but now that it's pretty solid, I'm curious to validate &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kkuq7m/qwen_suggests_adding_presence_penalty_when_using/"&gt;Qwen3's recent recommendation to enable presence penalty&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;What I'm really hoping though, is that someone else finds a use for this in their own work, since it can help optimize any process you can run from a command line. I looked around, and I didn't see any open source tool like it. I did find this &lt;a href="https://pypi.org/project/taguchi/"&gt;https://pypi.org/project/taguchi/&lt;/a&gt;, and shoutout to another NightHawkInLight fan, but it doesn't appear to do any analysis of returned values, and is generally pretty simple. Granted, mine's probably massively &lt;em&gt;over&lt;/em&gt;engineered, but so it goes.&lt;/p&gt; &lt;p&gt;Anyway, I hope you all like it, and have some uses for it, AI related or not!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kooshi_Govno"&gt; /u/Kooshi_Govno &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T04:19:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kq2zgg</id>
     <title>SAGA - Semantic And Graph-enhanced Authoring</title>
     <updated>2025-05-19T04:23:40+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpozhd/cherry_studio_is_now_my_favorite_frontend/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-18T17:11:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq2wr0</id>
+    <title>I made a tool to efficiently find optimal parameters</title>
+    <updated>2025-05-19T04:19:00+00:00</updated>
+    <author>
+      <name>/u/Kooshi_Govno</name>
+      <uri>https://old.reddit.com/user/Kooshi_Govno</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TLDR: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The Taguchi method lets you change multiple variables at once to test a bunch of stuff quickly, and I made a tool to do it for AI and other stuff&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've been waking up inspired often recently, with the multiplying effect of Claude and Gemini, I can explore ideas as fast as I come up with them.&lt;/p&gt; &lt;p&gt;One seemed particularly compelling, partially because I've been looking for an excuse to use Orthogonal Arrays ever since I saw &lt;a href="https://youtu.be/5oULEuOoRd0"&gt;NightHawkInLight's video&lt;/a&gt; about them.&lt;/p&gt; &lt;p&gt;I wanted a way to test local llm sampler parameters to see what was really the best, and as it takes so long to run benchmarks, Orthogonal Arrays popped into my head as a way to efficiently test them.&lt;/p&gt; &lt;p&gt;I had no idea how much statistical math went into analyzing these things, but I just kept learning and coding. I'm sure it's nowhere near perfect, but it seems to be working pretty well, and I mostly cleaned things up enough to allow the scrutiny of the public eye.&lt;/p&gt; &lt;p&gt;At some point I realized it could be generalized to run &lt;em&gt;any&lt;/em&gt; command line tool and optimize those arguments as well, so I ended up completely refactoring it to break it into two components.&lt;/p&gt; &lt;p&gt;So here's what I have: &lt;a href="https://github.com/kooshi/TaguchiBench"&gt;https://github.com/kooshi/TaguchiBench&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Two tools:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; LiveBenchRunner - which just sets up and executes a LiveBench run with llama-server as the backend, which is useful by itself or with:&lt;/li&gt; &lt;li&gt;TaguchiBench.Engine &lt;ul&gt; &lt;li&gt;takes a set of parameters and values&lt;/li&gt; &lt;li&gt;attempts to fit them into a Taguchi (Orthogonal) array (harder than you'd think)&lt;/li&gt; &lt;li&gt;runs the tool an efficient number of times with the different values for the parameters&lt;/li&gt; &lt;li&gt;does a bunch of statistical analysis on the scores returned by the tool&lt;/li&gt; &lt;li&gt;makes some nice reports out of them&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;It can also recover from an interrupted experiment, which is nice considering how long runs can take. (In the future I may take advantage of LiveBench's recovery ability as well)&lt;/p&gt; &lt;p&gt;I haven't actually found any useful optimization data yet, as I've just been focused on development, but now that it's pretty solid, I'm curious to validate &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kkuq7m/qwen_suggests_adding_presence_penalty_when_using/"&gt;Qwen3's recent recommendation to enable presence penalty&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;What I'm really hoping though, is that someone else finds a use for this in their own work, since it can help optimize any process you can run from a command line. I looked around, and I didn't see any open source tool like it. I did find this &lt;a href="https://pypi.org/project/taguchi/"&gt;https://pypi.org/project/taguchi/&lt;/a&gt;, and shoutout to another NightHawkInLight fan, but it doesn't appear to do any analysis of returned values, and is generally pretty simple. Granted, mine's probably massively &lt;em&gt;over&lt;/em&gt;engineered, but so it goes.&lt;/p&gt; &lt;p&gt;Anyway, I hope you all like it, and have some uses for it, AI related or not!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kooshi_Govno"&gt; /u/Kooshi_Govno &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq2wr0/i_made_a_tool_to_efficiently_find_optimal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T04:19:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpp5op</id>
@@ -255,19 +255,6 @@
     <published>2025-05-18T19:10:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kq4ey4</id>
-    <title>NVIDIA says DGX Spark releasing in July</title>
-    <updated>2025-05-19T05:56:22+00:00</updated>
-    <author>
-      <name>/u/Aplakka</name>
-      <uri>https://old.reddit.com/user/Aplakka</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DGX Spark should be available in July.&lt;/p&gt; &lt;p&gt;The 128 GB unified memory amount is nice, but there's been discussions about whether the bandwidth will be too slow to be practical. Will be interesting to see what independent benchmarks will show, I don't think it's had any outsider reviews yet. I couldn't find a price yet, that of course will be quite important too.&lt;/p&gt; &lt;p&gt;&lt;a href="https://nvidianews.nvidia.com/news/nvidia-launches-ai-first-dgx-personal-computing-systems-with-global-computer-makers"&gt;https://nvidianews.nvidia.com/news/nvidia-launches-ai-first-dgx-personal-computing-systems-with-global-computer-makers&lt;/a&gt;&lt;/p&gt; &lt;p&gt;|| || |System Memory|128 GB LPDDR5x, unified system memory|&lt;/p&gt; &lt;p&gt;|| || |Memory Bandwidth|273 GB/s|&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aplakka"&gt; /u/Aplakka &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T05:56:22+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kppdhb</id>
     <title>MSI PC with NVIDIA GB10 Superchip - 6144 CUDA Cores and 128GB LPDDR5X Confirmed</title>
     <updated>2025-05-18T17:28:06+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kppdhb/msi_pc_with_nvidia_gb10_superchip_6144_cuda_cores/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-18T17:28:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq4ey4</id>
+    <title>NVIDIA says DGX Spark releasing in July</title>
+    <updated>2025-05-19T05:56:22+00:00</updated>
+    <author>
+      <name>/u/Aplakka</name>
+      <uri>https://old.reddit.com/user/Aplakka</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DGX Spark should be available in July.&lt;/p&gt; &lt;p&gt;The 128 GB unified memory amount is nice, but there's been discussions about whether the bandwidth will be too slow to be practical. Will be interesting to see what independent benchmarks will show, I don't think it's had any outsider reviews yet. I couldn't find a price yet, that of course will be quite important too.&lt;/p&gt; &lt;p&gt;&lt;a href="https://nvidianews.nvidia.com/news/nvidia-launches-ai-first-dgx-personal-computing-systems-with-global-computer-makers"&gt;https://nvidianews.nvidia.com/news/nvidia-launches-ai-first-dgx-personal-computing-systems-with-global-computer-makers&lt;/a&gt;&lt;/p&gt; &lt;p&gt;|| || |System Memory|128 GB LPDDR5x, unified system memory|&lt;/p&gt; &lt;p&gt;|| || |Memory Bandwidth|273 GB/s|&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aplakka"&gt; /u/Aplakka &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq4ey4/nvidia_says_dgx_spark_releasing_in_july/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T05:56:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1kq029v</id>
