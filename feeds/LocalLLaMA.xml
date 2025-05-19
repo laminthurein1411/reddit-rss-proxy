@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-19T11:34:37+00:00</updated>
+  <updated>2025-05-19T11:48:46+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kpxd7t</id>
-    <title>I built a tool to profile LLM energy usage on Macs programmatically (down to the line of code)</title>
-    <updated>2025-05-18T23:19:55+00:00</updated>
-    <author>
-      <name>/u/cachehit_</name>
-      <uri>https://old.reddit.com/user/cachehit_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you want to measure LLM energy consumption on Macs, you have options like powermetrics (a CLI tool that periodically prints energy usage to your terminal) or Activity Monitor. &lt;/p&gt; &lt;p&gt;These work fine if you just want a high-level glance at your LLM's energy usage, but if you want more precise measurement (like seeing &lt;strong&gt;energy used over specific lines of code&lt;/strong&gt;, or &lt;strong&gt;energy cost per token generated&lt;/strong&gt;, etc.), there's not really a super straightforward way. &lt;/p&gt; &lt;p&gt;That's why I built &amp;quot;zeus-apple-silicon&amp;quot; (&lt;a href="https://github.com/ml-energy/zeus-apple-silicon"&gt;github&lt;/a&gt;), a really tiny/lightweight library that lets you profile energy on Apple silicon programmatically, starting/stopping measurement at exactly the lines you want in your code.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;As a bonus&lt;/strong&gt;, it provides more detailed metrics than powermetrics or similar tools -- whereas powermetrics only gives you aggregates for CPU, GPU, and ANE, this library will also break down energy metrics per efficiency/performance core, DRAM, and so on. &lt;/p&gt; &lt;p&gt;The library is available as a package in &lt;strong&gt;Python&lt;/strong&gt;, but also as a header-only include in &lt;strong&gt;C++&lt;/strong&gt; (in case you're interfacing with, say, llama.cpp directly). &lt;/p&gt; &lt;p&gt;Check out a more detailed blog post about it (with examples) here: &lt;a href="https://ml.energy/blog/energy/measurement/profiling-llm-energy-consumption-on-macs/"&gt;https://ml.energy/blog/energy/measurement/profiling-llm-energy-consumption-on-macs/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cachehit_"&gt; /u/cachehit_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpxd7t/i_built_a_tool_to_profile_llm_energy_usage_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpxd7t/i_built_a_tool_to_profile_llm_energy_usage_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpxd7t/i_built_a_tool_to_profile_llm_energy_usage_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-18T23:19:55+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kpefrt</id>
-    <title>Uncensoring Qwen3 - Update</title>
-    <updated>2025-05-18T07:33:48+00:00</updated>
-    <author>
-      <name>/u/Reader3123</name>
-      <uri>https://old.reddit.com/user/Reader3123</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpefrt/uncensoring_qwen3_update/"&gt; &lt;img alt="Uncensoring Qwen3 - Update" src="https://b.thumbs.redditmedia.com/eH_vWbN_8X_7nNz9liHgfyHpbjGX4GnyPkaDqklERQM.jpg" title="Uncensoring Qwen3 - Update" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;GrayLine&lt;/strong&gt; is my fine-tuning project based on &lt;strong&gt;Qwen3&lt;/strong&gt;. The goal is to produce models that respond directly and neutrally to sensitive or controversial questions, without moralizing, refusing, or redirecting—while still maintaining solid reasoning ability.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Training setup:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Framework: Unsloth (QLoRA)&lt;/li&gt; &lt;li&gt;LoRA: Rank 32, Alpha 64, Dropout 0.05&lt;/li&gt; &lt;li&gt;Optimizer: adamw_8bit&lt;/li&gt; &lt;li&gt;Learning rate: 2e-5 → 1e-5&lt;/li&gt; &lt;li&gt;Epochs: 1 per phase&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Curriculum strategy:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Phase 1: 75% chain-of-thought / 25% direct answers&lt;/li&gt; &lt;li&gt;Phase 2: 50/50&lt;/li&gt; &lt;li&gt;Phase 3: 25% CoT / 75% direct&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This progressive setup worked better than running three epochs with static mixing. It helped the model learn how to reason first, then shift to concise instruction-following.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Refusal benchmark (320 harmful prompts, using Huihui’s dataset):&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Think (%)&lt;/th&gt; &lt;th align="left"&gt;No_Think (%)&lt;/th&gt; &lt;th align="left"&gt;Notes&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Base&lt;/td&gt; &lt;td align="left"&gt;45.62&lt;/td&gt; &lt;td align="left"&gt;43.44&lt;/td&gt; &lt;td align="left"&gt;Redirects often (~70–85% actual)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GrayLine&lt;/td&gt; &lt;td align="left"&gt;95.62&lt;/td&gt; &lt;td align="left"&gt;100.00&lt;/td&gt; &lt;td align="left"&gt;Fully open responses&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;JOSIE&lt;/td&gt; &lt;td align="left"&gt;95.94&lt;/td&gt; &lt;td align="left"&gt;99.69&lt;/td&gt; &lt;td align="left"&gt;High compliance&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Abliterated&lt;/td&gt; &lt;td align="left"&gt;100.00&lt;/td&gt; &lt;td align="left"&gt;100.00&lt;/td&gt; &lt;td align="left"&gt;Fully compliant&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/opof5uaiuh1f1.png?width=1580&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c185365916d2b41e2555c915d455e54f2924a2a7"&gt;https://preview.redd.it/opof5uaiuh1f1.png?width=1580&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c185365916d2b41e2555c915d455e54f2924a2a7&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Multi-turn evaluation (MT-Eval, GPT-4o judge):&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="left"&gt;Score&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Base&lt;/td&gt; &lt;td align="left"&gt;8.27&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GrayLine&lt;/td&gt; &lt;td align="left"&gt;8.18&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Abliterated&lt;/td&gt; &lt;td align="left"&gt;8.04&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;JOSIE&lt;/td&gt; &lt;td align="left"&gt;8.01&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/6s8gwuhpuh1f1.png?width=1380&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6216aeb7d7ae0cbf8e6db947e521bcc0e84e52c4"&gt;https://preview.redd.it/6s8gwuhpuh1f1.png?width=1380&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6216aeb7d7ae0cbf8e6db947e521bcc0e84e52c4&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GrayLine held up better across multiple turns than JOSIE or Abliterated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Key takeaways:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Curriculum learning (reasoning → direct) worked better than repetition&lt;/li&gt; &lt;li&gt;LoRA rank 32 + alpha 64 was a solid setup&lt;/li&gt; &lt;li&gt;Small batch sizes (2–3) preserved non-refusal behavior&lt;/li&gt; &lt;li&gt;Masking &lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; tags hurt output quality; keeping them visible was better&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Trade-offs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Very logical and compliant, but not creative&lt;/li&gt; &lt;li&gt;Not suited for storytelling or roleplay&lt;/li&gt; &lt;li&gt;Best used where control and factual output are more important than style&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;What’s next:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Testing the model using other benchmarks&lt;/li&gt; &lt;li&gt;Applying the method to a 30B MoE variant&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://huggingface.co/collections/soob3123/grayline-collection-qwen3-6821009e843331c5a9c27da1"&gt;Models Collection&lt;/a&gt;&lt;/p&gt; &lt;p&gt;This post isn’t meant to discredit any other model or fine-tune—just sharing results and comparisons for anyone interested. Every approach serves different use cases.&lt;/p&gt; &lt;p&gt;If you’ve got suggestions, ideas, or want to discuss similar work, feel free to reply.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Reader3123"&gt; /u/Reader3123 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpefrt/uncensoring_qwen3_update/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpefrt/uncensoring_qwen3_update/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpefrt/uncensoring_qwen3_update/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-18T07:33:48+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kq6cn1</id>
     <title>NVIDIA Intros RTX PRO Servers For Enterprise, Equipped With RTX PRO 6000 "Blackwell" Server GPUs</title>
@@ -73,17 +47,30 @@
     <published>2025-05-18T18:17:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kpohfm</id>
-    <title>(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!</title>
-    <updated>2025-05-18T16:50:29+00:00</updated>
+    <id>t3_1kq9h8x</id>
+    <title>What is the smoothest speech interface to run locally?</title>
+    <updated>2025-05-19T11:38:49+00:00</updated>
     <author>
-      <name>/u/Arli_AI</name>
-      <uri>https://old.reddit.com/user/Arli_AI</uri>
+      <name>/u/winkler1</name>
+      <uri>https://old.reddit.com/user/winkler1</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"&gt; &lt;img alt="(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!" src="https://preview.redd.it/4o2ohg30kk1f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=882bf9251583ebe91545544f4fd8e3eb8e1ee902" title="(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've just started offering Qwen3-30B-A3B and internally it is being used for dataset filtering and curation. The speeds you can get out of it are extremely impressive running on VLLM and RTX 3090s! &lt;/p&gt; &lt;p&gt;I feel like Qwen3-30B is being overlooked in terms of where it can be really useful. Qwen3-30B might be a small regression from QwQ, but it's close enough to be just as useful and the speeds are so much faster that it makes it way more useful for dataset curation tasks.&lt;/p&gt; &lt;p&gt;Now the only issue is the super slow training speeds (10-20x slower than it should be which makes it untrainable), but it seems someone have made a PR to transformers that attempts to fix this so fingers crossed! New RpR model based on Qwen3-30B soon with a much improved dataset! &lt;a href="https://github.com/huggingface/transformers/pull/38133"&gt;https://github.com/huggingface/transformers/pull/38133&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/4o2ohg30kk1f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;M3 Mac, running Gemma 12B in LMStudio. Is low-latency natural speech possible? Or am I better off just using voice input transcription?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/winkler1"&gt; /u/winkler1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9h8x/what_is_the_smoothest_speech_interface_to_run/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9h8x/what_is_the_smoothest_speech_interface_to_run/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9h8x/what_is_the_smoothest_speech_interface_to_run/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-18T16:50:29+00:00</published>
+    <published>2025-05-19T11:38:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq9mfl</id>
+    <title>Intel Announces Arc Pro B-Series, "Project Battlematrix" Linux Software Improvements</title>
+    <updated>2025-05-19T11:46:51+00:00</updated>
+    <author>
+      <name>/u/reps_up</name>
+      <uri>https://old.reddit.com/user/reps_up</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9mfl/intel_announces_arc_pro_bseries_project/"&gt; &lt;img alt="Intel Announces Arc Pro B-Series, &amp;quot;Project Battlematrix&amp;quot; Linux Software Improvements" src="https://external-preview.redd.it/GNAZ-cVMVgweIup1G1242zhFgkq9dtWIloVxhHHhjYo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a042c504c995ad73ede19093c65cdc62c3f82fe9" title="Intel Announces Arc Pro B-Series, &amp;quot;Project Battlematrix&amp;quot; Linux Software Improvements" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/reps_up"&gt; /u/reps_up &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.phoronix.com/review/intel-arc-pro-b-series"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9mfl/intel_announces_arc_pro_bseries_project/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9mfl/intel_announces_arc_pro_bseries_project/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T11:46:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpzbvl</id>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpzbvl/to_think_or_to_no_think_with_qwen3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T01:00:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kpohfm</id>
+    <title>(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!</title>
+    <updated>2025-05-18T16:50:29+00:00</updated>
+    <author>
+      <name>/u/Arli_AI</name>
+      <uri>https://old.reddit.com/user/Arli_AI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"&gt; &lt;img alt="(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!" src="https://preview.redd.it/4o2ohg30kk1f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=882bf9251583ebe91545544f4fd8e3eb8e1ee902" title="(5K t/s prefill 1K t/s gen) High throughput with Qwen3-30B on VLLM and it's smart enough for dataset curation!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We've just started offering Qwen3-30B-A3B and internally it is being used for dataset filtering and curation. The speeds you can get out of it are extremely impressive running on VLLM and RTX 3090s! &lt;/p&gt; &lt;p&gt;I feel like Qwen3-30B is being overlooked in terms of where it can be really useful. Qwen3-30B might be a small regression from QwQ, but it's close enough to be just as useful and the speeds are so much faster that it makes it way more useful for dataset curation tasks.&lt;/p&gt; &lt;p&gt;Now the only issue is the super slow training speeds (10-20x slower than it should be which makes it untrainable), but it seems someone have made a PR to transformers that attempts to fix this so fingers crossed! New RpR model based on Qwen3-30B soon with a much improved dataset! &lt;a href="https://github.com/huggingface/transformers/pull/38133"&gt;https://github.com/huggingface/transformers/pull/38133&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/4o2ohg30kk1f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kpohfm/5k_ts_prefill_1k_ts_gen_high_throughput_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-18T16:50:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpozhd</id>
@@ -268,19 +268,6 @@
     <published>2025-05-19T05:56:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kq9294</id>
-    <title>Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs</title>
-    <updated>2025-05-19T11:14:29+00:00</updated>
-    <author>
-      <name>/u/FullstackSensei</name>
-      <uri>https://old.reddit.com/user/FullstackSensei</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"&gt; &lt;img alt="Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs" src="https://external-preview.redd.it/lJpkUaWR7aRg9qhyrcIgwW2kvtG6PxI9-Hw_9dnqBZU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=64c87f9f3217c313d6276262cf0a6572a7d3d2af" title="Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;While the B60 is designed for powerful 'Project Battlematrix' AI workstations... will carry a roughly $500 per-unit price tag&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FullstackSensei"&gt; /u/FullstackSensei &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.tomshardware.com/pc-components/gpus/intel-launches-usd299-arc-pro-b50-with-16gb-of-memory-project-battlematrix-workstations-with-24gb-arc-pro-b60-gpus"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-19T11:14:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kq6ysz</id>
     <title>OuteTTS 1.0 (0.6B) — Apache 2.0, Batch Inference (~0.1–0.02 RTF)</title>
     <updated>2025-05-19T08:56:52+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq8wo4/computex_intel_unveils_new_gpus_for_ai_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-19T11:05:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kq9294</id>
+    <title>Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs</title>
+    <updated>2025-05-19T11:14:29+00:00</updated>
+    <author>
+      <name>/u/FullstackSensei</name>
+      <uri>https://old.reddit.com/user/FullstackSensei</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"&gt; &lt;img alt="Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs" src="https://external-preview.redd.it/lJpkUaWR7aRg9qhyrcIgwW2kvtG6PxI9-Hw_9dnqBZU.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=64c87f9f3217c313d6276262cf0a6572a7d3d2af" title="Intel launches $299 Arc Pro B50 with 16GB of memory, 'Project Battlematrix' workstations with 24GB Arc Pro B60 GPUs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&amp;quot;While the B60 is designed for powerful 'Project Battlematrix' AI workstations... will carry a roughly $500 per-unit price tag&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FullstackSensei"&gt; /u/FullstackSensei &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.tomshardware.com/pc-components/gpus/intel-launches-usd299-arc-pro-b50-with-16gb-of-memory-project-battlematrix-workstations-with-24gb-arc-pro-b60-gpus"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kq9294/intel_launches_299_arc_pro_b50_with_16gb_of/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-19T11:14:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1kpyn8g</id>
