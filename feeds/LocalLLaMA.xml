@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-22T16:51:57+00:00</updated>
+  <updated>2025-05-22T17:05:54+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kssaun</id>
-    <title>Trying to get to 24gb of vram - what are some sane options?</title>
-    <updated>2025-05-22T14:35:52+00:00</updated>
-    <author>
-      <name>/u/emaiksiaime</name>
-      <uri>https://old.reddit.com/user/emaiksiaime</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am considering shelling out 600$ cad on a potential upgrade. I currently have just tesla p4 which works great for 3b or limited 8b models. &lt;/p&gt; &lt;p&gt;Either I get two rtx 3060 12gb or i found a seller for a a4000 for 600$. Should I go for the two 3060's or the a4000? &lt;/p&gt; &lt;p&gt;main advantages seem to be more cores on the a4000, and lower power, but I wonder if I have multi architecture will be a drag when combined with the p4 vs the two 3060s. &lt;/p&gt; &lt;p&gt;I can't shell out 1000+ cad for a 3090 for now.. &lt;/p&gt; &lt;p&gt;I really want to run qwen3 30b decently. For now I managed to get it to run on the p4 with massive offloading getting maybe 10t/s but not sure where to go from here. Any insights?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/emaiksiaime"&gt; /u/emaiksiaime &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kssaun/trying_to_get_to_24gb_of_vram_what_are_some_sane/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kssaun/trying_to_get_to_24gb_of_vram_what_are_some_sane/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kssaun/trying_to_get_to_24gb_of_vram_what_are_some_sane/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T14:35:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kryxdg</id>
     <title>Meet Mistral Devstral, SOTA open model designed specifically for coding agents</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks18uf/mistrals_new_devstral_coding_model_running_on_a/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T15:50:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kspe8c</id>
+    <title>Best local model OCR solution for PDF document PII redaction app with bounding boxes</title>
+    <updated>2025-05-22T12:26:16+00:00</updated>
+    <author>
+      <name>/u/Sonnyjimmy</name>
+      <uri>https://old.reddit.com/user/Sonnyjimmy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I'm a long term lurker in LocalLLaMA. I've created an open source Python/Gradio-based app for redacting personally-identifiable (PII) information from PDF documents, images and tabular data files - you can try it out &lt;a href="https://huggingface.co/spaces/seanpedrickcase/document_redaction"&gt;here&lt;/a&gt; on Hugging Face spaces. The source code on GitHub &lt;a href="https://github.com/seanpedrick-case/doc_redaction"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The app allows users to extract text from documents, using PikePDF/Tesseract OCR locally, or AWS Textract if on cloud, and then identify PII using either Spacy locally or AWS Comprehend if on cloud. The app also has a redaction review GUI, where users can go page by page to modify suggested redactions and add/delete as required before creating a final redacted document (user guide &lt;a href="https://seanpedrick-case.github.io/doc_redaction/#user-guide"&gt;here&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Currently, users mostly use the AWS text extraction service (Textract) as it gives the best results from the existing model choice. but I would like to add in a high quality local OCR option to be able to provide an alternative that does not incur API charges for each use. The existing local OCR option, Tesseract, only works on very simple PDFs, which have typed text and not too much going else going on on the page. But it is fast, and can identify word-level bounding boxes accurately (a requirement for redaction), which a lot of the other OCR options do not as far as I know.&lt;/p&gt; &lt;p&gt;I'm considering a 'mixed' approach. This is to let Tesseract do a first pass to identify 'easy' text (due to its speed), then keep aside the boxes where it has low confidence in its results, and cut out images from the coordinates of the low-confidence 'difficult' boxes to pass onto a vision LLM (e.g. Qwen2.5-VL), or another alternative lower-resource hungry option like PaddleOCR, Surya, or EasyOCR. Ideally, I would like to be able to deploy the app on an instance without a GPU, and still get a page processed within max 5 seconds if at all possible (probably dreaming, hah).&lt;/p&gt; &lt;p&gt;Do you think the above approach could work? What do you think would be the best local model choice for OCR in this case?&lt;/p&gt; &lt;p&gt;Thanks everyone for your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sonnyjimmy"&gt; /u/Sonnyjimmy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T12:26:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1kryybf</id>
@@ -216,19 +216,6 @@
     <published>2025-05-22T09:31:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ksuycv</id>
-    <title>Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?</title>
-    <updated>2025-05-22T16:22:59+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt; &lt;img alt="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" src="https://b.thumbs.redditmedia.com/-EDMkhP-sWJsAa9IAitRGUWZQaFdTPdRUYoDRA6C8Wk.jpg" title="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Magentic-One was kind of a cool agent framework for a minute when it was first released a few months ago, but DAMN, it was a pain in the butt to get working and then it kinda would just see a squirrel on a webpage and get distracted and such. I think AutoGen added Magentic as an Agent type in AutoGen, but then it kinda of fell off my radar until today when they released &lt;/p&gt; &lt;p&gt;Magentic-UI - &lt;a href="https://github.com/microsoft/Magentic-UI"&gt;https://github.com/microsoft/Magentic-UI&lt;/a&gt;&lt;/p&gt; &lt;p&gt;From their GitHub:&lt;/p&gt; &lt;p&gt;“Magentic-UI is a research prototype of a human-centered interface powered by a multi-agent system that can browse and perform actions on the web, generate and execute code, and generate and analyze files. Magentic-UI is especially useful for web tasks that require actions on the web (e.g., filling a form, customizing a food order), deep navigation through websites not indexed by search engines (e.g., filtering flights, finding a link from a personal site) or tasks that need web navigation and code execution (e.g., generate a chart from online data).&lt;/p&gt; &lt;p&gt;What differentiates Magentic-UI from other browser use offerings is its transparent and controllable interface that allows for efficient human-in-the-loop involvement. Magentic-UI is built using AutoGen and provides a platform to study human-agent interaction and experiment with web agents. Key features include:&lt;/p&gt; &lt;p&gt;🧑‍🤝‍🧑 Co-Planning: Collaboratively create and approve step-by-step plans using chat and the plan editor. 🤝 Co-Tasking: Interrupt and guide the task execution using the web browser directly or through chat. Magentic-UI can also ask for clarifications and help when needed. 🛡️ Action Guards: Sensitive actions are only executed with explicit user approvals. 🧠 Plan Learning and Retrieval: Learn from previous runs to improve future task automation and save them in a plan gallery. Automatically or manually retrieve saved plans in future tasks. 🔀 Parallel Task Execution: You can run multiple tasks in parallel and session status indicators will let you know when Magentic-UI needs your input or has completed the task.”&lt;/p&gt; &lt;p&gt;Supposedly you can use it with Ollama and other local LLM providers. I’ll be trying this out when I have some time. Anyone else got this working locally yet? WDYT of it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ksuycv"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T16:22:59+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ksfos8</id>
     <title>Why has no one been talking about Open Hands so far?</title>
     <updated>2025-05-22T02:16:28+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfos8/why_has_no_one_been_talking_about_open_hands_so/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T02:16:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksuycv</id>
+    <title>Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?</title>
+    <updated>2025-05-22T16:22:59+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt; &lt;img alt="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" src="https://b.thumbs.redditmedia.com/-EDMkhP-sWJsAa9IAitRGUWZQaFdTPdRUYoDRA6C8Wk.jpg" title="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Magentic-One was kind of a cool agent framework for a minute when it was first released a few months ago, but DAMN, it was a pain in the butt to get working and then it kinda would just see a squirrel on a webpage and get distracted and such. I think AutoGen added Magentic as an Agent type in AutoGen, but then it kinda of fell off my radar until today when they released &lt;/p&gt; &lt;p&gt;Magentic-UI - &lt;a href="https://github.com/microsoft/Magentic-UI"&gt;https://github.com/microsoft/Magentic-UI&lt;/a&gt;&lt;/p&gt; &lt;p&gt;From their GitHub:&lt;/p&gt; &lt;p&gt;“Magentic-UI is a research prototype of a human-centered interface powered by a multi-agent system that can browse and perform actions on the web, generate and execute code, and generate and analyze files. Magentic-UI is especially useful for web tasks that require actions on the web (e.g., filling a form, customizing a food order), deep navigation through websites not indexed by search engines (e.g., filtering flights, finding a link from a personal site) or tasks that need web navigation and code execution (e.g., generate a chart from online data).&lt;/p&gt; &lt;p&gt;What differentiates Magentic-UI from other browser use offerings is its transparent and controllable interface that allows for efficient human-in-the-loop involvement. Magentic-UI is built using AutoGen and provides a platform to study human-agent interaction and experiment with web agents. Key features include:&lt;/p&gt; &lt;p&gt;🧑‍🤝‍🧑 Co-Planning: Collaboratively create and approve step-by-step plans using chat and the plan editor. 🤝 Co-Tasking: Interrupt and guide the task execution using the web browser directly or through chat. Magentic-UI can also ask for clarifications and help when needed. 🛡️ Action Guards: Sensitive actions are only executed with explicit user approvals. 🧠 Plan Learning and Retrieval: Learn from previous runs to improve future task automation and save them in a plan gallery. Automatically or manually retrieve saved plans in future tasks. 🔀 Parallel Task Execution: You can run multiple tasks in parallel and session status indicators will let you know when Magentic-UI needs your input or has completed the task.”&lt;/p&gt; &lt;p&gt;Supposedly you can use it with Ollama and other local LLM providers. I’ll be trying this out when I have some time. Anyone else got this working locally yet? WDYT of it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ksuycv"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T16:22:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1kss44x</id>
@@ -266,19 +266,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T15:19:33+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ksvb3k</id>
-    <title>Claude 4 by Anthropic officially released!</title>
-    <updated>2025-05-22T16:37:17+00:00</updated>
-    <author>
-      <name>/u/purealgo</name>
-      <uri>https://old.reddit.com/user/purealgo</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt; &lt;img alt="Claude 4 by Anthropic officially released!" src="https://preview.redd.it/veybu3kn2d2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1005524a7abdc471df6b8cbc62cb64925703075c" title="Claude 4 by Anthropic officially released!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/purealgo"&gt; /u/purealgo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/veybu3kn2d2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T16:37:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksklse</id>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksjkhb/jan_is_now_apache_20/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T06:03:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksvb3k</id>
+    <title>Claude 4 by Anthropic officially released!</title>
+    <updated>2025-05-22T16:37:17+00:00</updated>
+    <author>
+      <name>/u/purealgo</name>
+      <uri>https://old.reddit.com/user/purealgo</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt; &lt;img alt="Claude 4 by Anthropic officially released!" src="https://preview.redd.it/veybu3kn2d2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1005524a7abdc471df6b8cbc62cb64925703075c" title="Claude 4 by Anthropic officially released!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/purealgo"&gt; /u/purealgo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/veybu3kn2d2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T16:37:17+00:00</published>
   </entry>
 </feed>
