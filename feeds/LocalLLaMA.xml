@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-22T16:25:12+00:00</updated>
+  <updated>2025-05-22T16:40:28+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kspe8c</id>
-    <title>Best local model OCR solution for PDF document PII redaction app with bounding boxes</title>
-    <updated>2025-05-22T12:26:16+00:00</updated>
-    <author>
-      <name>/u/Sonnyjimmy</name>
-      <uri>https://old.reddit.com/user/Sonnyjimmy</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I'm a long term lurker in LocalLLaMA. I've created an open source Python/Gradio-based app for redacting personally-identifiable (PII) information from PDF documents, images and tabular data files - you can try it out &lt;a href="https://huggingface.co/spaces/seanpedrickcase/document_redaction"&gt;here&lt;/a&gt; on Hugging Face spaces. The source code on GitHub &lt;a href="https://github.com/seanpedrick-case/doc_redaction"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The app allows users to extract text from documents, using PikePDF/Tesseract OCR locally, or AWS Textract if on cloud, and then identify PII using either Spacy locally or AWS Comprehend if on cloud. The app also has a redaction review GUI, where users can go page by page to modify suggested redactions and add/delete as required before creating a final redacted document (user guide &lt;a href="https://seanpedrick-case.github.io/doc_redaction/#user-guide"&gt;here&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Currently, users mostly use the AWS text extraction service (Textract) as it gives the best results from the existing model choice. but I would like to add in a high quality local OCR option to be able to provide an alternative that does not incur API charges for each use. The existing local OCR option, Tesseract, only works on very simple PDFs, which have typed text and not too much going else going on on the page. But it is fast, and can identify word-level bounding boxes accurately (a requirement for redaction), which a lot of the other OCR options do not as far as I know.&lt;/p&gt; &lt;p&gt;I'm considering a 'mixed' approach. This is to let Tesseract do a first pass to identify 'easy' text (due to its speed), then keep aside the boxes where it has low confidence in its results, and cut out images from the coordinates of the low-confidence 'difficult' boxes to pass onto a vision LLM (e.g. Qwen2.5-VL), or another alternative lower-resource hungry option like PaddleOCR, Surya, or EasyOCR. Ideally, I would like to be able to deploy the app on an instance without a GPU, and still get a page processed within max 5 seconds if at all possible (probably dreaming, hah).&lt;/p&gt; &lt;p&gt;Do you think the above approach could work? What do you think would be the best local model choice for OCR in this case?&lt;/p&gt; &lt;p&gt;Thanks everyone for your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sonnyjimmy"&gt; /u/Sonnyjimmy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T12:26:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1krs40j</id>
-    <title>Why nobody mentioned "Gemini Diffusion" here? It's a BIG deal</title>
-    <updated>2025-05-21T07:42:08+00:00</updated>
-    <author>
-      <name>/u/QuackerEnte</name>
-      <uri>https://old.reddit.com/user/QuackerEnte</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krs40j/why_nobody_mentioned_gemini_diffusion_here_its_a/"&gt; &lt;img alt="Why nobody mentioned &amp;quot;Gemini Diffusion&amp;quot; here? It's a BIG deal" src="https://external-preview.redd.it/dFWSMq_9jHPdMVGchDlKvt7rzCFhQEFmxZm8XKq654M.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1b69152f4cc7971773a476232dcff0de3690e29e" title="Why nobody mentioned &amp;quot;Gemini Diffusion&amp;quot; here? It's a BIG deal" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Google has the capacity and capability to change the standard for LLMs from autoregressive generation to diffusion generation.&lt;/p&gt; &lt;p&gt;Google showed their Language diffusion model (Gemini Diffusion, visit the linked page for more info and benchmarks) yesterday/today (depends on your timezone), and it was extremely fast and (according to them) only half the size of similar performing models. They showed benchmark scores of the diffusion model compared to Gemini 2.0 Flash-lite, which is a tiny model already.&lt;/p&gt; &lt;p&gt;I know, it's LocalLLaMA, but if Google can prove that diffusion models work at scale, they are a far more viable option for local inference, given the speed gains.&lt;/p&gt; &lt;p&gt;And let's not forget that, since diffusion LLMs process the whole text at once iteratively, it doesn't need KV-Caching. Therefore, it could be more memory efficient. It also has &amp;quot;test time scaling&amp;quot; by nature, since the more passes it is given to iterate, the better the resulting answer, without needing CoT (It can do it in latent space, even, which is much better than discrete tokenspace CoT). &lt;/p&gt; &lt;p&gt;What do you guys think? Is it a good thing for the Local-AI community in the long run that Google is R&amp;amp;D-ing a fresh approach? They’ve got massive resources. They can prove if diffusion models work at scale (bigger models) in future.&lt;/p&gt; &lt;p&gt;(PS: I used a (of course, ethically sourced, local) LLM to correct grammar and structure the text, otherwise it'd be a wall of text) &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/QuackerEnte"&gt; /u/QuackerEnte &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://deepmind.google/models/gemini-diffusion/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krs40j/why_nobody_mentioned_gemini_diffusion_here_its_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krs40j/why_nobody_mentioned_gemini_diffusion_here_its_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T07:42:08+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kssaun</id>
     <title>Trying to get to 24gb of vram - what are some sane options?</title>
@@ -138,17 +112,17 @@
     <published>2025-05-22T00:32:59+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ksts7o</id>
-    <title>Create a chatbot for chatting with people with Wikipedia pages</title>
-    <updated>2025-05-22T15:36:30+00:00</updated>
+    <id>t3_1ksvb3k</id>
+    <title>Claude 4 by Anthropic officially released!</title>
+    <updated>2025-05-22T16:37:17+00:00</updated>
     <author>
-      <name>/u/funJS</name>
-      <uri>https://old.reddit.com/user/funJS</uri>
+      <name>/u/purealgo</name>
+      <uri>https://old.reddit.com/user/purealgo</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Exploring different techniques for creating a chatbot. Sample implementation where the chatbot is designed to do a multi-turn chat based on someone's Wikipedia page.&lt;/p&gt; &lt;p&gt;Interesting learnings and a fun project altogether.&lt;/p&gt; &lt;p&gt;Link in case you are interested:&lt;br /&gt; &lt;a href="https://www.teachmecoolstuff.com/viewarticle/creating-a-chatbot-using-a-local-llm"&gt;https://www.teachmecoolstuff.com/viewarticle/creating-a-chatbot-using-a-local-llm&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/funJS"&gt; /u/funJS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt; &lt;img alt="Claude 4 by Anthropic officially released!" src="https://preview.redd.it/veybu3kn2d2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1005524a7abdc471df6b8cbc62cb64925703075c" title="Claude 4 by Anthropic officially released!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/purealgo"&gt; /u/purealgo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/veybu3kn2d2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksvb3k/claude_4_by_anthropic_officially_released/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T15:36:30+00:00</published>
+    <published>2025-05-22T16:37:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksh780</id>
@@ -162,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksh780/in_video_intel_talks_a_bit_about_battlematrix/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T03:37:40+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksts7o</id>
+    <title>Create a chatbot for chatting with people with Wikipedia pages</title>
+    <updated>2025-05-22T15:36:30+00:00</updated>
+    <author>
+      <name>/u/funJS</name>
+      <uri>https://old.reddit.com/user/funJS</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Exploring different techniques for creating a chatbot. Sample implementation where the chatbot is designed to do a multi-turn chat based on someone's Wikipedia page.&lt;/p&gt; &lt;p&gt;Interesting learnings and a fun project altogether.&lt;/p&gt; &lt;p&gt;Link in case you are interested:&lt;br /&gt; &lt;a href="https://www.teachmecoolstuff.com/viewarticle/creating-a-chatbot-using-a-local-llm"&gt;https://www.teachmecoolstuff.com/viewarticle/creating-a-chatbot-using-a-local-llm&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/funJS"&gt; /u/funJS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksts7o/create_a_chatbot_for_chatting_with_people_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T15:36:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksrxm7</id>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdeup/4bit_quantized_moondream_42_less_memory_with_994/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T00:19:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksuycv</id>
+    <title>Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?</title>
+    <updated>2025-05-22T16:22:59+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt; &lt;img alt="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" src="https://b.thumbs.redditmedia.com/-EDMkhP-sWJsAa9IAitRGUWZQaFdTPdRUYoDRA6C8Wk.jpg" title="Microsoft releases Magentic-UI. Could this finally be a halfway-decent agentic browser use client that works on Windows?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Magentic-One was kind of a cool agent framework for a minute when it was first released a few months ago, but DAMN, it was a pain in the butt to get working and then it kinda would just see a squirrel on a webpage and get distracted and such. I think AutoGen added Magentic as an Agent type in AutoGen, but then it kinda of fell off my radar until today when they released &lt;/p&gt; &lt;p&gt;Magentic-UI - &lt;a href="https://github.com/microsoft/Magentic-UI"&gt;https://github.com/microsoft/Magentic-UI&lt;/a&gt;&lt;/p&gt; &lt;p&gt;From their GitHub:&lt;/p&gt; &lt;p&gt;“Magentic-UI is a research prototype of a human-centered interface powered by a multi-agent system that can browse and perform actions on the web, generate and execute code, and generate and analyze files. Magentic-UI is especially useful for web tasks that require actions on the web (e.g., filling a form, customizing a food order), deep navigation through websites not indexed by search engines (e.g., filtering flights, finding a link from a personal site) or tasks that need web navigation and code execution (e.g., generate a chart from online data).&lt;/p&gt; &lt;p&gt;What differentiates Magentic-UI from other browser use offerings is its transparent and controllable interface that allows for efficient human-in-the-loop involvement. Magentic-UI is built using AutoGen and provides a platform to study human-agent interaction and experiment with web agents. Key features include:&lt;/p&gt; &lt;p&gt;🧑‍🤝‍🧑 Co-Planning: Collaboratively create and approve step-by-step plans using chat and the plan editor. 🤝 Co-Tasking: Interrupt and guide the task execution using the web browser directly or through chat. Magentic-UI can also ask for clarifications and help when needed. 🛡️ Action Guards: Sensitive actions are only executed with explicit user approvals. 🧠 Plan Learning and Retrieval: Learn from previous runs to improve future task automation and save them in a plan gallery. Automatically or manually retrieve saved plans in future tasks. 🔀 Parallel Task Execution: You can run multiple tasks in parallel and session status indicators will let you know when Magentic-UI needs your input or has completed the task.”&lt;/p&gt; &lt;p&gt;Supposedly you can use it with Ollama and other local LLM providers. I’ll be trying this out when I have some time. Anyone else got this working locally yet? WDYT of it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1ksuycv"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksuycv/microsoft_releases_magenticui_could_this_finally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T16:22:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksfqc4</id>
@@ -255,19 +255,6 @@
     <published>2025-05-22T02:16:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kss44x</id>
-    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
-    <updated>2025-05-22T14:28:11+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T14:28:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kstdhn</id>
     <title>Notes on AlphaEvolve: Are we closing in on Singularity?</title>
     <updated>2025-05-22T15:19:33+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T15:19:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kss44x</id>
+    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
+    <updated>2025-05-22T14:28:11+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T14:28:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksklse</id>
