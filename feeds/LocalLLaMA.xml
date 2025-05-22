@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-22T13:32:15+00:00</updated>
+  <updated>2025-05-22T13:50:52+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kspe8c</id>
-    <title>Best local model OCR solution for PDF document PII redaction app with bounding boxes</title>
-    <updated>2025-05-22T12:26:16+00:00</updated>
-    <author>
-      <name>/u/Sonnyjimmy</name>
-      <uri>https://old.reddit.com/user/Sonnyjimmy</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I'm a long term lurker in LocalLLaMA. I've created an open source Python/Gradio-based app for redacting personally-identifiable (PII) information from PDF documents, images and tabular data files - you can try it out &lt;a href="https://huggingface.co/spaces/seanpedrickcase/document_redaction"&gt;here&lt;/a&gt; on Hugging Face spaces. The source code on GitHub &lt;a href="https://github.com/seanpedrick-case/doc_redaction"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The app allows users to extract text from documents, using PikePDF/Tesseract OCR locally, or AWS Textract if on cloud, and then identify PII using either Spacy locally or AWS Comprehend if on cloud. The app also has a redaction review GUI, where users can go page by page to modify suggested redactions and add/delete as required before creating a final redacted document (user guide &lt;a href="https://seanpedrick-case.github.io/doc_redaction/#user-guide"&gt;here&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Currently, users mostly use the AWS text extraction service (Textract) as it gives the best results from the existing model choice. but I would like to add in a high quality local OCR option to be able to provide an alternative that does not incur API charges for each use. The existing local OCR option, Tesseract, only works on very simple PDFs, which have typed text and not too much going else going on on the page. But it is fast, and can identify word-level bounding boxes accurately (a requirement for redaction), which a lot of the other OCR options do not as far as I know.&lt;/p&gt; &lt;p&gt;I'm considering a 'mixed' approach. This is to let Tesseract do a first pass to identify 'easy' text (due to its speed), then keep aside the boxes where it has low confidence in its results, and cut out images from the coordinates of the low-confidence 'difficult' boxes to pass onto a vision LLM (e.g. Qwen2.5-VL), or another alternative lower-resource hungry option like PaddleOCR, Surya, or EasyOCR. Ideally, I would like to be able to deploy the app on an instance without a GPU, and still get a page processed within max 5 seconds if at all possible (probably dreaming, hah).&lt;/p&gt; &lt;p&gt;Do you think the above approach could work? What do you think would be the best local model choice for OCR in this case?&lt;/p&gt; &lt;p&gt;Thanks everyone for your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sonnyjimmy"&gt; /u/Sonnyjimmy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T12:26:16+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ksat42</id>
     <title>Devstral vs DeepSeek vs Qwen3</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T22:15:51+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ksl4nq</id>
-    <title>I made Model Version Control Protocol for AI agents</title>
-    <updated>2025-05-22T07:53:07+00:00</updated>
-    <author>
-      <name>/u/_twelvechess</name>
-      <uri>https://old.reddit.com/user/_twelvechess</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working on MVCP (Model Version Control Protocol), inspired by the Model Context Protocol (MCP), a lightweight Git-compatible tool designed specifically &lt;strong&gt;for AI agents to track their progress during code transformations&lt;/strong&gt;, built using Python.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What it does?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;MVCP creates a unified, human-readable system for AI agents to save, restore, and diff checkpoints as they transform code. Think of it as specialized version control that works alongside Git, optimized for LLM-based coding assistants. It enables multiple AI agents to collaborate on the same codebase while maintaining a clear audit trail of who did what. This is particularly useful for autonomous development workflows where multiple specialized agents (coders, testers, reviewers, etc.) work toward building a repo together. &lt;/p&gt; &lt;p&gt;The repo is &lt;strong&gt;open for contributions too and its under the MIT license&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Its very early in development so please take it easy on me haha :D&lt;/p&gt; &lt;p&gt; &lt;a href="https://github.com/evangelosmeklis/mvcp"&gt;https://github.com/evangelosmeklis/mvcp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_twelvechess"&gt; /u/_twelvechess &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T07:53:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1kscnlo</id>
@@ -60,6 +34,19 @@
     <published>2025-05-21T23:42:09+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ksl4nq</id>
+    <title>I made Model Version Control Protocol for AI agents</title>
+    <updated>2025-05-22T07:53:07+00:00</updated>
+    <author>
+      <name>/u/_twelvechess</name>
+      <uri>https://old.reddit.com/user/_twelvechess</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working on MVCP (Model Version Control Protocol), inspired by the Model Context Protocol (MCP), a lightweight Git-compatible tool designed specifically &lt;strong&gt;for AI agents to track their progress during code transformations&lt;/strong&gt;, built using Python.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What it does?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;MVCP creates a unified, human-readable system for AI agents to save, restore, and diff checkpoints as they transform code. Think of it as specialized version control that works alongside Git, optimized for LLM-based coding assistants. It enables multiple AI agents to collaborate on the same codebase while maintaining a clear audit trail of who did what. This is particularly useful for autonomous development workflows where multiple specialized agents (coders, testers, reviewers, etc.) work toward building a repo together. &lt;/p&gt; &lt;p&gt;The repo is &lt;strong&gt;open for contributions too and its under the MIT license&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Its very early in development so please take it easy on me haha :D&lt;/p&gt; &lt;p&gt; &lt;a href="https://github.com/evangelosmeklis/mvcp"&gt;https://github.com/evangelosmeklis/mvcp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_twelvechess"&gt; /u/_twelvechess &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T07:53:07+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ksekcn</id>
     <title>Announcing: TiānshūBench 0.0!</title>
     <updated>2025-05-22T01:18:06+00:00</updated>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksekcn/announcing_tiānshūbench_00/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T01:18:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kspe8c</id>
+    <title>Best local model OCR solution for PDF document PII redaction app with bounding boxes</title>
+    <updated>2025-05-22T12:26:16+00:00</updated>
+    <author>
+      <name>/u/Sonnyjimmy</name>
+      <uri>https://old.reddit.com/user/Sonnyjimmy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I'm a long term lurker in LocalLLaMA. I've created an open source Python/Gradio-based app for redacting personally-identifiable (PII) information from PDF documents, images and tabular data files - you can try it out &lt;a href="https://huggingface.co/spaces/seanpedrickcase/document_redaction"&gt;here&lt;/a&gt; on Hugging Face spaces. The source code on GitHub &lt;a href="https://github.com/seanpedrick-case/doc_redaction"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The app allows users to extract text from documents, using PikePDF/Tesseract OCR locally, or AWS Textract if on cloud, and then identify PII using either Spacy locally or AWS Comprehend if on cloud. The app also has a redaction review GUI, where users can go page by page to modify suggested redactions and add/delete as required before creating a final redacted document (user guide &lt;a href="https://seanpedrick-case.github.io/doc_redaction/#user-guide"&gt;here&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Currently, users mostly use the AWS text extraction service (Textract) as it gives the best results from the existing model choice. but I would like to add in a high quality local OCR option to be able to provide an alternative that does not incur API charges for each use. The existing local OCR option, Tesseract, only works on very simple PDFs, which have typed text and not too much going else going on on the page. But it is fast, and can identify word-level bounding boxes accurately (a requirement for redaction), which a lot of the other OCR options do not as far as I know.&lt;/p&gt; &lt;p&gt;I'm considering a 'mixed' approach. This is to let Tesseract do a first pass to identify 'easy' text (due to its speed), then keep aside the boxes where it has low confidence in its results, and cut out images from the coordinates of the low-confidence 'difficult' boxes to pass onto a vision LLM (e.g. Qwen2.5-VL), or another alternative lower-resource hungry option like PaddleOCR, Surya, or EasyOCR. Ideally, I would like to be able to deploy the app on an instance without a GPU, and still get a page processed within max 5 seconds if at all possible (probably dreaming, hah).&lt;/p&gt; &lt;p&gt;Do you think the above approach could work? What do you think would be the best local model choice for OCR in this case?&lt;/p&gt; &lt;p&gt;Thanks everyone for your thoughts.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sonnyjimmy"&gt; /u/Sonnyjimmy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kspe8c/best_local_model_ocr_solution_for_pdf_document/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T12:26:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1ks5sh4</id>
@@ -203,19 +203,6 @@
     <published>2025-05-22T03:37:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ksmvab</id>
-    <title>RpR-v4 now with less repetition and impersonation!</title>
-    <updated>2025-05-22T09:58:43+00:00</updated>
-    <author>
-      <name>/u/Arli_AI</name>
-      <uri>https://old.reddit.com/user/Arli_AI</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"&gt; &lt;img alt="RpR-v4 now with less repetition and impersonation!" src="https://external-preview.redd.it/PUya7H9A7A-uaz_ICZ2xgjCKFF5-tr6wZqYRRVu-rws.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f372281d0007f52ba9c74a9d741c9d4fa813fe88" title="RpR-v4 now with less repetition and impersonation!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ArliAI/QwQ-32B-ArliAI-RpR-v4"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T09:58:43+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ksmhe9</id>
     <title>MMaDA: Multimodal Large Diffusion Language Models</title>
     <updated>2025-05-22T09:31:41+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmhe9/mmada_multimodal_large_diffusion_language_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T09:31:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksmvab</id>
+    <title>RpR-v4 now with less repetition and impersonation!</title>
+    <updated>2025-05-22T09:58:43+00:00</updated>
+    <author>
+      <name>/u/Arli_AI</name>
+      <uri>https://old.reddit.com/user/Arli_AI</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"&gt; &lt;img alt="RpR-v4 now with less repetition and impersonation!" src="https://external-preview.redd.it/PUya7H9A7A-uaz_ICZ2xgjCKFF5-tr6wZqYRRVu-rws.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f372281d0007f52ba9c74a9d741c9d4fa813fe88" title="RpR-v4 now with less repetition and impersonation!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Arli_AI"&gt; /u/Arli_AI &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/ArliAI/QwQ-32B-ArliAI-RpR-v4"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmvab/rprv4_now_with_less_repetition_and_impersonation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T09:58:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksdeup</id>
@@ -294,19 +294,6 @@
     <published>2025-05-22T07:15:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kso7p2</id>
-    <title>AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp; Radeon RX 9000 Series GPUs</title>
-    <updated>2025-05-22T11:22:20+00:00</updated>
-    <author>
-      <name>/u/nostriluu</name>
-      <uri>https://old.reddit.com/user/nostriluu</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"&gt; &lt;img alt="AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp;amp; Radeon RX 9000 Series GPUs" src="https://external-preview.redd.it/ZrbQ75vRAB5hVtrNdq8cJcDVR-h2KRgOrR5RepitAdo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d56d443870db73b9730484569753cff8b7852157" title="AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp;amp; Radeon RX 9000 Series GPUs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nostriluu"&gt; /u/nostriluu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://wccftech.com/amd-takes-a-major-leap-in-edge-ai-with-rocm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T11:22:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ksmiwz</id>
     <title>👀 New Gemma 3n (E4B Preview) from Google Lands on Hugging Face - Text, Vision &amp; More Coming!</title>
     <updated>2025-05-22T09:34:51+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmiwz/new_gemma_3n_e4b_preview_from_google_lands_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T09:34:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kso7p2</id>
+    <title>AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp; Radeon RX 9000 Series GPUs</title>
+    <updated>2025-05-22T11:22:20+00:00</updated>
+    <author>
+      <name>/u/nostriluu</name>
+      <uri>https://old.reddit.com/user/nostriluu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"&gt; &lt;img alt="AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp;amp; Radeon RX 9000 Series GPUs" src="https://external-preview.redd.it/ZrbQ75vRAB5hVtrNdq8cJcDVR-h2KRgOrR5RepitAdo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d56d443870db73b9730484569753cff8b7852157" title="AMD Takes a Major Leap in Edge AI With ROCm; Announces Integration With Strix Halo APUs &amp;amp; Radeon RX 9000 Series GPUs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nostriluu"&gt; /u/nostriluu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://wccftech.com/amd-takes-a-major-leap-in-edge-ai-with-rocm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kso7p2/amd_takes_a_major_leap_in_edge_ai_with_rocm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T11:22:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksjkhb</id>
