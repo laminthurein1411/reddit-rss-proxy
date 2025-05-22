@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-22T15:06:46+00:00</updated>
+  <updated>2025-05-22T15:24:38+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ksat42</id>
-    <title>Devstral vs DeepSeek vs Qwen3</title>
-    <updated>2025-05-21T22:15:51+00:00</updated>
-    <author>
-      <name>/u/COBECT</name>
-      <uri>https://old.reddit.com/user/COBECT</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt; &lt;img alt="Devstral vs DeepSeek vs Qwen3" src="https://external-preview.redd.it/UDZBQmD4AJb2vSY-B7oM2DhQ3zjGzTcUOviRMRcUKkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=122efd46018c04117aca71d80db3640d390428bd" title="Devstral vs DeepSeek vs Qwen3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are your expectations about it? The announcement is quite interesting. 🔥&lt;/p&gt; &lt;p&gt;Noticed that they put Gemma3 on the bottom of the chart, but it shows very well on daily basis. 🤔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/COBECT"&gt; /u/COBECT &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/news/devstral"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T22:15:51+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kspe8c</id>
     <title>Best local model OCR solution for PDF document PII redaction app with bounding boxes</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks5sh4/broke_down_and_bought_a_mac_mini_my_processes_run/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T18:50:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kstdhn</id>
+    <title>Notes on AlphaEvolve: Are we closing in on Singularity?</title>
+    <updated>2025-05-22T15:19:33+00:00</updated>
+    <author>
+      <name>/u/SunilKumarDash</name>
+      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DeepMind released the AlphaEvolve paper last week, which, considering what they have achieved, is arguably one of the most important papers of the year. But I found the discourse around it was very thin, not many who actively cover the AI space have talked much about it.&lt;/p&gt; &lt;p&gt;So, I made some notes on the important aspects of AlphaEvolve.&lt;/p&gt; &lt;h1&gt;Architecture Overview&lt;/h1&gt; &lt;p&gt;DeepMind calls it an &amp;quot;agent&amp;quot;, but it was not your run-of-the-mill agent, but a meta-cognitive system. The agent architecture has the following components&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Problem: An entire codebase or a part of it marked with # EVOLVE-BLOCK-START and # EVOLVE-BLOCK-END. Only this part of it will be evolved.&lt;/li&gt; &lt;li&gt;LLM ensemble: They used Gemini 2.0 Pro for complex reasoning and 2.5 flash for faster operations.&lt;/li&gt; &lt;li&gt;Evolutionary database: The most important part, the database uses map-elite and Island architecture to store solutions and inspirations. &lt;/li&gt; &lt;li&gt;Prompt Sampling: A combination of previous best results, inspirations, and human contexts for improving the existing solution.&lt;/li&gt; &lt;li&gt;Evaluation Framework: A Python function for evaluating the answers, and it returns array of scalars.&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Working in brief&lt;/h1&gt; &lt;p&gt;The database maintains &amp;quot;parent&amp;quot; programs marked for improvement and &amp;quot;inspirations&amp;quot; for adding diversity to the solution. (The name &amp;quot;AlphaEvolve&amp;quot; itself actually comes from it being an &amp;quot;Alpha&amp;quot; series agent that &amp;quot;Evolves&amp;quot; solutions, rather than just this parent/inspiration idea).&lt;/p&gt; &lt;p&gt;Here’s how it generally flows: the AlphaEvolve system gets the initial codebase. Then, for each step, the &lt;strong&gt;prompt sampler&lt;/strong&gt; cleverly picks out parent program(s) to work on and some inspiration programs. It bundles these up with &lt;strong&gt;feedback from past attempts (like scores or even what an LLM thought about previous versions)&lt;/strong&gt;, plus any handy human context. This whole package goes to the LLMs.&lt;/p&gt; &lt;p&gt;The new solution they come up with (the &amp;quot;child&amp;quot;) gets graded by the &lt;strong&gt;evaluation function&lt;/strong&gt;. Finally, these child solutions, with their new grades, are stored back in the database.&lt;/p&gt; &lt;h1&gt;The Outcome&lt;/h1&gt; &lt;p&gt;The most interesting part even with older models like Gemini 2.0 Pro and Flash, when AlphaEvolve took on over 50 open math problems, it managed to match the best solutions out there for 75% of them, actually found better answers for another 20%, and only came up short on a tiny 5%!&lt;/p&gt; &lt;p&gt;Out of all, DeepMind is most proud of AlphaEvolve surpassing Strassen's 56-year-old algorithm for 4x4 complex matrix multiplication by finding a method with 48 scalar multiplications.&lt;/p&gt; &lt;p&gt;And also the agent improved Google's infra by speeding up Gemini LLM training by ~1%, improving data centre job scheduling to recover ~0.7% of fleet-wide compute resources, optimising TPU circuit designs, and accelerating compiler-generated code for AI kernels by up to 32%.&lt;/p&gt; &lt;p&gt;This is the best agent scaffolding to date. The fact that they pulled this off with an outdated Gemini, imagine what they can do with the current SOTA. This makes it one thing clear: what we're lacking for efficient agent swarms doing tasks is the right abstractions. Though the cost of operation is not disclosed.&lt;/p&gt; &lt;p&gt;For a detailed blog post, check this out: &lt;a href="https://composio.dev/blog/alphaevolve-evolutionary-agent-from-deepmind/"&gt;AlphaEvolve: the self-evolving agent from DeepMind&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It'd be interesting to see if they ever release it in the wild or if any other lab picks it up. This is certainly the best frontier for building agents.&lt;/p&gt; &lt;p&gt;Would love to know your thoughts on it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T15:19:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksekcn</id>
@@ -112,19 +112,6 @@
     <published>2025-05-21T15:50:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kryybf</id>
-    <title>mistralai/Devstral-Small-2505 · Hugging Face</title>
-    <updated>2025-05-21T14:17:03+00:00</updated>
-    <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"&gt; &lt;img alt="mistralai/Devstral-Small-2505 · Hugging Face" src="https://external-preview.redd.it/5v7V2smikryAtPAPRovLgRwqCqqgG7mLENcd1_6EmM4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c8ec3b7f12dc09c129535d0279c6db5801db61aa" title="mistralai/Devstral-Small-2505 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Devstral is an agentic LLM for software engineering tasks built under a collaboration between Mistral AI and All Hands AI&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mistralai/Devstral-Small-2505"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T14:17:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ks1ncf</id>
     <title>Anyone else feel like LLMs aren't actually getting that much better?</title>
     <updated>2025-05-21T16:06:15+00:00</updated>
@@ -138,17 +125,17 @@
     <published>2025-05-21T16:06:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ksdox8</id>
-    <title>Harnessing the Universal Geometry of Embeddings</title>
-    <updated>2025-05-22T00:32:59+00:00</updated>
+    <id>t3_1kryybf</id>
+    <title>mistralai/Devstral-Small-2505 · Hugging Face</title>
+    <updated>2025-05-21T14:17:03+00:00</updated>
     <author>
-      <name>/u/Recoil42</name>
-      <uri>https://old.reddit.com/user/Recoil42</uri>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
     </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Recoil42"&gt; /u/Recoil42 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2505.12540"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdox8/harnessing_the_universal_geometry_of_embeddings/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdox8/harnessing_the_universal_geometry_of_embeddings/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"&gt; &lt;img alt="mistralai/Devstral-Small-2505 · Hugging Face" src="https://external-preview.redd.it/5v7V2smikryAtPAPRovLgRwqCqqgG7mLENcd1_6EmM4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c8ec3b7f12dc09c129535d0279c6db5801db61aa" title="mistralai/Devstral-Small-2505 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Devstral is an agentic LLM for software engineering tasks built under a collaboration between Mistral AI and All Hands AI&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mistralai/Devstral-Small-2505"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T00:32:59+00:00</published>
+    <published>2025-05-21T14:17:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1krzpyp</id>
@@ -162,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krzpyp/medgemma4b_the_pharmacist/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T14:49:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksdox8</id>
+    <title>Harnessing the Universal Geometry of Embeddings</title>
+    <updated>2025-05-22T00:32:59+00:00</updated>
+    <author>
+      <name>/u/Recoil42</name>
+      <uri>https://old.reddit.com/user/Recoil42</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Recoil42"&gt; /u/Recoil42 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2505.12540"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdox8/harnessing_the_universal_geometry_of_embeddings/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdox8/harnessing_the_universal_geometry_of_embeddings/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T00:32:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksrxm7</id>
@@ -255,19 +255,6 @@
     <published>2025-05-22T05:52:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kss44x</id>
-    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
-    <updated>2025-05-22T14:28:11+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T14:28:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ksfos8</id>
     <title>Why has no one been talking about Open Hands so far?</title>
     <updated>2025-05-22T02:16:28+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfos8/why_has_no_one_been_talking_about_open_hands_so/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T02:16:28+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kss44x</id>
+    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
+    <updated>2025-05-22T14:28:11+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T14:28:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksklse</id>
