@@ -2,62 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-21T23:48:34+00:00</updated>
+  <updated>2025-05-22T00:28:38+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1krr7hn</id>
-    <title>How to get the most from llama.cpp's iSWA support</title>
-    <updated>2025-05-21T06:38:02+00:00</updated>
+    <id>t3_1ksas7b</id>
+    <title>Local TTS with actual multilingual support</title>
+    <updated>2025-05-21T22:14:44+00:00</updated>
     <author>
-      <name>/u/Ok_Warning2146</name>
-      <uri>https://old.reddit.com/user/Ok_Warning2146</uri>
+      <name>/u/oMGalLusrenmaestkaen</name>
+      <uri>https://old.reddit.com/user/oMGalLusrenmaestkaen</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/13194"&gt;https://github.com/ggml-org/llama.cpp/pull/13194&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks to our gguf god ggerganov, we finally have iSWA support for gemma 3 models that significantly reduces KV cache usage. Since I participated in the pull discussion, I would like to offer tips to get the most out of this update.&lt;/p&gt; &lt;p&gt;Previously, by default fp16 KV cache for 27b model at 64k context is 31744MiB. Now by default batch_size=2048, fp16 KV cache becomes 6368MiB. This is 79.9% reduction.&lt;/p&gt; &lt;p&gt;Group Query Attention KV cache: (ie original implementation)&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;context&lt;/th&gt; &lt;th align="left"&gt;4k&lt;/th&gt; &lt;th align="left"&gt;8k&lt;/th&gt; &lt;th align="left"&gt;16k&lt;/th&gt; &lt;th align="left"&gt;32k&lt;/th&gt; &lt;th align="left"&gt;64k&lt;/th&gt; &lt;th align="left"&gt;128k&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-27b&lt;/td&gt; &lt;td align="left"&gt;1984MB&lt;/td&gt; &lt;td align="left"&gt;3968MB&lt;/td&gt; &lt;td align="left"&gt;7936MB&lt;/td&gt; &lt;td align="left"&gt;15872MB&lt;/td&gt; &lt;td align="left"&gt;31744MB&lt;/td&gt; &lt;td align="left"&gt;63488MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-12b&lt;/td&gt; &lt;td align="left"&gt;1536MB&lt;/td&gt; &lt;td align="left"&gt;3072MB&lt;/td&gt; &lt;td align="left"&gt;6144MB&lt;/td&gt; &lt;td align="left"&gt;12288MB&lt;/td&gt; &lt;td align="left"&gt;24576MB&lt;/td&gt; &lt;td align="left"&gt;49152MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-4b&lt;/td&gt; &lt;td align="left"&gt;544MB&lt;/td&gt; &lt;td align="left"&gt;1088MB&lt;/td&gt; &lt;td align="left"&gt;2176MB&lt;/td&gt; &lt;td align="left"&gt;4352MB&lt;/td&gt; &lt;td align="left"&gt;8704MB&lt;/td&gt; &lt;td align="left"&gt;17408MB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;The new implementation splits KV cache to Local Attention KV cache and Global Attention KV cache that are detailed in the following two tables. The overall KV cache use will be the sum of the two. Local Attn KV depends on the batch_size only while the Global attn KV depends on the context length.&lt;/p&gt; &lt;p&gt;Since the local attention KV depends on the batch_size only, you can reduce the batch_size (via the -b switch) from 2048 to 64 (setting values lower than this will just be set to 64) to further reduce KV cache. Originally, it is 5120+1248=6368MiB. Now it is 5120+442=5562MiB. Memory saving will now 82.48%. The cost of reducing batch_size is reduced prompt processing speed. Based on my llama-bench pp512 test, it is only around 20% reduction when you go from 2048 to 64.&lt;/p&gt; &lt;p&gt;Local Attention KV cache size valid at any context:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;batch&lt;/th&gt; &lt;th align="left"&gt;64&lt;/th&gt; &lt;th align="left"&gt;512&lt;/th&gt; &lt;th align="left"&gt;2048&lt;/th&gt; &lt;th align="left"&gt;8192&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;kv_size&lt;/td&gt; &lt;td align="left"&gt;1088&lt;/td&gt; &lt;td align="left"&gt;1536&lt;/td&gt; &lt;td align="left"&gt;3072&lt;/td&gt; &lt;td align="left"&gt;9216&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-27b&lt;/td&gt; &lt;td align="left"&gt;442MB&lt;/td&gt; &lt;td align="left"&gt;624MB&lt;/td&gt; &lt;td align="left"&gt;1248MB&lt;/td&gt; &lt;td align="left"&gt;3744MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-12b&lt;/td&gt; &lt;td align="left"&gt;340MB&lt;/td&gt; &lt;td align="left"&gt;480MB&lt;/td&gt; &lt;td align="left"&gt;960MB&lt;/td&gt; &lt;td align="left"&gt;2880MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-4b&lt;/td&gt; &lt;td align="left"&gt;123.25MB&lt;/td&gt; &lt;td align="left"&gt;174MB&lt;/td&gt; &lt;td align="left"&gt;348MB&lt;/td&gt; &lt;td align="left"&gt;1044MB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Global Attention KV cache:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;context&lt;/th&gt; &lt;th align="left"&gt;4k&lt;/th&gt; &lt;th align="left"&gt;8k&lt;/th&gt; &lt;th align="left"&gt;16k&lt;/th&gt; &lt;th align="left"&gt;32k&lt;/th&gt; &lt;th align="left"&gt;64k&lt;/th&gt; &lt;th align="left"&gt;128k&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-27b&lt;/td&gt; &lt;td align="left"&gt;320MB&lt;/td&gt; &lt;td align="left"&gt;640MB&lt;/td&gt; &lt;td align="left"&gt;1280MB&lt;/td&gt; &lt;td align="left"&gt;2560MB&lt;/td&gt; &lt;td align="left"&gt;5120MB&lt;/td&gt; &lt;td align="left"&gt;10240MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-12b&lt;/td&gt; &lt;td align="left"&gt;256MB&lt;/td&gt; &lt;td align="left"&gt;512MB&lt;/td&gt; &lt;td align="left"&gt;1024MB&lt;/td&gt; &lt;td align="left"&gt;2048MB&lt;/td&gt; &lt;td align="left"&gt;4096MB&lt;/td&gt; &lt;td align="left"&gt;8192MB&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;gemma-3-4b&lt;/td&gt; &lt;td align="left"&gt;80MB&lt;/td&gt; &lt;td align="left"&gt;160MB&lt;/td&gt; &lt;td align="left"&gt;320MB&lt;/td&gt; &lt;td align="left"&gt;640MB&lt;/td&gt; &lt;td align="left"&gt;1280MB&lt;/td&gt; &lt;td align="left"&gt;2560MB&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;If you only have one 24GB card, you can use the default batch_size 2048 and run 27b qat q4_0 at 64k, then it should be 15.6GB model + 5GB global KV + 1.22GB local KV = 21.82GB. Previously, that would take 48.6GB total.&lt;/p&gt; &lt;p&gt;If you want to run it at even higher context, you can use KV quantization (lower accuracy) and/or reduce batch size (slower prompt processing). Reducing batch size to the minimum 64 should allow you to run 96k (total 23.54GB). KV quant alone at Q8_0 should allow you to run 128k at 21.57GB.&lt;/p&gt; &lt;p&gt;So we now finally have a viable long context local LLM that can run with a single card. Have fun summarizing long pdfs with llama.cpp!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok_Warning2146"&gt; /u/Ok_Warning2146 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krr7hn/how_to_get_the_most_from_llamacpps_iswa_support/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krr7hn/how_to_get_the_most_from_llamacpps_iswa_support/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krr7hn/how_to_get_the_most_from_llamacpps_iswa_support/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys! I'm doing a local Home Assistant project that includes a fully local Voice Assistant, all in native Bulgarian. I'm using Whisper Turbo V3 for STT, Qwen3 for the LLM part, but I'm stuck at the TTS part. I'm looking for a good, Bulgarian-speaking, open-source TTS engine (preferably a modern one), but all of the top available ones I've found on HuggingFace don't include Bulgarian. There's a few really good options if i wanted to go closed-source online (i.e Gemini 2.5 TTS, Elevenlabs, Microsoft Azure TTS, etc.), but I'd really rather the whole system work offline.&lt;/p&gt; &lt;p&gt;What options do I have on the locally-run side? Am I doomed to rely on the corporate overlords?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/oMGalLusrenmaestkaen"&gt; /u/oMGalLusrenmaestkaen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksas7b/local_tts_with_actual_multilingual_support/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksas7b/local_tts_with_actual_multilingual_support/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksas7b/local_tts_with_actual_multilingual_support/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T06:38:02+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kscibt</id>
-    <title>AI Agents and assistants</title>
-    <updated>2025-05-21T23:35:10+00:00</updated>
-    <author>
-      <name>/u/johnfkngzoidberg</name>
-      <uri>https://old.reddit.com/user/johnfkngzoidberg</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been trying various AI agents and assistants. &lt;/p&gt; &lt;p&gt;I want: - a coding assistant that can analyze code, propose/make changes, create commits maybe - search the internet, save the info, find URLs, download git repos maybe - examine my code on disk, tell me why it sucks, web search data on disk, and add to the memory context if necessary to analyze - read/write files in a sandbox. &lt;/p&gt; &lt;p&gt;I’ve looked at Goose and AutoGPT. What other tools are out there for a local LLM? Are there any features I should be looking out for? &lt;/p&gt; &lt;p&gt;It would be nice to just ask the LLM, “search the web for X, clone the git repo, save it /right/here/“. Or “do a web search, find the latest method/tool for X”&lt;/p&gt; &lt;p&gt;Now tell me why I’m dumb and expect too much. :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/johnfkngzoidberg"&gt; /u/johnfkngzoidberg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T23:35:10+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kscn2n</id>
-    <title>Benchmarking FP8 vs GGUF:Q8 on RTX 5090 (Blackwell SM120)</title>
-    <updated>2025-05-21T23:41:25+00:00</updated>
-    <author>
-      <name>/u/drulee</name>
-      <uri>https://old.reddit.com/user/drulee</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscn2n/benchmarking_fp8_vs_ggufq8_on_rtx_5090_blackwell/"&gt; &lt;img alt="Benchmarking FP8 vs GGUF:Q8 on RTX 5090 (Blackwell SM120)" src="https://external-preview.redd.it/NX0ZFcOGjNWeWZmvYhRiRB7Gy7xI5qS47yN1p8Z8lh0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5463507e8f4650cdb7014b6c0266da600351cb78" title="Benchmarking FP8 vs GGUF:Q8 on RTX 5090 (Blackwell SM120)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Now that the first FP8 implementations for RTX Blackwell (SM120) are available in vLLM, I’ve benchmarked several models and frameworks under Windows 11 with WSL (Ubuntu 24.04):&lt;/p&gt; &lt;ul&gt; &lt;li&gt;vLLM with &lt;a href="https://huggingface.co/RedHatAI/phi-4-FP8-dynamic"&gt;https://huggingface.co/RedHatAI/phi-4-FP8-dynamic&lt;/a&gt; (FP8 compressed-tensors)&lt;/li&gt; &lt;li&gt;Ollama with &lt;a href="https://huggingface.co/unsloth/phi-4-GGUF"&gt;https://huggingface.co/unsloth/phi-4-GGUF&lt;/a&gt; (Q8_0)&lt;/li&gt; &lt;li&gt;LM Studio with &lt;a href="https://huggingface.co/lmstudio-community/phi-4-GGUF"&gt;https://huggingface.co/lmstudio-community/phi-4-GGUF&lt;/a&gt; (Q8_0)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;In all cases the models were loaded with a maximum context length of 16k.&lt;/p&gt; &lt;p&gt;Benchmarks were performed using &lt;a href="https://github.com/huggingface/inference-benchmarker"&gt;https://github.com/huggingface/inference-benchmarker&lt;/a&gt;&lt;br /&gt; Here’s the Docker command used:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;sudo docker run --network host -e HF_TOKEN=$HF_TOKEN \ -v ~/inference-benchmarker-results:/opt/inference-benchmarker/results \ inference_benchmarker inference-benchmarker \ --url $URL \ --rates 1.0 --rates 10.0 --rates 30.0 --rates 100.0 \ --max-vus 800 --duration 120s --warmup 30s --benchmark-kind rate \ --model-name $ModelName \ --tokenizer-name &amp;quot;microsoft/phi-4&amp;quot; \ --prompt-options &amp;quot;num_tokens=8000,max_tokens=8020,min_tokens=7980,variance=10&amp;quot; \ --decode-options &amp;quot;num_tokens=8000,max_tokens=8020,min_tokens=7980,variance=10&amp;quot; # URL should point to your local vLLM/Ollama/LM Studio instance. # ModelName corresponds to the loaded model, e.g. &amp;quot;hf.co/unsloth/phi-4-GGUF:Q8_0&amp;quot; (Ollama) or &amp;quot;phi-4&amp;quot; (LM Studio) # Note: For 200-token prompt benchmarking, use the following options: --prompt-options &amp;quot;num_tokens=200,max_tokens=220,min_tokens=180,variance=10&amp;quot; \ --decode-options &amp;quot;num_tokens=200,max_tokens=220,min_tokens=180,variance=10&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Results:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;200 token prompts: &lt;a href="https://huggingface.co/spaces/textgeflecht/inference-benchmarking-results-phi4-200-tokens"&gt;https://huggingface.co/spaces/textgeflecht/inference-benchmarking-results-phi4-200-tokens&lt;/a&gt;&lt;/li&gt; &lt;li&gt;8000 token prompts: &lt;a href="https://huggingface.co/spaces/textgeflecht/inference-benchmarking-results-phi4-8000-tokens"&gt;https://huggingface.co/spaces/textgeflecht/inference-benchmarking-results-phi4-8000-tokens&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/7q460i1fv72f1.png?width=2500&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a7c313e1b3bb83acea8406a117c84b3ef8f19df1"&gt;screenshot: 200 token prompts&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/y6hcf4ckv72f1.png?width=2498&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=33af700454d8128c9cd32653660f8e70d0c6fb0a"&gt;screenshot: 8000 token prompts&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Observations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;It is already well-known that &lt;strong&gt;vLLM&lt;/strong&gt; offers high token throughput given sufficient request rates. In case of phi-4 I archieved 3k tokens/s, with smaller models like Llama 3.1 8B up to 5.5k tokens/s was possible (the latter one is not in the benchmark screenshots or links above; I'll test again once more FP8 kernel optimizations are implemented in vLLM). &lt;/li&gt; &lt;li&gt;&lt;strong&gt;LM Studio&lt;/strong&gt;: Adjusting the “Evaluation Batch Size” to 16k didn't noticeably improve throughput. Any tips?&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Ollama&lt;/strong&gt;: I couldn’t find any settings to optimize for higher throughput.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/drulee"&gt; /u/drulee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscn2n/benchmarking_fp8_vs_ggufq8_on_rtx_5090_blackwell/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscn2n/benchmarking_fp8_vs_ggufq8_on_rtx_5090_blackwell/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kscn2n/benchmarking_fp8_vs_ggufq8_on_rtx_5090_blackwell/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T23:41:25+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ksat42</id>
-    <title>Devstral vs DeepSeek vs Qwen3</title>
-    <updated>2025-05-21T22:15:51+00:00</updated>
-    <author>
-      <name>/u/COBECT</name>
-      <uri>https://old.reddit.com/user/COBECT</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt; &lt;img alt="Devstral vs DeepSeek vs Qwen3" src="https://external-preview.redd.it/UDZBQmD4AJb2vSY-B7oM2DhQ3zjGzTcUOviRMRcUKkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=122efd46018c04117aca71d80db3640d390428bd" title="Devstral vs DeepSeek vs Qwen3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are your expectations about it? The announcement is quite interesting. 🔥&lt;/p&gt; &lt;p&gt;Noticed that they put Gemma3 on the bottom of the chart, but it shows very well on daily basis. 🤔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/COBECT"&gt; /u/COBECT &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/news/devstral"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T22:15:51+00:00</published>
+    <published>2025-05-21T22:14:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1kru9v3</id>
@@ -99,6 +60,45 @@
     <published>2025-05-21T10:44:22+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ksat42</id>
+    <title>Devstral vs DeepSeek vs Qwen3</title>
+    <updated>2025-05-21T22:15:51+00:00</updated>
+    <author>
+      <name>/u/COBECT</name>
+      <uri>https://old.reddit.com/user/COBECT</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt; &lt;img alt="Devstral vs DeepSeek vs Qwen3" src="https://external-preview.redd.it/UDZBQmD4AJb2vSY-B7oM2DhQ3zjGzTcUOviRMRcUKkg.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=122efd46018c04117aca71d80db3640d390428bd" title="Devstral vs DeepSeek vs Qwen3" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What are your expectations about it? The announcement is quite interesting. 🔥&lt;/p&gt; &lt;p&gt;Noticed that they put Gemma3 on the bottom of the chart, but it shows very well on daily basis. 🤔&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/COBECT"&gt; /u/COBECT &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://mistral.ai/news/devstral"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-21T22:15:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kscibt</id>
+    <title>AI Agents and assistants</title>
+    <updated>2025-05-21T23:35:10+00:00</updated>
+    <author>
+      <name>/u/johnfkngzoidberg</name>
+      <uri>https://old.reddit.com/user/johnfkngzoidberg</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been trying various AI agents and assistants. &lt;/p&gt; &lt;p&gt;I want: - a coding assistant that can analyze code, propose/make changes, create commits maybe - search the internet, save the info, find URLs, download git repos maybe - examine my code on disk, tell me why it sucks, web search data on disk, and add to the memory context if necessary to analyze - read/write files in a sandbox. &lt;/p&gt; &lt;p&gt;I’ve looked at Goose and AutoGPT. What other tools are out there for a local LLM? Are there any features I should be looking out for? &lt;/p&gt; &lt;p&gt;It would be nice to just ask the LLM, “search the web for X, clone the git repo, save it /right/here/“. Or “do a web search, find the latest method/tool for X”&lt;/p&gt; &lt;p&gt;Now tell me why I’m dumb and expect too much. :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/johnfkngzoidberg"&gt; /u/johnfkngzoidberg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kscibt/ai_agents_and_assistants/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-21T23:35:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kscnlo</id>
+    <title>Qwen3 is impressive but sometimes acts like it went through lobotomy. Have you experienced something similar?</title>
+    <updated>2025-05-21T23:42:09+00:00</updated>
+    <author>
+      <name>/u/AltruisticList6000</name>
+      <uri>https://old.reddit.com/user/AltruisticList6000</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've tested Qwen3 32b at Q4, Qwen3 30b-A3B Q5 and Qwen 14b Q6 a few days ago. The 14b was the fastest one for me since it didn't require loading into RAM (I have 16gb VRAM) (and yes the 30b one was 2-5t/s slower than 14b).&lt;/p&gt; &lt;p&gt;Qwen3 14b was very impressive at basic math, even when I ended up just bashing my keyboard and giving it stuff like this to solve: 37478847874 + 363605 * 53, it somehow got them right (also more advanced math). Weirdly, it was usually better to turn thinking off for these. I was happy to find out this model was the best so far among the local models at talking in my language (not english), so will be great for multilingual tasks.&lt;/p&gt; &lt;p&gt;However it sometimes fails to properly follow instructions/misunderstands them, or ignores small details I ask for, like formatting. Enabling the thinking improves a lot on this though for the 14b and 30b models. The 32b is a lot better at this, even without thinking, but not perfect either. It sometimes gives the dumbest responses I've experienced, even the 32b. For example this was my first contact with the 32b model:&lt;/p&gt; &lt;p&gt;Me: &amp;quot;Hello, are you Qwen?&amp;quot;&lt;/p&gt; &lt;p&gt;Qwen 32b: &amp;quot;Hi I am not Qwen, you might be confusing me with someone else. My name is Qwen&amp;quot;.&lt;/p&gt; &lt;p&gt;I was thinking &amp;quot;what is going on here?&amp;quot;, it reminded me of barely functional 1b-3b models in Q4 lobotomy quants I had tested for giggles ages ago. It never did something blatantly stupid like this again, but some weird responses come up occasionally, also I feel like it sometimes struggles with english (?), giving oddly formulated responses, other models like Mistrals never did this.&lt;/p&gt; &lt;p&gt;Other thing, both 14b and 32b did a similar weird response (I checked 32b after I was shocked at 14b, copying the same messages I used before). I will give an example, not what I actually talked about with it, but it was like this: I asked &amp;quot;Oh recently my head is hurting, what to do?&amp;quot; And after giving some solid advice it gave me this, (word for word in the 1st sentence!): &amp;quot;You are not just headache! You are right to be concerned!&amp;quot; and went on with stuff like &amp;quot;Your struggles are valid and&amp;quot; (etc...) First of all this barely makes sense wth is &amp;quot;You are not just a headache!&amp;quot; like duh? I guess it tried to do some not really needed kindness/mental health support thing but it ended up sounding weird and almost patronizing.&lt;/p&gt; &lt;p&gt;And it talks too much. I'm talking about what it says after thinking or with thinking mode OFF, not what it is saying while it's thinking. Even during characters/RP it's just not really good because it gives me like 10 lines per response, where it just fast-track hallucinates unneeded things, and frequently detaches and breaks character, talking in 3rd person about how to RP the character it is already RPing. Although disliking too much talking is subjective so other people might love this. I call the talking too much + breaking character during RP &amp;quot;Gemmaism&amp;quot; because gemma 2 27b also did this all the time and it drove me insane back then too.&lt;/p&gt; &lt;p&gt;So for RP/casual chat/characters I still prefer Mistral 22b 2409 and Mistral Nemo (and their finetunes). So far it's a mixed bag for me because of these, it could both impress and shock me at different times.&lt;/p&gt; &lt;p&gt;Edit: LMAO getting downvoted 1 min after posting, bro you wouldn't even be able to read my post by this time, so what are you downvoting for? Stupid fanboy.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AltruisticList6000"&gt; /u/AltruisticList6000 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscnlo/qwen3_is_impressive_but_sometimes_acts_like_it/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kscnlo/qwen3_is_impressive_but_sometimes_acts_like_it/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kscnlo/qwen3_is_impressive_but_sometimes_acts_like_it/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-21T23:42:09+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1krp4hq</id>
     <title>They also released the Android app with which you can interact with the new Gemma3n</title>
     <updated>2025-05-21T04:25:10+00:00</updated>
@@ -125,19 +125,6 @@
     <published>2025-05-21T08:14:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ks0snl</id>
-    <title>SWE-rebench update: GPT4.1 mini/nano and Gemini 2.0/2.5 Flash added</title>
-    <updated>2025-05-21T15:32:06+00:00</updated>
-    <author>
-      <name>/u/Long-Sleep-13</name>
-      <uri>https://old.reddit.com/user/Long-Sleep-13</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We’ve just added a batch of new models to the &lt;a href="https://swe-rebench.com/leaderboard"&gt;SWE-rebench leaderboard&lt;/a&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GPT-4.1 mini&lt;/li&gt; &lt;li&gt;GPT-4.1 nano&lt;/li&gt; &lt;li&gt;Gemini 2.0 Flash&lt;/li&gt; &lt;li&gt;Gemini 2.5 Flash Preview 05-20&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;A few quick takeaways:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;gpt-4.1-mini is surprisingly strong, it matches full GPT-4.1 performance on fresh, decontaminated tasks. Very strong instruction following capabilities.&lt;/li&gt; &lt;li&gt;gpt-4.1-nano, on the other hand, struggles. It often misunderstands the system prompt and hallucinates environment responses. This also affects other models in the bottom of the leaderboard.&lt;/li&gt; &lt;li&gt;gemini 2.0 flash performs on par with Qwen and LLaMA 70B. It doesn't seem to suffer from contamination, but it often has troubles following instructions precisely.&lt;/li&gt; &lt;li&gt;gemini 2.5 flash preview 05-20 is a big improvement over 2.0. It’s nearly GPT-4.1 level on older data and gets closer to GPT-4.1 mini on newer tasks, being ~2.6x cheaper, though possibly a bit contaminated.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We know many people are waiting for frontier model results. Thanks to OpenAI for providing API credits, results for o3 and o4-mini are coming soon. Stay tuned!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Long-Sleep-13"&gt; /u/Long-Sleep-13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T15:32:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1krxwja</id>
     <title>New falcon models using mamba hybrid are very competetive if not ahead for their sizes.</title>
     <updated>2025-05-21T13:31:15+00:00</updated>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krxwja/new_falcon_models_using_mamba_hybrid_are_very/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T13:31:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ks0snl</id>
+    <title>SWE-rebench update: GPT4.1 mini/nano and Gemini 2.0/2.5 Flash added</title>
+    <updated>2025-05-21T15:32:06+00:00</updated>
+    <author>
+      <name>/u/Long-Sleep-13</name>
+      <uri>https://old.reddit.com/user/Long-Sleep-13</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;We’ve just added a batch of new models to the &lt;a href="https://swe-rebench.com/leaderboard"&gt;SWE-rebench leaderboard&lt;/a&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GPT-4.1 mini&lt;/li&gt; &lt;li&gt;GPT-4.1 nano&lt;/li&gt; &lt;li&gt;Gemini 2.0 Flash&lt;/li&gt; &lt;li&gt;Gemini 2.5 Flash Preview 05-20&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;A few quick takeaways:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;gpt-4.1-mini is surprisingly strong, it matches full GPT-4.1 performance on fresh, decontaminated tasks. Very strong instruction following capabilities.&lt;/li&gt; &lt;li&gt;gpt-4.1-nano, on the other hand, struggles. It often misunderstands the system prompt and hallucinates environment responses. This also affects other models in the bottom of the leaderboard.&lt;/li&gt; &lt;li&gt;gemini 2.0 flash performs on par with Qwen and LLaMA 70B. It doesn't seem to suffer from contamination, but it often has troubles following instructions precisely.&lt;/li&gt; &lt;li&gt;gemini 2.5 flash preview 05-20 is a big improvement over 2.0. It’s nearly GPT-4.1 level on older data and gets closer to GPT-4.1 mini on newer tasks, being ~2.6x cheaper, though possibly a bit contaminated.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We know many people are waiting for frontier model results. Thanks to OpenAI for providing API credits, results for o3 and o4-mini are coming soon. Stay tuned!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Long-Sleep-13"&gt; /u/Long-Sleep-13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0snl/swerebench_update_gpt41_mininano_and_gemini_2025/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-21T15:32:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1ks5nul</id>
@@ -190,19 +190,6 @@
     <published>2025-05-20T22:31:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ks0h52</id>
-    <title>I'd love a qwen3-coder-30B-A3B</title>
-    <updated>2025-05-21T15:19:25+00:00</updated>
-    <author>
-      <name>/u/GreenTreeAndBlueSky</name>
-      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Honestly I'd pay quite a bit to have such a model on my own machine. Inference would be quite fast and coding would be decent. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T15:19:25+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ks0arl</id>
     <title>Voice cloning for Kokoro TTS using random walk algorithms</title>
     <updated>2025-05-21T15:12:31+00:00</updated>
@@ -216,17 +203,17 @@
     <published>2025-05-21T15:12:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1krtvpj</id>
-    <title>Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B</title>
-    <updated>2025-05-21T09:50:09+00:00</updated>
+    <id>t3_1ks0h52</id>
+    <title>I'd love a qwen3-coder-30B-A3B</title>
+    <updated>2025-05-21T15:19:25+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/GreenTreeAndBlueSky</name>
+      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"&gt; &lt;img alt="Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B" src="https://external-preview.redd.it/asQIFBJYgU0s0y-AV0hAHtenKk6qa9ZCLFCb-Jjyvag.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=669a7c89198f19469e2598642c94e9e4b54a56f3" title="Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Honestly I'd pay quite a bit to have such a model on my own machine. Inference would be quite fast and coding would be decent. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ks0h52/id_love_a_qwen3coder30ba3b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-21T09:50:09+00:00</published>
+    <published>2025-05-21T15:19:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1krzpmu</id>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krzpmu/amd_rocm_641_now_supports_9070xt_navi4/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T14:48:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1krtvpj</id>
+    <title>Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B</title>
+    <updated>2025-05-21T09:50:09+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"&gt; &lt;img alt="Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B" src="https://external-preview.redd.it/asQIFBJYgU0s0y-AV0hAHtenKk6qa9ZCLFCb-Jjyvag.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=669a7c89198f19469e2598642c94e9e4b54a56f3" title="Falcon-H1 Family of Hybrid-Head Language Models, including 0.5B, 1.5B, 1.5B-Deep, 3B, 7B, and 34B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1krtvpj/falconh1_family_of_hybridhead_language_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-21T09:50:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1ks5sh4</id>
