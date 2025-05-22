@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-22T14:38:59+00:00</updated>
+  <updated>2025-05-22T14:50:23+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ksl4nq</id>
-    <title>I made Model Version Control Protocol for AI agents</title>
-    <updated>2025-05-22T07:53:07+00:00</updated>
-    <author>
-      <name>/u/_twelvechess</name>
-      <uri>https://old.reddit.com/user/_twelvechess</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been working on MVCP (Model Version Control Protocol), inspired by the Model Context Protocol (MCP), a lightweight Git-compatible tool designed specifically &lt;strong&gt;for AI agents to track their progress during code transformations&lt;/strong&gt;, built using Python.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What it does?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;MVCP creates a unified, human-readable system for AI agents to save, restore, and diff checkpoints as they transform code. Think of it as specialized version control that works alongside Git, optimized for LLM-based coding assistants. It enables multiple AI agents to collaborate on the same codebase while maintaining a clear audit trail of who did what. This is particularly useful for autonomous development workflows where multiple specialized agents (coders, testers, reviewers, etc.) work toward building a repo together. &lt;/p&gt; &lt;p&gt;The repo is &lt;strong&gt;open for contributions too and its under the MIT license&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Its very early in development so please take it easy on me haha :D&lt;/p&gt; &lt;p&gt; &lt;a href="https://github.com/evangelosmeklis/mvcp"&gt;https://github.com/evangelosmeklis/mvcp&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_twelvechess"&gt; /u/_twelvechess &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksl4nq/i_made_model_version_control_protocol_for_ai/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T07:53:07+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ksat42</id>
     <title>Devstral vs DeepSeek vs Qwen3</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksat42/devstral_vs_deepseek_vs_qwen3/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-21T22:15:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksrxm7</id>
+    <title>Intuitive explanation on diffusion language models (dLLMs) and why they may be far superior to autoregressive for most uses (append &amp; amend VS mutate &amp; defragment)</title>
+    <updated>2025-05-22T14:20:49+00:00</updated>
+    <author>
+      <name>/u/psychonucks</name>
+      <uri>https://old.reddit.com/user/psychonucks</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been preaching diffusion LLMs for a month now and I believe I can explain clearly why it could be superior to autoregressive, or perhaps they are two complementary hemispheres in a more complete being. Before getting into the theory, let's look at one application first, how I think coding agents are gonna go down with diffusion:&lt;/p&gt; &lt;p&gt;Diffusion LLMs with reinforcement learning for agentic coding are going to be utterly nuts. Imagine memory-mapping a region of the context to some text documents and giving the model commands to scroll the view or follow references and jump around files. DLLMs can edit files directly without an intermediate apply model or outputting diffs. Any mutation made by the model to the tokens in the context would directly be saved to disk in the corresponding file. These models don't accumulate deltas, they remain at ground truth. This means that the running representation of the code it's editing is always in its least complex representation. Its concept of the codebase as it's working isn't some functional operation of &lt;code&gt;original + delta + ...&lt;/code&gt; it's mutating the original directly. Furthermore the memory-mapped file region in context can be anywhere in the context. The next generation of coding agents is probably like a chunk of context that is allocated to contain some memory-mapped file editing &amp;amp; reading regions, and some prompts or reasoning area. LLMs could have their own &amp;quot;vim&amp;quot; equivalent for code navigation, and maybe they could even fit multiple regions in one context to navigate them separately in parallel and cross-reference data. The model could teach itself to choose dynamically between one large view buffer over one file, or many tiny views over many files, dividing up the context window to have multiple parallel probe points, which could be more useful for tracing an exception. Imagine the policies that can be discovered automatically by RL.&lt;/p&gt; &lt;p&gt;One creative inference system I am eager to try is to set-up a 1D cellular automaton which generates floats over the text in an anisotropic landscape fashion (think perlin noise, how it is irregular and cannot be predicted) and calculating the perplexity and varentropy on each token, and then injecting the tokens with noise that is masked by the varentropy &amp;amp; automaton's activation, or injecting space or tokens. This essentially creates a guided search at high variance pressure points in the text and causes the text to &amp;quot;unroll&amp;quot; wherever ambiguity lies. Each unrolling point may result in another unrelated part of the text shooting up in varentropy because it suddenly changes the meaning, so this could be a potent test-time scaling loop that goes on for a very long time unrolling a small seed to document to a massive well-thought out essay or thesis or whatever creative work you are asking the system. This is a strategy in the near future I believe could do things we might call super-intelligence.&lt;/p&gt; &lt;p&gt;An autoregressive model cannot do this because it can only append and amend. It can call tools like sed to mutate text, but it's not differentiable and doesn't learn mechanics of mutation. Diffusion models are more resistant to degeneration and can recover better. If an output degenerates in an autoregressive model, it has to amend the crap (&amp;quot;I apologize, I have made a mistake&amp;quot;) and cannot actually erase from its context window. It can't defragment text or optimize it like diffusers, certainly not as a native operation. Diffusion LLMs will result in models that &amp;quot;just do things&amp;quot;. The model doesn't have to say &amp;quot;wait, I see the problem&amp;quot; because the code is labeled as a problem-state by nature of its encoding and there are natural gradients that the model can climb or navigate that bridge problem-state to correctness-state.&lt;/p&gt; &lt;p&gt;Diffusion language models cut out an unnecessary operation, which albeit does raise question as to safety. We will not understand anymore why the ideas or code that appears on the screen is as it is unless we decisively RL a scratchpad, training the model to reserve some context buffer for a reasoning scratch pad. BTW as we said earlier with diffusion LLMs we can do in-painting just like image models, by masking which tokens should be frozen or allowed to change. That means you can hard-code a sequential unmasking schedule over certain views, and possibly get sequential-style reasoning in parallel with the memory-mapped code editing regions. And this is why I took such a long roundabout way to this explanation. Now finally we can see why diffusion language models are simply superior: they can be trained to support reasoning in parallel as they edit code. &lt;strong&gt;Diffusion LLMs generalize the autoregressive model through a sequential unmasking schedule, and allow the model to be progressively taken out of distribution into the full-space of non-sequential idea formation.&lt;/strong&gt; Like all models, they do not learn but rather 'guess' a structure that can explain the dataset. They &lt;em&gt;discover&lt;/em&gt; representations and operations over these representations. The base output of a diffusion LLM is not that newsworthy, it's the fact that we have a new pool of representations and operations that we can rearrange to construct something closer to the way that humans use their brains, or directly crystallizing it with RL objectives and more random search. &lt;/p&gt; &lt;p&gt;We should think of diffusion LLMs as an &lt;strong&gt;evolution operator or physics engine for a context window&lt;/strong&gt;. It's a super-massive ruleset which defines how a given context (text document) is allowed to mutate, iterate, or be stepped forward in time. It's a scaled up cellular automaton. What everybody should keep in mind here is that diffusion LLMs can mutate infinitely. There is no 'maximum context window' in a dLLM because the append / amend history is unnecessary. The model can work on a document for 13 hours, optimizing tokens. Text is transformative, compounds on itselfs, and rewrites itself. Text is self-aware and cognizant of its own state of being. The prompt and the output are the same.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/psychonucks"&gt; /u/psychonucks &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksrxm7/intuitive_explanation_on_diffusion_language/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksrxm7/intuitive_explanation_on_diffusion_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksrxm7/intuitive_explanation_on_diffusion_language/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T14:20:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1kspe8c</id>
@@ -177,19 +177,6 @@
     <published>2025-05-21T14:49:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kss44x</id>
-    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
-    <updated>2025-05-22T14:28:11+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T14:28:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ksh780</id>
     <title>In video intel talks a bit about battlematrix 192GB VRAM</title>
     <updated>2025-05-22T03:37:40+00:00</updated>
@@ -203,6 +190,19 @@
     <published>2025-05-22T03:37:40+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kss44x</id>
+    <title>Tiny agents from hugging face is great for llama.cpp mcp agents</title>
+    <updated>2025-05-22T14:28:11+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tiny agents have to be the easiest browsers control setup, you just the cli, a json, and a prompt definition. &lt;/p&gt; &lt;p&gt;- it uses main MCPs, like Playright, mcp-remote&lt;br /&gt; - works with local models via openai compatible server&lt;br /&gt; - model can controls the browser or local files without calling APIs&lt;/p&gt; &lt;p&gt;here's a tutorial form the MCP course &lt;a href="https://huggingface.co/learn/mcp-course/unit2/tiny-agents"&gt;https://huggingface.co/learn/mcp-course/unit2/tiny-agents&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kss44x/tiny_agents_from_hugging_face_is_great_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T14:28:11+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ksdeup</id>
     <title>4-bit quantized Moondream: 42% less memory with 99.4% accuracy</title>
     <updated>2025-05-22T00:19:04+00:00</updated>
@@ -214,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksdeup/4bit_quantized_moondream_42_less_memory_with_994/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T00:19:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ksfqc4</id>
+    <title>Open-Sourced Multimodal Large Diffusion Language Models</title>
+    <updated>2025-05-22T02:18:45+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"&gt; &lt;img alt="Open-Sourced Multimodal Large Diffusion Language Models" src="https://external-preview.redd.it/iZId4FACbwvJcU6NEqYQYxxICVbn6LyYgehUX8eXjRY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c6e1a6cba69a1a9f17b0fbd00276cd418ded8eda" title="Open-Sourced Multimodal Large Diffusion Language Models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MMaDA is a new family of &lt;strong&gt;multimodal diffusion foundation models&lt;/strong&gt; designed to achieve superior performance across diverse domains such as textual reasoning, multimodal understanding, and text-to-image generation. MMaDA is distinguished by three key innovations:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;MMaDA adopts a &lt;strong&gt;unified diffusion architecture&lt;/strong&gt; with a shared probabilistic formulation and a modality-agnostic design, eliminating the need for modality-specific components.&lt;/li&gt; &lt;li&gt;MMaDA introduces a &lt;strong&gt;mixed long chain-of-thought (CoT) fine-tuning&lt;/strong&gt; strategy that curates a unified CoT format across modalities.&lt;/li&gt; &lt;li&gt;MMaDA adopts a unified policy-gradient-based RL algorithm, which we call &lt;strong&gt;UniGRPO&lt;/strong&gt;, tailored for diffusion foundation models. Utilizing diversified reward modeling, &lt;strong&gt;UniGRPO&lt;/strong&gt; unifies post-training across both reasoning and generation tasks, ensuring consistent performance improvements.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Gen-Verse/MMaDA"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-22T02:18:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksmvab</id>
@@ -240,19 +253,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksmhe9/mmada_multimodal_large_diffusion_language_models/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T09:31:41+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ksfqc4</id>
-    <title>Open-Sourced Multimodal Large Diffusion Language Models</title>
-    <updated>2025-05-22T02:18:45+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"&gt; &lt;img alt="Open-Sourced Multimodal Large Diffusion Language Models" src="https://external-preview.redd.it/iZId4FACbwvJcU6NEqYQYxxICVbn6LyYgehUX8eXjRY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c6e1a6cba69a1a9f17b0fbd00276cd418ded8eda" title="Open-Sourced Multimodal Large Diffusion Language Models" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MMaDA is a new family of &lt;strong&gt;multimodal diffusion foundation models&lt;/strong&gt; designed to achieve superior performance across diverse domains such as textual reasoning, multimodal understanding, and text-to-image generation. MMaDA is distinguished by three key innovations:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;MMaDA adopts a &lt;strong&gt;unified diffusion architecture&lt;/strong&gt; with a shared probabilistic formulation and a modality-agnostic design, eliminating the need for modality-specific components.&lt;/li&gt; &lt;li&gt;MMaDA introduces a &lt;strong&gt;mixed long chain-of-thought (CoT) fine-tuning&lt;/strong&gt; strategy that curates a unified CoT format across modalities.&lt;/li&gt; &lt;li&gt;MMaDA adopts a unified policy-gradient-based RL algorithm, which we call &lt;strong&gt;UniGRPO&lt;/strong&gt;, tailored for diffusion foundation models. Utilizing diversified reward modeling, &lt;strong&gt;UniGRPO&lt;/strong&gt; unifies post-training across both reasoning and generation tasks, ensuring consistent performance improvements.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Gen-Verse/MMaDA"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksfqc4/opensourced_multimodal_large_diffusion_language/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T02:18:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1ksjee6</id>
