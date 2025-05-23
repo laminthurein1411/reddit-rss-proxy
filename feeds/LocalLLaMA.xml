@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-23T11:34:26+00:00</updated>
+  <updated>2025-05-23T11:48:46+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kstdhn</id>
-    <title>Notes on AlphaEvolve: Are we closing in on Singularity?</title>
-    <updated>2025-05-22T15:19:33+00:00</updated>
-    <author>
-      <name>/u/SunilKumarDash</name>
-      <uri>https://old.reddit.com/user/SunilKumarDash</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;DeepMind released the AlphaEvolve paper last week, which, considering what they have achieved, is arguably one of the most important papers of the year. But I found the discourse around it was very thin, not many who actively cover the AI space have talked much about it.&lt;/p&gt; &lt;p&gt;So, I made some notes on the important aspects of AlphaEvolve.&lt;/p&gt; &lt;h1&gt;Architecture Overview&lt;/h1&gt; &lt;p&gt;DeepMind calls it an &amp;quot;agent&amp;quot;, but it was not your run-of-the-mill agent, but a meta-cognitive system. The agent architecture has the following components&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Problem: An entire codebase or a part of it marked with # EVOLVE-BLOCK-START and # EVOLVE-BLOCK-END. Only this part of it will be evolved.&lt;/li&gt; &lt;li&gt;LLM ensemble: They used Gemini 2.0 Pro for complex reasoning and 2.5 flash for faster operations.&lt;/li&gt; &lt;li&gt;Evolutionary database: The most important part, the database uses map-elite and Island architecture to store solutions and inspirations. &lt;/li&gt; &lt;li&gt;Prompt Sampling: A combination of previous best results, inspirations, and human contexts for improving the existing solution.&lt;/li&gt; &lt;li&gt;Evaluation Framework: A Python function for evaluating the answers, and it returns array of scalars.&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Working in brief&lt;/h1&gt; &lt;p&gt;The database maintains &amp;quot;parent&amp;quot; programs marked for improvement and &amp;quot;inspirations&amp;quot; for adding diversity to the solution. (The name &amp;quot;AlphaEvolve&amp;quot; itself actually comes from it being an &amp;quot;Alpha&amp;quot; series agent that &amp;quot;Evolves&amp;quot; solutions, rather than just this parent/inspiration idea).&lt;/p&gt; &lt;p&gt;Here’s how it generally flows: the AlphaEvolve system gets the initial codebase. Then, for each step, the &lt;strong&gt;prompt sampler&lt;/strong&gt; cleverly picks out parent program(s) to work on and some inspiration programs. It bundles these up with &lt;strong&gt;feedback from past attempts (like scores or even what an LLM thought about previous versions)&lt;/strong&gt;, plus any handy human context. This whole package goes to the LLMs.&lt;/p&gt; &lt;p&gt;The new solution they come up with (the &amp;quot;child&amp;quot;) gets graded by the &lt;strong&gt;evaluation function&lt;/strong&gt;. Finally, these child solutions, with their new grades, are stored back in the database.&lt;/p&gt; &lt;h1&gt;The Outcome&lt;/h1&gt; &lt;p&gt;The most interesting part even with older models like Gemini 2.0 Pro and Flash, when AlphaEvolve took on over 50 open math problems, it managed to match the best solutions out there for 75% of them, actually found better answers for another 20%, and only came up short on a tiny 5%!&lt;/p&gt; &lt;p&gt;Out of all, DeepMind is most proud of AlphaEvolve surpassing Strassen's 56-year-old algorithm for 4x4 complex matrix multiplication by finding a method with 48 scalar multiplications.&lt;/p&gt; &lt;p&gt;And also the agent improved Google's infra by speeding up Gemini LLM training by ~1%, improving data centre job scheduling to recover ~0.7% of fleet-wide compute resources, optimising TPU circuit designs, and accelerating compiler-generated code for AI kernels by up to 32%.&lt;/p&gt; &lt;p&gt;This is the best agent scaffolding to date. The fact that they pulled this off with an outdated Gemini, imagine what they can do with the current SOTA. This makes it one thing clear: what we're lacking for efficient agent swarms doing tasks is the right abstractions. Though the cost of operation is not disclosed.&lt;/p&gt; &lt;p&gt;For a detailed blog post, check this out: &lt;a href="https://composio.dev/blog/alphaevolve-evolutionary-agent-from-deepmind/"&gt;AlphaEvolve: the self-evolving agent from DeepMind&lt;/a&gt;&lt;/p&gt; &lt;p&gt;It'd be interesting to see if they ever release it in the wild or if any other lab picks it up. This is certainly the best frontier for building agents.&lt;/p&gt; &lt;p&gt;Would love to know your thoughts on it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SunilKumarDash"&gt; /u/SunilKumarDash &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kstdhn/notes_on_alphaevolve_are_we_closing_in_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-22T15:19:33+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ktad7a</id>
     <title>Anyone using MedGemma 27B?</title>
@@ -99,6 +86,19 @@
     <published>2025-05-23T04:25:39+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kthdzn</id>
+    <title>Stacking 2x3090s back to back for inference only - thermals</title>
+    <updated>2025-05-23T11:41:05+00:00</updated>
+    <author>
+      <name>/u/YouAreRight007</name>
+      <uri>https://old.reddit.com/user/YouAreRight007</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is anyone running 2x3090s stacked (no gap) for Llama 70B inference?&lt;br /&gt; If so, how are your temperatures looking when utilizing both cards for inference?&lt;/p&gt; &lt;p&gt;My single 3090 averages around 35-40% load (140 watts) for inference on 32GB 4bit models. Temperatures are around 60 degrees. &lt;/p&gt; &lt;p&gt;So it seems reasonable to me that I could stack 2x3090s right next to each, and have okay thermals provided the load on the cards remains close to or under 40%/140watts. &lt;/p&gt; &lt;p&gt;Thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/YouAreRight007"&gt; /u/YouAreRight007 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kthdzn/stacking_2x3090s_back_to_back_for_inference_only/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kthdzn/stacking_2x3090s_back_to_back_for_inference_only/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kthdzn/stacking_2x3090s_back_to_back_for_inference_only/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T11:41:05+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ksw070</id>
     <title>Genuine question: Why are the Unsloth GGUFs more preferred than the official ones?</title>
     <updated>2025-05-22T17:05:03+00:00</updated>
@@ -110,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ksw070/genuine_question_why_are_the_unsloth_ggufs_more/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-22T17:05:03+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ktdlqc</id>
-    <title>Unfortunately, Claude 4 lags far behind O3 in the anti-fitting benchmark.</title>
-    <updated>2025-05-23T07:28:50+00:00</updated>
-    <author>
-      <name>/u/flysnowbigbig</name>
-      <uri>https://old.reddit.com/user/flysnowbigbig</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://llm-benchmark.github.io/"&gt;https://llm-benchmark.github.io/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;click the to expand all questions and answers for all models&lt;/p&gt; &lt;p&gt;I did not update the answers to CLAUDE 4 OPUS THINKING on the webpage. I only tried a few major questions (the rest were even more impossible to answer correctly). I only got 0.5 of the 8 questions right, which is not much different from the total errors in C3.7.（If there is significant progress, I will update the page.）&lt;/p&gt; &lt;p&gt;At present, O3 is still far ahead&lt;/p&gt; &lt;p&gt;I guess the secret is that there should be higher quality customized reasoning data sets, which need to be produced by hiring people. Maybe this is the biggest secret.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/flysnowbigbig"&gt; /u/flysnowbigbig &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T07:28:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1kt99hi</id>
@@ -151,17 +138,17 @@
     <published>2025-05-23T03:57:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ktgvoe</id>
-    <title>server audio input has been merged into llama.cpp</title>
-    <updated>2025-05-23T11:12:26+00:00</updated>
+    <id>t3_1ktdlqc</id>
+    <title>Unfortunately, Claude 4 lags far behind O3 in the anti-fitting benchmark.</title>
+    <updated>2025-05-23T07:28:50+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/flysnowbigbig</name>
+      <uri>https://old.reddit.com/user/flysnowbigbig</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"&gt; &lt;img alt="server audio input has been merged into llama.cpp" src="https://external-preview.redd.it/w-TAeYFPuT8QOBKphdcEnCVLkPeOPrOjKse263sRyos.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d30ef27dc1e8b5fa00168ba96a589759da20990b" title="server audio input has been merged into llama.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/13714"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://llm-benchmark.github.io/"&gt;https://llm-benchmark.github.io/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;click the to expand all questions and answers for all models&lt;/p&gt; &lt;p&gt;I did not update the answers to CLAUDE 4 OPUS THINKING on the webpage. I only tried a few major questions (the rest were even more impossible to answer correctly). I only got 0.5 of the 8 questions right, which is not much different from the total errors in C3.7.（If there is significant progress, I will update the page.）&lt;/p&gt; &lt;p&gt;At present, O3 is still far ahead&lt;/p&gt; &lt;p&gt;I guess the secret is that there should be higher quality customized reasoning data sets, which need to be produced by hiring people. Maybe this is the biggest secret.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/flysnowbigbig"&gt; /u/flysnowbigbig &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdlqc/unfortunately_claude_4_lags_far_behind_o3_in_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T11:12:26+00:00</published>
+    <published>2025-05-23T07:28:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1ktf9o3</id>
@@ -175,19 +162,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktf9o3/said_hes_developing_ai_agents_but_its_just_basic/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T09:29:37+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ktgxxa</id>
-    <title>AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning</title>
-    <updated>2025-05-23T11:15:59+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"&gt; &lt;img alt="AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning" src="https://external-preview.redd.it/_aQtUZTp2VBwp5MK35YBXI25HOZhHuEgT9O1MgXLN7I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=eb4068255f83d79055a6f21dccc859d949b32f54" title="AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/AceReason-Nemotron-14B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T11:15:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1kta3re</id>
@@ -216,6 +190,19 @@
     <published>2025-05-23T01:44:05+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ktgxxa</id>
+    <title>AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning</title>
+    <updated>2025-05-23T11:15:59+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"&gt; &lt;img alt="AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning" src="https://external-preview.redd.it/_aQtUZTp2VBwp5MK35YBXI25HOZhHuEgT9O1MgXLN7I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=eb4068255f83d79055a6f21dccc859d949b32f54" title="AceReason-Nemotron-14B: Advancing Math and Code Reasoning through Reinforcement Learning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/AceReason-Nemotron-14B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgxxa/acereasonnemotron14b_advancing_math_and_code/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T11:15:59+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ktban0</id>
     <title>Dans-PersonalityEngine V1.3.0 12b &amp; 24b</title>
     <updated>2025-05-23T04:55:30+00:00</updated>
@@ -229,17 +216,17 @@
     <published>2025-05-23T04:55:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ktdisj</id>
-    <title>GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding</title>
-    <updated>2025-05-23T07:23:08+00:00</updated>
+    <id>t3_1ktgvoe</id>
+    <title>server audio input has been merged into llama.cpp</title>
+    <updated>2025-05-23T11:12:26+00:00</updated>
     <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"&gt; &lt;img alt="GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding" src="https://external-preview.redd.it/_qyQ5Nb0aZ0pjIERMz0EBymLna5bhwRL3S2vTvBvqUQ.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=978b5b8d9f71176e70ad9f69cf874f5d01401ac0" title="GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Modern Vision-Language Models (VLMs) can solve a wide range of tasks requiring visual reasoning. In real-world scenarios, desirable properties for VLMs include fast inference and controllable generation (e.g., constraining outputs to adhere to a desired format). However, existing autoregressive (AR) VLMs like LLaVA struggle in these aspects. Discrete diffusion models (DMs) offer a promising alternative, enabling parallel decoding for faster inference and bidirectional context for controllable generation through text-infilling. While effective in language-only settings, DMs' potential for multimodal tasks is underexplored. We introduce LaViDa, a family of VLMs built on DMs. We build LaViDa by equipping DMs with a vision encoder and jointly fine-tune the combined parts for multimodal instruction following. To address challenges encountered, LaViDa incorporates novel techniques such as complementary masking for effective training, prefix KV cache for efficient inference, and timestep shifting for high-quality sampling. Experiments show that LaViDa achieves competitive or superior performance to AR VLMs on multi-modal benchmarks such as MMMU, while offering unique advantages of DMs, including flexible speed-quality tradeoff, controllability, and bidirectional reasoning. On COCO captioning, LaViDa surpasses Open-LLaVa-Next-Llama3-8B by +4.1 CIDEr with 1.92x speedup. On bidirectional tasks, it achieves +59% improvement on Constrained Poem Completion. These results demonstrate LaViDa as a strong alternative to AR VLMs. Code and models is available at &lt;a href="https://github.com/jacklishufan/LaViDa"&gt;https://github.com/jacklishufan/LaViDa&lt;/a&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/jacklishufan/LaViDa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"&gt; &lt;img alt="server audio input has been merged into llama.cpp" src="https://external-preview.redd.it/w-TAeYFPuT8QOBKphdcEnCVLkPeOPrOjKse263sRyos.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d30ef27dc1e8b5fa00168ba96a589759da20990b" title="server audio input has been merged into llama.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/13714"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktgvoe/server_audio_input_has_been_merged_into_llamacpp/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T07:23:08+00:00</published>
+    <published>2025-05-23T11:12:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1kt7cy7</id>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kt7cy7/did_anthropic_drop_claude_37s_best_gpqa_score_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T01:19:30+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ktdisj</id>
+    <title>GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding</title>
+    <updated>2025-05-23T07:23:08+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"&gt; &lt;img alt="GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding" src="https://external-preview.redd.it/_qyQ5Nb0aZ0pjIERMz0EBymLna5bhwRL3S2vTvBvqUQ.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=978b5b8d9f71176e70ad9f69cf874f5d01401ac0" title="GitHub - jacklishufan/LaViDa: Official Implementation of LaViDa: :A Large Diffusion Language Model for Multimodal Understanding" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Modern Vision-Language Models (VLMs) can solve a wide range of tasks requiring visual reasoning. In real-world scenarios, desirable properties for VLMs include fast inference and controllable generation (e.g., constraining outputs to adhere to a desired format). However, existing autoregressive (AR) VLMs like LLaVA struggle in these aspects. Discrete diffusion models (DMs) offer a promising alternative, enabling parallel decoding for faster inference and bidirectional context for controllable generation through text-infilling. While effective in language-only settings, DMs' potential for multimodal tasks is underexplored. We introduce LaViDa, a family of VLMs built on DMs. We build LaViDa by equipping DMs with a vision encoder and jointly fine-tune the combined parts for multimodal instruction following. To address challenges encountered, LaViDa incorporates novel techniques such as complementary masking for effective training, prefix KV cache for efficient inference, and timestep shifting for high-quality sampling. Experiments show that LaViDa achieves competitive or superior performance to AR VLMs on multi-modal benchmarks such as MMMU, while offering unique advantages of DMs, including flexible speed-quality tradeoff, controllability, and bidirectional reasoning. On COCO captioning, LaViDa surpasses Open-LLaVa-Next-Llama3-8B by +4.1 CIDEr with 1.92x speedup. On bidirectional tasks, it achieves +59% improvement on Constrained Poem Completion. These results demonstrate LaViDa as a strong alternative to AR VLMs. Code and models is available at &lt;a href="https://github.com/jacklishufan/LaViDa"&gt;https://github.com/jacklishufan/LaViDa&lt;/a&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/jacklishufan/LaViDa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktdisj/github_jacklishufanlavida_official_implementation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T07:23:08+00:00</published>
   </entry>
   <entry>
     <id>t3_1kt1hmk</id>
