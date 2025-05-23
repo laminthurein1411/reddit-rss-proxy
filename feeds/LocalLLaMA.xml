@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-23T20:07:21+00:00</updated>
+  <updated>2025-05-23T20:24:34+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kt7u1n</id>
-    <title>BTW: If you are getting a single GPU, VRAM is not the only thing that matters</title>
-    <updated>2025-05-23T01:44:05+00:00</updated>
-    <author>
-      <name>/u/pneuny</name>
-      <uri>https://old.reddit.com/user/pneuny</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;For example, if you have a 5060 Ti 16GB or an RX 9070 XT 16GB and use Qwen 3 30b-a3b q4_k_m with 16k context, you will likely overflow around 8.5GB to system memory. Assuming you do not do CPU offloading, that load now runs squarely on PCIE bandwidth and your system RAM speed. PCIE 5 x16 on the RX 9070 XT is going to help you a lot in feeding that GPU compared to the PCIE 5 x8 available on the 5060 Ti, resulting in much faster tokens per second for the 9070 XT, and making CPU offloading unnecessary in this scenario, whereas the 5060 Ti will become heavily bottlenecked.&lt;/p&gt; &lt;p&gt;While I returned my 5060 Ti for a 9070 XT and didn't get numbers for the former, I did see 42 t/s while the VRAM was overloaded to this degree on the Vulkan backend. Also, AMD does Vulkan way better then Nvidia, as Nvidia tends to crash when using Vulkan.&lt;/p&gt; &lt;p&gt;TL;DR: If you're buying a 16GB card and planning to use more than that, make sure you can leverage x16 PCIE 5 or you won't get the full performance from overflowing to DDR5 system RAM.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pneuny"&gt; /u/pneuny &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kt7u1n/btw_if_you_are_getting_a_single_gpu_vram_is_not/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kt7u1n/btw_if_you_are_getting_a_single_gpu_vram_is_not/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kt7u1n/btw_if_you_are_getting_a_single_gpu_vram_is_not/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T01:44:05+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ktban0</id>
     <title>Dans-PersonalityEngine V1.3.0 12b &amp; 24b</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktban0/danspersonalityengine_v130_12b_24b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T04:55:30+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ktqgk0</id>
-    <title>Tested Qwen3 all models on CPU (i5-10210U), RTX 3060 12GB, and RTX 3090 24GB</title>
-    <updated>2025-05-23T18:12:05+00:00</updated>
-    <author>
-      <name>/u/1BlueSpork</name>
-      <uri>https://old.reddit.com/user/1BlueSpork</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qwen3 Model Testing Results (CPU + GPU)&lt;/p&gt; &lt;p&gt;Model | Hardware | Load | Answer | Speed (t/s)&lt;/p&gt; &lt;p&gt;------------------|--------------------------------------------|--------------------|---------------------|------------&lt;/p&gt; &lt;p&gt;Qwen3-0.6B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 31.65&lt;/p&gt; &lt;p&gt;Qwen3-1.7B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 14.87&lt;/p&gt; &lt;p&gt;Qwen3-4B | Laptop (i5-10210U, 16GB RAM) | CPU only | Correct (misleading)| 7.03&lt;/p&gt; &lt;p&gt;Qwen3-8B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 4.06&lt;/p&gt; &lt;p&gt;Qwen3-8B | Desktop (5800X, 32GB RAM, RTX 3060) | 100% GPU | Incorrect | 46.80&lt;/p&gt; &lt;p&gt;Qwen3-14B | Desktop (5800X, 32GB RAM, RTX 3060) | 94% GPU / 6% CPU | Correct | 19.35&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Laptop (i5-10210U, 16GB RAM) | CPU only | Correct | 3.27&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Desktop (5800X, 32GB RAM, RTX 3060) | 49% GPU / 51% CPU | Correct | 15.32&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Desktop (5800X, 64GB RAM, RTX 3090) | 100% GPU | Correct | 105.57&lt;/p&gt; &lt;p&gt;Qwen3-32B | Desktop (5800X, 64GB RAM, RTX 3090) | 100% GPU | Correct | 30.54&lt;/p&gt; &lt;p&gt;Qwen3-235B-A22B | Desktop (5800X, 128GB RAM, RTX 3090) | 15% GPU / 85% CPU | Correct | 2.43&lt;/p&gt; &lt;p&gt;Here is the full video of all tests: &lt;a href="https://youtu.be/kWjJ4F09-cU"&gt;https://youtu.be/kWjJ4F09-cU&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T18:12:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1kt1hmk</id>
@@ -60,19 +34,6 @@
     <published>2025-05-22T20:46:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ktqsog</id>
-    <title>"Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small" can't they just say they have fine tuned mistral small or it's kind of wrapper?</title>
-    <updated>2025-05-23T18:25:47+00:00</updated>
-    <author>
-      <name>/u/WriedGuy</name>
-      <uri>https://old.reddit.com/user/WriedGuy</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"&gt; &lt;img alt="&amp;quot;Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small&amp;quot; can't they just say they have fine tuned mistral small or it's kind of wrapper?" src="https://external-preview.redd.it/WzIS2JjZo2kST66vrrt4qEsayLue07AZ01pMdBT5Wtc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cd18d82c4dcfc9c4f7f92bcffba8e25084b30453" title="&amp;quot;Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small&amp;quot; can't they just say they have fine tuned mistral small or it's kind of wrapper?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WriedGuy"&gt; /u/WriedGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.sarvam.ai/blogs/sarvam-m"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T18:25:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kszxmj</id>
     <title>Claude 4 Opus may contact press and regulators if you do something egregious (deleted Tweet from Sam Bowman)</title>
     <updated>2025-05-22T19:43:04+00:00</updated>
@@ -86,6 +47,19 @@
     <published>2025-05-22T19:43:04+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ktm1n7</id>
+    <title>Sarvam-M a 24B open-weights hybrid reasoning model</title>
+    <updated>2025-05-23T15:13:11+00:00</updated>
+    <author>
+      <name>/u/RealKingNish</name>
+      <uri>https://old.reddit.com/user/RealKingNish</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktm1n7/sarvamm_a_24b_openweights_hybrid_reasoning_model/"&gt; &lt;img alt="Sarvam-M a 24B open-weights hybrid reasoning model" src="https://preview.redd.it/8gk7kugnsj2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cfc3a087396e0a4a8f0a79dc5b3427bd30d54414" title="Sarvam-M a 24B open-weights hybrid reasoning model" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Model Link: &lt;a href="https://huggingface.co/sarvamai/sarvam-m"&gt;https://huggingface.co/sarvamai/sarvam-m&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Model Info: It's a 2 staged post trained version of Mistral 24B on SFT and GRPO.&lt;/p&gt; &lt;p&gt;It's a hybrid reasoning model which means that both reasoning and non-reasoning models are fitted in same model. You can choose when to reason and when not.&lt;/p&gt; &lt;p&gt;If you wanna try you can either run it locally or from Sarvam's platform.&lt;/p&gt; &lt;p&gt;&lt;a href="https://dashboard.sarvam.ai/playground"&gt;https://dashboard.sarvam.ai/playground&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Also, they released detailed blog post on post training: &lt;a href="https://www.sarvam.ai/blogs/sarvam-m"&gt;https://www.sarvam.ai/blogs/sarvam-m&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RealKingNish"&gt; /u/RealKingNish &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/8gk7kugnsj2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktm1n7/sarvamm_a_24b_openweights_hybrid_reasoning_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktm1n7/sarvamm_a_24b_openweights_hybrid_reasoning_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T15:13:11+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ktq54n</id>
     <title>Kanana 1.5 2.1B/8B, English/Korean bilingual by kakaocorp</title>
     <updated>2025-05-23T17:59:17+00:00</updated>
@@ -97,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktq54n/kanana_15_21b8b_englishkorean_bilingual_by/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T17:59:17+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ktqgk0</id>
+    <title>Tested Qwen3 all models on CPU (i5-10210U), RTX 3060 12GB, and RTX 3090 24GB</title>
+    <updated>2025-05-23T18:12:05+00:00</updated>
+    <author>
+      <name>/u/1BlueSpork</name>
+      <uri>https://old.reddit.com/user/1BlueSpork</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Qwen3 Model Testing Results (CPU + GPU)&lt;/p&gt; &lt;p&gt;Model | Hardware | Load | Answer | Speed (t/s)&lt;/p&gt; &lt;p&gt;------------------|--------------------------------------------|--------------------|---------------------|------------&lt;/p&gt; &lt;p&gt;Qwen3-0.6B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 31.65&lt;/p&gt; &lt;p&gt;Qwen3-1.7B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 14.87&lt;/p&gt; &lt;p&gt;Qwen3-4B | Laptop (i5-10210U, 16GB RAM) | CPU only | Correct (misleading)| 7.03&lt;/p&gt; &lt;p&gt;Qwen3-8B | Laptop (i5-10210U, 16GB RAM) | CPU only | Incorrect | 4.06&lt;/p&gt; &lt;p&gt;Qwen3-8B | Desktop (5800X, 32GB RAM, RTX 3060) | 100% GPU | Incorrect | 46.80&lt;/p&gt; &lt;p&gt;Qwen3-14B | Desktop (5800X, 32GB RAM, RTX 3060) | 94% GPU / 6% CPU | Correct | 19.35&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Laptop (i5-10210U, 16GB RAM) | CPU only | Correct | 3.27&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Desktop (5800X, 32GB RAM, RTX 3060) | 49% GPU / 51% CPU | Correct | 15.32&lt;/p&gt; &lt;p&gt;Qwen3-30B-A3B | Desktop (5800X, 64GB RAM, RTX 3090) | 100% GPU | Correct | 105.57&lt;/p&gt; &lt;p&gt;Qwen3-32B | Desktop (5800X, 64GB RAM, RTX 3090) | 100% GPU | Correct | 30.54&lt;/p&gt; &lt;p&gt;Qwen3-235B-A22B | Desktop (5800X, 128GB RAM, RTX 3090) | 15% GPU / 85% CPU | Correct | 2.43&lt;/p&gt; &lt;p&gt;Here is the full video of all tests: &lt;a href="https://youtu.be/kWjJ4F09-cU"&gt;https://youtu.be/kWjJ4F09-cU&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqgk0/tested_qwen3_all_models_on_cpu_i510210u_rtx_3060/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T18:12:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1kt0zvd</id>
@@ -151,6 +138,19 @@
     <published>2025-05-23T12:54:55+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ktqsog</id>
+    <title>"Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small" can't they just say they have fine tuned mistral small or it's kind of wrapper?</title>
+    <updated>2025-05-23T18:25:47+00:00</updated>
+    <author>
+      <name>/u/WriedGuy</name>
+      <uri>https://old.reddit.com/user/WriedGuy</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"&gt; &lt;img alt="&amp;quot;Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small&amp;quot; can't they just say they have fine tuned mistral small or it's kind of wrapper?" src="https://external-preview.redd.it/WzIS2JjZo2kST66vrrt4qEsayLue07AZ01pMdBT5Wtc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=cd18d82c4dcfc9c4f7f92bcffba8e25084b30453" title="&amp;quot;Sarvam-M, a 24B open-weights hybrid model built on top of Mistral Small&amp;quot; can't they just say they have fine tuned mistral small or it's kind of wrapper?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WriedGuy"&gt; /u/WriedGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.sarvam.ai/blogs/sarvam-m"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktqsog/sarvamm_a_24b_openweights_hybrid_model_built_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T18:25:47+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ktpz29</id>
     <title>Anyone on Oahu want to let me borrow an RTX 6000 Pro to benchmark against this dual 5090 rig?</title>
     <updated>2025-05-23T17:52:15+00:00</updated>
@@ -184,7 +184,7 @@
       <name>/u/StartupTim</name>
       <uri>https://old.reddit.com/user/StartupTim</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've seen Cursor and how it works, and it looks pretty cool, but I rather use my own local hosted LLMs and not pay a usage fee to a 3rd party company.&lt;/p&gt; &lt;p&gt;Does anybody know of any good Vibe Coding tools, as good or better than Cursor, that run on your own local LLMs?&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StartupTim"&gt; /u/StartupTim &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktsqit/best_vibe_code_tools_like_cursor_but_are_free_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktsqit/best_vibe_code_tools_like_cursor_but_are_free_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've seen Cursor and how it works, and it looks pretty cool, but I rather use my own local hosted LLMs and not pay a usage fee to a 3rd party company.&lt;/p&gt; &lt;p&gt;Does anybody know of any good Vibe Coding tools, as good or better than Cursor, that run on your own local LLMs?&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;p&gt;EDIT: Especially tools that integrate with ollama's API.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StartupTim"&gt; /u/StartupTim &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktsqit/best_vibe_code_tools_like_cursor_but_are_free_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktsqit/best_vibe_code_tools_like_cursor_but_are_free_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktsqit/best_vibe_code_tools_like_cursor_but_are_free_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T19:46:58+00:00</published>
@@ -281,19 +281,6 @@
     <published>2025-05-23T14:08:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ktoh78</id>
-    <title>LLMI system I (not my money) got for our group</title>
-    <updated>2025-05-23T16:52:23+00:00</updated>
-    <author>
-      <name>/u/SandboChang</name>
-      <uri>https://old.reddit.com/user/SandboChang</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"&gt; &lt;img alt="LLMI system I (not my money) got for our group" src="https://preview.redd.it/lgjexuw8ak2f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3260ccc53dd2f7cca5692637366920fd7a9928ec" title="LLMI system I (not my money) got for our group" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SandboChang"&gt; /u/SandboChang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/lgjexuw8ak2f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-23T16:52:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ktklo5</id>
     <title>Unmute by Kyutai: Make LLMs listen and speak</title>
     <updated>2025-05-23T14:12:46+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktklo5/unmute_by_kyutai_make_llms_listen_and_speak/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-23T14:12:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ktoh78</id>
+    <title>LLMI system I (not my money) got for our group</title>
+    <updated>2025-05-23T16:52:23+00:00</updated>
+    <author>
+      <name>/u/SandboChang</name>
+      <uri>https://old.reddit.com/user/SandboChang</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"&gt; &lt;img alt="LLMI system I (not my money) got for our group" src="https://preview.redd.it/lgjexuw8ak2f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=3260ccc53dd2f7cca5692637366920fd7a9928ec" title="LLMI system I (not my money) got for our group" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SandboChang"&gt; /u/SandboChang &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/lgjexuw8ak2f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ktoh78/llmi_system_i_not_my_money_got_for_our_group/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-23T16:52:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1ktiq99</id>
