@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-24T19:34:23+00:00</updated>
+  <updated>2025-05-24T19:48:43+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1ksiywq</id>
-    <title>Feedback from Anyone Running RTX 4000 SFF Ada vs Dual RTXA2000 SFF Ada?</title>
-    <updated>2025-05-22T05:24:11+00:00</updated>
-    <author>
-      <name>/u/PocketMartyr</name>
-      <uri>https://old.reddit.com/user/PocketMartyr</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;,&lt;/p&gt; &lt;p&gt;I’m trying to decide between two GPU setups for running Ollama and would love to hear from anyone who’s tested either config in the wild. &lt;/p&gt; &lt;p&gt;Space and power consumption are &lt;em&gt;not&lt;/em&gt; flexible, so my options are literally between the 2 I have outlined below. Cards must be half height, single slot, and run only on the power supplied by PCIE.&lt;/p&gt; &lt;p&gt;Option 1: • Single RTX 4000 SFF Ada (20GB VRAM)&lt;/p&gt; &lt;p&gt;Option 2: • Dual RTX A2000 SFF (16GB each, 32GB combined VRAM)&lt;/p&gt; &lt;p&gt;I’ll primarily be running local LLMs and possibly experimenting with RAG and fine tuning. &lt;/p&gt; &lt;p&gt;I’ve been running small models off the Ryzen 5600x with 64gb memory. I’m just not sure whether the total combined vram or faster single you with lower vram will yield the best overall experience. &lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/PocketMartyr"&gt; /u/PocketMartyr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ksiywq/feedback_from_anyone_running_rtx_4000_sff_ada_vs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ksiywq/feedback_from_anyone_running_rtx_4000_sff_ada_vs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ksiywq/feedback_from_anyone_running_rtx_4000_sff_ada_vs/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-22T05:24:11+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kshx5c</id>
     <title>I built an Open-Source AI Resume Tailoring App with LangChain &amp; Ollama - Looking for feedback &amp; my next CV/GenAI role!</title>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1ku7157/knowledge_cut_off_of_models_and_there_stupid/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-24T08:47:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kujxz9</id>
+    <title>Template issue for Nvidia Nemotron</title>
+    <updated>2025-05-24T19:37:59+00:00</updated>
+    <author>
+      <name>/u/iadanos</name>
+      <uri>https://old.reddit.com/user/iadanos</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone!&lt;/p&gt; &lt;p&gt;I was trying to use &lt;a href="https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1"&gt;nvidia/Llama-3.1-Nemotron-Nano-8B-v1&lt;/a&gt; (basically, &lt;a href="https://huggingface.co/unsloth/Llama-3.1-Nemotron-Nano-8B-v1-GGUF"&gt;Unsloth's quant&lt;/a&gt;) and didn't really managed to make it work properly due to template issue:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Running ollama pull with HF model path pulls model, but default promt template is not really usable, so custom modelfile is required&lt;/li&gt; &lt;li&gt;Using the same template as for LLama 3.1 fails since it is different for Nemotron and detailed thinking and tools calling does not work properly.&lt;/li&gt; &lt;li&gt;I tried to re-write original chat template from Jinja and it's better, it discovers and identifies tools correctly, it starts thinking and tries to use it, but not getting to use the proper format, as I understand.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Maybe detailed thinking is somehow conflicting with tool call, but I didn't manage to fix it so it would work with Continue.dev.&lt;/p&gt; &lt;p&gt;Looking for helpers, testers and advisers, since the result seem very close and the model should be much more useful than a stock one.&lt;/p&gt; &lt;p&gt;The modelfile I have now:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM hf.co/unsloth/Llama-3.1-Nemotron-Nano-8B-v1-GGUF:Q4_k_M TEMPLATE &amp;quot;&amp;quot;&amp;quot;{{- /* Initialize system message */ -}} {{- $system_message := .System -}} {{- $system_message_found := false -}} {{- /* Find system message priority: .System &amp;gt; first system message in Messages */ -}} {{- if not $system_message -}} {{- range .Messages -}} {{- if and (eq .Role &amp;quot;system&amp;quot;) (not $system_message_found) -}} {{- $system_message = .Content -}} {{- $system_message_found = true -}} {{- end -}} {{- end -}} {{- end -}} {{- /* System section rendering */ -}} {{- if or $system_message .Tools -}} &amp;lt;|start_header_id|&amp;gt;system&amp;lt;|end_header_id|&amp;gt; {{- if $system_message -}} {{ $system_message }}{{- end -}} {{- if .Tools -}} {{if $system_message}} {{end -}} You are a helpful assistant with tool calling capabilities. When you receive a tool call response, use the output to format an answer to the orginal user question. Make tool calls after your detailed thinking and reasoning output. &amp;lt;AVAILABLE_TOOLS&amp;gt; {{- $firstTool := true -}} {{- range .Tools -}} {{- if not $firstTool -}},{{- end -}} {{- json .Function -}} {{- $firstTool = false -}} {{- end -}} &amp;lt;/AVAILABLE_TOOLS&amp;gt; {{- end -}}&amp;lt;|eot_id|&amp;gt; {{- end -}} {{- /* Process messages */ -}} {{- $lastRole := &amp;quot;&amp;quot; -}} {{- range $index, $message := .Messages -}} {{- $last := eq (len (slice $.Messages $index)) 1 }} {{- /* Track last role for final prompt */ -}} {{- $lastRole = .Role -}} {{- /* Skip system messages when using .System */ -}} {{- if and $system_message (eq .Role &amp;quot;system&amp;quot;) }}{{ continue }}{{ end -}} {{- if eq .Role &amp;quot;user&amp;quot; -}} &amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; {{- if and $.Tools $last }} Given the following functions, please respond with a JSON for a function call with its proper arguments that best answers the given prompt. Respond in the format {&amp;quot;name&amp;quot;: function name, &amp;quot;parameters&amp;quot;: dictionary of argument name and its value}. Do not use variables. {{ range $.Tools }} {{- . }} {{ end }} Question: {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{- else }} {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{ end }} {{- else if eq .Role &amp;quot;tool&amp;quot; -}} &amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; &amp;lt;TOOL_RESPONSE&amp;gt;[{{ .Content }}]&amp;lt;/TOOL_RESPONSE&amp;gt;&amp;lt;|eot_id|&amp;gt; {{- else if eq .Role &amp;quot;assistant&amp;quot; -}} {{- if .ToolCalls -}} &amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; &amp;lt;TOOLCALL&amp;gt;[ {{- $firstCall := true -}} {{- range .ToolCalls -}} {{- if not $firstCall -}},{{- end -}} {&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;parameters&amp;quot;: {{ .Function.Arguments }}} {{- $firstCall = false -}} {{- end -}} ]&amp;lt;/TOOLCALL&amp;gt;&amp;lt;|eot_id|&amp;gt; {{- else -}} &amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{- end -}} {{- end -}} {{- end -}} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iadanos"&gt; /u/iadanos &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-24T19:37:59+00:00</published>
   </entry>
   <entry>
     <id>t3_1ku4ejf</id>
