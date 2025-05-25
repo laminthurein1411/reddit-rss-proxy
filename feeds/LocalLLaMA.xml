@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-25T22:37:03+00:00</updated>
+  <updated>2025-05-25T22:48:41+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kukjoe</id>
-    <title>46pct Aider Polyglot in 16GB VRAM with Qwen3-14B</title>
-    <updated>2025-05-24T20:06:20+00:00</updated>
-    <author>
-      <name>/u/andrewmobbs</name>
-      <uri>https://old.reddit.com/user/andrewmobbs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After some tuning, and a tiny hack to aider, I have achieved a Aider Polyglot benchmark of pass_rate_2: 45.8 with 100% of cases well-formed, using nothing more than a 16GB 5070 Ti and Qwen3-14b, with the model running entirely offloaded to GPU.&lt;/p&gt; &lt;p&gt;That result is on a par with &amp;quot;chatgpt-4o-latest (2025-03-29)&amp;quot; on the &lt;a href="https://aider.chat/docs/leaderboards/"&gt;Aider Leaderboard&lt;/a&gt;. When allowed 3 tries at the solution, rather than the 2 tries on the benchmark, the pass rate increases to 59.1% nearly matching the &amp;quot;claude-3-7-sonnet-20250219 (no thinking)&amp;quot; result (which, to be clear, only needed 2 tries to get 60.4%). I think this is useful, as it reflects how a user may interact with a local LLM, since more tries only cost time.&lt;/p&gt; &lt;p&gt;The method was to start with the &lt;a href="https://huggingface.co/Qwen/Qwen3-14B-GGUF/blob/main/Qwen3-14B-Q6_K.gguf"&gt;Qwen3-14B Q6_K&lt;/a&gt; GGUF, set the context to the full 40960 tokens, and quantized the KV cache to Q8_0/Q5_1. To do this, I used llama.cpp server, compiled with GGML_CUDA_FA_ALL_QUANTS=ON. (Q8_0 for both K and V does &lt;em&gt;just&lt;/em&gt; fit in 16GB, but doesn't leave much spare VRAM. To allow for Gnome desktop, VS Code and a browser I dropped the V cache to Q5_1, which doesn't seem to do much relative harm to quality.)&lt;/p&gt; &lt;p&gt;Aider was then configured to use the &amp;quot;/think&amp;quot; reasoning token and use &amp;quot;architect&amp;quot; edit mode. The editor model was the same Qwen3-14B Q6, but the &amp;quot;tiny hack&amp;quot; mentioned was to ensure that the editor coder used the &amp;quot;/nothink&amp;quot; token and to extend the chat timeout from the 600s default.&lt;/p&gt; &lt;p&gt;Eval performance averaged 43 tokens per second.&lt;/p&gt; &lt;p&gt;Full details in comments.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/andrewmobbs"&gt; /u/andrewmobbs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kukjoe/46pct_aider_polyglot_in_16gb_vram_with_qwen314b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kukjoe/46pct_aider_polyglot_in_16gb_vram_with_qwen314b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kukjoe/46pct_aider_polyglot_in_16gb_vram_with_qwen314b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-24T20:06:20+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kuzane</id>
     <title>Initial thoughts on Google Jules</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvehcm/can_we_run_a_quantized_model_on_android/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T22:09:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvf8d2</id>
+    <title>Nvidia RTX PRO 6000 Workstation 96GB - Benchmarks</title>
+    <updated>2025-05-25T22:46:05+00:00</updated>
+    <author>
+      <name>/u/fuutott</name>
+      <uri>https://old.reddit.com/user/fuutott</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Posting here as it's something I would like to know before I acquired it. No regrets.&lt;/p&gt; &lt;p&gt;RTX 6000 PRO 96GB @ 600W zero shot context - &amp;quot;who was copernicus?&amp;quot; Full context Input 40000 tokens of lorem ipsum - &lt;a href="https://pastebin.com/yAJQkMzT"&gt;https://pastebin.com/yAJQkMzT&lt;/a&gt;&lt;/p&gt; &lt;p&gt;flash attention enabled - 128K context - LM Studio 0.3.16 beta - cuda 12 runtime 1.33.0&lt;/p&gt; &lt;p&gt;mistral-small-3.1-24b-instruct-2503@q4_k_m - my beloved&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 77.37 tok/sec 0.10s to first token&lt;/li&gt; &lt;li&gt;Full 40K context - 51.71 tok/sec 11.93s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;google_gemma-3-12b-it-Q8_0&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 68.47 tok/sec 0.06s to first token&lt;/li&gt; &lt;li&gt;Full 40K context - 53.34 tok/sec 11.53s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;qwen3-30b-a3b-128k@q8_k_xl - 64.93 tok/sec 7.02s to first token&lt;/p&gt; &lt;ul&gt; &lt;li&gt;122.95 tok/sec 0.25s to first token&lt;/li&gt; &lt;li&gt;Full 40K context - 64.93 tok/sec 7.02s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Llama-4-Scout-17B-16E-Instruct@Q4_K_M (Q8 KV cache)&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 68.22 tok/sec 0.08s first token&lt;/li&gt; &lt;li&gt;Full 40K context - 46.26 tok/sec 30.90s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;qwq-32b@q4_k_m&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 53.18 tok/sec 0.07s first token&lt;/li&gt; &lt;li&gt;Full 40K context - 33.81 tok/sec 18.70s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;deepseek-r1-distill-qwen-32b@q4_k_m&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 53.91 tok/sec 0.07s first token&lt;/li&gt; &lt;li&gt;Full 40K context - 33.48 tok/sec 18.61s to first token&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;qwen3-8b-128k@q4_k_m&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero context one shot - 153.63 tok/sec 0.06s first token&lt;/li&gt; &lt;li&gt;Full 40K context - 79.31 tok/sec 8.42s to first token&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fuutott"&gt; /u/fuutott &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvf8d2/nvidia_rtx_pro_6000_workstation_96gb_benchmarks/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvf8d2/nvidia_rtx_pro_6000_workstation_96gb_benchmarks/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvf8d2/nvidia_rtx_pro_6000_workstation_96gb_benchmarks/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T22:46:05+00:00</published>
   </entry>
   <entry>
     <id>t3_1kva7sp</id>
@@ -99,19 +99,6 @@
     <published>2025-05-25T08:12:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kujwzl</id>
-    <title>We believe the future of AI is local, private, and personalized.</title>
-    <updated>2025-05-24T19:36:41+00:00</updated>
-    <author>
-      <name>/u/ice-url</name>
-      <uri>https://old.reddit.com/user/ice-url</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;That’s why we built &lt;strong&gt;Cobolt&lt;/strong&gt; — a free cross-platform AI assistant that runs entirely on your device.&lt;/p&gt; &lt;p&gt;Cobolt represents our vision for the future of AI assistants:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Privacy by design (everything runs locally)&lt;/li&gt; &lt;li&gt;Extensible through Model Context Protocol (MCP)&lt;/li&gt; &lt;li&gt;Personalized without compromising your data&lt;/li&gt; &lt;li&gt;Powered by community-driven development&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We're looking for contributors, testers, and fellow privacy advocates to join us in building the future of personal AI.&lt;/p&gt; &lt;p&gt;🤝 Contributions Welcome! 🌟 Star us on &lt;a href="https://github.com/platinum-hill/cobolt"&gt;GitHub&lt;/a&gt;&lt;/p&gt; &lt;p&gt;📥 Try Cobolt on &lt;a href="https://github.com/platinum-hill/cobolt/releases/download/v0.0.3/Cobolt-0.0.3.dmg"&gt;macOS&lt;/a&gt; or &lt;a href="https://github.com/platinum-hill/cobolt/releases/download/v0.0.3/Cobolt-Setup-0.0.3.exe"&gt;Windows&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Let's build AI that serves you.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ice-url"&gt; /u/ice-url &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-24T19:36:41+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kv7xng</id>
     <title>Vulkan for vLLM?</title>
     <updated>2025-05-25T17:23:47+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kv7xng/vulkan_for_vllm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T17:23:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kujwzl</id>
+    <title>We believe the future of AI is local, private, and personalized.</title>
+    <updated>2025-05-24T19:36:41+00:00</updated>
+    <author>
+      <name>/u/ice-url</name>
+      <uri>https://old.reddit.com/user/ice-url</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;That’s why we built &lt;strong&gt;Cobolt&lt;/strong&gt; — a free cross-platform AI assistant that runs entirely on your device.&lt;/p&gt; &lt;p&gt;Cobolt represents our vision for the future of AI assistants:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Privacy by design (everything runs locally)&lt;/li&gt; &lt;li&gt;Extensible through Model Context Protocol (MCP)&lt;/li&gt; &lt;li&gt;Personalized without compromising your data&lt;/li&gt; &lt;li&gt;Powered by community-driven development&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;We're looking for contributors, testers, and fellow privacy advocates to join us in building the future of personal AI.&lt;/p&gt; &lt;p&gt;🤝 Contributions Welcome! 🌟 Star us on &lt;a href="https://github.com/platinum-hill/cobolt"&gt;GitHub&lt;/a&gt;&lt;/p&gt; &lt;p&gt;📥 Try Cobolt on &lt;a href="https://github.com/platinum-hill/cobolt/releases/download/v0.0.3/Cobolt-0.0.3.dmg"&gt;macOS&lt;/a&gt; or &lt;a href="https://github.com/platinum-hill/cobolt/releases/download/v0.0.3/Cobolt-Setup-0.0.3.exe"&gt;Windows&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Let's build AI that serves you.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ice-url"&gt; /u/ice-url &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kujwzl/we_believe_the_future_of_ai_is_local_private_and/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-24T19:36:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1kuxvgt</id>
@@ -151,19 +151,6 @@
     <published>2025-05-25T22:05:07+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvcq04</id>
-    <title>Qwen2.5-VL and Gemma 3 settings for OCR</title>
-    <updated>2025-05-25T20:50:19+00:00</updated>
-    <author>
-      <name>/u/dzdn1</name>
-      <uri>https://old.reddit.com/user/dzdn1</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been working with using VLMs to OCR handwriting (think journals, travel logs). I get much better results than traditional OCR, which pretty much fails completely even with tools meant to do better with handwriting. &lt;/p&gt; &lt;p&gt;However, results are inconsistent, and changing parameters like temp, repeat-penalty and others affect the results, but in unpredictable ways (to a newb like myself).&lt;/p&gt; &lt;p&gt;Gemma 3 (12B) with default settings just makes a whole new narrative seemingly loosely inspired by the text on the page. I have not found settings to improve this. &lt;/p&gt; &lt;p&gt;Qwen2.5-VL (7B) does much better, getting even words I can barely read, but requires a detailed and kind of randomly pieced together prompt and system prompt, and changing it in minor ways can break it, making it skip sections, lose accuracy on some letters, etc. which I think makes it unreliable for long-term use.&lt;/p&gt; &lt;p&gt;Additionally, llama.cpp I believe shrinks the image to 1024 max for Qwen (because much larger quickly floods RAM). I am working on trying to use more sophisticated downscaling and sharpening edges, etc. but this does not seem to be improving the results.&lt;/p&gt; &lt;p&gt;Has anyone gotten these or other models to work well with freeform handwriting and if so, do you have any advice for settings to use?&lt;/p&gt; &lt;p&gt;I have seen how these new VLMs can finally help with handwriting in a way previously unimagined, but I am having trouble getting out to the &amp;quot;next step.&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dzdn1"&gt; /u/dzdn1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T20:50:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kv4jim</id>
     <title>How can I use my spare 1080ti?</title>
     <updated>2025-05-25T14:58:01+00:00</updated>
@@ -175,19 +162,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kv4jim/how_can_i_use_my_spare_1080ti/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T14:58:01+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kvegc1</id>
-    <title>Used or New Gamble</title>
-    <updated>2025-05-25T22:08:06+00:00</updated>
-    <author>
-      <name>/u/thehoffau</name>
-      <uri>https://old.reddit.com/user/thehoffau</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Aussie madlad here. &lt;/p&gt; &lt;p&gt;The second hand market in AU is pretty small, there are the odd 3090s running around but due to distance they are always a risk in being a) a scam b) damaged in freight c) broken at time of sale.&lt;/p&gt; &lt;p&gt;The 9700xtx new and a 3090 used are about the same price. Reading this group for months the XTX seems to get the job done for most things (give or take 10% and feature delay?) &lt;/p&gt; &lt;p&gt;I have a threadripper system that's CPU/ram can do LLMs okay and I can easily slot in two GPU which is the medium term plan. I was initially looking at 2 X A4000(16gb) but am now looking at long term either 2x3090 or 2xXTX&lt;/p&gt; &lt;p&gt;It's a pretty sizable investment to loose out on and I'm stuck in a loop. Risk second hand for NVIDIA or safe for AMD?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thehoffau"&gt; /u/thehoffau &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T22:08:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kv74jx</id>
@@ -203,6 +177,32 @@
     <published>2025-05-25T16:49:51+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kvcq04</id>
+    <title>Qwen2.5-VL and Gemma 3 settings for OCR</title>
+    <updated>2025-05-25T20:50:19+00:00</updated>
+    <author>
+      <name>/u/dzdn1</name>
+      <uri>https://old.reddit.com/user/dzdn1</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have been working with using VLMs to OCR handwriting (think journals, travel logs). I get much better results than traditional OCR, which pretty much fails completely even with tools meant to do better with handwriting. &lt;/p&gt; &lt;p&gt;However, results are inconsistent, and changing parameters like temp, repeat-penalty and others affect the results, but in unpredictable ways (to a newb like myself).&lt;/p&gt; &lt;p&gt;Gemma 3 (12B) with default settings just makes a whole new narrative seemingly loosely inspired by the text on the page. I have not found settings to improve this. &lt;/p&gt; &lt;p&gt;Qwen2.5-VL (7B) does much better, getting even words I can barely read, but requires a detailed and kind of randomly pieced together prompt and system prompt, and changing it in minor ways can break it, making it skip sections, lose accuracy on some letters, etc. which I think makes it unreliable for long-term use.&lt;/p&gt; &lt;p&gt;Additionally, llama.cpp I believe shrinks the image to 1024 max for Qwen (because much larger quickly floods RAM). I am working on trying to use more sophisticated downscaling and sharpening edges, etc. but this does not seem to be improving the results.&lt;/p&gt; &lt;p&gt;Has anyone gotten these or other models to work well with freeform handwriting and if so, do you have any advice for settings to use?&lt;/p&gt; &lt;p&gt;I have seen how these new VLMs can finally help with handwriting in a way previously unimagined, but I am having trouble getting out to the &amp;quot;next step.&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dzdn1"&gt; /u/dzdn1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvcq04/qwen25vl_and_gemma_3_settings_for_ocr/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T20:50:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvegc1</id>
+    <title>Used or New Gamble</title>
+    <updated>2025-05-25T22:08:06+00:00</updated>
+    <author>
+      <name>/u/thehoffau</name>
+      <uri>https://old.reddit.com/user/thehoffau</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Aussie madlad here. &lt;/p&gt; &lt;p&gt;The second hand market in AU is pretty small, there are the odd 3090s running around but due to distance they are always a risk in being a) a scam b) damaged in freight c) broken at time of sale.&lt;/p&gt; &lt;p&gt;The 9700xtx new and a 3090 used are about the same price. Reading this group for months the XTX seems to get the job done for most things (give or take 10% and feature delay?) &lt;/p&gt; &lt;p&gt;I have a threadripper system that's CPU/ram can do LLMs okay and I can easily slot in two GPU which is the medium term plan. I was initially looking at 2 X A4000(16gb) but am now looking at long term either 2x3090 or 2xXTX&lt;/p&gt; &lt;p&gt;It's a pretty sizable investment to loose out on and I'm stuck in a loop. Risk second hand for NVIDIA or safe for AMD?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/thehoffau"&gt; /u/thehoffau &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvegc1/used_or_new_gamble/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T22:08:06+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kv762l</id>
     <title>RTX PRO 6000 96GB plus Intel Battlemage 48GB feasible?</title>
     <updated>2025-05-25T16:51:41+00:00</updated>
@@ -216,19 +216,6 @@
     <published>2025-05-25T16:51:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvceya</id>
-    <title>I need a text only browser python library</title>
-    <updated>2025-05-25T20:36:15+00:00</updated>
-    <author>
-      <name>/u/Somerandomguy10111</name>
-      <uri>https://old.reddit.com/user/Somerandomguy10111</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"&gt; &lt;img alt="I need a text only browser python library" src="https://preview.redd.it/bd5haso3oz2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e16001d2ec9ed0b0439505bab505eaf6fdd9fed1" title="I need a text only browser python library" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm developing an open source AI agent framework with search and eventually web interaction capabilities. To do that I need a browser. While it could be conceivable to just forward a screenshot of the browser it would be much more efficient to introduce the page into the context as text.&lt;/p&gt; &lt;p&gt;Ideally I'd have something like lynx which you see in the screenshot, but as a python library. Like Lynx above it should conserve the layout, formatting and links of the text as good as possible. Just to cross a few things off:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Lynx: While it looks pretty much ideal, it's a terminal utility. It'll be pretty difficult to integrate with Python.&lt;/li&gt; &lt;li&gt;HTML get requests: It works for some things but some websites require a Browser to even load the page. Also it doesn't look great&lt;/li&gt; &lt;li&gt;Screenshot the browser: As discussed above, it's possible. But not very efficient.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Have you faced this problem? If yes, how have you solved it? I've come up with a selenium driven Browser Emulator but it's pretty rough around the edges and I don't really have time to go into depth on that.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Somerandomguy10111"&gt; /u/Somerandomguy10111 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/bd5haso3oz2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T20:36:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kvc9ri</id>
     <title>I wrote an automated setup script for my Proxmox AI VM that installs Nvidia CUDA Toolkit, Docker, Python, Node, Zsh and more</title>
     <updated>2025-05-25T20:30:08+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9ri/i_wrote_an_automated_setup_script_for_my_proxmox/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T20:30:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvceya</id>
+    <title>I need a text only browser python library</title>
+    <updated>2025-05-25T20:36:15+00:00</updated>
+    <author>
+      <name>/u/Somerandomguy10111</name>
+      <uri>https://old.reddit.com/user/Somerandomguy10111</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"&gt; &lt;img alt="I need a text only browser python library" src="https://preview.redd.it/bd5haso3oz2f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e16001d2ec9ed0b0439505bab505eaf6fdd9fed1" title="I need a text only browser python library" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm developing an open source AI agent framework with search and eventually web interaction capabilities. To do that I need a browser. While it could be conceivable to just forward a screenshot of the browser it would be much more efficient to introduce the page into the context as text.&lt;/p&gt; &lt;p&gt;Ideally I'd have something like lynx which you see in the screenshot, but as a python library. Like Lynx above it should conserve the layout, formatting and links of the text as good as possible. Just to cross a few things off:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Lynx: While it looks pretty much ideal, it's a terminal utility. It'll be pretty difficult to integrate with Python.&lt;/li&gt; &lt;li&gt;HTML get requests: It works for some things but some websites require a Browser to even load the page. Also it doesn't look great&lt;/li&gt; &lt;li&gt;Screenshot the browser: As discussed above, it's possible. But not very efficient.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Have you faced this problem? If yes, how have you solved it? I've come up with a selenium driven Browser Emulator but it's pretty rough around the edges and I don't really have time to go into depth on that.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Somerandomguy10111"&gt; /u/Somerandomguy10111 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/bd5haso3oz2f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvceya/i_need_a_text_only_browser_python_library/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T20:36:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kuy45r</id>
@@ -294,19 +294,6 @@
     <published>2025-05-25T07:24:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvc9w6</id>
-    <title>Cheapest Ryzen AI Max+ 128GB yet at $1699. Ships June 10th.</title>
-    <updated>2025-05-25T20:30:17+00:00</updated>
-    <author>
-      <name>/u/fallingdowndizzyvr</name>
-      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
-    </author>
-    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.bosgamepc.com/products/bosgame-m5-ai-mini-desktop-ryzen-ai-max-395"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T20:30:17+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kuzk3t</id>
     <title>Online inference is a privacy nightmare</title>
     <updated>2025-05-25T10:39:04+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kuzk3t/online_inference_is_a_privacy_nightmare/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T10:39:04+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvc9w6</id>
+    <title>Cheapest Ryzen AI Max+ 128GB yet at $1699. Ships June 10th.</title>
+    <updated>2025-05-25T20:30:17+00:00</updated>
+    <author>
+      <name>/u/fallingdowndizzyvr</name>
+      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.bosgamepc.com/products/bosgame-m5-ai-mini-desktop-ryzen-ai-max-395"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T20:30:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1kv6jjk</id>
