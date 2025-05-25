@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-25T20:24:17+00:00</updated>
+  <updated>2025-05-25T20:35:27+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kuz9m4</id>
-    <title>[Showcase] AIJobMate – CV and Cover Letter Generator powered by local LLMs and CrewAI agents</title>
-    <updated>2025-05-25T10:19:02+00:00</updated>
-    <author>
-      <name>/u/loglux</name>
-      <uri>https://old.reddit.com/user/loglux</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;Just launched a working prototype called **AIJobMate** – a CV and cover letter generator that runs locally using Ollama and CrewAI.&lt;/p&gt; &lt;p&gt;🔹 What's interesting:&lt;/p&gt; &lt;p&gt;- Uses your profile (parsed from freeform text) to build a structured knowledge base.&lt;/p&gt; &lt;p&gt;- Employs *three autonomous agents* via CrewAI: one writes a CV, another a cover letter, and the third reviews the output.&lt;/p&gt; &lt;p&gt;- Each agent can use a separate model — like `llama3.1`, `llama3.2`, `deepseek-coder`, etc.&lt;/p&gt; &lt;p&gt;- Built in Python with Gradio + Ollama for local inference.&lt;/p&gt; &lt;p&gt;🌍 Open source &amp;amp; minimal UI: &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/loglux/AIJobMate"&gt;https://github.com/loglux/AIJobMate&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Would love feedback or thoughts on what to add next — especially around modular profiles and extending the prompt logic.&lt;/p&gt; &lt;p&gt;Cheers!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/loglux"&gt; /u/loglux &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuz9m4/showcase_aijobmate_cv_and_cover_letter_generator/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuz9m4/showcase_aijobmate_cv_and_cover_letter_generator/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kuz9m4/showcase_aijobmate_cv_and_cover_letter_generator/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T10:19:02+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kuimwg</id>
-    <title>NVLink vs No NVLink: Devstral Small 2x RTX 3090 Inference Benchmark with vLLM</title>
-    <updated>2025-05-24T18:39:28+00:00</updated>
-    <author>
-      <name>/u/Traditional-Gap-3313</name>
-      <uri>https://old.reddit.com/user/Traditional-Gap-3313</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR: NVLink provides only ~5% performance improvement for inference on 2x RTX 3090s. Probably not worth the premium unless you already have it. Also, Mistral API is crazy cheap.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This model seems like a holy grail for people with 2x24GB, but considering the price of the Mistral API, this really isn't very cost effective. The test took about 15-16 minutes and generated 82k tokens. The electricity cost me more than the API would.&lt;/p&gt; &lt;h2&gt;Setup&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Model&lt;/strong&gt;: Devstral-Small-2505-Q8_0 (GGUF)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hardware&lt;/strong&gt;: 2x RTX 3090 (24GB each), NVLink bridge, ROMED8-2T, both cards on PCIE 4.0 x16 directly on the mobo (no risers)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Framework&lt;/strong&gt;: vLLM with tensor parallelism (TP=2)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Test&lt;/strong&gt;: 50 complex code generation prompts, avg ~1650 tokens per response&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I asked Claude to generate 50 code generation prompts to make Devstral sweat. I didn't actually look at the output, only benchmarked throughput.&lt;/p&gt; &lt;h2&gt;Results&lt;/h2&gt; &lt;h3&gt;🔗 With NVLink&lt;/h3&gt; &lt;p&gt;&lt;code&gt; Tokens/sec: 85.0 Total tokens: 82,438 Average response time: 149.6s 95th percentile: 239.1s &lt;/code&gt;&lt;/p&gt; &lt;h3&gt;❌ Without NVLink&lt;/h3&gt; &lt;p&gt;&lt;code&gt; Tokens/sec: 81.1 Total tokens: 84,287 Average response time: 160.3s 95th percentile: 277.6s &lt;/code&gt;&lt;/p&gt; &lt;p&gt;NVLink gave us 85.0 vs 81.1 tokens/sec = &lt;strong&gt;~5% improvement&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;NVLink showed better consistency with lower 95th percentile times (239s vs 278s)&lt;/p&gt; &lt;p&gt;Even without NVLink, PCIe x16 handled tensor parallelism just fine for inference&lt;/p&gt; &lt;p&gt;I've managed to score 4-slot NVLink recently for 200€ (not cheap but ebay is even more expensive), so I'm trying to see if those 200€ were wasted. For inference workloads, NVLink seems like a &amp;quot;nice to have&amp;quot; rather than essential. &lt;/p&gt; &lt;p&gt;This confirms that the NVLink bandwidth advantage doesn't translate to massive inference gains like it does for training, not even with tensor parallel.&lt;/p&gt; &lt;p&gt;If you're buying hardware specifically for inference: - ✅ Save money and skip NVLink - ✅ Put that budget toward more VRAM or better GPUs - ✅ NVLink matters more for training huge models&lt;/p&gt; &lt;p&gt;If you already have NVLink cards lying around: - ✅ Use them, you'll get a small but consistent boost - ✅ Better latency consistency is nice for production&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Technical Notes&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;vLLM command: ```bash CUDA_VISIBLE_DEVICES=0,2 CUDA_DEVICE_ORDER=PCI_BUS_ID vllm serve /home/myusername/unsloth/Devstral-Small-2505-GGUF/Devstral-Small-2505-Q8_0.gguf --max-num-seqs 4 --max-model-len 64000 --gpu-memory-utilization 0.95 --enable-auto-tool-choice --tool-call-parser mistral --quantization gguf --tool-call-parser mistral --enable-sleep-mode --enable-chunked-prefill --tensor-parallel-size 2 --max-num-batched-tokens 16384 &lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;Testing script was generated by Claude.&lt;/p&gt; &lt;p&gt;The 3090s handled the 22B-ish parameter model (in Q8) without issues on both setups. Memory wasn't the bottleneck here.&lt;/p&gt; &lt;p&gt;Anyone else have similar NVLink vs non-NVLink benchmarks? Curious to see if this pattern holds across different model sizes and GPUs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Traditional-Gap-3313"&gt; /u/Traditional-Gap-3313 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuimwg/nvlink_vs_no_nvlink_devstral_small_2x_rtx_3090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuimwg/nvlink_vs_no_nvlink_devstral_small_2x_rtx_3090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kuimwg/nvlink_vs_no_nvlink_devstral_small_2x_rtx_3090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-24T18:39:28+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kv2p83</id>
     <title>How can I make LLMs like Qwen replace all em dashes with regular dashes in the output?</title>
@@ -177,6 +151,19 @@
     <published>2025-05-24T18:12:37+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kvc9ri</id>
+    <title>I wrote an automated setup script for my Proxmox AI VM that installs Nvidia CUDA Toolkit, Docker, Python, Node, Zsh and more</title>
+    <updated>2025-05-25T20:30:08+00:00</updated>
+    <author>
+      <name>/u/erdaltoprak</name>
+      <uri>https://old.reddit.com/user/erdaltoprak</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9ri/i_wrote_an_automated_setup_script_for_my_proxmox/"&gt; &lt;img alt="I wrote an automated setup script for my Proxmox AI VM that installs Nvidia CUDA Toolkit, Docker, Python, Node, Zsh and more" src="https://external-preview.redd.it/NmVqMXp0bWRqejJmMd5vTxA1ciqILnZ5a_nUE62vdQvPjJEI_nmjQVTxndSt.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4640fca024f61ffbd3fba74333acfc27e740ea7d" title="I wrote an automated setup script for my Proxmox AI VM that installs Nvidia CUDA Toolkit, Docker, Python, Node, Zsh and more" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I created a script (&lt;a href="https://gist.github.com/erdaltoprak/cdc1ec4056b81a9da540229dcde3aa0b"&gt;available on Github here&lt;/a&gt;) that automates the setup of a fresh Ubuntu 24.04 server for AI/ML development work. It handles the complete installation and configuration of Docker, ZSH, Python (via pyenv), Node (via n), NVIDIA drivers and the NVIDIA Container Toolkit, basically everything you need to get a GPU accelerated development environment up and running quickly&lt;/p&gt; &lt;p&gt;This script reflects my personal setup preferences and hardware, so if you want to customize it for your own needs, I highly recommend reading through the script and understanding what it does before running it&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/erdaltoprak"&gt; /u/erdaltoprak &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/e006utmdjz2f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9ri/i_wrote_an_automated_setup_script_for_my_proxmox/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9ri/i_wrote_an_automated_setup_script_for_my_proxmox/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T20:30:08+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kuxgh7</id>
     <title>What makes the Mac Pro so efficient in running LLMs?</title>
     <updated>2025-05-25T08:12:50+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kv4jim/how_can_i_use_my_spare_1080ti/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T14:58:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvc9w6</id>
+    <title>Cheapest Ryzen AI Max+ 128GB yet at $1699. Ships June 10th.</title>
+    <updated>2025-05-25T20:30:17+00:00</updated>
+    <author>
+      <name>/u/fallingdowndizzyvr</name>
+      <uri>https://old.reddit.com/user/fallingdowndizzyvr</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/fallingdowndizzyvr"&gt; /u/fallingdowndizzyvr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.bosgamepc.com/products/bosgame-m5-ai-mini-desktop-ryzen-ai-max-395"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvc9w6/cheapest_ryzen_ai_max_128gb_yet_at_1699_ships/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-25T20:30:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1kv74jx</id>
