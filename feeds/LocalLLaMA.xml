@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-26T19:34:18+00:00</updated>
+  <updated>2025-05-26T19:48:48+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kw0rcm</id>
-    <title>Best local model for long-context RAG</title>
-    <updated>2025-05-26T17:50:32+00:00</updated>
-    <author>
-      <name>/u/bio_risk</name>
-      <uri>https://old.reddit.com/user/bio_risk</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am working on an LLM based approach to interpreting biological data at scale. I'm using a knowledge graph-RAG approach, which can pull in a LOT of relationships among biological entities. Does anyone have any recommendations for long-context local models that can effectively reason over the entire context (i.e., not needle in a haystack)?&lt;/p&gt; &lt;p&gt;Alternatively, is anyone familiar with techniques to iteratively distill context (e.g., throw out the 20% least useful context in each iteration).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bio_risk"&gt; /u/bio_risk &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kw0rcm/best_local_model_for_longcontext_rag/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kw0rcm/best_local_model_for_longcontext_rag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kw0rcm/best_local_model_for_longcontext_rag/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T17:50:32+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kvsnj4</id>
     <title>UI + RAG solution for 5000 documents possible?</title>
@@ -73,30 +60,17 @@
     <published>2025-05-26T05:40:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvzs47</id>
-    <title>I Got llama-cpp-python Working with Full GPU Acceleration on RTX 5070 Ti (sm_120, CUDA 12.9)</title>
-    <updated>2025-05-26T17:11:06+00:00</updated>
+    <id>t3_1kw310h</id>
+    <title>I fine-tuned Qwen2.5-VL 7B to re-identify objects across frames and generate grounded stories</title>
+    <updated>2025-05-26T19:21:25+00:00</updated>
     <author>
-      <name>/u/Glittering-Koala-750</name>
-      <uri>https://old.reddit.com/user/Glittering-Koala-750</uri>
+      <name>/u/DanielAPO</name>
+      <uri>https://old.reddit.com/user/DanielAPO</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After days of tweaking, I finally got a fully working local LLM pipeline using llama-cpp-python with full CUDA offloading on my &lt;strong&gt;GeForce RTX 5070 Ti&lt;/strong&gt; (Blackwell architecture, sm_120) running &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;. Here’s how I did it:&lt;/p&gt; &lt;h1&gt;System Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; RTX 5070 Ti (sm_120, 16GB VRAM)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Driver:&lt;/strong&gt; NVIDIA 570.153.02 (supports CUDA 12.9)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Toolkit:&lt;/strong&gt; CUDA 12.9.41&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; 3.12&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Virtualenv:&lt;/strong&gt; llm-env&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; TinyLlama-1.1B-Chat-Q4_K_M.gguf (from HuggingFace)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; &lt;a href="https://github.com/abetlen/llama-cpp-python"&gt;llama-cpp-python&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI support:&lt;/strong&gt; ChatGPT Mac desktop, Claude code (PIA)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Step-by-Step&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;1. Install CUDA 12.9 (Driver already supported it - need latest drivers from NVIDIA &amp;amp; Claude opposed this)&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb sudo dpkg -i cuda-keyring_1.1-1_all.deb sudo apt update &amp;amp;&amp;amp; sudo apt install cuda-12-9 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Added this to .bashrc:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;export PATH=/usr/local/cuda-12.9/bin:$PATH export LD_LIBRARY_PATH=/usr/local/cuda-12.9/lib64:$LD_LIBRARY_PATH export CUDACXX=/usr/local/cuda-12.9/bin/nvcc &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;2. Clone &amp;amp; Build llama-cpp-python from Source&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;git clone --recursive https://github.com/abetlen/llama-cpp-python cd llama-cpp-python python -m venv ~/llm-env &amp;amp;&amp;amp; source ~/llm-env/bin/activate # Rebuild with CUDA + sm_120 rm -rf build dist llama_cpp_python.egg-info CMAKE_ARGS=&amp;quot;-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=120&amp;quot; pip install . --force-reinstall --verbose &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;3. Load Model in Python&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;from llama_cpp import Llama llm = Llama( model_path=&amp;quot;/path/to/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf&amp;quot;, n_gpu_layers=22, n_ctx=2048, verbose=True, use_mlock=True ) print(llm(&amp;quot;Explain CUDA&amp;quot;, max_tokens=64)[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Lessons Learned&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;You &lt;strong&gt;must set GGML_CUDA=on&lt;/strong&gt;, not the old LLAMA_CUBLAS flag&lt;/li&gt; &lt;li&gt;CUDA 12.9 &lt;strong&gt;does support sm_120&lt;/strong&gt;, but PyTorch doesn’t — so llama-cpp-python is a great lightweight alternative&lt;/li&gt; &lt;li&gt;Make sure you don’t shadow the llama_cpp Python package with a local folder or you’ll silently run CPU-only! &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Koala-750"&gt; /u/Glittering-Koala-750 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kw310h/i_finetuned_qwen25vl_7b_to_reidentify_objects/"&gt; &lt;img alt="I fine-tuned Qwen2.5-VL 7B to re-identify objects across frames and generate grounded stories" src="https://external-preview.redd.it/ZXJzMW1rY2RmNjNmMdaMStUEb5oAuu0jCl0Xw3e5m5dlVJowjoJYmTy8vqCj.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5ae8d75bb795c12292f2f9e29616605f17169afc" title="I fine-tuned Qwen2.5-VL 7B to re-identify objects across frames and generate grounded stories" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/DanielAPO"&gt; /u/DanielAPO &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/0yb58acdf63f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kw310h/i_finetuned_qwen25vl_7b_to_reidentify_objects/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kw310h/i_finetuned_qwen25vl_7b_to_reidentify_objects/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T17:11:06+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kvujw4</id>
-    <title>So it's not really possible huh..</title>
-    <updated>2025-05-26T13:37:05+00:00</updated>
-    <author>
-      <name>/u/rushblyatiful</name>
-      <uri>https://old.reddit.com/user/rushblyatiful</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been building a VSCode extension (like Roo) that's fully local:&lt;br /&gt; -Ollama (Deepseek, Qwen, etc),&lt;br /&gt; -Codebase Indexing,&lt;br /&gt; -Qdrant for embeddings,&lt;br /&gt; -Smart RAG, streaming, you name it. &lt;/p&gt; &lt;p&gt;But performance is trash. With 8B models, it's painfully slow on an RTX 4090, 64GB RAM, 24 GB VRAM, i9. &lt;/p&gt; &lt;p&gt;Feels like I've optimized everything I can—project probably 95% done (just need to add some things from my todo) —but it's still unusable. &lt;/p&gt; &lt;p&gt;It struggles on a single prompt to read up a file much less for multiple files. &lt;/p&gt; &lt;p&gt;Has anyone built something similar? Any tips to make it work without upgrading hardware?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rushblyatiful"&gt; /u/rushblyatiful &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T13:37:05+00:00</published>
+    <published>2025-05-26T19:21:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvf8d2</id>
@@ -123,6 +97,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T06:22:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvujw4</id>
+    <title>So it's not really possible huh..</title>
+    <updated>2025-05-26T13:37:05+00:00</updated>
+    <author>
+      <name>/u/rushblyatiful</name>
+      <uri>https://old.reddit.com/user/rushblyatiful</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been building a VSCode extension (like Roo) that's fully local:&lt;br /&gt; -Ollama (Deepseek, Qwen, etc),&lt;br /&gt; -Codebase Indexing,&lt;br /&gt; -Qdrant for embeddings,&lt;br /&gt; -Smart RAG, streaming, you name it. &lt;/p&gt; &lt;p&gt;But performance is trash. With 8B models, it's painfully slow on an RTX 4090, 64GB RAM, 24 GB VRAM, i9. &lt;/p&gt; &lt;p&gt;Feels like I've optimized everything I can—project probably 95% done (just need to add some things from my todo) —but it's still unusable. &lt;/p&gt; &lt;p&gt;It struggles on a single prompt to read up a file much less for multiple files. &lt;/p&gt; &lt;p&gt;Has anyone built something similar? Any tips to make it work without upgrading hardware?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/rushblyatiful"&gt; /u/rushblyatiful &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvujw4/so_its_not_really_possible_huh/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T13:37:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvzs47</id>
+    <title>I Got llama-cpp-python Working with Full GPU Acceleration on RTX 5070 Ti (sm_120, CUDA 12.9)</title>
+    <updated>2025-05-26T17:11:06+00:00</updated>
+    <author>
+      <name>/u/Glittering-Koala-750</name>
+      <uri>https://old.reddit.com/user/Glittering-Koala-750</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After days of tweaking, I finally got a fully working local LLM pipeline using llama-cpp-python with full CUDA offloading on my &lt;strong&gt;GeForce RTX 5070 Ti&lt;/strong&gt; (Blackwell architecture, sm_120) running &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;. Here’s how I did it:&lt;/p&gt; &lt;h1&gt;System Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; RTX 5070 Ti (sm_120, 16GB VRAM)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Driver:&lt;/strong&gt; NVIDIA 570.153.02 (supports CUDA 12.9)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Toolkit:&lt;/strong&gt; CUDA 12.9.41&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; 3.12&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Virtualenv:&lt;/strong&gt; llm-env&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; TinyLlama-1.1B-Chat-Q4_K_M.gguf (from HuggingFace)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; &lt;a href="https://github.com/abetlen/llama-cpp-python"&gt;llama-cpp-python&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI support:&lt;/strong&gt; ChatGPT Mac desktop, Claude code (PIA)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Step-by-Step&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;1. Install CUDA 12.9 (Driver already supported it - need latest drivers from NVIDIA &amp;amp; Claude opposed this)&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb sudo dpkg -i cuda-keyring_1.1-1_all.deb sudo apt update &amp;amp;&amp;amp; sudo apt install cuda-12-9 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Added this to .bashrc:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;export PATH=/usr/local/cuda-12.9/bin:$PATH export LD_LIBRARY_PATH=/usr/local/cuda-12.9/lib64:$LD_LIBRARY_PATH export CUDACXX=/usr/local/cuda-12.9/bin/nvcc &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;2. Clone &amp;amp; Build llama-cpp-python from Source&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;git clone --recursive https://github.com/abetlen/llama-cpp-python cd llama-cpp-python python -m venv ~/llm-env &amp;amp;&amp;amp; source ~/llm-env/bin/activate # Rebuild with CUDA + sm_120 rm -rf build dist llama_cpp_python.egg-info CMAKE_ARGS=&amp;quot;-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=120&amp;quot; pip install . --force-reinstall --verbose &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;3. Load Model in Python&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;from llama_cpp import Llama llm = Llama( model_path=&amp;quot;/path/to/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf&amp;quot;, n_gpu_layers=22, n_ctx=2048, verbose=True, use_mlock=True ) print(llm(&amp;quot;Explain CUDA&amp;quot;, max_tokens=64)[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Lessons Learned&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;You &lt;strong&gt;must set GGML_CUDA=on&lt;/strong&gt;, not the old LLAMA_CUBLAS flag&lt;/li&gt; &lt;li&gt;CUDA 12.9 &lt;strong&gt;does support sm_120&lt;/strong&gt;, but PyTorch doesn’t — so llama-cpp-python is a great lightweight alternative&lt;/li&gt; &lt;li&gt;Make sure you don’t shadow the llama_cpp Python package with a local folder or you’ll silently run CPU-only! &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Koala-750"&gt; /u/Glittering-Koala-750 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T17:11:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvj0nt</id>
@@ -164,19 +164,6 @@
     <published>2025-05-26T03:36:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvskpq</id>
-    <title>Leveling Up: From RAG to an AI Agent</title>
-    <updated>2025-05-26T12:00:27+00:00</updated>
-    <author>
-      <name>/u/aospan</name>
-      <uri>https://old.reddit.com/user/aospan</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"&gt; &lt;img alt="Leveling Up: From RAG to an AI Agent" src="https://preview.redd.it/qourugv0943f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c9dd5856da1c363f33ad9545c0f33914cbc5403a" title="Leveling Up: From RAG to an AI Agent" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I've been exploring more advanced ways to use AI, and recently I made a big jump - moving from the usual RAG (Retrieval-Augmented Generation) approach to something more powerful: an &lt;strong&gt;AI Agent that uses a real web browser to search the internet and get stuff done on its own&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;In my last guide (&lt;a href="https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md"&gt;https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md&lt;/a&gt;), I showed how we could manually gather info online and feed it into a RAG pipeline. It worked well, but it still needed a human in the loop.&lt;/p&gt; &lt;p&gt;This time, the AI Agent does &lt;em&gt;everything&lt;/em&gt; by itself.&lt;/p&gt; &lt;p&gt;For example:&lt;/p&gt; &lt;p&gt;I asked it the same question - &lt;em&gt;“How much tax was collected in the US in 2024?”&lt;/em&gt;&lt;/p&gt; &lt;p&gt;The Agent opened a browser, went to Google, searched the query, clicked through results, read the content, and gave me a clean, accurate answer.&lt;/p&gt; &lt;p&gt;I didn’t touch the keyboard after asking the question.&lt;/p&gt; &lt;p&gt;I put together a guide so you can run this setup on your own bare metal server with an Nvidia GPU. It takes just a few minutes:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/sbnb-io/sbnb/blob/main/README-AI-AGENT.md"&gt;https://github.com/sbnb-io/sbnb/blob/main/README-AI-AGENT.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;🛠️ What you'll spin up:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;A server running &lt;strong&gt;Sbnb Linux&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;A VM with &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;Ollama with default model &lt;code&gt;qwen2.5:7b&lt;/code&gt; for local GPU-accelerated inference (no cloud, no API calls)&lt;/li&gt; &lt;li&gt;The open-source &lt;strong&gt;Browser Use AI Agent&lt;/strong&gt; &lt;a href="https://github.com/browser-use/web-ui"&gt;https://github.com/browser-use/web-ui&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Give it a shot and let me know how it goes! Curious to hear what use cases you come up with (for more ideas and examples of AI Agents, be sure to follow the amazing Browser Use project!)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aospan"&gt; /u/aospan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qourugv0943f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T12:00:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kvulw7</id>
     <title>Teortaxes gets a direct denial</title>
     <updated>2025-05-26T13:39:42+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvytjg/just_enhanced_my_local_chat_interface/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T16:33:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvskpq</id>
+    <title>Leveling Up: From RAG to an AI Agent</title>
+    <updated>2025-05-26T12:00:27+00:00</updated>
+    <author>
+      <name>/u/aospan</name>
+      <uri>https://old.reddit.com/user/aospan</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"&gt; &lt;img alt="Leveling Up: From RAG to an AI Agent" src="https://preview.redd.it/qourugv0943f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c9dd5856da1c363f33ad9545c0f33914cbc5403a" title="Leveling Up: From RAG to an AI Agent" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I've been exploring more advanced ways to use AI, and recently I made a big jump - moving from the usual RAG (Retrieval-Augmented Generation) approach to something more powerful: an &lt;strong&gt;AI Agent that uses a real web browser to search the internet and get stuff done on its own&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;In my last guide (&lt;a href="https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md"&gt;https://github.com/sbnb-io/sbnb/blob/main/README-LightRAG.md&lt;/a&gt;), I showed how we could manually gather info online and feed it into a RAG pipeline. It worked well, but it still needed a human in the loop.&lt;/p&gt; &lt;p&gt;This time, the AI Agent does &lt;em&gt;everything&lt;/em&gt; by itself.&lt;/p&gt; &lt;p&gt;For example:&lt;/p&gt; &lt;p&gt;I asked it the same question - &lt;em&gt;“How much tax was collected in the US in 2024?”&lt;/em&gt;&lt;/p&gt; &lt;p&gt;The Agent opened a browser, went to Google, searched the query, clicked through results, read the content, and gave me a clean, accurate answer.&lt;/p&gt; &lt;p&gt;I didn’t touch the keyboard after asking the question.&lt;/p&gt; &lt;p&gt;I put together a guide so you can run this setup on your own bare metal server with an Nvidia GPU. It takes just a few minutes:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/sbnb-io/sbnb/blob/main/README-AI-AGENT.md"&gt;https://github.com/sbnb-io/sbnb/blob/main/README-AI-AGENT.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;🛠️ What you'll spin up:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;A server running &lt;strong&gt;Sbnb Linux&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;A VM with &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;Ollama with default model &lt;code&gt;qwen2.5:7b&lt;/code&gt; for local GPU-accelerated inference (no cloud, no API calls)&lt;/li&gt; &lt;li&gt;The open-source &lt;strong&gt;Browser Use AI Agent&lt;/strong&gt; &lt;a href="https://github.com/browser-use/web-ui"&gt;https://github.com/browser-use/web-ui&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Give it a shot and let me know how it goes! Curious to hear what use cases you come up with (for more ideas and examples of AI Agents, be sure to follow the amazing Browser Use project!)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/aospan"&gt; /u/aospan &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/qourugv0943f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvskpq/leveling_up_from_rag_to_an_ai_agent/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T12:00:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvqgpv</id>
@@ -242,19 +242,6 @@
     <published>2025-05-26T12:44:15+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvqrzl</id>
-    <title>AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)</title>
-    <updated>2025-05-26T10:09:06+00:00</updated>
-    <author>
-      <name>/u/CheeringCheshireCat</name>
-      <uri>https://old.reddit.com/user/CheeringCheshireCat</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt; &lt;img alt="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" src="https://external-preview.redd.it/dXQydzR0cjNwMzNmMVMRslQYMYRN8ZJ1qBgR4-LlFEA6jckhHIJ4it6HP21k.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=07fe467bd7f592919e65184006ed23558a3fe52e" title="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;I’ve hacked together a VLM video nanny, that watches a video stream(s) and predefined set of safety instructions, and makes a beep sound if the instructions are violated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a href="https://github.com/zeenolife/ai-baby-monitor"&gt;https://github.com/zeenolife/ai-baby-monitor&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why I built it?&lt;/strong&gt;&lt;br /&gt; First day we assembled the crib, my daughter tried to climb over the rail. I got a bit paranoid about constantly watching her. So I thought of an additional eye that would actively watch her, while parent is semi-actively alert.&lt;br /&gt; It's not meant to be a replacement for an adult supervision, more of a supplement, thus just a &amp;quot;beep&amp;quot; sound, so that you could quickly turn back attention to the baby when you got a bit distracted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works?&lt;/strong&gt;&lt;br /&gt; I'm using Qwen 2.5VL(empirically it works better) and vLLM. Redis is used to orchestrate video and llm log streams. Streamlit for UI.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Funny bit&lt;/strong&gt;&lt;br /&gt; I've also used it to monitor my smartphone usage. When you subconsciously check on your phone, it beeps :)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Further plans&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add support for other backends apart from vLLM&lt;/li&gt; &lt;li&gt;Gemma 3n looks rather promising&lt;/li&gt; &lt;li&gt;Add support for image based &amp;quot;no-go-zones&amp;quot;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Feedback is welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheeringCheshireCat"&gt; /u/CheeringCheshireCat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/gzn6itr3p33f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T10:09:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kw1hfd</id>
     <title>POC: Running up to 123B as a Letterfriend on &lt;300€ for all hardware.</title>
     <updated>2025-05-26T18:19:12+00:00</updated>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kw1hfd/poc_running_up_to_123b_as_a_letterfriend_on_300/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T18:19:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvqrzl</id>
+    <title>AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)</title>
+    <updated>2025-05-26T10:09:06+00:00</updated>
+    <author>
+      <name>/u/CheeringCheshireCat</name>
+      <uri>https://old.reddit.com/user/CheeringCheshireCat</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt; &lt;img alt="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" src="https://external-preview.redd.it/dXQydzR0cjNwMzNmMVMRslQYMYRN8ZJ1qBgR4-LlFEA6jckhHIJ4it6HP21k.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=07fe467bd7f592919e65184006ed23558a3fe52e" title="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;I’ve hacked together a VLM video nanny, that watches a video stream(s) and predefined set of safety instructions, and makes a beep sound if the instructions are violated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a href="https://github.com/zeenolife/ai-baby-monitor"&gt;https://github.com/zeenolife/ai-baby-monitor&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why I built it?&lt;/strong&gt;&lt;br /&gt; First day we assembled the crib, my daughter tried to climb over the rail. I got a bit paranoid about constantly watching her. So I thought of an additional eye that would actively watch her, while parent is semi-actively alert.&lt;br /&gt; It's not meant to be a replacement for an adult supervision, more of a supplement, thus just a &amp;quot;beep&amp;quot; sound, so that you could quickly turn back attention to the baby when you got a bit distracted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works?&lt;/strong&gt;&lt;br /&gt; I'm using Qwen 2.5VL(empirically it works better) and vLLM. Redis is used to orchestrate video and llm log streams. Streamlit for UI.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Funny bit&lt;/strong&gt;&lt;br /&gt; I've also used it to monitor my smartphone usage. When you subconsciously check on your phone, it beeps :)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Further plans&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add support for other backends apart from vLLM&lt;/li&gt; &lt;li&gt;Gemma 3n looks rather promising&lt;/li&gt; &lt;li&gt;Add support for image based &amp;quot;no-go-zones&amp;quot;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Feedback is welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheeringCheshireCat"&gt; /u/CheeringCheshireCat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/gzn6itr3p33f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T10:09:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvnti4</id>
