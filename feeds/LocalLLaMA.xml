@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-26T10:12:23+00:00</updated>
+  <updated>2025-05-26T10:27:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kuy45r</id>
-    <title>Gemma 3n Architectural Innovations - Speculation and poking around in the model.</title>
-    <updated>2025-05-25T08:59:16+00:00</updated>
-    <author>
-      <name>/u/cpldcpu</name>
-      <uri>https://old.reddit.com/user/cpldcpu</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuy45r/gemma_3n_architectural_innovations_speculation/"&gt; &lt;img alt="Gemma 3n Architectural Innovations - Speculation and poking around in the model." src="https://external-preview.redd.it/EZj1oQJN95Oq7YDpbSs0ORxFqLi-24Ocse4J7I4sO0A.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1052f0a2169e9b937ad3af8d86cab69bb6b8b09b" title="Gemma 3n Architectural Innovations - Speculation and poking around in the model." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/google/gemma-3n-E4B-it-litert-preview"&gt;Gemma 3n&lt;/a&gt; is a new member of the Gemma family with free weights that was released during Google I/O. It's dedicated to on-device (edge) inference and supports image and text input, with audio input. Google has released an app that can be used for inference on the phone.&lt;/p&gt; &lt;p&gt;What is clear from&lt;a href="https://ai.google.dev/gemma/docs/gemma-3n"&gt; the documentation&lt;/a&gt;, is that this model is stuffed to the brim with architectural innovations: Per-Layer Embedding (PLE), MatFormer Architecture, Conditional Parameter Loading.&lt;/p&gt; &lt;p&gt;Unfortunately, there is no paper out for the model yet. I assume that this will follow at some point, but so far I had some success poking around in the model file. I thought I'd share my findings so far, maybe someone else has more insights?&lt;/p&gt; &lt;p&gt;The provided .task file is actually a ZIP container of tflite models. It can be unpacked with ZIP.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Component&lt;/th&gt; &lt;th align="left"&gt;Size&lt;/th&gt; &lt;th align="left"&gt;Purpose&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;TF_LITE_PREFILL_DECODE&lt;/td&gt; &lt;td align="left"&gt;2.55 GB&lt;/td&gt; &lt;td align="left"&gt;Main language model component for text generation&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;TF_LITE_PER_LAYER_EMBEDDER&lt;/td&gt; &lt;td align="left"&gt;1.23 GB&lt;/td&gt; &lt;td align="left"&gt;Per-layer embeddings from the transformer&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;TF_LITE_EMBEDDER&lt;/td&gt; &lt;td align="left"&gt;259 MB&lt;/td&gt; &lt;td align="left"&gt;Input embeddings&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;TF_LITE_VISION_ENCODER&lt;/td&gt; &lt;td align="left"&gt;146 MB&lt;/td&gt; &lt;td align="left"&gt;Vision Encoding&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;TF_LITE_VISION_ADAPTER&lt;/td&gt; &lt;td align="left"&gt;17 MB&lt;/td&gt; &lt;td align="left"&gt;Adapts vision embeddings for the language model?&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;TOKENIZER_MODEL&lt;/td&gt; &lt;td align="left"&gt;4.5 MB&lt;/td&gt; &lt;td align="left"&gt;Tokenizer&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;METADATA&lt;/td&gt; &lt;td align="left"&gt;56 bytes&lt;/td&gt; &lt;td align="left"&gt;general metadata&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;The TFlite models can be opened in a network visualizer like &lt;a href="http://netron.app"&gt;netron.app&lt;/a&gt; to display the content.&lt;/p&gt; &lt;p&gt;The model uses an inner dimension of 2048 and has 35 transformer blocks. Tokenizer size is 262144.&lt;/p&gt; &lt;p&gt;First, one interesting find it that is uses learned residual connections. This paper seems to be related to this: &lt;a href="https://arxiv.org/abs/2411.07501v3"&gt;https://arxiv.org/abs/2411.07501v3&lt;/a&gt; (LAuReL: Learned Augmented Residual Layer)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/tvl3od2v3w2f1.png?width=1251&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4cee0588c6b82700ab02e3eadd02a13d7c9b7af0"&gt;https://preview.redd.it/tvl3od2v3w2f1.png?width=1251&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4cee0588c6b82700ab02e3eadd02a13d7c9b7af0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The FFN is projecting from 2048 to 16384 with a GeGLU activation. This is an unusually wide ratio. I assume that some part of these parameters can be selectively turned on and off to implement the Matformer architecture. It is not clear how this is implemented in the compute graph though.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/foq74ff15w2f1.png?width=605&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cdf24aec8aaa93efe3c968fd93b62b1439af0036"&gt;https://preview.redd.it/foq74ff15w2f1.png?width=605&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cdf24aec8aaa93efe3c968fd93b62b1439af0036&lt;/a&gt;&lt;/p&gt; &lt;p&gt;A very interesting part is the per-layer embedding. The file TF_LITE_PER_LAYER_EMBEDDER contains very large lookup tables (262144x256x35) that will output a 256 embedding for every layer depending on the input token. Since this is essentially a lookup table, it can be efficiently processed even on the CPU. This is an extremely interesting approach to adding more capacity to the model without increasing FLOPS.&lt;/p&gt; &lt;p&gt;The embeddings are applied in an operation that follows the FFN and are used as a gate to a low rank projection. The residual stream is downprojected to 256, multiplied with the embedding and then projected up to 2048 again. It's a bit like a token-selective LoRA. In addition there is a gating operation that controls the overall weighting of this stream.&lt;/p&gt; &lt;p&gt;I am very curious for further information. I was not able to find any paper on this aspect of the model. Hopefully, google will share more information.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/lchxfc6w6w2f1.png?width=875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2a612976c324a28f34dee305b2c64f8b911a2cab"&gt;https://preview.redd.it/lchxfc6w6w2f1.png?width=875&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2a612976c324a28f34dee305b2c64f8b911a2cab&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/wca7kzfq5w2f1.png?width=1190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c3fd2195e4829bf47c8f6d0e2d6fef2c133e1d2f"&gt;https://preview.redd.it/wca7kzfq5w2f1.png?width=1190&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c3fd2195e4829bf47c8f6d0e2d6fef2c133e1d2f&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cpldcpu"&gt; /u/cpldcpu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuy45r/gemma_3n_architectural_innovations_speculation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kuy45r/gemma_3n_architectural_innovations_speculation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kuy45r/gemma_3n_architectural_innovations_speculation/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T08:59:16+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kvj34f</id>
     <title>Jetson Orin AGX 32gb</title>
@@ -73,6 +60,19 @@
     <published>2025-05-25T20:36:15+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kvqgpv</id>
+    <title>Deepseek R2 might be coming soon, unsloth released an article about deepseek v3 -05-26</title>
+    <updated>2025-05-26T09:48:05+00:00</updated>
+    <author>
+      <name>/u/power97992</name>
+      <uri>https://old.reddit.com/user/power97992</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;It should be coming soon! &lt;a href="https://docs.unsloth.ai/basics/deepseek-v3-0526-how-to-run-locally"&gt;https://docs.unsloth.ai/basics/deepseek-v3-0526-how-to-run-locally&lt;/a&gt;&lt;br /&gt; opus 4 level? I think v3 0526 should be out today. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/power97992"&gt; /u/power97992 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqgpv/deepseek_r2_might_be_coming_soon_unsloth_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqgpv/deepseek_r2_might_be_coming_soon_unsloth_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqgpv/deepseek_r2_might_be_coming_soon_unsloth_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T09:48:05+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kvc9ri</id>
     <title>I wrote an automated setup script for my Proxmox AI VM that installs Nvidia CUDA Toolkit, Docker, Python, Node, Zsh and more</title>
     <updated>2025-05-25T20:30:08+00:00</updated>
@@ -110,19 +110,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvp0g1/whats_the_latest_in_conversational_voicetovoice/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T08:07:18+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kvqrzl</id>
-    <title>AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)</title>
-    <updated>2025-05-26T10:09:06+00:00</updated>
-    <author>
-      <name>/u/CheeringCheshireCat</name>
-      <uri>https://old.reddit.com/user/CheeringCheshireCat</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt; &lt;img alt="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" src="https://external-preview.redd.it/dXQydzR0cjNwMzNmMVMRslQYMYRN8ZJ1qBgR4-LlFEA6jckhHIJ4it6HP21k.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=07fe467bd7f592919e65184006ed23558a3fe52e" title="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;I’ve hacked together a VLM video nanny, that watches a video stream(s) and predefined set of safety instructions, and makes a beep sound if the instructions are violated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a href="https://github.com/zeenolife/ai-baby-monitor"&gt;https://github.com/zeenolife/ai-baby-monitor&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why I built it?&lt;/strong&gt;&lt;br /&gt; First day we assembled the crib, my daughter tried to climb over the rail. I got a bit paranoid about constantly watching her. So I thought of an additional eye that would actively watch her, while parent is semi-actively alert.&lt;br /&gt; It's not meant to be a replacement for an adult supervision, more of a supplement, thus just a &amp;quot;beep&amp;quot; sound, so that you could quickly turn back attention to the baby when you got a bit distracted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works?&lt;/strong&gt;&lt;br /&gt; I'm using Qwen 2.5VL(empirically it works better) and vLLM. Redis is used to orchestrate video and llm log streams. Streamlit for UI.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Funny bit&lt;/strong&gt;&lt;br /&gt; I've also used it to monitor my smartphone usage. When you subconsciously check on your phone, it beeps :)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Further plans&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add support for other backends apart from vLLM&lt;/li&gt; &lt;li&gt;Gemma 3n looks rather promising&lt;/li&gt; &lt;li&gt;Add support for image based &amp;quot;no-go-zones&amp;quot;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Feedback is welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheeringCheshireCat"&gt; /u/CheeringCheshireCat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/gzn6itr3p33f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T10:09:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvp5sk</id>
@@ -164,19 +151,6 @@
     <published>2025-05-26T02:54:28+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvd0jr</id>
-    <title>M3 Ultra Mac Studio Benchmarks (96gb VRAM, 60 GPU cores)</title>
-    <updated>2025-05-25T21:03:03+00:00</updated>
-    <author>
-      <name>/u/procraftermc</name>
-      <uri>https://old.reddit.com/user/procraftermc</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So I recently got the M3 Ultra Mac Studio (96 GB RAM, 60 core GPU). Here's its performance.&lt;/p&gt; &lt;p&gt;I loaded each model freshly in LMStudio, and input 30-40k tokens of Lorem Ipsum text (the text itself shouldn't matter, all that matters is token counts)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Benchmarking Results&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model Name &amp;amp; Size&lt;/th&gt; &lt;th align="left"&gt;Time to First Token (s)&lt;/th&gt; &lt;th align="left"&gt;Tokens / Second&lt;/th&gt; &lt;th align="left"&gt;Input Context Size (tokens)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 0.6b (bf16)&lt;/td&gt; &lt;td align="left"&gt;18.21&lt;/td&gt; &lt;td align="left"&gt;78.61&lt;/td&gt; &lt;td align="left"&gt;40240&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30b-a3b (8-bit)&lt;/td&gt; &lt;td align="left"&gt;67.74&lt;/td&gt; &lt;td align="left"&gt;34.62&lt;/td&gt; &lt;td align="left"&gt;40240&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma 3 27B (4-bit)&lt;/td&gt; &lt;td align="left"&gt;108.15&lt;/td&gt; &lt;td align="left"&gt;29.55&lt;/td&gt; &lt;td align="left"&gt;30869&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;LLaMA4 Scout 17B-16E (4-bit)&lt;/td&gt; &lt;td align="left"&gt;111.33&lt;/td&gt; &lt;td align="left"&gt;33.85&lt;/td&gt; &lt;td align="left"&gt;32705&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Mistral Large 123B (4-bit)&lt;/td&gt; &lt;td align="left"&gt;900.61&lt;/td&gt; &lt;td align="left"&gt;7.75&lt;/td&gt; &lt;td align="left"&gt;32705&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;Additional Information&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Input was 30,000 - 40,000 tokens of Lorem Ipsum text&lt;/li&gt; &lt;li&gt;Model was reloaded with no prior caching&lt;/li&gt; &lt;li&gt;After caching, prompt processing (time to first token) dropped to almost zero&lt;/li&gt; &lt;li&gt;Prompt processing times on input &amp;lt;10,000 tokens was also workably low&lt;/li&gt; &lt;li&gt;Interface used was LM Studio&lt;/li&gt; &lt;li&gt;All models were 4-bit &amp;amp; MLX except Qwen3 0.6b and Qwen3 30b-a3b (they were bf16 and 8bit, respectively)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Token speeds were generally good, especially for MoE's like Qen 30b and Llama4. Of course, time-to-first-token was quite high as expected.&lt;/p&gt; &lt;p&gt;Loading models was way more efficient than I thought, I could load Mistral Large (4-bit) with 32k context using only ~70GB VRAM.&lt;/p&gt; &lt;p&gt;Feel free to request benchmarks for any model, I'll see if I can download and benchmark it :).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/procraftermc"&gt; /u/procraftermc &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-25T21:03:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kuzk3t</id>
     <title>Online inference is a privacy nightmare</title>
     <updated>2025-05-25T10:39:04+00:00</updated>
@@ -190,17 +164,17 @@
     <published>2025-05-25T10:39:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvnf46</id>
-    <title>QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning</title>
-    <updated>2025-05-26T06:22:26+00:00</updated>
+    <id>t3_1kvd0jr</id>
+    <title>M3 Ultra Mac Studio Benchmarks (96gb VRAM, 60 GPU cores)</title>
+    <updated>2025-05-25T21:03:03+00:00</updated>
     <author>
-      <name>/u/Fancy_Fanqi77</name>
-      <uri>https://old.reddit.com/user/Fancy_Fanqi77</uri>
+      <name>/u/procraftermc</name>
+      <uri>https://old.reddit.com/user/procraftermc</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt; &lt;img alt="QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning" src="https://external-preview.redd.it/4fgEuTMOx_oXXqA0kQVQE7o892NJc01radrTqR_KFkw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=084020eb1aeecf203d2fdf8aa8277a361260d5b2" title="QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/pekhw95jl23f1.png?width=1480&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2ce794b4e65f4ab48d59fe760345c3dce91d329b"&gt;https://preview.redd.it/pekhw95jl23f1.png?width=1480&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2ce794b4e65f4ab48d59fe760345c3dce91d329b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Tongyi-Zhiwen/QwenLong-L1-32B"&gt;🤗 QwenLong-L1-32B&lt;/a&gt; is the first long-context Large Reasoning Model (LRM) trained with reinforcement learning for long-context document reasoning tasks. Experiments on seven long-context DocQA benchmarks demonstrate that &lt;strong&gt;QwenLong-L1-32B outperforms flagship LRMs like OpenAI-o3-mini and Qwen3-235B-A22B, achieving performance on par with Claude-3.7-Sonnet-Thinking&lt;/strong&gt;, demonstrating leading performance among state-of-the-art LRMs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fancy_Fanqi77"&gt; /u/Fancy_Fanqi77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So I recently got the M3 Ultra Mac Studio (96 GB RAM, 60 core GPU). Here's its performance.&lt;/p&gt; &lt;p&gt;I loaded each model freshly in LMStudio, and input 30-40k tokens of Lorem Ipsum text (the text itself shouldn't matter, all that matters is token counts)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Benchmarking Results&lt;/strong&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model Name &amp;amp; Size&lt;/th&gt; &lt;th align="left"&gt;Time to First Token (s)&lt;/th&gt; &lt;th align="left"&gt;Tokens / Second&lt;/th&gt; &lt;th align="left"&gt;Input Context Size (tokens)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 0.6b (bf16)&lt;/td&gt; &lt;td align="left"&gt;18.21&lt;/td&gt; &lt;td align="left"&gt;78.61&lt;/td&gt; &lt;td align="left"&gt;40240&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30b-a3b (8-bit)&lt;/td&gt; &lt;td align="left"&gt;67.74&lt;/td&gt; &lt;td align="left"&gt;34.62&lt;/td&gt; &lt;td align="left"&gt;40240&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma 3 27B (4-bit)&lt;/td&gt; &lt;td align="left"&gt;108.15&lt;/td&gt; &lt;td align="left"&gt;29.55&lt;/td&gt; &lt;td align="left"&gt;30869&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;LLaMA4 Scout 17B-16E (4-bit)&lt;/td&gt; &lt;td align="left"&gt;111.33&lt;/td&gt; &lt;td align="left"&gt;33.85&lt;/td&gt; &lt;td align="left"&gt;32705&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Mistral Large 123B (4-bit)&lt;/td&gt; &lt;td align="left"&gt;900.61&lt;/td&gt; &lt;td align="left"&gt;7.75&lt;/td&gt; &lt;td align="left"&gt;32705&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;Additional Information&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Input was 30,000 - 40,000 tokens of Lorem Ipsum text&lt;/li&gt; &lt;li&gt;Model was reloaded with no prior caching&lt;/li&gt; &lt;li&gt;After caching, prompt processing (time to first token) dropped to almost zero&lt;/li&gt; &lt;li&gt;Prompt processing times on input &amp;lt;10,000 tokens was also workably low&lt;/li&gt; &lt;li&gt;Interface used was LM Studio&lt;/li&gt; &lt;li&gt;All models were 4-bit &amp;amp; MLX except Qwen3 0.6b and Qwen3 30b-a3b (they were bf16 and 8bit, respectively)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Token speeds were generally good, especially for MoE's like Qen 30b and Llama4. Of course, time-to-first-token was quite high as expected.&lt;/p&gt; &lt;p&gt;Loading models was way more efficient than I thought, I could load Mistral Large (4-bit) with 32k context using only ~70GB VRAM.&lt;/p&gt; &lt;p&gt;Feel free to request benchmarks for any model, I'll see if I can download and benchmark it :).&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/procraftermc"&gt; /u/procraftermc &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvd0jr/m3_ultra_mac_studio_benchmarks_96gb_vram_60_gpu/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T06:22:26+00:00</published>
+    <published>2025-05-25T21:03:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvn51x</id>
@@ -216,17 +190,30 @@
     <published>2025-05-26T06:04:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvmrgu</id>
-    <title>nvidia/AceReason-Nemotron-7B · Hugging Face</title>
-    <updated>2025-05-26T05:40:40+00:00</updated>
+    <id>t3_1kvnf46</id>
+    <title>QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning</title>
+    <updated>2025-05-26T06:22:26+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/Fancy_Fanqi77</name>
+      <uri>https://old.reddit.com/user/Fancy_Fanqi77</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"&gt; &lt;img alt="nvidia/AceReason-Nemotron-7B · Hugging Face" src="https://external-preview.redd.it/E-gtAbU28GDV0NLa926rL1ecWFn9v0jJKe5iqmUNFzo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=52002294beca04a31b018ffdca2c01eba72b139a" title="nvidia/AceReason-Nemotron-7B · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/AceReason-Nemotron-7B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt; &lt;img alt="QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning" src="https://external-preview.redd.it/4fgEuTMOx_oXXqA0kQVQE7o892NJc01radrTqR_KFkw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=084020eb1aeecf203d2fdf8aa8277a361260d5b2" title="QwenLong-L1: Towards Long-Context Large Reasoning Models with Reinforcement Learning" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/pekhw95jl23f1.png?width=1480&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2ce794b4e65f4ab48d59fe760345c3dce91d329b"&gt;https://preview.redd.it/pekhw95jl23f1.png?width=1480&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2ce794b4e65f4ab48d59fe760345c3dce91d329b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/Tongyi-Zhiwen/QwenLong-L1-32B"&gt;🤗 QwenLong-L1-32B&lt;/a&gt; is the first long-context Large Reasoning Model (LRM) trained with reinforcement learning for long-context document reasoning tasks. Experiments on seven long-context DocQA benchmarks demonstrate that &lt;strong&gt;QwenLong-L1-32B outperforms flagship LRMs like OpenAI-o3-mini and Qwen3-235B-A22B, achieving performance on par with Claude-3.7-Sonnet-Thinking&lt;/strong&gt;, demonstrating leading performance among state-of-the-art LRMs.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fancy_Fanqi77"&gt; /u/Fancy_Fanqi77 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvnf46/qwenlongl1_towards_longcontext_large_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T05:40:40+00:00</published>
+    <published>2025-05-26T06:22:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvqrzl</id>
+    <title>AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)</title>
+    <updated>2025-05-26T10:09:06+00:00</updated>
+    <author>
+      <name>/u/CheeringCheshireCat</name>
+      <uri>https://old.reddit.com/user/CheeringCheshireCat</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt; &lt;img alt="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" src="https://external-preview.redd.it/dXQydzR0cjNwMzNmMVMRslQYMYRN8ZJ1qBgR4-LlFEA6jckhHIJ4it6HP21k.png?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=07fe467bd7f592919e65184006ed23558a3fe52e" title="AI Baby Monitor – fully local Video-LLM nanny (beeps when safety rules are violated)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks!&lt;/p&gt; &lt;p&gt;I’ve hacked together a VLM video nanny, that watches a video stream(s) and predefined set of safety instructions, and makes a beep sound if the instructions are violated.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a href="https://github.com/zeenolife/ai-baby-monitor"&gt;https://github.com/zeenolife/ai-baby-monitor&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Why I built it?&lt;/strong&gt;&lt;br /&gt; First day we assembled the crib, my daughter tried to climb over the rail. I got a bit paranoid about constantly watching her. So I thought of an additional eye that would actively watch her, while parent is semi-actively alert.&lt;br /&gt; It's not meant to be a replacement for an adult supervision, more of a supplement, thus just a &amp;quot;beep&amp;quot; sound, so that you could quickly turn back attention to the baby when you got a bit distracted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works?&lt;/strong&gt;&lt;br /&gt; I'm using Qwen 2.5VL(empirically it works better) and vLLM. Redis is used to orchestrate video and llm log streams. Streamlit for UI.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Funny bit&lt;/strong&gt;&lt;br /&gt; I've also used it to monitor my smartphone usage. When you subconsciously check on your phone, it beeps :)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Further plans&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add support for other backends apart from vLLM&lt;/li&gt; &lt;li&gt;Gemma 3n looks rather promising&lt;/li&gt; &lt;li&gt;Add support for image based &amp;quot;no-go-zones&amp;quot;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Feedback is welcome :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CheeringCheshireCat"&gt; /u/CheeringCheshireCat &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/gzn6itr3p33f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvqrzl/ai_baby_monitor_fully_local_videollm_nanny_beeps/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T10:09:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kv6jjk</id>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kv6jjk/finetuning_huggingface_smolvlm_256m_to_control/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-25T16:24:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvmrgu</id>
+    <title>nvidia/AceReason-Nemotron-7B · Hugging Face</title>
+    <updated>2025-05-26T05:40:40+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"&gt; &lt;img alt="nvidia/AceReason-Nemotron-7B · Hugging Face" src="https://external-preview.redd.it/E-gtAbU28GDV0NLa926rL1ecWFn9v0jJKe5iqmUNFzo.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=52002294beca04a31b018ffdca2c01eba72b139a" title="nvidia/AceReason-Nemotron-7B · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/nvidia/AceReason-Nemotron-7B"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvmrgu/nvidiaacereasonnemotron7b_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T05:40:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvc9w6</id>
