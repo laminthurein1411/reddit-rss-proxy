@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-27T16:25:15+00:00</updated>
+  <updated>2025-05-27T16:40:36+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -203,32 +203,6 @@
     <published>2025-05-27T09:03:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kwn27n</id>
-    <title>FairyR1 32B / 14B</title>
-    <updated>2025-05-27T13:19:11+00:00</updated>
-    <author>
-      <name>/u/AaronFeng47</name>
-      <uri>https://old.reddit.com/user/AaronFeng47</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"&gt; &lt;img alt="FairyR1 32B / 14B" src="https://external-preview.redd.it/W-qV0BV1voPJhiTsOQdsGmcAlL-lVFIkzu14DCr59cA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4b257239b7a4b96c72e2b478eb3665269afe6ea4" title="FairyR1 32B / 14B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/PKU-DS-LAB/fairy-r1-6834014fe8fd45bc211c6dd7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T13:19:11+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kwqt64</id>
-    <title>[Research] AutoThink: Adaptive reasoning technique that improves local LLM performance by 43% on GPQA-Diamond</title>
-    <updated>2025-05-27T15:53:20+00:00</updated>
-    <author>
-      <name>/u/asankhs</name>
-      <uri>https://old.reddit.com/user/asankhs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share a technique we've been working on called &lt;strong&gt;AutoThink&lt;/strong&gt; that significantly improves reasoning performance on local models through adaptive resource allocation and steering vectors.&lt;/p&gt; &lt;h1&gt;What is AutoThink?&lt;/h1&gt; &lt;p&gt;Instead of giving every query the same amount of &amp;quot;thinking time,&amp;quot; AutoThink:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Classifies query complexity&lt;/strong&gt; (HIGH/LOW) using an adaptive classifier&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamically allocates thinking tokens&lt;/strong&gt; based on complexity (70-90% for hard problems, 20-40% for simple ones)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Uses steering vectors&lt;/strong&gt; to guide reasoning patterns during generation&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Think of it as making your local model &amp;quot;think harder&amp;quot; on complex problems and &amp;quot;think faster&amp;quot; on simple ones.&lt;/p&gt; &lt;h1&gt;Performance Results&lt;/h1&gt; &lt;p&gt;Tested on &lt;strong&gt;DeepSeek-R1-Distill-Qwen-1.5B&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPQA-Diamond&lt;/strong&gt;: 31.06% vs 21.72% baseline (+9.34 points, 43% relative improvement)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MMLU-Pro&lt;/strong&gt;: 26.38% vs 25.58% baseline (+0.8 points)&lt;/li&gt; &lt;li&gt;Uses &lt;strong&gt;fewer tokens&lt;/strong&gt; than baseline approaches&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Technical Approach&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Steering Vectors&lt;/strong&gt;: We use Pivotal Token Search (PTS) - a technique from Microsoft's Phi-4 paper that we implemented and enhanced. These vectors modify activations to encourage specific reasoning patterns:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;depth_and_thoroughness&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;numerical_accuracy&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;self_correction&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;exploration&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;organization&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;: Built on our adaptive classifier that can learn new complexity categories without retraining.&lt;/p&gt; &lt;h1&gt;Model Compatibility&lt;/h1&gt; &lt;p&gt;Works with any local reasoning model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek-R1 variants&lt;/li&gt; &lt;li&gt;Qwen models&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How to Try It&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;# Install optillm pip install optillm # Basic usage from optillm.autothink import autothink_decode response = autothink_decode( model, tokenizer, messages, { &amp;quot;steering_dataset&amp;quot;: &amp;quot;codelion/Qwen3-0.6B-pts-steering-vectors&amp;quot;, &amp;quot;target_layer&amp;quot;: 19 # adjust based on your model } ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Full examples in the repo: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Research Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327"&gt;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AutoThink Code&lt;/strong&gt;: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PTS Implementation&lt;/strong&gt;: &lt;a href="https://github.com/codelion/pts"&gt;https://github.com/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HuggingFace Blog&lt;/strong&gt;: &lt;a href="https://huggingface.co/blog/codelion/pts"&gt;https://huggingface.co/blog/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptive Classifier&lt;/strong&gt;: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Current Limitations&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Requires models that support thinking tokens (&lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/think&amp;gt;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Need to tune &lt;code&gt;target_layer&lt;/code&gt; parameter for different model architectures&lt;/li&gt; &lt;li&gt;Steering vector datasets are model-specific (though we provide some pre-computed ones)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next&lt;/h1&gt; &lt;p&gt;We're working on:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support for more model architectures&lt;/li&gt; &lt;li&gt;Better automatic layer detection&lt;/li&gt; &lt;li&gt;Community-driven steering vector datasets&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Discussion&lt;/h1&gt; &lt;p&gt;Has anyone tried similar approaches with local models? I'm particularly interested in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How different model families respond to steering vectors&lt;/li&gt; &lt;li&gt;Alternative ways to classify query complexity&lt;/li&gt; &lt;li&gt;Ideas for extracting better steering vectors&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your thoughts and results if you try it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T15:53:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kwer9z</id>
     <title>Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration</title>
     <updated>2025-05-27T04:46:15+00:00</updated>
@@ -240,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-27T04:46:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwn27n</id>
+    <title>FairyR1 32B / 14B</title>
+    <updated>2025-05-27T13:19:11+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"&gt; &lt;img alt="FairyR1 32B / 14B" src="https://external-preview.redd.it/W-qV0BV1voPJhiTsOQdsGmcAlL-lVFIkzu14DCr59cA.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4b257239b7a4b96c72e2b478eb3665269afe6ea4" title="FairyR1 32B / 14B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/collections/PKU-DS-LAB/fairy-r1-6834014fe8fd45bc211c6dd7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwn27n/fairyr1_32b_14b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-27T13:19:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwmlos</id>
@@ -255,6 +242,19 @@
     <published>2025-05-27T12:58:06+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kwqt64</id>
+    <title>[Research] AutoThink: Adaptive reasoning technique that improves local LLM performance by 43% on GPQA-Diamond</title>
+    <updated>2025-05-27T15:53:20+00:00</updated>
+    <author>
+      <name>/u/asankhs</name>
+      <uri>https://old.reddit.com/user/asankhs</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share a technique we've been working on called &lt;strong&gt;AutoThink&lt;/strong&gt; that significantly improves reasoning performance on local models through adaptive resource allocation and steering vectors.&lt;/p&gt; &lt;h1&gt;What is AutoThink?&lt;/h1&gt; &lt;p&gt;Instead of giving every query the same amount of &amp;quot;thinking time,&amp;quot; AutoThink:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Classifies query complexity&lt;/strong&gt; (HIGH/LOW) using an adaptive classifier&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamically allocates thinking tokens&lt;/strong&gt; based on complexity (70-90% for hard problems, 20-40% for simple ones)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Uses steering vectors&lt;/strong&gt; to guide reasoning patterns during generation&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Think of it as making your local model &amp;quot;think harder&amp;quot; on complex problems and &amp;quot;think faster&amp;quot; on simple ones.&lt;/p&gt; &lt;h1&gt;Performance Results&lt;/h1&gt; &lt;p&gt;Tested on &lt;strong&gt;DeepSeek-R1-Distill-Qwen-1.5B&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPQA-Diamond&lt;/strong&gt;: 31.06% vs 21.72% baseline (+9.34 points, 43% relative improvement)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MMLU-Pro&lt;/strong&gt;: 26.38% vs 25.58% baseline (+0.8 points)&lt;/li&gt; &lt;li&gt;Uses &lt;strong&gt;fewer tokens&lt;/strong&gt; than baseline approaches&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Technical Approach&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Steering Vectors&lt;/strong&gt;: We use Pivotal Token Search (PTS) - a technique from Microsoft's Phi-4 paper that we implemented and enhanced. These vectors modify activations to encourage specific reasoning patterns:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;depth_and_thoroughness&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;numerical_accuracy&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;self_correction&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;exploration&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;organization&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;: Built on our adaptive classifier that can learn new complexity categories without retraining.&lt;/p&gt; &lt;h1&gt;Model Compatibility&lt;/h1&gt; &lt;p&gt;Works with any local reasoning model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek-R1 variants&lt;/li&gt; &lt;li&gt;Qwen models&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How to Try It&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;# Install optillm pip install optillm # Basic usage from optillm.autothink import autothink_decode response = autothink_decode( model, tokenizer, messages, { &amp;quot;steering_dataset&amp;quot;: &amp;quot;codelion/Qwen3-0.6B-pts-steering-vectors&amp;quot;, &amp;quot;target_layer&amp;quot;: 19 # adjust based on your model } ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Full examples in the repo: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Research Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327"&gt;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AutoThink Code&lt;/strong&gt;: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PTS Implementation&lt;/strong&gt;: &lt;a href="https://github.com/codelion/pts"&gt;https://github.com/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HuggingFace Blog&lt;/strong&gt;: &lt;a href="https://huggingface.co/blog/codelion/pts"&gt;https://huggingface.co/blog/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptive Classifier&lt;/strong&gt;: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Current Limitations&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Requires models that support thinking tokens (&lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/think&amp;gt;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Need to tune &lt;code&gt;target_layer&lt;/code&gt; parameter for different model architectures&lt;/li&gt; &lt;li&gt;Steering vector datasets are model-specific (though we provide some pre-computed ones)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next&lt;/h1&gt; &lt;p&gt;We're working on:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support for more model architectures&lt;/li&gt; &lt;li&gt;Better automatic layer detection&lt;/li&gt; &lt;li&gt;Community-driven steering vector datasets&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Discussion&lt;/h1&gt; &lt;p&gt;Has anyone tried similar approaches with local models? I'm particularly interested in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How different model families respond to steering vectors&lt;/li&gt; &lt;li&gt;Alternative ways to classify query complexity&lt;/li&gt; &lt;li&gt;Ideas for extracting better steering vectors&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your thoughts and results if you try it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-27T15:53:20+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kwlxvb</id>
     <title>Run qwen 30b-a3b on Android local with Alibaba MNN Chat</title>
     <updated>2025-05-27T12:26:03+00:00</updated>
@@ -266,19 +266,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwlxvb/run_qwen_30ba3b_on_android_local_with_alibaba_mnn/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-27T12:26:03+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kwnv4o</id>
-    <title>Switched from a PC to Mac for LLM dev - One week Later</title>
-    <updated>2025-05-27T13:54:23+00:00</updated>
-    <author>
-      <name>/u/ETBiggs</name>
-      <uri>https://old.reddit.com/user/ETBiggs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ks5sh4/broke_down_and_bought_a_mac_mini_my_processes_run/"&gt;Broke down and bought a Mac Mini - my processes run 5x faster : r/LocalLLaMA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Exactly a week ago I tromped to the Apple Store and bought a Mac Mini M4 Pro with 24gb memory - the model they usually stock in store. I really *didn't* want to move from Windows because I've used Windows since 3.0 and while it has its annoyances, I know the platform and didn't want to stall my development to go down a rabbit hole of new platform hassles - and I'm not a Windows, Mac or Linux 'fan' - they're tools to me - I've used them all - but always thought the MacOS was the least enjoyable to use. &lt;/p&gt; &lt;p&gt;Despite my reservations I bought the thing - and a week later - I'm glad I did - it's a keeper. &lt;/p&gt; &lt;p&gt;It took about 2 hours to set up my simple-as-possible free stack. Anaconda, Ollama, VScode. Download models, build model files, and maybe an hour of cursing to adjust the code for the Mac and I was up and running. I have a few python libraries that complain a bit but still run fine - no issues there. &lt;/p&gt; &lt;p&gt;The unified memory is a game-changer. It's not like having a gamer box with multiple slots having Nvidia cards, but it fits my use-case perfectly - I need to be able to travel with it in a backpack. I run a 13b model 5x faster than my CPU-constrained MiniPC did with an 8b model. I do need to use a free Mac utility to speed my fans up to full blast when running so I don't melt my circuit boards and void my warranty - but this box is the sweet-spot for me. &lt;/p&gt; &lt;p&gt;Still not a big lover of the MacOS but it works - and the hardware and unified memory architecture jams a lot into a small package. &lt;/p&gt; &lt;p&gt;I was hesitant to make the switch because I thought it would be a hassle - but it wasn't all that bad. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ETBiggs"&gt; /u/ETBiggs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T13:54:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwhw20</id>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwfp8v/used_a100_80_gb_prices_dont_make_sense/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-27T05:44:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwnv4o</id>
+    <title>Switched from a PC to Mac for LLM dev - One week Later</title>
+    <updated>2025-05-27T13:54:23+00:00</updated>
+    <author>
+      <name>/u/ETBiggs</name>
+      <uri>https://old.reddit.com/user/ETBiggs</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ks5sh4/broke_down_and_bought_a_mac_mini_my_processes_run/"&gt;Broke down and bought a Mac Mini - my processes run 5x faster : r/LocalLLaMA&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Exactly a week ago I tromped to the Apple Store and bought a Mac Mini M4 Pro with 24gb memory - the model they usually stock in store. I really *didn't* want to move from Windows because I've used Windows since 3.0 and while it has its annoyances, I know the platform and didn't want to stall my development to go down a rabbit hole of new platform hassles - and I'm not a Windows, Mac or Linux 'fan' - they're tools to me - I've used them all - but always thought the MacOS was the least enjoyable to use. &lt;/p&gt; &lt;p&gt;Despite my reservations I bought the thing - and a week later - I'm glad I did - it's a keeper. &lt;/p&gt; &lt;p&gt;It took about 2 hours to set up my simple-as-possible free stack. Anaconda, Ollama, VScode. Download models, build model files, and maybe an hour of cursing to adjust the code for the Mac and I was up and running. I have a few python libraries that complain a bit but still run fine - no issues there. &lt;/p&gt; &lt;p&gt;The unified memory is a game-changer. It's not like having a gamer box with multiple slots having Nvidia cards, but it fits my use-case perfectly - I need to be able to travel with it in a backpack. I run a 13b model 5x faster than my CPU-constrained MiniPC did with an 8b model. I do need to use a free Mac utility to speed my fans up to full blast when running so I don't melt my circuit boards and void my warranty - but this box is the sweet-spot for me. &lt;/p&gt; &lt;p&gt;Still not a big lover of the MacOS but it works - and the hardware and unified memory architecture jams a lot into a small package. &lt;/p&gt; &lt;p&gt;I was hesitant to make the switch because I thought it would be a hassle - but it wasn't all that bad. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ETBiggs"&gt; /u/ETBiggs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwnv4o/switched_from_a_pc_to_mac_for_llm_dev_one_week/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-27T13:54:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwj2p2</id>
