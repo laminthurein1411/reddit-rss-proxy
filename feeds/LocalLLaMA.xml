@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-27T05:24:12+00:00</updated>
+  <updated>2025-05-27T05:37:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,19 +21,6 @@
     <published>2025-05-26T23:59:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kvzs47</id>
-    <title>I Got llama-cpp-python Working with Full GPU Acceleration on RTX 5070 Ti (sm_120, CUDA 12.9)</title>
-    <updated>2025-05-26T17:11:06+00:00</updated>
-    <author>
-      <name>/u/Glittering-Koala-750</name>
-      <uri>https://old.reddit.com/user/Glittering-Koala-750</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After days of tweaking, I finally got a fully working local LLM pipeline using llama-cpp-python with full CUDA offloading on my &lt;strong&gt;GeForce RTX 5070 Ti&lt;/strong&gt; (Blackwell architecture, sm_120) running &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;. Here’s how I did it:&lt;/p&gt; &lt;h1&gt;System Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; RTX 5070 Ti (sm_120, 16GB VRAM)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Driver:&lt;/strong&gt; NVIDIA 570.153.02 (supports CUDA 12.9)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Toolkit:&lt;/strong&gt; CUDA 12.9.41&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; 3.12&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Virtualenv:&lt;/strong&gt; llm-env&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; TinyLlama-1.1B-Chat-Q4_K_M.gguf (from HuggingFace)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; &lt;a href="https://github.com/abetlen/llama-cpp-python"&gt;llama-cpp-python&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI support:&lt;/strong&gt; ChatGPT Mac desktop, Claude code (PIA)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Step-by-Step&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;1. Install CUDA 12.9 (Driver already supported it - need latest drivers from NVIDIA &amp;amp; Claude opposed this)&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb sudo dpkg -i cuda-keyring_1.1-1_all.deb sudo apt update &amp;amp;&amp;amp; sudo apt install cuda-12-9 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Added this to .bashrc:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;export PATH=/usr/local/cuda-12.9/bin:$PATH export LD_LIBRARY_PATH=/usr/local/cuda-12.9/lib64:$LD_LIBRARY_PATH export CUDACXX=/usr/local/cuda-12.9/bin/nvcc &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;2. Clone &amp;amp; Build llama-cpp-python from Source&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;git clone --recursive https://github.com/abetlen/llama-cpp-python cd llama-cpp-python python -m venv ~/llm-env &amp;amp;&amp;amp; source ~/llm-env/bin/activate # Rebuild with CUDA + sm_120 rm -rf build dist llama_cpp_python.egg-info CMAKE_ARGS=&amp;quot;-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=120&amp;quot; pip install . --force-reinstall --verbose &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;3. Load Model in Python&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;from llama_cpp import Llama llm = Llama( model_path=&amp;quot;/path/to/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf&amp;quot;, n_gpu_layers=22, n_ctx=2048, verbose=True, use_mlock=True ) print(llm(&amp;quot;Explain CUDA&amp;quot;, max_tokens=64)[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Lessons Learned&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;You &lt;strong&gt;must set GGML_CUDA=on&lt;/strong&gt;, not the old LLAMA_CUBLAS flag&lt;/li&gt; &lt;li&gt;CUDA 12.9 &lt;strong&gt;does support sm_120&lt;/strong&gt;, but PyTorch doesn’t — so llama-cpp-python is a great lightweight alternative&lt;/li&gt; &lt;li&gt;Make sure you don’t shadow the llama_cpp Python package with a local folder or you’ll silently run CPU-only! &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Koala-750"&gt; /u/Glittering-Koala-750 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-26T17:11:06+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kw8a4h</id>
     <title>Is there a high-throughput engine that is actually stable?</title>
     <updated>2025-05-26T23:05:32+00:00</updated>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kw8a4h/is_there_a_highthroughput_engine_that_is_actually/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T23:05:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kvzs47</id>
+    <title>I Got llama-cpp-python Working with Full GPU Acceleration on RTX 5070 Ti (sm_120, CUDA 12.9)</title>
+    <updated>2025-05-26T17:11:06+00:00</updated>
+    <author>
+      <name>/u/Glittering-Koala-750</name>
+      <uri>https://old.reddit.com/user/Glittering-Koala-750</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After days of tweaking, I finally got a fully working local LLM pipeline using llama-cpp-python with full CUDA offloading on my &lt;strong&gt;GeForce RTX 5070 Ti&lt;/strong&gt; (Blackwell architecture, sm_120) running &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt;. Here’s how I did it:&lt;/p&gt; &lt;h1&gt;System Setup&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPU:&lt;/strong&gt; RTX 5070 Ti (sm_120, 16GB VRAM)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Driver:&lt;/strong&gt; NVIDIA 570.153.02 (supports CUDA 12.9)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Toolkit:&lt;/strong&gt; CUDA 12.9.41&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; 3.12&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Virtualenv:&lt;/strong&gt; llm-env&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; TinyLlama-1.1B-Chat-Q4_K_M.gguf (from HuggingFace)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; &lt;a href="https://github.com/abetlen/llama-cpp-python"&gt;llama-cpp-python&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI support:&lt;/strong&gt; ChatGPT Mac desktop, Claude code (PIA)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Step-by-Step&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;1. Install CUDA 12.9 (Driver already supported it - need latest drivers from NVIDIA &amp;amp; Claude opposed this)&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb sudo dpkg -i cuda-keyring_1.1-1_all.deb sudo apt update &amp;amp;&amp;amp; sudo apt install cuda-12-9 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Added this to .bashrc:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;export PATH=/usr/local/cuda-12.9/bin:$PATH export LD_LIBRARY_PATH=/usr/local/cuda-12.9/lib64:$LD_LIBRARY_PATH export CUDACXX=/usr/local/cuda-12.9/bin/nvcc &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;2. Clone &amp;amp; Build llama-cpp-python from Source&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;git clone --recursive https://github.com/abetlen/llama-cpp-python cd llama-cpp-python python -m venv ~/llm-env &amp;amp;&amp;amp; source ~/llm-env/bin/activate # Rebuild with CUDA + sm_120 rm -rf build dist llama_cpp_python.egg-info CMAKE_ARGS=&amp;quot;-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=120&amp;quot; pip install . --force-reinstall --verbose &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;3. Load Model in Python&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;from llama_cpp import Llama llm = Llama( model_path=&amp;quot;/path/to/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf&amp;quot;, n_gpu_layers=22, n_ctx=2048, verbose=True, use_mlock=True ) print(llm(&amp;quot;Explain CUDA&amp;quot;, max_tokens=64)[&amp;quot;choices&amp;quot;][0][&amp;quot;text&amp;quot;]) &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Lessons Learned&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;You &lt;strong&gt;must set GGML_CUDA=on&lt;/strong&gt;, not the old LLAMA_CUBLAS flag&lt;/li&gt; &lt;li&gt;CUDA 12.9 &lt;strong&gt;does support sm_120&lt;/strong&gt;, but PyTorch doesn’t — so llama-cpp-python is a great lightweight alternative&lt;/li&gt; &lt;li&gt;Make sure you don’t shadow the llama_cpp Python package with a local folder or you’ll silently run CPU-only! &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Glittering-Koala-750"&gt; /u/Glittering-Koala-750 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kvzs47/i_got_llamacpppython_working_with_full_gpu/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-26T17:11:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1kvknlo</id>
@@ -255,19 +255,6 @@
     <published>2025-05-26T15:45:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kwer9z</id>
-    <title>Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration</title>
-    <updated>2025-05-27T04:46:15+00:00</updated>
-    <author>
-      <name>/u/ninjasaid13</name>
-      <uri>https://old.reddit.com/user/ninjasaid13</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"&gt; &lt;img alt="Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration" src="https://external-preview.redd.it/Mslr5FmgDa5Wl6TVAGHIe-yyfpC8KB7GpupP6mmM8Ko.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2aefa740a7c49432c821d22fe05c260150bb95bc" title="Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Long-horizon video-audio reasoning and fine-grained pixel understanding impose conflicting requirements on omnimodal models: dense temporal coverage demands many low-resolution frames, whereas precise grounding calls for high-resolution inputs. We tackle this trade-off with a two-system architecture: a Global Reasoning System selects informative keyframes and rewrites the task at low spatial cost, while a Detail Understanding System performs pixel-level grounding on the selected high-resolution snippets. Because ``optimal'' keyframe selection and reformulation are ambiguous and hard to supervise, we formulate them as a reinforcement learning (RL) problem and present Omni-R1, an end-to-end RL framework built on Group Relative Policy Optimization. Omni-R1 trains the Global Reasoning System through hierarchical rewards obtained via online collaboration with the Detail Understanding System, requiring only one epoch of RL on small task splits.&lt;br /&gt; Experiments on two challenging benchmarks, namely Referring Audio-Visual Segmentation (RefAVS) and Reasoning Video Object Segmentation (REVOS), show that Omni-R1 not only surpasses strong supervised baselines but also outperforms specialized state-of-the-art models, while substantially improving out-of-domain generalization and mitigating multimodal hallucination. Our results demonstrate the first successful application of RL to large-scale omnimodal reasoning and highlight a scalable path toward universally foundation models.&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/Haoz0206/Omni-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T04:46:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kvpwq3</id>
     <title>Deepseek v3 0526?</title>
     <updated>2025-05-26T09:09:20+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kw310h/i_finetuned_qwen25vl_7b_to_reidentify_objects/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-26T19:21:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwer9z</id>
+    <title>Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration</title>
+    <updated>2025-05-27T04:46:15+00:00</updated>
+    <author>
+      <name>/u/ninjasaid13</name>
+      <uri>https://old.reddit.com/user/ninjasaid13</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"&gt; &lt;img alt="Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration" src="https://external-preview.redd.it/Mslr5FmgDa5Wl6TVAGHIe-yyfpC8KB7GpupP6mmM8Ko.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2aefa740a7c49432c821d22fe05c260150bb95bc" title="Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Abstract&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Long-horizon video-audio reasoning and fine-grained pixel understanding impose conflicting requirements on omnimodal models: dense temporal coverage demands many low-resolution frames, whereas precise grounding calls for high-resolution inputs. We tackle this trade-off with a two-system architecture: a Global Reasoning System selects informative keyframes and rewrites the task at low spatial cost, while a Detail Understanding System performs pixel-level grounding on the selected high-resolution snippets. Because ``optimal'' keyframe selection and reformulation are ambiguous and hard to supervise, we formulate them as a reinforcement learning (RL) problem and present Omni-R1, an end-to-end RL framework built on Group Relative Policy Optimization. Omni-R1 trains the Global Reasoning System through hierarchical rewards obtained via online collaboration with the Detail Understanding System, requiring only one epoch of RL on small task splits.&lt;br /&gt; Experiments on two challenging benchmarks, namely Referring Audio-Visual Segmentation (RefAVS) and Reasoning Video Object Segmentation (REVOS), show that Omni-R1 not only surpasses strong supervised baselines but also outperforms specialized state-of-the-art models, while substantially improving out-of-domain generalization and mitigating multimodal hallucination. Our results demonstrate the first successful application of RL to large-scale omnimodal reasoning and highlight a scalable path toward universally foundation models.&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ninjasaid13"&gt; /u/ninjasaid13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/Haoz0206/Omni-R1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwer9z/omnir1_reinforcement_learning_for_omnimodal/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-27T04:46:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kw6akn</id>
