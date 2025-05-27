@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-27T13:41:58+00:00</updated>
+  <updated>2025-05-27T13:52:21+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1kujxz9</id>
-    <title>Template issue for Nvidia Nemotron</title>
-    <updated>2025-05-24T19:37:59+00:00</updated>
-    <author>
-      <name>/u/iadanos</name>
-      <uri>https://old.reddit.com/user/iadanos</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello everyone!&lt;/p&gt; &lt;p&gt;I was trying to use &lt;a href="https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1"&gt;nvidia/Llama-3.1-Nemotron-Nano-8B-v1&lt;/a&gt; (basically, &lt;a href="https://huggingface.co/unsloth/Llama-3.1-Nemotron-Nano-8B-v1-GGUF"&gt;Unsloth's quant&lt;/a&gt;) and didn't really managed to make it work properly due to template issue:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Running ollama pull with HF model path pulls model, but default promt template is not really usable, so custom modelfile is required&lt;/li&gt; &lt;li&gt;Using the same template as for LLama 3.1 fails since it is different for Nemotron and detailed thinking and tools calling does not work properly.&lt;/li&gt; &lt;li&gt;I tried to re-write original chat template from Jinja and it's better, it discovers and identifies tools correctly, it starts thinking and tries to use it, but not getting to use the proper format, as I understand.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Maybe detailed thinking is somehow conflicting with tool call, but I didn't manage to fix it so it would work with Continue.dev.&lt;/p&gt; &lt;p&gt;Looking for helpers, testers and advisers, since the result seem very close and the model should be much more useful than a stock one.&lt;/p&gt; &lt;p&gt;The modelfile I have now:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;FROM hf.co/unsloth/Llama-3.1-Nemotron-Nano-8B-v1-GGUF:Q4_k_M TEMPLATE &amp;quot;&amp;quot;&amp;quot;{{- /* Initialize system message */ -}} {{- $system_message := .System -}} {{- $system_message_found := false -}} {{- /* Find system message priority: .System &amp;gt; first system message in Messages */ -}} {{- if not $system_message -}} {{- range .Messages -}} {{- if and (eq .Role &amp;quot;system&amp;quot;) (not $system_message_found) -}} {{- $system_message = .Content -}} {{- $system_message_found = true -}} {{- end -}} {{- end -}} {{- end -}} {{- /* System section rendering */ -}} {{- if or $system_message .Tools -}} &amp;lt;|start_header_id|&amp;gt;system&amp;lt;|end_header_id|&amp;gt; {{- if $system_message -}} {{ $system_message }}{{- end -}} {{- if .Tools -}} {{if $system_message}} {{end -}} You are a helpful assistant with tool calling capabilities. When you receive a tool call response, use the output to format an answer to the orginal user question. Make tool calls after your detailed thinking and reasoning output. &amp;lt;AVAILABLE_TOOLS&amp;gt; {{- $firstTool := true -}} {{- range .Tools -}} {{- if not $firstTool -}},{{- end -}} {{- json .Function -}} {{- $firstTool = false -}} {{- end -}} &amp;lt;/AVAILABLE_TOOLS&amp;gt; {{- end -}}&amp;lt;|eot_id|&amp;gt; {{- end -}} {{- /* Process messages */ -}} {{- $lastRole := &amp;quot;&amp;quot; -}} {{- range $index, $message := .Messages -}} {{- $last := eq (len (slice $.Messages $index)) 1 }} {{- /* Track last role for final prompt */ -}} {{- $lastRole = .Role -}} {{- /* Skip system messages when using .System */ -}} {{- if and $system_message (eq .Role &amp;quot;system&amp;quot;) }}{{ continue }}{{ end -}} {{- if eq .Role &amp;quot;user&amp;quot; -}} &amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; {{- if and $.Tools $last }} Given the following functions, please respond with a JSON for a function call with its proper arguments that best answers the given prompt. Respond in the format {&amp;quot;name&amp;quot;: function name, &amp;quot;parameters&amp;quot;: dictionary of argument name and its value}. Do not use variables. {{ range $.Tools }} {{- . }} {{ end }} Question: {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{- else }} {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{ end }} {{- else if eq .Role &amp;quot;tool&amp;quot; -}} &amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; &amp;lt;TOOL_RESPONSE&amp;gt;[{{ .Content }}]&amp;lt;/TOOL_RESPONSE&amp;gt;&amp;lt;|eot_id|&amp;gt; {{- else if eq .Role &amp;quot;assistant&amp;quot; -}} {{- if .ToolCalls -}} &amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; &amp;lt;TOOLCALL&amp;gt;[ {{- $firstCall := true -}} {{- range .ToolCalls -}} {{- if not $firstCall -}},{{- end -}} {&amp;quot;name&amp;quot;: &amp;quot;{{ .Function.Name }}&amp;quot;, &amp;quot;parameters&amp;quot;: {{ .Function.Arguments }}} {{- $firstCall = false -}} {{- end -}} ]&amp;lt;/TOOLCALL&amp;gt;&amp;lt;|eot_id|&amp;gt; {{- else -}} &amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; {{ .Content }}&amp;lt;|eot_id|&amp;gt; {{- end -}} {{- end -}} {{- end -}} &amp;quot;&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iadanos"&gt; /u/iadanos &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kujxz9/template_issue_for_nvidia_nemotron/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-24T19:37:59+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ku4ejf</id>
-    <title>Open source model which good at tool calling?</title>
-    <updated>2025-05-24T05:44:59+00:00</updated>
-    <author>
-      <name>/u/Superb_Practice_4544</name>
-      <uri>https://old.reddit.com/user/Superb_Practice_4544</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am working on small project which involves MCP and some custom tools. Which open source model should I use ? Preferably smaller models. Thanks for the help!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Superb_Practice_4544"&gt; /u/Superb_Practice_4544 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ku4ejf/open_source_model_which_good_at_tool_calling/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ku4ejf/open_source_model_which_good_at_tool_calling/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ku4ejf/open_source_model_which_good_at_tool_calling/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-24T05:44:59+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kutppv</id>
     <title>can a model be connected to github?</title>
@@ -266,6 +240,32 @@
     <link href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-26T23:35:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwnl0a</id>
+    <title>Is there a way to export Ollama or OpenWebUI output as a formatted PDF similar to what Perplexity offers?</title>
+    <updated>2025-05-27T13:42:20+00:00</updated>
+    <author>
+      <name>/u/wasnt_me_rly</name>
+      <uri>https://old.reddit.com/user/wasnt_me_rly</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've searched but have come up empty. Would love a plug-in which would allow me to save a conversation (in part or in full) in the format I see on the screen versus the plain text copy option available by default. Any guidance would be appreciated. TIA.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/wasnt_me_rly"&gt; /u/wasnt_me_rly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwnl0a/is_there_a_way_to_export_ollama_or_openwebui/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwnl0a/is_there_a_way_to_export_ollama_or_openwebui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kwnl0a/is_there_a_way_to_export_ollama_or_openwebui/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-27T13:42:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwnlpm</id>
+    <title>AI Runner v4.10.0 Release Notes</title>
+    <updated>2025-05-27T13:43:11+00:00</updated>
+    <author>
+      <name>/u/w00fl35</name>
+      <uri>https://old.reddit.com/user/w00fl35</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;Last week we &lt;a href="https://www.reddit.com/r/ollama/comments/1ksqejy/i_added_ollama_support_to_ai_runner/"&gt;introduced ollama support&lt;/a&gt; to AI Runner - prior to that I showed you offline, &lt;a href="https://www.reddit.com/r/ollama/comments/1kp2akd/offline_realtime_voice_conversations_with_custom/"&gt;real-time voice conversations with custom chatbots&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Today, we've released AI Runner version 4.10.0. This update focuses on improving the stability and maintainability of the application through significant refactoring efforts and expanded test coverage.&lt;/p&gt; &lt;p&gt;Here’s a condensed look at what’s new:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Core Refactoring and Robustness:&lt;/strong&gt; The main agent base class has been restructured for better clarity and future development. Workflow saving processes are now more resilient, with better error handling and management of workflow IDs.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Improved PySide6/Qt6 Compatibility:&lt;/strong&gt; We've made adjustments for better compatibility with PySide6 and Qt6, which includes fixes related to keyboard shortcuts and OpenGL.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Increased Test Coverage:&lt;/strong&gt; Test coverage has been considerably expanded across various parts of the application, including LLM widgets, the GUI, utility functions, and vendor modules. This helps ensure more reliable operation.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Bug Fixes:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;Patched OS restriction logic and associated tests to ensure file operations are handled safely and whitelisting functions correctly.&lt;/li&gt; &lt;li&gt;Resolved a &lt;code&gt;DetachedInstanceError&lt;/code&gt; that could occur when saving workflows.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Developer Tooling:&lt;/strong&gt; A commit message template has been added to the repository to aid contributors.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The primary goal of this release was to enhance the underlying structure and reliability of AI Runner.&lt;/p&gt; &lt;p&gt;You can find the complete list of changes in the full release notes on GitHub: &lt;a href="https://github.com/Capsize-Games/airunner/releases/tag/v4.10.0"&gt;https://github.com/Capsize-Games/airunner/releases/tag/v4.10.0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Feel free to share any thoughts or feedback.&lt;/p&gt; &lt;hr /&gt; &lt;ul&gt; &lt;li&gt;Thanks to [&lt;a href="https://github.com/lucaerion%5D(lucaerion)"&gt;https://github.com/lucaerion](lucaerion)&lt;/a&gt; for your contributions to the nodegraphqt and openvoice modules&lt;/li&gt; &lt;li&gt;Next up: more work on the nodegraph and LLM&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/w00fl35"&gt; /u/w00fl35 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwnlpm/ai_runner_v4100_release_notes/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwnlpm/ai_runner_v4100_release_notes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kwnlpm/ai_runner_v4100_release_notes/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-27T13:43:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwiff1</id>
