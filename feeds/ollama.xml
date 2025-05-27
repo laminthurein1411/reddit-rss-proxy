@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-27T10:07:01+00:00</updated>
+  <updated>2025-05-27T10:24:54+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1ktt4yc</id>
-    <title>2x RTX 6000 ADA vs 4x RTX 5000 ADA</title>
-    <updated>2025-05-23T20:04:05+00:00</updated>
-    <author>
-      <name>/u/Personal-Library4908</name>
-      <uri>https://old.reddit.com/user/Personal-Library4908</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey,&lt;/p&gt; &lt;p&gt;I'm working on getting a local LLM machine due to compliance reasons.&lt;/p&gt; &lt;p&gt;As I have a budget of around 20k USD, I was able to configure a DELL 7960 in two different ways:&lt;/p&gt; &lt;p&gt;2x RTX6000 ADA 48gb (96gb) + Xeon 3433 + 128Gb DDR5 4800MT/s = 19,5k USD&lt;/p&gt; &lt;p&gt;4x RTX5000 ADA 32gb (128gb) + Xeon 3433 + 64Gb DDR5 4800MT/s = 21k USD&lt;/p&gt; &lt;p&gt;Jumping over to 3x RTX 6000 brings the amount to over 23k and is too much of a stretch for my budget.&lt;/p&gt; &lt;p&gt;I plan to serve a LLM as a Wise Man for our internal documents with no more than 10-20 simultaneous users (company have 300 administrative workers). &lt;/p&gt; &lt;p&gt;I thought of going for 4x RTX 5000 due to the possibility of loading the LLM into 3 and getting a diffusion model to run on the last one, allowing usage for both. &lt;/p&gt; &lt;p&gt;Both models don't need to be too big as we already have Copilot (GPT4 Turbo) available for all users for general questions. &lt;/p&gt; &lt;p&gt;Can you help me choose one and give some insights why?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Personal-Library4908"&gt; /u/Personal-Library4908 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ktt4yc/2x_rtx_6000_ada_vs_4x_rtx_5000_ada/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1ktt4yc/2x_rtx_6000_ada_vs_4x_rtx_5000_ada/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1ktt4yc/2x_rtx_6000_ada_vs_4x_rtx_5000_ada/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-23T20:04:05+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ktx7wo</id>
     <title>Every time i send something to ollama a scary alien sound plays</title>
@@ -268,6 +255,45 @@
     <published>2025-05-27T04:36:45+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kwiff1</id>
+    <title>How Ollama manage to run LLM that require more VRAM that my card actually have</title>
+    <updated>2025-05-27T08:52:25+00:00</updated>
+    <author>
+      <name>/u/Repulsive_Shock8318</name>
+      <uri>https://old.reddit.com/user/Repulsive_Shock8318</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi ! &lt;/p&gt; &lt;p&gt;This question is (I think) low level but I'm really interested about how a larger model can fit and run on my small GPU. &lt;/p&gt; &lt;p&gt;I'm currently using Qwen3:4b on a A2000 laptop with 4GB of VRAM, and when the model is loaded in my GPU by ollama, I see theses logs &lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama | time=2025-05-27T08:11:29.448Z level=INFO source=server.go:168 msg=offload library=cuda layers.requested=-1 layers.model=37 layers.offload=27 layers.split=&amp;quot;&amp;quot; memory.available=&amp;quot;[3.2 GiB]&amp;quot; memory.gpu_overhead=&amp;quot;0 B&amp;quot; memory.required.full=&amp;quot;4.1 GiB&amp;quot; memory.required.partial=&amp;quot;3.2 GiB&amp;quot; memory.required.kv=&amp;quot;576.0 MiB&amp;quot; memory.required.allocations=&amp;quot;[3.2 GiB]&amp;quot; memory.weights.total=&amp;quot;2.4 GiB&amp;quot; memory.weights.repeating=&amp;quot;2.1 GiB&amp;quot; memory.weights.nonrepeating=&amp;quot;304.3 MiB&amp;quot; memory.graph.full=&amp;quot;384.0 MiB&amp;quot; memory.graph.partial=&amp;quot;384.0 MiB&amp;quot; ollama | llama_model_loader: loaded meta data with 27 key-value pairs and 398 tensors from /root/.ollama/models/blobs/sha256-163553aea1b1de62de7c5eb2ef5afb756b4b3133308d9ae7e42e951d8d696ef5 (version GGUF V3 (latest)) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;In the first line, the &lt;code&gt;memory.required.full&lt;/code&gt; (that is think is the model size) is bigger than &lt;code&gt;memory.available&lt;/code&gt; (that is the available VRAM in my GPU). I saw the &lt;code&gt;memory.required.partial&lt;/code&gt;that corresponding to to available VRAM. &lt;/p&gt; &lt;p&gt;So did Ollama shrink the model or load only a part of it ? I'm new to onprem IA usage, my apologize if I said something stupid &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Repulsive_Shock8318"&gt; /u/Repulsive_Shock8318 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-27T08:52:25+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kwjsq1</id>
+    <title>/api/generate report 404 error</title>
+    <updated>2025-05-27T10:24:38+00:00</updated>
+    <author>
+      <name>/u/LlamaZookeeper</name>
+      <uri>https://old.reddit.com/user/LlamaZookeeper</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I m trying to invoke my ollama using /api/generate, but it returned 404 error. Completion and chat looks ok. What might be the issue? If I want to do troubleshooting, where to find the debug log in ollama server? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LlamaZookeeper"&gt; /u/LlamaZookeeper &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwjsq1/apigenerate_report_404_error/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwjsq1/apigenerate_report_404_error/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kwjsq1/apigenerate_report_404_error/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-27T10:24:38+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kw8woc</id>
+    <title>gemma3:12b-it-qat vs gemma3:12b memory usage using Ollama</title>
+    <updated>2025-05-26T23:35:26+00:00</updated>
+    <author>
+      <name>/u/LithuanianAmerican</name>
+      <uri>https://old.reddit.com/user/LithuanianAmerican</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;gemma3:12b-it-qat is advertised to use 3x less memory than gemma3:12b yet in my testing on my Mac I'm seeing that Ollama is actually using 11.55gb of memory for the quantized model and 9.74gb for the regular variant. Why is the quantized model actually using more memory? How can I &amp;quot;find&amp;quot; those memory savings?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LithuanianAmerican"&gt; /u/LithuanianAmerican &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-26T23:35:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kwhxn0</id>
     <title>Open Source iOS OLLAMA Client</title>
     <updated>2025-05-27T08:16:54+00:00</updated>
@@ -292,32 +318,6 @@
     <link href="https://old.reddit.com/r/ollama/comments/1kwi20g/extract_website_information/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-27T08:25:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kwiff1</id>
-    <title>How Ollama manage to run LLM that require more VRAM that my card actually have</title>
-    <updated>2025-05-27T08:52:25+00:00</updated>
-    <author>
-      <name>/u/Repulsive_Shock8318</name>
-      <uri>https://old.reddit.com/user/Repulsive_Shock8318</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi ! &lt;/p&gt; &lt;p&gt;This question is (I think) low level but I'm really interested about how a larger model can fit and run on my small GPU. &lt;/p&gt; &lt;p&gt;I'm currently using Qwen3:4b on a A2000 laptop with 4GB of VRAM, and when the model is loaded in my GPU by ollama, I see theses logs &lt;/p&gt; &lt;pre&gt;&lt;code&gt;ollama | time=2025-05-27T08:11:29.448Z level=INFO source=server.go:168 msg=offload library=cuda layers.requested=-1 layers.model=37 layers.offload=27 layers.split=&amp;quot;&amp;quot; memory.available=&amp;quot;[3.2 GiB]&amp;quot; memory.gpu_overhead=&amp;quot;0 B&amp;quot; memory.required.full=&amp;quot;4.1 GiB&amp;quot; memory.required.partial=&amp;quot;3.2 GiB&amp;quot; memory.required.kv=&amp;quot;576.0 MiB&amp;quot; memory.required.allocations=&amp;quot;[3.2 GiB]&amp;quot; memory.weights.total=&amp;quot;2.4 GiB&amp;quot; memory.weights.repeating=&amp;quot;2.1 GiB&amp;quot; memory.weights.nonrepeating=&amp;quot;304.3 MiB&amp;quot; memory.graph.full=&amp;quot;384.0 MiB&amp;quot; memory.graph.partial=&amp;quot;384.0 MiB&amp;quot; ollama | llama_model_loader: loaded meta data with 27 key-value pairs and 398 tensors from /root/.ollama/models/blobs/sha256-163553aea1b1de62de7c5eb2ef5afb756b4b3133308d9ae7e42e951d8d696ef5 (version GGUF V3 (latest)) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;In the first line, the &lt;code&gt;memory.required.full&lt;/code&gt; (that is think is the model size) is bigger than &lt;code&gt;memory.available&lt;/code&gt; (that is the available VRAM in my GPU). I saw the &lt;code&gt;memory.required.partial&lt;/code&gt;that corresponding to to available VRAM. &lt;/p&gt; &lt;p&gt;So did Ollama shrink the model or load only a part of it ? I'm new to onprem IA usage, my apologize if I said something stupid &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Repulsive_Shock8318"&gt; /u/Repulsive_Shock8318 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kwiff1/how_ollama_manage_to_run_llm_that_require_more/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-27T08:52:25+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kw8woc</id>
-    <title>gemma3:12b-it-qat vs gemma3:12b memory usage using Ollama</title>
-    <updated>2025-05-26T23:35:26+00:00</updated>
-    <author>
-      <name>/u/LithuanianAmerican</name>
-      <uri>https://old.reddit.com/user/LithuanianAmerican</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;gemma3:12b-it-qat is advertised to use 3x less memory than gemma3:12b yet in my testing on my Mac I'm seeing that Ollama is actually using 11.55gb of memory for the quantized model and 9.74gb for the regular variant. Why is the quantized model actually using more memory? How can I &amp;quot;find&amp;quot; those memory savings?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LithuanianAmerican"&gt; /u/LithuanianAmerican &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kw8woc/gemma312bitqat_vs_gemma312b_memory_usage_using/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-26T23:35:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwhqzg</id>
