@@ -2,36 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-28T15:24:54+00:00</updated>
+  <updated>2025-05-28T15:37:40+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kxj4ne</id>
-    <title>Is slower inference and non-realtime cheaper?</title>
-    <updated>2025-05-28T14:53:00+00:00</updated>
+    <id>t3_1kwqt64</id>
+    <title>[Research] AutoThink: Adaptive reasoning technique that improves local LLM performance by 43% on GPQA-Diamond</title>
+    <updated>2025-05-27T15:53:20+00:00</updated>
     <author>
-      <name>/u/AryanEmbered</name>
-      <uri>https://old.reddit.com/user/AryanEmbered</uri>
+      <name>/u/asankhs</name>
+      <uri>https://old.reddit.com/user/asankhs</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;is there a service that can take in my requests, and then give me the response after A WHILE, like, days later.&lt;/p&gt; &lt;p&gt;and is significantly cheaper?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share a technique we've been working on called &lt;strong&gt;AutoThink&lt;/strong&gt; that significantly improves reasoning performance on local models through adaptive resource allocation and steering vectors.&lt;/p&gt; &lt;h1&gt;What is AutoThink?&lt;/h1&gt; &lt;p&gt;Instead of giving every query the same amount of &amp;quot;thinking time,&amp;quot; AutoThink:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Classifies query complexity&lt;/strong&gt; (HIGH/LOW) using an adaptive classifier&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamically allocates thinking tokens&lt;/strong&gt; based on complexity (70-90% for hard problems, 20-40% for simple ones)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Uses steering vectors&lt;/strong&gt; to guide reasoning patterns during generation&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Think of it as making your local model &amp;quot;think harder&amp;quot; on complex problems and &amp;quot;think faster&amp;quot; on simple ones.&lt;/p&gt; &lt;h1&gt;Performance Results&lt;/h1&gt; &lt;p&gt;Tested on &lt;strong&gt;DeepSeek-R1-Distill-Qwen-1.5B&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPQA-Diamond&lt;/strong&gt;: 31.06% vs 21.72% baseline (+9.34 points, 43% relative improvement)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MMLU-Pro&lt;/strong&gt;: 26.38% vs 25.58% baseline (+0.8 points)&lt;/li&gt; &lt;li&gt;Uses &lt;strong&gt;fewer tokens&lt;/strong&gt; than baseline approaches&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Technical Approach&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Steering Vectors&lt;/strong&gt;: We use Pivotal Token Search (PTS) - a technique from Microsoft's Phi-4 paper that we implemented and enhanced. These vectors modify activations to encourage specific reasoning patterns:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;depth_and_thoroughness&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;numerical_accuracy&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;self_correction&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;exploration&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;organization&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;: Built on our adaptive classifier that can learn new complexity categories without retraining.&lt;/p&gt; &lt;h1&gt;Model Compatibility&lt;/h1&gt; &lt;p&gt;Works with any local reasoning model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek-R1 variants&lt;/li&gt; &lt;li&gt;Qwen models&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How to Try It&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;# Install optillm pip install optillm # Basic usage from optillm.autothink import autothink_decode response = autothink_decode( model, tokenizer, messages, { &amp;quot;steering_dataset&amp;quot;: &amp;quot;codelion/Qwen3-0.6B-pts-steering-vectors&amp;quot;, &amp;quot;target_layer&amp;quot;: 19 # adjust based on your model } ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Full examples in the repo: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Research Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327"&gt;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AutoThink Code&lt;/strong&gt;: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PTS Implementation&lt;/strong&gt;: &lt;a href="https://github.com/codelion/pts"&gt;https://github.com/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HuggingFace Blog&lt;/strong&gt;: &lt;a href="https://huggingface.co/blog/codelion/pts"&gt;https://huggingface.co/blog/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptive Classifier&lt;/strong&gt;: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Current Limitations&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Requires models that support thinking tokens (&lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/think&amp;gt;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Need to tune &lt;code&gt;target_layer&lt;/code&gt; parameter for different model architectures&lt;/li&gt; &lt;li&gt;Steering vector datasets are model-specific (though we provide some pre-computed ones)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next&lt;/h1&gt; &lt;p&gt;We're working on:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support for more model architectures&lt;/li&gt; &lt;li&gt;Better automatic layer detection&lt;/li&gt; &lt;li&gt;Community-driven steering vector datasets&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Discussion&lt;/h1&gt; &lt;p&gt;Has anyone tried similar approaches with local models? I'm particularly interested in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How different model families respond to steering vectors&lt;/li&gt; &lt;li&gt;Alternative ways to classify query complexity&lt;/li&gt; &lt;li&gt;Ideas for extracting better steering vectors&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your thoughts and results if you try it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T14:53:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kxeg6a</id>
-    <title>Seeking Help Setting Up a Local LLM Assistant for TTRPG Worldbuilding + RAG on Windows 11</title>
-    <updated>2025-05-28T11:16:50+00:00</updated>
-    <author>
-      <name>/u/TheArchivist314</name>
-      <uri>https://old.reddit.com/user/TheArchivist314</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! I'm looking for some guidance on setting up a local LLM to help with &lt;strong&gt;TTRPG worldbuilding and running games&lt;/strong&gt; (like D&amp;amp;D or other systems). I want to be able to:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Generate and roleplay NPCs&lt;/li&gt; &lt;li&gt;Write world lore collaboratively&lt;/li&gt; &lt;li&gt;Answer rules questions from PDFs&lt;/li&gt; &lt;li&gt;Query my own documents (lore, setting info, custom rules, etc.)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So I think I need &lt;strong&gt;RAG&lt;/strong&gt; (Retrieval-Augmented Generation) — or at least some way to have the LLM &amp;quot;understand&amp;quot; and reference my worldbuilding files or rule PDFs.&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;🖥️ &lt;strong&gt;My current setup:&lt;/strong&gt; - Windows 11 - 4070 (12GB of Vram) - 64GB of Ram - SillyTavern installed and working - TabbyAPI installed&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;❓ &lt;strong&gt;What I'm trying to figure out:&lt;/strong&gt; - Can I do &lt;strong&gt;RAG&lt;/strong&gt; with &lt;strong&gt;SillyTavern&lt;/strong&gt; or &lt;strong&gt;TabbyAPI&lt;/strong&gt;? - What’s the best &lt;strong&gt;model loader&lt;/strong&gt; on Windows 11 that supports RAG (or can be used in a RAG pipeline)? - Which &lt;strong&gt;models&lt;/strong&gt; would you recommend for: - Worldbuilding / creative writing - Rule parsing and Q&amp;amp;A - Lightweight enough to run locally&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;🧠 &lt;strong&gt;What I want in the long run:&lt;/strong&gt; - A local AI DM assistant that remembers lore - Can roleplay NPCs (via SillyTavern or similar) - Can read and answer questions from PDFs (like the PHB or custom notes) - Privacy is important — I want to keep everything local&lt;/p&gt; &lt;p&gt;If you’ve got a setup like this or know how to connect the dots between SillyTavern + RAG + local models, I’d love your advice!&lt;/p&gt; &lt;p&gt;Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheArchivist314"&gt; /u/TheArchivist314 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxeg6a/seeking_help_setting_up_a_local_llm_assistant_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxeg6a/seeking_help_setting_up_a_local_llm_assistant_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxeg6a/seeking_help_setting_up_a_local_llm_assistant_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T11:16:50+00:00</published>
+    <published>2025-05-27T15:53:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1kx51dp</id>
@@ -47,19 +34,6 @@
     <published>2025-05-28T01:46:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kwqt64</id>
-    <title>[Research] AutoThink: Adaptive reasoning technique that improves local LLM performance by 43% on GPQA-Diamond</title>
-    <updated>2025-05-27T15:53:20+00:00</updated>
-    <author>
-      <name>/u/asankhs</name>
-      <uri>https://old.reddit.com/user/asankhs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share a technique we've been working on called &lt;strong&gt;AutoThink&lt;/strong&gt; that significantly improves reasoning performance on local models through adaptive resource allocation and steering vectors.&lt;/p&gt; &lt;h1&gt;What is AutoThink?&lt;/h1&gt; &lt;p&gt;Instead of giving every query the same amount of &amp;quot;thinking time,&amp;quot; AutoThink:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Classifies query complexity&lt;/strong&gt; (HIGH/LOW) using an adaptive classifier&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamically allocates thinking tokens&lt;/strong&gt; based on complexity (70-90% for hard problems, 20-40% for simple ones)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Uses steering vectors&lt;/strong&gt; to guide reasoning patterns during generation&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Think of it as making your local model &amp;quot;think harder&amp;quot; on complex problems and &amp;quot;think faster&amp;quot; on simple ones.&lt;/p&gt; &lt;h1&gt;Performance Results&lt;/h1&gt; &lt;p&gt;Tested on &lt;strong&gt;DeepSeek-R1-Distill-Qwen-1.5B&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPQA-Diamond&lt;/strong&gt;: 31.06% vs 21.72% baseline (+9.34 points, 43% relative improvement)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MMLU-Pro&lt;/strong&gt;: 26.38% vs 25.58% baseline (+0.8 points)&lt;/li&gt; &lt;li&gt;Uses &lt;strong&gt;fewer tokens&lt;/strong&gt; than baseline approaches&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Technical Approach&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Steering Vectors&lt;/strong&gt;: We use Pivotal Token Search (PTS) - a technique from Microsoft's Phi-4 paper that we implemented and enhanced. These vectors modify activations to encourage specific reasoning patterns:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;depth_and_thoroughness&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;numerical_accuracy&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;self_correction&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;exploration&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;organization&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;: Built on our adaptive classifier that can learn new complexity categories without retraining.&lt;/p&gt; &lt;h1&gt;Model Compatibility&lt;/h1&gt; &lt;p&gt;Works with any local reasoning model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek-R1 variants&lt;/li&gt; &lt;li&gt;Qwen models&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How to Try It&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;# Install optillm pip install optillm # Basic usage from optillm.autothink import autothink_decode response = autothink_decode( model, tokenizer, messages, { &amp;quot;steering_dataset&amp;quot;: &amp;quot;codelion/Qwen3-0.6B-pts-steering-vectors&amp;quot;, &amp;quot;target_layer&amp;quot;: 19 # adjust based on your model } ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Full examples in the repo: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Research Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327"&gt;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AutoThink Code&lt;/strong&gt;: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PTS Implementation&lt;/strong&gt;: &lt;a href="https://github.com/codelion/pts"&gt;https://github.com/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HuggingFace Blog&lt;/strong&gt;: &lt;a href="https://huggingface.co/blog/codelion/pts"&gt;https://huggingface.co/blog/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptive Classifier&lt;/strong&gt;: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Current Limitations&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Requires models that support thinking tokens (&lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/think&amp;gt;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Need to tune &lt;code&gt;target_layer&lt;/code&gt; parameter for different model architectures&lt;/li&gt; &lt;li&gt;Steering vector datasets are model-specific (though we provide some pre-computed ones)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next&lt;/h1&gt; &lt;p&gt;We're working on:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support for more model architectures&lt;/li&gt; &lt;li&gt;Better automatic layer detection&lt;/li&gt; &lt;li&gt;Community-driven steering vector datasets&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Discussion&lt;/h1&gt; &lt;p&gt;Has anyone tried similar approaches with local models? I'm particularly interested in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How different model families respond to steering vectors&lt;/li&gt; &lt;li&gt;Alternative ways to classify query complexity&lt;/li&gt; &lt;li&gt;Ideas for extracting better steering vectors&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your thoughts and results if you try it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T15:53:20+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kxafjv</id>
     <title>When do you think the gap between local llm and o4-mini can be closed</title>
     <updated>2025-05-28T06:49:31+00:00</updated>
@@ -71,19 +45,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxafjv/when_do_you_think_the_gap_between_local_llm_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T06:49:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kxi7qh</id>
-    <title>Llama.cpp: Does it make sense to use a larger --n-predict (-n) than --ctx-size (-c)?</title>
-    <updated>2025-05-28T14:15:58+00:00</updated>
-    <author>
-      <name>/u/ParaboloidalCrest</name>
-      <uri>https://old.reddit.com/user/ParaboloidalCrest</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;My setup: A reasoning model eg Qwen3 32B at Q4KXL + 16k context. Those will fit snugly in 24GB VRAM and leave some room for other apps.&lt;/p&gt; &lt;p&gt;Problem: Reasoning models, 1 time out of 3 (in my use cases), will keep on thinking for longer than the 16k window, and that's why I set the -n option to prevent it from reasoning indefinitely.&lt;/p&gt; &lt;p&gt;Question: I can relax -n to perhaps 30k, which some reasoning models suggest. However, when -n is larger than -c, won't the context window shift and the response's relevance to my prompt start decreasing?&lt;/p&gt; &lt;p&gt;Thanks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParaboloidalCrest"&gt; /u/ParaboloidalCrest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T14:15:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1kx077t</id>
@@ -99,17 +60,30 @@
     <published>2025-05-27T22:00:34+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kxfq8r</id>
-    <title>Old model, new implementation</title>
-    <updated>2025-05-28T12:24:34+00:00</updated>
+    <id>t3_1kxj4ne</id>
+    <title>Is slower inference and non-realtime cheaper?</title>
+    <updated>2025-05-28T14:53:00+00:00</updated>
     <author>
-      <name>/u/foldl-li</name>
-      <uri>https://old.reddit.com/user/foldl-li</uri>
+      <name>/u/AryanEmbered</name>
+      <uri>https://old.reddit.com/user/AryanEmbered</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/foldl/chatllm.cpp"&gt;chatllm.cpp&lt;/a&gt; implements &lt;a href="https://huggingface.co/adept/fuyu-8b"&gt;Fuyu-8b&lt;/a&gt; as the 1st supported vision model.&lt;/p&gt; &lt;p&gt;I have search this group. Not many have tested this model due to lack of support from llama.cpp. Now, would you like to try this model? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/foldl-li"&gt; /u/foldl-li &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;is there a service that can take in my requests, and then give me the response after A WHILE, like, days later.&lt;/p&gt; &lt;p&gt;and is significantly cheaper?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AryanEmbered"&gt; /u/AryanEmbered &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxj4ne/is_slower_inference_and_nonrealtime_cheaper/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T12:24:34+00:00</published>
+    <published>2025-05-28T14:53:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxk2zf</id>
+    <title>Dual RTX 3090 users (are there many of us?)</title>
+    <updated>2025-05-28T15:30:48+00:00</updated>
+    <author>
+      <name>/u/StandardLovers</name>
+      <uri>https://old.reddit.com/user/StandardLovers</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What is your TDP ? (Or optimal clock speeds) What is your PCIe lane speeds ? Power supply ? Planning to upgrade or sell before prices drop ? Any other remarks ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StandardLovers"&gt; /u/StandardLovers &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T15:30:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxg95a</id>
@@ -123,6 +97,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxg95a/vllm_classify_bad_results/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T12:50:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxi7qh</id>
+    <title>Llama.cpp: Does it make sense to use a larger --n-predict (-n) than --ctx-size (-c)?</title>
+    <updated>2025-05-28T14:15:58+00:00</updated>
+    <author>
+      <name>/u/ParaboloidalCrest</name>
+      <uri>https://old.reddit.com/user/ParaboloidalCrest</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;My setup: A reasoning model eg Qwen3 32B at Q4KXL + 16k context. Those will fit snugly in 24GB VRAM and leave some room for other apps.&lt;/p&gt; &lt;p&gt;Problem: Reasoning models, 1 time out of 3 (in my use cases), will keep on thinking for longer than the 16k window, and that's why I set the -n option to prevent it from reasoning indefinitely.&lt;/p&gt; &lt;p&gt;Question: I can relax -n to perhaps 30k, which some reasoning models suggest. However, when -n is larger than -c, won't the context window shift and the response's relevance to my prompt start decreasing?&lt;/p&gt; &lt;p&gt;Thanks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ParaboloidalCrest"&gt; /u/ParaboloidalCrest &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T14:15:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxfq8r</id>
+    <title>Old model, new implementation</title>
+    <updated>2025-05-28T12:24:34+00:00</updated>
+    <author>
+      <name>/u/foldl-li</name>
+      <uri>https://old.reddit.com/user/foldl-li</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://github.com/foldl/chatllm.cpp"&gt;chatllm.cpp&lt;/a&gt; implements &lt;a href="https://huggingface.co/adept/fuyu-8b"&gt;Fuyu-8b&lt;/a&gt; as the 1st supported vision model.&lt;/p&gt; &lt;p&gt;I have search this group. Not many have tested this model due to lack of support from llama.cpp. Now, would you like to try this model? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/foldl-li"&gt; /u/foldl-li &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxfq8r/old_model_new_implementation/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T12:24:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxc5vo</id>
@@ -151,19 +151,6 @@
     <published>2025-05-27T10:40:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kxjbb5</id>
-    <title>QwQ 32B is Amazing (&amp; Sharing my 131k + Imatrix)</title>
-    <updated>2025-05-28T15:00:38+00:00</updated>
-    <author>
-      <name>/u/crossivejoker</name>
-      <uri>https://old.reddit.com/user/crossivejoker</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious what your experience has been with QwQ 32B. I've seen really good takes on QwQ vs Qwen3, but I think they're not comparable. Here's the differences I see and I'd love feedback.&lt;/p&gt; &lt;h1&gt;When To Use Qwen3&lt;/h1&gt; &lt;p&gt;If I had to choose between QwQ 32B versus Qwen3 for daily AI assistant tasks, I'd choose Qwen3. This is because for 99% of general questions or work, Qwen3 is faster, answers just as well, and does amazing. As where QwQ 32B will do just as good, but it'll often over think and spend much longer answering any question.&lt;/p&gt; &lt;h1&gt;When To Use QwQ 32B&lt;/h1&gt; &lt;p&gt;Now for an AI agent or doing orchestration level work, I would choose QwQ all day every day. It's not that Qwen3 is bad, but it cannot handle the same level of semantic orchestration. In fact, ChatGPT 4o can't keep up with what I'm pushing QwQ to do.&lt;/p&gt; &lt;h1&gt;Benchmarks&lt;/h1&gt; &lt;p&gt;&lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix/blob/main/Benchmarks/Simulation%20Fidelity%20Benchmark.md"&gt;Simulation Fidelity Benchmark&lt;/a&gt; is something I created a long time ago. Firstly I love RP based D&amp;amp;D inspired AI simulated games. But, I've always hated how current AI systems makes me the driver, but without any gravity. Anything and everything I say goes, so years ago I made a benchmark that is meant to be a better enforcement of simulated gravity. And as I'd eventually build agents that'd do real world tasks, this test funnily was an amazing benchmark for everything. So I know it's dumb that I use something like this, but it's been a fantastic way for me to gauge the wisdom of an AI model. I've often valued wisdom over intelligence. It's not about an AI knowing a random capital of X country, it's about knowing when to Google the capital of X country. &lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix/tree/main/Benchmarks"&gt;Benchmark Tests&lt;/a&gt; are here. And if more details on inputs or anything are wanted, I'm more than happy to share. My system prompt was counted with GPT 4 token counter (bc I'm lazy) and it was ~6k tokens. Input was ~1.6k. The shown benchmarks was the end results. But I had tests ranging a total of ~16k tokens to ~40k tokens. I don't have the hardware to test further sadly.&lt;/p&gt; &lt;h1&gt;My Experience With QwQ 32B&lt;/h1&gt; &lt;p&gt;So, what am I doing? Why do I like QwQ? Because it's not just emulating a good story, it's remembering many dozens of semantic threads. Did an item get moved? Is the scene changing? Did the last result from context require memory changes? Does the current context provide sufficient information or is the custom RAG database created needed to be called with an optimized query based on meta data tags provided? &lt;/p&gt; &lt;p&gt;Oh I'm just getting started, but I've been pushing QwQ to the absolute edge. Because AI agents whether a dungeon master of a game, creating projects, doing research, or anything else. A single missed step is catastrophic to simulated reality. Missed contexts leads to semantic degradation in time. Because my agents have to consistently alter what it remembers or knows. I have limited context limits, so it must always tell the future version that must run what it must do for the next part of the process.&lt;/p&gt; &lt;p&gt;Qwen3, Gemma, GPT 4o, they do amazing. To a point. But they're trained to be assistants. But QwQ 32B is weird, incredibly weird. The kind of weird I love. It's an agent level battle tactician. I'm allowing my agent to constantly rewrite it's own system prompts (partially), have full access to grab or alter it's own short term and long term memory, and it's not missing a beat.&lt;/p&gt; &lt;p&gt;The perfection is what makes QwQ so very good. Near perfection is required when doing wisdom based AI agent tasks.&lt;/p&gt; &lt;h1&gt;QwQ-32B-Abliterated-131k-GGUF-Yarn-Imatrix&lt;/h1&gt; &lt;p&gt;I've enjoyed QwQ 32B so much that I made my own version. Note, this isn't a fine tune or anything like that, but my own custom GGUF converted version to run on llama.cpp. But I did do the following:&lt;/p&gt; &lt;p&gt;1.) Altered the llama.cpp conversion script to add yarn meta data tags. (TLDR, unlocked the normal 8k precision but can handle ~32k to 131,072 tokens)&lt;/p&gt; &lt;p&gt;2.) Utilized a hybrid FP16 process with all quants with embed, output, all 64 layers (attention/feed forward weights + bias).&lt;/p&gt; &lt;p&gt;3.) Q4 to Q6 were all created with a ~16M token imatrix to make them significantly better and bring the level of precision much closer to Q8. (Q8 excluded, reasons in repo).&lt;/p&gt; &lt;p&gt;The repo is here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix"&gt;https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Have You Really Used QwQ?&lt;/h1&gt; &lt;p&gt;I've had a fantastic time with QwQ 32B so far. When I say that Qwen3 and other models can't keep up, I've genuinely tried to put each in an environment to compete on equal footing. It's not that everything else was &amp;quot;bad&amp;quot; it just wasn't as perfect as QwQ. But I'd also love feedback.&lt;/p&gt; &lt;p&gt;I'm more than open to being wrong and hearing why. Is Qwen3 able to hit just as hard? Note I did utilize Qwen3 of all sizes plus think mode. &lt;/p&gt; &lt;p&gt;But I've just been incredibly happy to use QwQ 32B because it's the first model that's open source and something I can run locally that can perform the tasks I want. So far any API based models to do the tasks I wanted would cost ~$1k minimum a month, so it's really amazing to be able to finally run something this good locally.&lt;/p&gt; &lt;p&gt;If I could get just as much power with a faster, more efficient, or smaller model, that'd be amazing. But, I can't find it. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/crossivejoker"&gt; /u/crossivejoker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T15:00:38+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kwucpn</id>
     <title>😞No hate but claude-4 is disappointing</title>
     <updated>2025-05-27T18:10:17+00:00</updated>
@@ -177,19 +164,6 @@
     <published>2025-05-27T18:10:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kxf0ig</id>
-    <title>Parakeet-TDT 0.6B v2 FastAPI STT Service (OpenAI-style API + Experimental Streaming)</title>
-    <updated>2025-05-28T11:47:57+00:00</updated>
-    <author>
-      <name>/u/Shadowfita</name>
-      <uri>https://old.reddit.com/user/Shadowfita</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi! I'm (finally) releasing a FastAPI wrapper around NVIDIA’s Parakeet-TDT 0.6B v2 ASR model with:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;REST &lt;code&gt;/transcribe&lt;/code&gt; endpoint with optional timestamps&lt;/li&gt; &lt;li&gt;Health &amp;amp; debug endpoints: &lt;code&gt;/healthz&lt;/code&gt;, &lt;code&gt;/debug/cfg&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Experimental WebSocket &lt;code&gt;/ws&lt;/code&gt; for real-time PCM streaming and partial/full transcripts&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/Shadowfita/parakeet-tdt-0.6b-v2-fastapi"&gt;https://github.com/Shadowfita/parakeet-tdt-0.6b-v2-fastapi&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Shadowfita"&gt; /u/Shadowfita &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T11:47:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kxbmr9</id>
     <title>Another Ryzen Max+ 395 machine has been released. Are all the Chinese Max+ 395 machines the same?</title>
     <updated>2025-05-28T08:10:10+00:00</updated>
@@ -201,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxbmr9/another_ryzen_max_395_machine_has_been_released/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T08:10:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxf0ig</id>
+    <title>Parakeet-TDT 0.6B v2 FastAPI STT Service (OpenAI-style API + Experimental Streaming)</title>
+    <updated>2025-05-28T11:47:57+00:00</updated>
+    <author>
+      <name>/u/Shadowfita</name>
+      <uri>https://old.reddit.com/user/Shadowfita</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi! I'm (finally) releasing a FastAPI wrapper around NVIDIA’s Parakeet-TDT 0.6B v2 ASR model with:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;REST &lt;code&gt;/transcribe&lt;/code&gt; endpoint with optional timestamps&lt;/li&gt; &lt;li&gt;Health &amp;amp; debug endpoints: &lt;code&gt;/healthz&lt;/code&gt;, &lt;code&gt;/debug/cfg&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Experimental WebSocket &lt;code&gt;/ws&lt;/code&gt; for real-time PCM streaming and partial/full transcripts&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/Shadowfita/parakeet-tdt-0.6b-v2-fastapi"&gt;https://github.com/Shadowfita/parakeet-tdt-0.6b-v2-fastapi&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Shadowfita"&gt; /u/Shadowfita &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxf0ig/parakeettdt_06b_v2_fastapi_stt_service/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T11:47:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxh07e</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kx9nfk/megakernel_doubles_llama1b_inference_speed_for/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T05:58:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxjbb5</id>
+    <title>QwQ 32B is Amazing (&amp; Sharing my 131k + Imatrix)</title>
+    <updated>2025-05-28T15:00:38+00:00</updated>
+    <author>
+      <name>/u/crossivejoker</name>
+      <uri>https://old.reddit.com/user/crossivejoker</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm curious what your experience has been with QwQ 32B. I've seen really good takes on QwQ vs Qwen3, but I think they're not comparable. Here's the differences I see and I'd love feedback.&lt;/p&gt; &lt;h1&gt;When To Use Qwen3&lt;/h1&gt; &lt;p&gt;If I had to choose between QwQ 32B versus Qwen3 for daily AI assistant tasks, I'd choose Qwen3. This is because for 99% of general questions or work, Qwen3 is faster, answers just as well, and does amazing. As where QwQ 32B will do just as good, but it'll often over think and spend much longer answering any question.&lt;/p&gt; &lt;h1&gt;When To Use QwQ 32B&lt;/h1&gt; &lt;p&gt;Now for an AI agent or doing orchestration level work, I would choose QwQ all day every day. It's not that Qwen3 is bad, but it cannot handle the same level of semantic orchestration. In fact, ChatGPT 4o can't keep up with what I'm pushing QwQ to do.&lt;/p&gt; &lt;h1&gt;Benchmarks&lt;/h1&gt; &lt;p&gt;&lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix/blob/main/Benchmarks/Simulation%20Fidelity%20Benchmark.md"&gt;Simulation Fidelity Benchmark&lt;/a&gt; is something I created a long time ago. Firstly I love RP based D&amp;amp;D inspired AI simulated games. But, I've always hated how current AI systems makes me the driver, but without any gravity. Anything and everything I say goes, so years ago I made a benchmark that is meant to be a better enforcement of simulated gravity. And as I'd eventually build agents that'd do real world tasks, this test funnily was an amazing benchmark for everything. So I know it's dumb that I use something like this, but it's been a fantastic way for me to gauge the wisdom of an AI model. I've often valued wisdom over intelligence. It's not about an AI knowing a random capital of X country, it's about knowing when to Google the capital of X country. &lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix/tree/main/Benchmarks"&gt;Benchmark Tests&lt;/a&gt; are here. And if more details on inputs or anything are wanted, I'm more than happy to share. My system prompt was counted with GPT 4 token counter (bc I'm lazy) and it was ~6k tokens. Input was ~1.6k. The shown benchmarks was the end results. But I had tests ranging a total of ~16k tokens to ~40k tokens. I don't have the hardware to test further sadly.&lt;/p&gt; &lt;h1&gt;My Experience With QwQ 32B&lt;/h1&gt; &lt;p&gt;So, what am I doing? Why do I like QwQ? Because it's not just emulating a good story, it's remembering many dozens of semantic threads. Did an item get moved? Is the scene changing? Did the last result from context require memory changes? Does the current context provide sufficient information or is the custom RAG database created needed to be called with an optimized query based on meta data tags provided? &lt;/p&gt; &lt;p&gt;Oh I'm just getting started, but I've been pushing QwQ to the absolute edge. Because AI agents whether a dungeon master of a game, creating projects, doing research, or anything else. A single missed step is catastrophic to simulated reality. Missed contexts leads to semantic degradation in time. Because my agents have to consistently alter what it remembers or knows. I have limited context limits, so it must always tell the future version that must run what it must do for the next part of the process.&lt;/p&gt; &lt;p&gt;Qwen3, Gemma, GPT 4o, they do amazing. To a point. But they're trained to be assistants. But QwQ 32B is weird, incredibly weird. The kind of weird I love. It's an agent level battle tactician. I'm allowing my agent to constantly rewrite it's own system prompts (partially), have full access to grab or alter it's own short term and long term memory, and it's not missing a beat.&lt;/p&gt; &lt;p&gt;The perfection is what makes QwQ so very good. Near perfection is required when doing wisdom based AI agent tasks.&lt;/p&gt; &lt;h1&gt;QwQ-32B-Abliterated-131k-GGUF-Yarn-Imatrix&lt;/h1&gt; &lt;p&gt;I've enjoyed QwQ 32B so much that I made my own version. Note, this isn't a fine tune or anything like that, but my own custom GGUF converted version to run on llama.cpp. But I did do the following:&lt;/p&gt; &lt;p&gt;1.) Altered the llama.cpp conversion script to add yarn meta data tags. (TLDR, unlocked the normal 8k precision but can handle ~32k to 131,072 tokens)&lt;/p&gt; &lt;p&gt;2.) Utilized a hybrid FP16 process with all quants with embed, output, all 64 layers (attention/feed forward weights + bias).&lt;/p&gt; &lt;p&gt;3.) Q4 to Q6 were all created with a ~16M token imatrix to make them significantly better and bring the level of precision much closer to Q8. (Q8 excluded, reasons in repo).&lt;/p&gt; &lt;p&gt;The repo is here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix"&gt;https://huggingface.co/datasets/magiccodingman/QwQ-32B-abliterated-131k-GGUF-Yarn-Imatrix&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Have You Really Used QwQ?&lt;/h1&gt; &lt;p&gt;I've had a fantastic time with QwQ 32B so far. When I say that Qwen3 and other models can't keep up, I've genuinely tried to put each in an environment to compete on equal footing. It's not that everything else was &amp;quot;bad&amp;quot; it just wasn't as perfect as QwQ. But I'd also love feedback.&lt;/p&gt; &lt;p&gt;I'm more than open to being wrong and hearing why. Is Qwen3 able to hit just as hard? Note I did utilize Qwen3 of all sizes plus think mode. &lt;/p&gt; &lt;p&gt;But I've just been incredibly happy to use QwQ 32B because it's the first model that's open source and something I can run locally that can perform the tasks I want. So far any API based models to do the tasks I wanted would cost ~$1k minimum a month, so it's really amazing to be able to finally run something this good locally.&lt;/p&gt; &lt;p&gt;If I could get just as much power with a faster, more efficient, or smaller model, that'd be amazing. But, I can't find it. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/crossivejoker"&gt; /u/crossivejoker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxjbb5/qwq_32b_is_amazing_sharing_my_131k_imatrix/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T15:00:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxgzd1</id>
