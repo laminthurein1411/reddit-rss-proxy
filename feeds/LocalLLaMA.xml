@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-28T15:49:34+00:00</updated>
+  <updated>2025-05-28T16:07:04+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kwqt64</id>
-    <title>[Research] AutoThink: Adaptive reasoning technique that improves local LLM performance by 43% on GPQA-Diamond</title>
-    <updated>2025-05-27T15:53:20+00:00</updated>
-    <author>
-      <name>/u/asankhs</name>
-      <uri>https://old.reddit.com/user/asankhs</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLLaMA"&gt;r/LocalLLaMA&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share a technique we've been working on called &lt;strong&gt;AutoThink&lt;/strong&gt; that significantly improves reasoning performance on local models through adaptive resource allocation and steering vectors.&lt;/p&gt; &lt;h1&gt;What is AutoThink?&lt;/h1&gt; &lt;p&gt;Instead of giving every query the same amount of &amp;quot;thinking time,&amp;quot; AutoThink:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Classifies query complexity&lt;/strong&gt; (HIGH/LOW) using an adaptive classifier&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamically allocates thinking tokens&lt;/strong&gt; based on complexity (70-90% for hard problems, 20-40% for simple ones)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Uses steering vectors&lt;/strong&gt; to guide reasoning patterns during generation&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Think of it as making your local model &amp;quot;think harder&amp;quot; on complex problems and &amp;quot;think faster&amp;quot; on simple ones.&lt;/p&gt; &lt;h1&gt;Performance Results&lt;/h1&gt; &lt;p&gt;Tested on &lt;strong&gt;DeepSeek-R1-Distill-Qwen-1.5B&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;GPQA-Diamond&lt;/strong&gt;: 31.06% vs 21.72% baseline (+9.34 points, 43% relative improvement)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MMLU-Pro&lt;/strong&gt;: 26.38% vs 25.58% baseline (+0.8 points)&lt;/li&gt; &lt;li&gt;Uses &lt;strong&gt;fewer tokens&lt;/strong&gt; than baseline approaches&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Technical Approach&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Steering Vectors&lt;/strong&gt;: We use Pivotal Token Search (PTS) - a technique from Microsoft's Phi-4 paper that we implemented and enhanced. These vectors modify activations to encourage specific reasoning patterns:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;depth_and_thoroughness&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;numerical_accuracy&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;self_correction&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;exploration&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;organization&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;: Built on our adaptive classifier that can learn new complexity categories without retraining.&lt;/p&gt; &lt;h1&gt;Model Compatibility&lt;/h1&gt; &lt;p&gt;Works with any local reasoning model:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;DeepSeek-R1 variants&lt;/li&gt; &lt;li&gt;Qwen models&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;How to Try It&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;# Install optillm pip install optillm # Basic usage from optillm.autothink import autothink_decode response = autothink_decode( model, tokenizer, messages, { &amp;quot;steering_dataset&amp;quot;: &amp;quot;codelion/Qwen3-0.6B-pts-steering-vectors&amp;quot;, &amp;quot;target_layer&amp;quot;: 19 # adjust based on your model } ) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Full examples in the repo: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Research Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;: &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327"&gt;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5253327&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AutoThink Code&lt;/strong&gt;: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/autothink"&gt;https://github.com/codelion/optillm/tree/main/optillm/autothink&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;PTS Implementation&lt;/strong&gt;: &lt;a href="https://github.com/codelion/pts"&gt;https://github.com/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HuggingFace Blog&lt;/strong&gt;: &lt;a href="https://huggingface.co/blog/codelion/pts"&gt;https://huggingface.co/blog/codelion/pts&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptive Classifier&lt;/strong&gt;: &lt;a href="https://github.com/codelion/adaptive-classifier"&gt;https://github.com/codelion/adaptive-classifier&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Current Limitations&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Requires models that support thinking tokens (&lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/think&amp;gt;&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;Need to tune &lt;code&gt;target_layer&lt;/code&gt; parameter for different model architectures&lt;/li&gt; &lt;li&gt;Steering vector datasets are model-specific (though we provide some pre-computed ones)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next&lt;/h1&gt; &lt;p&gt;We're working on:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Support for more model architectures&lt;/li&gt; &lt;li&gt;Better automatic layer detection&lt;/li&gt; &lt;li&gt;Community-driven steering vector datasets&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Discussion&lt;/h1&gt; &lt;p&gt;Has anyone tried similar approaches with local models? I'm particularly interested in:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How different model families respond to steering vectors&lt;/li&gt; &lt;li&gt;Alternative ways to classify query complexity&lt;/li&gt; &lt;li&gt;Ideas for extracting better steering vectors&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your thoughts and results if you try it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwqt64/research_autothink_adaptive_reasoning_technique/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-27T15:53:20+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kx51dp</id>
-    <title>Tip for those building agents. The CLI is king.</title>
-    <updated>2025-05-28T01:46:50+00:00</updated>
-    <author>
-      <name>/u/LocoMod</name>
-      <uri>https://old.reddit.com/user/LocoMod</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kx51dp/tip_for_those_building_agents_the_cli_is_king/"&gt; &lt;img alt="Tip for those building agents. The CLI is king." src="https://b.thumbs.redditmedia.com/p3QuldvOYVK8hBY2sPdoITG34rO_nYvSh-jsqyl80VA.jpg" title="Tip for those building agents. The CLI is king." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;There are a lot of ways of exposing tools to your agents depending on the framework or your implementation. MCP servers are making this trivial. But I am finding that exposing a simple CLI tool to your LLM/Agent with instructions on how to use common cli commands can actually work better, while reducing complexity. For example, the &lt;code&gt;wc&lt;/code&gt; command: &lt;a href="https://en.wikipedia.org/wiki/Wc_(Unix)"&gt;https://en.wikipedia.org/wiki/Wc_(Unix)&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Crafting a system prompt for your agents to make use of these universal, but perhaps obscure commands for your level of experience, can greatly increase the probability of a successful task/step completion.&lt;/p&gt; &lt;p&gt;I have been experimenting with using a lot of MCP servers and exposing their tools to my agent fleet implementation (what should a group of agents be called?, a perplexity of agents? :D ), and have found that giving your agents the ability to simply issue cli commands can work a lot better.&lt;/p&gt; &lt;p&gt;Thoughts?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LocoMod"&gt; /u/LocoMod &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kx51dp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kx51dp/tip_for_those_building_agents_the_cli_is_king/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kx51dp/tip_for_those_building_agents_the_cli_is_king/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T01:46:50+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kxafjv</id>
     <title>When do you think the gap between local llm and o4-mini can be closed</title>
@@ -73,19 +47,6 @@
     <published>2025-05-28T14:53:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kxk2zf</id>
-    <title>Dual RTX 3090 users (are there many of us?)</title>
-    <updated>2025-05-28T15:30:48+00:00</updated>
-    <author>
-      <name>/u/StandardLovers</name>
-      <uri>https://old.reddit.com/user/StandardLovers</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What is your TDP ? (Or optimal clock speeds) What is your PCIe lane speeds ? Power supply ? Planning to upgrade or sell before prices drop ? Any other remarks ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StandardLovers"&gt; /u/StandardLovers &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T15:30:48+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kxg95a</id>
     <title>vLLM Classify Bad Results</title>
     <updated>2025-05-28T12:50:16+00:00</updated>
@@ -110,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxi7qh/llamacpp_does_it_make_sense_to_use_a_larger/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T14:15:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxkke4</id>
+    <title>I know it's "LOCAL"-LLaMA but...</title>
+    <updated>2025-05-28T15:49:58+00:00</updated>
+    <author>
+      <name>/u/mr_happy_nice</name>
+      <uri>https://old.reddit.com/user/mr_happy_nice</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been weighing buying vs renting for AI tasks/gens while working say ~8hrs a day. I did use AI to help with breakdown below (surprise, right.) This wouldn't be such a big thing to me, I would just buy the hardware but, I'm trying to build a place and go off-grid and use as little power as possible. (Even hooking up DC powered LEDs straight from the power source so I don't lose energy converting from DC to AC with an inverter then back to DC from AC in the bulb's rectifier.)&lt;br /&gt; I was looking at rental costs and Vast and other I can get a 5060ti with EPYC and over 128gb of fast ram for like $0.11 an hour, lol like what? They've only gotta be making like 5 cents an hour or something after overhead.. Anyways pricing out a comparable PC I think around $1500ish &amp;lt;- max I would spend. Also I say 5060ti because I wanted the new features and to be sort of future proof. Complete privacy for these use cases is not paramount - another reason I can consider this. &lt;/p&gt; &lt;p&gt;Breakdown:&lt;/p&gt; &lt;h1&gt;Computer Cost Breakdown: Buy vs. Rent (for 8 Hours/Day Use)&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt; You need computing power for 8 hours a day. &lt;strong&gt;PC Components:&lt;/strong&gt; High-performance setup with AMD EPYC CPU, RTX 5060 Ti GPU, and fast RAM. &lt;strong&gt;Electricity Cost:&lt;/strong&gt; Assumed average of $0.15 per kWh.&lt;/p&gt; &lt;h1&gt;Option 1: Buying a High-Performance PC&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Initial Purchase Cost:&lt;/strong&gt; &lt;strong&gt;$1500&lt;/strong&gt; (One-time investment) &lt;ul&gt; &lt;li&gt;This is the upfront cost to acquire the hardware.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Estimated Daily Electricity Cost (for 8 hours of use):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Power Consumption:&lt;/strong&gt; Your EPYC + RTX 5060 Ti system is estimated to draw an average of &lt;strong&gt;400 Watts (0.4 kW)&lt;/strong&gt; during active use.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Daily Usage:&lt;/strong&gt; 0.4 kW * 8 hours = 3.2 kWh&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Daily Electricity Cost:&lt;/strong&gt; 3.2 kWh * $0.15/kWh = &lt;strong&gt;$0.48&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Estimated Annual Electricity Cost (for 8 hours/day, 365 days):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Annual Usage:&lt;/strong&gt; 3.2 kWh/day * 365 days = 1168 kWh&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Annual Electricity Cost:&lt;/strong&gt; 1168 kWh * $0.15/kWh = &lt;strong&gt;$175.20&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Total Cost of Ownership (Year 1):&lt;/strong&gt; Initial PC Cost ($1500) + Annual Electricity ($175.20) = &lt;strong&gt;$1675.20&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Ongoing Annual Cost (after Year 1, mainly electricity):&lt;/strong&gt; &lt;strong&gt;$175.20 per year&lt;/strong&gt; (for electricity)&lt;/p&gt; &lt;h1&gt;Option 2: Renting a Server&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Hourly Rental Cost:&lt;/strong&gt; &lt;strong&gt;$0.11 per hour&lt;/strong&gt; (as provided)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Daily Rental Cost (for 8 hours of use):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;$0.11/hour * 8 hours/day = &lt;strong&gt;$0.88&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Annual Rental Cost (for 8 hours/day, 365 days):&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;$0.88/day * 365 days = &lt;strong&gt;$321.20&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Total Annual Cost of Renting:&lt;/strong&gt; &lt;strong&gt;$321.20 per year&lt;/strong&gt;&lt;/p&gt; &lt;h1&gt;The &amp;quot;Value&amp;quot; Comparison: How Many Days/Years of Renting for the Price of Buying?&lt;/h1&gt; &lt;p&gt;To truly compare the value, we look at how much server rental you could get for the initial $1500 PC investment, while also acknowledging the ongoing electricity cost of the PC.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Years of Server Rental Covered by PC's Initial Price:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;$1500 (PC Initial Cost) / $321.20 (Annual Server Rental Cost) ≈ &lt;strong&gt;4.67 years&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This means that the initial &lt;strong&gt;$1500&lt;/strong&gt; spent on the PC could cover nearly &lt;strong&gt;4 years and 8 months&lt;/strong&gt; of server rental (at 8 hours/day).&lt;/p&gt; &lt;h1&gt;Weighing Your Options: Buy vs. Rent&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Buying a High-Performance PC:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Pros:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Full Ownership &amp;amp; Control:&lt;/strong&gt; Complete control over hardware, software, and local data.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No Recurring Rental Fees for Hardware:&lt;/strong&gt; Once purchased, the hardware itself is yours.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Offline Capability:&lt;/strong&gt; Can operate without an internet connection for many tasks.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Potentially Lower Long-Term Cost (if used heavily over many years):&lt;/strong&gt; After the initial purchase, the primary ongoing cost is electricity.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Cons:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;High Upfront Cost:&lt;/strong&gt; Requires a significant initial investment of $1500.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Ongoing Electricity Cost:&lt;/strong&gt; Adds $175.20 annually to your expenses.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Self-Responsibility:&lt;/strong&gt; You are fully responsible for all hardware maintenance, repairs, and future upgrades.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Depreciation:&lt;/strong&gt; Hardware value decreases over time.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Limited Scalability:&lt;/strong&gt; Upgrading capacity can be more complex and expensive.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Renting a Server:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Pros:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Low Upfront Cost:&lt;/strong&gt; No large initial investment. You pay as you go.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Scalability &amp;amp; Flexibility:&lt;/strong&gt; Easily adjust resources (CPU, RAM, storage) up or down as your needs change.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Zero Hardware Maintenance:&lt;/strong&gt; The provider handles all hardware upkeep, repairs, and infrastructure.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Predictable Annual Costs:&lt;/strong&gt; $321.20 per year for 8 hours of daily use.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;High Reliability &amp;amp; Uptime:&lt;/strong&gt; Leverages professional data center infrastructure.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Accessibility:&lt;/strong&gt; Access your server from anywhere with an internet connection.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Cons:&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Recurring Costs:&lt;/strong&gt; You pay indefinitely as long as you use the service.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dependency on Provider:&lt;/strong&gt; Rely on the provider's services, policies, and security.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Data Security:&lt;/strong&gt; Your data resides on a third-party server.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Internet Dependent:&lt;/strong&gt; Requires a stable internet connection for access.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Higher Annual Cost (for this specific 8-hour daily use):&lt;/strong&gt; $321.20 annually compared to the PC's $175.20 annual electricity.&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;While purchasing a high-performance PC has a significant upfront cost of &lt;strong&gt;$1500&lt;/strong&gt;, its annual electricity cost is &lt;strong&gt;$175.20&lt;/strong&gt;. You could rent a server for almost &lt;strong&gt;4 years and 8 months&lt;/strong&gt; with that initial PC investment. However, on an &lt;strong&gt;annual operational cost basis&lt;/strong&gt;, renting at $321.20/year for 8 hours daily is &lt;em&gt;more expensive&lt;/em&gt; than just paying the electricity for your owned PC ($175.20/year).&lt;/p&gt; &lt;p&gt;The decision hinges on whether you prefer a large initial outlay for ownership and lower ongoing costs, or no upfront cost with higher, recurring operational expenses and greater flexibility.&lt;/p&gt; &lt;p&gt;---&lt;/p&gt; &lt;p&gt;I mean, after 4.5 years it's time for a newer card and pc anyway, right? Any other suggestions? I think the next gen of the AMD, I don't want to offend anyone and say &amp;quot;mac mini competitors&amp;quot; but that's what they're going for right? I think the next gen like AMD AI Max 4xx devices might be pretty dope. might just save up for a low power little AI cube. Everything will be perfectly supported by then right?? eh... &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mr_happy_nice"&gt; /u/mr_happy_nice &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxkke4/i_know_its_localllama_but/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxkke4/i_know_its_localllama_but/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxkke4/i_know_its_localllama_but/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T15:49:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxfq8r</id>
@@ -149,6 +123,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kwk1jm/wife_isnt_home_that_means_h200_in_the_living_room/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-27T10:40:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxk2zf</id>
+    <title>Dual RTX 3090 users (are there many of us?)</title>
+    <updated>2025-05-28T15:30:48+00:00</updated>
+    <author>
+      <name>/u/StandardLovers</name>
+      <uri>https://old.reddit.com/user/StandardLovers</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What is your TDP ? (Or optimal clock speeds) What is your PCIe lane speeds ? Power supply ? Planning to upgrade or sell before prices drop ? Any other remarks ?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/StandardLovers"&gt; /u/StandardLovers &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk2zf/dual_rtx_3090_users_are_there_many_of_us/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T15:30:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxk3lk</id>
+    <title>Another reorg for Meta Llama: AGI team created</title>
+    <updated>2025-05-28T15:31:29+00:00</updated>
+    <author>
+      <name>/u/Terminator857</name>
+      <uri>https://old.reddit.com/user/Terminator857</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Which teams are going to get the most GPUs?&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.axios.com/2025/05/27/meta-ai-restructure-2025-agi-llama"&gt;https://www.axios.com/2025/05/27/meta-ai-restructure-2025-agi-llama&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Llama team divided into two teams:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;The AGI Foundations unit will include the company's &lt;strong&gt;Llama models&lt;/strong&gt;, as well as efforts to improve capabilities in reasoning, multimedia and voice.&lt;/li&gt; &lt;li&gt;The AI products team will be responsible for the Meta AI assistant, Meta's AI Studio and AI features within Facebook, Instagram and WhatsApp.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;The company's AI research unit, known as FAIR (Fundamental AI Research), remains separate from the new organizational structure, though one specific team working on multimedia is moving to the new AGI Foundations team.&lt;/p&gt; &lt;p&gt;Meta hopes that splitting a single large organization into smaller teams will speed product development and give the company more flexibility as it adds additional technical leaders.&lt;/p&gt; &lt;p&gt;The company is also &lt;a href="https://www.businessinsider.com/meta-llama-ai-talent-mistral-2025-5"&gt;seeing key talent depart&lt;/a&gt;, including to French rival Mistral, as reported by Business Insider.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Terminator857"&gt; /u/Terminator857 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk3lk/another_reorg_for_meta_llama_agi_team_created/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk3lk/another_reorg_for_meta_llama_agi_team_created/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxk3lk/another_reorg_for_meta_llama_agi_team_created/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T15:31:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1kwucpn</id>
@@ -216,19 +216,6 @@
     <published>2025-05-28T05:58:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kxgzd1</id>
-    <title>Is there an open source alternative to manus?</title>
-    <updated>2025-05-28T13:23:15+00:00</updated>
-    <author>
-      <name>/u/BoJackHorseMan53</name>
-      <uri>https://old.reddit.com/user/BoJackHorseMan53</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I tried manus and was surprised how ahead it is of other agents at browsing the web and using files, terminal etc autonomously.&lt;/p&gt; &lt;p&gt;There is no tool I've tried before that comes close to it.&lt;/p&gt; &lt;p&gt;What's the best open source alternative to Manus that you've tried?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BoJackHorseMan53"&gt; /u/BoJackHorseMan53 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-28T13:23:15+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kxjbb5</id>
     <title>QwQ 32B is Amazing (&amp; Sharing my 131k + Imatrix)</title>
     <updated>2025-05-28T15:00:38+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxhmgo/videogamebench_full_code_paper_release/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-28T13:51:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kxgzd1</id>
+    <title>Is there an open source alternative to manus?</title>
+    <updated>2025-05-28T13:23:15+00:00</updated>
+    <author>
+      <name>/u/BoJackHorseMan53</name>
+      <uri>https://old.reddit.com/user/BoJackHorseMan53</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I tried manus and was surprised how ahead it is of other agents at browsing the web and using files, terminal etc autonomously.&lt;/p&gt; &lt;p&gt;There is no tool I've tried before that comes close to it.&lt;/p&gt; &lt;p&gt;What's the best open source alternative to Manus that you've tried?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BoJackHorseMan53"&gt; /u/BoJackHorseMan53 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kxgzd1/is_there_an_open_source_alternative_to_manus/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-28T13:23:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kxdkms</id>
