@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-30T10:49:53+00:00</updated>
+  <updated>2025-05-30T11:06:01+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kyeo4z</id>
-    <title>When to Fine-Tune LLMs (and When Not To) - A Practical Guide</title>
-    <updated>2025-05-29T16:07:09+00:00</updated>
-    <author>
-      <name>/u/davernow</name>
-      <uri>https://old.reddit.com/user/davernow</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been building fine-tunes for 9 years (at my own startup, then at Apple, now at a second startup) and learned a lot along the way. I thought most of this was common knowledge, but I've been told it's helpful so wanted to write up a rough guide for when to (and when not to) fine-tune, what to expect, and which models to consider. Hopefully it's helpful!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: Fine-tuning can solve specific, measurable problems: inconsistent outputs, bloated inference costs, prompts that are too complex, and specialized behavior you can't achieve through prompting alone. However, you should pick the goals of fine-tuning before you start, to help you select the right base models.&lt;/p&gt; &lt;p&gt;Here's a quick overview of what fine-tuning can (and can't) do:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Quality Improvements&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Task-specific scores&lt;/strong&gt;: Teaching models how to respond through examples (way more effective than just prompting)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Style conformance&lt;/strong&gt;: A bank chatbot needs different tone than a fantasy RPG agent&lt;/li&gt; &lt;li&gt;&lt;strong&gt;JSON formatting&lt;/strong&gt;: Seen format accuracy jump from &amp;lt;5% to &amp;gt;99% with fine-tuning vs base model&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Other formatting requirements&lt;/strong&gt;: Produce consistent function calls, XML, YAML, markdown, etc&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Cost, Speed and Privacy Benefits&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Shorter prompts&lt;/strong&gt;: Move formatting, style, rules from prompts into the model itself &lt;ul&gt; &lt;li&gt;Formatting instructions → fine-tuning&lt;/li&gt; &lt;li&gt;Tone/style → fine-tuning&lt;/li&gt; &lt;li&gt;Rules/logic → fine-tuning&lt;/li&gt; &lt;li&gt;Chain of thought guidance → fine-tuning&lt;/li&gt; &lt;li&gt;Core task prompt → keep this, but can be much shorter&lt;/li&gt; &lt;/ul&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Smaller models&lt;/strong&gt;: Much smaller models can offer similar quality for specific tasks, once fine-tuned. Example: Qwen 14B runs 6x faster, costs ~3% of GPT-4.1.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Local deployment&lt;/strong&gt;: Fine-tune small models to run locally and privately. If building for others, this can drop your inference cost to zero.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Specialized Behaviors&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Tool calling&lt;/strong&gt;: Teaching when/how to use specific tools through examples&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Logic/rule following&lt;/strong&gt;: Better than putting everything in prompts, especially for complex conditional logic&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Bug fixes&lt;/strong&gt;: Add examples of failure modes with correct outputs to eliminate them&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Distillation&lt;/strong&gt;: Get large model to teach smaller model (surprisingly easy, takes ~20 minutes)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Learned reasoning patterns&lt;/strong&gt;: Teach specific thinking patterns for your domain instead of using expensive general reasoning models&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;What NOT to Use Fine-Tuning For&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Adding knowledge really isn't a good match for fine-tuning. Use instead:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;RAG for searchable info&lt;/li&gt; &lt;li&gt;System prompts for context&lt;/li&gt; &lt;li&gt;Tool calls for dynamic knowledge&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;You can combine these with fine-tuned models for the best of both worlds.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Base Model Selection by Goal&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Mobile local&lt;/strong&gt;: Gemma 3 3n/1B, Qwen 3 1.7B&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Desktop local&lt;/strong&gt;: Qwen 3 4B/8B, Gemma 3 2B/4B&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Cost/speed optimization&lt;/strong&gt;: Try 1B-32B range, compare tradeoff of quality/cost/speed&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Max quality&lt;/strong&gt;: Gemma 3 27B, Qwen3 large, Llama 70B, GPT-4.1, Gemini flash/Pro (yes - you can fine-tune closed OpenAI/Google models via their APIs)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Pro Tips&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Iterate and experiment&lt;/strong&gt; - try different base models, training data, tuning with/without reasoning tokens&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Set up evals&lt;/strong&gt; - you need metrics to know if fine-tuning worked&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Start simple&lt;/strong&gt; - supervised fine-tuning usually sufficient before trying RL&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Synthetic data works well for most use cases&lt;/strong&gt; - don't feel like you need tons of human-labeled data&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Getting Started&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The process of fine-tuning involves a few steps:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Pick specific goals from above&lt;/li&gt; &lt;li&gt;Generate/collect training examples (few hundred to few thousand)&lt;/li&gt; &lt;li&gt;Train on a range of different base models&lt;/li&gt; &lt;li&gt;Measure quality with evals&lt;/li&gt; &lt;li&gt;Iterate, trying more models and training modes&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Tool to Create and Evaluate Fine-tunes&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I've been building a free and open tool called &lt;a href="https://getkiln.ai"&gt;Kiln&lt;/a&gt; which makes this process easy. It has several major benefits:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Complete&lt;/strong&gt;: Kiln can do every step including defining schemas, creating synthetic data for training, fine-tuning, creating evals to measure quality, and selecting the best model.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Intuitive&lt;/strong&gt;: anyone can use Kiln. The UI will walk you through the entire process.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Private&lt;/strong&gt;: We never have access to your data. Kiln runs locally. You can choose to fine-tune locally (unsloth) or use a service (Fireworks, Together, OpenAI, Google) using your own API keys&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Wide range of models&lt;/strong&gt;: we support training over 60 models including open-weight models (Gemma, Qwen, Llama) and closed models (GPT, Gemini)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Easy Evals&lt;/strong&gt;: fine-tuning many models is easy, but selecting the best one can be hard. Our evals will help you figure out which model works best.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you want to check out the tool or our guides:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://getkiln.ai"&gt;Kiln AI on Github - over 3500 stars&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://docs.getkiln.ai/docs/fine-tuning-guide"&gt;Guide: How to Fine Tune LLMs&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://docs.getkiln.ai/docs/guide-train-a-reasoning-model"&gt;Guide: How to distill LLMs&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://getkiln.ai/blog/why_fine_tune_LLM_models_and_how_to_get_started"&gt;Blog post on when to fine-tune (same ideas as above in more depth)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://getkiln.ai"&gt;Kiln AI - Overview and Docs&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'm happy to answer questions if anyone wants to dive deeper on specific aspects!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davernow"&gt; /u/davernow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyeo4z/when_to_finetune_llms_and_when_not_to_a_practical/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyeo4z/when_to_finetune_llms_and_when_not_to_a_practical/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyeo4z/when_to_finetune_llms_and_when_not_to_a_practical/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-29T16:07:09+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kyakcp</id>
     <title>DeepSeek-R1-0528 distill on Qwen3 8B</title>
@@ -58,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kya3c2/deepseek_r11_dominates_gemini_25_flash_on_price/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-29T12:56:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kyz0vy</id>
+    <title>Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents</title>
+    <updated>2025-05-30T08:29:01+00:00</updated>
+    <author>
+      <name>/u/AaronFeng47</name>
+      <uri>https://old.reddit.com/user/AaronFeng47</uri>
+    </author>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AaronFeng47"&gt; /u/AaronFeng47 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arxiv.org/abs/2505.22954"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyz0vy/darwin_godel_machine_openended_evolution_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyz0vy/darwin_godel_machine_openended_evolution_of/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-30T08:29:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1kyrmnp</id>
@@ -99,19 +99,6 @@
     <published>2025-05-30T03:27:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kyrhr7</id>
-    <title>Why is Qwen 2.5 the most used models in research?</title>
-    <updated>2025-05-30T01:06:40+00:00</updated>
-    <author>
-      <name>/u/Dudensen</name>
-      <uri>https://old.reddit.com/user/Dudensen</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From finetuning to research papers, almost everyone is working on Qwen 2.5. What makes them so potent?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dudensen"&gt; /u/Dudensen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T01:06:40+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kyac9f</id>
     <title>New DeepSeek R1 8B Distill that's "matching the performance of Qwen3-235B-thinking" may be incoming!</title>
     <updated>2025-05-29T13:07:22+00:00</updated>
@@ -125,17 +112,17 @@
     <published>2025-05-29T13:07:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kyo9df</id>
-    <title>new gemma3 abliterated models from mlabonne</title>
-    <updated>2025-05-29T22:32:56+00:00</updated>
+    <id>t3_1kyrhr7</id>
+    <title>Why is Qwen 2.5 the most used models in research?</title>
+    <updated>2025-05-30T01:06:40+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/Dudensen</name>
+      <uri>https://old.reddit.com/user/Dudensen</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-12b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-12b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-4b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-4b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-1b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-1b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-27b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-27b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-12b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-12b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-4b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-4b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-1b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-1b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;From finetuning to research papers, almost everyone is working on Qwen 2.5. What makes them so potent?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dudensen"&gt; /u/Dudensen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyrhr7/why_is_qwen_25_the_most_used_models_in_research/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-29T22:32:56+00:00</published>
+    <published>2025-05-30T01:06:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1ky54kq</id>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ky54kq/please_learn_basic_cybersecurity/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-29T07:59:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kyo9df</id>
+    <title>new gemma3 abliterated models from mlabonne</title>
+    <updated>2025-05-29T22:32:56+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-12b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-12b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-4b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-4b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-1b-it-abliterated-v2-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-1b-it-abliterated-v2-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-27b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-27b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-12b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-12b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-4b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-4b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mlabonne/gemma-3-1b-it-qat-abliterated-GGUF"&gt;https://huggingface.co/mlabonne/gemma-3-1b-it-qat-abliterated-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyo9df/new_gemma3_abliterated_models_from_mlabonne/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-29T22:32:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1kya8kq</id>
@@ -177,19 +177,6 @@
     <published>2025-05-30T00:19:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kypm3g</id>
-    <title>Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!</title>
-    <updated>2025-05-29T23:35:28+00:00</updated>
-    <author>
-      <name>/u/Sparkyu222</name>
-      <uri>https://old.reddit.com/user/Sparkyu222</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"&gt; &lt;img alt="Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!" src="https://b.thumbs.redditmedia.com/WRHf27QKCY7p3CNCAxsLaRHX273gAWeS2cN-dG5ubhk.jpg" title="Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Originally, Deepseek-R1's reasoning tokens were only in English by default. Now it adapts to the user's language—pretty cool!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sparkyu222"&gt; /u/Sparkyu222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kypm3g"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-29T23:35:28+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kyca0p</id>
     <title>Deepseek is the 4th most intelligent AI in the world.</title>
     <updated>2025-05-29T14:31:15+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyca0p/deepseek_is_the_4th_most_intelligent_ai_in_the/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-29T14:31:15+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kypm3g</id>
+    <title>Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!</title>
+    <updated>2025-05-29T23:35:28+00:00</updated>
+    <author>
+      <name>/u/Sparkyu222</name>
+      <uri>https://old.reddit.com/user/Sparkyu222</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"&gt; &lt;img alt="Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!" src="https://b.thumbs.redditmedia.com/WRHf27QKCY7p3CNCAxsLaRHX273gAWeS2cN-dG5ubhk.jpg" title="Noticed Deepseek-R1-0528 mirrors user language in reasoning tokens—interesting!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Originally, Deepseek-R1's reasoning tokens were only in English by default. Now it adapts to the user's language—pretty cool!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sparkyu222"&gt; /u/Sparkyu222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1kypm3g"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kypm3g/noticed_deepseekr10528_mirrors_user_language_in/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-29T23:35:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1kyk9nf</id>
@@ -216,32 +216,6 @@
     <published>2025-05-29T19:47:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kyuwkv</id>
-    <title>deepseek r1 0528 qwen 8b on android MNN chat</title>
-    <updated>2025-05-30T04:02:26+00:00</updated>
-    <author>
-      <name>/u/Juude89</name>
-      <uri>https://old.reddit.com/user/Juude89</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"&gt; &lt;img alt="deepseek r1 0528 qwen 8b on android MNN chat" src="https://external-preview.redd.it/MHF5ZWNxbGRmdTNmMX8IQ7wMputh-guPLEhiv4RqFz7Hc1SxI_2yIws75pQ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=de49549bd457449030d7aeedc287412c7520ad63" title="deepseek r1 0528 qwen 8b on android MNN chat" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;seems very good for its size&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/81j2f2ldfu3f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T04:02:26+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kz0kqi</id>
-    <title>Ollama continues tradition of misnaming models</title>
-    <updated>2025-05-30T10:13:30+00:00</updated>
-    <author>
-      <name>/u/profcuck</name>
-      <uri>https://old.reddit.com/user/profcuck</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I don't really get the hate that Ollama gets around here sometimes, because much of it strikes me as unfair. Yes, they rely on llama.cpp, and have made a great wrapper around it and a very useful setup.&lt;/p&gt; &lt;p&gt;However, their propensity to misname models is very aggravating.&lt;/p&gt; &lt;p&gt;I'm very excited about DeepSeek-R1-Distill-Qwen-32B. &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"&gt;https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But to run it from Ollama, it's: ollama run deepseek-r1:32b&lt;/p&gt; &lt;p&gt;This is nonsense. It confuses newbies all the time, who think they are running Deepseek and have no idea that it's a distillation of Qwen. It's inconsistent with HuggingFace for absolutely no valid reason.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/profcuck"&gt; /u/profcuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T10:13:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ky8vlm</id>
     <title>DeepSeek-R1-0528 Official Benchmarks Released!!!</title>
     <updated>2025-05-29T11:55:06+00:00</updated>
@@ -253,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ky8vlm/deepseekr10528_official_benchmarks_released/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-29T11:55:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kyuwkv</id>
+    <title>deepseek r1 0528 qwen 8b on android MNN chat</title>
+    <updated>2025-05-30T04:02:26+00:00</updated>
+    <author>
+      <name>/u/Juude89</name>
+      <uri>https://old.reddit.com/user/Juude89</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"&gt; &lt;img alt="deepseek r1 0528 qwen 8b on android MNN chat" src="https://external-preview.redd.it/MHF5ZWNxbGRmdTNmMX8IQ7wMputh-guPLEhiv4RqFz7Hc1SxI_2yIws75pQ8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=de49549bd457449030d7aeedc287412c7520ad63" title="deepseek r1 0528 qwen 8b on android MNN chat" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;seems very good for its size&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Juude89"&gt; /u/Juude89 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/81j2f2ldfu3f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyuwkv/deepseek_r1_0528_qwen_8b_on_android_mnn_chat/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-30T04:02:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1kykez2</id>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kyt71a/deepseekr10528qwen38b_is_much_better_than_expected/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-30T02:31:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kz0kqi</id>
+    <title>Ollama continues tradition of misnaming models</title>
+    <updated>2025-05-30T10:13:30+00:00</updated>
+    <author>
+      <name>/u/profcuck</name>
+      <uri>https://old.reddit.com/user/profcuck</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I don't really get the hate that Ollama gets around here sometimes, because much of it strikes me as unfair. Yes, they rely on llama.cpp, and have made a great wrapper around it and a very useful setup.&lt;/p&gt; &lt;p&gt;However, their propensity to misname models is very aggravating.&lt;/p&gt; &lt;p&gt;I'm very excited about DeepSeek-R1-Distill-Qwen-32B. &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"&gt;https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But to run it from Ollama, it's: ollama run deepseek-r1:32b&lt;/p&gt; &lt;p&gt;This is nonsense. It confuses newbies all the time, who think they are running Deepseek and have no idea that it's a distillation of Qwen. It's inconsistent with HuggingFace for absolutely no valid reason.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/profcuck"&gt; /u/profcuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kz0kqi/ollama_continues_tradition_of_misnaming_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-30T10:13:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1kysms8</id>
