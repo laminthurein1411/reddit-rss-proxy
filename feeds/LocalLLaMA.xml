@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-31T22:24:03+00:00</updated>
+  <updated>2025-05-31T22:37:07+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1kzn4ix</id>
-    <title>Running Deepseek R1 0528 q4_K_M and mlx 4-bit on a Mac Studio M3</title>
-    <updated>2025-05-31T03:12:50+00:00</updated>
+    <id>t3_1l08qc3</id>
+    <title>Some newb assistant/agent questions.</title>
+    <updated>2025-05-31T21:57:28+00:00</updated>
     <author>
-      <name>/u/SomeOddCodeGuy</name>
-      <uri>https://old.reddit.com/user/SomeOddCodeGuy</uri>
+      <name>/u/johnfkngzoidberg</name>
+      <uri>https://old.reddit.com/user/johnfkngzoidberg</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Mac Model:&lt;/strong&gt; M3 Ultra Mac Studio 512GB, 80 core GPU&lt;/p&gt; &lt;p&gt;First- this model has a shockingly small KV Cache. If any of you saw my &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jke5wg/m3_ultra_mac_studio_512gb_prompt_and_write_speeds/"&gt;post about running Deepseek V3 q4_K_M&lt;/a&gt;, you'd have seen that the KV cache buffer in llama.cpp/koboldcpp was 157GB for 32k of context. I expected to see similar here.&lt;/p&gt; &lt;p&gt;Not even close.&lt;/p&gt; &lt;p&gt;64k context on this model is barely 8GB. Below is the buffer loading this model directly in llama.cpp with no special options; just specifying 65536 context, a port and a host. That's it. &lt;del&gt;No MLA&lt;/del&gt;, no quantized cache.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;EDIT: Llama.cpp runs MLA be default.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;65536 context:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;llama_kv_cache_unified: Metal KV buffer size = 8296.00 MiB&lt;/p&gt; &lt;p&gt;llama_kv_cache_unified: KV self size = 8296.00 MiB, K (f16): 4392.00 MiB, V (f16): 3904.00 MiB&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;131072k context:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;llama_kv_cache_unified: Metal KV buffer size = 16592.00 MiB&lt;/p&gt; &lt;p&gt;llama_kv_cache_unified: KV self size = 16592.00 MiB, K (f16): 8784.00 MiB, V (f16): 7808.00 MiB&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Speed wise- it's a fair bit on the slow side, but if this model is as good as they say it is, I really don't mind.&lt;/p&gt; &lt;p&gt;Example: ~11,000 token prompt:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;llama.cpp server&lt;/strong&gt; (no flash attention) &lt;strong&gt;(~9 minutes)&lt;/strong&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;prompt eval time = 144330.20 ms / 11090 tokens (13.01 ms per token, &lt;strong&gt;76.84 tokens per second&lt;/strong&gt;)&lt;br /&gt; eval time = 390034.81 ms / 1662 tokens (234.68 ms per token, &lt;strong&gt;4.26 tokens per second&lt;/strong&gt;)&lt;br /&gt; total time = 534365.01 ms / 12752 tokens&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;MLX 4-bit&lt;/strong&gt; for the same prompt (~2.5x speed) &lt;strong&gt;(245sec or ~4 minutes)&lt;/strong&gt;:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;2025-05-30 23:06:16,815 - DEBUG - Prompt: &lt;strong&gt;189.462 tokens-per-sec&lt;/strong&gt;&lt;br /&gt; 2025-05-30 23:06:16,815 - DEBUG - Generation: &lt;strong&gt;11.154 tokens-per-sec&lt;/strong&gt;&lt;br /&gt; 2025-05-30 23:06:16,815 - DEBUG - Peak memory: 422.248 GB&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Note- Tried flash attention in llama.cpp, and that went horribly. The prompt processing slowed to an absolute crawl. It would have taken longer to process the prompt than the non -fa run took for the whole prompt + response.&lt;/p&gt; &lt;p&gt;Another important note- &lt;strong&gt;when they say not to use System Prompts, they mean it&lt;/strong&gt;. I struggled with this model at first, until I finally completely stripped the system prompt out and jammed all my instructions into the user prompt instead. The model became far more intelligent after that. Specifically, if I passed in a system prompt, it would NEVER output the initial &amp;lt;think&amp;gt; tag no matter what I said or did. But if I don't use a system prompt, it always outputs the initial &amp;lt;think&amp;gt; tag appropriately.&lt;/p&gt; &lt;p&gt;I haven't had a chance to deep dive into this thing yet to see if running a 4bit version really harms the output quality or not, but I at least wanted to give a sneak peak into what it looks like running it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeOddCodeGuy"&gt; /u/SomeOddCodeGuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzn4ix/running_deepseek_r1_0528_q4_k_m_and_mlx_4bit_on_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzn4ix/running_deepseek_r1_0528_q4_k_m_and_mlx_4bit_on_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzn4ix/running_deepseek_r1_0528_q4_k_m_and_mlx_4bit_on_a/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been learning LLMs, and for most things it's easier to define a project to accomplish, then learn as you go, so I'm working on creating a generic AI agent/assistant that can do some (I thought) simple automation tasks. &lt;/p&gt; &lt;p&gt;Really I just want something that can&lt;br /&gt; - search the web, aggregate data and summarize.&lt;br /&gt; - Do rudamentary tasks on my local system (display all files on my desktop, edit each file in a directory and replace one word, copy all *.mpg files to one folder then all *.txt files to a different folder) but done in plain spoken language&lt;/p&gt; &lt;p&gt;- write some code to do [insert thing], then test the code, and iterate until it works correctly.&lt;/p&gt; &lt;p&gt;These things seemed reasonable when I started, I was wrong. I tried Open Interpreter, but I think because of my ignorance, it was too dumb to accomplish anything. Maybe it was the model, but I tried about 10 different models. I also tried Goose, with the same results. Too dumb, way too buggy, nothing ever worked right. I tried to install SuperAGI, and couldn't even get it to install. &lt;/p&gt; &lt;p&gt;This led me to think, I should dig in a little further and figure out how I messed up, learn how everything works so I can actually troubleshoot. Also the tech might still be too new to be turn-key. So I decided to break this down into chunks and tackle it by coding something since I couldn't find a good framework. I'm proficient with Python, but didn't really want to write anything from scratch if tools exist. &lt;/p&gt; &lt;p&gt;I'm looking into:&lt;br /&gt; - ollama for the backend. I was using LM Studio, but it doesn't seem to play nice with anything really. &lt;/p&gt; &lt;p&gt;- a vector database to store knowledge, but I'm still confused about how memory and context works for LLMs.&lt;/p&gt; &lt;p&gt;- a RAG to further supplement the LLMs knowledge, but once again, confused about the various differences.&lt;/p&gt; &lt;p&gt;- Selenium or the like to be able to search the web, then parse the results and stash it in the vector database.&lt;/p&gt; &lt;p&gt;- MCP to allow various tools to be used. I know this has to do with &amp;quot;prompt engineering&amp;quot;, and it seems like the vector DB and RAG could be used this way, but still hazy on how it all fits together. I've seen some MCP plugins in Goose which seem useful. Are there any good lists of MCPs out there? I can't seem to figure out how this is better than just structuring things like an API. &lt;/p&gt; &lt;p&gt;So, my question is: Is this a good way to approach it? Any good resources to give me an overview on the current state of things? Any good frameworks that would help assemble all of this functionality into one place? If you were to tackle this sort of project, what would you use?&lt;/p&gt; &lt;p&gt;I feel like I have an Ikea chair and no instructions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/johnfkngzoidberg"&gt; /u/johnfkngzoidberg &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l08qc3/some_newb_assistantagent_questions/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l08qc3/some_newb_assistantagent_questions/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l08qc3/some_newb_assistantagent_questions/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T03:12:50+00:00</published>
+    <published>2025-05-31T21:57:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1kztjgp</id>
@@ -60,19 +60,6 @@
     <published>2025-05-31T08:05:09+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l05ypt</id>
-    <title>Speaker separation and transcription</title>
-    <updated>2025-05-31T19:53:49+00:00</updated>
-    <author>
-      <name>/u/Khipu28</name>
-      <uri>https://old.reddit.com/user/Khipu28</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there any software, llm or example code to do speaker separation and transcription from a mono recording source?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Khipu28"&gt; /u/Khipu28 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T19:53:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l0843f</id>
     <title>The Quest for 100k - LLAMA.CPP Setting for a Noobie</title>
     <updated>2025-05-31T21:29:39+00:00</updated>
@@ -84,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T21:29:39+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l06f7r</id>
-    <title>Most powerful &lt; 7b parameters model at the moment?</title>
-    <updated>2025-05-31T20:14:03+00:00</updated>
-    <author>
-      <name>/u/ventilador_liliana</name>
-      <uri>https://old.reddit.com/user/ventilador_liliana</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I would like to know which is the best model less than 7b currently available.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ventilador_liliana"&gt; /u/ventilador_liliana &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T20:14:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1l03f2h</id>
@@ -151,6 +125,32 @@
     <published>2025-05-31T01:34:33+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l05ypt</id>
+    <title>Speaker separation and transcription</title>
+    <updated>2025-05-31T19:53:49+00:00</updated>
+    <author>
+      <name>/u/Khipu28</name>
+      <uri>https://old.reddit.com/user/Khipu28</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there any software, llm or example code to do speaker separation and transcription from a mono recording source?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Khipu28"&gt; /u/Khipu28 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T19:53:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l06f7r</id>
+    <title>Most powerful &lt; 7b parameters model at the moment?</title>
+    <updated>2025-05-31T20:14:03+00:00</updated>
+    <author>
+      <name>/u/ventilador_liliana</name>
+      <uri>https://old.reddit.com/user/ventilador_liliana</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I would like to know which is the best model less than 7b currently available.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ventilador_liliana"&gt; /u/ventilador_liliana &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T20:14:03+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kzq4fp</id>
     <title>M3 Ultra Binned (256GB, 60-Core) vs Unbinned (512GB, 80-Core) MLX Performance Comparison</title>
     <updated>2025-05-31T06:09:42+00:00</updated>
@@ -164,19 +164,6 @@
     <published>2025-05-31T06:09:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l06g4l</id>
-    <title>The SRE’s Guide to High Availability Open WebUI Deployment Architecture</title>
-    <updated>2025-05-31T20:15:14+00:00</updated>
-    <author>
-      <name>/u/taylorwilsdon</name>
-      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"&gt; &lt;img alt="The SRE’s Guide to High Availability Open WebUI Deployment Architecture" src="https://external-preview.redd.it/XpbGGkJKPGpF-WdM9CwPHoy0zCWwEbDV6ozBsv9F_h8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5b02d3e90330be8f56dd819511015b3b554630c8" title="The SRE’s Guide to High Availability Open WebUI Deployment Architecture" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Based on my real world experiences running Open WebUI for thousands of concurrent users, this guide covers the best practices for deploying stateless Open WebUI containers (Kubernetes Pods, Swarm services, ECS etc), Redis and external embeddings, vector databases and put all that behind a load balancer that understands long-lived WebSocket upgrades.&lt;/p&gt; &lt;p&gt;When you’re ready to graduate from single container deployment to a distributed HA architecture for Open WebUI, this is where you should start! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://taylorwilsdon.medium.com/the-sres-guide-to-high-availability-open-webui-deployment-architecture-2ee42654eced"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T20:15:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l02hmq</id>
     <title>deepseek/deepseek-r1-0528-qwen3-8b stuck on infinite tool loop. Any ideas?</title>
     <updated>2025-05-31T17:23:44+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T17:23:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l06g4l</id>
+    <title>The SRE’s Guide to High Availability Open WebUI Deployment Architecture</title>
+    <updated>2025-05-31T20:15:14+00:00</updated>
+    <author>
+      <name>/u/taylorwilsdon</name>
+      <uri>https://old.reddit.com/user/taylorwilsdon</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"&gt; &lt;img alt="The SRE’s Guide to High Availability Open WebUI Deployment Architecture" src="https://external-preview.redd.it/XpbGGkJKPGpF-WdM9CwPHoy0zCWwEbDV6ozBsv9F_h8.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5b02d3e90330be8f56dd819511015b3b554630c8" title="The SRE’s Guide to High Availability Open WebUI Deployment Architecture" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Based on my real world experiences running Open WebUI for thousands of concurrent users, this guide covers the best practices for deploying stateless Open WebUI containers (Kubernetes Pods, Swarm services, ECS etc), Redis and external embeddings, vector databases and put all that behind a load balancer that understands long-lived WebSocket upgrades.&lt;/p&gt; &lt;p&gt;When you’re ready to graduate from single container deployment to a distributed HA architecture for Open WebUI, this is where you should start! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/taylorwilsdon"&gt; /u/taylorwilsdon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://taylorwilsdon.medium.com/the-sres-guide-to-high-availability-open-webui-deployment-architecture-2ee42654eced"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06g4l/the_sres_guide_to_high_availability_open_webui/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T20:15:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1kzrfop</id>
