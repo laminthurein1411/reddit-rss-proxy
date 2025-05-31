@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-31T21:48:45+00:00</updated>
+  <updated>2025-05-31T22:05:42+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1kzcalh</id>
-    <title>llama-server is cooking! gemma3 27b, 100K context, vision on one 24GB GPU.</title>
-    <updated>2025-05-30T18:54:42+00:00</updated>
-    <author>
-      <name>/u/No-Statement-0001</name>
-      <uri>https://old.reddit.com/user/No-Statement-0001</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama-server has really improved a lot recently. With vision support, SWA (sliding window attention) and performance improvements I've got 35tok/sec on a 3090. P40 gets 11.8 tok/sec. Multi-gpu performance has improved. Dual 3090s performance goes up to 38.6 tok/sec (600W power limit). Dual P40 gets 15.8 tok/sec (320W power max)! Rejoice P40 crew. &lt;/p&gt; &lt;p&gt;I've been writing more guides for the llama-swap wiki and was very surprised with the results. Especially how usable the P40 still are!&lt;/p&gt; &lt;p&gt;llama-swap config (&lt;a href="https://github.com/mostlygeek/llama-swap/wiki/gemma3-27b-100k-context"&gt;source wiki page&lt;/a&gt;): &lt;/p&gt; &lt;p&gt;```yaml macros: &amp;quot;server-latest&amp;quot;: /path/to/llama-server/llama-server-latest --host 127.0.0.1 --port ${PORT} --flash-attn -ngl 999 -ngld 999 --no-mmap&lt;/p&gt; &lt;p&gt;# quantize KV cache to Q8, increases context but # has a small effect on perplexity # &lt;a href="https://github.com/ggml-org/llama.cpp/pull/7412#issuecomment-2120427347"&gt;https://github.com/ggml-org/llama.cpp/pull/7412#issuecomment-2120427347&lt;/a&gt; &amp;quot;q8-kv&amp;quot;: &amp;quot;--cache-type-k q8_0 --cache-type-v q8_0&amp;quot;&lt;/p&gt; &lt;p&gt;models: # fits on a single 24GB GPU w/ 100K context # requires Q8 KV quantization &amp;quot;gemma&amp;quot;: env: # 3090 - 35 tok/sec - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0&amp;quot;&lt;/p&gt; &lt;pre&gt;&lt;code&gt; # P40 - 11.8 tok/sec #- &amp;quot;CUDA_VISIBLE_DEVICES=GPU-eb1&amp;quot; cmd: | ${server-latest} ${q8-kv} --ctx-size 102400 --model /path/to/models/google_gemma-3-27b-it-Q4_K_L.gguf --mmproj /path/to/models/gemma-mmproj-model-f16-27B.gguf --temp 1.0 --repeat-penalty 1.0 --min-p 0.01 --top-k 64 --top-p 0.95 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;# Requires 30GB VRAM # - Dual 3090s, 38.6 tok/sec # - Dual P40s, 15.8 tok/sec &amp;quot;gemma-full&amp;quot;: env: # 3090s - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0,GPU-f10&amp;quot;&lt;/p&gt; &lt;pre&gt;&lt;code&gt; # P40s # - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-eb1,GPU-ea4&amp;quot; cmd: | ${server-latest} --ctx-size 102400 --model /path/to/models/google_gemma-3-27b-it-Q4_K_L.gguf --mmproj /path/to/models/gemma-mmproj-model-f16-27B.gguf --temp 1.0 --repeat-penalty 1.0 --min-p 0.01 --top-k 64 --top-p 0.95 # uncomment if using P40s # -sm row &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Statement-0001"&gt; /u/No-Statement-0001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T18:54:42+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l0843f</id>
-    <title>The Quest for 100k - LLAMA.CPP Setting for a Noobie</title>
-    <updated>2025-05-31T21:29:39+00:00</updated>
-    <author>
-      <name>/u/LostHisDog</name>
-      <uri>https://old.reddit.com/user/LostHisDog</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;SO there was a post about eeking 100k context out of gemma3 27b on a 3090 and I really wanted to try it... but never setup llama.cpp before and being a glutton for punishment decided I wanted a GUI too in the form of open-webui. I think I got most of it working with an assortment of help from various AI's but the post suggested about 35t/s and I'm only managing about 10t/s. This is my startup file for llama.cpp, mostly settings copied from the other post &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/&lt;/a&gt; &lt;/p&gt; &lt;p&gt;&amp;quot;@echo off&amp;quot;&lt;br /&gt; set SERVER_PATH=X:\llama-cpp\llama-server.exe&lt;br /&gt; set MODEL_PATH=X:\llama-cpp\models\gemma-3-27b-it-q4_0.gguf&lt;br /&gt; set MMPROJ_PATH=X:\llama-cpp\models\mmproj-model-f16-27B.gguf&lt;/p&gt; &lt;p&gt;&amp;quot;%SERVER_PATH%&amp;quot; ^&lt;br /&gt; --host &lt;a href="http://127.0.0.1"&gt;127.0.0.1&lt;/a&gt; --port 8080 ^&lt;br /&gt; --model &amp;quot;%MODEL_PATH%&amp;quot; ^&lt;br /&gt; --ctx-size 102400 ^&lt;br /&gt; --cache-type-k q8_0 --cache-type-v q8_0 ^&lt;br /&gt; --flash-attn ^&lt;br /&gt; -ngl 999 -ngld 999 ^&lt;br /&gt; --no-mmap ^&lt;br /&gt; --mmproj &amp;quot;%MMPROJ_PATH%&amp;quot; ^&lt;br /&gt; --temp 1.0 ^&lt;br /&gt; --repeat-penalty 1.0 ^&lt;br /&gt; --min-p 0.01 ^&lt;br /&gt; --top-k 64 ^&lt;br /&gt; --top-p 0.95&lt;/p&gt; &lt;p&gt;Anything obvious jump out to you wise folks that already have this working well or any ideas for what I could try? 100k at 35t/s sounds magical so would love to get there is I could. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LostHisDog"&gt; /u/LostHisDog &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T21:29:39+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kzn4ix</id>
     <title>Running Deepseek R1 0528 q4_K_M and mlx 4-bit on a Mac Studio M3</title>
@@ -47,17 +21,17 @@
     <published>2025-05-31T03:12:50+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l03f2h</id>
-    <title>LLM Extension for Command Palette: A way to chat with LLM without opening new windows</title>
-    <updated>2025-05-31T18:02:51+00:00</updated>
+    <id>t3_1l06f7r</id>
+    <title>Most powerful &lt; 7b parameters model at the moment?</title>
+    <updated>2025-05-31T20:14:03+00:00</updated>
     <author>
-      <name>/u/GGLio</name>
-      <uri>https://old.reddit.com/user/GGLio</uri>
+      <name>/u/ventilador_liliana</name>
+      <uri>https://old.reddit.com/user/ventilador_liliana</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"&gt; &lt;img alt="LLM Extension for Command Palette: A way to chat with LLM without opening new windows" src="https://external-preview.redd.it/ZWduanl1Y2ZvNTRmMYoemgkJP9kpJlL4F7uhfpuBmeMH1-UkrRZT_-5NJ7bo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=005e0ff00ebb5d6a941f65feb6f10a2fe59b720d" title="LLM Extension for Command Palette: A way to chat with LLM without opening new windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After my &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kfxl36/proof_of_concept_ollama_chat_in_powertoys_command"&gt;last post&lt;/a&gt; got some nice feedbacks on what was just a small project, it motivated me to put this &lt;a href="https://apps.microsoft.com/detail/9NPK6KSDLC81"&gt;on Microsoft store&lt;/a&gt; and also on winget, which means now the extension can be directly installed from the &lt;a href="https://learn.microsoft.com/en-us/windows/powertoys/command-palette/overview"&gt;PowerToys Command Palette&lt;/a&gt; install extension command! To be honest, I first made this project just so that I don't have to open and manage a new window when talking to chatbots, but it seems others also like to have something like this, so here it is and I'm glad to be able to make it available for more people.&lt;/p&gt; &lt;p&gt;On top of that, apart from chatting with LLMs through Ollama in the initial prototype, it is now also able to use OpenAI, Google, and Mistral services, and to my surprise more people I've talked to prefers Google Gemini than other services (or is it just because of the recent 2.5 Pro/Flash release?). And here is the open-sourced code: &lt;a href="https://github.com/LioQing/llm-extension-for-cmd-pal"&gt;LioQing/llm-extension-for-cmd-pal: An LLM extension for PowerToys Command Palette&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GGLio"&gt; /u/GGLio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/54dvyzcfo54f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I would like to know which is the best model less than 7b currently available.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ventilador_liliana"&gt; /u/ventilador_liliana &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06f7r/most_powerful_7b_parameters_model_at_the_moment/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T18:02:51+00:00</published>
+    <published>2025-05-31T20:14:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1l06klt</id>
@@ -71,6 +45,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l06klt/llmagnostic_receipt_invoice_generator/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T20:20:48+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l03f2h</id>
+    <title>LLM Extension for Command Palette: A way to chat with LLM without opening new windows</title>
+    <updated>2025-05-31T18:02:51+00:00</updated>
+    <author>
+      <name>/u/GGLio</name>
+      <uri>https://old.reddit.com/user/GGLio</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"&gt; &lt;img alt="LLM Extension for Command Palette: A way to chat with LLM without opening new windows" src="https://external-preview.redd.it/ZWduanl1Y2ZvNTRmMYoemgkJP9kpJlL4F7uhfpuBmeMH1-UkrRZT_-5NJ7bo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=005e0ff00ebb5d6a941f65feb6f10a2fe59b720d" title="LLM Extension for Command Palette: A way to chat with LLM without opening new windows" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;After my &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kfxl36/proof_of_concept_ollama_chat_in_powertoys_command"&gt;last post&lt;/a&gt; got some nice feedbacks on what was just a small project, it motivated me to put this &lt;a href="https://apps.microsoft.com/detail/9NPK6KSDLC81"&gt;on Microsoft store&lt;/a&gt; and also on winget, which means now the extension can be directly installed from the &lt;a href="https://learn.microsoft.com/en-us/windows/powertoys/command-palette/overview"&gt;PowerToys Command Palette&lt;/a&gt; install extension command! To be honest, I first made this project just so that I don't have to open and manage a new window when talking to chatbots, but it seems others also like to have something like this, so here it is and I'm glad to be able to make it available for more people.&lt;/p&gt; &lt;p&gt;On top of that, apart from chatting with LLMs through Ollama in the initial prototype, it is now also able to use OpenAI, Google, and Mistral services, and to my surprise more people I've talked to prefers Google Gemini than other services (or is it just because of the recent 2.5 Pro/Flash release?). And here is the open-sourced code: &lt;a href="https://github.com/LioQing/llm-extension-for-cmd-pal"&gt;LioQing/llm-extension-for-cmd-pal: An LLM extension for PowerToys Command Palette&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GGLio"&gt; /u/GGLio &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/54dvyzcfo54f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l03f2h/llm_extension_for_command_palette_a_way_to_chat/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T18:02:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1kztjgp</id>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l05ypt/speaker_separation_and_transcription/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T19:53:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l0843f</id>
+    <title>The Quest for 100k - LLAMA.CPP Setting for a Noobie</title>
+    <updated>2025-05-31T21:29:39+00:00</updated>
+    <author>
+      <name>/u/LostHisDog</name>
+      <uri>https://old.reddit.com/user/LostHisDog</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;SO there was a post about eeking 100k context out of gemma3 27b on a 3090 and I really wanted to try it... but never setup llama.cpp before and being a glutton for punishment decided I wanted a GUI too in the form of open-webui. I think I got most of it working with an assortment of help from various AI's but the post suggested about 35t/s and I'm only managing about 10t/s. This is my startup file for llama.cpp, mostly settings copied from the other post &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1kzcalh/llamaserver_is_cooking_gemma3_27b_100k_context/&lt;/a&gt; &lt;/p&gt; &lt;p&gt;&amp;quot;@echo off&amp;quot;&lt;br /&gt; set SERVER_PATH=X:\llama-cpp\llama-server.exe&lt;br /&gt; set MODEL_PATH=X:\llama-cpp\models\gemma-3-27b-it-q4_0.gguf&lt;br /&gt; set MMPROJ_PATH=X:\llama-cpp\models\mmproj-model-f16-27B.gguf&lt;/p&gt; &lt;p&gt;&amp;quot;%SERVER_PATH%&amp;quot; ^&lt;br /&gt; --host &lt;a href="http://127.0.0.1"&gt;127.0.0.1&lt;/a&gt; --port 8080 ^&lt;br /&gt; --model &amp;quot;%MODEL_PATH%&amp;quot; ^&lt;br /&gt; --ctx-size 102400 ^&lt;br /&gt; --cache-type-k q8_0 --cache-type-v q8_0 ^&lt;br /&gt; --flash-attn ^&lt;br /&gt; -ngl 999 -ngld 999 ^&lt;br /&gt; --no-mmap ^&lt;br /&gt; --mmproj &amp;quot;%MMPROJ_PATH%&amp;quot; ^&lt;br /&gt; --temp 1.0 ^&lt;br /&gt; --repeat-penalty 1.0 ^&lt;br /&gt; --min-p 0.01 ^&lt;br /&gt; --top-k 64 ^&lt;br /&gt; --top-p 0.95&lt;/p&gt; &lt;p&gt;Anything obvious jump out to you wise folks that already have this working well or any ideas for what I could try? 100k at 35t/s sounds magical so would love to get there is I could. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LostHisDog"&gt; /u/LostHisDog &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0843f/the_quest_for_100k_llamacpp_setting_for_a_noobie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T21:29:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1kzz7t4</id>
@@ -203,19 +203,6 @@
     <published>2025-05-31T07:36:35+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kze1r6</id>
-    <title>Ollama run bob</title>
-    <updated>2025-05-30T20:06:52+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"&gt; &lt;img alt="Ollama run bob" src="https://preview.redd.it/v4krpd9g7z3f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2201e590a1b08cca19a9ca4d26c56ddf0e869e85" title="Ollama run bob" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v4krpd9g7z3f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T20:06:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l049hr</id>
     <title>Demo Video of AutoBE, Backend Vibe Coding Agent Achieving 100% Compilation Success (Open Source)</title>
     <updated>2025-05-31T18:38:56+00:00</updated>
@@ -229,17 +216,17 @@
     <published>2025-05-31T18:38:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kzw65c</id>
-    <title>AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market</title>
-    <updated>2025-05-31T12:41:19+00:00</updated>
+    <id>t3_1kze1r6</id>
+    <title>Ollama run bob</title>
+    <updated>2025-05-30T20:06:52+00:00</updated>
     <author>
-      <name>/u/_SYSTEM_ADMIN_MOD_</name>
-      <uri>https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_</uri>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"&gt; &lt;img alt="AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market" src="https://external-preview.redd.it/bnCoi_QMP0ucYNmMDpD8YzNjydtxrrZkZROQJhXvr2s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=981e9ab36322decfefbeb6831d8e913c9f0d6692" title="AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_"&gt; /u/_SYSTEM_ADMIN_MOD_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://wccftech.com/amd-ryzen-ai-max-pro-385-spotted-on-geekbench/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"&gt; &lt;img alt="Ollama run bob" src="https://preview.redd.it/v4krpd9g7z3f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2201e590a1b08cca19a9ca4d26c56ddf0e869e85" title="Ollama run bob" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/v4krpd9g7z3f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kze1r6/ollama_run_bob/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T12:41:19+00:00</published>
+    <published>2025-05-30T20:06:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1l01bfe</id>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T16:34:06+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kzw65c</id>
+    <title>AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market</title>
+    <updated>2025-05-31T12:41:19+00:00</updated>
+    <author>
+      <name>/u/_SYSTEM_ADMIN_MOD_</name>
+      <uri>https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"&gt; &lt;img alt="AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market" src="https://external-preview.redd.it/bnCoi_QMP0ucYNmMDpD8YzNjydtxrrZkZROQJhXvr2s.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=981e9ab36322decfefbeb6831d8e913c9f0d6692" title="AMD Octa-core Ryzen AI Max Pro 385 Processor Spotted On Geekbench: Affordable Strix Halo Chips Are About To Enter The Market" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_SYSTEM_ADMIN_MOD_"&gt; /u/_SYSTEM_ADMIN_MOD_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://wccftech.com/amd-ryzen-ai-max-pro-385-spotted-on-geekbench/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzw65c/amd_octacore_ryzen_ai_max_pro_385_processor/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T12:41:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1l05wpz</id>
