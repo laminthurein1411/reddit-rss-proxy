@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-31T17:35:02+00:00</updated>
+  <updated>2025-05-31T17:48:49+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -47,19 +47,6 @@
     <published>2025-05-30T18:56:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kzzvzt</id>
-    <title>[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)</title>
-    <updated>2025-05-31T15:33:13+00:00</updated>
-    <author>
-      <name>/u/BeowulfBR</name>
-      <uri>https://old.reddit.com/user/BeowulfBR</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt; &lt;img alt="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" src="https://external-preview.redd.it/5-lt2FyUCjdvV--0DsoyDNNXFgYjxAoICz1QQO0XTVc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5505689fd81e257fb9e8b4a1756ec434868c1664" title="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all — quick update on &lt;a href="https://github.com/beowolx/rensa"&gt;Rensa&lt;/a&gt;, a MinHash library I’ve been building in Rust with Python bindings. It’s focused on speed and works well for deduplicating large text datasets — especially stuff like LLM fine-tuning where near duplicates are a problem.&lt;/p&gt; &lt;p&gt;Originally, I built a custom algorithm called &lt;strong&gt;RMinHash&lt;/strong&gt; because existing tools (like &lt;code&gt;datasketch&lt;/code&gt;) were way too slow for my use cases. RMinHash is a fast, simple alternative to classic MinHash and gave me much better performance on big datasets.&lt;/p&gt; &lt;p&gt;Since I last posted, I’ve added:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CMinHash&lt;/strong&gt; – full implementation based on the paper (“C-MinHash: reducing K permutations to two”). It’s highly optimized, uses batching + vectorization.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OptDensMinHash&lt;/strong&gt; – handles densification for sparse data, fills in missing values in a principled way.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I ran benchmarks on a 100K-row dataset (&lt;code&gt;gretelai/synthetic_text_to_sql&lt;/code&gt;) with 256 permutations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;CMinHash&lt;/code&gt;: 5.47s&lt;/li&gt; &lt;li&gt;&lt;code&gt;RMinHash&lt;/code&gt;: 5.58s&lt;/li&gt; &lt;li&gt;&lt;code&gt;OptDensMinHash&lt;/code&gt;: 12.36s&lt;/li&gt; &lt;li&gt;&lt;code&gt;datasketch&lt;/code&gt;: 92.45s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So yeah, still ~10-17x faster than datasketch, depending on variant.&lt;/p&gt; &lt;p&gt;Accuracy-wise, all Rensa variants produce very similar (sometimes identical) results to &lt;code&gt;datasketch&lt;/code&gt; in terms of deduplicated examples.&lt;/p&gt; &lt;p&gt;It’s a side project I built out of necessity and I'd love to get some feedback from the community :)&lt;br /&gt; The Python API is simple and should feel familiar if you’ve used datasketch before.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/yourusername/rensa"&gt;https://github.com/beowolx/rensa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BeowulfBR"&gt; /u/BeowulfBR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/beowolx/rensa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T15:33:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kzjhfd</id>
     <title>Ollama 0.9.0 Supports ability to enable or disable thinking</title>
     <updated>2025-05-31T00:02:35+00:00</updated>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjhfd/ollama_090_supports_ability_to_enable_or_disable/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T00:02:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kzzvzt</id>
+    <title>[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)</title>
+    <updated>2025-05-31T15:33:13+00:00</updated>
+    <author>
+      <name>/u/BeowulfBR</name>
+      <uri>https://old.reddit.com/user/BeowulfBR</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt; &lt;img alt="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" src="https://external-preview.redd.it/5-lt2FyUCjdvV--0DsoyDNNXFgYjxAoICz1QQO0XTVc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5505689fd81e257fb9e8b4a1756ec434868c1664" title="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all — quick update on &lt;a href="https://github.com/beowolx/rensa"&gt;Rensa&lt;/a&gt;, a MinHash library I’ve been building in Rust with Python bindings. It’s focused on speed and works well for deduplicating large text datasets — especially stuff like LLM fine-tuning where near duplicates are a problem.&lt;/p&gt; &lt;p&gt;Originally, I built a custom algorithm called &lt;strong&gt;RMinHash&lt;/strong&gt; because existing tools (like &lt;code&gt;datasketch&lt;/code&gt;) were way too slow for my use cases. RMinHash is a fast, simple alternative to classic MinHash and gave me much better performance on big datasets.&lt;/p&gt; &lt;p&gt;Since I last posted, I’ve added:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CMinHash&lt;/strong&gt; – full implementation based on the paper (“C-MinHash: reducing K permutations to two”). It’s highly optimized, uses batching + vectorization.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OptDensMinHash&lt;/strong&gt; – handles densification for sparse data, fills in missing values in a principled way.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I ran benchmarks on a 100K-row dataset (&lt;code&gt;gretelai/synthetic_text_to_sql&lt;/code&gt;) with 256 permutations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;CMinHash&lt;/code&gt;: 5.47s&lt;/li&gt; &lt;li&gt;&lt;code&gt;RMinHash&lt;/code&gt;: 5.58s&lt;/li&gt; &lt;li&gt;&lt;code&gt;OptDensMinHash&lt;/code&gt;: 12.36s&lt;/li&gt; &lt;li&gt;&lt;code&gt;datasketch&lt;/code&gt;: 92.45s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So yeah, still ~10-17x faster than datasketch, depending on variant.&lt;/p&gt; &lt;p&gt;Accuracy-wise, all Rensa variants produce very similar (sometimes identical) results to &lt;code&gt;datasketch&lt;/code&gt; in terms of deduplicated examples.&lt;/p&gt; &lt;p&gt;It’s a side project I built out of necessity and I'd love to get some feedback from the community :)&lt;br /&gt; The Python API is simple and should feel familiar if you’ve used datasketch before.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/yourusername/rensa"&gt;https://github.com/beowolx/rensa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BeowulfBR"&gt; /u/BeowulfBR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/beowolx/rensa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T15:33:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kz0kqi</id>
@@ -112,32 +112,6 @@
     <published>2025-05-30T23:56:00+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kzz7t4</id>
-    <title>Use MCP to run computer use in a VM.</title>
-    <updated>2025-05-31T15:04:34+00:00</updated>
-    <author>
-      <name>/u/Impressive_Half_2819</name>
-      <uri>https://old.reddit.com/user/Impressive_Half_2819</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"&gt; &lt;img alt="Use MCP to run computer use in a VM." src="https://external-preview.redd.it/MHJhMDJ6dWV1NDRmMSBTlOtFiw3CN60nCKAl7ym9Md7o0mszJARyFHwBNilc.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8f04b4f66e0cfeee4830916f3a623e4070f0018c" title="Use MCP to run computer use in a VM." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MCP Server with Computer Use Agent runs through Claude Desktop, Cursor, and other MCP clients.&lt;/p&gt; &lt;p&gt;An example use case lets try using Claude as a tutor to learn how to use Tableau.&lt;/p&gt; &lt;p&gt;The MCP Server implementation exposes CUA's full functionality through standardized tool calls. It supports single-task commands and multi-task sequences, giving Claude Desktop direct access to all of Cua's computer control capabilities.&lt;/p&gt; &lt;p&gt;This is the first MCP-compatible computer control solution that works directly with Claude Desktop's and Cursor's built-in MCP implementation. Simple configuration in your claude_desktop_config.json or cursor_config.json connects Claude or Cursor directly to your desktop environment.&lt;/p&gt; &lt;p&gt;Github : &lt;a href="https://github.com/trycua/cua"&gt;https://github.com/trycua/cua&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Impressive_Half_2819"&gt; /u/Impressive_Half_2819 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/p51trp5fu44f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T15:04:34+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l02hmq</id>
-    <title>deepseek/deepseek-r1-0528-qwen3-8b stuck on infinite tool loop. Any ideas?</title>
-    <updated>2025-05-31T17:23:44+00:00</updated>
-    <author>
-      <name>/u/Substantial_Swan_144</name>
-      <uri>https://old.reddit.com/user/Substantial_Swan_144</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've downloaded the official Deepseek distillation from their official sources and it does seem a touch smarter. However, when using tools, it often gets stuck forever trying to use them. Do you know why this is going on, and if we have any workaround?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Substantial_Swan_144"&gt; /u/Substantial_Swan_144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T17:23:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kzfrdt</id>
     <title>ubergarm/DeepSeek-R1-0528-GGUF</title>
     <updated>2025-05-30T21:17:00+00:00</updated>
@@ -164,17 +138,17 @@
     <published>2025-05-30T13:29:07+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l01bfe</id>
-    <title>Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!</title>
-    <updated>2025-05-31T16:34:06+00:00</updated>
+    <id>t3_1kzz7t4</id>
+    <title>Use MCP to run computer use in a VM.</title>
+    <updated>2025-05-31T15:04:34+00:00</updated>
     <author>
-      <name>/u/ajunior7</name>
-      <uri>https://old.reddit.com/user/ajunior7</uri>
+      <name>/u/Impressive_Half_2819</name>
+      <uri>https://old.reddit.com/user/Impressive_Half_2819</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"&gt; &lt;img alt="Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!" src="https://external-preview.redd.it/ZG81Yjhkenk2NTRmMdgqNWupVXy_ZPAevb2tTQhA9R_THDnUrLckbufzOiAz.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f6b4e7c264f8e0ba31013dc39fa0ffa3f2a2d820" title="Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello all. I have spent a couple weekends giving the tiny Qwen3 0.6B model the ability to show off its underutilized tool calling abilities by using remote MCP servers. I am pleasantly surprised at how well it can chain tools. Additionally, I gave it the option to limit how much it can think to avoid the &amp;quot;overthinking&amp;quot; issue reasoning models (especially Qwen) can have. &lt;a href="https://muellerzr.github.io/til/end_thinking.html"&gt;This implementation was largely inspired by a great article from Zach Mueller outlining just that.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Also, this project is an adaptation of &lt;a href="https://github.com/huggingface/transformers.js-examples/tree/main/qwen3-webgpu"&gt;Xenova's Qwen3 0.6 WebGPU code in transformers.js-examples&lt;/a&gt;, it was a solid starting point to work with Qwen3 0.6B. &lt;/p&gt; &lt;p&gt;Check it out for yourselves!&lt;/p&gt; &lt;p&gt;HF Space Link: &lt;a href="https://huggingface.co/spaces/callbacked/Qwen3-MCP"&gt;https://huggingface.co/spaces/callbacked/Qwen3-MCP&lt;/a&gt;&lt;br /&gt; Repo: &lt;a href="https://github.com/callbacked/qwen3-mcp"&gt;https://github.com/callbacked/qwen3-mcp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;Footnote: With Qwen3 8B having a distillation from R1-0528, I really hope we can see that trickle down to other models including Qwen3 0.6B. Seeing how much more intelligent the other models can get off of R1-0528 would be a cool thing see in action!&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajunior7"&gt; /u/ajunior7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/r495cezy654f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"&gt; &lt;img alt="Use MCP to run computer use in a VM." src="https://external-preview.redd.it/MHJhMDJ6dWV1NDRmMSBTlOtFiw3CN60nCKAl7ym9Md7o0mszJARyFHwBNilc.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8f04b4f66e0cfeee4830916f3a623e4070f0018c" title="Use MCP to run computer use in a VM." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MCP Server with Computer Use Agent runs through Claude Desktop, Cursor, and other MCP clients.&lt;/p&gt; &lt;p&gt;An example use case lets try using Claude as a tutor to learn how to use Tableau.&lt;/p&gt; &lt;p&gt;The MCP Server implementation exposes CUA's full functionality through standardized tool calls. It supports single-task commands and multi-task sequences, giving Claude Desktop direct access to all of Cua's computer control capabilities.&lt;/p&gt; &lt;p&gt;This is the first MCP-compatible computer control solution that works directly with Claude Desktop's and Cursor's built-in MCP implementation. Simple configuration in your claude_desktop_config.json or cursor_config.json connects Claude or Cursor directly to your desktop environment.&lt;/p&gt; &lt;p&gt;Github : &lt;a href="https://github.com/trycua/cua"&gt;https://github.com/trycua/cua&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Impressive_Half_2819"&gt; /u/Impressive_Half_2819 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/p51trp5fu44f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzz7t4/use_mcp_to_run_computer_use_in_a_vm/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T16:34:06+00:00</published>
+    <published>2025-05-31T15:04:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1kztjgp</id>
@@ -216,6 +190,32 @@
     <published>2025-05-31T03:12:50+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l02hmq</id>
+    <title>deepseek/deepseek-r1-0528-qwen3-8b stuck on infinite tool loop. Any ideas?</title>
+    <updated>2025-05-31T17:23:44+00:00</updated>
+    <author>
+      <name>/u/Substantial_Swan_144</name>
+      <uri>https://old.reddit.com/user/Substantial_Swan_144</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've downloaded the official Deepseek distillation from their official sources and it does seem a touch smarter. However, when using tools, it often gets stuck forever trying to use them. Do you know why this is going on, and if we have any workaround?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Substantial_Swan_144"&gt; /u/Substantial_Swan_144 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l02hmq/deepseekdeepseekr10528qwen38b_stuck_on_infinite/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T17:23:44+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l01bfe</id>
+    <title>Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!</title>
+    <updated>2025-05-31T16:34:06+00:00</updated>
+    <author>
+      <name>/u/ajunior7</name>
+      <uri>https://old.reddit.com/user/ajunior7</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"&gt; &lt;img alt="Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!" src="https://external-preview.redd.it/ZG81Yjhkenk2NTRmMdgqNWupVXy_ZPAevb2tTQhA9R_THDnUrLckbufzOiAz.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f6b4e7c264f8e0ba31013dc39fa0ffa3f2a2d820" title="Giving Qwen 3 0.6B a Toolbelt in the form of MCP Support, Running Locally in Your Browser with Adjustable Thinking!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello all. I have spent a couple weekends giving the tiny Qwen3 0.6B model the ability to show off its underutilized tool calling abilities by using remote MCP servers. I am pleasantly surprised at how well it can chain tools. Additionally, I gave it the option to limit how much it can think to avoid the &amp;quot;overthinking&amp;quot; issue reasoning models (especially Qwen) can have. &lt;a href="https://muellerzr.github.io/til/end_thinking.html"&gt;This implementation was largely inspired by a great article from Zach Mueller outlining just that.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Also, this project is an adaptation of &lt;a href="https://github.com/huggingface/transformers.js-examples/tree/main/qwen3-webgpu"&gt;Xenova's Qwen3 0.6 WebGPU code in transformers.js-examples&lt;/a&gt;, it was a solid starting point to work with Qwen3 0.6B. &lt;/p&gt; &lt;p&gt;Check it out for yourselves!&lt;/p&gt; &lt;p&gt;HF Space Link: &lt;a href="https://huggingface.co/spaces/callbacked/Qwen3-MCP"&gt;https://huggingface.co/spaces/callbacked/Qwen3-MCP&lt;/a&gt;&lt;br /&gt; Repo: &lt;a href="https://github.com/callbacked/qwen3-mcp"&gt;https://github.com/callbacked/qwen3-mcp&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;Footnote: With Qwen3 8B having a distillation from R1-0528, I really hope we can see that trickle down to other models including Qwen3 0.6B. Seeing how much more intelligent the other models can get off of R1-0528 would be a cool thing see in action!&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ajunior7"&gt; /u/ajunior7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/r495cezy654f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l01bfe/giving_qwen_3_06b_a_toolbelt_in_the_form_of_mcp/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T16:34:06+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kzrujd</id>
     <title>GPU-enabled Llama 3 inference in Java from scratch</title>
     <updated>2025-05-31T08:05:09+00:00</updated>
@@ -227,19 +227,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzrujd/gpuenabled_llama_3_inference_in_java_from_scratch/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T08:05:09+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kzzshu</id>
-    <title>Google lets you run AI models locally</title>
-    <updated>2025-05-31T15:29:15+00:00</updated>
-    <author>
-      <name>/u/dnr41418</name>
-      <uri>https://old.reddit.com/user/dnr41418</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://techcrunch.com/2025/05/31/google-quietly-released-an-app-that-lets-you-download-and-run-ai-models-locally/"&gt;https://techcrunch.com/2025/05/31/google-quietly-released-an-app-that-lets-you-download-and-run-ai-models-locally/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dnr41418"&gt; /u/dnr41418 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T15:29:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kzlb8g</id>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzq4fp/m3_ultra_binned_256gb_60core_vs_unbinned_512gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T06:09:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kzzshu</id>
+    <title>Google lets you run AI models locally</title>
+    <updated>2025-05-31T15:29:15+00:00</updated>
+    <author>
+      <name>/u/dnr41418</name>
+      <uri>https://old.reddit.com/user/dnr41418</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://techcrunch.com/2025/05/31/google-quietly-released-an-app-that-lets-you-download-and-run-ai-models-locally/"&gt;https://techcrunch.com/2025/05/31/google-quietly-released-an-app-that-lets-you-download-and-run-ai-models-locally/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dnr41418"&gt; /u/dnr41418 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzshu/google_lets_you_run_ai_models_locally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T15:29:15+00:00</published>
   </entry>
   <entry>
     <id>t3_1kzw65c</id>
