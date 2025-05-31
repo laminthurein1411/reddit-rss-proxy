@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-05-31T16:06:45+00:00</updated>
+  <updated>2025-05-31T16:24:51+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -99,6 +99,19 @@
     <published>2025-05-31T15:04:34+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kzzvzt</id>
+    <title>[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)</title>
+    <updated>2025-05-31T15:33:13+00:00</updated>
+    <author>
+      <name>/u/BeowulfBR</name>
+      <uri>https://old.reddit.com/user/BeowulfBR</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt; &lt;img alt="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" src="https://external-preview.redd.it/5-lt2FyUCjdvV--0DsoyDNNXFgYjxAoICz1QQO0XTVc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5505689fd81e257fb9e8b4a1756ec434868c1664" title="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all — quick update on &lt;a href="https://github.com/beowolx/rensa"&gt;Rensa&lt;/a&gt;, a MinHash library I’ve been building in Rust with Python bindings. It’s focused on speed and works well for deduplicating large text datasets — especially stuff like LLM fine-tuning where near duplicates are a problem.&lt;/p&gt; &lt;p&gt;Originally, I built a custom algorithm called &lt;strong&gt;RMinHash&lt;/strong&gt; because existing tools (like &lt;code&gt;datasketch&lt;/code&gt;) were way too slow for my use cases. RMinHash is a fast, simple alternative to classic MinHash and gave me much better performance on big datasets.&lt;/p&gt; &lt;p&gt;Since I last posted, I’ve added:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CMinHash&lt;/strong&gt; – full implementation based on the paper (“C-MinHash: reducing K permutations to two”). It’s highly optimized, uses batching + vectorization.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OptDensMinHash&lt;/strong&gt; – handles densification for sparse data, fills in missing values in a principled way.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I ran benchmarks on a 100K-row dataset (&lt;code&gt;gretelai/synthetic_text_to_sql&lt;/code&gt;) with 256 permutations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;CMinHash&lt;/code&gt;: 5.47s&lt;/li&gt; &lt;li&gt;&lt;code&gt;RMinHash&lt;/code&gt;: 5.58s&lt;/li&gt; &lt;li&gt;&lt;code&gt;OptDensMinHash&lt;/code&gt;: 12.36s&lt;/li&gt; &lt;li&gt;&lt;code&gt;datasketch&lt;/code&gt;: 92.45s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So yeah, still ~10-17x faster than datasketch, depending on variant.&lt;/p&gt; &lt;p&gt;Accuracy-wise, all Rensa variants produce very similar (sometimes identical) results to &lt;code&gt;datasketch&lt;/code&gt; in terms of deduplicated examples.&lt;/p&gt; &lt;p&gt;It’s a side project I built out of necessity and I'd love to get some feedback from the community :)&lt;br /&gt; The Python API is simple and should feel familiar if you’ve used datasketch before.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/yourusername/rensa"&gt;https://github.com/beowolx/rensa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BeowulfBR"&gt; /u/BeowulfBR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/beowolx/rensa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-31T15:33:13+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kzjhfd</id>
     <title>Ollama 0.9.0 Supports ability to enable or disable thinking</title>
     <updated>2025-05-31T00:02:35+00:00</updated>
@@ -125,19 +138,6 @@
     <published>2025-05-30T10:13:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1kzjcdf</id>
-    <title>Built an open source desktop app to easily play with local LLMs and MCP</title>
-    <updated>2025-05-30T23:56:00+00:00</updated>
-    <author>
-      <name>/u/WalrusVegetable4506</name>
-      <uri>https://old.reddit.com/user/WalrusVegetable4506</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"&gt; &lt;img alt="Built an open source desktop app to easily play with local LLMs and MCP" src="https://preview.redd.it/i4tcl9p5c04f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=80ceafd5cc7131bca4a2e6423a8fbe6fe7ed3d14" title="Built an open source desktop app to easily play with local LLMs and MCP" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tome is an open source desktop app for Windows or MacOS that lets you chat with an MCP-powered model without having to fuss with Docker, npm, uvx or json config files. Install the app, connect it to a local or remote LLM, one-click install some MCP servers and chat away.&lt;/p&gt; &lt;p&gt;GitHub link here: &lt;a href="https://github.com/runebookai/tome"&gt;https://github.com/runebookai/tome&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We're also working on scheduled tasks and other app concepts that should be released in the coming weeks to enable new powerful ways of interacting with LLMs.&lt;/p&gt; &lt;p&gt;We created this because we wanted an easy way to play with LLMs and MCP servers. We wanted to streamline the user experience to make it easy for beginners to get started. You're not going to see a lot of power user features from the more mature projects, but we're open to any feedback and have only been around for a few weeks so there's a lot of improvements we can make. :)&lt;/p&gt; &lt;p&gt;Here's what you can do today:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;connect to Ollama, Gemini, OpenAI, or any OpenAI compatible API&lt;/li&gt; &lt;li&gt;add an MCP server, you can either paste something like &amp;quot;uvx mcp-server-fetch&amp;quot; or you can use the Smithery registry integration to one-click install a local MCP server - Tome manages uv/npm and starts up/shuts down your MCP servers so you don't have to worry about it&lt;/li&gt; &lt;li&gt;chat with your model and watch it make tool calls!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you get a chance to try it out we would love any feedback (good or bad!), thanks for checking it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WalrusVegetable4506"&gt; /u/WalrusVegetable4506 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/i4tcl9p5c04f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-30T23:56:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1kzf9nl</id>
     <title>Deepseek is cool, but is there an alternative to Claude Code I can use with it?</title>
     <updated>2025-05-30T20:56:55+00:00</updated>
@@ -151,6 +151,19 @@
     <published>2025-05-30T20:56:55+00:00</published>
   </entry>
   <entry>
+    <id>t3_1kzjcdf</id>
+    <title>Built an open source desktop app to easily play with local LLMs and MCP</title>
+    <updated>2025-05-30T23:56:00+00:00</updated>
+    <author>
+      <name>/u/WalrusVegetable4506</name>
+      <uri>https://old.reddit.com/user/WalrusVegetable4506</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"&gt; &lt;img alt="Built an open source desktop app to easily play with local LLMs and MCP" src="https://preview.redd.it/i4tcl9p5c04f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=80ceafd5cc7131bca4a2e6423a8fbe6fe7ed3d14" title="Built an open source desktop app to easily play with local LLMs and MCP" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tome is an open source desktop app for Windows or MacOS that lets you chat with an MCP-powered model without having to fuss with Docker, npm, uvx or json config files. Install the app, connect it to a local or remote LLM, one-click install some MCP servers and chat away.&lt;/p&gt; &lt;p&gt;GitHub link here: &lt;a href="https://github.com/runebookai/tome"&gt;https://github.com/runebookai/tome&lt;/a&gt;&lt;/p&gt; &lt;p&gt;We're also working on scheduled tasks and other app concepts that should be released in the coming weeks to enable new powerful ways of interacting with LLMs.&lt;/p&gt; &lt;p&gt;We created this because we wanted an easy way to play with LLMs and MCP servers. We wanted to streamline the user experience to make it easy for beginners to get started. You're not going to see a lot of power user features from the more mature projects, but we're open to any feedback and have only been around for a few weeks so there's a lot of improvements we can make. :)&lt;/p&gt; &lt;p&gt;Here's what you can do today:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;connect to Ollama, Gemini, OpenAI, or any OpenAI compatible API&lt;/li&gt; &lt;li&gt;add an MCP server, you can either paste something like &amp;quot;uvx mcp-server-fetch&amp;quot; or you can use the Smithery registry integration to one-click install a local MCP server - Tome manages uv/npm and starts up/shuts down your MCP servers so you don't have to worry about it&lt;/li&gt; &lt;li&gt;chat with your model and watch it make tool calls!&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you get a chance to try it out we would love any feedback (good or bad!), thanks for checking it out!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/WalrusVegetable4506"&gt; /u/WalrusVegetable4506 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/i4tcl9p5c04f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzjcdf/built_an_open_source_desktop_app_to_easily_play/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-05-30T23:56:00+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1kzfrdt</id>
     <title>ubergarm/DeepSeek-R1-0528-GGUF</title>
     <updated>2025-05-30T21:17:00+00:00</updated>
@@ -162,19 +175,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzfrdt/ubergarmdeepseekr10528gguf/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-30T21:17:00+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1kzzvzt</id>
-    <title>[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)</title>
-    <updated>2025-05-31T15:33:13+00:00</updated>
-    <author>
-      <name>/u/BeowulfBR</name>
-      <uri>https://old.reddit.com/user/BeowulfBR</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt; &lt;img alt="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" src="https://external-preview.redd.it/5-lt2FyUCjdvV--0DsoyDNNXFgYjxAoICz1QQO0XTVc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5505689fd81e257fb9e8b4a1756ec434868c1664" title="[Update] Rensa: added full CMinHash + OptDensMinHash support (fast MinHash in Rust for dataset deduplication / LLM fine-tuning)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey all — quick update on &lt;a href="https://github.com/beowolx/rensa"&gt;Rensa&lt;/a&gt;, a MinHash library I’ve been building in Rust with Python bindings. It’s focused on speed and works well for deduplicating large text datasets — especially stuff like LLM fine-tuning where near duplicates are a problem.&lt;/p&gt; &lt;p&gt;Originally, I built a custom algorithm called &lt;strong&gt;RMinHash&lt;/strong&gt; because existing tools (like &lt;code&gt;datasketch&lt;/code&gt;) were way too slow for my use cases. RMinHash is a fast, simple alternative to classic MinHash and gave me much better performance on big datasets.&lt;/p&gt; &lt;p&gt;Since I last posted, I’ve added:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;CMinHash&lt;/strong&gt; – full implementation based on the paper (“C-MinHash: reducing K permutations to two”). It’s highly optimized, uses batching + vectorization.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OptDensMinHash&lt;/strong&gt; – handles densification for sparse data, fills in missing values in a principled way.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I ran benchmarks on a 100K-row dataset (&lt;code&gt;gretelai/synthetic_text_to_sql&lt;/code&gt;) with 256 permutations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;CMinHash&lt;/code&gt;: 5.47s&lt;/li&gt; &lt;li&gt;&lt;code&gt;RMinHash&lt;/code&gt;: 5.58s&lt;/li&gt; &lt;li&gt;&lt;code&gt;OptDensMinHash&lt;/code&gt;: 12.36s&lt;/li&gt; &lt;li&gt;&lt;code&gt;datasketch&lt;/code&gt;: 92.45s&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So yeah, still ~10-17x faster than datasketch, depending on variant.&lt;/p&gt; &lt;p&gt;Accuracy-wise, all Rensa variants produce very similar (sometimes identical) results to &lt;code&gt;datasketch&lt;/code&gt; in terms of deduplicated examples.&lt;/p&gt; &lt;p&gt;It’s a side project I built out of necessity and I'd love to get some feedback from the community :)&lt;br /&gt; The Python API is simple and should feel familiar if you’ve used datasketch before.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/yourusername/rensa"&gt;https://github.com/beowolx/rensa&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BeowulfBR"&gt; /u/BeowulfBR &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/beowolx/rensa"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1kzzvzt/update_rensa_added_full_cminhash_optdensminhash/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T15:33:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1kz48qx</id>
