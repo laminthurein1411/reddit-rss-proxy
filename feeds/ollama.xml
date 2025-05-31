@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-05-31T03:32:10+00:00</updated>
+  <updated>2025-05-31T03:54:06+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1kxi0fs</id>
-    <title>How do I get this kind of performance?</title>
-    <updated>2025-05-28T14:07:31+00:00</updated>
-    <author>
-      <name>/u/jagauthier</name>
-      <uri>https://old.reddit.com/user/jagauthier</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1kxi0fs/how_do_i_get_this_kind_of_performance/"&gt; &lt;img alt="How do I get this kind of performance?" src="https://external-preview.redd.it/Mt90tjYCKC9n53i1oiOKWNA0Qb4fIrcOqD1XYdCWeZ4.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=10e36df8b49d43cf090605824b61361d376a0972" title="How do I get this kind of performance?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have 4x 3070 GPUs wtih 8G VRAM.&lt;/p&gt; &lt;p&gt;I've used this calculator:&lt;/p&gt; &lt;p&gt;&lt;a href="https://apxml.com/tools/vram-calculator"&gt;https://apxml.com/tools/vram-calculator&lt;/a&gt; &lt;/p&gt; &lt;p&gt;to calculate what it takes to run Gemma3:27B, the calculator gives me this info:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/bvrb6suh3j3f1.png?width=389&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=72d94db6c773f1a6d182fa5946edb4e806063f57"&gt;https://preview.redd.it/bvrb6suh3j3f1.png?width=389&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=72d94db6c773f1a6d182fa5946edb4e806063f57&lt;/a&gt;&lt;/p&gt; &lt;p&gt;However, after loading this model and running something simple &amp;quot;Give me a fun fact&amp;quot; Open-WebUI tells me my performance is this: &lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/9yrw0w2o3j3f1.png?width=217&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=ddacfab15fa8197b8d58c7f36b1f34953758b91a"&gt;https://preview.redd.it/9yrw0w2o3j3f1.png?width=217&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=ddacfab15fa8197b8d58c7f36b1f34953758b91a&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The model is showing me this:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;time=2025-05-28T13:52:25.923Z level=INFO source=server.go:168 msg=offload library=cuda layers.requested=-1 layers.model=63 layers.offload=62 layers.split=16,16,15,15 memory.available=&amp;quot;[7.5 GiB 7.5 GiB 7.5 GiB 7.5 GiB]&amp;quot; memory.gpu_overhead=&amp;quot;0 B&amp;quot; memory.required.full=&amp;quot;27.1 GiB&amp;quot; memory.required.partial=&amp;quot;24.3 GiB&amp;quot; memory.required.kv=&amp;quot;784.0 MiB&amp;quot; memory.required.allocations=&amp;quot;[6.2 GiB 6.2 GiB 5.9 GiB 5.9 GiB]&amp;quot; memory.weights.total=&amp;quot;15.4 GiB&amp;quot; memory.weights.repeating=&amp;quot;14.3 GiB&amp;quot; memory.weights.nonrepeating=&amp;quot;1.1 GiB&amp;quot; memory.graph.full=&amp;quot;1.6 GiB&amp;quot; memory.graph.partial=&amp;quot;1.6 GiB&amp;quot; projector.weights=&amp;quot;795.9 MiB&amp;quot; projector.graph=&amp;quot;1.0 GiB&amp;quot; time=2025-05-28T13:52:25.982Z level=INFO source=server.go:431 msg=&amp;quot;starting llama server&amp;quot; cmd=&amp;quot;/usr/bin/ollama runner --ollama-engine --model /root/.ollama/models/blobs/sha256-e796792eba26c4d3b04b0ac5adb01a453dd9ec2dfd83b6c59cbf6fe5f30b0f68 --ctx-size 2048 --batch-size 512 --n-gpu-layers 62 --threads 6 --parallel 1 --tensor-split 16,16,15,15 --port 37289&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And my GPU stats are:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;+-----------------------------------------------------------------------------------------+ | NVIDIA-SMI 570.133.07 Driver Version: 570.133.07 CUDA Version: 12.8 | |-----------------------------------------+------------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | | | | MIG M. | |=========================================+========================+======================| | 0 NVIDIA GeForce RTX 3070 Off | 00000000:03:00.0 Off | N/A | | 30% 33C P8 18W / 220W | 4459MiB / 8192MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 1 NVIDIA GeForce RTX 3070 Off | 00000000:04:00.0 Off | N/A | | 0% 45C P8 19W / 240W | 4293MiB / 8192MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 2 NVIDIA GeForce RTX 3070 Off | 00000000:07:00.0 Off | N/A | | 33% 34C P8 18W / 220W | 4053MiB / 8192MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 3 NVIDIA GeForce RTX 3070 Off | 00000000:09:00.0 On | N/A | | 0% 41C P8 13W / 220W | 4205MiB / 8192MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ +-----------------------------------------------------------------------------------------+ | Processes: | | GPU GI CI PID Type Process name GPU Memory | | ID ID Usage | |=========================================================================================| | 0 N/A N/A 2690348 C /usr/bin/ollama 4450MiB | | 1 N/A N/A 2690348 C /usr/bin/ollama 4284MiB | | 2 N/A N/A 2690348 C /usr/bin/ollama 4044MiB | | 3 N/A N/A 2690348 C /usr/bin/ollama 4190MiB | +-----------------------------------------------------------------------------------------+ &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;One thing that seems interesting from the load messages is that maybe 1 layer isn't being loaded into VRAM, but I am not sure if that's what I am reading, and if so, why.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jagauthier"&gt; /u/jagauthier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kxi0fs/how_do_i_get_this_kind_of_performance/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kxi0fs/how_do_i_get_this_kind_of_performance/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1kxi0fs/how_do_i_get_this_kind_of_performance/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-05-28T14:07:31+00:00</published>
-  </entry>
   <entry>
     <id>t3_1kxg442</id>
     <title>Bollama: simple ollama tui</title>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1kz1pk7/release_cognito_ai_search_v120_fully_reimagined/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-05-30T11:21:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1kzni23</id>
+    <title>Best uncensored model for writing stories</title>
+    <updated>2025-05-31T03:33:52+00:00</updated>
+    <author>
+      <name>/u/MilaAmane</name>
+      <uri>https://old.reddit.com/user/MilaAmane</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Been playing around with ollama and I was wondering what the best uncensored, a I model for storytelling, is not for role play, but just for storytelling. Cause one thing i've noticed about a lot of the other models is that they all have the same. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MilaAmane"&gt; /u/MilaAmane &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kzni23/best_uncensored_model_for_writing_stories/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1kzni23/best_uncensored_model_for_writing_stories/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1kzni23/best_uncensored_model_for_writing_stories/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-05-31T03:33:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1kza8y8</id>
