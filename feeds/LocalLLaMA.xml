@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-01T19:48:46+00:00</updated>
+  <updated>2025-06-01T20:06:36+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss about Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l05hpu</id>
-    <title>llama-server, gemma3, 32K context *and* speculative decoding on a 24GB GPU</title>
-    <updated>2025-05-31T19:32:46+00:00</updated>
-    <author>
-      <name>/u/No-Statement-0001</name>
-      <uri>https://old.reddit.com/user/No-Statement-0001</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama.cpp keeps cooking! Draft model support with SWA landed this morning and early tests show up to 30% improvements in performance. Fitting it all on a single 24GB GPU was tight. The 4b as a draft model had a high enough acceptance rate to make a performance difference. Generating code had the best speed ups and creative writing got slower. &lt;/p&gt; &lt;p&gt;Tested on dual 3090s: &lt;/p&gt; &lt;h3&gt;4b draft model&lt;/h3&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;prompt&lt;/th&gt; &lt;th&gt;n&lt;/th&gt; &lt;th&gt;tok/sec&lt;/th&gt; &lt;th&gt;draft_n&lt;/th&gt; &lt;th&gt;draft_accepted&lt;/th&gt; &lt;th&gt;ratio&lt;/th&gt; &lt;th&gt;Δ %&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;create a one page html snake game in javascript&lt;/td&gt; &lt;td&gt;1542&lt;/td&gt; &lt;td&gt;49.07&lt;/td&gt; &lt;td&gt;1422&lt;/td&gt; &lt;td&gt;956&lt;/td&gt; &lt;td&gt;0.67&lt;/td&gt; &lt;td&gt;26.7%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;write a snake game in python&lt;/td&gt; &lt;td&gt;1904&lt;/td&gt; &lt;td&gt;50.67&lt;/td&gt; &lt;td&gt;1709&lt;/td&gt; &lt;td&gt;1236&lt;/td&gt; &lt;td&gt;0.72&lt;/td&gt; &lt;td&gt;31.6%&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;write a story about a dog&lt;/td&gt; &lt;td&gt;982&lt;/td&gt; &lt;td&gt;33.97&lt;/td&gt; &lt;td&gt;1068&lt;/td&gt; &lt;td&gt;282&lt;/td&gt; &lt;td&gt;0.26&lt;/td&gt; &lt;td&gt;-14.4%&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Scripts and configurations can be found on &lt;a href="https://github.com/mostlygeek/llama-swap/wiki/gemma3-27b-100k-context"&gt;llama-swap's wiki&lt;/a&gt;&lt;/p&gt; &lt;p&gt;llama-swap config: &lt;/p&gt; &lt;p&gt;```yaml macros: &amp;quot;server-latest&amp;quot;: /path/to/llama-server/llama-server-latest --host 127.0.0.1 --port ${PORT} --flash-attn -ngl 999 -ngld 999 --no-mmap&lt;/p&gt; &lt;p&gt;# quantize KV cache to Q8, increases context but # has a small effect on perplexity # &lt;a href="https://github.com/ggml-org/llama.cpp/pull/7412#issuecomment-2120427347"&gt;https://github.com/ggml-org/llama.cpp/pull/7412#issuecomment-2120427347&lt;/a&gt; &amp;quot;q8-kv&amp;quot;: &amp;quot;--cache-type-k q8_0 --cache-type-v q8_0&amp;quot;&lt;/p&gt; &lt;p&gt;&amp;quot;gemma3-args&amp;quot;: | --model /path/to/models/gemma-3-27b-it-q4_0.gguf --temp 1.0 --repeat-penalty 1.0 --min-p 0.01 --top-k 64 --top-p 0.95&lt;/p&gt; &lt;p&gt;models: # fits on a single 24GB GPU w/ 100K context # requires Q8 KV quantization &amp;quot;gemma&amp;quot;: env: # 3090 - 35 tok/sec - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0&amp;quot;&lt;/p&gt; &lt;pre&gt;&lt;code&gt; # P40 - 11.8 tok/sec #- &amp;quot;CUDA_VISIBLE_DEVICES=GPU-eb1&amp;quot; cmd: | ${server-latest} ${q8-kv} ${gemma3-args} --ctx-size 102400 --mmproj /path/to/models/gemma-mmproj-model-f16-27B.gguf &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;# single GPU w/ draft model (lower context) &amp;quot;gemma-fit&amp;quot;: env: - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0&amp;quot; cmd: | ${server-latest} ${q8-kv} ${gemma3-args} --ctx-size 32000 --ctx-size-draft 32000 --model-draft /path/to/models/gemma-3-4b-it-q4_0.gguf --draft-max 8 --draft-min 4&lt;/p&gt; &lt;p&gt;# Requires 30GB VRAM for 100K context and non-quantized cache # - Dual 3090s, 38.6 tok/sec # - Dual P40s, 15.8 tok/sec &amp;quot;gemma-full&amp;quot;: env: # 3090 - 38 tok/sec - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0,GPU-f10&amp;quot;&lt;/p&gt; &lt;pre&gt;&lt;code&gt; # P40 - 15.8 tok/sec #- &amp;quot;CUDA_VISIBLE_DEVICES=GPU-eb1,GPU-ea4&amp;quot; cmd: | ${server-latest} ${gemma3-args} --ctx-size 102400 --mmproj /path/to/models/gemma-mmproj-model-f16-27B.gguf #-sm row &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;# Requires: 35GB VRAM for 100K context w/ 4b model # with 4b as a draft model # note: --mmproj not compatible with draft models&lt;/p&gt; &lt;p&gt;&amp;quot;gemma-draft&amp;quot;: env: # 3090 - 38 tok/sec - &amp;quot;CUDA_VISIBLE_DEVICES=GPU-6f0,GPU-f10&amp;quot; cmd: | ${server-latest} ${gemma3-args} --ctx-size 102400 --model-draft /path/to/models/gemma-3-4b-it-q4_0.gguf --ctx-size-draft 102400 --draft-max 8 --draft-min 4 ```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No-Statement-0001"&gt; /u/No-Statement-0001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05hpu/llamaserver_gemma3_32k_context_and_speculative/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l05hpu/llamaserver_gemma3_32k_context_and_speculative/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l05hpu/llamaserver_gemma3_32k_context_and_speculative/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-05-31T19:32:46+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l0wix3</id>
     <title>My Local LLM plan for academic editing help</title>
@@ -60,19 +47,6 @@
     <published>2025-06-01T19:27:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l0y0wp</id>
-    <title>Allowing LLM to ponder in Open WebUI</title>
-    <updated>2025-06-01T19:47:52+00:00</updated>
-    <author>
-      <name>/u/Everlier</name>
-      <uri>https://old.reddit.com/user/Everlier</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"&gt; &lt;img alt="Allowing LLM to ponder in Open WebUI" src="https://external-preview.redd.it/dHd6NjY5c2JkZDRmMbDY_eAdKP8QUXyZwc-4j2cel9Olwb9ejqufCbXqijwB.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d96e6747cff63170125fef17cdbcf53af47bbb3f" title="Allowing LLM to ponder in Open WebUI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;What is this?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;A completely superficial way of letting LLM to ponder a bit before making its conversation turn. The process is streamed to an artifact within Open WebUI.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/av/harbor/blob/main/boost/src/modules/ponder.py"&gt;Code&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/uoeptbsbdd4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-01T19:47:52+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l0bc5j</id>
     <title>OpenWebUI vs LibreChat?</title>
     <updated>2025-05-31T23:59:50+00:00</updated>
@@ -84,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0bc5j/openwebui_vs_librechat/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-05-31T23:59:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l0uccd</id>
+    <title>I built a lightweight, private, MCP server to share context between AI tools</title>
+    <updated>2025-06-01T17:17:13+00:00</updated>
+    <author>
+      <name>/u/coding9</name>
+      <uri>https://old.reddit.com/user/coding9</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys, I have seen a few projects similar to mine lately, so I decided to open source mine ASAP.&lt;/p&gt; &lt;p&gt;My approach uses a single docker command, a single 90mb service that needs to be running. So it's quite small.&lt;/p&gt; &lt;p&gt;I wanted to make a service that persists context and can recall it across any AI tools. I also want it to be a way to persist your digital life and semantic search it, all self hosted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;One thing I saw lacking in a few other alternatives is re-embedding&lt;/strong&gt;. If you change your preferred model, the next startup will automatically re-embed all documents for you.&lt;/p&gt; &lt;p&gt;As for how it works: if I read a website about presidents, I can say &amp;quot;recall documents about government&amp;quot; in my AI tool of choice, and it would be recalled, despite an exact text match not existing.&lt;/p&gt; &lt;p&gt;I am in progress building &lt;strong&gt;Obsidian and browser extensions&lt;/strong&gt; to progress towards automatically ingesting any content for later retrieval.&lt;/p&gt; &lt;p&gt;You can bring your own AI service. I recommend Ollama or LM Studio, but you can connect it to OpenAI or any other embedding service.&lt;/p&gt; &lt;p&gt;For AI and coding specifically, &lt;strong&gt;there are getContext and setContext key / value tools that the MCP server adds&lt;/strong&gt;. You can imagine saving your project information, like what package mangers to use, in here at any time, and then any AI tool you can add it to the prompt afterwards. Some examples using Cline and Claude desktop can be found &lt;a href="https://github.com/zackify/revect?tab=readme-ov-file#-examples"&gt;at the bottom of the readme&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;This service uses SQLite, so it's incredibly simple, and &lt;strong&gt;only takes up 90mb&lt;/strong&gt; for a fully complete docker container.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This means you can query your data easily, or back it up by mounting the container to an iCloud drive or Dropbox folder for example.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I have a cloud version I will launch soon, so its easy to share this between teams.&lt;/p&gt; &lt;p&gt;Most of the examples I have seen currently use multiple services and much more resources to do the same thing.&lt;/p&gt; &lt;p&gt;Let me know what you all think, the repo can be found here: &lt;a href="https://github.com/zackify/revect"&gt;https://github.com/zackify/revect&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coding9"&gt; /u/coding9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-01T17:17:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1l06f7r</id>
@@ -138,19 +125,6 @@
     <published>2025-06-01T15:14:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l0uccd</id>
-    <title>I built a lightweight, private, MCP server to share context between AI tools</title>
-    <updated>2025-06-01T17:17:13+00:00</updated>
-    <author>
-      <name>/u/coding9</name>
-      <uri>https://old.reddit.com/user/coding9</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys, I have seen a few projects similar to mine lately, so I decided to open source mine ASAP.&lt;/p&gt; &lt;p&gt;My approach uses a single docker command, a single 90mb service that needs to be running. So it's quite small.&lt;/p&gt; &lt;p&gt;I wanted to make a service that persists context and can recall it across any AI tools. I also want it to be a way to persist your digital life and semantic search it, all self hosted.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;One thing I saw lacking in a few other alternatives is re-embedding&lt;/strong&gt;. If you change your preferred model, the next startup will automatically re-embed all documents for you.&lt;/p&gt; &lt;p&gt;As for how it works: if I read a website about presidents, I can say &amp;quot;recall documents about government&amp;quot; in my AI tool of choice, and it would be recalled, despite an exact text match not existing.&lt;/p&gt; &lt;p&gt;I am in progress building &lt;strong&gt;Obsidian and browser extensions&lt;/strong&gt; to progress towards automatically ingesting any content for later retrieval.&lt;/p&gt; &lt;p&gt;You can bring your own AI service. I recommend Ollama or LM Studio, but you can connect it to OpenAI or any other embedding service.&lt;/p&gt; &lt;p&gt;For AI and coding specifically, &lt;strong&gt;there are getContext and setContext key / value tools that the MCP server adds&lt;/strong&gt;. You can imagine saving your project information, like what package mangers to use, in here at any time, and then any AI tool you can add it to the prompt afterwards. Some examples using Cline and Claude desktop can be found &lt;a href="https://github.com/zackify/revect?tab=readme-ov-file#-examples"&gt;at the bottom of the readme&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;This service uses SQLite, so it's incredibly simple, and &lt;strong&gt;only takes up 90mb&lt;/strong&gt; for a fully complete docker container.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;This means you can query your data easily, or back it up by mounting the container to an iCloud drive or Dropbox folder for example.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I have a cloud version I will launch soon, so its easy to share this between teams.&lt;/p&gt; &lt;p&gt;Most of the examples I have seen currently use multiple services and much more resources to do the same thing.&lt;/p&gt; &lt;p&gt;Let me know what you all think, the repo can be found here: &lt;a href="https://github.com/zackify/revect"&gt;https://github.com/zackify/revect&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coding9"&gt; /u/coding9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0uccd/i_built_a_lightweight_private_mcp_server_to_share/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-01T17:17:13+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l0xubg</id>
     <title>Toolcalling in the reasoning trace as an alternative to agentic frameworks</title>
     <updated>2025-06-01T19:40:13+00:00</updated>
@@ -162,6 +136,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0xubg/toolcalling_in_the_reasoning_trace_as_an/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-01T19:40:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l0y4ep</id>
+    <title>A Privacy-Focused Perplexity That Runs Locally on all your devices - iPhone, Android, iPad!</title>
+    <updated>2025-06-01T19:52:02+00:00</updated>
+    <author>
+      <name>/u/Ssjultrainstnict</name>
+      <uri>https://old.reddit.com/user/Ssjultrainstnict</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLlama"&gt;r/LocalLlama&lt;/a&gt; community!&lt;/p&gt; &lt;p&gt;Following up on my &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1ku1444/a_privacyfocused_perplexity_that_runs_locally_on/"&gt;previous post&lt;/a&gt;- the response has been incredible! Thank you to everyone who tried it out, left reviews, and provided feedback.&lt;/p&gt; &lt;p&gt;Based on your requests, I'm excited to announce that &lt;strong&gt;MyDeviceAI is now available on iPad and Android&lt;/strong&gt;!&lt;/p&gt; &lt;h1&gt;iPad Support&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Full native iPad experience with optimized UI&lt;/li&gt; &lt;li&gt;Same lightning-fast local processing with M-series chips&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Android Release&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Available as APK on GitHub releases (v1.2)&lt;/li&gt; &lt;li&gt;Download link: &lt;a href="https://github.com/navedmerchant/MyDeviceAI/releases"&gt;https://github.com/navedmerchant/MyDeviceAI/releases&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Same core features: local AI, SearXNG integration, complete privacy&lt;/li&gt; &lt;li&gt;Works across a wide range of Android devices&lt;/li&gt; &lt;li&gt;Runs on CPU only for now, working on getting Adreno GPU support in llama.rn&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What's Next?&lt;/h1&gt; &lt;p&gt;I'm continuing to work on improvements based on your suggestions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Ability to select a larger model for powerful supported devices (Qwen 3 4b)&lt;/li&gt; &lt;li&gt;Ability to add images and documents to the chat for supported devices (QwenVL support)&lt;/li&gt; &lt;li&gt;Advanced speech mode on device&lt;/li&gt; &lt;li&gt;Enhanced personalization features&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Download Links&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;iOS/iPad&lt;/strong&gt;: &lt;a href="https://apps.apple.com/us/app/mydeviceai/id6736578281?platform=ipad"&gt;MyDeviceAI on App Store&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Android&lt;/strong&gt;: &lt;a href="https://github.com/navedmerchant/MyDeviceAI/releases"&gt;GitHub Releases v1.2&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Source Code&lt;/strong&gt;: &lt;a href="https://github.com/navedmerchant/MyDeviceAI"&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you've been waiting for Android support or want to try it on iPad, now's your chance! As always, everything remains 100% free, open source, and completely private.&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts on the new platforms, and please consider leaving a review if MyDeviceAI has been useful for you. Your support helps tremendously with continued development!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ssjultrainstnict"&gt; /u/Ssjultrainstnict &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y4ep/a_privacyfocused_perplexity_that_runs_locally_on/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y4ep/a_privacyfocused_perplexity_that_runs_locally_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y4ep/a_privacyfocused_perplexity_that_runs_locally_on/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-01T19:52:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1l0qbot</id>
@@ -229,17 +216,17 @@
     <published>2025-06-01T11:26:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l0wfln</id>
-    <title>Is multiple m3 ultras the move instead of 1 big one?</title>
-    <updated>2025-06-01T18:42:06+00:00</updated>
+    <id>t3_1l0y0wp</id>
+    <title>Allowing LLM to ponder in Open WebUI</title>
+    <updated>2025-06-01T19:47:52+00:00</updated>
     <author>
-      <name>/u/AcceptableBridge7616</name>
-      <uri>https://old.reddit.com/user/AcceptableBridge7616</uri>
+      <name>/u/Everlier</name>
+      <uri>https://old.reddit.com/user/Everlier</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am seriously considering investing in a sizable m3 ultra mac studio. Looking through some of the benchmarks, it seems the m3ultra's do well but not as well in prompt processing speed. The comparisons from the 60 core to the 80 core seem to show a (surprisingly?) big boost from going up in gpu size. Given the low power usage, I think just getting more than 1 is a real option. However, I couldn't really find any comparisons comparing chained configurations, though I have seen videos of people doing it especially with the previous model. If you are in the ~10k price range, I think it's worth considering different combos:&lt;/p&gt; &lt;p&gt;one 80 core, 512gb ram- ~$9.4k&lt;/p&gt; &lt;p&gt;two 60 core, 256gb ram each - ~ $11k&lt;/p&gt; &lt;p&gt;two 60 core, 1 256gb ram, 1 96gb ram ~ $9.6k&lt;/p&gt; &lt;p&gt;three 60 core, 96gb ram each ~$12k&lt;/p&gt; &lt;p&gt;Are you losing much performance by spreading things across 2 machines? I think the biggest issue will be the annoyance of administering 2+ boxes. Having different sized boxes many even more annoying. Anyone have any experience with this who can comment? Obviously the best setup is use case dependent but I am trying to understand what I might not be taking into account here...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AcceptableBridge7616"&gt; /u/AcceptableBridge7616 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"&gt; &lt;img alt="Allowing LLM to ponder in Open WebUI" src="https://external-preview.redd.it/dHd6NjY5c2JkZDRmMbDY_eAdKP8QUXyZwc-4j2cel9Olwb9ejqufCbXqijwB.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d96e6747cff63170125fef17cdbcf53af47bbb3f" title="Allowing LLM to ponder in Open WebUI" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;What is this?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;A completely superficial way of letting LLM to ponder a bit before making its conversation turn. The process is streamed to an artifact within Open WebUI.&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/av/harbor/blob/main/boost/src/modules/ponder.py"&gt;Code&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Everlier"&gt; /u/Everlier &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/uoeptbsbdd4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-01T18:42:06+00:00</published>
+    <published>2025-06-01T19:47:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1l0rvqr</id>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0rvqr/old_dual_socket_xeon_server_with_tons_of_ram/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-01T15:35:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l0wfln</id>
+    <title>Is multiple m3 ultras the move instead of 1 big one?</title>
+    <updated>2025-06-01T18:42:06+00:00</updated>
+    <author>
+      <name>/u/AcceptableBridge7616</name>
+      <uri>https://old.reddit.com/user/AcceptableBridge7616</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am seriously considering investing in a sizable m3 ultra mac studio. Looking through some of the benchmarks, it seems the m3ultra's do well but not as well in prompt processing speed. The comparisons from the 60 core to the 80 core seem to show a (surprisingly?) big boost from going up in gpu size. Given the low power usage, I think just getting more than 1 is a real option. However, I couldn't really find any comparisons comparing chained configurations, though I have seen videos of people doing it especially with the previous model. If you are in the ~10k price range, I think it's worth considering different combos:&lt;/p&gt; &lt;p&gt;one 80 core, 512gb ram- ~$9.4k&lt;/p&gt; &lt;p&gt;two 60 core, 256gb ram each - ~ $11k&lt;/p&gt; &lt;p&gt;two 60 core, 1 256gb ram, 1 96gb ram ~ $9.6k&lt;/p&gt; &lt;p&gt;three 60 core, 96gb ram each ~$12k&lt;/p&gt; &lt;p&gt;Are you losing much performance by spreading things across 2 machines? I think the biggest issue will be the annoyance of administering 2+ boxes. Having different sized boxes many even more annoying. Anyone have any experience with this who can comment? Obviously the best setup is use case dependent but I am trying to understand what I might not be taking into account here...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AcceptableBridge7616"&gt; /u/AcceptableBridge7616 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0wfln/is_multiple_m3_ultras_the_move_instead_of_1_big/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-01T18:42:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1l0n5ta</id>
