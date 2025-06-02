@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-02T19:05:28+00:00</updated>
+  <updated>2025-06-02T19:22:17+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l0q2zk</id>
-    <title>DeepSeek-R1-0528-UD-Q6-K-XL on 10 Year Old Hardware</title>
-    <updated>2025-06-01T14:19:51+00:00</updated>
-    <author>
-      <name>/u/Simusid</name>
-      <uri>https://old.reddit.com/user/Simusid</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Don't expect anything useful in this post. I did it just to see if it was possible. This was on a 10+ year old system with a 6th generation i5 with 12gb of RAM. My ssd is nearly full so I had to mount an external 8TB USB drive to store the 560GB model. At least it is USB-3.&lt;/p&gt; &lt;p&gt;I made an 800GB swap file and enabled it, then launched llama-cli with a simple prompt and went to bed. I half expected that the model might not even have fully loaded when I got up but it was already part way through the response.&lt;/p&gt; &lt;p&gt;With no GPU, it seems to be about seven minutes per token.&lt;/p&gt; &lt;p&gt;Edit - I've named this system TreeBeard&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Simusid"&gt; /u/Simusid &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0q2zk/deepseekr10528udq6kxl_on_10_year_old_hardware/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0q2zk/deepseekr10528udq6kxl_on_10_year_old_hardware/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0q2zk/deepseekr10528udq6kxl_on_10_year_old_hardware/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-01T14:19:51+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l1lqdm</id>
     <title>Which LLM is best at understanding information in spreadsheets?</title>
@@ -60,6 +47,19 @@
     <published>2025-06-02T09:40:05+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l1ob6a</id>
+    <title>Mistral-Small 3.1 is {good|bad} at OCR when using {ollama|llama.cpp}</title>
+    <updated>2025-06-02T17:37:57+00:00</updated>
+    <author>
+      <name>/u/exacly</name>
+      <uri>https://old.reddit.com/user/exacly</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve tried everything I can think of, and I’m losing my mind. Does anyone have any suggestions?&lt;/p&gt; &lt;p&gt; I’ve been trying out 24-28B local vision models for some slightly specialized OCR (nothing too fancy, it’s still words printed on a page), first using Ollama for inference. The results for Mistral Small 3.1 were fantastic, with character error rates in the 5-10% range, low enough that it could be useful in my professional field today – except inference with Ollama is very, very slow on my RTX 3060 with just 12 GB of VRAM (around 3.5 tok/sec), of course. The average character error rate was 9% on my 11 test cases, which intentionally included some difficult images to work with. Qwen 2.5VL:32b was a step behind (averaging 12%), while Gemma3:27b was noticeably worse (19%).&lt;/p&gt; &lt;p&gt;But wait! Llama.cpp handles offloading model layers to my GPU better, and inference is much faster – except now the character error rates are all different. Gemma3:27b comes in at 14%, and even Pixtral:12b is nearly as accurate. But Mistral Small 3.1 is consistently bad, at 20% or worse, not good enough to be useful.&lt;/p&gt; &lt;p&gt;I’m running all these tests using Q_4_M quants of Mistral Small 3.1 from Ollama (one monolithic file) and the Unsloth, Bartowski, and MRadermacher quants (which use a separate mmproj file) in Llama.cpp. I’ve also tried a Q_6 quant, higher precision levels for the mmproj files, enabling or disabling KV cache and flash attention and mmproj offloading. I’ve tried using all the Ollama default settings in Llama.cpp. Nothing seems to make a difference – for my use case, Mistral Small 3.1 is consistently bad under llama.cpp, and consistently good to excellent (but extremely slow) under Ollama. Is it normal for the inference platform and/or quant provider to make such a big difference in accuracy?&lt;/p&gt; &lt;p&gt;Is there anything else I can try in Llama.cpp to get Ollama-like accuracy? I tried to find other inference engines that would work in Windows, but everything else is either running Ollama/Llama.cpp under the hood, or it doesn’t offer vision support. My attempts to use GGUF quants in vllm under WSL were unsuccessful.&lt;/p&gt; &lt;p&gt;If I could get Ollama accuracy and Llama.cpp inference speed, I could move forward with a big research project in my non-technical field. Any suggestions beyond saving up for another GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/exacly"&gt; /u/exacly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T17:37:57+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l1imus</id>
     <title>MedGemma on Android</title>
     <updated>2025-06-02T13:54:16+00:00</updated>
@@ -71,19 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1imus/medgemma_on_android/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T13:54:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l0zsv7</id>
-    <title>25L Portable NV-linked Dual 3090 LLM Rig</title>
-    <updated>2025-06-01T21:01:58+00:00</updated>
-    <author>
-      <name>/u/Special-Wolverine</name>
-      <uri>https://old.reddit.com/user/Special-Wolverine</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"&gt; &lt;img alt="25L Portable NV-linked Dual 3090 LLM Rig" src="https://b.thumbs.redditmedia.com/SCLEVQyCptjUTsrbRVb6jCIJUk1CuEOO-Ud355bse9Q.jpg" title="25L Portable NV-linked Dual 3090 LLM Rig" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Main point of portability is because The workplace of the coworker I built this for is truly offline, with no potential for LAN or wifi, so to download new models and update the system periodically I need to go pick it up from him and take it home. &lt;/p&gt; &lt;p&gt;WARNING - these components don't fit if you try to copy this build. The bottom GPU is resting on the Arctic p12 slim fans at the bottom of the case and pushing up on the GPU. Also the top arctic p14 Max fans don't have mounting points for half of their screw holes, and are in place by being very tightly wedged against the motherboard, case, and PSU. Also, there 's probably way too much pressure on the pcie cables coming off the gpus when you close the glass. Also I had to daisy chain the PCIE cables because the Corsair RM 1200e only has four available on the PSU side and these particular EVGA 3090s require 3x 8pin power. Allegedly it just enforces a hardware power limit to 300 w but you should make it a little bit more safe by also enforcing the 300W power limit in Nvidia -SMI To make sure that the cards don't try to pull 450W through 300W pipes. Could have fit a bigger PSU, but then I wouldn't get that front fan which is probably crucial.&lt;/p&gt; &lt;p&gt;All that being said, with a 300w power limit applied to both gpus in a silent fan profile, this rig has surprisingly good temperatures and noise levels considering how compact it is. &lt;/p&gt; &lt;p&gt;During Cinebench 24 with both gpus being 100% utilized, the CPU runs at 63 C and both gpus at 67 Celsius somehow with almost zero gap between them and the glass closed. All the while running at about 37 to 40 decibels from 1 meter away. &lt;/p&gt; &lt;p&gt;Prompt processing and inference - the gpus run at about 63 C, CPU at 55 C, and decibels at 34. &lt;/p&gt; &lt;p&gt;Again, I don't understand why the temperatures for both are almost the same, when logically the top GPU should be much hotter. The only gap between the two gpus is the size of one of those little silicone rubber DisplayPort caps wedged into the end, right between where the pcie power cables connect to force the GPUs apart a little.&lt;/p&gt; &lt;p&gt;Everything but the case, CPU cooler, and PSU was bought used on Facebook Marketplace&lt;/p&gt; &lt;p&gt;&lt;a href="https://pcpartpicker.com/list/nQXzgn"&gt;PCPartPicker Part List&lt;/a&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Type&lt;/th&gt; &lt;th align="left"&gt;Item&lt;/th&gt; &lt;th align="left"&gt;Price&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;CPU&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/qtvqqs/amd-ryzen-7-5800x-38-ghz-8-core-processor-100-100000063wof"&gt;AMD Ryzen 7 5800X 3.8 GHz 8-Core Processor&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$160.54 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;CPU Cooler&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/HbDQzy/id-cooling-frozn-a720-black-986-cfm-cpu-cooler-frozn-a720-black"&gt;ID-COOLING FROZN A720 BLACK 98.6 CFM CPU Cooler&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$69.98 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Motherboard&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/CLkgXL/asus-rog-strix-x570-e-gaming-atx-am4-motherboard-rog-strix-x570-e-gaming"&gt;Asus ROG Strix X570-E Gaming ATX AM4 Motherboard&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$559.00 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/6rrcCJ/corsair-memory-cmk32gx4m2b3200c16"&gt;Corsair Vengeance LPX 32 GB (2 x 16 GB) DDR4-3200 CL16 Memory&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$81.96 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Storage&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/DDWBD3/samsung-980-pro-1-tb-m2-2280-nvme-solid-state-drive-mz-v8p1t0bam"&gt;Samsung 980 Pro 1 TB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$149.99 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Video Card&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/PG848d/evga-geforce-rtx-3090-24-gb-ftw3-ultra-gaming-video-card-24g-p5-3987-kr"&gt;EVGA FTW3 ULTRA GAMING GeForce RTX 3090 24 GB Video Card&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$750.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Video Card&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/PG848d/evga-geforce-rtx-3090-24-gb-ftw3-ultra-gaming-video-card-24g-p5-3987-kr"&gt;EVGA FTW3 ULTRA GAMING GeForce RTX 3090 24 GB Video Card&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$750.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;NVlink SLI bridge&lt;/td&gt; &lt;td align="left"&gt;$90.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;Mechanic Master c34plus&lt;/td&gt; &lt;td align="left"&gt;$200.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;Corsair RM1200e&lt;/td&gt; &lt;td align="left"&gt;$210.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;2x Arctic p14 max, 3x p12, 3x p12 slim&lt;/td&gt; &lt;td align="left"&gt;$60.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;em&gt;Prices include shipping, taxes, rebates, and discounts&lt;/em&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;$3081.47&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;Generated by &lt;a href="https://pcpartpicker.com"&gt;PCPartPicker&lt;/a&gt; 2025-06-01 16:48 EDT-0400&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Special-Wolverine"&gt; /u/Special-Wolverine &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l0zsv7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-01T21:01:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1b801</id>
@@ -99,30 +86,17 @@
     <published>2025-06-02T06:47:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1luwz</id>
-    <title>What's a general model 14b or less that genuinely impresses you?</title>
-    <updated>2025-06-02T16:02:56+00:00</updated>
+    <id>t3_1l0zsv7</id>
+    <title>25L Portable NV-linked Dual 3090 LLM Rig</title>
+    <updated>2025-06-01T21:01:58+00:00</updated>
     <author>
-      <name>/u/intimate_sniffer69</name>
-      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
+      <name>/u/Special-Wolverine</name>
+      <uri>https://old.reddit.com/user/Special-Wolverine</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for a general purpose model that is exceptional, outstanding, can do a wide array of tasks especially administrative, doing things like preparing me PowerPoint slide and the text that should be put into documents and just taking notes on stuff, converting ugly messy unformatted notes into something tangible. I need a model that can do that. Currently I've been using Phi, But it's really not that great. I'm kind of disappointed in it. I don't need it to do any sort of programming or coding at all, so mostly administrative stuff&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"&gt; &lt;img alt="25L Portable NV-linked Dual 3090 LLM Rig" src="https://b.thumbs.redditmedia.com/SCLEVQyCptjUTsrbRVb6jCIJUk1CuEOO-Ud355bse9Q.jpg" title="25L Portable NV-linked Dual 3090 LLM Rig" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Main point of portability is because The workplace of the coworker I built this for is truly offline, with no potential for LAN or wifi, so to download new models and update the system periodically I need to go pick it up from him and take it home. &lt;/p&gt; &lt;p&gt;WARNING - these components don't fit if you try to copy this build. The bottom GPU is resting on the Arctic p12 slim fans at the bottom of the case and pushing up on the GPU. Also the top arctic p14 Max fans don't have mounting points for half of their screw holes, and are in place by being very tightly wedged against the motherboard, case, and PSU. Also, there 's probably way too much pressure on the pcie cables coming off the gpus when you close the glass. Also I had to daisy chain the PCIE cables because the Corsair RM 1200e only has four available on the PSU side and these particular EVGA 3090s require 3x 8pin power. Allegedly it just enforces a hardware power limit to 300 w but you should make it a little bit more safe by also enforcing the 300W power limit in Nvidia -SMI To make sure that the cards don't try to pull 450W through 300W pipes. Could have fit a bigger PSU, but then I wouldn't get that front fan which is probably crucial.&lt;/p&gt; &lt;p&gt;All that being said, with a 300w power limit applied to both gpus in a silent fan profile, this rig has surprisingly good temperatures and noise levels considering how compact it is. &lt;/p&gt; &lt;p&gt;During Cinebench 24 with both gpus being 100% utilized, the CPU runs at 63 C and both gpus at 67 Celsius somehow with almost zero gap between them and the glass closed. All the while running at about 37 to 40 decibels from 1 meter away. &lt;/p&gt; &lt;p&gt;Prompt processing and inference - the gpus run at about 63 C, CPU at 55 C, and decibels at 34. &lt;/p&gt; &lt;p&gt;Again, I don't understand why the temperatures for both are almost the same, when logically the top GPU should be much hotter. The only gap between the two gpus is the size of one of those little silicone rubber DisplayPort caps wedged into the end, right between where the pcie power cables connect to force the GPUs apart a little.&lt;/p&gt; &lt;p&gt;Everything but the case, CPU cooler, and PSU was bought used on Facebook Marketplace&lt;/p&gt; &lt;p&gt;&lt;a href="https://pcpartpicker.com/list/nQXzgn"&gt;PCPartPicker Part List&lt;/a&gt;&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Type&lt;/th&gt; &lt;th align="left"&gt;Item&lt;/th&gt; &lt;th align="left"&gt;Price&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;CPU&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/qtvqqs/amd-ryzen-7-5800x-38-ghz-8-core-processor-100-100000063wof"&gt;AMD Ryzen 7 5800X 3.8 GHz 8-Core Processor&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$160.54 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;CPU Cooler&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/HbDQzy/id-cooling-frozn-a720-black-986-cfm-cpu-cooler-frozn-a720-black"&gt;ID-COOLING FROZN A720 BLACK 98.6 CFM CPU Cooler&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$69.98 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Motherboard&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/CLkgXL/asus-rog-strix-x570-e-gaming-atx-am4-motherboard-rog-strix-x570-e-gaming"&gt;Asus ROG Strix X570-E Gaming ATX AM4 Motherboard&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$559.00 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/6rrcCJ/corsair-memory-cmk32gx4m2b3200c16"&gt;Corsair Vengeance LPX 32 GB (2 x 16 GB) DDR4-3200 CL16 Memory&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$81.96 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Storage&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/DDWBD3/samsung-980-pro-1-tb-m2-2280-nvme-solid-state-drive-mz-v8p1t0bam"&gt;Samsung 980 Pro 1 TB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$149.99 @ Amazon&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Video Card&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/PG848d/evga-geforce-rtx-3090-24-gb-ftw3-ultra-gaming-video-card-24g-p5-3987-kr"&gt;EVGA FTW3 ULTRA GAMING GeForce RTX 3090 24 GB Video Card&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$750.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Video Card&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;a href="https://pcpartpicker.com/product/PG848d/evga-geforce-rtx-3090-24-gb-ftw3-ultra-gaming-video-card-24g-p5-3987-kr"&gt;EVGA FTW3 ULTRA GAMING GeForce RTX 3090 24 GB Video Card&lt;/a&gt;&lt;/td&gt; &lt;td align="left"&gt;$750.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;NVlink SLI bridge&lt;/td&gt; &lt;td align="left"&gt;$90.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;Mechanic Master c34plus&lt;/td&gt; &lt;td align="left"&gt;$200.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;Corsair RM1200e&lt;/td&gt; &lt;td align="left"&gt;$210.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Custom&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;2x Arctic p14 max, 3x p12, 3x p12 slim&lt;/td&gt; &lt;td align="left"&gt;$60.00&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;em&gt;Prices include shipping, taxes, rebates, and discounts&lt;/em&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;$3081.47&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;Generated by &lt;a href="https://pcpartpicker.com"&gt;PCPartPicker&lt;/a&gt; 2025-06-01 16:48 EDT-0400&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Special-Wolverine"&gt; /u/Special-Wolverine &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l0zsv7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0zsv7/25l_portable_nvlinked_dual_3090_llm_rig/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T16:02:56+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l1ob6a</id>
-    <title>Mistral-Small 3.1 is {good|bad} at OCR when using {ollama|llama.cpp}</title>
-    <updated>2025-06-02T17:37:57+00:00</updated>
-    <author>
-      <name>/u/exacly</name>
-      <uri>https://old.reddit.com/user/exacly</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve tried everything I can think of, and I’m losing my mind. Does anyone have any suggestions?&lt;/p&gt; &lt;p&gt; I’ve been trying out 24-28B local vision models for some slightly specialized OCR (nothing too fancy, it’s still words printed on a page), first using Ollama for inference. The results for Mistral Small 3.1 were fantastic, with character error rates in the 5-10% range, low enough that it could be useful in my professional field today – except inference with Ollama is very, very slow on my RTX 3060 with just 12 GB of VRAM (around 3.5 tok/sec), of course. The average character error rate was 9% on my 11 test cases, which intentionally included some difficult images to work with. Qwen 2.5VL:32b was a step behind (averaging 12%), while Gemma3:27b was noticeably worse (19%).&lt;/p&gt; &lt;p&gt;But wait! Llama.cpp handles offloading model layers to my GPU better, and inference is much faster – except now the character error rates are all different. Gemma3:27b comes in at 14%, and even Pixtral:12b is nearly as accurate. But Mistral Small 3.1 is consistently bad, at 20% or worse, not good enough to be useful.&lt;/p&gt; &lt;p&gt;I’m running all these tests using Q_4_M quants of Mistral Small 3.1 from Ollama (one monolithic file) and the Unsloth, Bartowski, and MRadermacher quants (which use a separate mmproj file) in Llama.cpp. I’ve also tried a Q_6 quant, higher precision levels for the mmproj files, enabling or disabling KV cache and flash attention and mmproj offloading. I’ve tried using all the Ollama default settings in Llama.cpp. Nothing seems to make a difference – for my use case, Mistral Small 3.1 is consistently bad under llama.cpp, and consistently good to excellent (but extremely slow) under Ollama. Is it normal for the inference platform and/or quant provider to make such a big difference in accuracy?&lt;/p&gt; &lt;p&gt;Is there anything else I can try in Llama.cpp to get Ollama-like accuracy? I tried to find other inference engines that would work in Windows, but everything else is either running Ollama/Llama.cpp under the hood, or it doesn’t offer vision support. My attempts to use GGUF quants in vllm under WSL were unsuccessful.&lt;/p&gt; &lt;p&gt;If I could get Ollama accuracy and Llama.cpp inference speed, I could move forward with a big research project in my non-technical field. Any suggestions beyond saving up for another GPU?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/exacly"&gt; /u/exacly &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ob6a/mistralsmall_31_is_goodbad_at_ocr_when_using/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T17:37:57+00:00</published>
+    <published>2025-06-01T21:01:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1mliw</id>
@@ -149,6 +123,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l0y0wp/allowing_llm_to_ponder_in_open_webui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-01T19:47:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1luwz</id>
+    <title>What's a general model 14b or less that genuinely impresses you?</title>
+    <updated>2025-06-02T16:02:56+00:00</updated>
+    <author>
+      <name>/u/intimate_sniffer69</name>
+      <uri>https://old.reddit.com/user/intimate_sniffer69</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm looking for a general purpose model that is exceptional, outstanding, can do a wide array of tasks especially administrative, doing things like preparing me PowerPoint slide and the text that should be put into documents and just taking notes on stuff, converting ugly messy unformatted notes into something tangible. I need a model that can do that. Currently I've been using Phi, But it's really not that great. I'm kind of disappointed in it. I don't need it to do any sort of programming or coding at all, so mostly administrative stuff&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/intimate_sniffer69"&gt; /u/intimate_sniffer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1luwz/whats_a_general_model_14b_or_less_that_genuinely/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T16:02:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1bjhm</id>
@@ -203,32 +190,6 @@
     <published>2025-06-02T16:54:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1pgv9</id>
-    <title>latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running</title>
-    <updated>2025-06-02T18:21:35+00:00</updated>
-    <author>
-      <name>/u/tyoyvr-2222</name>
-      <uri>https://old.reddit.com/user/tyoyvr-2222</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt; &lt;img alt="latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running" src="https://external-preview.redd.it/sYVW4X6gc-B0EvqWe0QNA3QGRk5e7XKmzrtKFGnT66k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d9cb9655f58f9405afdc373583acebb28d62dac9" title="latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just downloaded &lt;a href="https://github.com/ggml-org/llama.cpp/releases/tag/b5576"&gt;Release b5576 · ggml-org/llama.cpp&lt;/a&gt; and try to use MCP tools with folllowing environment:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;a href="https://huggingface.co/bartowski/deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-GGUF"&gt;DeepSeek-R1-0528-Qwen3-8B-Q8_0&lt;/a&gt;&lt;/li&gt; &lt;li&gt;VS code&lt;/li&gt; &lt;li&gt;Cline&lt;/li&gt; &lt;li&gt;MCP tools like mcp_server_time, filesystem, MS playwright&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Got application error before b5576 previously, but all tools can run smoothly now.&lt;br /&gt; It took longer time to &amp;quot;think&amp;quot; compared with &lt;a href="https://huggingface.co/unsloth/Devstral-Small-2505-GGUF"&gt;Devstral-Small-2505-GGUF&lt;/a&gt;&lt;br /&gt; Anyway, it is a good model with less VRAM if want to try local development.&lt;/p&gt; &lt;p&gt;my Win11 batch file for reference, adjust based on your own environment:&lt;br /&gt; ```TEXT&lt;br /&gt; SET LLAMA_CPP_PATH=G:\ai\llama.cpp&lt;br /&gt; SET PATH=%LLAMA_CPP_PATH%\build\bin\Release\;%PATH%&lt;br /&gt; SET LLAMA_ARG_HOST=0.0.0.0&lt;br /&gt; SET LLAMA_ARG_PORT=8080&lt;br /&gt; SET LLAMA_ARG_JINJA=true&lt;br /&gt; SET LLAMA_ARG_FLASH_ATTN=true&lt;br /&gt; SET LLAMA_ARG_CACHE_TYPE_K=q8_0&lt;br /&gt; SET LLAMA_ARG_CACHE_TYPE_V=q8_0&lt;br /&gt; SET LLAMA_ARG_N_GPU_LAYERS=65&lt;br /&gt; SET LLAMA_ARG_CTX_SIZE=131072&lt;br /&gt; SET LLAMA_ARG_SWA_FULL=true&lt;br /&gt; SET LLAMA_ARG_MODEL=models\deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf&lt;br /&gt; llama-server.exe --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --repeat-penalty 1.1&lt;br /&gt; ```&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/262hbrj02k4f1.png?width=1011&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4d9d0a799cc96053b4b255429c2a7e4b85a995ce"&gt;https://preview.redd.it/262hbrj02k4f1.png?width=1011&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4d9d0a799cc96053b4b255429c2a7e4b85a995ce&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tyoyvr-2222"&gt; /u/tyoyvr-2222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T18:21:35+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l1q3dk</id>
-    <title>Which programming languages do LLMs struggle with the most, and why?</title>
-    <updated>2025-06-02T18:45:36+00:00</updated>
-    <author>
-      <name>/u/alozowski</name>
-      <uri>https://old.reddit.com/user/alozowski</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've noticed that LLMs do well with Python, which is quite obvious, but often make mistakes in other languages. I can't test every language myself, so can you share, which languages have you seen them struggle with, and what went wrong?&lt;/p&gt; &lt;p&gt;For context: I want to test LLMs on various &amp;quot;hard&amp;quot; languages &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/alozowski"&gt; /u/alozowski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T18:45:36+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l1a944</id>
     <title>Snapdragon 8 Elite gets 5.5 t/s on Qwen3 30B A3B</title>
     <updated>2025-06-02T05:44:39+00:00</updated>
@@ -253,6 +214,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1581z/which_model_are_you_using_june25_edition/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T01:09:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1pgv9</id>
+    <title>latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running</title>
+    <updated>2025-06-02T18:21:35+00:00</updated>
+    <author>
+      <name>/u/tyoyvr-2222</name>
+      <uri>https://old.reddit.com/user/tyoyvr-2222</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt; &lt;img alt="latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running" src="https://external-preview.redd.it/sYVW4X6gc-B0EvqWe0QNA3QGRk5e7XKmzrtKFGnT66k.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=d9cb9655f58f9405afdc373583acebb28d62dac9" title="latest llama.cpp (b5576) + DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf successful VScode + MCP running" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just downloaded &lt;a href="https://github.com/ggml-org/llama.cpp/releases/tag/b5576"&gt;Release b5576 · ggml-org/llama.cpp&lt;/a&gt; and try to use MCP tools with folllowing environment:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;a href="https://huggingface.co/bartowski/deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-GGUF"&gt;DeepSeek-R1-0528-Qwen3-8B-Q8_0&lt;/a&gt;&lt;/li&gt; &lt;li&gt;VS code&lt;/li&gt; &lt;li&gt;Cline&lt;/li&gt; &lt;li&gt;MCP tools like mcp_server_time, filesystem, MS playwright&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Got application error before b5576 previously, but all tools can run smoothly now.&lt;br /&gt; It took longer time to &amp;quot;think&amp;quot; compared with &lt;a href="https://huggingface.co/unsloth/Devstral-Small-2505-GGUF"&gt;Devstral-Small-2505-GGUF&lt;/a&gt;&lt;br /&gt; Anyway, it is a good model with less VRAM if want to try local development.&lt;/p&gt; &lt;p&gt;my Win11 batch file for reference, adjust based on your own environment:&lt;br /&gt; ```TEXT&lt;br /&gt; SET LLAMA_CPP_PATH=G:\ai\llama.cpp&lt;br /&gt; SET PATH=%LLAMA_CPP_PATH%\build\bin\Release\;%PATH%&lt;br /&gt; SET LLAMA_ARG_HOST=0.0.0.0&lt;br /&gt; SET LLAMA_ARG_PORT=8080&lt;br /&gt; SET LLAMA_ARG_JINJA=true&lt;br /&gt; SET LLAMA_ARG_FLASH_ATTN=true&lt;br /&gt; SET LLAMA_ARG_CACHE_TYPE_K=q8_0&lt;br /&gt; SET LLAMA_ARG_CACHE_TYPE_V=q8_0&lt;br /&gt; SET LLAMA_ARG_N_GPU_LAYERS=65&lt;br /&gt; SET LLAMA_ARG_CTX_SIZE=131072&lt;br /&gt; SET LLAMA_ARG_SWA_FULL=true&lt;br /&gt; SET LLAMA_ARG_MODEL=models\deepseek-ai_DeepSeek-R1-0528-Qwen3-8B-Q8_0.gguf&lt;br /&gt; llama-server.exe --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --repeat-penalty 1.1&lt;br /&gt; ```&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/262hbrj02k4f1.png?width=1011&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4d9d0a799cc96053b4b255429c2a7e4b85a995ce"&gt;https://preview.redd.it/262hbrj02k4f1.png?width=1011&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=4d9d0a799cc96053b4b255429c2a7e4b85a995ce&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tyoyvr-2222"&gt; /u/tyoyvr-2222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1pgv9/latest_llamacpp_b5576_deepseekr10528qwen38bq8/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T18:21:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1q3dk</id>
+    <title>Which programming languages do LLMs struggle with the most, and why?</title>
+    <updated>2025-06-02T18:45:36+00:00</updated>
+    <author>
+      <name>/u/alozowski</name>
+      <uri>https://old.reddit.com/user/alozowski</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've noticed that LLMs do well with Python, which is quite obvious, but often make mistakes in other languages. I can't test every language myself, so can you share, which languages have you seen them struggle with, and what went wrong?&lt;/p&gt; &lt;p&gt;For context: I want to test LLMs on various &amp;quot;hard&amp;quot; languages &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/alozowski"&gt; /u/alozowski &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T18:45:36+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1glmq</id>
@@ -294,19 +281,6 @@
     <published>2025-06-02T16:20:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1jyld</id>
-    <title>Smallest LLM you tried that's legit</title>
-    <updated>2025-06-02T14:48:26+00:00</updated>
-    <author>
-      <name>/u/Remarkable-Law9287</name>
-      <uri>https://old.reddit.com/user/Remarkable-Law9287</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;what's the smallest LLM you've used that gives proper text, not just random gibberish? &lt;/p&gt; &lt;p&gt;I've tried qwen2.5:0.5B.it works pretty well for me, actually quite good&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Remarkable-Law9287"&gt; /u/Remarkable-Law9287 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T14:48:26+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l19yud</id>
     <title>IQ1_Smol_Boi</title>
     <updated>2025-06-02T05:26:51+00:00</updated>
@@ -318,6 +292,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l19yud/iq1_smol_boi/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T05:26:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1qqdx</id>
+    <title>At the airport people watching while I run models locally:</title>
+    <updated>2025-06-02T19:10:02+00:00</updated>
+    <author>
+      <name>/u/Current-Ticket4214</name>
+      <uri>https://old.reddit.com/user/Current-Ticket4214</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1qqdx/at_the_airport_people_watching_while_i_run_models/"&gt; &lt;img alt="At the airport people watching while I run models locally:" src="https://preview.redd.it/55ab38z0ck4f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=ee34cc7e6232ae1fc31a5076b1cc4064bd66305d" title="At the airport people watching while I run models locally:" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Current-Ticket4214"&gt; /u/Current-Ticket4214 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/55ab38z0ck4f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1qqdx/at_the_airport_people_watching_while_i_run_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1qqdx/at_the_airport_people_watching_while_i_run_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T19:10:02+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1jyld</id>
+    <title>Smallest LLM you tried that's legit</title>
+    <updated>2025-06-02T14:48:26+00:00</updated>
+    <author>
+      <name>/u/Remarkable-Law9287</name>
+      <uri>https://old.reddit.com/user/Remarkable-Law9287</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;what's the smallest LLM you've used that gives proper text, not just random gibberish? &lt;/p&gt; &lt;p&gt;I've tried qwen2.5:0.5B.it works pretty well for me, actually quite good&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Remarkable-Law9287"&gt; /u/Remarkable-Law9287 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1jyld/smallest_llm_you_tried_thats_legit/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T14:48:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1e6ic</id>
