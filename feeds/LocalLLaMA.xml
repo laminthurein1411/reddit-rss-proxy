@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-03T03:36:08+00:00</updated>
+  <updated>2025-06-03T03:57:32+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1l1bjhm</id>
-    <title>System Prompt Learning: Teaching your local LLMs to learn problem-solving strategies from experience (optillm plugin)</title>
-    <updated>2025-06-02T07:08:14+00:00</updated>
+    <id>t3_1l1ggkp</id>
+    <title>[DEMO] I created a coding agent that can do dynamic, runtime debugging.</title>
+    <updated>2025-06-02T12:14:32+00:00</updated>
     <author>
-      <name>/u/asankhs</name>
-      <uri>https://old.reddit.com/user/asankhs</uri>
+      <name>/u/bn_from_zentara</name>
+      <uri>https://old.reddit.com/user/bn_from_zentara</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey &lt;a href="/r/LocalLlama"&gt;r/LocalLlama&lt;/a&gt;!&lt;/p&gt; &lt;p&gt;I wanted to share something we've been working on that might interest folks running local LLMs - &lt;strong&gt;System Prompt Learning (SPL)&lt;/strong&gt;.&lt;/p&gt; &lt;h1&gt;The Problem&lt;/h1&gt; &lt;p&gt;You know how ChatGPT, Claude, etc. perform so well partly because they have incredibly detailed system prompts with sophisticated reasoning strategies? Most of us running local models just use basic prompts and miss out on those performance gains.&lt;/p&gt; &lt;h1&gt;What is SPL?&lt;/h1&gt; &lt;p&gt;SPL implements what Andrej Karpathy called the &amp;quot;third paradigm&amp;quot; for LLM learning - instead of just pretraining and fine-tuning, models can now learn problem-solving strategies from their own experience.&lt;/p&gt; &lt;h1&gt;How it works:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Automatically classifies problems into 16 types (math, coding, word problems, etc.)&lt;/li&gt; &lt;li&gt;Builds a persistent database of effective solving strategies&lt;/li&gt; &lt;li&gt;Selects the best strategies for each query&lt;/li&gt; &lt;li&gt;Evaluates how well strategies worked and refines them over time&lt;/li&gt; &lt;li&gt;All strategies are human-readable JSON - you can inspect and edit them&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Results:&lt;/h1&gt; &lt;p&gt;Tested with gemini-2.0-flash-lite across math benchmarks:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Arena Hard&lt;/strong&gt;: 29% → 37.6% (+8.6%)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AIME24&lt;/strong&gt;: 23.33% → 30% (+6.67%)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;OptiLLMBench&lt;/strong&gt;: 61% → 65% (+4%)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;MATH-500&lt;/strong&gt;: 85% → 85.6% (+0.6%)&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;After 500 queries, the system developed 129 strategies, refined 97 of them, and achieved much better problem-solving.&lt;/p&gt; &lt;h1&gt;For Local LLM Users:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Works with &lt;strong&gt;any OpenAI-compatible API&lt;/strong&gt; (so llama.cpp, Ollama, vLLM, etc.)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Runs completely locally&lt;/strong&gt; - strategies stored in local JSON files&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Two modes&lt;/strong&gt;: inference-only (default) or learning mode&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Minimal overhead&lt;/strong&gt; - just augments your system prompt&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Open source&lt;/strong&gt; and easy to inspect/modify&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Setup:&lt;/h1&gt; &lt;pre&gt;&lt;code&gt;pip install optillm # Point to your local LLM endpoint python optillm.py --base_url http://localhost:8080/v1 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Then just add &lt;code&gt;spl-&lt;/code&gt; prefix to your model:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;model=&amp;quot;spl-llama-3.2-3b&amp;quot; # or whatever your model is &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Enable learning mode to create new strategies:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;extra_body={&amp;quot;spl_learning&amp;quot;: True} &lt;/code&gt;&lt;/pre&gt; &lt;h1&gt;Example Strategy Learned:&lt;/h1&gt; &lt;p&gt;The system automatically learned this strategy for word problems:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Understand&lt;/strong&gt;: Read carefully, identify unknowns&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Plan&lt;/strong&gt;: Define variables, write equations&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Solve&lt;/strong&gt;: Step-by-step with units&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Verify&lt;/strong&gt;: Check reasonableness&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;All strategies are stored in &lt;code&gt;~/.optillm/spl/data/strategies.json&lt;/code&gt; so you can back them up, share them, or manually edit them.&lt;/p&gt; &lt;h1&gt;Why This Matters for Local LLMs:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Your model gets &lt;strong&gt;progressively better&lt;/strong&gt; at problem types you use frequently&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Transparent learning&lt;/strong&gt; - you can see exactly what strategies it develops&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No external dependencies&lt;/strong&gt; - everything runs locally&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Transferable knowledge&lt;/strong&gt; - you can share strategy files between deployments&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This feels like a step toward local models that actually improve through use, rather than being static after training.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Links:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GitHub: &lt;a href="https://github.com/codelion/optillm"&gt;https://github.com/codelion/optillm&lt;/a&gt;&lt;/li&gt; &lt;li&gt;SPL Plugin: &lt;a href="https://github.com/codelion/optillm/tree/main/optillm/plugins/spl"&gt;https://github.com/codelion/optillm/tree/main/optillm/plugins/spl&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Technical article: &lt;a href="https://huggingface.co/blog/codelion/system-prompt-learning"&gt;https://huggingface.co/blog/codelion/system-prompt-learning&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Andrej's original tweet: &lt;a href="https://x.com/karpathy/status/1921368644069765486"&gt;https://x.com/karpathy/status/1921368644069765486&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Anyone tried this yet? Would love to hear how it works with different local models!&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; Works great with reasoning models like DeepSeek-R1, QwQ, etc. The strategies help guide their thinking process.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/asankhs"&gt; /u/asankhs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1bjhm/system_prompt_learning_teaching_your_local_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1bjhm/system_prompt_learning_teaching_your_local_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1bjhm/system_prompt_learning_teaching_your_local_llms/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"&gt; &lt;img alt="[DEMO] I created a coding agent that can do dynamic, runtime debugging." src="https://external-preview.redd.it/MnJzMXR6MGg4aTRmMSD9styMP4r1TEey8oyCG95ikT3wdTqvY8nF4QJV9K9T.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5c16192412336aa8a18b501474cd7b09cd1c3407" title="[DEMO] I created a coding agent that can do dynamic, runtime debugging." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm just annoyed with inability of current coding agents creating buggy code and can not fix it. It is said that current LLM have Ph.D level and cannot fix some obvious bugs, just loop around and around and offer the same wrong solution for the bug. At the same time they look very smart, much knowledgeable than me. Why is that? My explanation is that they do not have access to the information as I do. When I do debugging, I can look at variable values, can go up and down the stack to figure out where the wrong variables values get it.&lt;br /&gt; It seems to me that this can be fixed easily if we give a coding agent the rich context as we do when debugging by given them all the debugging tools. This approach has been pioneered previously by several posts such as :&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1inqb6n/letting_llms_using_an_ides_debugger/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1inqb6n/letting_llms_using_an_ides_debugger/&lt;/a&gt; , and &lt;a href="https://www.reddit.com/r/ClaudeAI/comments/1i3axh1/enable_claude_to_interactively_debug_for_you_via/"&gt;https://www.reddit.com/r/ClaudeAI/comments/1i3axh1/enable_claude_to_interactively_debug_for_you_via/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Those posts really provided the proof of concept of exactly what I am looking for . Also recently Microsoft published a paper about their Debug-gym, &lt;a href="https://www.microsoft.com/en-us/research/blog/debug-gym-an-environment-for-ai-coding-tools-to-learn-how-to-debug-code-like-programmers/"&gt;https://www.microsoft.com/en-us/research/blog/debug-gym-an-environment-for-ai-coding-tools-to-learn-how-to-debug-code-like-programmers/&lt;/a&gt; , saying that by leveraging the runtime state knowledge, LLM can increase pretty substantially on coding accuracy.&lt;/p&gt; &lt;p&gt;One of the previous work uses MCP server approach. While MCP server provides the flexibility to quickly change the coding agent, I could not make it work robustly, stable in my setting. Maybe the sse transport layer of MCP server does not work well. Also current solutions only provide limited debugging functions. Inspired by those previous works, here I expanded the debugging toolset, made it directly integrated with my favorite coding agent - Roo -Code, skipping the MCP communication. Although this way, I lost the plug and play flexibility of MCP server, what I gain is more stable, robust performance.&lt;br /&gt; Included is the demo of my coding agent - a fork from the wonderful coding agent Roo-Code. Besides writing code , it can set breakpoints, inspect stack variable, go up and down the stack, evaluate expression, run statements, etc. , have access to most debugger function tools. As Zentara Code - my forked coding agent communicate with debugger through VSCode DAP, it is language agnostic, can work with any language that has VSCode debugger extention. I have tested it with Python, TypeScript and Javascript.&lt;/p&gt; &lt;p&gt;I mostly code in Python. I usually ask Zentara Code write a code for me, and then write pytest tests for the code it write. Pytest by default captures all the assertion errors to make it own analysis, do not bubble up the exception. I was able to make Zentara code to capture those pytest exceptions. Now Zentara code can run those pytest tests, see the exception messages, use runtime state to interactively debug the exceptions smartly.&lt;br /&gt; The code will be released soon after I finishing up final touch. The demo attached is an illustration of how Zentara code struggles and successfully debugs a buggy quicksort implementation using dynamic runtime info.&lt;/p&gt; &lt;p&gt;I just would like to share with you the preliminary result and get your initial impressions and feedbacks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bn_from_zentara"&gt; /u/bn_from_zentara &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/qic49y0h8i4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T07:08:14+00:00</published>
+    <published>2025-06-02T12:14:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l13tv3</id>
@@ -34,30 +34,17 @@
     <published>2025-06-02T00:00:47+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1ggkp</id>
-    <title>[DEMO] I created a coding agent that can do dynamic, runtime debugging.</title>
-    <updated>2025-06-02T12:14:32+00:00</updated>
+    <id>t3_1l22cel</id>
+    <title>LMStudio+Cline+MacBookPro repeated response</title>
+    <updated>2025-06-03T03:55:18+00:00</updated>
     <author>
-      <name>/u/bn_from_zentara</name>
-      <uri>https://old.reddit.com/user/bn_from_zentara</uri>
+      <name>/u/mcchung52</name>
+      <uri>https://old.reddit.com/user/mcchung52</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"&gt; &lt;img alt="[DEMO] I created a coding agent that can do dynamic, runtime debugging." src="https://external-preview.redd.it/MnJzMXR6MGg4aTRmMSD9styMP4r1TEey8oyCG95ikT3wdTqvY8nF4QJV9K9T.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5c16192412336aa8a18b501474cd7b09cd1c3407" title="[DEMO] I created a coding agent that can do dynamic, runtime debugging." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm just annoyed with inability of current coding agents creating buggy code and can not fix it. It is said that current LLM have Ph.D level and cannot fix some obvious bugs, just loop around and around and offer the same wrong solution for the bug. At the same time they look very smart, much knowledgeable than me. Why is that? My explanation is that they do not have access to the information as I do. When I do debugging, I can look at variable values, can go up and down the stack to figure out where the wrong variables values get it.&lt;br /&gt; It seems to me that this can be fixed easily if we give a coding agent the rich context as we do when debugging by given them all the debugging tools. This approach has been pioneered previously by several posts such as :&lt;/p&gt; &lt;p&gt;&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1inqb6n/letting_llms_using_an_ides_debugger/"&gt;https://www.reddit.com/r/LocalLLaMA/comments/1inqb6n/letting_llms_using_an_ides_debugger/&lt;/a&gt; , and &lt;a href="https://www.reddit.com/r/ClaudeAI/comments/1i3axh1/enable_claude_to_interactively_debug_for_you_via/"&gt;https://www.reddit.com/r/ClaudeAI/comments/1i3axh1/enable_claude_to_interactively_debug_for_you_via/&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Those posts really provided the proof of concept of exactly what I am looking for . Also recently Microsoft published a paper about their Debug-gym, &lt;a href="https://www.microsoft.com/en-us/research/blog/debug-gym-an-environment-for-ai-coding-tools-to-learn-how-to-debug-code-like-programmers/"&gt;https://www.microsoft.com/en-us/research/blog/debug-gym-an-environment-for-ai-coding-tools-to-learn-how-to-debug-code-like-programmers/&lt;/a&gt; , saying that by leveraging the runtime state knowledge, LLM can increase pretty substantially on coding accuracy.&lt;/p&gt; &lt;p&gt;One of the previous work uses MCP server approach. While MCP server provides the flexibility to quickly change the coding agent, I could not make it work robustly, stable in my setting. Maybe the sse transport layer of MCP server does not work well. Also current solutions only provide limited debugging functions. Inspired by those previous works, here I expanded the debugging toolset, made it directly integrated with my favorite coding agent - Roo -Code, skipping the MCP communication. Although this way, I lost the plug and play flexibility of MCP server, what I gain is more stable, robust performance.&lt;br /&gt; Included is the demo of my coding agent - a fork from the wonderful coding agent Roo-Code. Besides writing code , it can set breakpoints, inspect stack variable, go up and down the stack, evaluate expression, run statements, etc. , have access to most debugger function tools. As Zentara Code - my forked coding agent communicate with debugger through VSCode DAP, it is language agnostic, can work with any language that has VSCode debugger extention. I have tested it with Python, TypeScript and Javascript.&lt;/p&gt; &lt;p&gt;I mostly code in Python. I usually ask Zentara Code write a code for me, and then write pytest tests for the code it write. Pytest by default captures all the assertion errors to make it own analysis, do not bubble up the exception. I was able to make Zentara code to capture those pytest exceptions. Now Zentara code can run those pytest tests, see the exception messages, use runtime state to interactively debug the exceptions smartly.&lt;br /&gt; The code will be released soon after I finishing up final touch. The demo attached is an illustration of how Zentara code struggles and successfully debugs a buggy quicksort implementation using dynamic runtime info.&lt;/p&gt; &lt;p&gt;I just would like to share with you the preliminary result and get your initial impressions and feedbacks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bn_from_zentara"&gt; /u/bn_from_zentara &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/qic49y0h8i4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1ggkp/demo_i_created_a_coding_agent_that_can_do_dynamic/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi guys, I didn’t know who to turn to so I wanna ask here. On my new MacBook Pro M4 48gb RAM I’m running LM studio and Cline Vs code extension+MCP. When I ask something in Cline, it repeats the response over and over and was thinking maybe LMstudio was caching the response. When I use Copilot or other online models, it’s working fine. Or even LMStudio in my other pc in the LAN, it works ok. I was wondering if people are having the same issue.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mcchung52"&gt; /u/mcchung52 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l22cel/lmstudioclinemacbookpro_repeated_response/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l22cel/lmstudioclinemacbookpro_repeated_response/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l22cel/lmstudioclinemacbookpro_repeated_response/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T12:14:32+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l219ol</id>
-    <title>OSS implementation of OpenAI's vector search tool?</title>
-    <updated>2025-06-03T02:57:02+00:00</updated>
-    <author>
-      <name>/u/Amgadoz</name>
-      <uri>https://old.reddit.com/user/Amgadoz</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi,&lt;/p&gt; &lt;p&gt;Is there a library that implements OpenAI's vector search?&lt;/p&gt; &lt;p&gt;Something where you can create vector stores, add files (pdf, docx, md) to the vector stores and then search these vector store for a certain query.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amgadoz"&gt; /u/Amgadoz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-03T02:57:02+00:00</published>
+    <published>2025-06-03T03:55:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1r366</id>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1r366/671b_iq1_s_vs_70b_q8_0/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T19:23:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l1wnsz</id>
+    <title>Why use thinking model ?</title>
+    <updated>2025-06-02T23:10:34+00:00</updated>
+    <author>
+      <name>/u/Empty_Object_9299</name>
+      <uri>https://old.reddit.com/user/Empty_Object_9299</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm relatively new to using models. I've experimented with some that have a &amp;quot;thinking&amp;quot; feature, but I'm finding the delay quite frustrating – a minute to generate a response feels excessive. &lt;/p&gt; &lt;p&gt;I understand these models are popular, so I'm curious what I might be missing in terms of their benefits or how to best utilize them. &lt;/p&gt; &lt;p&gt;Any insights would be appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Empty_Object_9299"&gt; /u/Empty_Object_9299 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T23:10:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1a944</id>
@@ -99,19 +99,6 @@
     <published>2025-06-02T01:09:13+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1wnsz</id>
-    <title>Why use thinking model ?</title>
-    <updated>2025-06-02T23:10:34+00:00</updated>
-    <author>
-      <name>/u/Empty_Object_9299</name>
-      <uri>https://old.reddit.com/user/Empty_Object_9299</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm relatively new to using models. I've experimented with some that have a &amp;quot;thinking&amp;quot; feature, but I'm finding the delay quite frustrating – a minute to generate a response feels excessive. &lt;/p&gt; &lt;p&gt;I understand these models are popular, so I'm curious what I might be missing in terms of their benefits or how to best utilize them. &lt;/p&gt; &lt;p&gt;Any insights would be appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Empty_Object_9299"&gt; /u/Empty_Object_9299 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wnsz/why_use_thinking_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T23:10:34+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l1rda5</id>
     <title>Use offline voice controlled agents to search and browse the internet with a contextually aware LLM in the next version of AI Runner</title>
     <updated>2025-06-02T19:34:26+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1rda5/use_offline_voice_controlled_agents_to_search_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T19:34:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l219ol</id>
+    <title>OSS implementation of OpenAI's vector search tool?</title>
+    <updated>2025-06-03T02:57:02+00:00</updated>
+    <author>
+      <name>/u/Amgadoz</name>
+      <uri>https://old.reddit.com/user/Amgadoz</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi,&lt;/p&gt; &lt;p&gt;Is there a library that implements OpenAI's vector search?&lt;/p&gt; &lt;p&gt;Something where you can create vector stores, add files (pdf, docx, md) to the vector stores and then search these vector store for a certain query.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Amgadoz"&gt; /u/Amgadoz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l219ol/oss_implementation_of_openais_vector_search_tool/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-03T02:57:02+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1n6h4</id>
@@ -151,19 +151,6 @@
     <published>2025-06-02T16:02:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l1glmq</id>
-    <title>Anyone tried this? - Self improving AI agents</title>
-    <updated>2025-06-02T12:21:26+00:00</updated>
-    <author>
-      <name>/u/davesmith001</name>
-      <uri>https://old.reddit.com/user/davesmith001</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Repository for &lt;strong&gt;Darwin Gödel Machine (DGM)&lt;/strong&gt;, a novel self-improving system that iteratively modifies its own code (thereby also improving its ability to modify its own codebase) and empirically validates each change using coding benchmarks. &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/jennyzzt/dgm"&gt;https://github.com/jennyzzt/dgm&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davesmith001"&gt; /u/davesmith001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-02T12:21:26+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l1x5k4</id>
     <title>Sharing my a demo of tool for easy handwritten fine-tuning dataset creation!</title>
     <updated>2025-06-02T23:32:39+00:00</updated>
@@ -177,6 +164,19 @@
     <published>2025-06-02T23:32:39+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l1glmq</id>
+    <title>Anyone tried this? - Self improving AI agents</title>
+    <updated>2025-06-02T12:21:26+00:00</updated>
+    <author>
+      <name>/u/davesmith001</name>
+      <uri>https://old.reddit.com/user/davesmith001</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Repository for &lt;strong&gt;Darwin Gödel Machine (DGM)&lt;/strong&gt;, a novel self-improving system that iteratively modifies its own code (thereby also improving its ability to modify its own codebase) and empirically validates each change using coding benchmarks. &lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/jennyzzt/dgm"&gt;https://github.com/jennyzzt/dgm&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/davesmith001"&gt; /u/davesmith001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1glmq/anyone_tried_this_self_improving_ai_agents/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-02T12:21:26+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l1wdlj</id>
     <title>llama4:maverick vs qwen3:235b</title>
     <updated>2025-06-02T22:58:01+00:00</updated>
@@ -188,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1wdlj/llama4maverick_vs_qwen3235b/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T22:58:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l20f2h</id>
+    <title>LLM an engine</title>
+    <updated>2025-06-03T02:13:46+00:00</updated>
+    <author>
+      <name>/u/localremote762</name>
+      <uri>https://old.reddit.com/user/localremote762</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I can’t help but feel like the LLM, ollama, deep seek, openAI, Claude, are all engines sitting on a stand. Yes we see the raw power it puts out when sitting on an engine stand, but we can’t quite conceptually figure out the “body” of the automobile. The car changed the world, but not without first the engine. &lt;/p&gt; &lt;p&gt;I’ve been exploring mcp, rag and other context servers and from what I can see, they all suck. ChatGPTs memory does the best job, but when programming, remembering that I always have a set of includes, or use a specific theme, they all do a terrible job. &lt;/p&gt; &lt;p&gt;Please anyone correct me if I’m wrong, but it feels like we have all this raw power just waiting to be unleashed, and I can only tap into the raw power when I’m in an isolated context window, not on the open road. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/localremote762"&gt; /u/localremote762 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-03T02:13:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1l1j94p</id>
@@ -214,19 +227,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l1q3dk/which_programming_languages_do_llms_struggle_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-02T18:45:36+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l20f2h</id>
-    <title>LLM an engine</title>
-    <updated>2025-06-03T02:13:46+00:00</updated>
-    <author>
-      <name>/u/localremote762</name>
-      <uri>https://old.reddit.com/user/localremote762</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I can’t help but feel like the LLM, ollama, deep seek, openAI, Claude, are all engines sitting on a stand. Yes we see the raw power it puts out when sitting on an engine stand, but we can’t quite conceptually figure out the “body” of the automobile. The car changed the world, but not without first the engine. &lt;/p&gt; &lt;p&gt;I’ve been exploring mcp, rag and other context servers and from what I can see, they all suck. ChatGPTs memory does the best job, but when programming, remembering that I always have a set of includes, or use a specific theme, they all do a terrible job. &lt;/p&gt; &lt;p&gt;Please anyone correct me if I’m wrong, but it feels like we have all this raw power just waiting to be unleashed, and I can only tap into the raw power when I’m in an isolated context window, not on the open road. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/localremote762"&gt; /u/localremote762 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l20f2h/llm_an_engine/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-03T02:13:46+00:00</published>
   </entry>
   <entry>
     <id>t3_1l19yud</id>
