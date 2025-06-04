@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-04T22:05:55+00:00</updated>
+  <updated>2025-06-04T22:23:38+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -177,19 +177,6 @@
     <published>2025-06-04T21:41:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l3i78l</id>
-    <title>UPDATE: Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-06-04T21:51:11+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A month ago I &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;complained&lt;/a&gt; that connecting 8 RTX 3090 with PCIe 3.0 x4 links is bad idea. I have upgraded my rig with better PCIe links and have an update with some numbers.&lt;/p&gt; &lt;p&gt;The upgrade: PCIe 3.0 -&amp;gt; 4.0, x4 width to x8 width. Used H12SSL with 16-core EPYC 7302. I didn't try the p2p PCIe drivers yet.&lt;/p&gt; &lt;p&gt;The numbers:&lt;/p&gt; &lt;p&gt;Bandwidth (p2pBandwidthLatencyTest, read):&lt;/p&gt; &lt;p&gt;Before: 1.6GB/s single direction&lt;/p&gt; &lt;p&gt;After: 6.1GB/s single direction&lt;/p&gt; &lt;p&gt;LLM:&lt;/p&gt; &lt;p&gt;Model: TechxGenus/Mistral-Large-Instruct-2411-AWQ&lt;/p&gt; &lt;p&gt;Before: ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;After: ~33 t/s generation and ~250 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Both of these were achieved running docker.io/lmsysorg/sglang:v0.4.6.post2-cu124&lt;/p&gt; &lt;p&gt;250t/s prefill makes me very happy. The LLM is finally fast enough to not choke on adding extra files to context when coding.&lt;/p&gt; &lt;p&gt;Options:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;environment: - TORCHINDUCTOR_CACHE_DIR=/root/cache/torchinductor_cache - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True command: - python3 - -m - sglang.launch_server - --host - 0.0.0.0 - --port - &amp;quot;8000&amp;quot; - --model-path - TechxGenus/Mistral-Large-Instruct-2411-AWQ - --sleep-on-idle - --tensor-parallel-size - &amp;quot;8&amp;quot; - --mem-fraction-static - &amp;quot;0.90&amp;quot; - --chunked-prefill-size - &amp;quot;2048&amp;quot; - --context-length - &amp;quot;128000&amp;quot; - --cuda-graph-max-bs - &amp;quot;8&amp;quot; - --enable-torch-compile - --json-model-override-args - '{ &amp;quot;rope_scaling&amp;quot;: {&amp;quot;factor&amp;quot;: 4.0, &amp;quot;original_max_position_embeddings&amp;quot;: 32768, &amp;quot;type&amp;quot;: &amp;quot;yarn&amp;quot; }}' &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T21:51:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l36s62</id>
     <title>Simple News Broadcast Generator Script using local LLM as "editor" EdgeTTS as narrator, using a list of RSS feeds you can curate yourself</title>
     <updated>2025-06-04T14:20:15+00:00</updated>
@@ -216,6 +203,19 @@
     <published>2025-06-04T04:44:44+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l3btj3</id>
+    <title>How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel</title>
+    <updated>2025-06-04T17:37:22+00:00</updated>
+    <author>
+      <name>/u/Kapperfar</name>
+      <uri>https://old.reddit.com/user/Kapperfar</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"&gt; &lt;img alt="How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel" src="https://external-preview.redd.it/YWJhMzhuazA1eTRmMe_FxokcQpBsD-M8wgi3hLI8PHPTr7rVnpmgkef-dH9o.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc4432caac062358ceae7b73921dc23d1f01261e" title="How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made an Excel add-in that lets you run a prompt on thousands of rows of tasks. Might be useful for some of you to quickly benchmark new models when they come out. In the video I ran gemma3:4b-it-qat, gpt-4.1-mini, and o4-mini on a (admittedly tiny) subset of the MMLU Pro benchmark. I think I understand now why OpenAI didn't include MMLU Pro in their gpt-4.1-mini announcement blog post :D&lt;/p&gt; &lt;p&gt;To try for yourself, clone the git repo at &lt;a href="https://github.com/getcellm/cellm/"&gt;https://github.com/getcellm/cellm/&lt;/a&gt;, build with Visual Studio, and run the installer Cellm-AddIn-Release-x64.msi in src\Cellm.Installers\bin\x64\Release\en-US. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kapperfar"&gt; /u/Kapperfar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ye3ahlk05y4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-04T17:37:22+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l390xb</id>
     <title>Has anyone successfully built a coding assistant using local llama?</title>
     <updated>2025-06-04T15:49:06+00:00</updated>
@@ -229,17 +229,17 @@
     <published>2025-06-04T15:49:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l3btj3</id>
-    <title>How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel</title>
-    <updated>2025-06-04T17:37:22+00:00</updated>
+    <id>t3_1l3i78l</id>
+    <title>UPDATE: Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
+    <updated>2025-06-04T21:51:11+00:00</updated>
     <author>
-      <name>/u/Kapperfar</name>
-      <uri>https://old.reddit.com/user/Kapperfar</uri>
+      <name>/u/pmur12</name>
+      <uri>https://old.reddit.com/user/pmur12</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"&gt; &lt;img alt="How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel" src="https://external-preview.redd.it/YWJhMzhuazA1eTRmMe_FxokcQpBsD-M8wgi3hLI8PHPTr7rVnpmgkef-dH9o.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=dc4432caac062358ceae7b73921dc23d1f01261e" title="How does gemma3:4b-it-qat fare against OpenAI models on MMLU-Pro benchmark? Try for yourself in Excel" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made an Excel add-in that lets you run a prompt on thousands of rows of tasks. Might be useful for some of you to quickly benchmark new models when they come out. In the video I ran gemma3:4b-it-qat, gpt-4.1-mini, and o4-mini on a (admittedly tiny) subset of the MMLU Pro benchmark. I think I understand now why OpenAI didn't include MMLU Pro in their gpt-4.1-mini announcement blog post :D&lt;/p&gt; &lt;p&gt;To try for yourself, clone the git repo at &lt;a href="https://github.com/getcellm/cellm/"&gt;https://github.com/getcellm/cellm/&lt;/a&gt;, build with Visual Studio, and run the installer Cellm-AddIn-Release-x64.msi in src\Cellm.Installers\bin\x64\Release\en-US. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Kapperfar"&gt; /u/Kapperfar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ye3ahlk05y4f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3btj3/how_does_gemma34bitqat_fare_against_openai_models/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A month ago I &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;complained&lt;/a&gt; that connecting 8 RTX 3090 with PCIe 3.0 x4 links is bad idea. I have upgraded my rig with better PCIe links and have an update with some numbers.&lt;/p&gt; &lt;p&gt;The upgrade: PCIe 3.0 -&amp;gt; 4.0, x4 width to x8 width. Used H12SSL with 16-core EPYC 7302. I didn't try the p2p PCIe drivers yet.&lt;/p&gt; &lt;p&gt;The numbers:&lt;/p&gt; &lt;p&gt;Bandwidth (p2pBandwidthLatencyTest, read):&lt;/p&gt; &lt;p&gt;Before: 1.6GB/s single direction&lt;/p&gt; &lt;p&gt;After: 6.1GB/s single direction&lt;/p&gt; &lt;p&gt;LLM:&lt;/p&gt; &lt;p&gt;Model: TechxGenus/Mistral-Large-Instruct-2411-AWQ&lt;/p&gt; &lt;p&gt;Before: ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;After: ~33 t/s generation and ~250 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Both of these were achieved running docker.io/lmsysorg/sglang:v0.4.6.post2-cu124&lt;/p&gt; &lt;p&gt;250t/s prefill makes me very happy. The LLM is finally fast enough to not choke on adding extra files to context when coding.&lt;/p&gt; &lt;p&gt;Options:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;environment: - TORCHINDUCTOR_CACHE_DIR=/root/cache/torchinductor_cache - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True command: - python3 - -m - sglang.launch_server - --host - 0.0.0.0 - --port - &amp;quot;8000&amp;quot; - --model-path - TechxGenus/Mistral-Large-Instruct-2411-AWQ - --sleep-on-idle - --tensor-parallel-size - &amp;quot;8&amp;quot; - --mem-fraction-static - &amp;quot;0.90&amp;quot; - --chunked-prefill-size - &amp;quot;2048&amp;quot; - --context-length - &amp;quot;128000&amp;quot; - --cuda-graph-max-bs - &amp;quot;8&amp;quot; - --enable-torch-compile - --json-model-override-args - '{ &amp;quot;rope_scaling&amp;quot;: {&amp;quot;factor&amp;quot;: 4.0, &amp;quot;original_max_position_embeddings&amp;quot;: 32768, &amp;quot;type&amp;quot;: &amp;quot;yarn&amp;quot; }}' &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T17:37:22+00:00</published>
+    <published>2025-06-04T21:51:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1l3fdv3</id>
@@ -281,19 +281,6 @@
     <published>2025-06-04T17:53:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l39ea3</id>
-    <title>Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!</title>
-    <updated>2025-06-04T16:03:35+00:00</updated>
-    <author>
-      <name>/u/TheLocalDrummer</name>
-      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"&gt; &lt;img alt="Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!" src="https://external-preview.redd.it/v0smBaFAfIOYhWsjTXmZvmibfthD29DfOmGvXCsBLOk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=21f1147df642a26ce4a38f94f61704c291faa086" title="Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Survey Time: I'm working on Skyfall v3 but need opinions on the upscale size. 31B sounds comfy for a 24GB setup? Do you have an upper/lower bound in mind for that range?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Cydonia-24B-v3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T16:03:35+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l318di</id>
     <title>Shisa V2 405B: The strongest model ever built in Japan! (JA/EN)</title>
     <updated>2025-06-04T09:32:34+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l318di/shisa_v2_405b_the_strongest_model_ever_built_in/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-04T09:32:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l39ea3</id>
+    <title>Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!</title>
+    <updated>2025-06-04T16:03:35+00:00</updated>
+    <author>
+      <name>/u/TheLocalDrummer</name>
+      <uri>https://old.reddit.com/user/TheLocalDrummer</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"&gt; &lt;img alt="Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!" src="https://external-preview.redd.it/v0smBaFAfIOYhWsjTXmZvmibfthD29DfOmGvXCsBLOk.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=21f1147df642a26ce4a38f94f61704c291faa086" title="Drummer's Cydonia 24B v3 - A Mistral 24B 2503 finetune!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Survey Time: I'm working on Skyfall v3 but need opinions on the upscale size. 31B sounds comfy for a 24GB setup? Do you have an upper/lower bound in mind for that range?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TheLocalDrummer"&gt; /u/TheLocalDrummer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/TheDrummer/Cydonia-24B-v3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l39ea3/drummers_cydonia_24b_v3_a_mistral_24b_2503/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-04T16:03:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1l352wk</id>
