@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-04T22:48:33+00:00</updated>
+  <updated>2025-06-04T23:06:23+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -229,19 +229,6 @@
     <published>2025-06-04T17:37:22+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l3i78l</id>
-    <title>UPDATE: Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-06-04T21:51:11+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A month ago I &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;complained&lt;/a&gt; that connecting 8 RTX 3090 with PCIe 3.0 x4 links is bad idea. I have upgraded my rig with better PCIe links and have an update with some numbers.&lt;/p&gt; &lt;p&gt;The upgrade: PCIe 3.0 -&amp;gt; 4.0, x4 width to x8 width. Used H12SSL with 16-core EPYC 7302. I didn't try the p2p nvidia drivers yet.&lt;/p&gt; &lt;p&gt;The numbers:&lt;/p&gt; &lt;p&gt;Bandwidth (p2pBandwidthLatencyTest, read):&lt;/p&gt; &lt;p&gt;Before: 1.6GB/s single direction&lt;/p&gt; &lt;p&gt;After: 6.1GB/s single direction&lt;/p&gt; &lt;p&gt;LLM:&lt;/p&gt; &lt;p&gt;Model: TechxGenus/Mistral-Large-Instruct-2411-AWQ&lt;/p&gt; &lt;p&gt;Before: ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;After: ~33 t/s generation and ~250 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Both of these were achieved running docker.io/lmsysorg/sglang:v0.4.6.post2-cu124&lt;/p&gt; &lt;p&gt;250t/s prefill makes me very happy. The LLM is finally fast enough to not choke on adding extra files to context when coding.&lt;/p&gt; &lt;p&gt;Options:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;environment: - TORCHINDUCTOR_CACHE_DIR=/root/cache/torchinductor_cache - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True command: - python3 - -m - sglang.launch_server - --host - 0.0.0.0 - --port - &amp;quot;8000&amp;quot; - --model-path - TechxGenus/Mistral-Large-Instruct-2411-AWQ - --sleep-on-idle - --tensor-parallel-size - &amp;quot;8&amp;quot; - --mem-fraction-static - &amp;quot;0.90&amp;quot; - --chunked-prefill-size - &amp;quot;2048&amp;quot; - --context-length - &amp;quot;128000&amp;quot; - --cuda-graph-max-bs - &amp;quot;8&amp;quot; - --enable-torch-compile - --json-model-override-args - '{ &amp;quot;rope_scaling&amp;quot;: {&amp;quot;factor&amp;quot;: 4.0, &amp;quot;original_max_position_embeddings&amp;quot;: 32768, &amp;quot;type&amp;quot;: &amp;quot;yarn&amp;quot; }}' &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T21:51:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l3fdv3</id>
     <title>I made an LLM tool to let you search offline Wikipedia/StackExchange/DevDocs ZIM files (llm-tools-kiwix, works with Python &amp; LLM cli)</title>
     <updated>2025-06-04T19:57:22+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3fdv3/i_made_an_llm_tool_to_let_you_search_offline/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-04T19:57:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l3i78l</id>
+    <title>UPDATE: Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
+    <updated>2025-06-04T21:51:11+00:00</updated>
+    <author>
+      <name>/u/pmur12</name>
+      <uri>https://old.reddit.com/user/pmur12</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A month ago I &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;complained&lt;/a&gt; that connecting 8 RTX 3090 with PCIe 3.0 x4 links is bad idea. I have upgraded my rig with better PCIe links and have an update with some numbers.&lt;/p&gt; &lt;p&gt;The upgrade: PCIe 3.0 -&amp;gt; 4.0, x4 width to x8 width. Used H12SSL with 16-core EPYC 7302. I didn't try the p2p nvidia drivers yet.&lt;/p&gt; &lt;p&gt;The numbers:&lt;/p&gt; &lt;p&gt;Bandwidth (p2pBandwidthLatencyTest, read):&lt;/p&gt; &lt;p&gt;Before: 1.6GB/s single direction&lt;/p&gt; &lt;p&gt;After: 6.1GB/s single direction&lt;/p&gt; &lt;p&gt;LLM:&lt;/p&gt; &lt;p&gt;Model: TechxGenus/Mistral-Large-Instruct-2411-AWQ&lt;/p&gt; &lt;p&gt;Before: ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;After: ~33 t/s generation and ~250 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Both of these were achieved running docker.io/lmsysorg/sglang:v0.4.6.post2-cu124&lt;/p&gt; &lt;p&gt;250t/s prefill makes me very happy. The LLM is finally fast enough to not choke on adding extra files to context when coding.&lt;/p&gt; &lt;p&gt;Options:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;environment: - TORCHINDUCTOR_CACHE_DIR=/root/cache/torchinductor_cache - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True command: - python3 - -m - sglang.launch_server - --host - 0.0.0.0 - --port - &amp;quot;8000&amp;quot; - --model-path - TechxGenus/Mistral-Large-Instruct-2411-AWQ - --sleep-on-idle - --tensor-parallel-size - &amp;quot;8&amp;quot; - --mem-fraction-static - &amp;quot;0.90&amp;quot; - --chunked-prefill-size - &amp;quot;2048&amp;quot; - --context-length - &amp;quot;128000&amp;quot; - --cuda-graph-max-bs - &amp;quot;8&amp;quot; - --enable-torch-compile - --json-model-override-args - '{ &amp;quot;rope_scaling&amp;quot;: {&amp;quot;factor&amp;quot;: 4.0, &amp;quot;original_max_position_embeddings&amp;quot;: 32768, &amp;quot;type&amp;quot;: &amp;quot;yarn&amp;quot; }}' &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-04T21:51:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1l35rp1</id>
