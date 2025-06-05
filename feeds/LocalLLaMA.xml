@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-05T09:24:44+00:00</updated>
+  <updated>2025-06-05T09:37:16+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1l3lutf</id>
+    <title>Anyone have any experience with Deepseek-R1-0528-Qwen3-8B?</title>
+    <updated>2025-06-05T00:37:31+00:00</updated>
+    <author>
+      <name>/u/clduab11</name>
+      <uri>https://old.reddit.com/user/clduab11</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm trying to download Unsloth's version on Msty (2021 iMac, 16GB), and per Unsloth's HuggingFace, they say to do the Q4_K_XL version because that's the version that's preconfigured with the prompt template and the settings and all that good jazz.&lt;/p&gt; &lt;p&gt;But I'm left scratching my head over here. It acts all bonkers. Spilling prompt tags (when they &lt;strong&gt;are&lt;/strong&gt; entered), never actually stops its output... regardless whether or not a prompt template is entered. Even in its reasoning it acts as if the user (me) is prompting it and engaging in its own schizophrenic conversation. Or it'll answer the query, then reason after the query like it's going to engage back in its own schizo convo.&lt;/p&gt; &lt;p&gt;And for the prompt templates? &lt;em&gt;Maaannnn&lt;/em&gt;...I've tried ChatML, Vicuna, Gemma Instruct, Alfred, a custom one combining a few of them, Jinja-format, non-Jinja format...wrapped text, non-wrapped text, nothing seems to work. I know it's something I'm doing wrong; it work's in HuggingFace's Open Playground just fine. Granite Instruct seemed to come the closest, but it still wrapped the answer and didn't &lt;strong&gt;stop&lt;/strong&gt; its answer, then it reasoned from its own output.&lt;/p&gt; &lt;p&gt;Quite a treat of a model; I just wonder if there's something I need to interrupt as far as how Msty prompts the LLM behind-the-scenes, or configure. Any advice? (inb4 switch to Open WebUI lol)&lt;/p&gt; &lt;p&gt;EDIT TO ADD: ChatML seems to throw the Think tags (even though the thinking is being done outside the think tags).&lt;/p&gt; &lt;p&gt;EDIT TO ADD 2: Even when copy/pasting the formatted Chat Template like…&lt;/p&gt; &lt;p&gt;EDIT TO ADD 3: SOLVED! Turns out I wasn’t auto connecting with sidecar correctly and it wasn’t correctly forwarding all the information. Further, the way you call the HF model in Msty matters. Works a treat now!’&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/clduab11"&gt; /u/clduab11 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3lutf/anyone_have_any_experience_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3lutf/anyone_have_any_experience_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3lutf/anyone_have_any_experience_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T00:37:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l35h5g</id>
+    <title>KV Cache in nanoVLM</title>
+    <updated>2025-06-04T13:23:57+00:00</updated>
+    <author>
+      <name>/u/Disastrous-Work-1632</name>
+      <uri>https://old.reddit.com/user/Disastrous-Work-1632</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l35h5g/kv_cache_in_nanovlm/"&gt; &lt;img alt="KV Cache in nanoVLM" src="https://external-preview.redd.it/fqfBX7C3jmtI84itPZTI_T_664vZv239TD6hn9XTKfY.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=47376a36a5552070fc30e5629099d856ecaa7080" title="KV Cache in nanoVLM" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought I had a fair amount of understanding about KV Cache before implementing it from scratch. I would like to dedicate this blog post to all of them who are really curious about KV Cache, think they know enough about the idea, but would love to implement it someday. &lt;/p&gt; &lt;p&gt;We discover a lot of things while working through it, and I have tried documenting it as much as I could. Hope you all will enjoy reading it. &lt;/p&gt; &lt;p&gt;We chose &lt;a href="https://github.com/huggingface/nanoVLM"&gt;nanoVLM&lt;/a&gt; to implement KV Cache so that it does not have too many abstractions and we could lay out the foundations better. &lt;/p&gt; &lt;p&gt;Blog: &lt;a href="http://hf.co/blog/kv-cache"&gt;hf.co/blog/kv-cache&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rv93ilolvw4f1.png?width=1199&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cd727fe98bf357bdccc6663a2183a50e5987c1c8"&gt;https://preview.redd.it/rv93ilolvw4f1.png?width=1199&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=cd727fe98bf357bdccc6663a2183a50e5987c1c8&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Disastrous-Work-1632"&gt; /u/Disastrous-Work-1632 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l35h5g/kv_cache_in_nanovlm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l35h5g/kv_cache_in_nanovlm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l35h5g/kv_cache_in_nanovlm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-04T13:23:57+00:00</published>
+  </entry>
   <entry>
     <id>t3_1l2wvf3</id>
     <title>Python Pandas Ditches NumPy for Speedier PyArrow</title>
@@ -45,32 +71,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l36s62/simple_news_broadcast_generator_script_using/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-04T14:20:15+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l3qxas</id>
-    <title>Dealing with tool_calls hallucinations</title>
-    <updated>2025-06-05T05:06:31+00:00</updated>
-    <author>
-      <name>/u/EstebanGee</name>
-      <uri>https://old.reddit.com/user/EstebanGee</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I have a specific prompt to output to json but for some reason the llm decides to use a made up tool call. Llama.cpp using qwen 30b&lt;/p&gt; &lt;p&gt;How do you handle these things? Tried passing an empty array to tools: [] and begged the llm to not use tool calls.&lt;/p&gt; &lt;p&gt;Driving me mad!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EstebanGee"&gt; /u/EstebanGee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3qxas/dealing_with_tool_calls_hallucinations/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3qxas/dealing_with_tool_calls_hallucinations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3qxas/dealing_with_tool_calls_hallucinations/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T05:06:31+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l3rwit</id>
-    <title>Mix and Match</title>
-    <updated>2025-06-05T06:08:03+00:00</updated>
-    <author>
-      <name>/u/Doomkeepzor</name>
-      <uri>https://old.reddit.com/user/Doomkeepzor</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have a 4070 super in my current computer, I still have an old 3060ti from my last upgrade, is it compatible to run at the same time as my 4070 to add more vram?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Doomkeepzor"&gt; /u/Doomkeepzor &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3rwit/mix_and_match/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3rwit/mix_and_match/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3rwit/mix_and_match/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T06:08:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1l390xb</id>
