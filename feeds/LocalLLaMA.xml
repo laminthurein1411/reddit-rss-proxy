@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-05T19:34:03+00:00</updated>
+  <updated>2025-06-05T19:48:49+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l3i78l</id>
-    <title>UPDATE: Inference needs nontrivial amount of PCIe bandwidth (8x RTX 3090 rig, tensor parallelism)</title>
-    <updated>2025-06-04T21:51:11+00:00</updated>
-    <author>
-      <name>/u/pmur12</name>
-      <uri>https://old.reddit.com/user/pmur12</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A month ago I &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1kds51e/inference_needs_nontrivial_amount_of_pcie/"&gt;complained&lt;/a&gt; that connecting 8 RTX 3090 with PCIe 3.0 x4 links is bad idea. I have upgraded my rig with better PCIe links and have an update with some numbers.&lt;/p&gt; &lt;p&gt;The upgrade: PCIe 3.0 -&amp;gt; 4.0, x4 width to x8 width. Used H12SSL with 16-core EPYC 7302. I didn't try the p2p nvidia drivers yet.&lt;/p&gt; &lt;p&gt;The numbers:&lt;/p&gt; &lt;p&gt;Bandwidth (p2pBandwidthLatencyTest, read):&lt;/p&gt; &lt;p&gt;Before: 1.6GB/s single direction&lt;/p&gt; &lt;p&gt;After: 6.1GB/s single direction&lt;/p&gt; &lt;p&gt;LLM:&lt;/p&gt; &lt;p&gt;Model: TechxGenus/Mistral-Large-Instruct-2411-AWQ&lt;/p&gt; &lt;p&gt;Before: ~25 t/s generation and ~100 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;After: ~33 t/s generation and ~250 t/s prefill on 80k context.&lt;/p&gt; &lt;p&gt;Both of these were achieved running docker.io/lmsysorg/sglang:v0.4.6.post2-cu124&lt;/p&gt; &lt;p&gt;250t/s prefill makes me very happy. The LLM is finally fast enough to not choke on adding extra files to context when coding.&lt;/p&gt; &lt;p&gt;Options:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;environment: - TORCHINDUCTOR_CACHE_DIR=/root/cache/torchinductor_cache - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True command: - python3 - -m - sglang.launch_server - --host - 0.0.0.0 - --port - &amp;quot;8000&amp;quot; - --model-path - TechxGenus/Mistral-Large-Instruct-2411-AWQ - --sleep-on-idle - --tensor-parallel-size - &amp;quot;8&amp;quot; - --mem-fraction-static - &amp;quot;0.90&amp;quot; - --chunked-prefill-size - &amp;quot;2048&amp;quot; - --context-length - &amp;quot;128000&amp;quot; - --cuda-graph-max-bs - &amp;quot;8&amp;quot; - --enable-torch-compile - --json-model-override-args - '{ &amp;quot;rope_scaling&amp;quot;: {&amp;quot;factor&amp;quot;: 4.0, &amp;quot;original_max_position_embeddings&amp;quot;: 32768, &amp;quot;type&amp;quot;: &amp;quot;yarn&amp;quot; }}' &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/pmur12"&gt; /u/pmur12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3i78l/update_inference_needs_nontrivial_amount_of_pcie/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T21:51:11+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l3lrdq</id>
     <title>My former go-to misguided attention prompt in shambles (DS-V3-0528)</title>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l45p2d/whats_the_best_model_for_playing_a_role_right_now/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T17:49:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l46d96</id>
+    <title>smollm is crazy</title>
+    <updated>2025-06-05T18:14:57+00:00</updated>
+    <author>
+      <name>/u/3d_printing_kid</name>
+      <uri>https://old.reddit.com/user/3d_printing_kid</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"&gt; &lt;img alt="smollm is crazy" src="https://external-preview.redd.it/Nm91OHV2Y3RnNTVmMYC1oXT879drMGhz7A_iST_bdDJ62X2-qbCshqC67I28.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a35a631d604750b6429c86f571c123b68b2830c6" title="smollm is crazy" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/3d_printing_kid"&gt; /u/3d_printing_kid &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/l1u09vctg55f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T18:14:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1l3yamg</id>
@@ -112,19 +112,6 @@
     <published>2025-06-05T14:22:32+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l46d96</id>
-    <title>smollm is crazy</title>
-    <updated>2025-06-05T18:14:57+00:00</updated>
-    <author>
-      <name>/u/3d_printing_kid</name>
-      <uri>https://old.reddit.com/user/3d_printing_kid</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"&gt; &lt;img alt="smollm is crazy" src="https://external-preview.redd.it/Nm91OHV2Y3RnNTVmMYC1oXT879drMGhz7A_iST_bdDJ62X2-qbCshqC67I28.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=a35a631d604750b6429c86f571c123b68b2830c6" title="smollm is crazy" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/3d_printing_kid"&gt; /u/3d_printing_kid &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/l1u09vctg55f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l46d96/smollm_is_crazy/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T18:14:57+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l47fv0</id>
     <title>With 8gb vram: qwen3 8b q6 or 32b iq1?</title>
     <updated>2025-06-05T18:57:34+00:00</updated>
@@ -175,6 +162,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3yjeb/qwen332b_nothink_or_qwen314b_think/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T12:58:31+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l48cnk</id>
+    <title>Is it dumb to build a server with 7x 5060 Ti?</title>
+    <updated>2025-06-05T19:33:32+00:00</updated>
+    <author>
+      <name>/u/vector76</name>
+      <uri>https://old.reddit.com/user/vector76</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm considering putting together a system with 7x 5060 Ti to get the most cost-effective VRAM. This will have to be an open frame with riser cables and an Epyc server motherboard with 7 PCIe slots.&lt;/p&gt; &lt;p&gt;The idea was to have capacity for medium size models that exceed 24GB but fit in ~100GB VRAM. I think I can put this machine together for between $10k and $15k.&lt;/p&gt; &lt;p&gt;For simplicity I was going to go with Windows and Ollama. Inference speed is not critical but crawling along at CPU speeds is not going to be viable.&lt;/p&gt; &lt;p&gt;I don't really know what I'm doing. Is this dumb?&lt;/p&gt; &lt;p&gt;Go ahead and roast my plan as long as you can propose something better.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vector76"&gt; /u/vector76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T19:33:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l40835</id>
