@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-06T00:28:49+00:00</updated>
+  <updated>2025-06-06T00:55:07+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
+  <entry>
+    <id>t3_1l3tby7</id>
+    <title>VLLM with 4x7900xtx with Qwen3-235B-A22B-UD-Q2_K_XL</title>
+    <updated>2025-06-05T07:41:40+00:00</updated>
+    <author>
+      <name>/u/djdeniro</name>
+      <uri>https://old.reddit.com/user/djdeniro</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello Reddit!&lt;/p&gt; &lt;p&gt;Our &amp;quot;AI&amp;quot; computer now has 4x 7900 XTX and 1x 7800 XT.&lt;/p&gt; &lt;p&gt;Llama-server works well, and we successfully launched Qwen3-235B-A22B-UD-Q2_K_XL with a 40,960 context length.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;GPU&lt;/th&gt; &lt;th align="left"&gt;Backend&lt;/th&gt; &lt;th align="left"&gt;Input&lt;/th&gt; &lt;th align="left"&gt;OutPut&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;4x7900 xtx&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa&lt;/td&gt; &lt;td align="left"&gt;160 t/s (356 tokens)&lt;/td&gt; &lt;td align="left"&gt;20 t/s (328 tokens)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;4x7900 xtx&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa --parallel 2 for 2 request in one time&lt;/td&gt; &lt;td align="left"&gt;130 t/s (58t/s + 72t//s)&lt;/td&gt; &lt;td align="left"&gt;13.5 t/s (7t/s + 6.5t/s)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3x7900 xtx + 1x7800xt&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa&lt;/td&gt; &lt;td align="left"&gt;...&lt;/td&gt; &lt;td align="left"&gt;16-18 token/s&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;Question to discuss:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Is it possible to run this model from Unsloth AI faster using VLLM on amd or no ways to launch GGUF?&lt;/p&gt; &lt;p&gt;Can we offload layers to each GPU in a smarter way?&lt;/p&gt; &lt;p&gt;If you've run a similar model (even on different GPUs), please share your results.&lt;/p&gt; &lt;p&gt;If you're considering setting up a test (perhaps even on AMD hardware), feel free to ask any relevant questions here.&lt;/p&gt; &lt;p&gt;___&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-swap config models: &amp;quot;qwen3-235b-a22b:Q2_K_XL&amp;quot;: env: - &amp;quot;HSA_OVERRIDE_GFX_VERSION=11.0.0&amp;quot; - &amp;quot;CUDA_VISIBLE_DEVICES=0,1,2,3,4&amp;quot; - &amp;quot;HIP_VISIBLE_DEVICES=0,1,2,3,4&amp;quot; - &amp;quot;AMD_DIRECT_DISPATCH=1&amp;quot; aliases: - Qwen3-235B-A22B-Thinking cmd: &amp;gt; /opt/llama-cpp/llama-hip/build/bin/llama-server --model /mnt/tb_disk/llm/models/235B-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf --main-gpu 0 --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 --gpu-layers 99 --tensor-split 22.5,22,22,22,0 --ctx-size 40960 --host 0.0.0.0 --port ${PORT} --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn --device ROCm0,ROCm1,ROCm2,ROCm3,ROCm4 --parallel 2 &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T07:41:40+00:00</published>
+  </entry>
   <entry>
     <id>t3_1l352wk</id>
     <title>AMA – I’ve built 7 commercial RAG projects. Got tired of copy-pasting boilerplate, so we open-sourced our internal stack.</title>
@@ -47,17 +60,17 @@
     <published>2025-06-05T03:00:37+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l4c3ds</id>
-    <title>iOS app to talk (voice) to self-hosted LLMs</title>
-    <updated>2025-06-05T22:06:50+00:00</updated>
+    <id>t3_1l40gij</id>
+    <title>Hybrid setup for reasoning</title>
+    <updated>2025-06-05T14:22:32+00:00</updated>
     <author>
-      <name>/u/lostmsu</name>
-      <uri>https://old.reddit.com/user/lostmsu</uri>
+      <name>/u/GreenTreeAndBlueSky</name>
+      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"&gt; &lt;img alt="iOS app to talk (voice) to self-hosted LLMs" src="https://external-preview.redd.it/bWx4aHJiZWJtNjVmMWZeSLuSW_UpsoL8BF3Jy7Fb26rc0Xywrz63KN15RsFb.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5032a352ff35d6f75c1d0b7e9cded93771dc2759" title="iOS app to talk (voice) to self-hosted LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lostmsu"&gt; /u/lostmsu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/j5f97gebm65f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to make for myself a chat assistant that would use qwen3 8b for reasoning tokens and then stop when it gets the end of thought token, then feed that to qwen3 30b for the rest. The idea being that i dont mind reading while the text is being generated but dont like to wait for it to load. I know there is no free luch and performance will be reduced. Has anybody tried this? Is it a bad idea? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T22:06:50+00:00</published>
+    <published>2025-06-05T14:22:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l3wlwy</id>
@@ -71,19 +84,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3wlwy/best_simple_model_for_local_fine_tuning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T11:17:53+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l40gij</id>
-    <title>Hybrid setup for reasoning</title>
-    <updated>2025-06-05T14:22:32+00:00</updated>
-    <author>
-      <name>/u/GreenTreeAndBlueSky</name>
-      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to make for myself a chat assistant that would use qwen3 8b for reasoning tokens and then stop when it gets the end of thought token, then feed that to qwen3 30b for the rest. The idea being that i dont mind reading while the text is being generated but dont like to wait for it to load. I know there is no free luch and performance will be reduced. Has anybody tried this? Is it a bad idea? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T14:22:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l4450t</id>
@@ -112,17 +112,17 @@
     <published>2025-06-05T12:58:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l4f1yp</id>
-    <title>OpenThinker3 released</title>
-    <updated>2025-06-06T00:26:49+00:00</updated>
+    <id>t3_1l3p1f0</id>
+    <title>OpenAI should open source GPT3.5 turbo</title>
+    <updated>2025-06-05T03:18:48+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/Expensive-Apricot-25</name>
+      <uri>https://old.reddit.com/user/Expensive-Apricot-25</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/open-thoughts/OpenThinker3-7B"&gt;https://huggingface.co/open-thoughts/OpenThinker3-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF"&gt;https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Dont have a real point here, just the title, food for thought.&lt;/p&gt; &lt;p&gt;I think it would be a pretty cool thing to do. at this point it's extremely out of date, so they wouldn't be loosing any &amp;quot;edge&amp;quot;, it would just be a cool thing to do/have and would be a nice throwback.&lt;/p&gt; &lt;p&gt;openAI's 10th year anniversary is coming up in december, would be a pretty cool thing to do, just sayin.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Expensive-Apricot-25"&gt; /u/Expensive-Apricot-25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-06T00:26:49+00:00</published>
+    <published>2025-06-05T03:18:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1l40835</id>
@@ -136,19 +136,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l40835/i_wrote_a_little_script_to_automate_commit/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T14:12:44+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l3p1f0</id>
-    <title>OpenAI should open source GPT3.5 turbo</title>
-    <updated>2025-06-05T03:18:48+00:00</updated>
-    <author>
-      <name>/u/Expensive-Apricot-25</name>
-      <uri>https://old.reddit.com/user/Expensive-Apricot-25</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Dont have a real point here, just the title, food for thought.&lt;/p&gt; &lt;p&gt;I think it would be a pretty cool thing to do. at this point it's extremely out of date, so they wouldn't be loosing any &amp;quot;edge&amp;quot;, it would just be a cool thing to do/have and would be a nice throwback.&lt;/p&gt; &lt;p&gt;openAI's 10th year anniversary is coming up in december, would be a pretty cool thing to do, just sayin.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Expensive-Apricot-25"&gt; /u/Expensive-Apricot-25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3p1f0/openai_should_open_source_gpt35_turbo/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T03:18:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1l4d8fc</id>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3x8fr/baidu_joined_huggingface/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T11:52:51+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l4f1yp</id>
+    <title>OpenThinker3 released</title>
+    <updated>2025-06-06T00:26:49+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/open-thoughts/OpenThinker3-7B"&gt;https://huggingface.co/open-thoughts/OpenThinker3-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF"&gt;https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-06T00:26:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1l4c4hh</id>
