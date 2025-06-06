@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-06T00:55:07+00:00</updated>
+  <updated>2025-06-06T01:34:49+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l3tby7</id>
-    <title>VLLM with 4x7900xtx with Qwen3-235B-A22B-UD-Q2_K_XL</title>
-    <updated>2025-06-05T07:41:40+00:00</updated>
-    <author>
-      <name>/u/djdeniro</name>
-      <uri>https://old.reddit.com/user/djdeniro</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hello Reddit!&lt;/p&gt; &lt;p&gt;Our &amp;quot;AI&amp;quot; computer now has 4x 7900 XTX and 1x 7800 XT.&lt;/p&gt; &lt;p&gt;Llama-server works well, and we successfully launched Qwen3-235B-A22B-UD-Q2_K_XL with a 40,960 context length.&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;GPU&lt;/th&gt; &lt;th align="left"&gt;Backend&lt;/th&gt; &lt;th align="left"&gt;Input&lt;/th&gt; &lt;th align="left"&gt;OutPut&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;4x7900 xtx&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa&lt;/td&gt; &lt;td align="left"&gt;160 t/s (356 tokens)&lt;/td&gt; &lt;td align="left"&gt;20 t/s (328 tokens)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;4x7900 xtx&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa --parallel 2 for 2 request in one time&lt;/td&gt; &lt;td align="left"&gt;130 t/s (58t/s + 72t//s)&lt;/td&gt; &lt;td align="left"&gt;13.5 t/s (7t/s + 6.5t/s)&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;3x7900 xtx + 1x7800xt&lt;/td&gt; &lt;td align="left"&gt;HIP llama-server, -fa&lt;/td&gt; &lt;td align="left"&gt;...&lt;/td&gt; &lt;td align="left"&gt;16-18 token/s&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;&lt;strong&gt;Question to discuss:&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Is it possible to run this model from Unsloth AI faster using VLLM on amd or no ways to launch GGUF?&lt;/p&gt; &lt;p&gt;Can we offload layers to each GPU in a smarter way?&lt;/p&gt; &lt;p&gt;If you've run a similar model (even on different GPUs), please share your results.&lt;/p&gt; &lt;p&gt;If you're considering setting up a test (perhaps even on AMD hardware), feel free to ask any relevant questions here.&lt;/p&gt; &lt;p&gt;___&lt;/p&gt; &lt;pre&gt;&lt;code&gt;llama-swap config models: &amp;quot;qwen3-235b-a22b:Q2_K_XL&amp;quot;: env: - &amp;quot;HSA_OVERRIDE_GFX_VERSION=11.0.0&amp;quot; - &amp;quot;CUDA_VISIBLE_DEVICES=0,1,2,3,4&amp;quot; - &amp;quot;HIP_VISIBLE_DEVICES=0,1,2,3,4&amp;quot; - &amp;quot;AMD_DIRECT_DISPATCH=1&amp;quot; aliases: - Qwen3-235B-A22B-Thinking cmd: &amp;gt; /opt/llama-cpp/llama-hip/build/bin/llama-server --model /mnt/tb_disk/llm/models/235B-Q2_K_XL/Qwen3-235B-A22B-UD-Q2_K_XL-00001-of-00002.gguf --main-gpu 0 --temp 0.6 --top-k 20 --min-p 0.0 --top-p 0.95 --gpu-layers 99 --tensor-split 22.5,22,22,22,0 --ctx-size 40960 --host 0.0.0.0 --port ${PORT} --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn --device ROCm0,ROCm1,ROCm2,ROCm3,ROCm4 --parallel 2 &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3tby7/vllm_with_4x7900xtx_with_qwen3235ba22budq2_k_xl/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T07:41:40+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l352wk</id>
-    <title>AMA – I’ve built 7 commercial RAG projects. Got tired of copy-pasting boilerplate, so we open-sourced our internal stack.</title>
-    <updated>2025-06-04T13:06:03+00:00</updated>
-    <author>
-      <name>/u/Loud_Picture_1877</name>
-      <uri>https://old.reddit.com/user/Loud_Picture_1877</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey folks,&lt;/p&gt; &lt;p&gt;I’m a senior tech lead with 8+ years of experience, and for the last ~3 I’ve been knee-deep in building LLM-powered systems — RAG pipelines, agentic apps, text2SQL engines. We’ve shipped real products in manufacturing, sports analytics, NGOs, legal… you name it.&lt;/p&gt; &lt;p&gt;After doing this &lt;em&gt;again and again&lt;/em&gt;, I got tired of the same story: building ingestion from scratch, duct-taping vector DBs, dealing with prompt spaghetti, and debugging hallucinations without proper logs.&lt;/p&gt; &lt;p&gt;So we built &lt;a href="https://github.com/deepsense-ai/ragbits"&gt;&lt;strong&gt;ragbits&lt;/strong&gt;&lt;/a&gt; — a toolbox of reliable, type-safe, modular building blocks for GenAI apps. What started as an internal accelerator is now &lt;strong&gt;fully open-sourced (v1.0.0)&lt;/strong&gt; and ready to use.&lt;/p&gt; &lt;p&gt;Why we built it:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;We wanted &lt;em&gt;repeatability&lt;/em&gt;. RAG isn’t magic — but building it cleanly every time takes effort.&lt;/li&gt; &lt;li&gt;We needed to &lt;em&gt;move fast&lt;/em&gt; for PoCs, without sacrificing structure.&lt;/li&gt; &lt;li&gt;We hated black boxes — ragbits integrates easily with your observability stack (OpenTelemetry, CLI debugging, prompt testing).&lt;/li&gt; &lt;li&gt;And most importantly, we wanted to scale apps without turning the codebase into a dumpster fire.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m happy to answer questions about RAG, our approach, gotchas from real deployments, or the internals of ragbits. No fluff — just real lessons from shipping LLM systems in production.&lt;/p&gt; &lt;p&gt;We’re looking for feedback, contributors, and people who want to build better GenAI apps. If that sounds like you, take &lt;a href="https://github.com/deepsense-ai/ragbits"&gt;ragbits&lt;/a&gt; for a spin. &lt;/p&gt; &lt;p&gt;Let’s talk 👇&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Loud_Picture_1877"&gt; /u/Loud_Picture_1877 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l352wk/ama_ive_built_7_commercial_rag_projects_got_tired/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l352wk/ama_ive_built_7_commercial_rag_projects_got_tired/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l352wk/ama_ive_built_7_commercial_rag_projects_got_tired/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-04T13:06:03+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l4ekah</id>
-    <title>Align text with audio</title>
-    <updated>2025-06-06T00:02:43+00:00</updated>
-    <author>
-      <name>/u/Terrible_Dimension66</name>
-      <uri>https://old.reddit.com/user/Terrible_Dimension66</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I have an audio generated using OpenAi’s TTS API and I have a raw transcript. Is there a practical way to generate SRT or ASS captions with timestamps without processing the audio file? I am currently using Whisper library to generate captions, but it takes 16 seconds to process the audio file. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Terrible_Dimension66"&gt; /u/Terrible_Dimension66 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4ekah/align_text_with_audio/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4ekah/align_text_with_audio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4ekah/align_text_with_audio/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-06T00:02:43+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l3op8b</id>
     <title>why isn’t anyone building legit tools with local LLMs?</title>
@@ -60,17 +21,30 @@
     <published>2025-06-05T03:00:37+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l40gij</id>
-    <title>Hybrid setup for reasoning</title>
-    <updated>2025-06-05T14:22:32+00:00</updated>
+    <id>t3_1l4gb6s</id>
+    <title>Turn based two model critique for rounds to refine answer - any examples or FOSS projects?</title>
+    <updated>2025-06-06T01:31:21+00:00</updated>
     <author>
-      <name>/u/GreenTreeAndBlueSky</name>
-      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
+      <name>/u/HilLiedTroopsDied</name>
+      <uri>https://old.reddit.com/user/HilLiedTroopsDied</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to make for myself a chat assistant that would use qwen3 8b for reasoning tokens and then stop when it gets the end of thought token, then feed that to qwen3 30b for the rest. The idea being that i dont mind reading while the text is being generated but dont like to wait for it to load. I know there is no free luch and performance will be reduced. Has anybody tried this? Is it a bad idea? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I felt like I heard of someone making a pipeline of lets say code prime fib in python as a prompt, it is served by model1, model ones answer then feeds to model2 to critique, This back and forth goes on for int turns to hopefully come back with a better answer than just one model answering. &lt;/p&gt; &lt;p&gt;It's similar to what thinking models do but broken down. Is this worth testing for local hosting, potentially for offline Coding with AI? Good idea to test, already been tested?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/HilLiedTroopsDied"&gt; /u/HilLiedTroopsDied &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4gb6s/turn_based_two_model_critique_for_rounds_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4gb6s/turn_based_two_model_critique_for_rounds_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4gb6s/turn_based_two_model_critique_for_rounds_to/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-05T14:22:32+00:00</published>
+    <published>2025-06-06T01:31:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l4c3ds</id>
+    <title>iOS app to talk (voice) to self-hosted LLMs</title>
+    <updated>2025-06-05T22:06:50+00:00</updated>
+    <author>
+      <name>/u/lostmsu</name>
+      <uri>https://old.reddit.com/user/lostmsu</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"&gt; &lt;img alt="iOS app to talk (voice) to self-hosted LLMs" src="https://external-preview.redd.it/bWx4aHJiZWJtNjVmMWZeSLuSW_UpsoL8BF3Jy7Fb26rc0Xywrz63KN15RsFb.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=5032a352ff35d6f75c1d0b7e9cded93771dc2759" title="iOS app to talk (voice) to self-hosted LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lostmsu"&gt; /u/lostmsu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/j5f97gebm65f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4c3ds/ios_app_to_talk_voice_to_selfhosted_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T22:06:50+00:00</published>
   </entry>
   <entry>
     <id>t3_1l3wlwy</id>
@@ -84,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3wlwy/best_simple_model_for_local_fine_tuning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T11:17:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l40gij</id>
+    <title>Hybrid setup for reasoning</title>
+    <updated>2025-06-05T14:22:32+00:00</updated>
+    <author>
+      <name>/u/GreenTreeAndBlueSky</name>
+      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to make for myself a chat assistant that would use qwen3 8b for reasoning tokens and then stop when it gets the end of thought token, then feed that to qwen3 30b for the rest. The idea being that i dont mind reading while the text is being generated but dont like to wait for it to load. I know there is no free luch and performance will be reduced. Has anybody tried this? Is it a bad idea? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l40gij/hybrid_setup_for_reasoning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-05T14:22:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l4450t</id>
@@ -184,7 +171,7 @@
       <name>/u/vector76</name>
       <uri>https://old.reddit.com/user/vector76</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm considering putting together a system with 7x 5060 Ti to get the most cost-effective VRAM. This will have to be an open frame with riser cables and an Epyc server motherboard with 7 PCIe slots.&lt;/p&gt; &lt;p&gt;The idea was to have capacity for medium size models that exceed 24GB but fit in ~100GB VRAM. I think I can put this machine together for between $10k and $15k.&lt;/p&gt; &lt;p&gt;For simplicity I was going to go with Windows and Ollama. Inference speed is not critical but crawling along at CPU speeds is not going to be viable.&lt;/p&gt; &lt;p&gt;I don't really know what I'm doing. Is this dumb?&lt;/p&gt; &lt;p&gt;Go ahead and roast my plan as long as you can propose something better.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vector76"&gt; /u/vector76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm considering putting together a system with 7x 5060 Ti to get the most cost-effective VRAM. This will have to be an open frame with riser cables and an Epyc server motherboard with 7 PCIe slots.&lt;/p&gt; &lt;p&gt;The idea was to have capacity for medium size models that exceed 24GB but fit in ~100GB VRAM. I think I can put this machine together for between $10k and $15k.&lt;/p&gt; &lt;p&gt;For simplicity I was going to go with Windows and Ollama. Inference speed is not critical but crawling along at CPU speeds is not going to be viable.&lt;/p&gt; &lt;p&gt;I don't really know what I'm doing. Is this dumb?&lt;/p&gt; &lt;p&gt;Go ahead and roast my plan as long as you can propose something better.&lt;/p&gt; &lt;p&gt;Edit: Thanks for the input guys, and sorry, I made a mistake in the cost estimate.&lt;/p&gt; &lt;p&gt;7x 5060 is roughly $3200 and the rest of the machine is about another $3k to $4k, so more like $6k to $8k, not $10k to $15k.&lt;/p&gt; &lt;p&gt;But I'm not looking for a &amp;quot;cheap&amp;quot; system per se, I just want it to be cost effective for large models and large context. There is some room to spend $10k+ even though a system based on 7x 3060 would be less.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/vector76"&gt; /u/vector76 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l48cnk/is_it_dumb_to_build_a_server_with_7x_5060_ti/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T19:33:32+00:00</published>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l43ivu/new_llm_trained_to_reason_on_chemistry_from/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T16:24:29+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l4fo3x</id>
+    <title>What happened to WizardLM-2 8x22b?</title>
+    <updated>2025-06-06T00:58:45+00:00</updated>
+    <author>
+      <name>/u/RobotRobotWhatDoUSee</name>
+      <uri>https://old.reddit.com/user/RobotRobotWhatDoUSee</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was mildly intrigued when I saw &lt;a href="/u/SomeOddCodeGuy"&gt;/u/SomeOddCodeGuy&lt;/a&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1cvw3s5/my_personal_guide_for_developing_software_with_ai/"&gt;mention that&lt;/a&gt;:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;I prefer local AI models for various reasons, and &lt;a href="https://prollm.toqan.ai/leaderboard"&gt;the quality of some like WizardLM-2 8x22b are on par with ChatGPT 4&lt;/a&gt;, but use what you have available and feel most comfortable with.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;There's a Microsoft HF page that is now &lt;a href="https://huggingface.co/collections/microsoft/wizardlm-661d403f71e6c8257dbd598a"&gt;empty&lt;/a&gt;, with a history showing that a model once existed but appears to have been deleted. &lt;/p&gt; &lt;p&gt;This is an old model now, so not really looking to fire it up and use it, but does anyone know what happened to it?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/RobotRobotWhatDoUSee"&gt; /u/RobotRobotWhatDoUSee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4fo3x/what_happened_to_wizardlm2_8x22b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4fo3x/what_happened_to_wizardlm2_8x22b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4fo3x/what_happened_to_wizardlm2_8x22b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-06T00:58:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1l40ip8</id>
@@ -281,19 +281,6 @@
     <published>2025-06-05T11:52:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l4f1yp</id>
-    <title>OpenThinker3 released</title>
-    <updated>2025-06-06T00:26:49+00:00</updated>
-    <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/open-thoughts/OpenThinker3-7B"&gt;https://huggingface.co/open-thoughts/OpenThinker3-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF"&gt;https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-06T00:26:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l4c4hh</id>
     <title>Step-by-step GraphRAG tutorial for multi-hop QA - from the RAG_Techniques repo (16K+ stars)</title>
     <updated>2025-06-05T22:08:08+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l3vt95/new_embedding_model_qwen3embedding06bgguf_just/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-05T10:30:53+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l4f1yp</id>
+    <title>OpenThinker3 released</title>
+    <updated>2025-06-06T00:26:49+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://huggingface.co/open-thoughts/OpenThinker3-7B"&gt;https://huggingface.co/open-thoughts/OpenThinker3-7B&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF"&gt;https://huggingface.co/bartowski/open-thoughts_OpenThinker3-7B-GGUF&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&amp;quot;OpenThinker3-32B to follow! 👀&amp;quot;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4f1yp/openthinker3_released/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-06T00:26:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1l44lw8</id>
