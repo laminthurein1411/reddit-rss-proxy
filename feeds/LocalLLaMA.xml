@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-07T18:50:34+00:00</updated>
+  <updated>2025-06-07T19:05:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -19,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5i24u/chat_ui_that_allows_editing_generated_think_tokens/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T10:52:33+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l5r883</id>
-    <title>Worked on this ChatAPI+Frontend for Local and API inference until I burned myself out completely, and haven't touched it at all for a year. Should I finish it? Or are you satisfied with your current solutions for inference ( Supports: ExllamaV2, Ollama &amp; OpenAI / Gemini / Claude / Grok )</title>
-    <updated>2025-06-07T18:09:03+00:00</updated>
-    <author>
-      <name>/u/Severin_Suveren</name>
-      <uri>https://old.reddit.com/user/Severin_Suveren</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5r883/worked_on_this_chatapifrontend_for_local_and_api/"&gt; &lt;img alt="Worked on this ChatAPI+Frontend for Local and API inference until I burned myself out completely, and haven't touched it at all for a year. Should I finish it? Or are you satisfied with your current solutions for inference ( Supports: ExllamaV2, Ollama &amp;amp; OpenAI / Gemini / Claude / Grok )" src="https://external-preview.redd.it/RBts5qNs1_wwymKudgwqdxhyzvBkQr75GuUkx6x_gJc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0efd805d3251532f807379fc6ce94e887789822d" title="Worked on this ChatAPI+Frontend for Local and API inference until I burned myself out completely, and haven't touched it at all for a year. Should I finish it? Or are you satisfied with your current solutions for inference ( Supports: ExllamaV2, Ollama &amp;amp; OpenAI / Gemini / Claude / Grok )" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Severin_Suveren"&gt; /u/Severin_Suveren &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://imgur.com/a/D8uFE0E"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5r883/worked_on_this_chatapifrontend_for_local_and_api/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5r883/worked_on_this_chatapifrontend_for_local_and_api/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T18:09:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1l4q7xf</id>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5mqjj/langchain4j_googleaigemini/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T14:56:38+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l5saph</id>
+    <title>Reinforcement learning a model for symbolic / context compression to saturate semantic bandwidth? (then retraining reasoning in the native compression space)</title>
+    <updated>2025-06-07T18:55:21+00:00</updated>
+    <author>
+      <name>/u/ryunuck</name>
+      <uri>https://old.reddit.com/user/ryunuck</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5saph/reinforcement_learning_a_model_for_symbolic/"&gt; &lt;img alt="Reinforcement learning a model for symbolic / context compression to saturate semantic bandwidth? (then retraining reasoning in the native compression space)" src="https://b.thumbs.redditmedia.com/-iA2qcG8UzdE1rJXQeTRuUpkLFB33BMCqSC15EKld1g.jpg" title="Reinforcement learning a model for symbolic / context compression to saturate semantic bandwidth? (then retraining reasoning in the native compression space)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey there folks, I am currently unable to get to work on my project due to difficulties with vllm and nccl (that python/ml ecosystem is FUCKING crazy) so in the meantime I'm sharing my ideas so we can discuss and get some dopamine hits. I will try to keep the technical details and philosophies out of this post and stick to the concrete concept.&lt;/p&gt; &lt;p&gt;Back when ChatGPT 3.5 came out, there was a party trick that made the rounds of Twitter, shown in the first two images. Then we never heard about it again as the context window increased.&lt;/p&gt; &lt;p&gt;Then in 2024 there were all sorts of &amp;quot;schizo&amp;quot; outputs that people researched, it came under many variations such as super-prompting, xenocognition, etc. many things at high temperature, some obtained at ordinary values at 1.0&lt;/p&gt; &lt;p&gt;Then reinforcement learning took off and we got R1-zero which by itself reproduced these kind of outputs without any kind of steering in this direction, but in a way that actually appeared to improve the result on benchmarks.&lt;/p&gt; &lt;p&gt;So what I have done is attempting to construct a framework around R1-zero, and then from there I could construct additional methods and concepts to achieve R1-zero type models with more intention towards far higher reasoning performance.&lt;/p&gt; &lt;p&gt;The first step that came out of this formalization is an information compressor/decompressor. By generating a large number of rollout with sufficient steering or SFT, the model can gravitate towards the optimal method of orchestrating language to compress any desired chunk of text or information to the theoretical limit.&lt;/p&gt; &lt;p&gt;There is an hypothesis which proposes that somewhere in this loop, the model can develop a meta-awareness where the weights themselves are rearranged to instantiate richer and more developped rule tables, such that the RL run continues to raise the reward beyond what is thought possible, since the weights themselves begin to encode pre-computed universally applicable decision tables. That is to say that conditionally within a &lt;code&gt;&amp;lt;compress&amp;gt;&lt;/code&gt; tag, token polysemy as well as sequence meaning may explode, allowing the model to program the exact equivalent hidden state activation into its mind with the fewest possible tokens, while continuing to optimize the weights such that it retains the lowest perplexity across diverse dataset samples in order to steer clear of brain damage.&lt;/p&gt; &lt;p&gt;We definitely must train a diverse alignment channel with english, so that the model can directly explain what information is embedded by the hyper-compressed text sequence or interpret / use it as though it were bare english in the context. From there, we theoretically now possess the ability to compress and defragment LLM context lossessly, driving massive reduction in inference cost. Now, we use the compression model and train models with random compression replacement of snippets of the context, so that for all future models they can naturally interleave compressed representations of information.&lt;/p&gt; &lt;p&gt;But the true gain is the language of compression and the extensions that can be built on it. Once this is achieved, the compressor/decompressor expert model is used as a generator for SFT data to align any reasoner model to think in the plus-ultra compression language, or perhaps you alternate back and forth between training &lt;code&gt;&amp;lt;think&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;compress&amp;gt;&lt;/code&gt; on the same weights. Not sure what would work best.&lt;/p&gt; &lt;p&gt;Note that I think we actually don't need SFT by prefixing the rollout with a rich but diverse prompt, inside of a special templating fence which deletes/omits/replaces it for the final backpropagation! In other words, we can fold the effect of a large prompt into a single action word such as &lt;code&gt;compress the following text:&lt;/code&gt;. (selective remembering)&lt;/p&gt; &lt;p&gt;We could maybe go from 1% to 100% intelligence in a matter of a few days if we RL correctly, ensuring that the model never plateaus and enters infinite scaling as it should. Currently there are some fundamental problems with RL since it doesn't lead to infinite intelligence.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ryunuck"&gt; /u/ryunuck &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l5saph"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5saph/reinforcement_learning_a_model_for_symbolic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5saph/reinforcement_learning_a_model_for_symbolic/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T18:55:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5fxp1</id>
@@ -203,19 +203,6 @@
     <published>2025-06-07T16:46:52+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l5rsis</id>
-    <title>Got an LLM to write a fully standards-compliant HTTP 2.0 server via a code-compile-test loop</title>
-    <updated>2025-06-07T18:33:23+00:00</updated>
-    <author>
-      <name>/u/logicchains</name>
-      <uri>https://old.reddit.com/user/logicchains</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a &lt;a href="https://github.com/outervation/promptyped"&gt;framework&lt;/a&gt; for structuring long LLM workflows, and managed to get it to build a full HTTP 2.0 server from scratch, 15k lines of source code and over 30k lines of tests, that passes all the &lt;a href="https://github.com/summerwind/h2spec"&gt;h2spec&lt;/a&gt; conformance tests. Although this task used Gemini 2.5 Pro as the LLM, the framework itself is open source (Apache 2.0) and it shouldn't be too hard to make it work with local models if anyone's interested, especially if they support the Openrouter/OpenAI style API. So I thought I'd share it here in case anybody might find it useful (although it's still currently in alpha state).&lt;/p&gt; &lt;p&gt;The framework is &lt;a href="https://github.com/outervation/promptyped"&gt;https://github.com/outervation/promptyped&lt;/a&gt;, the server it built is &lt;a href="https://github.com/outervation/AiBuilt_llmahttap"&gt;https://github.com/outervation/AiBuilt_llmahttap&lt;/a&gt; (I wouldn't recommend anyone actually use it, it's just interesting as an example of how a 100% LLM architectured and coded application may look). I also wrote a blog post detailing some of the changes to the framework needed to support building an application of non-trivial size: &lt;a href="https://outervationai.substack.com/p/building-a-100-llm-written-standards"&gt;https://outervationai.substack.com/p/building-a-100-llm-written-standards&lt;/a&gt; .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logicchains"&gt; /u/logicchains &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T18:33:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l5cw3w</id>
     <title>gemini-2.5-pro-preview-06-05 performance on IDP Leaderboard</title>
     <updated>2025-06-07T05:03:24+00:00</updated>
@@ -242,6 +229,19 @@
     <published>2025-06-06T22:21:01+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l5o84i</id>
+    <title>Avian.io scammers?</title>
+    <updated>2025-06-07T16:01:01+00:00</updated>
+    <author>
+      <name>/u/OneLovePlus</name>
+      <uri>https://old.reddit.com/user/OneLovePlus</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt; &lt;img alt="Avian.io scammers?" src="https://b.thumbs.redditmedia.com/PTrKiUPHmf_P8WLvCbACewtRrOn4_vZjZKJvkvNkOvs.jpg" title="Avian.io scammers?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Does anyone else have the problem, that avian.io is trying to debit money without any reason? I used avian.io for 2 days in January and put 10€ prepaid on there, didn’t like it and 5 months later in may they tried to withdraw 178€. Luckily I used Revolut and didn’t have enough money on this account. Automatic topup is deactivated on avian and I have no deployments or subscriptions. Today they tried to debit 441€! In my account are no billings or usage statistics for anything besides 2 days in January for a few cents.&lt;/p&gt; &lt;p&gt;Are they insolvent and just try to scam their users for a few last hundreds of euros?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneLovePlus"&gt; /u/OneLovePlus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l5o84i"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T16:01:01+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l5c0tf</id>
     <title>KoboldCpp 1.93's Smart AutoGenerate Images (fully local, just kcpp alone)</title>
     <updated>2025-06-07T04:10:46+00:00</updated>
@@ -255,17 +255,17 @@
     <published>2025-06-07T04:10:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l5o84i</id>
-    <title>Avian.io scammers?</title>
-    <updated>2025-06-07T16:01:01+00:00</updated>
+    <id>t3_1l5rsis</id>
+    <title>Got an LLM to write a fully standards-compliant HTTP 2.0 server via a code-compile-test loop</title>
+    <updated>2025-06-07T18:33:23+00:00</updated>
     <author>
-      <name>/u/OneLovePlus</name>
-      <uri>https://old.reddit.com/user/OneLovePlus</uri>
+      <name>/u/logicchains</name>
+      <uri>https://old.reddit.com/user/logicchains</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt; &lt;img alt="Avian.io scammers?" src="https://b.thumbs.redditmedia.com/PTrKiUPHmf_P8WLvCbACewtRrOn4_vZjZKJvkvNkOvs.jpg" title="Avian.io scammers?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Does anyone else have the problem, that avian.io is trying to debit money without any reason? I used avian.io for 2 days in January and put 10€ prepaid on there, didn’t like it and 5 months later in may they tried to withdraw 178€. Luckily I used Revolut and didn’t have enough money on this account. Automatic topup is deactivated on avian and I have no deployments or subscriptions. Today they tried to debit 441€! In my account are no billings or usage statistics for anything besides 2 days in January for a few cents.&lt;/p&gt; &lt;p&gt;Are they insolvent and just try to scam their users for a few last hundreds of euros?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneLovePlus"&gt; /u/OneLovePlus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l5o84i"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a &lt;a href="https://github.com/outervation/promptyped"&gt;framework&lt;/a&gt; for structuring long LLM workflows, and managed to get it to build a full HTTP 2.0 server from scratch, 15k lines of source code and over 30k lines of tests, that passes all the &lt;a href="https://github.com/summerwind/h2spec"&gt;h2spec&lt;/a&gt; conformance tests. Although this task used Gemini 2.5 Pro as the LLM, the framework itself is open source (Apache 2.0) and it shouldn't be too hard to make it work with local models if anyone's interested, especially if they support the Openrouter/OpenAI style API. So I thought I'd share it here in case anybody might find it useful (although it's still currently in alpha state).&lt;/p&gt; &lt;p&gt;The framework is &lt;a href="https://github.com/outervation/promptyped"&gt;https://github.com/outervation/promptyped&lt;/a&gt;, the server it built is &lt;a href="https://github.com/outervation/AiBuilt_llmahttap"&gt;https://github.com/outervation/AiBuilt_llmahttap&lt;/a&gt; (I wouldn't recommend anyone actually use it, it's just interesting as an example of how a 100% LLM architectured and coded application may look). I also wrote a blog post detailing some of the changes to the framework needed to support building an application of non-trivial size: &lt;a href="https://outervationai.substack.com/p/building-a-100-llm-written-standards"&gt;https://outervationai.substack.com/p/building-a-100-llm-written-standards&lt;/a&gt; .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logicchains"&gt; /u/logicchains &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T16:01:01+00:00</published>
+    <published>2025-06-07T18:33:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5o13i</id>
