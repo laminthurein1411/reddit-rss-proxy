@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-06-07T11:34:37+00:00</updated>
+  <updated>2025-06-07T11:48:49+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Atom feed for r/ollama</subtitle>
-  <entry>
-    <id>t3_1l3ug2z</id>
-    <title>Ollama on an old server using openVINO? How does it work?</title>
-    <updated>2025-06-05T09:01:00+00:00</updated>
-    <author>
-      <name>/u/Palova98</name>
-      <uri>https://old.reddit.com/user/Palova98</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone, &lt;/p&gt; &lt;p&gt;I have a 15 yo server that runs ollama with some models. &lt;/p&gt; &lt;p&gt;Let's make it short: it takes about 5 minutes to do anything. &lt;/p&gt; &lt;p&gt;I heard of some &amp;quot;middleware&amp;quot; for Intel CPUs called&lt;a href="https://docs.openvino.ai/2025/index.html"&gt; openVINO. &lt;/a&gt;&lt;/p&gt; &lt;p&gt;My ollama instance runs on a docker container in a Ubuntu proxmox VM.&lt;/p&gt; &lt;p&gt;Anyone had any experience with this sort of optimization for old hardware? &lt;/p&gt; &lt;p&gt;Apparently you &lt;a href="https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/download.html?PACKAGE=OPENVINO_BASE&amp;amp;VERSION=v_2025_1_0&amp;amp;OP_SYSTEM=LINUX&amp;amp;DISTRIBUTION=DOCKER"&gt;CAN run openVINO in a docker container&lt;/a&gt;, but does it still work with ollama if ollama is on a different container? Does it work if it is on the main VM instead? What about PyTorch? &lt;/p&gt; &lt;p&gt;I have found &lt;a href="https://blog.openvino.ai/blog-posts/ollama-integrated-with-openvino-accelerating-deepseek-inference"&gt;THIS &lt;/a&gt;article somewhere but it does not explain much, or whatever it explains is beyond my knowledge (basically none). It makes you &amp;quot;create&amp;quot; a model compatible with ollama or something similar. &lt;/p&gt; &lt;p&gt;Sorry for my lack of knowledge, I'm doing R&amp;amp;D for work and they don't give me more than &amp;quot;we must make it run on our hardware, not buying new gpu&amp;quot;. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Palova98"&gt; /u/Palova98 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1l3ug2z/ollama_on_an_old_server_using_openvino_how_does/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1l3ug2z/ollama_on_an_old_server_using_openvino_how_does/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1l3ug2z/ollama_on_an_old_server_using_openvino_how_does/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-06-05T09:01:00+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l3fcrw</id>
     <title>I made an LLM tool to let you search offline Wikipedia/StackExchange/DevDocs ZIM files (llm-tools-kiwix, works with Python &amp; LLM cli)</title>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/ollama/comments/1l5hfeq/what_is_the_best_and_affordable_uncensored_model/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-06-07T10:10:01+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l5iu3l</id>
+    <title>For task-specific agents use task-specific LLMs for routing and hand off - NOT semantic techniques.</title>
+    <updated>2025-06-07T11:41:11+00:00</updated>
+    <author>
+      <name>/u/AdditionalWeb107</name>
+      <uri>https://old.reddit.com/user/AdditionalWeb107</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;If you are building caching techniques for LLMs or developing a router to handle certain queries by select LLMs/agents - know that semantic caching and routing is a broken approach. Here is why.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Follow-ups or Elliptical Queries: Same issue as embeddings — &amp;quot;And Boston?&amp;quot; doesn't carry meaning on its own. Clustering will likely put it in a generic or wrong cluster unless context is encoded.&lt;/li&gt; &lt;li&gt;Semantic Drift and Negation: Clustering can’t capture logical distinctions like negation, sarcasm, or intent reversal. “I don’t want a refund” may fall in the same cluster as “I want a refund.”&lt;/li&gt; &lt;li&gt;Unseen or Low-Frequency Queries: Sparse or emerging intents won’t form tight clusters. Outliers may get dropped or grouped incorrectly, leading to intent “blind spots.”&lt;/li&gt; &lt;li&gt;Over-clustering / Under-clustering: Setting the right number of clusters is non-trivial. Fine-grained intents often end up merged unless you do manual tuning or post-labeling.&lt;/li&gt; &lt;li&gt;Short Utterances: Queries like “cancel,” “report,” “yes” often land in huge ambiguous clusters. Clustering lacks precision for atomic expressions.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;What can you do instead? You are far better off in using a LLM and instruct it to predict the scenario for you (like here is a user query, does it overlap with recent list of queries here) or build a very small and highly capable TLM (Task-specific LLM).&lt;/p&gt; &lt;p&gt;I wrote a guide on how to do this with TLMs via a gateway for agents. Links to the guide and the proejct in the comments. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AdditionalWeb107"&gt; /u/AdditionalWeb107 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1l5iu3l/for_taskspecific_agents_use_taskspecific_llms_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1l5iu3l/for_taskspecific_agents_use_taskspecific_llms_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1l5iu3l/for_taskspecific_agents_use_taskspecific_llms_for/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-06-07T11:41:11+00:00</published>
   </entry>
 </feed>
