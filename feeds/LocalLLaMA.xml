@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-07T16:39:59+00:00</updated>
+  <updated>2025-06-07T16:51:37+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l4xiwg</id>
-    <title>what's the case against flash attention?</title>
-    <updated>2025-06-06T16:59:41+00:00</updated>
-    <author>
-      <name>/u/Responsible-Crew1801</name>
-      <uri>https://old.reddit.com/user/Responsible-Crew1801</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I accidently stumbled upon the -fa (flash attention) flag in llama.cpp's llama-server. I cannot speak to the speedup in performence as i haven't properly tested it, but the memory optimization is huge: 8B-F16-gguf model with 100k fit comfortably in 32GB vram gpu with some 2-3 GB to spare.&lt;/p&gt; &lt;p&gt;A very brief search revealed that flash attention theoretically computes the same mathematical function, and in practice benchmarks show no change in the model's output quality.&lt;/p&gt; &lt;p&gt;So my question is, is flash attention really just free lunch? what's the catch? why is it not enabled by default?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Responsible-Crew1801"&gt; /u/Responsible-Crew1801 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4xiwg/whats_the_case_against_flash_attention/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4xiwg/whats_the_case_against_flash_attention/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4xiwg/whats_the_case_against_flash_attention/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-06T16:59:41+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l5mqjj</id>
     <title>langchain4j google-ai-gemini</title>
@@ -86,6 +73,19 @@
     <published>2025-06-07T07:58:27+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l5pab6</id>
+    <title>vLLM + GPTQ/AWQ setups on AMD 7900 xtx - did anyone get it working?</title>
+    <updated>2025-06-07T16:46:52+00:00</updated>
+    <author>
+      <name>/u/djdeniro</name>
+      <uri>https://old.reddit.com/user/djdeniro</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey!&lt;/p&gt; &lt;p&gt;If someone here has successfully launched &lt;strong&gt;Qwen3-32B&lt;/strong&gt; or any other model using &lt;strong&gt;GPTQ&lt;/strong&gt; or &lt;strong&gt;AWQ&lt;/strong&gt;, please share your experience and method — it would be extremely helpful!&lt;/p&gt; &lt;p&gt;I've tried multiple approaches to run the model, but I keep getting either gibberish or exclamation marks instead of meaningful output.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;System specs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;MB: MZ32-AR0&lt;/li&gt; &lt;li&gt;RAM: 6x32GB DDR4-3200&lt;/li&gt; &lt;li&gt;GPUs: 4x RX 7900XT + 1x RX 7900XT&lt;/li&gt; &lt;li&gt;Ubuntu Server 24.04&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Current config (docker-compose for vLLM):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;services: vllm: pull_policy: always tty: true ports: - 8000:8000 image: ghcr.io/embeddedllm/vllm-rocm:v0.9.0-rocm6.4 volumes: - /mnt/tb_disk/llm:/app/models devices: - /dev/kfd:/dev/kfd - /dev/dri:/dev/dri environment: - ROCM_VISIBLE_DEVICES=0,1,2,3 - CUDA_VISIBLE_DEVICES=0,1,2,3 - HSA_OVERRIDE_GFX_VERSION=11.0.0 - HIP_VISIBLE_DEVICES=0,1,2,3 command: sh -c 'vllm serve /app/models/models/vllm/Qwen3-4B-autoround-4bit-gptq --gpu-memory-utilization 0.999 --max_model_len 4000 -tp 4' volumes: {} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T16:46:52+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l5i24u</id>
     <title>chat ui that allows editing generated think tokens</title>
     <updated>2025-06-07T10:52:33+00:00</updated>
@@ -99,19 +99,6 @@
     <published>2025-06-07T10:52:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l4q7xf</id>
-    <title>I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!</title>
-    <updated>2025-06-06T11:38:47+00:00</updated>
-    <author>
-      <name>/u/w-zhong</name>
-      <uri>https://old.reddit.com/user/w-zhong</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"&gt; &lt;img alt="I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!" src="https://preview.redd.it/9b1s8amsla5f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=60bc03925e8a38bf96e597c38e363db50f9958d4" title="I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Fullpack uses Apple’s &lt;strong&gt;VisionKit&lt;/strong&gt; to identify items directly from your photos and helps you organize them into &lt;strong&gt;packing lists&lt;/strong&gt; for any occasion. &lt;/p&gt; &lt;p&gt;Whether you're prepping for a “Workday,” “Beach Holiday,” or “Hiking Weekend,” you can easily create a plan and Fullpack will remind you what to pack before you head out.&lt;/p&gt; &lt;p&gt;✅ Everything runs &lt;em&gt;entirely&lt;/em&gt; on your device&lt;br /&gt; 🚫 No cloud processing&lt;br /&gt; 🕵️‍♂️ No data collection&lt;br /&gt; 🔐 Your photos and personal data stay private&lt;/p&gt; &lt;p&gt;This is my &lt;strong&gt;first solo app&lt;/strong&gt; — I designed, built, and launched it entirely on my own. It’s been an amazing journey bringing an idea to life from scratch.&lt;/p&gt; &lt;p&gt;🧳 &lt;strong&gt;Try Fullpack for free on the App Store:&lt;/strong&gt;&lt;br /&gt; &lt;a href="https://apps.apple.com/us/app/fullpack/id6745692929"&gt;https://apps.apple.com/us/app/fullpack/id6745692929&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m also really excited about the future of &lt;strong&gt;on-device AI&lt;/strong&gt;. With open-source LLMs getting smaller and more efficient, there’s so much potential for building powerful tools that respect user privacy — right on our phones and laptops.&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts, feedback, or suggestions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/w-zhong"&gt; /u/w-zhong &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/9b1s8amsla5f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-06T11:38:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l5fxp1</id>
     <title>What's the closest tts to real time voice cloning?</title>
     <updated>2025-06-07T08:26:09+00:00</updated>
@@ -123,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5fxp1/whats_the_closest_tts_to_real_time_voice_cloning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T08:26:09+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l4q7xf</id>
+    <title>I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!</title>
+    <updated>2025-06-06T11:38:47+00:00</updated>
+    <author>
+      <name>/u/w-zhong</name>
+      <uri>https://old.reddit.com/user/w-zhong</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"&gt; &lt;img alt="I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!" src="https://preview.redd.it/9b1s8amsla5f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=60bc03925e8a38bf96e597c38e363db50f9958d4" title="I built an app that turns your photos into smart packing lists — all on your iPhone, 100% private, no APIs, no data collection!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Fullpack uses Apple’s &lt;strong&gt;VisionKit&lt;/strong&gt; to identify items directly from your photos and helps you organize them into &lt;strong&gt;packing lists&lt;/strong&gt; for any occasion. &lt;/p&gt; &lt;p&gt;Whether you're prepping for a “Workday,” “Beach Holiday,” or “Hiking Weekend,” you can easily create a plan and Fullpack will remind you what to pack before you head out.&lt;/p&gt; &lt;p&gt;✅ Everything runs &lt;em&gt;entirely&lt;/em&gt; on your device&lt;br /&gt; 🚫 No cloud processing&lt;br /&gt; 🕵️‍♂️ No data collection&lt;br /&gt; 🔐 Your photos and personal data stay private&lt;/p&gt; &lt;p&gt;This is my &lt;strong&gt;first solo app&lt;/strong&gt; — I designed, built, and launched it entirely on my own. It’s been an amazing journey bringing an idea to life from scratch.&lt;/p&gt; &lt;p&gt;🧳 &lt;strong&gt;Try Fullpack for free on the App Store:&lt;/strong&gt;&lt;br /&gt; &lt;a href="https://apps.apple.com/us/app/fullpack/id6745692929"&gt;https://apps.apple.com/us/app/fullpack/id6745692929&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I’m also really excited about the future of &lt;strong&gt;on-device AI&lt;/strong&gt;. With open-source LLMs getting smaller and more efficient, there’s so much potential for building powerful tools that respect user privacy — right on our phones and laptops.&lt;/p&gt; &lt;p&gt;Would love to hear your thoughts, feedback, or suggestions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/w-zhong"&gt; /u/w-zhong &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/9b1s8amsla5f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4q7xf/i_built_an_app_that_turns_your_photos_into_smart/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-06T11:38:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5m3j3</id>
@@ -149,32 +149,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4wd2w/better_quantization_yet_another_quantization/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-06T16:12:04+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l5o84i</id>
-    <title>Avian.io scammers?</title>
-    <updated>2025-06-07T16:01:01+00:00</updated>
-    <author>
-      <name>/u/OneLovePlus</name>
-      <uri>https://old.reddit.com/user/OneLovePlus</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt; &lt;img alt="Avian.io scammers?" src="https://b.thumbs.redditmedia.com/PTrKiUPHmf_P8WLvCbACewtRrOn4_vZjZKJvkvNkOvs.jpg" title="Avian.io scammers?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Does anyone else have the problem, that avian.io is trying to debit money without any reason? I used avian.io for 2 days in January and put 10€ prepaid on there, didn’t like it and 5 months later in may they tried to withdraw 178€. Luckily I used Revolut and didn’t have enough money on this account. Automatic topup is deactivated on avian and I have no deployments or subscriptions. Today they tried to debit 441€! In my account are no billings or usage statistics for anything besides 2 days in January for a few cents.&lt;/p&gt; &lt;p&gt;Are they insolvent and just try to scam their users for a few last hundreds of euros?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneLovePlus"&gt; /u/OneLovePlus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l5o84i"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T16:01:01+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l5k290</id>
-    <title>Local inference with Snapdragon X Elite</title>
-    <updated>2025-06-07T12:49:19+00:00</updated>
-    <author>
-      <name>/u/GreenTreeAndBlueSky</name>
-      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A while ago a bunch of &amp;quot;AI laptops&amp;quot; came out wihoch were supposedly great for llms because they had &amp;quot;NPUs&amp;quot;. Has anybody bought one and tried them out? I'm not sure exactly 8f this hardware is supported for local inference with common libraires etc. Thanks! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T12:49:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5agd6</id>
@@ -216,6 +190,19 @@
     <published>2025-06-07T05:46:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l5k290</id>
+    <title>Local inference with Snapdragon X Elite</title>
+    <updated>2025-06-07T12:49:19+00:00</updated>
+    <author>
+      <name>/u/GreenTreeAndBlueSky</name>
+      <uri>https://old.reddit.com/user/GreenTreeAndBlueSky</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A while ago a bunch of &amp;quot;AI laptops&amp;quot; came out wihoch were supposedly great for llms because they had &amp;quot;NPUs&amp;quot;. Has anybody bought one and tried them out? I'm not sure exactly 8f this hardware is supported for local inference with common libraires etc. Thanks! &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GreenTreeAndBlueSky"&gt; /u/GreenTreeAndBlueSky &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5k290/local_inference_with_snapdragon_x_elite/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T12:49:19+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l59hwo</id>
     <title>Do weights hide "hyperbolic trees”? A quick coffee-rant and an ask for open science (long)</title>
     <updated>2025-06-07T01:51:51+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l4vrj4/is_this_the_largest_no_synthetic_data_open_weight/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-06T15:47:49+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l5o84i</id>
+    <title>Avian.io scammers?</title>
+    <updated>2025-06-07T16:01:01+00:00</updated>
+    <author>
+      <name>/u/OneLovePlus</name>
+      <uri>https://old.reddit.com/user/OneLovePlus</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt; &lt;img alt="Avian.io scammers?" src="https://b.thumbs.redditmedia.com/PTrKiUPHmf_P8WLvCbACewtRrOn4_vZjZKJvkvNkOvs.jpg" title="Avian.io scammers?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Does anyone else have the problem, that avian.io is trying to debit money without any reason? I used avian.io for 2 days in January and put 10€ prepaid on there, didn’t like it and 5 months later in may they tried to withdraw 178€. Luckily I used Revolut and didn’t have enough money on this account. Automatic topup is deactivated on avian and I have no deployments or subscriptions. Today they tried to debit 441€! In my account are no billings or usage statistics for anything besides 2 days in January for a few cents.&lt;/p&gt; &lt;p&gt;Are they insolvent and just try to scam their users for a few last hundreds of euros?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OneLovePlus"&gt; /u/OneLovePlus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1l5o84i"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o84i/avianio_scammers/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T16:01:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5cw3w</id>
@@ -268,19 +268,6 @@
     <published>2025-06-06T22:21:01+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l5o13i</id>
-    <title>LMStudio Gemma QAT vs Unsloth Gemma QAT</title>
-    <updated>2025-06-07T15:52:39+00:00</updated>
-    <author>
-      <name>/u/EntropyMagnets</name>
-      <uri>https://old.reddit.com/user/EntropyMagnets</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt; &lt;img alt="LMStudio Gemma QAT vs Unsloth Gemma QAT" src="https://external-preview.redd.it/gOPWOfQ-0nh7k8jUTSkqlAPIa5Ds-RElf4m0WrgaQ_I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c11159d5cb84d33c948b11d577aeb74e4b2c3040" title="LMStudio Gemma QAT vs Unsloth Gemma QAT" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/y1bmyqyh0j5f1.png?width=3523&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c7d652a3482277e0da395ff06d7d31e40d3bdd25"&gt;pass@10 and avg@10 performance&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/l0j9spei0j5f1.png?width=4935&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=47a1ab8472e07a2f5ce322a0ed77a9dc9faa2ad1"&gt;success &amp;#37; of each model on each problem (on the 10 attempts available)&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tested Gemma 3 27B, 12B, 4B QAT GGUFs on AIME 2024 with 10 runs for each of the 30 problems. For this test i used both unsloth and lmstudio versions and the results are quite interesing although not definitive (i am not sure if all of them cross statistical significance).&lt;/p&gt; &lt;p&gt;If interested on the code i used, check &lt;a href="https://github.com/Belluxx/LocalAIME"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EntropyMagnets"&gt; /u/EntropyMagnets &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T15:52:39+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l5c0tf</id>
     <title>KoboldCpp 1.93's Smart AutoGenerate Images (fully local, just kcpp alone)</title>
     <updated>2025-06-07T04:10:46+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5c0tf/koboldcpp_193s_smart_autogenerate_images_fully/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T04:10:46+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l5o13i</id>
+    <title>LMStudio Gemma QAT vs Unsloth Gemma QAT</title>
+    <updated>2025-06-07T15:52:39+00:00</updated>
+    <author>
+      <name>/u/EntropyMagnets</name>
+      <uri>https://old.reddit.com/user/EntropyMagnets</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt; &lt;img alt="LMStudio Gemma QAT vs Unsloth Gemma QAT" src="https://external-preview.redd.it/gOPWOfQ-0nh7k8jUTSkqlAPIa5Ds-RElf4m0WrgaQ_I.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c11159d5cb84d33c948b11d577aeb74e4b2c3040" title="LMStudio Gemma QAT vs Unsloth Gemma QAT" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/y1bmyqyh0j5f1.png?width=3523&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c7d652a3482277e0da395ff06d7d31e40d3bdd25"&gt;pass@10 and avg@10 performance&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/l0j9spei0j5f1.png?width=4935&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=47a1ab8472e07a2f5ce322a0ed77a9dc9faa2ad1"&gt;success &amp;#37; of each model on each problem (on the 10 attempts available)&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I tested Gemma 3 27B, 12B, 4B QAT GGUFs on AIME 2024 with 10 runs for each of the 30 problems. For this test i used both unsloth and lmstudio versions and the results are quite interesing although not definitive (i am not sure if all of them cross statistical significance).&lt;/p&gt; &lt;p&gt;If interested on the code i used, check &lt;a href="https://github.com/Belluxx/LocalAIME"&gt;here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EntropyMagnets"&gt; /u/EntropyMagnets &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T15:52:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1l5jh4y</id>
