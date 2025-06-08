@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-08T06:41:54+00:00</updated>
+  <updated>2025-06-08T06:52:26+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l5pab6</id>
-    <title>vLLM + GPTQ/AWQ setups on AMD 7900 xtx - did anyone get it working?</title>
-    <updated>2025-06-07T16:46:52+00:00</updated>
-    <author>
-      <name>/u/djdeniro</name>
-      <uri>https://old.reddit.com/user/djdeniro</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey!&lt;/p&gt; &lt;p&gt;If someone here has successfully launched &lt;strong&gt;Qwen3-32B&lt;/strong&gt; or any other model using &lt;strong&gt;GPTQ&lt;/strong&gt; or &lt;strong&gt;AWQ&lt;/strong&gt;, please share your experience and method — it would be extremely helpful!&lt;/p&gt; &lt;p&gt;I've tried multiple approaches to run the model, but I keep getting either gibberish or exclamation marks instead of meaningful output.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;System specs:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;MB: MZ32-AR0&lt;/li&gt; &lt;li&gt;RAM: 6x32GB DDR4-3200&lt;/li&gt; &lt;li&gt;GPUs: 4x RX 7900XT + 1x RX 7900XT&lt;/li&gt; &lt;li&gt;Ubuntu Server 24.04&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Current config (docker-compose for vLLM):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;services: vllm: pull_policy: always tty: true ports: - 8000:8000 image: ghcr.io/embeddedllm/vllm-rocm:v0.9.0-rocm6.4 volumes: - /mnt/tb_disk/llm:/app/models devices: - /dev/kfd:/dev/kfd - /dev/dri:/dev/dri environment: - ROCM_VISIBLE_DEVICES=0,1,2,3 - CUDA_VISIBLE_DEVICES=0,1,2,3 - HSA_OVERRIDE_GFX_VERSION=11.0.0 - HIP_VISIBLE_DEVICES=0,1,2,3 command: sh -c 'vllm serve /app/models/models/vllm/Qwen3-4B-autoround-4bit-gptq --gpu-memory-utilization 0.999 --max_model_len 4000 -tp 4' volumes: {} &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/djdeniro"&gt; /u/djdeniro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5pab6/vllm_gptqawq_setups_on_amd_7900_xtx_did_anyone/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T16:46:52+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l62gzz</id>
     <title>2-Fan or 3-Fan GPU</title>
@@ -125,19 +112,6 @@
     <published>2025-06-07T23:03:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l625ld</id>
-    <title>How does vector dimension reduction work in new Qwen3 embedding models?</title>
-    <updated>2025-06-08T02:59:32+00:00</updated>
-    <author>
-      <name>/u/jferments</name>
-      <uri>https://old.reddit.com/user/jferments</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am looking at various text embedding models for a RAG/chat project that I'm working on and I came across the new &lt;a href="https://huggingface.co/Qwen/Qwen3-Embedding-4B"&gt;Qwen3 embedding models&lt;/a&gt; today. I'm excited because they not only are the leading open models on &lt;a href="https://huggingface.co/spaces/mteb/leaderboard"&gt;MTEB&lt;/a&gt;, but apparently they allow you to arbitrarily choose the vector dimensions up to a fixed amount.&lt;/p&gt; &lt;p&gt;One annoying architectural issue I've run into recently is that pgvector only allows a maximum of 2000 dimensions for stored vectors. But with the new Qwen3 4B embedding models (which can handle up to 2560 dimensions) I'll be able to resize them to 2000 dimensions to fit in my pgvector fields.&lt;/p&gt; &lt;p&gt;But I'm trying to understand what the implications are (as far as quality/accuracy) of reducing the size of the vectors. What exactly is the process through which they are reducing the dimensions of the vectors? Is there a way of quantifying how much of a hit I'll take in terms of retrieval accuracy? I've tried reading the &lt;a href="https://arxiv.org/pdf/2506.05176"&gt;paper&lt;/a&gt; they released on Arxiv, but didn't see anything in there that explains how this works.&lt;/p&gt; &lt;p&gt;On a side note, I'm also curious if anyone has benchmarks on RTX 4090 for the 0.6B/4B/8B models, and what kind of performance they've seen at various sequence lengths?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jferments"&gt; /u/jferments &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-08T02:59:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l5o84i</id>
     <title>Avian.io scammers?</title>
     <updated>2025-06-07T16:01:01+00:00</updated>
@@ -175,6 +149,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5f3m0/the_common_pile_v01_an_8tb_dataset_of_public/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T07:28:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l65r2k</id>
+    <title>Best models by size?</title>
+    <updated>2025-06-08T06:44:00+00:00</updated>
+    <author>
+      <name>/u/MrMrsPotts</name>
+      <uri>https://old.reddit.com/user/MrMrsPotts</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am confused how to find benchmarks that tell me the strongest model for math/coding by size. I want to know which local model is strongest that can fit in 16GB of RAM (no GPU). I would also like to know the same thing for 32GB, Where should I be looking for this info?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/MrMrsPotts"&gt; /u/MrMrsPotts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l65r2k/best_models_by_size/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l65r2k/best_models_by_size/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l65r2k/best_models_by_size/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-08T06:44:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l625ld</id>
+    <title>How does vector dimension reduction work in new Qwen3 embedding models?</title>
+    <updated>2025-06-08T02:59:32+00:00</updated>
+    <author>
+      <name>/u/jferments</name>
+      <uri>https://old.reddit.com/user/jferments</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am looking at various text embedding models for a RAG/chat project that I'm working on and I came across the new &lt;a href="https://huggingface.co/Qwen/Qwen3-Embedding-4B"&gt;Qwen3 embedding models&lt;/a&gt; today. I'm excited because they not only are the leading open models on &lt;a href="https://huggingface.co/spaces/mteb/leaderboard"&gt;MTEB&lt;/a&gt;, but apparently they allow you to arbitrarily choose the vector dimensions up to a fixed amount.&lt;/p&gt; &lt;p&gt;One annoying architectural issue I've run into recently is that pgvector only allows a maximum of 2000 dimensions for stored vectors. But with the new Qwen3 4B embedding models (which can handle up to 2560 dimensions) I'll be able to resize them to 2000 dimensions to fit in my pgvector fields.&lt;/p&gt; &lt;p&gt;But I'm trying to understand what the implications are (as far as quality/accuracy) of reducing the size of the vectors. What exactly is the process through which they are reducing the dimensions of the vectors? Is there a way of quantifying how much of a hit I'll take in terms of retrieval accuracy? I've tried reading the &lt;a href="https://arxiv.org/pdf/2506.05176"&gt;paper&lt;/a&gt; they released on Arxiv, but didn't see anything in there that explains how this works.&lt;/p&gt; &lt;p&gt;On a side note, I'm also curious if anyone has benchmarks on RTX 4090 for the 0.6B/4B/8B models, and what kind of performance they've seen at various sequence lengths?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jferments"&gt; /u/jferments &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l625ld/how_does_vector_dimension_reduction_work_in_new/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-08T02:59:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1l626hj</id>
