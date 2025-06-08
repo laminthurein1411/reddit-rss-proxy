@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-08T10:06:14+00:00</updated>
+  <updated>2025-06-08T10:24:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1l5sw3m</id>
-    <title>Testing Quant Quality for Shisa V2 405B</title>
-    <updated>2025-06-07T19:21:39+00:00</updated>
-    <author>
-      <name>/u/randomfoo2</name>
-      <uri>https://old.reddit.com/user/randomfoo2</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5sw3m/testing_quant_quality_for_shisa_v2_405b/"&gt; &lt;img alt="Testing Quant Quality for Shisa V2 405B" src="https://external-preview.redd.it/CNIe-FCowsvogRo2IcOE4ZR2DIChtGcTE74OqVAaIsc.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=4a4ecb10ba3cedefafacad923575df79a2a8390e" title="Testing Quant Quality for Shisa V2 405B" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last week&lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1l318di/shisa_v2_405b_the_strongest_model_ever_built_in/"&gt; we launched Shisa V2 405B&lt;/a&gt;, an extremely strong JA/EN-focused multilingual model. It's also, well, quite a big model (800GB+ at FP16), so I made some quants for launch as well, including &lt;a href="https://huggingface.co/shisa-ai/shisa-v2-llama3.1-405b-GGUF"&gt;a bunch of GGUFs&lt;/a&gt;. These quants were all (except the Q8_0) imatrix quants that used our JA/EN shisa-v2-sharegpt dataset to create a custom calibration set.&lt;/p&gt; &lt;p&gt;This weekend I was doing some quality testing and decided, well, I might as well test &lt;strong&gt;all&lt;/strong&gt; of the quants and share as I feel like there isn't enough out there measuring how different quants affect downstream performance for different models.&lt;/p&gt; &lt;p&gt;I did my&lt;a href="https://github.com/shisa-ai/ja-mt-bench-harness"&gt; testing with JA MT-Bench (judged by GPT-4.1)&lt;/a&gt; and it should be representative of a wide range of Japanese output quality (llama.cpp doesn't run well on H200s and of course, doesn't run well at high concurrency, so this was about the limit of my patience for evals).&lt;/p&gt; &lt;p&gt;This is a bit of a messy graph to read, but the main takeaway should be &lt;em&gt;don't run the IQ2_XXS&lt;/em&gt;:&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gshifun4uj5f1.png?width=3600&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=eda062d83d28a902ff1804e804fedfa22e1a7ddd"&gt;https://preview.redd.it/gshifun4uj5f1.png?width=3600&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=eda062d83d28a902ff1804e804fedfa22e1a7ddd&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In this case, I believe the table is actually a lot more informative:&lt;/p&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Quant&lt;/th&gt; &lt;th align="left"&gt;Size (GiB)&lt;/th&gt; &lt;th align="left"&gt;% Diff&lt;/th&gt; &lt;th align="left"&gt;Overall&lt;/th&gt; &lt;th align="left"&gt;Writing&lt;/th&gt; &lt;th align="left"&gt;Roleplay&lt;/th&gt; &lt;th align="left"&gt;Reasoning&lt;/th&gt; &lt;th align="left"&gt;Math&lt;/th&gt; &lt;th align="left"&gt;Coding&lt;/th&gt; &lt;th align="left"&gt;Extraction&lt;/th&gt; &lt;th align="left"&gt;STEM&lt;/th&gt; &lt;th align="left"&gt;Humanities&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;Full FP16&lt;/td&gt; &lt;td align="left"&gt;810&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.13&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;9.25&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.55&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;8.15&lt;/td&gt; &lt;td align="left"&gt;8.90&lt;/td&gt; &lt;td align="left"&gt;9.10&lt;/td&gt; &lt;td align="left"&gt;9.65&lt;/td&gt; &lt;td align="left"&gt;9.10&lt;/td&gt; &lt;td align="left"&gt;9.35&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;IQ3_M&lt;/td&gt; &lt;td align="left"&gt;170&lt;/td&gt; &lt;td align="left"&gt;-0.99&lt;/td&gt; &lt;td align="left"&gt;9.04&lt;/td&gt; &lt;td align="left"&gt;8.90&lt;/td&gt; &lt;td align="left"&gt;9.45&lt;/td&gt; &lt;td align="left"&gt;7.75&lt;/td&gt; &lt;td align="left"&gt;8.95&lt;/td&gt; &lt;td align="left"&gt;8.95&lt;/td&gt; &lt;td align="left"&gt;9.70&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.15&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;9.50&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q4_K_M&lt;/td&gt; &lt;td align="left"&gt;227&lt;/td&gt; &lt;td align="left"&gt;-1.10&lt;/td&gt; &lt;td align="left"&gt;9.03&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.40&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;9.00&lt;/td&gt; &lt;td align="left"&gt;8.25&lt;/td&gt; &lt;td align="left"&gt;8.85&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.10&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;9.50&lt;/td&gt; &lt;td align="left"&gt;8.90&lt;/td&gt; &lt;td align="left"&gt;9.25&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Q8_0&lt;/td&gt; &lt;td align="left"&gt;405&lt;/td&gt; &lt;td align="left"&gt;-1.20&lt;/td&gt; &lt;td align="left"&gt;9.02&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.40&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;9.05&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;8.30&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.20&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;8.70&lt;/td&gt; &lt;td align="left"&gt;9.50&lt;/td&gt; &lt;td align="left"&gt;8.45&lt;/td&gt; &lt;td align="left"&gt;9.55&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;W8A8-INT8&lt;/td&gt; &lt;td align="left"&gt;405&lt;/td&gt; &lt;td align="left"&gt;-1.42&lt;/td&gt; &lt;td align="left"&gt;9.00&lt;/td&gt; &lt;td align="left"&gt;9.20&lt;/td&gt; &lt;td align="left"&gt;9.35&lt;/td&gt; &lt;td align="left"&gt;7.80&lt;/td&gt; &lt;td align="left"&gt;8.75&lt;/td&gt; &lt;td align="left"&gt;9.00&lt;/td&gt; &lt;td align="left"&gt;9.80&lt;/td&gt; &lt;td align="left"&gt;8.65&lt;/td&gt; &lt;td align="left"&gt;9.45&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;FP8-Dynamic&lt;/td&gt; &lt;td align="left"&gt;405&lt;/td&gt; &lt;td align="left"&gt;-3.29&lt;/td&gt; &lt;td align="left"&gt;8.83&lt;/td&gt; &lt;td align="left"&gt;8.70&lt;/td&gt; &lt;td align="left"&gt;9.20&lt;/td&gt; &lt;td align="left"&gt;7.85&lt;/td&gt; &lt;td align="left"&gt;8.80&lt;/td&gt; &lt;td align="left"&gt;8.65&lt;/td&gt; &lt;td align="left"&gt;9.30&lt;/td&gt; &lt;td align="left"&gt;8.80&lt;/td&gt; &lt;td align="left"&gt;9.35&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;IQ3_XS&lt;/td&gt; &lt;td align="left"&gt;155&lt;/td&gt; &lt;td align="left"&gt;-3.50&lt;/td&gt; &lt;td align="left"&gt;8.81&lt;/td&gt; &lt;td align="left"&gt;8.70&lt;/td&gt; &lt;td align="left"&gt;9.05&lt;/td&gt; &lt;td align="left"&gt;7.70&lt;/td&gt; &lt;td align="left"&gt;8.60&lt;/td&gt; &lt;td align="left"&gt;8.95&lt;/td&gt; &lt;td align="left"&gt;9.35&lt;/td&gt; &lt;td align="left"&gt;8.70&lt;/td&gt; &lt;td align="left"&gt;9.45&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;IQ4_XS&lt;/td&gt; &lt;td align="left"&gt;202&lt;/td&gt; &lt;td align="left"&gt;-3.61&lt;/td&gt; &lt;td align="left"&gt;8.80&lt;/td&gt; &lt;td align="left"&gt;8.85&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.55&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;6.90&lt;/td&gt; &lt;td align="left"&gt;8.35&lt;/td&gt; &lt;td align="left"&gt;8.60&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.90&lt;/strong&gt;&lt;/td&gt; &lt;td align="left"&gt;8.65&lt;/td&gt; &lt;td align="left"&gt;&lt;strong&gt;9.60&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;em&gt;70B FP16&lt;/em&gt;&lt;/td&gt; &lt;td align="left"&gt;140&lt;/td&gt; &lt;td align="left"&gt;-7.89&lt;/td&gt; &lt;td align="left"&gt;8.41&lt;/td&gt; &lt;td align="left"&gt;7.95&lt;/td&gt; &lt;td align="left"&gt;9.05&lt;/td&gt; &lt;td align="left"&gt;6.25&lt;/td&gt; &lt;td align="left"&gt;8.30&lt;/td&gt; &lt;td align="left"&gt;8.25&lt;/td&gt; &lt;td align="left"&gt;9.70&lt;/td&gt; &lt;td align="left"&gt;8.70&lt;/td&gt; &lt;td align="left"&gt;9.05&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;IQ2_XXS&lt;/td&gt; &lt;td align="left"&gt;100&lt;/td&gt; &lt;td align="left"&gt;-18.18&lt;/td&gt; &lt;td align="left"&gt;7.47&lt;/td&gt; &lt;td align="left"&gt;7.50&lt;/td&gt; &lt;td align="left"&gt;6.80&lt;/td&gt; &lt;td align="left"&gt;5.15&lt;/td&gt; &lt;td align="left"&gt;7.55&lt;/td&gt; &lt;td align="left"&gt;7.30&lt;/td&gt; &lt;td align="left"&gt;9.05&lt;/td&gt; &lt;td align="left"&gt;7.65&lt;/td&gt; &lt;td align="left"&gt;8.80&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;p&gt;Due to margin of error, you could probably fairly say that the IQ3_M, Q4_K_M, and Q8_0 GGUFs have almost no functional loss versus the FP16 (while the average is about 1% lower, individual category scores can be higher than the full weights). You probably want to do a lot more evals (different evals, multiple runs) if you want split hairs more. Interestingly the XS quants (IQ3 and IQ4) not only perform about the same, but also both fare worse than the IQ3_M. I also included the 70B Full FP16 scores and if the same pattern holds, I'd think you'd be a lot better off running our earlier released Shisa V2 70B Q4_K_M (40GB) or IQ3_M (32GB) vs the 405B IQ2_XXS (100GB).&lt;/p&gt; &lt;p&gt;In an ideal world, of course, you should test different quants on your own downstream tasks, but I understand that that's not always an option. Based on this testing, I'd say, if you had to pick on bang/buck quant blind for our model, staring with the IQ3_M seems like a good pick.&lt;/p&gt; &lt;p&gt;So, these quality evals were the main things I wanted to share, but here's a couple bonus benchmarks. I posted this in the comments from the announcement post, but this is how fast a Llama3 405B IQ2_XXS runs on Strix Halo:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ggml_vulkan: Found 1 Vulkan devices: ggml_vulkan: 0 = AMD Radeon Graphics (RADV GFX1151) (radv) | uma: 1 | fp16: 1 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat | model | size | params | backend | ngl | fa | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: | | llama ?B IQ2_XXS - 2.0625 bpw | 99.90 GiB | 405.85 B | Vulkan,RPC | 999 | 1 | pp512 | 11.90 ± 0.02 | | llama ?B IQ2_XXS - 2.0625 bpw | 99.90 GiB | 405.85 B | Vulkan,RPC | 999 | 1 | tg128 | 1.93 ± 0.00 | build: 3cc1f1f1 (5393) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;And this is how the same IQ2_XXS performs running on a single H200 GPU:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ggml_cuda_init: GGML_CUDA_FORCE_MMQ: no ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no ggml_cuda_init: found 1 CUDA devices: Device 0: NVIDIA H200, compute capability 9.0, VMM: yes | model | size | params | backend | ngl | fa | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: | | llama ?B IQ2_XXS - 2.0625 bpw | 99.90 GiB | 405.85 B | CUDA | 999 | 1 | pp512 | 225.54 ± 0.03 | | llama ?B IQ2_XXS - 2.0625 bpw | 99.90 GiB | 405.85 B | CUDA | 999 | 1 | tg128 | 7.50 ± 0.00 | build: 1caae7fc (5599) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Note that an FP8 runs at ~28 tok/s (tp4) with SGLang. I'm not sure where the bottleneck is for llama.cpp, but it doesn't seem to perform very well on H200 hardware.&lt;/p&gt; &lt;p&gt;Of course, you don't run H200s to run concurrency=1. For those curious, here's what my initial SGLang FP8 vs vLLM W8A8-INT8 comparison looks like (using ShareGPT set for testing):&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/j2n6wutqzj5f1.png?width=2000&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c6afc181da48c28ecdd1b40b09ad9077a03f2644"&gt;Not bad!&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/randomfoo2"&gt; /u/randomfoo2 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5sw3m/testing_quant_quality_for_shisa_v2_405b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5sw3m/testing_quant_quality_for_shisa_v2_405b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5sw3m/testing_quant_quality_for_shisa_v2_405b/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T19:21:39+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l5o84i</id>
     <title>Avian.io scammers?</title>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5o13i/lmstudio_gemma_qat_vs_unsloth_gemma_qat/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-07T15:52:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l67c2a</id>
+    <title>Any good fine-tuning framework/system?</title>
+    <updated>2025-06-08T08:32:09+00:00</updated>
+    <author>
+      <name>/u/No_Heart_159</name>
+      <uri>https://old.reddit.com/user/No_Heart_159</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to fine-tune a complex AI process that will likely require fine-tuning multiple LLMs to perform different actions. Are there any good gateways, python libraries, or any other setup that you would recommend to collect data, create training dataset, measure performance, etc? Preferably an all-in-one solution?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/No_Heart_159"&gt; /u/No_Heart_159 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l67c2a/any_good_finetuning_frameworksystem/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l67c2a/any_good_finetuning_frameworksystem/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l67c2a/any_good_finetuning_frameworksystem/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-08T08:32:09+00:00</published>
   </entry>
   <entry>
     <id>t3_1l625ld</id>
@@ -125,19 +125,6 @@
     <published>2025-06-08T03:00:49+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l5rsis</id>
-    <title>Got an LLM to write a fully standards-compliant HTTP 2.0 server via a code-compile-test loop</title>
-    <updated>2025-06-07T18:33:23+00:00</updated>
-    <author>
-      <name>/u/logicchains</name>
-      <uri>https://old.reddit.com/user/logicchains</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a &lt;a href="https://github.com/outervation/promptyped"&gt;framework&lt;/a&gt; for structuring long LLM workflows, and managed to get it to build a full HTTP 2.0 server from scratch, 15k lines of source code and over 30k lines of tests, that passes all the &lt;a href="https://github.com/summerwind/h2spec"&gt;h2spec&lt;/a&gt; conformance tests. Although this task used Gemini 2.5 Pro as the LLM, the framework itself is open source (Apache 2.0) and it shouldn't be too hard to make it work with local models if anyone's interested, especially if they support the Openrouter/OpenAI style API. So I thought I'd share it here in case anybody might find it useful (although it's still currently in alpha state).&lt;/p&gt; &lt;p&gt;The framework is &lt;a href="https://github.com/outervation/promptyped"&gt;https://github.com/outervation/promptyped&lt;/a&gt;, the server it built is &lt;a href="https://github.com/outervation/AiBuilt_llmahttap"&gt;https://github.com/outervation/AiBuilt_llmahttap&lt;/a&gt; (I wouldn't recommend anyone actually use it, it's just interesting as an example of how a 100% LLM architectured and coded application may look). I also wrote a blog post detailing some of the changes to the framework needed to support building an application of non-trivial size: &lt;a href="https://outervationai.substack.com/p/building-a-100-llm-written-standards"&gt;https://outervationai.substack.com/p/building-a-100-llm-written-standards&lt;/a&gt; .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logicchains"&gt; /u/logicchains &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-07T18:33:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l66cbt</id>
     <title>Motorola is integrating on-device local AI to its mobile phones</title>
     <updated>2025-06-08T07:24:07+00:00</updated>
@@ -151,6 +138,19 @@
     <published>2025-06-08T07:24:07+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l5rsis</id>
+    <title>Got an LLM to write a fully standards-compliant HTTP 2.0 server via a code-compile-test loop</title>
+    <updated>2025-06-07T18:33:23+00:00</updated>
+    <author>
+      <name>/u/logicchains</name>
+      <uri>https://old.reddit.com/user/logicchains</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I made a &lt;a href="https://github.com/outervation/promptyped"&gt;framework&lt;/a&gt; for structuring long LLM workflows, and managed to get it to build a full HTTP 2.0 server from scratch, 15k lines of source code and over 30k lines of tests, that passes all the &lt;a href="https://github.com/summerwind/h2spec"&gt;h2spec&lt;/a&gt; conformance tests. Although this task used Gemini 2.5 Pro as the LLM, the framework itself is open source (Apache 2.0) and it shouldn't be too hard to make it work with local models if anyone's interested, especially if they support the Openrouter/OpenAI style API. So I thought I'd share it here in case anybody might find it useful (although it's still currently in alpha state).&lt;/p&gt; &lt;p&gt;The framework is &lt;a href="https://github.com/outervation/promptyped"&gt;https://github.com/outervation/promptyped&lt;/a&gt;, the server it built is &lt;a href="https://github.com/outervation/AiBuilt_llmahttap"&gt;https://github.com/outervation/AiBuilt_llmahttap&lt;/a&gt; (I wouldn't recommend anyone actually use it, it's just interesting as an example of how a 100% LLM architectured and coded application may look). I also wrote a blog post detailing some of the changes to the framework needed to support building an application of non-trivial size: &lt;a href="https://outervationai.substack.com/p/building-a-100-llm-written-standards"&gt;https://outervationai.substack.com/p/building-a-100-llm-written-standards&lt;/a&gt; .&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/logicchains"&gt; /u/logicchains &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5rsis/got_an_llm_to_write_a_fully_standardscompliant/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-07T18:33:23+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l5zkdw</id>
     <title>Why don't we see more technically-oriented 'clown-car' MoEs?</title>
     <updated>2025-06-08T00:36:57+00:00</updated>
@@ -162,19 +162,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l5zkdw/why_dont_we_see_more_technicallyoriented_clowncar/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-08T00:36:57+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l68m1m</id>
-    <title>Confirmation that Qwen3-coder is in works</title>
-    <updated>2025-06-08T10:02:00+00:00</updated>
-    <author>
-      <name>/u/nullmove</name>
-      <uri>https://old.reddit.com/user/nullmove</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Junyang Lin from Qwen team &lt;a href="https://youtu.be/b0xlsQ_6wUQ?t=985"&gt;mentioned this here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nullmove"&gt; /u/nullmove &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-08T10:02:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1l67i14</id>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l66b8a/apples_new_research_paper_on_the_limitations_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-08T07:22:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l68m1m</id>
+    <title>Confirmation that Qwen3-coder is in works</title>
+    <updated>2025-06-08T10:02:00+00:00</updated>
+    <author>
+      <name>/u/nullmove</name>
+      <uri>https://old.reddit.com/user/nullmove</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Junyang Lin from Qwen team &lt;a href="https://youtu.be/b0xlsQ_6wUQ?t=985"&gt;mentioned this here&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/nullmove"&gt; /u/nullmove &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l68m1m/confirmation_that_qwen3coder_is_in_works/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-08T10:02:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1l67afp</id>
