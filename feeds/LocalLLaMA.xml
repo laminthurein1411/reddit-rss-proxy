@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-09T14:50:45+00:00</updated>
+  <updated>2025-06-09T15:06:45+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,17 +21,30 @@
     <published>2025-06-09T14:22:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l76sg1</id>
-    <title>Winter has arrived</title>
-    <updated>2025-06-09T14:50:15+00:00</updated>
+    <id>t3_1l6gc5o</id>
+    <title>Ruminate: From All-or-Nothing to Just-Right Reasoning in LLMs</title>
+    <updated>2025-06-08T16:30:47+00:00</updated>
     <author>
-      <name>/u/Objective_Lab_3182</name>
-      <uri>https://old.reddit.com/user/Objective_Lab_3182</uri>
+      <name>/u/kryptkpr</name>
+      <uri>https://old.reddit.com/user/kryptkpr</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Last year we saw a lot of significant improvements in AI, but this year we are only seeing gradual improvements. The feeling that remains is that the wall has become a mountain, and the climb will be very difficult and long.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Objective_Lab_3182"&gt; /u/Objective_Lab_3182 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76sg1/winter_has_arrived/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76sg1/winter_has_arrived/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l76sg1/winter_has_arrived/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l6gc5o/ruminate_from_allornothing_to_justright_reasoning/"&gt; &lt;img alt="Ruminate: From All-or-Nothing to Just-Right Reasoning in LLMs" src="https://external-preview.redd.it/cSlpnM-F0ah5HqsHd87BsgMR5_Wvh1LjIwvfZJ0XrTw.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2db108555c34df39bc4f1ce9bd54de50c02b280b" title="Ruminate: From All-or-Nothing to Just-Right Reasoning in LLMs" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Ruminate: Taking Control of AI Reasoning Speed&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: I ran 7,150 prompts through Qwen3-4B-AWQ to try to solve the &amp;quot;fast but wrong vs slow but unpredictable&amp;quot; problem with reasoning AI models and got fascinating results. Built a staged reasoning proxy that lets you dial in exactly the speed-accuracy tradeoff you need.&lt;/p&gt; &lt;h1&gt;The Problem&lt;/h1&gt; &lt;p&gt;Reasoning models like Qwen3 have a brutal tradeoff: turn reasoning off and get 27% accuracy (but fast), or turn it on and get 74% accuracy but completely unpredictable response times. Some requests take 200ms, others take 30+ seconds. That's unusable for production.&lt;/p&gt; &lt;h1&gt;The Solution: Staged Reasoning&lt;/h1&gt; &lt;p&gt;Instead of unlimited thinking time, give the AI a budget with gentle nudges:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Initial Think&lt;/strong&gt;: &amp;quot;Here's your ideal thinking time&amp;quot;&lt;br /&gt; &lt;strong&gt;Soft Warning&lt;/strong&gt;: &amp;quot;Time's getting short, stay focused&amp;quot;&lt;br /&gt; &lt;strong&gt;Hard Warning&lt;/strong&gt;: &amp;quot;Really need to wrap up now&amp;quot;&lt;br /&gt; &lt;strong&gt;Emergency Termination&lt;/strong&gt;: Force completion if all budgets exhausted&lt;/p&gt; &lt;h1&gt;What I Tested&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;4 reasoning tasks&lt;/strong&gt;: geometric shapes, boolean logic, dates, arithmetic&lt;/li&gt; &lt;li&gt;&lt;strong&gt;11 different configurations&lt;/strong&gt; from quick-thinker to big-thinker&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Proper statistics&lt;/strong&gt;: 95% confidence intervals to know which results are actually significant vs just noise&lt;/li&gt; &lt;li&gt;&lt;strong&gt;CompletionCost metric&lt;/strong&gt;: tokens needed per 1% accuracy (efficiency tiebreaker)&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Key Findings&lt;/h1&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/zj0zzfnbbq5f1.png?width=3570&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=27e5f6b0732a01f77a0239e7902c53bf90f8f784"&gt;Open Run-time performance scaling: It's possible after all!&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;🎯 It works&lt;/strong&gt;: Staged reasoning successfully trades accuracy for predictability&lt;/p&gt; &lt;p&gt;&lt;strong&gt;📊 Big Thinker&lt;/strong&gt;: 77% accuracy, recovers 93% of full reasoning performance while cutting worst-case response time in half&lt;/p&gt; &lt;p&gt;&lt;strong&gt;⚡ Quick Thinker&lt;/strong&gt;: 59% accuracy, still 72% of full performance but 82% faster&lt;/p&gt; &lt;p&gt;&lt;strong&gt;🤔 Budget allocation surprise&lt;/strong&gt;: How you split your token budget matters less than total budget size (confidence intervals overlap for most medium configs)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;📈 Task-specific patterns&lt;/strong&gt;: Boolean logic needs upfront thinking, arithmetic needs generous budgets, date problems are efficient across all configs&lt;/p&gt; &lt;p&gt;&lt;strong&gt;❌ Hypothesis busted&lt;/strong&gt;: I thought termination rate would predict poor performance. Nope! The data completely disagreed with me - science is humbling.&lt;/p&gt; &lt;p&gt;Lots of additional details on the tasks, methodologies and results are in the mini-paper: &lt;a href="https://github.com/the-crypt-keeper/ChatBench/blob/main/ruminate/PAPER.md"&gt;https://github.com/the-crypt-keeper/ChatBench/blob/main/ruminate/PAPER.md&lt;/a&gt;&lt;/p&gt; &lt;h1&gt;Real Impact&lt;/h1&gt; &lt;p&gt;This transforms reasoning models from research toys into practical tools. Instead of &amp;quot;fast but wrong&amp;quot; or &amp;quot;accurate but unpredictable,&amp;quot; you get exactly the speed-accuracy tradeoff your app needs.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Practical configs&lt;/strong&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Time-critical: 72% of full performance, 82% speed boost&lt;/li&gt; &lt;li&gt;Balanced: 83% of performance, 60% speed boost&lt;/li&gt; &lt;li&gt;Accuracy-focused: 93% of performance, 50% speed boost&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Implementation Detail&lt;/h1&gt; &lt;p&gt;The proxy accepts a &lt;code&gt;reason_control=[x,y,z]&lt;/code&gt; parameter controlling token budgets for Initial Think, Soft Warning, and Hard Warning stages respectively. It sits between your app and the model, making multiple completion calls and assembling responses transparently.&lt;/p&gt; &lt;h1&gt;Try It&lt;/h1&gt; &lt;p&gt;&lt;em&gt;Full dataset, analysis, and experimental setup in the repo. Science works best when it's reproducible - replications welcome!&lt;/em&gt;&lt;/p&gt; &lt;p&gt;Code at &lt;a href="https://github.com/the-crypt-keeper/ChatBench/tree/main/ruminate"&gt;https://github.com/the-crypt-keeper/ChatBench/tree/main/ruminate&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Full result dataset at &lt;a href="https://github.com/the-crypt-keeper/ChatBench/tree/main/ruminate/results"&gt;https://github.com/the-crypt-keeper/ChatBench/tree/main/ruminate/results&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Mini-paper analyzing the results at &lt;a href="https://github.com/the-crypt-keeper/ChatBench/blob/main/ruminate/PAPER.md"&gt;https://github.com/the-crypt-keeper/ChatBench/blob/main/ruminate/PAPER.md&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Warning&lt;/strong&gt;: Experimental research code, subject to change!&lt;/p&gt; &lt;p&gt;Built this on dual RTX 3090s in my basement testing Qwen3-4B. Would love to see how patterns hold across different models and hardware&lt;strong&gt;. Everything is open source, these results can be reproduced on even a single 3060.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The beauty isn't just that staged reasoning works - it's that we can now systematically map the speed-accuracy tradeoff space with actual statistical rigor. No more guessing; we have confidence intervals and proper math backing every conclusion.&lt;/p&gt; &lt;h1&gt;Future Work&lt;/h1&gt; &lt;p&gt;More tasks, more samples (for better statistics), bigger models, Non-Qwen3 Reasoning Model Families the possibilities for exploration are endless. Hop into the GitHub and open an issue if you have interesting ideas or results to share!&lt;/p&gt; &lt;h1&gt;ChatBench&lt;/h1&gt; &lt;p&gt;I am the author of the Can-Ai-Code test suite and as you may have noticed, I am cooking up a new, cross-task test suite based on BigBenchHard that I'm calling &lt;a href="https://github.com/the-crypt-keeper/ChatBench/tree/main"&gt;ChatBench&lt;/a&gt;. This is just one of the many interesting outcomes from this work - stay tuned for more posts!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/kryptkpr"&gt; /u/kryptkpr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l6gc5o/ruminate_from_allornothing_to_justright_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l6gc5o/ruminate_from_allornothing_to_justright_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l6gc5o/ruminate_from_allornothing_to_justright_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-09T14:50:15+00:00</published>
+    <published>2025-06-08T16:30:47+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l76tvu</id>
+    <title>Build a full on-device rag app using qwen3 embedding and qwen3 llm</title>
+    <updated>2025-06-09T14:51:48+00:00</updated>
+    <author>
+      <name>/u/mzbacd</name>
+      <uri>https://old.reddit.com/user/mzbacd</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The Qwen3 0.6B embedding is extremely well at a 4-bit size for the small RAG. I was able to run the entire application offline on my iPhone 13. &lt;a href="https://youtube.com/shorts/zG_WD166pHo"&gt;https://youtube.com/shorts/zG_WD166pHo&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have published the macOS version on the App Store and still working on the iOS part. Please let me know if you think this is useful or if any improvements are needed.&lt;/p&gt; &lt;p&gt;&lt;a href="https://textmates.app/"&gt;https://textmates.app/&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mzbacd"&gt; /u/mzbacd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76tvu/build_a_full_ondevice_rag_app_using_qwen3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76tvu/build_a_full_ondevice_rag_app_using_qwen3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l76tvu/build_a_full_ondevice_rag_app_using_qwen3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-09T14:51:48+00:00</published>
   </entry>
   <entry>
     <id>t3_1l68m1m</id>
@@ -73,19 +86,6 @@
     <published>2025-06-08T21:40:04+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l75tp1</id>
-    <title>I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack.</title>
-    <updated>2025-06-09T14:11:07+00:00</updated>
-    <author>
-      <name>/u/bn_from_zentara</name>
-      <uri>https://old.reddit.com/user/bn_from_zentara</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"&gt; &lt;img alt="I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack." src="https://external-preview.redd.it/M3NzcG44YWxzdzVmMSD9styMP4r1TEey8oyCG95ikT3wdTqvY8nF4QJV9K9T.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e8567a348bd34184b221b126559e0bca5f778522" title="I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bn_from_zentara"&gt; /u/bn_from_zentara &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/b1pnpj9lsw5f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-09T14:11:07+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l76cg2</id>
     <title>7900 XTX what are your go-to models for 24GB VRAM?</title>
     <updated>2025-06-09T14:32:15+00:00</updated>
@@ -112,17 +112,17 @@
     <published>2025-06-09T05:37:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l748qc</id>
-    <title>Why isn't it common for companies to compare the evaluation of the different quantizations of their model?</title>
-    <updated>2025-06-09T13:03:06+00:00</updated>
+    <id>t3_1l75tp1</id>
+    <title>I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack.</title>
+    <updated>2025-06-09T14:11:07+00:00</updated>
     <author>
-      <name>/u/ArcaneThoughts</name>
-      <uri>https://old.reddit.com/user/ArcaneThoughts</uri>
+      <name>/u/bn_from_zentara</name>
+      <uri>https://old.reddit.com/user/bn_from_zentara</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is it not as trivial as it sounds? Are they scared of showing lower scoring evaluations in case users confuse them for the original ones?&lt;/p&gt; &lt;p&gt;It would be so useful when choosing a gguf version to know how much accuracy loss each has. Like I'm sure there are many models where Qn vs Qn+1 are indistinguishable in performance so in that case you would know not to pick Qn+1 and prefer Qn.&lt;/p&gt; &lt;p&gt;Am I missing something?&lt;/p&gt; &lt;p&gt;edit: I'm referring to companies that release their own quantizations.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ArcaneThoughts"&gt; /u/ArcaneThoughts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"&gt; &lt;img alt="I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack." src="https://external-preview.redd.it/M3NzcG44YWxzdzVmMSD9styMP4r1TEey8oyCG95ikT3wdTqvY8nF4QJV9K9T.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=e8567a348bd34184b221b126559e0bca5f778522" title="I built a Code Agent that writes code and live-debugs itself by reading and walking the call stack." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/bn_from_zentara"&gt; /u/bn_from_zentara &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/b1pnpj9lsw5f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l75tp1/i_built_a_code_agent_that_writes_code_and/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-09T13:03:06+00:00</published>
+    <published>2025-06-09T14:11:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1l6zmxk</id>
@@ -177,6 +177,19 @@
     <published>2025-06-09T04:43:36+00:00</published>
   </entry>
   <entry>
+    <id>t3_1l748qc</id>
+    <title>Why isn't it common for companies to compare the evaluation of the different quantizations of their model?</title>
+    <updated>2025-06-09T13:03:06+00:00</updated>
+    <author>
+      <name>/u/ArcaneThoughts</name>
+      <uri>https://old.reddit.com/user/ArcaneThoughts</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is it not as trivial as it sounds? Are they scared of showing lower scoring evaluations in case users confuse them for the original ones?&lt;/p&gt; &lt;p&gt;It would be so useful when choosing a gguf version to know how much accuracy loss each has. Like I'm sure there are many models where Qn vs Qn+1 are indistinguishable in performance so in that case you would know not to pick Qn+1 and prefer Qn.&lt;/p&gt; &lt;p&gt;Am I missing something?&lt;/p&gt; &lt;p&gt;edit: I'm referring to companies that release their own quantizations.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ArcaneThoughts"&gt; /u/ArcaneThoughts &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l748qc/why_isnt_it_common_for_companies_to_compare_the/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-09T13:03:06+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1l69w7i</id>
     <title>I Built 50 AI Personalities - Here's What Actually Made Them Feel Human</title>
     <updated>2025-06-08T11:25:12+00:00</updated>
@@ -188,19 +201,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l69w7i/i_built_50_ai_personalities_heres_what_actually/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-08T11:25:12+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1l76ekr</id>
-    <title>Dolphin appreciation post.</title>
-    <updated>2025-06-09T14:34:39+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ekr/dolphin_appreciation_post/"&gt; &lt;img alt="Dolphin appreciation post." src="https://preview.redd.it/9w0uktkaxw5f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=2ef821a8b2fc4d890844db951f4d0f144a80f313" title="Dolphin appreciation post." /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just a simple Dolphin appreciation post here. I appreciate all the work done by Cognitive Computationd. Wondering what cool new stuff Eric has cooking lately. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/9w0uktkaxw5f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ekr/dolphin_appreciation_post/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ekr/dolphin_appreciation_post/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-09T14:34:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1l6tnpl</id>
@@ -255,19 +255,6 @@
     <published>2025-06-09T05:58:30+00:00</published>
   </entry>
   <entry>
-    <id>t3_1l76ab7</id>
-    <title>DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard</title>
-    <updated>2025-06-09T14:29:54+00:00</updated>
-    <author>
-      <name>/u/Xhehab_</name>
-      <uri>https://old.reddit.com/user/Xhehab_</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt; &lt;img alt="DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard" src="https://external-preview.redd.it/iUsfwiVJPYLjTSAVy9M84yJWl92m3NW-HLg-4yfog9U.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8a4c25f54ed06b5f744ff2faad7914958769cc14" title="DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/geu3ik68ww5f1.png?width=1346&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6b4583095291cd1f6a9a91e5fe5642965e9cfde3"&gt;https://preview.redd.it/geu3ik68ww5f1.png?width=1346&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6b4583095291cd1f6a9a91e5fe5642965e9cfde3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;Full leaderboard:&lt;/em&gt; &lt;a href="https://aider.chat/docs/leaderboards/"&gt;&lt;em&gt;https://aider.chat/docs/leaderboards/&lt;/em&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-09T14:29:54+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1l73294</id>
     <title>H company - Holo1 7B</title>
     <updated>2025-06-09T12:06:38+00:00</updated>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l71iie/concept_graph_workflow_in_open_webui/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-09T10:41:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l76ab7</id>
+    <title>DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard</title>
+    <updated>2025-06-09T14:29:54+00:00</updated>
+    <author>
+      <name>/u/Xhehab_</name>
+      <uri>https://old.reddit.com/user/Xhehab_</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt; &lt;img alt="DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard" src="https://external-preview.redd.it/iUsfwiVJPYLjTSAVy9M84yJWl92m3NW-HLg-4yfog9U.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=8a4c25f54ed06b5f744ff2faad7914958769cc14" title="DeepSeek R1 0528 Hits 71% (+14.5 pts from R1) on Aider Polyglot Coding Leaderboard" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/geu3ik68ww5f1.png?width=1346&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6b4583095291cd1f6a9a91e5fe5642965e9cfde3"&gt;https://preview.redd.it/geu3ik68ww5f1.png?width=1346&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6b4583095291cd1f6a9a91e5fe5642965e9cfde3&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;Full leaderboard:&lt;/em&gt; &lt;a href="https://aider.chat/docs/leaderboards/"&gt;&lt;em&gt;https://aider.chat/docs/leaderboards/&lt;/em&gt;&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Xhehab_"&gt; /u/Xhehab_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l76ab7/deepseek_r1_0528_hits_71_145_pts_from_r1_on_aider/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-09T14:29:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1l6v37m</id>
