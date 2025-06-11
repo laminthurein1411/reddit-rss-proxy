@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-11T17:37:09+00:00</updated>
+  <updated>2025-06-11T17:49:05+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1l8dmp5</id>
-    <title>MCP Resources and tools.</title>
-    <updated>2025-06-10T23:22:01+00:00</updated>
-    <author>
-      <name>/u/Euphoric-Mark-4750</name>
-      <uri>https://old.reddit.com/user/Euphoric-Mark-4750</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have painstakingly been testing an MCP server I have built for the Digital Samba API. @ &lt;a href="https://www.npmjs.com/package/@digitalsamba/embedded-api-mcp-server/v/0.1.0-beta.20250610225923"&gt;https://www.npmjs.com/package/@digitalsamba/embedded-api-mcp-server/v/0.1.0-beta.20250610225923&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I have seperated resouces and tools as per what I believe the MCP proposed spec suggests. &lt;/p&gt; &lt;p&gt;I have ran into issues with claude desktop not being able to lookup the resources I set up. When I quizzed him to as you why not, he told me this :&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;The Key Insight&lt;/p&gt; &lt;p&gt;Looking at your implementation and the MCP docs, your server is correctly implemented. The issue is that as an AI assistant using your MCP server, I don't have direct access to read MCP resources - I can only call tools.&lt;/p&gt; &lt;p&gt;From the documentation examples ( modelcontextprotocol/docs) , I can see that:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Resources are meant to be read by MCP clients using ReadResourceRequest&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Tools are meant to be called by MCP clients using CallToolRequest&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;AI assistants (like me) typically interact with MCP servers through tools, not direct resource reads&lt;/p&gt; &lt;p&gt;The Current Situation&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Your Digital Samba MCP server correctly implements:&lt;/p&gt; &lt;p&gt;- 32 resources for read-only data (rooms, sessions, analytics, etc.)&lt;/p&gt; &lt;p&gt;- 70 tools for actions (create, update, delete, etc.)&lt;/p&gt; &lt;p&gt;But as an AI assistant, I only have access to call tools through the MCP protocol, not read resources directly.&lt;/p&gt; &lt;p&gt;Your implementation is correct according to MCP standards. The limitation is on the client side (how AI assistants interact with MCP servers). Users of your MCP server who have full MCP clients can use both resources and tools.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Is this correct? Have I wasted my time curating my API calls into tools and (GET) resources? Should I just make all these calls tools? &lt;/p&gt; &lt;p&gt;This was also suggested :&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Add complementary tools for the most commonly needed resources:&lt;/p&gt; &lt;p&gt;// Add alongside existing tools&lt;/p&gt; &lt;p&gt;{&lt;/p&gt; &lt;p&gt;name: &amp;quot;list-rooms&amp;quot;,&lt;/p&gt; &lt;p&gt;description: &amp;quot;List all rooms (equivalent to digitalsamba://rooms resource)&amp;quot;,&lt;/p&gt; &lt;p&gt;// ... implementation calls the same logic as the resource&lt;/p&gt; &lt;p&gt;}&lt;/p&gt; &lt;/blockquote&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Euphoric-Mark-4750"&gt; /u/Euphoric-Mark-4750 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l8dmp5/mcp_resources_and_tools/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l8dmp5/mcp_resources_and_tools/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1l8dmp5/mcp_resources_and_tools/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-10T23:22:01+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l7yz1t</id>
     <title>how to manage the mcp chaos?</title>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1l8t9f6/a_course_as_an_mcp_server/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-11T13:53:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l8yznf</id>
+    <title>Hugging Face now has a MCP server!!!</title>
+    <updated>2025-06-11T17:40:22+00:00</updated>
+    <author>
+      <name>/u/GPT-Claude-Gemini</name>
+      <uri>https://old.reddit.com/user/GPT-Claude-Gemini</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1l8yznf/hugging_face_now_has_a_mcp_server/"&gt; &lt;img alt="Hugging Face now has a MCP server!!!" src="https://preview.redd.it/2sq1fo684c6f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=61892ae89274fad8febb2cb5f39ff7a902825fdb" title="Hugging Face now has a MCP server!!!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://x.com/MCP_Community/status/1932840355386347969"&gt;https://x.com/MCP_Community/status/1932840355386347969&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/GPT-Claude-Gemini"&gt; /u/GPT-Claude-Gemini &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/2sq1fo684c6f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l8yznf/hugging_face_now_has_a_mcp_server/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1l8yznf/hugging_face_now_has_a_mcp_server/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-11T17:40:22+00:00</published>
   </entry>
   <entry>
     <id>t3_1l8v00c</id>
