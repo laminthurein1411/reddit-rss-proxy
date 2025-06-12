@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-12T18:41:37+00:00</updated>
+  <updated>2025-06-12T18:53:21+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1l9kdxz</id>
-    <title>SSE / Streamable HTTP and Chunks of a large response from a tool.</title>
-    <updated>2025-06-12T11:46:36+00:00</updated>
-    <author>
-      <name>/u/lbvenkatesh</name>
-      <uri>https://old.reddit.com/user/lbvenkatesh</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Per my understanding, MCP supports SSE through a MCP session - individual events here in this context are requests and responses to and from tool.&lt;/p&gt; &lt;p&gt;Client &amp;gt; /sse&lt;/p&gt; &lt;p&gt;&amp;lt; {session starts}&lt;/p&gt; &lt;p&gt;/mcp&lt;/p&gt; &lt;p&gt;request: tools/list ### Inbound Event ###&lt;/p&gt; &lt;p&gt;response: list of tools response ### Outound Event ###&lt;/p&gt; &lt;p&gt;/mcp&lt;/p&gt; &lt;p&gt;request: tools/call ### Inbound Event ###&lt;/p&gt; &lt;p&gt;response: tool call result as response ### Outound Event ###&lt;/p&gt; &lt;p&gt;&amp;gt;{end}&lt;/p&gt; &lt;p&gt;If one of the tool has to return chunks of larger response as events - meaning one tool having multiple responses, how can I go about that?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lbvenkatesh"&gt; /u/lbvenkatesh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9kdxz/sse_streamable_http_and_chunks_of_a_large/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9kdxz/sse_streamable_http_and_chunks_of_a_large/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1l9kdxz/sse_streamable_http_and_chunks_of_a_large/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-12T11:46:36+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l9pm0e</id>
     <title>Can I Package a Local MCP Server as an Installer for Windows?</title>
@@ -149,6 +136,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1l9lgq5/any_possible_way_where_mcp_server_calls_other_mcp/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-12T12:41:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1l9ug2j</id>
+    <title>KuzuMem-MCP - v2 version with automatic cursor development loop mechanism</title>
+    <updated>2025-06-12T18:46:44+00:00</updated>
+    <author>
+      <name>/u/Jakedismo</name>
+      <uri>https://old.reddit.com/user/Jakedismo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! 👋&lt;/p&gt; &lt;p&gt;I’ve just wrapped up v2 of **KuzuMem-MCP**, an open-source memory-bank server that lets IDE plugins, autonomous agents, and CLIs share long-term context through a graph database (KùzuDB). After consolidating there are **9 unified MCP tools**, the project finally feels cohesive—and I’d love your feedback before I call it “stable”. Database locking mechanism between sessions has especially been a pain point and I've included fixes in this release.&lt;br /&gt; The new version also includes a &amp;quot;automatic&amp;quot; development loop mechanism that the agent is enforced to follow. Give it a spin! &lt;/p&gt; &lt;p&gt;🌟 **Why it might interest you**&lt;/p&gt; &lt;p&gt;• **Graph-native memory** – Repositories, branches, dependencies, decisions, tags… all first-class nodes/edges in KùzuDB. &lt;/p&gt; &lt;p&gt;• **Clean architecture** – Strict repo → service → controller layering, with TypeScript type-safety end-to-end. &lt;/p&gt; &lt;p&gt;• **Finite-state dev loop** – ANALYZE → BLUEPRINT → CONSTRUCT → VALIDATE (+ automatic ROLLBACK). Agents must follow it, so history &amp;amp; intent stay explicit. Read through the rules they must be updated to your projects context before usage.&lt;/p&gt; &lt;p&gt;• **Unified tool set** – init, entity CRUD, graph introspection, PageRank/K-Core/Louvain, pattern detection, bulk import, and soon text search. &lt;/p&gt; &lt;p&gt;• **Multiple interfaces** – stdio MCP server, HTTP stream server and SSE. &lt;/p&gt; &lt;p&gt;🚀 **Quick start** &lt;/p&gt; &lt;p&gt;```bash&lt;/p&gt; &lt;p&gt;git clone &lt;a href="https://github.com/Jakedismo/KuzuMem-MCP.git"&gt;https://github.com/Jakedismo/KuzuMem-MCP.git&lt;/a&gt;&lt;/p&gt; &lt;p&gt;cd kuzumem-mcp &amp;amp;&amp;amp; npm i &amp;amp;&amp;amp; npm run build&lt;/p&gt; &lt;p&gt;Check the README.md for the mcp-settings script.&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;🔭 **Looking for reviewers/testers** &lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Does your agent/CLI dynamically follow the development loop (if you prompt the agent about what kind of a development loop it must follow according to the rules does it make sense?) without explicitly being guided to use tools? &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Any exceptions/problems using the tools? There may be bugs/errors in the graph queries (I'm not an expert and this thing is vibe coded). &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Suggestions for vector-based semantic search (KùzuDB indexes are immutable—ideas on how to enable this are welcome!). Currently I've only come up with filter condition status:active/status:deleted etc. But this would require periodical cleanups and index rebuilds which seems quite problematic from user point of view.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;💬 **Links** &lt;/p&gt; &lt;p&gt;• Repo &amp;amp; README: &lt;a href="https://github.com/Jakedismo/KuzuMem-MCP"&gt;https://github.com/Jakedismo/KuzuMem-MCP&lt;/a&gt; &lt;/p&gt; &lt;p&gt;• Architecture diagram &amp;amp; dev loop: see new README section (Mermaid state diagram). &lt;/p&gt; &lt;p&gt;This project is a result of vibe coding so don't expect everything to run smoothly, that's why I'm gathering feedback. I've tried to update it to follow the official MCP TypeScript SDK but there might still be legacy code in use, disrepencies etc.&lt;/p&gt; &lt;p&gt;Kudos to &lt;a href="https://kuzudb.com/"&gt;KuzuDB&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Jakedismo"&gt; /u/Jakedismo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9ug2j/kuzumemmcp_v2_version_with_automatic_cursor/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9ug2j/kuzumemmcp_v2_version_with_automatic_cursor/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1l9ug2j/kuzumemmcp_v2_version_with_automatic_cursor/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-12T18:46:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1l9m6o4</id>
