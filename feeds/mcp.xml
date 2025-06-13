@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-13T02:24:55+00:00</updated>
+  <updated>2025-06-13T03:03:43+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1l9jjjk</id>
-    <title>Anyone else overwhelmed by all the MCP servers? How do you pick one (or build your own)? 😵‍💫</title>
-    <updated>2025-06-12T10:58:58+00:00</updated>
-    <author>
-      <name>/u/FormalPrune3059</name>
-      <uri>https://old.reddit.com/user/FormalPrune3059</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been diving into this whole MCP (Model Context Protocol) thing and honestly… I’m kinda overwhelmed. There are so many servers out there; you can literally find hundreds of MCP servers for the same tool, and I have no idea how people are deciding what to use or how to even get started.&lt;/p&gt; &lt;p&gt;So I figured I’d just ask:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;How do you &lt;em&gt;actually&lt;/em&gt; choose which MCP servers to work with? Is it just trial and error? Based on what tools they give you?&lt;/li&gt; &lt;li&gt;Has anyone here &lt;strong&gt;built their own MCP server&lt;/strong&gt;? Like… how did you do that? Was it worth it?&lt;/li&gt; &lt;li&gt;What’s your experience been like with &lt;strong&gt;authentication&lt;/strong&gt;? I keep running into weird OAuth stuff or token issues and it’s kinda discouraging.&lt;/li&gt; &lt;li&gt;Has anyone tried using &lt;strong&gt;Docker toolkit for MCP servers&lt;/strong&gt;? Did it make your life easier or just add more layers of confusion?&lt;/li&gt; &lt;li&gt;And finally… &lt;strong&gt;A2A (agent to agent)&lt;/strong&gt; , is &lt;em&gt;anyone&lt;/em&gt; using this in practice or was that just hype?&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I’m just trying to make sense of this whole space without going down 12 rabbit holes at once. Would love to hear how other people are figuring it out.&lt;/p&gt; &lt;p&gt;Thanks in advance 🙏&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FormalPrune3059"&gt; /u/FormalPrune3059 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9jjjk/anyone_else_overwhelmed_by_all_the_mcp_servers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9jjjk/anyone_else_overwhelmed_by_all_the_mcp_servers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1l9jjjk/anyone_else_overwhelmed_by_all_the_mcp_servers/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-12T10:58:58+00:00</published>
-  </entry>
   <entry>
     <id>t3_1l9johy</id>
     <title>Anyone know if there's a way to get Claude to edit Google Docs directly?</title>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1l9uvg6/serverless_cloud_hosting_for_mcp_servers/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-12T19:03:07+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1la5hry</id>
+    <title>MCP OAuth confusion - what's actually being added</title>
+    <updated>2025-06-13T03:01:42+00:00</updated>
+    <author>
+      <name>/u/Ok-Classic6022</name>
+      <uri>https://old.reddit.com/user/Ok-Classic6022</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seeing a lot of confusion about the OAuth addition to MCP that's been getting discussed. People think it means automatic Google/Slack auth for their tools, but that's not what's happening.&lt;/p&gt; &lt;p&gt;The OAuth spec is for &lt;strong&gt;client-server auth&lt;/strong&gt; - basically making sure your MCP client can actually talk to your MCP server. It's not about downstream APIs. &lt;/p&gt; &lt;p&gt;So you've got two separate steps:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;MCP client → MCP server (this is what the new OAuth handles)&lt;/li&gt; &lt;li&gt;MCP server → whatever APIs it needs (Google, Slack, etc - totally separate)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Why does this split matter? Your MCP server might hit 10 different APIs. Some need OAuth, some just API keys, some might be internal with no auth. The MCP protocol shouldn't have to care about all that mess.&lt;/p&gt; &lt;p&gt;This way developers building servers don't need to become OAuth wizards, and companies can just plug into whatever auth system they already use.&lt;/p&gt; &lt;p&gt;&lt;a href="https://youtu.be/DHowXWoZ3tA"&gt;This YouTube discussion&lt;/a&gt; really helped me wrap my head around it - one of the devs working on the spec breaks down exactly why they're treating client-server auth separately from downstream service auth. Made the whole separation of concerns thing click for me.&lt;/p&gt; &lt;p&gt;I was following the GitHub thread and saw people going in circles about this. The separation makes way more sense when you think about it - you're not asking &amp;quot;can I access Google through MCP&amp;quot;, you're asking &amp;quot;can I access this server that happens to talk to Google.&amp;quot;&lt;/p&gt; &lt;p&gt;Anyway, thought this was worth clarifying since I kept seeing the same confusion pop up. The downstream auth stuff everyone wants is probably coming, but this lays the groundwork first.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Classic6022"&gt; /u/Ok-Classic6022 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-13T03:01:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1la3r5l</id>
