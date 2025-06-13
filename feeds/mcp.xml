@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-13T15:37:33+00:00</updated>
+  <updated>2025-06-13T15:49:35+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1l9nxvo</id>
-    <title>FREE and CERTIFIED course on MCP by Anthropic and Hugging Face</title>
-    <updated>2025-06-12T14:30:12+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Brand new MCP Course has units are out, and now it's getting REAL! We've collaborated with Anthropic to dive deep into production ready and autonomous agents using MCP &lt;/p&gt; &lt;p&gt;This is what the new material covers and includes: &lt;/p&gt; &lt;p&gt;- Use Claude Code to build an autonomous PR agent&lt;br /&gt; - Integrate your agent with Slack and Github to integrate it with you Team&lt;br /&gt; - Get certified on your use case and share with the community&lt;br /&gt; - Build an autonomous PR cleanup agent on the Hugging Face hub and deploy it with spaces&lt;/p&gt; &lt;p&gt;&lt;a href="https://huggingface.co/mcp-course"&gt;https://huggingface.co/mcp-course&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9nxvo/free_and_certified_course_on_mcp_by_anthropic_and/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1l9nxvo/free_and_certified_course_on_mcp_by_anthropic_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1l9nxvo/free_and_certified_course_on_mcp_by_anthropic_and/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-12T14:30:12+00:00</published>
-  </entry>
   <entry>
     <id>t3_1la9oia</id>
     <title>Screenshot Website Fast – Captures high-quality screenshots of web pages with automatic resolution limiting and tiling optimized for Claude Vision API and other AI models.</title>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1la9us4/building_a_powerful_telegram_ai_bot_check_out/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-13T07:26:57+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1laj4ee</id>
+    <title>Using promises to enable async mcp tool usage with Claude</title>
+    <updated>2025-06-13T15:39:39+00:00</updated>
+    <author>
+      <name>/u/flossypurse</name>
+      <uri>https://old.reddit.com/user/flossypurse</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt; &lt;img alt="Using promises to enable async mcp tool usage with Claude" src="https://external-preview.redd.it/Q3AtgyfHded3Z6Fcsn3i-boLjYJ-Mhd1bt6vTdL8lr8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b978b3c655df713af32ad8d17b42cdaa9cdc805b" title="Using promises to enable async mcp tool usage with Claude" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/y7zuiayxlp6f1.png?width=1246&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6aca53ffdcd3a8259412c6b50c36b001ee2112eb"&gt;Claude Desktop conversation&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Using Resonate's Durable Promises, I was able to get Claude to &amp;quot;kick off&amp;quot; something and then check back later for the result.&lt;br /&gt; I made this super simple example with a timer. So Claude can set a timer - when it does it gets back a promise ID, and then can use that promise ID to check for the result of the timer later on. Obviously a timer isn't super useful in real life - but it shows that you can kick something off that is long running and then periodically check back for the result if its done - so basically you can make async tools / background tools.&lt;/p&gt; &lt;p&gt;It really boils down to integrating an MCP Server with Resonate and use Resonate's promises -&lt;br /&gt; You give Claude a promise ID and then Claude just uses that to get the result later on.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;set timer tool&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;@mcp.tool() def set_timer(timer_name, seconds): # tool description _ = timer.run(timer_name, timer_name, seconds) return {&amp;quot;promise_id&amp;quot;: timer_name} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;get timer status tool&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;@mcp.tool() def get_timer_status(timer_name): # tool description promise_id = f&amp;quot;{timer_name}&amp;quot; handle = resonate.get(promise_id) if not handle.done(): return {&amp;quot;status&amp;quot;: &amp;quot;running&amp;quot;} return {&amp;quot;status&amp;quot;: handle.result()} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Example repo if you are interested: &lt;a href="https://github.com/resonatehq-examples/example-agent-tool-async-timer"&gt;https://github.com/resonatehq-examples/example-agent-tool-async-timer&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/flossypurse"&gt; /u/flossypurse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-13T15:39:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1lac12i</id>
