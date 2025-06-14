@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-14T12:26:22+00:00</updated>
+  <updated>2025-06-14T12:48:20+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1laj4ee</id>
-    <title>Using promises to enable async mcp tool usage with Claude</title>
-    <updated>2025-06-13T15:39:39+00:00</updated>
-    <author>
-      <name>/u/flossypurse</name>
-      <uri>https://old.reddit.com/user/flossypurse</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt; &lt;img alt="Using promises to enable async mcp tool usage with Claude" src="https://external-preview.redd.it/Q3AtgyfHded3Z6Fcsn3i-boLjYJ-Mhd1bt6vTdL8lr8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b978b3c655df713af32ad8d17b42cdaa9cdc805b" title="Using promises to enable async mcp tool usage with Claude" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/y7zuiayxlp6f1.png?width=1246&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6aca53ffdcd3a8259412c6b50c36b001ee2112eb"&gt;Claude Desktop conversation&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Using Resonate's Durable Promises, I was able to get Claude to &amp;quot;kick off&amp;quot; something and then check back later for the result.&lt;br /&gt; I made this super simple example with a timer. So Claude can set a timer - when it does it gets back a promise ID, and then can use that promise ID to check for the result of the timer later on. Obviously a timer isn't super useful in real life - but it shows that you can kick something off that is long running and then periodically check back for the result if its done - so basically you can make async tools / background tools.&lt;/p&gt; &lt;p&gt;It really boils down to integrating an MCP Server with Resonate and use Resonate's promises -&lt;br /&gt; You give Claude a promise ID and then Claude just uses that to get the result later on.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;set timer tool&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;@mcp.tool() def set_timer(timer_name, seconds): # tool description _ = timer.run(timer_name, timer_name, seconds) return {&amp;quot;promise_id&amp;quot;: timer_name} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;get timer status tool&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;@mcp.tool() def get_timer_status(timer_name): # tool description promise_id = f&amp;quot;{timer_name}&amp;quot; handle = resonate.get(promise_id) if not handle.done(): return {&amp;quot;status&amp;quot;: &amp;quot;running&amp;quot;} return {&amp;quot;status&amp;quot;: handle.result()} &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Example repo if you are interested: &lt;a href="https://github.com/resonatehq-examples/example-agent-tool-async-timer"&gt;https://github.com/resonatehq-examples/example-agent-tool-async-timer&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/flossypurse"&gt; /u/flossypurse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1laj4ee/using_promises_to_enable_async_mcp_tool_usage/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-13T15:39:39+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lac12i</id>
     <title>An MCP to track the progress of your AI Agent(s)</title>
@@ -294,17 +281,17 @@
     <published>2025-06-14T11:54:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lb7esm</id>
-    <title>Why does MCP matter? A deep dive for engineers</title>
-    <updated>2025-06-14T12:21:01+00:00</updated>
+    <id>t3_1lb7u6s</id>
+    <title>Just tested Claude with MCP (Model Context Protocol) - Mind = Blown 🤯</title>
+    <updated>2025-06-14T12:43:39+00:00</updated>
     <author>
-      <name>/u/hoangnn93</name>
-      <uri>https://old.reddit.com/user/hoangnn93</uri>
+      <name>/u/iluxu</name>
+      <uri>https://old.reddit.com/user/iluxu</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wrote a blog to share my personal perspective why does MCP matter from engineering perspective.&lt;/p&gt; &lt;p&gt;Link: &lt;a href="https://codeaholicguy.com/2025/06/14/why-does-mcp-matter-a-deep-dive-for-engineers/"&gt;https://codeaholicguy.com/2025/06/14/why-does-mcp-matter-a-deep-dive-for-engineers/&lt;/a&gt; Why does MCP matter?&lt;/p&gt; &lt;p&gt;Love to hear your thoughts!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoangnn93"&gt; /u/hoangnn93 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1lb7u6s/just_tested_claude_with_mcp_model_context/"&gt; &lt;img alt="Just tested Claude with MCP (Model Context Protocol) - Mind = Blown 🤯" src="https://preview.redd.it/c7i88ct12w6f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=231c7a3ccacd916933e1055f34ba624063ed8dcb" title="Just tested Claude with MCP (Model Context Protocol) - Mind = Blown 🤯" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;TL;DR: Used Claude with local MCP tools to read and modify Word documents directly. It’s like having a coding assistant that can actually touch your files. What I did:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;1. Asked Claude to analyze a job requirements document - It used a 3-step semantic search process: • READ: Extracted all paragraphs from my .docx file • EMBED: Made the content searchable (though we hit some method issues here) • SEARCH: Found specific info about experience requirements 2. Got detailed answers - Claude found that the job required: • 17 years of IT experience overall • 8 years in semantic technologies • 8 years in technical standards (OWL, RDF, etc.) • Proven AI/ML experience 3. Modified the document in real-time - Then I asked Claude to update specific paragraphs, and it actually changed the Word document on my machine: • Updated paragraph 14 to “Test MCP agent” • Updated paragraph 15 to “salut maman” (lol) &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Why this is crazy: • Claude isn’t just reading or generating text anymore • It’s actually executing commands on my local system • Reading real files, modifying real documents • All through natural conversation The technical side: Claude used MCP commands like: • mcp.fs.read_docx_paragraphs to extract content • mcp.fs.update_docx_paragraphs to modify specific paragraphs&lt;/p&gt; &lt;p&gt;It even figured out the correct parameter formats through trial and error when I gave it the wrong method name initially.&lt;/p&gt; &lt;p&gt;This feels like the future We’re moving from “AI that talks” to “AI that does”. Having an assistant that can read your documents, understand them, AND modify them based on conversation is wild. Anyone else experimenting with MCP? What local tools are you connecting to Claude?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/iluxu"&gt; /u/iluxu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/c7i88ct12w6f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb7u6s/just_tested_claude_with_mcp_model_context/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lb7u6s/just_tested_claude_with_mcp_model_context/"/>
     <category term="mcp" label="r/mcp"/>
-    <published>2025-06-14T12:21:01+00:00</published>
+    <published>2025-06-14T12:43:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb23c0</id>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lb23c0/kuzumemmcp_v2_now_with_automated_development_loop/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-14T06:36:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lb7esm</id>
+    <title>Why does MCP matter? A deep dive for engineers</title>
+    <updated>2025-06-14T12:21:01+00:00</updated>
+    <author>
+      <name>/u/hoangnn93</name>
+      <uri>https://old.reddit.com/user/hoangnn93</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I wrote a blog to share my personal perspective why does MCP matter from engineering perspective.&lt;/p&gt; &lt;p&gt;Link: &lt;a href="https://codeaholicguy.com/2025/06/14/why-does-mcp-matter-a-deep-dive-for-engineers/"&gt;https://codeaholicguy.com/2025/06/14/why-does-mcp-matter-a-deep-dive-for-engineers/&lt;/a&gt; Why does MCP matter?&lt;/p&gt; &lt;p&gt;Love to hear your thoughts!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/hoangnn93"&gt; /u/hoangnn93 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lb7esm/why_does_mcp_matter_a_deep_dive_for_engineers/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-14T12:21:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb4yrm</id>
