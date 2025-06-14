@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-14T16:39:00+00:00</updated>
+  <updated>2025-06-14T16:50:15+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lb4yb4</id>
-    <title>Frustrated trying to run MiniCPM-o 2.6 on RunPod</title>
-    <updated>2025-06-14T09:48:40+00:00</updated>
-    <author>
-      <name>/u/i5_8300h</name>
-      <uri>https://old.reddit.com/user/i5_8300h</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi, I'm trying to use MiniCPM-o 2.6 for a project that involves using the LLM to categorize frames from a video into certain categories. Naturally, the first step is to get MiniCPM running at all. This is where I am facing many problems At first, I tried to get it working on my laptop which has an RTX 3050Ti 4GB GPU, and that did not work for obvious reasons.&lt;/p&gt; &lt;p&gt;So I switched to RunPod and created an instance with RTX A4000 - the only GPU I can afford.&lt;/p&gt; &lt;p&gt;If I use the HuggingFace version and AutoModel.from_pretrained as per their sample code, I get errors like:&lt;/p&gt; &lt;p&gt;AttributeError: 'Resampler' object has no attribute '_initialize_weights'&lt;/p&gt; &lt;p&gt;To fix it, I tried cloning into their repository and using their custom classes, which led to several package conflict issues - that were resolvable - but led to new errors like:&lt;/p&gt; &lt;p&gt;Some weights of OmniLMMForCausalLM were not initialized from the model checkpoint at openbmb/MiniCPM-o-2_6 and are newly initialized: ['embed_tokens.weight',&lt;/p&gt; &lt;p&gt;What I understood was that none of the weights got loaded and I was left with an empty model.&lt;/p&gt; &lt;p&gt;So I went back to using the HuggingFace version.&lt;/p&gt; &lt;p&gt;At one point, AutoModel did work after I used Attention to offload some layers to CPU - and I was able to get a test output from the LLM. Emboldened by this, I tried using their sample code to encode a video and get some chat output, but, even after waiting for 20 minutes, all I could see was CPU activity between 30-100% and GPU memory being stuck at 92% utilization.&lt;/p&gt; &lt;p&gt;I started over with a fresh RunPod A4000 instance and copied over the sample code from HuggingFace - which brought me back to the Resampler error.&lt;/p&gt; &lt;p&gt;I tried to follow the instructions from a .cn webpage linked in a file called best practices that came with their GitHub repo, but it's for MiniCPM-V, and the vllm package and LLM class it told me to use did not work either.&lt;/p&gt; &lt;p&gt;I appreciate any advice as to what I can do next. Unfortunately, my professor is set on using MiniCPM only - and so I need to get it working somehow.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/i5_8300h"&gt; /u/i5_8300h &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb4yb4/frustrated_trying_to_run_minicpmo_26_on_runpod/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb4yb4/frustrated_trying_to_run_minicpmo_26_on_runpod/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lb4yb4/frustrated_trying_to_run_minicpmo_26_on_runpod/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T09:48:40+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lb9ppy</id>
     <title>Trying to install llama 4 scout &amp; maverick locally; keep getting errors</title>
@@ -151,6 +138,19 @@
     <published>2025-06-13T16:26:18+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lbc3du</id>
+    <title>Help - Llamacpp-server &amp; rerankin LLM</title>
+    <updated>2025-06-14T16:00:24+00:00</updated>
+    <author>
+      <name>/u/dodo13333</name>
+      <uri>https://old.reddit.com/user/dodo13333</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Can anybody suggest me a reranker that works with llamacpp-server and how to use it? &lt;/p&gt; &lt;p&gt;I tried with rank_zephyr_7b_v1 and Qwen3-Reranker-8B, but could not make any of them them work...&lt;/p&gt; &lt;p&gt;``` &lt;/p&gt; &lt;p&gt;llama-server --model &amp;quot;H:\MaziyarPanahi\rank_zephyr_7b_v1_full-GGUF\rank_zephyr_7b_v1_full.Q8_0.gguf&amp;quot; --port 8084 --ctx-size 4096 --temp 0.0 --threads 24 --numa distribute --prio 2 --seed 42 --rerank&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;br /&gt; common_init_from_params: warning: vocab does not have a SEP token, reranking will not work&lt;br /&gt; srv load_model: failed to load model, 'H:\MaziyarPanahi\rank_zephyr_7b_v1_full-GGUF\rank_zephyr_7b_v1_full.Q8_0.gguf'&lt;/p&gt; &lt;p&gt;srv operator(): operator(): cleaning up before exit...&lt;/p&gt; &lt;p&gt;main: exiting due to model loading error&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;----&lt;/p&gt; &lt;p&gt;``` &lt;/p&gt; &lt;p&gt;llama-server --model &amp;quot;H:\DevQuasar\Qwen.Qwen3-Reranker-8B-GGUF\Qwen.Qwen3-Reranker-8B.f16.gguf&amp;quot; --port 8084 --ctx-size 4096 --temp 0.0 --threads 24 --numa distribute --prio 2 --seed 42 --rerank&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;common_init_from_params: warning: vocab does not have a SEP token, reranking will not work&lt;/p&gt; &lt;p&gt;srv load_model: failed to load model, 'H:\DevQuasar\Qwen.Qwen3-Reranker-8B-GGUF\Qwen.Qwen3-Reranker-8B.f16.gguf'&lt;/p&gt; &lt;p&gt;srv operator(): operator(): cleaning up before exit...&lt;/p&gt; &lt;p&gt;main: exiting due to model loading error&lt;br /&gt; &amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dodo13333"&gt; /u/dodo13333 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-14T16:00:24+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1laavph</id>
     <title>Finally, Zen 6, per-socket memory bandwidth to 1.6 TB/s</title>
     <updated>2025-06-13T08:39:05+00:00</updated>
@@ -164,17 +164,17 @@
     <published>2025-06-13T08:39:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbc3du</id>
-    <title>Help - Llamacpp-server &amp; rerankin LLM</title>
-    <updated>2025-06-14T16:00:24+00:00</updated>
+    <id>t3_1lbd2jy</id>
+    <title>What LLM is everyone using in June 2025?</title>
+    <updated>2025-06-14T16:43:01+00:00</updated>
     <author>
-      <name>/u/dodo13333</name>
-      <uri>https://old.reddit.com/user/dodo13333</uri>
+      <name>/u/1BlueSpork</name>
+      <uri>https://old.reddit.com/user/1BlueSpork</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Can anybody suggest me a reranker that works with llamacpp-server and how to use it? &lt;/p&gt; &lt;p&gt;I tried with rank_zephyr_7b_v1 and Qwen3-Reranker-8B, but could not make any of them them work...&lt;/p&gt; &lt;p&gt;``` &lt;/p&gt; &lt;p&gt;llama-server --model &amp;quot;H:\MaziyarPanahi\rank_zephyr_7b_v1_full-GGUF\rank_zephyr_7b_v1_full.Q8_0.gguf&amp;quot; --port 8084 --ctx-size 4096 --temp 0.0 --threads 24 --numa distribute --prio 2 --seed 42 --rerank&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;br /&gt; common_init_from_params: warning: vocab does not have a SEP token, reranking will not work&lt;br /&gt; srv load_model: failed to load model, 'H:\MaziyarPanahi\rank_zephyr_7b_v1_full-GGUF\rank_zephyr_7b_v1_full.Q8_0.gguf'&lt;/p&gt; &lt;p&gt;srv operator(): operator(): cleaning up before exit...&lt;/p&gt; &lt;p&gt;main: exiting due to model loading error&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;p&gt;----&lt;/p&gt; &lt;p&gt;``` &lt;/p&gt; &lt;p&gt;llama-server --model &amp;quot;H:\DevQuasar\Qwen.Qwen3-Reranker-8B-GGUF\Qwen.Qwen3-Reranker-8B.f16.gguf&amp;quot; --port 8084 --ctx-size 4096 --temp 0.0 --threads 24 --numa distribute --prio 2 --seed 42 --rerank&lt;/p&gt; &lt;p&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;common_init_from_params: warning: vocab does not have a SEP token, reranking will not work&lt;/p&gt; &lt;p&gt;srv load_model: failed to load model, 'H:\DevQuasar\Qwen.Qwen3-Reranker-8B-GGUF\Qwen.Qwen3-Reranker-8B.f16.gguf'&lt;/p&gt; &lt;p&gt;srv operator(): operator(): cleaning up before exit...&lt;/p&gt; &lt;p&gt;main: exiting due to model loading error&lt;br /&gt; &amp;quot;&amp;quot;&amp;quot;&lt;/p&gt; &lt;p&gt;```&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dodo13333"&gt; /u/dodo13333 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbc3du/help_llamacppserver_rerankin_llm/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious what everyone’s running now.&lt;br /&gt; What model(s) are in your regular rotation?&lt;br /&gt; What hardware are you on?&lt;br /&gt; How are you running it? (LM Studio, Ollama, llama.cpp, etc.)&lt;br /&gt; What do you use it for?&lt;/p&gt; &lt;p&gt;Here’s mine:&lt;br /&gt; Recently I've been using mostly Qwen3 (30B, 32B, and 235B)&lt;br /&gt; Ryzen 7 5800X, 128GB RAM, RTX 3090&lt;br /&gt; Ollama + Open WebUI&lt;br /&gt; Mostly general use and private conversations I’d rather not run on cloud platforms&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbd2jy/what_llm_is_everyone_using_in_june_2025/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbd2jy/what_llm_is_everyone_using_in_june_2025/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbd2jy/what_llm_is_everyone_using_in_june_2025/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T16:00:24+00:00</published>
+    <published>2025-06-14T16:43:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1lalyy5</id>
@@ -229,19 +229,6 @@
     <published>2025-06-14T15:52:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbcfjz</id>
-    <title>How much VRAM do you have and what's your daily-driver model?</title>
-    <updated>2025-06-14T16:14:55+00:00</updated>
-    <author>
-      <name>/u/EmPips</name>
-      <uri>https://old.reddit.com/user/EmPips</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious what everyone is using day to day, locally, and what hardware they're using.&lt;/p&gt; &lt;p&gt;If you're using a quantized version of a model please say so!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmPips"&gt; /u/EmPips &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T16:14:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lanhbd</id>
     <title>We don't want AI yes-men. We want AI with opinions</title>
     <updated>2025-06-13T18:33:45+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lanhbd/we_dont_want_ai_yesmen_we_want_ai_with_opinions/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-13T18:33:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lb1v8h</id>
+    <title>Open Source Unsiloed AI Chunker (EF2024)</title>
+    <updated>2025-06-14T06:21:25+00:00</updated>
+    <author>
+      <name>/u/Initial-Western-4438</name>
+      <uri>https://old.reddit.com/user/Initial-Western-4438</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey , Unsiloed CTO here!&lt;/p&gt; &lt;p&gt;Unsiloed AI (EF 2024) is backed by Transpose Platform &amp;amp; EF and is currently being used by teams at Fortune 100 companies and multiple Series E+ startups for ingesting multimodal data in the form of PDFs, Excel, PPTs, etc. And, we have now finally open sourced some of the capabilities. Do give it a try!&lt;/p&gt; &lt;p&gt;Also, we are inviting cracked developers to come and contribute to bounties of upto 500$ on algora. This would be a great way to get noticed for the job openings at Unsiloed.&lt;/p&gt; &lt;p&gt;Bounty Link- &lt;a href="https://algora.io/bounties"&gt;https://algora.io/bounties&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Github Link - &lt;a href="https://github.com/Unsiloed-AI/Unsiloed-chunker"&gt;https://github.com/Unsiloed-AI/Unsiloed-chunker&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Initial-Western-4438"&gt; /u/Initial-Western-4438 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-14T06:21:25+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb9jqc</id>
@@ -268,17 +268,17 @@
     <published>2025-06-14T14:08:06+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lb1v8h</id>
-    <title>Open Source Unsiloed AI Chunker (EF2024)</title>
-    <updated>2025-06-14T06:21:25+00:00</updated>
+    <id>t3_1lbcfjz</id>
+    <title>How much VRAM do you have and what's your daily-driver model?</title>
+    <updated>2025-06-14T16:14:55+00:00</updated>
     <author>
-      <name>/u/Initial-Western-4438</name>
-      <uri>https://old.reddit.com/user/Initial-Western-4438</uri>
+      <name>/u/EmPips</name>
+      <uri>https://old.reddit.com/user/EmPips</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey , Unsiloed CTO here!&lt;/p&gt; &lt;p&gt;Unsiloed AI (EF 2024) is backed by Transpose Platform &amp;amp; EF and is currently being used by teams at Fortune 100 companies and multiple Series E+ startups for ingesting multimodal data in the form of PDFs, Excel, PPTs, etc. And, we have now finally open sourced some of the capabilities. Do give it a try!&lt;/p&gt; &lt;p&gt;Also, we are inviting cracked developers to come and contribute to bounties of upto 500$ on algora. This would be a great way to get noticed for the job openings at Unsiloed.&lt;/p&gt; &lt;p&gt;Bounty Link- &lt;a href="https://algora.io/bounties"&gt;https://algora.io/bounties&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Github Link - &lt;a href="https://github.com/Unsiloed-AI/Unsiloed-chunker"&gt;https://github.com/Unsiloed-AI/Unsiloed-chunker&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Initial-Western-4438"&gt; /u/Initial-Western-4438 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lb1v8h/open_source_unsiloed_ai_chunker_ef2024/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious what everyone is using day to day, locally, and what hardware they're using.&lt;/p&gt; &lt;p&gt;If you're using a quantized version of a model please say so!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmPips"&gt; /u/EmPips &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbcfjz/how_much_vram_do_you_have_and_whats_your/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T06:21:25+00:00</published>
+    <published>2025-06-14T16:14:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1laee7q</id>
