@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-14T00:28:26+00:00</updated>
+  <updated>2025-06-14T00:54:29+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1la3xni</id>
-    <title>Happy Birthday Transformers!</title>
-    <updated>2025-06-13T01:40:38+00:00</updated>
-    <author>
-      <name>/u/sksq9</name>
-      <uri>https://old.reddit.com/user/sksq9</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1la3xni/happy_birthday_transformers/"&gt; &lt;img alt="Happy Birthday Transformers!" src="https://external-preview.redd.it/-WGucDJrfXWGk82HcV3sYvI56KgBvSq6Ts-J6hHyLl0.jpg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b9dc544bc2b53c9634b6322ef6ef5b0018f8e039" title="Happy Birthday Transformers!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sksq9"&gt; /u/sksq9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://x.com/sksq96/status/1933335774100857090?s=46"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1la3xni/happy_birthday_transformers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1la3xni/happy_birthday_transformers/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-13T01:40:38+00:00</published>
-  </entry>
   <entry>
     <id>t3_1laa9bj</id>
     <title>New VS Code update supports all MCP features (tools, prompts, sampling, resources, auth)</title>
@@ -86,17 +73,17 @@
     <published>2025-06-13T12:57:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lafihl</id>
-    <title>Struggling on local multi-user inference? Llama.cpp GGUF vs VLLM AWQ/GPTQ.</title>
-    <updated>2025-06-13T13:09:07+00:00</updated>
+    <id>t3_1law1go</id>
+    <title>RTX 5090 Training Issues - PyTorch Doesn't Support Blackwell Architecture Yet?</title>
+    <updated>2025-06-14T00:53:51+00:00</updated>
     <author>
-      <name>/u/SomeRandomGuuuuuuy</name>
-      <uri>https://old.reddit.com/user/SomeRandomGuuuuuuy</uri>
+      <name>/u/AstroAlto</name>
+      <uri>https://old.reddit.com/user/AstroAlto</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I tested VLLM and Llama.cpp and got much better results from GGUF than AWQ and GPTQ (it was also hard to find this format for VLLM). I used the same system prompts and saw really crazy bad results on Gemma in GPTQ: higher VRAM usage, slower inference, and worse output quality.&lt;/p&gt; &lt;p&gt;Now my project is moving to multiple concurrent users, so I will need parallelism. I'm using either A10 AWS instances or L40s etc.&lt;/p&gt; &lt;p&gt;From my understanding, Llama.cpp is not optimal for the efficiency and concurrency I need, as I want to squeeze the as much request with same or smillar time for one and minimize VRAM usage if possible. I like GGUF as it's so easy to find good quantizations, but I'm wondering if I should switch back to VLLM.&lt;/p&gt; &lt;p&gt;I also considered Triton / NVIDIA Inference Server / Dynamo, but I'm not sure what's currently the best option for this workload.&lt;/p&gt; &lt;p&gt;Here is my current Docker setup for llama.cpp:&lt;/p&gt; &lt;p&gt;&lt;code&gt;cpp_3.1.8B:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;image:&lt;/code&gt; &lt;a href="http://ghcr.io/ggml-org/llama.cpp:server-cuda"&gt;&lt;code&gt;ghcr.io/ggml-org/llama.cpp:server-cuda&lt;/code&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;container_name: cpp_3.1.8B&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;ports:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- 8003:8003&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;volumes:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- ./models/Meta-Llama-3.1-8B-Instruct-Q8_0.gguf:/model/model.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;environment:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_MODEL: /model/model.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_CTX_SIZE: 4096&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_N_PARALLEL: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_MAIN_GPU: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_N_GPU_LAYERS: 99&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_ENDPOINT_METRICS: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_PORT: 8003&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_FLASH_ATTN: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;GGML_CUDA_FORCE_MMQ: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;GGML_CUDA_FORCE_CUBLAS: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;deploy:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;resources:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;reservations:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;devices:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- driver: nvidia&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;count: all&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;capabilities: [gpu]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;And for vllm:&lt;br /&gt; &lt;code&gt;sudo docker run --runtime nvidia --gpus all \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;-v ~/.cache/huggingface:/root/.cache/huggingface \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--env &amp;quot;HUGGING_FACE_HUB_TOKEN= \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;-p 8003:8000 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--ipc=host \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--name gemma12bGPTQ \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--user 0 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;vllm/vllm-openai:latest \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--model circulus/gemma-3-12b-it-gptq \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--gpu_memory_utilization=0.80 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--max_model_len=4096&lt;/code&gt;&lt;/p&gt; &lt;p&gt;I would greatly appreciate feedback from people who have been through this — what stack works best for you today for maximum concurrent users? Should I fully switch back to VLLM? Is Triton / Nvidia NIM / Dynamo inference worth exploring or smth else?&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeRandomGuuuuuuy"&gt; /u/SomeRandomGuuuuuuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;Hi,&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;I'm trying to fine-tune Mistral-7B on a new RTX 5090 but hitting a fundamental compatibility wall. The GPU uses Blackwell architecture with CUDA compute capability &amp;quot;sm_120&amp;quot;, but PyTorch stable only supports up to &amp;quot;sm_90&amp;quot;. This means literally no PyTorch operations work - even basic tensor creation fails with &amp;quot;no kernel image available for execution on the device.&amp;quot;&lt;/p&gt; &lt;p&gt;I've tried PyTorch nightly builds that claim CUDA 12.8 support, but they have broken dependencies (torch 2.7.0 from one date, torchvision from another, causing install conflicts). Even when I get nightly installed, training still crashes with the same kernel errors. CPU-only training also fails with tokenization issues in the transformers library.&lt;/p&gt; &lt;p&gt;The RTX 5090 works perfectly for everything else - gaming, other CUDA apps, etc. It's specifically the PyTorch/ML ecosystem that doesn't support the new architecture yet. Has anyone actually gotten model training working on RTX 5090? What PyTorch version and setup did you use?&lt;/p&gt; &lt;p&gt;I have an RTX 4090 I could fall back to, but really want to use the 5090's 32GB VRAM and better performance if possible. Is this just a &amp;quot;wait for official PyTorch support&amp;quot; situation, or is there a working combination of packages out there?&lt;/p&gt; &lt;p&gt;Any guidance would be appreciated - spending way too much time on compatibility instead of actually training models!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AstroAlto"&gt; /u/AstroAlto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1law1go/rtx_5090_training_issues_pytorch_doesnt_support/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1law1go/rtx_5090_training_issues_pytorch_doesnt_support/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1law1go/rtx_5090_training_issues_pytorch_doesnt_support/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-13T13:09:07+00:00</published>
+    <published>2025-06-14T00:53:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1l9lddr</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1l9lddr/petition_ban_announcement_of_announcement_posts/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-12T12:36:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lafihl</id>
+    <title>Struggling on local multi-user inference? Llama.cpp GGUF vs VLLM AWQ/GPTQ.</title>
+    <updated>2025-06-13T13:09:07+00:00</updated>
+    <author>
+      <name>/u/SomeRandomGuuuuuuy</name>
+      <uri>https://old.reddit.com/user/SomeRandomGuuuuuuy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi all,&lt;/p&gt; &lt;p&gt;I tested VLLM and Llama.cpp and got much better results from GGUF than AWQ and GPTQ (it was also hard to find this format for VLLM). I used the same system prompts and saw really crazy bad results on Gemma in GPTQ: higher VRAM usage, slower inference, and worse output quality.&lt;/p&gt; &lt;p&gt;Now my project is moving to multiple concurrent users, so I will need parallelism. I'm using either A10 AWS instances or L40s etc.&lt;/p&gt; &lt;p&gt;From my understanding, Llama.cpp is not optimal for the efficiency and concurrency I need, as I want to squeeze the as much request with same or smillar time for one and minimize VRAM usage if possible. I like GGUF as it's so easy to find good quantizations, but I'm wondering if I should switch back to VLLM.&lt;/p&gt; &lt;p&gt;I also considered Triton / NVIDIA Inference Server / Dynamo, but I'm not sure what's currently the best option for this workload.&lt;/p&gt; &lt;p&gt;Here is my current Docker setup for llama.cpp:&lt;/p&gt; &lt;p&gt;&lt;code&gt;cpp_3.1.8B:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;image:&lt;/code&gt; &lt;a href="http://ghcr.io/ggml-org/llama.cpp:server-cuda"&gt;&lt;code&gt;ghcr.io/ggml-org/llama.cpp:server-cuda&lt;/code&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;container_name: cpp_3.1.8B&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;ports:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- 8003:8003&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;volumes:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- ./models/Meta-Llama-3.1-8B-Instruct-Q8_0.gguf:/model/model.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;environment:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_MODEL: /model/model.gguf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_CTX_SIZE: 4096&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_N_PARALLEL: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_MAIN_GPU: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_N_GPU_LAYERS: 99&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_ENDPOINT_METRICS: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_PORT: 8003&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;LLAMA_ARG_FLASH_ATTN: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;GGML_CUDA_FORCE_MMQ: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;GGML_CUDA_FORCE_CUBLAS: 1&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;deploy:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;resources:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;reservations:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;devices:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;- driver: nvidia&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;count: all&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;capabilities: [gpu]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;And for vllm:&lt;br /&gt; &lt;code&gt;sudo docker run --runtime nvidia --gpus all \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;-v ~/.cache/huggingface:/root/.cache/huggingface \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--env &amp;quot;HUGGING_FACE_HUB_TOKEN= \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;-p 8003:8000 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--ipc=host \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--name gemma12bGPTQ \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--user 0 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;vllm/vllm-openai:latest \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--model circulus/gemma-3-12b-it-gptq \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--gpu_memory_utilization=0.80 \&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;--max_model_len=4096&lt;/code&gt;&lt;/p&gt; &lt;p&gt;I would greatly appreciate feedback from people who have been through this — what stack works best for you today for maximum concurrent users? Should I fully switch back to VLLM? Is Triton / Nvidia NIM / Dynamo inference worth exploring or smth else?&lt;/p&gt; &lt;p&gt;Thanks a lot!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/SomeRandomGuuuuuuy"&gt; /u/SomeRandomGuuuuuuy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lafihl/struggling_on_local_multiuser_inference_llamacpp/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-13T13:09:07+00:00</published>
   </entry>
   <entry>
     <id>t3_1lakgin</id>
@@ -203,19 +203,6 @@
     <published>2025-06-13T06:31:45+00:00</published>
   </entry>
   <entry>
-    <id>t3_1latjnk</id>
-    <title>(Theoretically) fixing the LLM Latency Barrier with SF-Diff (Scaffold-and-Fill Diffusion)</title>
-    <updated>2025-06-13T22:52:03+00:00</updated>
-    <author>
-      <name>/u/TimesLast_</name>
-      <uri>https://old.reddit.com/user/TimesLast_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Current large language models are bottlenecked by slow, sequential generation. My research proposes Scaffold-and-Fill Diffusion (SF-Diff), a novel hybrid architecture designed to theoretically overcome this. We deconstruct language into a parallel-generated semantic &amp;quot;scaffold&amp;quot; (keywords via a diffusion model) and a lightweight, autoregressive &amp;quot;grammatical infiller&amp;quot; (structural words via a transformer). While practical implementation requires significant resources, SF-Diff offers a theoretical path to dramatically faster, high-quality LLM output by combining diffusion's speed with transformer's precision.&lt;/p&gt; &lt;p&gt;Full paper here: &lt;a href="https://huggingface.co/TimesLast/sf-diff/blob/main/SF-Diff-HL.pdf"&gt;https://huggingface.co/TimesLast/sf-diff/blob/main/SF-Diff-HL.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TimesLast_"&gt; /u/TimesLast_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-13T22:52:03+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1larzxz</id>
     <title>Is there any all-in-one app like LM Studio, but with the option of hosting a Web UI server?</title>
     <updated>2025-06-13T21:43:14+00:00</updated>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1larzxz/is_there_any_allinone_app_like_lm_studio_but_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-13T21:43:14+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1latjnk</id>
+    <title>(Theoretically) fixing the LLM Latency Barrier with SF-Diff (Scaffold-and-Fill Diffusion)</title>
+    <updated>2025-06-13T22:52:03+00:00</updated>
+    <author>
+      <name>/u/TimesLast_</name>
+      <uri>https://old.reddit.com/user/TimesLast_</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Current large language models are bottlenecked by slow, sequential generation. My research proposes Scaffold-and-Fill Diffusion (SF-Diff), a novel hybrid architecture designed to theoretically overcome this. We deconstruct language into a parallel-generated semantic &amp;quot;scaffold&amp;quot; (keywords via a diffusion model) and a lightweight, autoregressive &amp;quot;grammatical infiller&amp;quot; (structural words via a transformer). While practical implementation requires significant resources, SF-Diff offers a theoretical path to dramatically faster, high-quality LLM output by combining diffusion's speed with transformer's precision.&lt;/p&gt; &lt;p&gt;Full paper here: &lt;a href="https://huggingface.co/TimesLast/sf-diff/blob/main/SF-Diff-HL.pdf"&gt;https://huggingface.co/TimesLast/sf-diff/blob/main/SF-Diff-HL.pdf&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/TimesLast_"&gt; /u/TimesLast_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1latjnk/theoretically_fixing_the_llm_latency_barrier_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-13T22:52:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1lap21a</id>
@@ -268,19 +268,6 @@
     <published>2025-06-13T16:26:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lanri6</id>
-    <title>Qwen3 235B running faster than 70B models on a $1,500 PC</title>
-    <updated>2025-06-13T18:45:29+00:00</updated>
-    <author>
-      <name>/u/1BlueSpork</name>
-      <uri>https://old.reddit.com/user/1BlueSpork</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran Qwen3 235B locally on a $1,500 PC (128GB RAM, RTX 3090) using the Q4 quantized version through Ollama.&lt;/p&gt; &lt;p&gt;This is the first time I was able to run anything over 70B on my system, and it’s actually running faster than most 70B models I’ve tested.&lt;/p&gt; &lt;p&gt;Final generation speed: 2.14 t/s&lt;/p&gt; &lt;p&gt;Full video here:&lt;br /&gt; &lt;a href="https://youtu.be/gVQYLo0J4RM"&gt;https://youtu.be/gVQYLo0J4RM&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-13T18:45:29+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lalyy5</id>
     <title>Chinese researchers find multi-modal LLMs develop interpretable human-like conceptual representations of objects</title>
     <updated>2025-06-13T17:33:35+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1laavph/finally_zen_6_persocket_memory_bandwidth_to_16_tbs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-13T08:39:05+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lanri6</id>
+    <title>Qwen3 235B running faster than 70B models on a $1,500 PC</title>
+    <updated>2025-06-13T18:45:29+00:00</updated>
+    <author>
+      <name>/u/1BlueSpork</name>
+      <uri>https://old.reddit.com/user/1BlueSpork</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I ran Qwen3 235B locally on a $1,500 PC (128GB RAM, RTX 3090) using the Q4 quantized version through Ollama.&lt;/p&gt; &lt;p&gt;This is the first time I was able to run anything over 70B on my system, and it’s actually running faster than most 70B models I’ve tested.&lt;/p&gt; &lt;p&gt;Final generation speed: 2.14 t/s&lt;/p&gt; &lt;p&gt;Full video here:&lt;br /&gt; &lt;a href="https://youtu.be/gVQYLo0J4RM"&gt;https://youtu.be/gVQYLo0J4RM&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/1BlueSpork"&gt; /u/1BlueSpork &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lanri6/qwen3_235b_running_faster_than_70b_models_on_a/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-13T18:45:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1lanhbd</id>
