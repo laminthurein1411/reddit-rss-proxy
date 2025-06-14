@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-14T14:05:42+00:00</updated>
+  <updated>2025-06-14T14:23:31+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1la5hry</id>
-    <title>MCP OAuth confusion - what's actually being added</title>
-    <updated>2025-06-13T03:01:42+00:00</updated>
-    <author>
-      <name>/u/Ok-Classic6022</name>
-      <uri>https://old.reddit.com/user/Ok-Classic6022</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seeing a lot of confusion about the OAuth addition to MCP that's been getting discussed. People think it means automatic Google/Slack auth for their tools, but that's not what's happening.&lt;/p&gt; &lt;p&gt;The OAuth spec is for &lt;strong&gt;client-server auth&lt;/strong&gt; - basically making sure your MCP client can actually talk to your MCP server. It's not about downstream APIs. &lt;/p&gt; &lt;p&gt;So you've got two separate steps:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;MCP client → MCP server (this is what the new OAuth handles)&lt;/li&gt; &lt;li&gt;MCP server → whatever APIs it needs (Google, Slack, etc - totally separate)&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Why does this split matter? Your MCP server might hit 10 different APIs. Some need OAuth, some just API keys, some might be internal with no auth. The MCP protocol shouldn't have to care about all that mess.&lt;/p&gt; &lt;p&gt;This way developers building servers don't need to become OAuth wizards, and companies can just plug into whatever auth system they already use.&lt;/p&gt; &lt;p&gt;&lt;a href="https://youtu.be/DHowXWoZ3tA"&gt;This YouTube discussion&lt;/a&gt; really helped me wrap my head around it - one of the devs working on the spec breaks down exactly why they're treating client-server auth separately from downstream service auth. Made the whole separation of concerns thing click for me.&lt;/p&gt; &lt;p&gt;I was following the GitHub thread and saw people going in circles about this. The separation makes way more sense when you think about it - you're not asking &amp;quot;can I access Google through MCP&amp;quot;, you're asking &amp;quot;can I access this server that happens to talk to Google.&amp;quot;&lt;/p&gt; &lt;p&gt;Anyway, thought this was worth clarifying since I kept seeing the same confusion pop up. The downstream auth stuff everyone wants is probably coming, but this lays the groundwork first.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Ok-Classic6022"&gt; /u/Ok-Classic6022 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1la5hry/mcp_oauth_confusion_whats_actually_being_added/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-13T03:01:42+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lag9ye</id>
     <title>Remote MCP for Google Search and Gemini 2.5</title>
@@ -99,6 +86,19 @@
     <published>2025-06-14T06:44:59+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lahxav</id>
+    <title>Built a Single MCP Server to connect to all my MCP servers</title>
+    <updated>2025-06-13T14:51:54+00:00</updated>
+    <author>
+      <name>/u/Smart-Town222</name>
+      <uri>https://old.reddit.com/user/Smart-Town222</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I built an open source MCP Server which acts as a Proxy to all the MCP Servers I actually want to connect to.&lt;/p&gt; &lt;p&gt;This was born out of the frustration of having to manage several different MCP server connections myself when I use Claude/Cursor or am building some AI agent apps.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Fire up the proxy mcp server&lt;br /&gt; (the tool is self-hosted, so you can run it as a standalone binary on your server or using docker compose on your localhost)&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Start registering all your mcp servers in this proxy.&lt;br /&gt; For eg, you can simply register the MCP servers provided by Hugging Face, Stripe, etc. into the proxy by providing their mcp url and a server name. You can also register any servers you're hosting yourself.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Now your MCP client (Claude or agent applications) only needs to know about 1 MCP server - the Proxy!&lt;br /&gt; Configure your client to connect to the proxy. Then it can LIST all available tools, CALL tools from specific servers, and basically do anything that MCP allows.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I'm working on adding support for authentication so that clients can easily connect to MCP servers that require auth.&lt;/p&gt; &lt;p&gt;Here's a link to the project if you want to play around with it - &lt;a href="https://github.com/duaraghav8/MCPJungle"&gt;https://github.com/duaraghav8/MCPJungle&lt;/a&gt;&lt;br /&gt; Hopefully this saves some of you some hassle! Do reach out to me for feedback, I'm looking for ways to improve this thing.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Smart-Town222"&gt; /u/Smart-Town222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-13T14:51:54+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lb2ono</id>
     <title>Playwright MCP – A Model Context Protocol server that provides browser automation capabilities using Playwright, enabling LLMs to interact with web pages through structured accessibility snapshots without requiring screenshots or visually-tuned models.</title>
     <updated>2025-06-14T07:15:03+00:00</updated>
@@ -123,19 +123,6 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lawmel/sharkmcp_a_tshark_mcp_server/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-14T01:23:42+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lahxav</id>
-    <title>Built a Single MCP Server to connect to all my MCP servers</title>
-    <updated>2025-06-13T14:51:54+00:00</updated>
-    <author>
-      <name>/u/Smart-Town222</name>
-      <uri>https://old.reddit.com/user/Smart-Town222</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I built an open source MCP Server which acts as a Proxy to all the MCP Servers I actually want to connect to.&lt;/p&gt; &lt;p&gt;This was born out of the frustration of having to manage several different MCP server connections myself when I use Claude/Cursor or am building some AI agent apps.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;How it works&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Fire up the proxy mcp server&lt;br /&gt; (the tool is self-hosted, so you can run it as a standalone binary on your server or using docker compose on your localhost)&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Start registering all your mcp servers in this proxy.&lt;br /&gt; For eg, you can simply register the MCP servers provided by Hugging Face, Stripe, etc. into the proxy by providing their mcp url and a server name. You can also register any servers you're hosting yourself.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Now your MCP client (Claude or agent applications) only needs to know about 1 MCP server - the Proxy!&lt;br /&gt; Configure your client to connect to the proxy. Then it can LIST all available tools, CALL tools from specific servers, and basically do anything that MCP allows.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;I'm working on adding support for authentication so that clients can easily connect to MCP servers that require auth.&lt;/p&gt; &lt;p&gt;Here's a link to the project if you want to play around with it - &lt;a href="https://github.com/duaraghav8/MCPJungle"&gt;https://github.com/duaraghav8/MCPJungle&lt;/a&gt;&lt;br /&gt; Hopefully this saves some of you some hassle! Do reach out to me for feedback, I'm looking for ways to improve this thing.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Smart-Town222"&gt; /u/Smart-Town222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lahxav/built_a_single_mcp_server_to_connect_to_all_my/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-13T14:51:54+00:00</published>
   </entry>
   <entry>
     <id>t3_1lan2ej</id>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lb5cgp/interactive_feedback_mcp_mcp_server_that_enables/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-14T10:15:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lb9vbf</id>
+    <title>Bright data mcp</title>
+    <updated>2025-06-14T14:22:26+00:00</updated>
+    <author>
+      <name>/u/Stefler122</name>
+      <uri>https://old.reddit.com/user/Stefler122</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am just playing around with the bright data mcp for fun, I have it connected with claude and also have it with cursor. But its a bit lack luster unless im not really understanding..&lt;/p&gt; &lt;p&gt;I asked it to get 20 restaurants from yelp and some times it does 30 sometimes it does 10 sometimes it does 2.&lt;/p&gt; &lt;p&gt;What if I wanted ALL phone numbers from city &amp;quot;X&amp;quot; and it only gets me 4?... the AI feels so dumb when I do this... its probably a bad prompt from me saying give me 20 restaurants business names from yelp in city &amp;quot;X&amp;quot;... but I could just use puppeteer and do this easily and use my Claude api to parse the data.&lt;/p&gt; &lt;p&gt;It would be nice to jus tell it to go get whatever I want whenever I want it rather than any code but how do I make it do that?...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Stefler122"&gt; /u/Stefler122 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb9vbf/bright_data_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb9vbf/bright_data_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lb9vbf/bright_data_mcp/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-14T14:22:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb23c0</id>
