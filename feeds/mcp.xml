@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-14T21:34:57+00:00</updated>
+  <updated>2025-06-14T21:48:42+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lavuws</id>
-    <title>🚀 Announcing Vishu (MCP) Suite - An Open-Source LLM Agent for Vulnerability Scanning &amp; Reporting!</title>
-    <updated>2025-06-14T00:44:39+00:00</updated>
-    <author>
-      <name>/u/Rule_Curious</name>
-      <uri>https://old.reddit.com/user/Rule_Curious</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey Reddit!&lt;/p&gt; &lt;p&gt;I'm thrilled to introduce &lt;strong&gt;Vishu (MCP) Suite&lt;/strong&gt;, an open-source application I've been developing that takes a novel approach to vulnerability assessment and reporting by deeply integrating Large Language Models (LLMs) into its core workflow.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What's the Big Idea?&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Instead of just using LLMs for summarization at the end, &lt;strong&gt;Vishu (MCP) Suite&lt;/strong&gt; employs them as a central reasoning engine throughout the assessment process. This is managed by a robust &lt;strong&gt;Model Contet Protocol (MCP)&lt;/strong&gt; agent scaffolding designed for complex task execution.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Core Capabilities &amp;amp; How LLMs Fit In:&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Intelligent Workflow Orchestration:&lt;/strong&gt; The LLM, guided by the MCP, can:&lt;/li&gt; &lt;li&gt;• &lt;strong&gt;Plan and Strategize:&lt;/strong&gt; Using a SequentialThinkingPlanner tool, the LLM breaks down high-level goals (e.g., &amp;quot;assess &lt;a href="http://example.com"&gt;example.com&lt;/a&gt; for web vulnerabilities&amp;quot;) into a series of logical thought steps. It can even revise its plan based on incoming data!&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Dynamic Tool Selection &amp;amp; Execution:&lt;/strong&gt; Based on its plan, the LLM chooses and executes appropriate tools from a growing arsenal. Current tools include:&lt;/li&gt; &lt;li&gt;◇ Port Scanning (PortScanner)&lt;/li&gt; &lt;li&gt;Subdomain Enumeration (SubDomainEnumerator)&lt;/li&gt; &lt;li&gt;DNS Enumeration (DnsEnumerator)&lt;/li&gt; &lt;li&gt;Web Content Fetching (GetWebPages, SiteMapAndAnalyze)&lt;/li&gt; &lt;li&gt;Web Searches for general info and CVEs (WebSearch, WebSearch4CVEs)&lt;/li&gt; &lt;li&gt;Data Ingestion &amp;amp; Querying from a vector DB (IngestText2DB, QueryVectorDB, QueryReconData, ProcessAndIngestDocumentation)&lt;/li&gt; &lt;li&gt;Comprehensive PDF Report Generation from findings (FetchDomainDataForReport, RetrievePaginatedDataSection, CreatePDFReportWithSummaries)&lt;/li&gt; &lt;/ol&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Contextual Result Analysis:&lt;/strong&gt; The LLM receives tool outputs and uses them to inform its next steps, reflecting on progress and adapting as needed. The REFLECTION_THRESHOLD in the client ensures it periodically reviews its overall strategy.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Unique MCP Agent Scaffolding &amp;amp; SSE Framework:&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;◇ &lt;strong&gt;The MCP-Agent scaffolding (ReConClient.py):&lt;/strong&gt; This isn't just a script runner. The MCP-scaffolding manages &amp;quot;plans&amp;quot; (assessment tasks), maintains conversation history with the LLM for each plan, handles tool execution (including caching results), and manages the LLM's thought process. It's built to be robust, with features like retry logic for tool calls and LLM invocations.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Server-Sent Events (SSE) for Real-Time Interaction (Rizzler.py, mcp_client_gui.py):&lt;/strong&gt; The backend (FastAPI based) communicates with the client (including a Dear PyGui interface) using SSE. This allows for:&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;▪ &lt;strong&gt;Live Streaming of Tool Outputs:&lt;/strong&gt; Watch tools like port scanners or site mappers send back data in real-time.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Dynamic Updates:&lt;/strong&gt; The GUI reflects the agent's status, new plans, and tool logs as they happen.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Flexibility &amp;amp; Extensibility:&lt;/strong&gt; The SSE framework makes it easier to integrate new streaming or long-running tools and have their progress reflected immediately. The tool registration in &lt;a href="http://Rizzler.py"&gt;Rizzler.py&lt;/a&gt; (@mcpServer.tool()) is designed for easy extension.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Interactive GUI &amp;amp; Model Flexibility:&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;◇ A &lt;strong&gt;Dear PyGui interface (mcp_client_gui.py)&lt;/strong&gt; provides a user-friendly way to interact with the agent, submit queries, monitor ongoing plans, view detailed tool logs (including arguments, stream events, and final results), and even download artifacts like PDF reports.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Easily &lt;strong&gt;switch between different Gemini models&lt;/strong&gt; (models.py) via the GUI to experiment with various LLM capabilities.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Why This Approach?&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Deeper LLM Integration:&lt;/strong&gt; Moves beyond LLMs as simple Q&amp;amp;A bots to using them as core components in an autonomous assessment loop.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Transparency &amp;amp; Control:&lt;/strong&gt; The MCP's structured approach, combined with the GUI's detailed logging, allows you to see how the LLM is &amp;quot;thinking&amp;quot; and making decisions.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Adaptability:&lt;/strong&gt; The agent can adjust its plan based on real-time findings, making it more versatile than static scanning scripts.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Extensibility:&lt;/strong&gt; Designed to be a platform. Adding new tools (Python functions exposed via the MCP server) or refining LLM prompts is straightforward.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;We Need Your Help to Make It Even Better!&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This is an ongoing project, and I believe it has a lot of potential. I'd love for the community to get involved:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Try it Out:&lt;/strong&gt; Clone the repo, set it up (you'll need a GOOGLE_API_KEY and potentially a local SearXNG instance, etc. – see .env patterns), and run some assessments!&lt;/li&gt; &lt;li&gt;&lt;p&gt;▪ &lt;strong&gt;GitHub Repo:&lt;/strong&gt; &lt;a href="https://github.com/seyrup1987/ReconRizzler-Alpha"&gt;https://github.com/seyrup1987/ReconRizzler-Alpha&lt;/a&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Suggest Improvements:&lt;/strong&gt; What features would you like to see? How can the workflow be improved? Are there new tools you think would be valuable?&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Report Bugs:&lt;/strong&gt; If you find any issues, please let me know.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Contribute:&lt;/strong&gt; Whether it's new tools, UI enhancements, prompt engineering, or core MCP agent-scaffolding improvements, contributions are very welcome! Let's explore how far we can push this agent-based, LLM-driven approach to security assessments.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I'm excited to see what you all think and how we can collectively mature this application. Let me know your thoughts, questions, and ideas!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Rule_Curious"&gt; /u/Rule_Curious &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lavuws/announcing_vishu_mcp_suite_an_opensource_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lavuws/announcing_vishu_mcp_suite_an_opensource_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lavuws/announcing_vishu_mcp_suite_an_opensource_llm/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-14T00:44:39+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lb282r</id>
     <title>Persistent AI memory on Cloudflare MCP</title>
@@ -229,19 +216,6 @@
     <published>2025-06-14T06:36:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbgduk</id>
-    <title>Local LLM + MCP</title>
-    <updated>2025-06-14T19:05:19+00:00</updated>
-    <author>
-      <name>/u/firaristt</name>
-      <uri>https://old.reddit.com/user/firaristt</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I have a Windows 11 machine with an RTX 3080 (10 GB) and 32 GB of RAM, and I’m looking for a locally hosted LLM+MCP setup that can handle file management, terminal commands, and some browser automation. Ideally it should run completely locally.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I’ve tried so far:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Ollama&lt;/strong&gt; with the MFDoom/deepseek-r1-tool-calling:8b model&lt;/li&gt; &lt;li&gt;Some LLaMA variants via &lt;strong&gt;Tome&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Unfortunately, the results haven’t been usable.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I'm aiming:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use it in my &lt;strong&gt;Kotlin&lt;/strong&gt; project, some file editing, adding features, some log reviewing etc.&lt;/li&gt; &lt;li&gt;It should be &lt;strong&gt;stable&lt;/strong&gt; and should have -relatively- &lt;strong&gt;simple installation&lt;/strong&gt;.&lt;/li&gt; &lt;li&gt;I’ve been hitting usage limits on Claude rather quickly, so I’d like to finish my workflows entirely on my pc.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So, what are my options? Are local ones out of comparison in terms of stability and usability?&lt;/p&gt; &lt;p&gt;Thanks in advance for any recommendations, tutorials, or repo links! 😊&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/firaristt"&gt; /u/firaristt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-14T19:05:19+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lb8lef</id>
     <title>MCP servers</title>
     <updated>2025-06-14T13:21:54+00:00</updated>
@@ -294,6 +268,19 @@
     <published>2025-06-14T14:45:51+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lbjv93</id>
+    <title>Working on an MCP Book</title>
+    <updated>2025-06-14T21:39:35+00:00</updated>
+    <author>
+      <name>/u/coding9</name>
+      <uri>https://old.reddit.com/user/coding9</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;So I’m not sure if you guys saw but VS Code released a new update that FULLY implements the MCP spec in its current form: &lt;a href="https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support"&gt;https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Last week I started writing a book on how to learn the spec including full oauth support. &lt;/p&gt; &lt;p&gt;I’ve already built and added remote integrations to Claude at this point. &lt;/p&gt; &lt;p&gt;I am aiming for something really unique thanks to VS Code. I want to teach how to make MCP servers using every part of the spec, and then fully test and use it inside of the same editor we write the code in for the book. (We will talk about the official inspector but only at the end, this book is about building ASAP)&lt;/p&gt; &lt;p&gt;I’m curious if anyone would pay money for a book like this, or if it should be released for free. &lt;/p&gt; &lt;p&gt;In addition I’m looking to see if there are any people who would be interested to get early access and help proof read it. &lt;/p&gt; &lt;p&gt;Anyone interested can put their email and “name a price” they’d be willing to pay on leanpub:&lt;/p&gt; &lt;p&gt;&lt;a href="https://leanpub.com/creatingmcpserverswithoauth"&gt;https://leanpub.com/creatingmcpserverswithoauth&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I know the rules say no pre launch services but I don’t consider a book a service, and I’d really like feedback on the types of MCP server questions people are asking. &lt;/p&gt; &lt;p&gt;I want to release this in early to mid July. Thanks 😁&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coding9"&gt; /u/coding9 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbjv93/working_on_an_mcp_book/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbjv93/working_on_an_mcp_book/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lbjv93/working_on_an_mcp_book/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-14T21:39:35+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lb4yrm</id>
     <title>Real world (non-Dev) mcp?</title>
     <updated>2025-06-14T09:49:32+00:00</updated>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lb4yrm/real_world_nondev_mcp/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-14T09:49:32+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbgduk</id>
+    <title>Local LLM + MCP</title>
+    <updated>2025-06-14T19:05:19+00:00</updated>
+    <author>
+      <name>/u/firaristt</name>
+      <uri>https://old.reddit.com/user/firaristt</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt; &lt;p&gt;I have a Windows 11 machine with an RTX 3080 (10 GB) and 32 GB of RAM, and I’m looking for a locally hosted LLM+MCP setup that can handle file management, terminal commands, and some browser automation. Ideally it should run completely locally.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I’ve tried so far:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Ollama&lt;/strong&gt; with the MFDoom/deepseek-r1-tool-calling:8b model&lt;/li&gt; &lt;li&gt;Some LLaMA variants via &lt;strong&gt;Tome&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Unfortunately, the results haven’t been usable.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I'm aiming:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Use it in my &lt;strong&gt;Kotlin&lt;/strong&gt; project, some file editing, adding features, some log reviewing etc.&lt;/li&gt; &lt;li&gt;It should be &lt;strong&gt;stable&lt;/strong&gt; and should have -relatively- &lt;strong&gt;simple installation&lt;/strong&gt;.&lt;/li&gt; &lt;li&gt;I’ve been hitting usage limits on Claude rather quickly, so I’d like to finish my workflows entirely on my pc.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So, what are my options? Are local ones out of comparison in terms of stability and usability?&lt;/p&gt; &lt;p&gt;Thanks in advance for any recommendations, tutorials, or repo links! 😊&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/firaristt"&gt; /u/firaristt &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lbgduk/local_llm_mcp/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-14T19:05:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb7u6s</id>
