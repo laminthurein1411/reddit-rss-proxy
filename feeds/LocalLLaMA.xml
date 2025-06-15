@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-15T01:11:47+00:00</updated>
+  <updated>2025-06-15T01:57:18+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lbleap</id>
-    <title>Squeezing more speed out of devstralQ4_0.gguf on a 1080ti</title>
-    <updated>2025-06-14T22:52:00+00:00</updated>
-    <author>
-      <name>/u/firesalamander</name>
-      <uri>https://old.reddit.com/user/firesalamander</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have an old 1080ti GPU and was quite excited that I could get the &lt;strong&gt;devstralQ4_0.gguf&lt;/strong&gt; to run on it! But it is slooooow. So I bothered a bigger LLM for advice on how to speed things up, and it was helpful. But it is still slow. Any magic tricks (aside from finally getting a new card or running a smaller model?)&lt;/p&gt; &lt;p&gt;&lt;code&gt;llama-cli -m /srv/models/devstralQ4_0.gguf --color -ngl 28 --ubatch-size 1024 --batch-size 2048 --threads 4 --flash-attn&lt;/code&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;It suggested I reduce the --threads to match my physical cores, because I noticed my CPU was maxed out but my GPU was only around 30%. So I did, and it seemed to help a bit, yay! CPU is at 80-90 but not pegged at 100. Cool.&lt;/li&gt; &lt;li&gt;I next noticed that my GPU memory was maxed out at 10.5 (yay) but the GPU processing was still around 20-40%. Huh. So the bigger LLM suggested I try upping my &lt;code&gt;--ubatch-size&lt;/code&gt; to 1024 and &lt;code&gt;--batch-size&lt;/code&gt; to 2048. (keeping batch size &amp;gt; ubatch size). I &lt;em&gt;think&lt;/em&gt; that helped, but not a lot.&lt;/li&gt; &lt;li&gt;I've got plenty of RAM left, not sure if that helps any.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;My GPU processing stays between 20%-50%, which seems low.&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/firesalamander"&gt; /u/firesalamander &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbleap/squeezing_more_speed_out_of_devstralq4_0gguf_on_a/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbleap/squeezing_more_speed_out_of_devstralq4_0gguf_on_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbleap/squeezing_more_speed_out_of_devstralq4_0gguf_on_a/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T22:52:00+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lba8f6</id>
     <title>[Discussion] Thinking Without Words: Continuous latent reasoning for local LLaMA inference – feedback?</title>
@@ -99,19 +86,6 @@
     <published>2025-06-13T12:14:51+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbbwwm</id>
-    <title>Local Memory Chat UI - Open Source + Vector Memory</title>
-    <updated>2025-06-14T15:52:23+00:00</updated>
-    <author>
-      <name>/u/Dismal-Cupcake-3641</name>
-      <uri>https://old.reddit.com/user/Dismal-Cupcake-3641</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt; &lt;img alt="Local Memory Chat UI - Open Source + Vector Memory" src="https://external-preview.redd.it/Dbj2ec4zS_Hoz85s5NEOmbvdQge4ZR0tvQ7ZbgK61jM.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7c88f0b247ed94c19ca1f94df3d9dcc079604c58" title="Local Memory Chat UI - Open Source + Vector Memory" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I created this project focused on CPU. That's why it runs on CPU by default. My aim was to be able to use the model locally on an old computer with a system that &amp;quot;doesn't forget&amp;quot;.&lt;/p&gt; &lt;p&gt;Over the past few weeks, I’ve been building a lightweight yet powerful &lt;strong&gt;LLM chat interface&lt;/strong&gt; using &lt;strong&gt;llama-cpp-python&lt;/strong&gt; — but with a twist:&lt;br /&gt; It supports &lt;strong&gt;persistent memory&lt;/strong&gt; with &lt;strong&gt;vector-based context recall&lt;/strong&gt;, so the model can stay aware of past interactions &lt;em&gt;even if it's quantized and context-limited&lt;/em&gt;.&lt;br /&gt; I wanted something minimal, local, and personal — but still able to remember things over time.&lt;br /&gt; Everything is in a clean structure, fully documented, and pip-installable.&lt;br /&gt; ➡GitHub: &lt;a href="https://github.com/lynthera/bitsegments_localminds"&gt;https://github.com/lynthera/bitsegments_localminds&lt;/a&gt;&lt;br /&gt; (README includes detailed setup)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5f5v6p5vyw6f1.png?width=1916&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c9d8263d315a1a42dc5ecc916de38a6187789cc7"&gt;Used Google Gemma-2-2B-IT(IQ3_M) Model&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I will soon add ollama support for easier use, so that people who do not want to deal with too many technical details or even those who do not know anything but still want to try can use it easily. For now, you need to download a model (in .gguf format) from huggingface and add it.&lt;/p&gt; &lt;p&gt;Let me know what you think! I'm planning to build more agent simulation capabilities next.&lt;br /&gt; Would love feedback, ideas, or contributions...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dismal-Cupcake-3641"&gt; /u/Dismal-Cupcake-3641 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T15:52:23+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lbl1qo</id>
     <title>Best tutorial for installing a local llm with GUI setup?</title>
     <updated>2025-06-14T22:35:21+00:00</updated>
@@ -136,6 +110,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbd9jc/ive_been_working_on_my_own_local_ai_assistant/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-14T16:51:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbbwwm</id>
+    <title>Local Memory Chat UI - Open Source + Vector Memory</title>
+    <updated>2025-06-14T15:52:23+00:00</updated>
+    <author>
+      <name>/u/Dismal-Cupcake-3641</name>
+      <uri>https://old.reddit.com/user/Dismal-Cupcake-3641</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt; &lt;img alt="Local Memory Chat UI - Open Source + Vector Memory" src="https://external-preview.redd.it/Dbj2ec4zS_Hoz85s5NEOmbvdQge4ZR0tvQ7ZbgK61jM.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7c88f0b247ed94c19ca1f94df3d9dcc079604c58" title="Local Memory Chat UI - Open Source + Vector Memory" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I created this project focused on CPU. That's why it runs on CPU by default. My aim was to be able to use the model locally on an old computer with a system that &amp;quot;doesn't forget&amp;quot;.&lt;/p&gt; &lt;p&gt;Over the past few weeks, I’ve been building a lightweight yet powerful &lt;strong&gt;LLM chat interface&lt;/strong&gt; using &lt;strong&gt;llama-cpp-python&lt;/strong&gt; — but with a twist:&lt;br /&gt; It supports &lt;strong&gt;persistent memory&lt;/strong&gt; with &lt;strong&gt;vector-based context recall&lt;/strong&gt;, so the model can stay aware of past interactions &lt;em&gt;even if it's quantized and context-limited&lt;/em&gt;.&lt;br /&gt; I wanted something minimal, local, and personal — but still able to remember things over time.&lt;br /&gt; Everything is in a clean structure, fully documented, and pip-installable.&lt;br /&gt; ➡GitHub: &lt;a href="https://github.com/lynthera/bitsegments_localminds"&gt;https://github.com/lynthera/bitsegments_localminds&lt;/a&gt;&lt;br /&gt; (README includes detailed setup)&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/5f5v6p5vyw6f1.png?width=1916&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c9d8263d315a1a42dc5ecc916de38a6187789cc7"&gt;Used Google Gemma-2-2B-IT(IQ3_M) Model&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I will soon add ollama support for easier use, so that people who do not want to deal with too many technical details or even those who do not know anything but still want to try can use it easily. For now, you need to download a model (in .gguf format) from huggingface and add it.&lt;/p&gt; &lt;p&gt;Let me know what you think! I'm planning to build more agent simulation capabilities next.&lt;br /&gt; Would love feedback, ideas, or contributions...&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dismal-Cupcake-3641"&gt; /u/Dismal-Cupcake-3641 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbbwwm/local_memory_chat_ui_open_source_vector_memory/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-14T15:52:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbix9k</id>
@@ -164,6 +151,19 @@
     <published>2025-06-14T18:56:21+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lbotj8</id>
+    <title>Make Local Models watch your screen! Observer Tutorial</title>
+    <updated>2025-06-15T01:46:50+00:00</updated>
+    <author>
+      <name>/u/Roy3838</name>
+      <uri>https://old.reddit.com/user/Roy3838</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbotj8/make_local_models_watch_your_screen_observer/"&gt; &lt;img alt="Make Local Models watch your screen! Observer Tutorial" src="https://external-preview.redd.it/OHR6NnZzMGl4ejZmMcpab4Kc_hsNzcDZ4OjMoSBBtpUkATpHq4IzyyL2uzQ6.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=1fbbe587ce8d56143cd21d0bf6daed0a372e406f" title="Make Local Models watch your screen! Observer Tutorial" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey guys!&lt;/p&gt; &lt;p&gt;This is a tutorial on how to self host Observer on your home lab! &lt;/p&gt; &lt;p&gt;See more info here:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/Roy3838/Observer"&gt;https://github.com/Roy3838/Observer&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Roy3838"&gt; /u/Roy3838 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/toz9tr0ixz6f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbotj8/make_local_models_watch_your_screen_observer/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbotj8/make_local_models_watch_your_screen_observer/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-15T01:46:50+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lb9zhl</id>
     <title>GAIA: New Gemma3 4B for Brazilian Portuguese / Um Gemma3 4B para Português do Brasil!</title>
     <updated>2025-06-14T14:27:45+00:00</updated>
@@ -190,19 +190,6 @@
     <published>2025-06-14T10:43:36+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbn1vy</id>
-    <title>Ryzen Ai Max+ 395 vs RTX 5090</title>
-    <updated>2025-06-15T00:12:44+00:00</updated>
-    <author>
-      <name>/u/Any-Cobbler6161</name>
-      <uri>https://old.reddit.com/user/Any-Cobbler6161</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Currently running a 5090 and it's been great. Super fast for anything under 34B. I mostly use WAN2.1 14B for video gen and some larger reasoning models. But Id like to run bigger models. And with the release of Veo 3 the quality has blown me away. Stuff like those Bigfoot and Stormtrooper vlogs look years ahead of anything wan2.1 can produce. I’m guessing we’ll see comparable open-source models within a year, but I imagine the compute requirements will go up too as I heard Veo 3 was trained off a lot of H100's.&lt;/p&gt; &lt;p&gt;I'm trying to figure out how I could future proof to give me the best chance to be able to run these models when they come out. I do have some money saved up. But not H100 money lol. The 5090 although fast has been quite vram limited. I could sell it (bought at retail) and maybe go for a modded 48GB 4090. I also have a deposit down on a Framework Ryzen AI Max 395+ (128GB RAM), but I’m having second thoughts after watching some reviews —256GB/s memory bandwidth and no CUDA. It seems to run LLaMA 70B, but only gets ~5 tokens/sec.&lt;/p&gt; &lt;p&gt;If I did get the framework I could try a PCIe 4x4 Oculink adapter to use it with the 5090, but not sure how well that’d work. I also picked up an EPYC 9184X last year for $500—460GB/s bandwidth, seems to run fine and might be ok for CPU inference, but idk how it would work with video gen.&lt;/p&gt; &lt;p&gt;With EPYC Venice just above for 2026 (1.6TB/s mem bandwidth supposedly), I’m debating whether to just wait and maybe try to get one of the lower/mid tier ones for a couple grand.&lt;/p&gt; &lt;p&gt;Curious if others are having similar ideas/any possibile solutions. As I dont believe our tech corporate overlords will be giving us any consumer grade hardware that will be able to run these models anytime soon. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Any-Cobbler6161"&gt; /u/Any-Cobbler6161 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T00:12:44+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lbimsz</id>
     <title>Mistral Small 3.1 vs Magistral Small - experience?</title>
     <updated>2025-06-14T20:43:54+00:00</updated>
@@ -216,17 +203,17 @@
     <published>2025-06-14T20:43:54+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbnb79</id>
-    <title>LLM training on RTX 5090</title>
-    <updated>2025-06-15T00:25:56+00:00</updated>
+    <id>t3_1lbn1vy</id>
+    <title>Ryzen Ai Max+ 395 vs RTX 5090</title>
+    <updated>2025-06-15T00:12:44+00:00</updated>
     <author>
-      <name>/u/AstroAlto</name>
-      <uri>https://old.reddit.com/user/AstroAlto</uri>
+      <name>/u/Any-Cobbler6161</name>
+      <uri>https://old.reddit.com/user/Any-Cobbler6161</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"&gt; &lt;img alt="LLM training on RTX 5090" src="https://external-preview.redd.it/cHhubmR6czBqejZmMQ_TONUx3ShmleBmxHUm5WhhyHrbQHADnnzginEsV9Wo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f0235345a48cddb60039735fb034b1cf444515cc" title="LLM training on RTX 5090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tech Stack&lt;/p&gt; &lt;p&gt;Hardware &amp;amp; OS: NVIDIA RTX 5090 (32GB VRAM, Blackwell architecture), Ubuntu 22.04 LTS, CUDA 12.8&lt;/p&gt; &lt;p&gt;Software: Python 3.12, PyTorch 2.8.0 nightly, Transformers and Datasets libraries from Hugging Face, Mistral-7B base model (7.2 billion parameters)&lt;/p&gt; &lt;p&gt;Training: Full fine-tuning with gradient checkpointing, 23 custom instruction-response examples, Adafactor optimizer with bfloat16 precision, CUDA memory optimization for 32GB VRAM&lt;/p&gt; &lt;p&gt;Environment: Python virtual environment with NVIDIA drivers 570.133.07, system monitoring with nvtop and htop&lt;/p&gt; &lt;p&gt;Result: Domain-specialized 7 billion parameter model trained on cutting-edge RTX 5090 using latest PyTorch nightly builds for RTX 5090 GPU compatibility.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AstroAlto"&gt; /u/AstroAlto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/t5kg81t0jz6f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Currently running a 5090 and it's been great. Super fast for anything under 34B. I mostly use WAN2.1 14B for video gen and some larger reasoning models. But Id like to run bigger models. And with the release of Veo 3 the quality has blown me away. Stuff like those Bigfoot and Stormtrooper vlogs look years ahead of anything wan2.1 can produce. I’m guessing we’ll see comparable open-source models within a year, but I imagine the compute requirements will go up too as I heard Veo 3 was trained off a lot of H100's.&lt;/p&gt; &lt;p&gt;I'm trying to figure out how I could future proof to give me the best chance to be able to run these models when they come out. I do have some money saved up. But not H100 money lol. The 5090 although fast has been quite vram limited. I could sell it (bought at retail) and maybe go for a modded 48GB 4090. I also have a deposit down on a Framework Ryzen AI Max 395+ (128GB RAM), but I’m having second thoughts after watching some reviews —256GB/s memory bandwidth and no CUDA. It seems to run LLaMA 70B, but only gets ~5 tokens/sec.&lt;/p&gt; &lt;p&gt;If I did get the framework I could try a PCIe 4x4 Oculink adapter to use it with the 5090, but not sure how well that’d work. I also picked up an EPYC 9184X last year for $500—460GB/s bandwidth, seems to run fine and might be ok for CPU inference, but idk how it would work with video gen.&lt;/p&gt; &lt;p&gt;With EPYC Venice just above for 2026 (1.6TB/s mem bandwidth supposedly), I’m debating whether to just wait and maybe try to get one of the lower/mid tier ones for a couple grand.&lt;/p&gt; &lt;p&gt;Curious if others are having similar ideas/any possibile solutions. As I dont believe our tech corporate overlords will be giving us any consumer grade hardware that will be able to run these models anytime soon. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Any-Cobbler6161"&gt; /u/Any-Cobbler6161 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbn1vy/ryzen_ai_max_395_vs_rtx_5090/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T00:25:56+00:00</published>
+    <published>2025-06-15T00:12:44+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbj978</id>
@@ -305,6 +292,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbgczn/comment_on_the_illusion_of_thinking_recent_paper/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-14T19:04:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbnb79</id>
+    <title>LLM training on RTX 5090</title>
+    <updated>2025-06-15T00:25:56+00:00</updated>
+    <author>
+      <name>/u/AstroAlto</name>
+      <uri>https://old.reddit.com/user/AstroAlto</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"&gt; &lt;img alt="LLM training on RTX 5090" src="https://external-preview.redd.it/cHhubmR6czBqejZmMQ_TONUx3ShmleBmxHUm5WhhyHrbQHADnnzginEsV9Wo.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=f0235345a48cddb60039735fb034b1cf444515cc" title="LLM training on RTX 5090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Tech Stack&lt;/p&gt; &lt;p&gt;Hardware &amp;amp; OS: NVIDIA RTX 5090 (32GB VRAM, Blackwell architecture), Ubuntu 22.04 LTS, CUDA 12.8&lt;/p&gt; &lt;p&gt;Software: Python 3.12, PyTorch 2.8.0 nightly, Transformers and Datasets libraries from Hugging Face, Mistral-7B base model (7.2 billion parameters)&lt;/p&gt; &lt;p&gt;Training: Full fine-tuning with gradient checkpointing, 23 custom instruction-response examples, Adafactor optimizer with bfloat16 precision, CUDA memory optimization for 32GB VRAM&lt;/p&gt; &lt;p&gt;Environment: Python virtual environment with NVIDIA drivers 570.133.07, system monitoring with nvtop and htop&lt;/p&gt; &lt;p&gt;Result: Domain-specialized 7 billion parameter model trained on cutting-edge RTX 5090 using latest PyTorch nightly builds for RTX 5090 GPU compatibility.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AstroAlto"&gt; /u/AstroAlto &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/t5kg81t0jz6f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-15T00:25:56+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbkd46</id>
