@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/ollama/.rss</id>
   <title>ollama</title>
-  <updated>2025-06-15T04:13:08+00:00</updated>
+  <updated>2025-06-15T04:29:31+00:00</updated>
   <link href="https://old.reddit.com/r/ollama/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -242,19 +242,6 @@
     <published>2025-06-14T19:09:11+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbpqln</id>
-    <title>MiniPC Ryzen 7 6800H CPU and iGPU 680M</title>
-    <updated>2025-06-15T02:36:30+00:00</updated>
-    <author>
-      <name>/u/tabletuser_blogspot</name>
-      <uri>https://old.reddit.com/user/tabletuser_blogspot</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt; &lt;img alt="MiniPC Ryzen 7 6800H CPU and iGPU 680M" src="https://a.thumbs.redditmedia.com/tpedg4ze2xDoPSRQnppyauv7nM0-4tkJkk74SJgppd8.jpg" title="MiniPC Ryzen 7 6800H CPU and iGPU 680M" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I somehow got lucky and was able to get the iGPU working with Pop_OS 24.04 but not Kubuntu 25.10 or Mint 22.1. Until I tried Warp AI Terminal Emulator. It was great watching AI fix AI.&lt;/p&gt; &lt;p&gt;Anywho, I purchased the ACEMAGIC S3A Mini PC barebones, add 64GB DDR5 memory and a 2TB Gen4 NVMe drive. Very happy, it benchmarks a little faster than my Ryzen 5 5600X and that CPU is a beast. You have to be in 'Performance Mode' when entering BIOS and then use CTRL+F1 to view all advanced settings.&lt;/p&gt; &lt;p&gt;Change BIOS to 16GB for iGPU&lt;/p&gt; &lt;p&gt;UEFI/BIOS -&amp;gt; Advanced -&amp;gt; AMD CBS -&amp;gt; NBIO -&amp;gt; GFX -&amp;gt; iGPU -&amp;gt; UMA_SPECIFIED&lt;/p&gt; &lt;p&gt;Here is what you can expect from the iGPU over just CPU using Ollama version 0.9.0&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3yrdlntp707f1.png?width=719&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2dfde8984ce75b486c440a155b4a8d46ae02da18"&gt;CPU only 64GB DDR5&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/1jfxyhws707f1.png?width=853&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9edece60f48370d94f0838ab7f19c38d39d69fa1"&gt;iGPU working&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jtb0qhty707f1.png?width=721&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8377f4befa2721ed7aba7d159080abeb23955b04"&gt;Benefit of having iGPU working &lt;/a&gt;&lt;/p&gt; &lt;p&gt;Notice that the 70b size model is actually slower than just using CPU only. Biggest benefit is DDR5 speed.&lt;/p&gt; &lt;p&gt;Basically I just had to get the &lt;em&gt;Environment override&lt;/em&gt; to work correctly. I'm not sure how Warp AI figured it out, but it did. Plan to do a clean install and figure it out.&lt;/p&gt; &lt;p&gt;Here is what I ran to add &lt;em&gt;Environment override&lt;/em&gt;:&lt;/p&gt; &lt;p&gt;&lt;code&gt;sudo systemctl edit ollama.service &amp;amp;&amp;amp; systemctl daemon-reload &amp;amp;&amp;amp; systemctl restart ollama&lt;/code&gt;&lt;br /&gt; I added this&lt;/p&gt; &lt;pre&gt;&lt;code&gt;[Service] Environment=&amp;quot;HSA_OVERRIDE_GFX_VERSION=10.3.0&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Finally I was able to use iGPU. Again, Warp AI figured out why this wasn't working correctly. Here is the summary Warp AI provided.&lt;/p&gt; &lt;p&gt;&lt;code&gt;Key changes made:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;1. Installed ROCm components: Added rocm-smi and related libraries for GPU detection&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;2. Fixed systemd override configuration: Added the proper [Service] section header to /etc/systemd/system/ollama.service.d/override.conf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;3. Environment variables are now working:&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;• HSA_OVERRIDE_GFX_VERSION=10.3.0 - Overrides the GPU detection to treat your gfx1035 as gfx1030 (compatible)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• OLLAMA_LLM_LIBRARY=rocm_v60000u_avx2 - Forces Ollama to use the ROCm library&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Results:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• Your AMD Radeon 680M (gfx1035) is now properly detected with 16.0 GiB total and 15.7 GiB available memory&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• The model is running on 100% GPU instead of CPU&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• Performance has improved significantly (from 5.56 tokens/s to 6.34 tokens/s, and much faster prompt evaluation: 83.41 tokens/s vs 19.49 tokens/s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;[Service]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;HSA_OVERRIDE_GFX_VERSION=10.3.0&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;OLLAMA_LLM_LIBRARY=rocm_v60000u_avx2&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;The AVX2 wasn't needed, it's already implemented in Ollama.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tabletuser_blogspot"&gt; /u/tabletuser_blogspot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-06-15T02:36:30+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lba7br</id>
     <title>ITRS - Make any ollama Model reason with the Iterative Transparent Reasoning System</title>
     <updated>2025-06-14T14:37:33+00:00</updated>
@@ -268,19 +255,6 @@
     <published>2025-06-14T14:37:33+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lb70kk</id>
-    <title>LLM with OCR capabilities</title>
-    <updated>2025-06-14T11:59:58+00:00</updated>
-    <author>
-      <name>/u/depava</name>
-      <uri>https://old.reddit.com/user/depava</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to create an app to OCR PDF documents. I need LLM model to understand context on how to map text to particular fields. Plain OCR things cannot do it. &lt;/p&gt; &lt;p&gt;It is for production, not a higload but 300 docs per day can be. &lt;/p&gt; &lt;p&gt;I use AWS, and thinking about using Bedrock and Claude. But I think, maybe it's cheaper to use some self-hosted models for this purpose? Or running in EC2 instance the model will cost more than just using API of paid models? Thank you very much in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/depava"&gt; /u/depava &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"/>
-    <category term="ollama" label="r/ollama"/>
-    <published>2025-06-14T11:59:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lbkwh9</id>
     <title>System-First Prompt Engineering: 18-Model LLM Benchmark Shows Hard-Constraint Compliance Gap</title>
     <updated>2025-06-14T22:28:19+00:00</updated>
@@ -292,6 +266,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1lbkwh9/systemfirst_prompt_engineering_18model_llm/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-06-14T22:28:19+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lb70kk</id>
+    <title>LLM with OCR capabilities</title>
+    <updated>2025-06-14T11:59:58+00:00</updated>
+    <author>
+      <name>/u/depava</name>
+      <uri>https://old.reddit.com/user/depava</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I want to create an app to OCR PDF documents. I need LLM model to understand context on how to map text to particular fields. Plain OCR things cannot do it. &lt;/p&gt; &lt;p&gt;It is for production, not a higload but 300 docs per day can be. &lt;/p&gt; &lt;p&gt;I use AWS, and thinking about using Bedrock and Claude. But I think, maybe it's cheaper to use some self-hosted models for this purpose? Or running in EC2 instance the model will cost more than just using API of paid models? Thank you very much in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/depava"&gt; /u/depava &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1lb70kk/llm_with_ocr_capabilities/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-06-14T11:59:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1lb2vj9</id>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/ollama/comments/1lbfn7k/an_offline_voice_assistant/"/>
     <category term="ollama" label="r/ollama"/>
     <published>2025-06-14T18:33:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbpqln</id>
+    <title>MiniPC Ryzen 7 6800H CPU and iGPU 680M</title>
+    <updated>2025-06-15T02:36:30+00:00</updated>
+    <author>
+      <name>/u/tabletuser_blogspot</name>
+      <uri>https://old.reddit.com/user/tabletuser_blogspot</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt; &lt;img alt="MiniPC Ryzen 7 6800H CPU and iGPU 680M" src="https://a.thumbs.redditmedia.com/tpedg4ze2xDoPSRQnppyauv7nM0-4tkJkk74SJgppd8.jpg" title="MiniPC Ryzen 7 6800H CPU and iGPU 680M" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I somehow got lucky and was able to get the iGPU working with Pop_OS 24.04 but not Kubuntu 25.10 or Mint 22.1. Until I tried Warp AI Terminal Emulator. It was great watching AI fix AI.&lt;/p&gt; &lt;p&gt;Anywho, I purchased the ACEMAGIC S3A Mini PC barebones, add 64GB DDR5 memory and a 2TB Gen4 NVMe drive. Very happy, it benchmarks a little faster than my Ryzen 5 5600X and that CPU is a beast. You have to be in 'Performance Mode' when entering BIOS and then use CTRL+F1 to view all advanced settings.&lt;/p&gt; &lt;p&gt;Change BIOS to 16GB for iGPU&lt;/p&gt; &lt;p&gt;UEFI/BIOS -&amp;gt; Advanced -&amp;gt; AMD CBS -&amp;gt; NBIO -&amp;gt; GFX -&amp;gt; iGPU -&amp;gt; UMA_SPECIFIED&lt;/p&gt; &lt;p&gt;Here is what you can expect from the iGPU over just CPU using Ollama version 0.9.0&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/3yrdlntp707f1.png?width=719&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=2dfde8984ce75b486c440a155b4a8d46ae02da18"&gt;CPU only 64GB DDR5&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/1jfxyhws707f1.png?width=853&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=9edece60f48370d94f0838ab7f19c38d39d69fa1"&gt;iGPU working&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/jtb0qhty707f1.png?width=721&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=8377f4befa2721ed7aba7d159080abeb23955b04"&gt;Benefit of having iGPU working &lt;/a&gt;&lt;/p&gt; &lt;p&gt;Notice that the 70b size model is actually slower than just using CPU only. Biggest benefit is DDR5 speed.&lt;/p&gt; &lt;p&gt;Basically I just had to get the &lt;em&gt;Environment override&lt;/em&gt; to work correctly. I'm not sure how Warp AI figured it out, but it did. Plan to do a clean install and figure it out.&lt;/p&gt; &lt;p&gt;Here is what I ran to add &lt;em&gt;Environment override&lt;/em&gt;:&lt;/p&gt; &lt;p&gt;&lt;code&gt;sudo systemctl edit ollama.service &amp;amp;&amp;amp; systemctl daemon-reload &amp;amp;&amp;amp; systemctl restart ollama&lt;/code&gt;&lt;br /&gt; I added this&lt;/p&gt; &lt;pre&gt;&lt;code&gt;[Service] Environment=&amp;quot;HSA_OVERRIDE_GFX_VERSION=10.3.0&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Finally I was able to use iGPU. Again, Warp AI figured out why this wasn't working correctly. Here is the summary Warp AI provided.&lt;/p&gt; &lt;p&gt;&lt;code&gt;Key changes made:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;1. Installed ROCm components: Added rocm-smi and related libraries for GPU detection&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;2. Fixed systemd override configuration: Added the proper [Service] section header to /etc/systemd/system/ollama.service.d/override.conf&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;3. Environment variables are now working:&lt;/code&gt; &lt;/p&gt; &lt;p&gt;&lt;code&gt;• HSA_OVERRIDE_GFX_VERSION=10.3.0 - Overrides the GPU detection to treat your gfx1035 as gfx1030 (compatible)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• OLLAMA_LLM_LIBRARY=rocm_v60000u_avx2 - Forces Ollama to use the ROCm library&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Results:&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• Your AMD Radeon 680M (gfx1035) is now properly detected with 16.0 GiB total and 15.7 GiB available memory&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• The model is running on 100% GPU instead of CPU&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;• Performance has improved significantly (from 5.56 tokens/s to 6.34 tokens/s, and much faster prompt evaluation: 83.41 tokens/s vs 19.49 tokens/s)&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;[Service]&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;HSA_OVERRIDE_GFX_VERSION=10.3.0&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;code&gt;Environment=&amp;quot;OLLAMA_LLM_LIBRARY=rocm_v60000u_avx2&amp;quot;&lt;/code&gt;&lt;/p&gt; &lt;p&gt;The AVX2 wasn't needed, it's already implemented in Ollama.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/tabletuser_blogspot"&gt; /u/tabletuser_blogspot &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/ollama/comments/1lbpqln/minipc_ryzen_7_6800h_cpu_and_igpu_680m/"/>
+    <category term="ollama" label="r/ollama"/>
+    <published>2025-06-15T02:36:30+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbpz7w</id>
