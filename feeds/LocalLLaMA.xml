@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-16T10:40:07+00:00</updated>
+  <updated>2025-06-16T10:51:24+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lbkd46</id>
-    <title>I added vision to Magistral</title>
-    <updated>2025-06-14T22:02:20+00:00</updated>
-    <author>
-      <name>/u/Vivid_Dot_6405</name>
-      <uri>https://old.reddit.com/user/Vivid_Dot_6405</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt; &lt;img alt="I added vision to Magistral" src="https://external-preview.redd.it/X_g72xTZNGOJR899I7pB5eNf8G3zVQ49K4x504QQmpg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6cdf83a10d380087b7b9940bcbc3d928a15a2e93" title="I added vision to Magistral" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was inspired by an &lt;a href="https://huggingface.co/ngxson/Devstral-Small-Vision-2505-GGUF"&gt;experimental Devstral model&lt;/a&gt;, and had the idea to the same thing to Magistral Small.&lt;/p&gt; &lt;p&gt;I replaced Mistral Small 3.1's language layers with Magistral's.&lt;br /&gt; I suggest using vLLM for inference with the correct system prompt and sampling params.&lt;br /&gt; There may be config errors present. The model's visual reasoning is definitely not as good as text-only, but it does work.&lt;/p&gt; &lt;p&gt;At the moment, I don't have the resources to replicate Mistral's vision benchmarks from their tech report.&lt;br /&gt; Let me know if you notice any weird behavior!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vivid_Dot_6405"&gt; /u/Vivid_Dot_6405 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/OptimusePrime/Magistral-Small-2506-Vision"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T22:02:20+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lc6idx</id>
     <title>Gemma3 12b or 27b for writing assistance/brainstorming?</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lc6idx/gemma3_12b_or_27b_for_writing/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T17:54:26+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lcb4e6</id>
+    <title>Mistral-Small useless when running locally</title>
+    <updated>2025-06-15T21:09:03+00:00</updated>
+    <author>
+      <name>/u/mnze_brngo_7325</name>
+      <uri>https://old.reddit.com/user/mnze_brngo_7325</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Mistral-Small from 2024 was one of my favorite local models, but their 2025 versions (running on llama.cpp with chat completion) is driving me crazy. It's not just the repetition problem people report, but in my use cases it behaves totally erratic, bad instruction following and sometimes completely off the rail answers that have nothing to do with my prompts.&lt;/p&gt; &lt;p&gt;I tried different temperatures (most use cases for me require &amp;lt;0.4 anyway) and played with different sampler settings, quants and quantization techniques, from different sources (Bartowski, unsloth).&lt;/p&gt; &lt;p&gt;I thought it might be the default prompt template in llama-server, tried to provide my own, using the old completion endpoint instead of chat. To no avail. Always bad results.&lt;/p&gt; &lt;p&gt;Abandoned it back then in favor of other models. Then I tried Magistral-Small (Q6, unsloth) the other day in an agentic test setup. It did pick tools, but not intelligently and it used them in a wrong way and with stupid parameters. For example, one of my low bar tests: given current date tool, weather tool and the prompt to get me the weather in New York yesterday, it called the weather tool without calling the date tool first and asked for the weather in Moscow. The final answer was then some product review about a phone called magistral. Other times it generates product reviews about tekken (not their tokenizer, the game). Tried the same with Mistral-Small-3.1-24B-Instruct-2503-Q6_K (unsloth). Same problems.&lt;/p&gt; &lt;p&gt;I'm also using Mistral-Small via openrouter in a production RAG application. There it's pretty reliable and sometimes produces better results that Mistral Medium (sure, they use higher quants, but that can't be it).&lt;/p&gt; &lt;p&gt;What am I doing wrong? I never had similar issues with any other model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mnze_brngo_7325"&gt; /u/mnze_brngo_7325 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-15T21:09:03+00:00</published>
   </entry>
   <entry>
     <id>t3_1lcjvfw</id>
@@ -58,19 +58,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T10:11:55+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lc9alf</id>
-    <title>Good models for a 16GB M4 Mac Mini?</title>
-    <updated>2025-06-15T19:50:41+00:00</updated>
-    <author>
-      <name>/u/puukkeriro</name>
-      <uri>https://old.reddit.com/user/puukkeriro</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just bought a 16GB M4 Mac Mini and put LM Studio into it. Right now I'm running the Deepseek R1 Qwen 8B model. It's ok and generates text pretty quickly but sometimes doesn't quite give the answer I'm looking for. &lt;/p&gt; &lt;p&gt;What other models do you recommend? I don't code, mostly just use these things as a toy or to get quick answers for stuff that I would have used a search engine for in the past.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/puukkeriro"&gt; /u/puukkeriro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T19:50:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbqwfs</id>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T00:25:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lc9alf</id>
+    <title>Good models for a 16GB M4 Mac Mini?</title>
+    <updated>2025-06-15T19:50:41+00:00</updated>
+    <author>
+      <name>/u/puukkeriro</name>
+      <uri>https://old.reddit.com/user/puukkeriro</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just bought a 16GB M4 Mac Mini and put LM Studio into it. Right now I'm running the Deepseek R1 Qwen 8B model. It's ok and generates text pretty quickly but sometimes doesn't quite give the answer I'm looking for. &lt;/p&gt; &lt;p&gt;What other models do you recommend? I don't code, mostly just use these things as a toy or to get quick answers for stuff that I would have used a search engine for in the past.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/puukkeriro"&gt; /u/puukkeriro &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lc9alf/good_models_for_a_16gb_m4_mac_mini/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-15T19:50:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1lc8cse</id>
@@ -177,19 +177,6 @@
     <published>2025-06-16T04:34:08+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lco9ik</id>
-    <title>Recommendations for Local LLMs (Under 70B) with Cline/Roo Code</title>
-    <updated>2025-06-16T09:20:49+00:00</updated>
-    <author>
-      <name>/u/AMOVCS</name>
-      <uri>https://old.reddit.com/user/AMOVCS</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'd like to know what, if any, are some good local models under 70b that can handle tasks well when using Cline/Roo Code. I’ve tried a &lt;em&gt;lot&lt;/em&gt; to use Cline or Roo Code for various things, and most of the time it's simple tasks, but the agents often get stuck in loops or make things worse. It feels like the size of the instructions is too much for these smaller LLMs to handle well – many times I see the task using 15k+ tokens just to edit a couple lines of code. Maybe I’m doing something very wrong, maybe it's a configuration issue with the agents? Anyway, I was hoping you guys could recommend some models (could also be configurations, advice, anything) that work well with Cline/Roo Code.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Some information for context:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;I always use at least Q5 or better (sometimes I use Q4_UD from Unsloth).&lt;/li&gt; &lt;li&gt;Most of the time I give 20k+ context window to the agents.&lt;/li&gt; &lt;li&gt;My projects are a reasonable size, between 2k and 10k lines, but I only open the files needed when asking the agents to code.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Models I've Tried:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Devistral - Bad in general; I was on high expectations for this one but it didn’t work.&lt;/li&gt; &lt;li&gt;Magistral - Even worse.&lt;/li&gt; &lt;li&gt;Qwen 3 series (and R1 distilled versions) - Not that bad, but just works when the project is very, very small.&lt;/li&gt; &lt;li&gt;GLM4 - Very good at coding on its own, not so good when using it with agents.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;So, are there any recommendations for models to use with Cline/Roo Code that actually work well?&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AMOVCS"&gt; /u/AMOVCS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-16T09:20:49+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lcp5rg</id>
     <title>Looking for Unfiltered LLM for making AI Character dialogue</title>
     <updated>2025-06-16T10:18:50+00:00</updated>
@@ -201,6 +188,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcp5rg/looking_for_unfiltered_llm_for_making_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-16T10:18:50+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lco9ik</id>
+    <title>Recommendations for Local LLMs (Under 70B) with Cline/Roo Code</title>
+    <updated>2025-06-16T09:20:49+00:00</updated>
+    <author>
+      <name>/u/AMOVCS</name>
+      <uri>https://old.reddit.com/user/AMOVCS</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'd like to know what, if any, are some good local models under 70b that can handle tasks well when using Cline/Roo Code. I’ve tried a &lt;em&gt;lot&lt;/em&gt; to use Cline or Roo Code for various things, and most of the time it's simple tasks, but the agents often get stuck in loops or make things worse. It feels like the size of the instructions is too much for these smaller LLMs to handle well – many times I see the task using 15k+ tokens just to edit a couple lines of code. Maybe I’m doing something very wrong, maybe it's a configuration issue with the agents? Anyway, I was hoping you guys could recommend some models (could also be configurations, advice, anything) that work well with Cline/Roo Code.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Some information for context:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;I always use at least Q5 or better (sometimes I use Q4_UD from Unsloth).&lt;/li&gt; &lt;li&gt;Most of the time I give 20k+ context window to the agents.&lt;/li&gt; &lt;li&gt;My projects are a reasonable size, between 2k and 10k lines, but I only open the files needed when asking the agents to code.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;Models I've Tried:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Devistral - Bad in general; I was on high expectations for this one but it didn’t work.&lt;/li&gt; &lt;li&gt;Magistral - Even worse.&lt;/li&gt; &lt;li&gt;Qwen 3 series (and R1 distilled versions) - Not that bad, but just works when the project is very, very small.&lt;/li&gt; &lt;li&gt;GLM4 - Very good at coding on its own, not so good when using it with agents.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;So, are there any recommendations for models to use with Cline/Roo Code that actually work well?&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AMOVCS"&gt; /u/AMOVCS &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lco9ik/recommendations_for_local_llms_under_70b_with/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-16T09:20:49+00:00</published>
   </entry>
   <entry>
     <id>t3_1lcoewz</id>
