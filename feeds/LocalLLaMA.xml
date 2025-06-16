@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-16T06:26:05+00:00</updated>
+  <updated>2025-06-16T06:44:47+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lbfinu</id>
-    <title>26 Quants that fit on 32GB vs 10,000-token "Needle in a Haystack" test</title>
-    <updated>2025-06-14T18:27:59+00:00</updated>
-    <author>
-      <name>/u/EmPips</name>
-      <uri>https://old.reddit.com/user/EmPips</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;The Test&lt;/h1&gt; &lt;h2&gt;The Needle&lt;/h2&gt; &lt;p&gt;In HG Wells' &lt;em&gt;&amp;quot;The Time Machine&amp;quot;&lt;/em&gt; I took the first several chapters, amounting to 10,000 tokens (~5 chapters) and replaced a line of Dialog in Chapter 3 (~6,000 tokens in):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;The Time Traveller came to the place reserved for him without a word. He smiled quietly, in his old way. “Where’s my mutton?” he said. “What a treat it is to stick a fork into meat again!” &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;with:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;The Time Traveller came to the place reserved for him without a word. He smiled quietly, in his old way. “The fastest land animal in the world is the Cheetah?” he said. “And because of that, we need to dive underwater to save the lost city of Atlantis..” &lt;/code&gt;&lt;/pre&gt; &lt;h2&gt;The prompt/instructions used&lt;/h2&gt; &lt;p&gt;The following is the prompt provided before the long context. It is an instruction (in very plain English giving relatively broad instructions) to locate the text that appears broken or out of place. The only added bit of instructions is to ignore chapter-divides, which I have left in the text.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;Something is terribly wrong with the following text (something broken, out of place). You need to read through the whole thing and identify the broken / nonsensical part and then report back with what/where the broken line is. You may notice chapter-divides, these are normal and not broken.. Here is your text to evaluate: &lt;/code&gt;&lt;/pre&gt; &lt;h2&gt;The Models/Weights Used&lt;/h2&gt; &lt;p&gt;For this test I wanted to test everything that I had on my machine, a 2x6800 (32GB VRAM total) system. The quants are what I had downloaded/available. For smaller models with extra headroom I tried to use Q5, but these quants are relatively random. &lt;strong&gt;The only goal in selecting these models/quants was that every model chosen was one that a local user with access to 32GB of VRAM or high-bandwidth memory would use.&lt;/strong&gt;&lt;/p&gt; &lt;h2&gt;The Setup&lt;/h2&gt; &lt;p&gt;I think my take to settings/temperature was imperfect, but important to share. Llama CPP was used (specifically the llama-server utility). Settings for temperature were taken from the official model cards (not the cards of the quants) on Huggingface. If none were provided, a test was done at temp == 0.2 and temp == 0.7 and the better of the two results was taken. &lt;strong&gt;In all scenarios kv cache was q8&lt;/strong&gt; - while this likely impacted the results for some models, I believe it keeps to the spirit of the test which is &lt;em&gt;&amp;quot;how would someone with 32GB realistically use these weights?&amp;quot;&lt;/em&gt;.&lt;/p&gt; &lt;h2&gt;Some bonus models&lt;/h2&gt; &lt;p&gt;I tested a handful of models from Lambda-Chat just because. Most of them succeeded, however Llama4 struggled quite a bit.&lt;/p&gt; &lt;h2&gt;Some unscientific disclaimers&lt;/h2&gt; &lt;p&gt;There are a few grains of salt to take with this test, even if you keep in mind my goal was to &lt;em&gt;&amp;quot;test everything in a way that someone with 32GB would realistically use it&amp;quot;&lt;/em&gt;. For all models that failed, I should see if I can fit a larger-sized quant and complete the test that way. For Llama2 70b, I believe the context size simply overwhelmed it.&lt;/p&gt; &lt;p&gt;At the extreme end (see Deepseek 0528 and Hermes 405b) the models didn't seem to be 'searching' so much as identifying &lt;em&gt;&amp;quot;hey, this isn't in HG Well's 'The Time Machine!'&amp;quot;&lt;/em&gt;. I believe this is a fair result, but at the extremely high-end side of model-size the test stops being a &lt;em&gt;&amp;quot;needle in a haystack&amp;quot;&lt;/em&gt; test and stars being a test of the depths of their knowledge. This touches on the biggest problem which is that HG Well's &lt;em&gt;&amp;quot;The Time Machine&amp;quot;&lt;/em&gt; is a very famous work that has been in the public domain for decades at this point. If Meta trained on this but Mistral didn't, could the models instead just be searching for &lt;em&gt;&amp;quot;hey I don't remember that&amp;quot;&lt;/em&gt; instead of &lt;em&gt;&amp;quot;that makes no sense in this context&amp;quot;&lt;/em&gt; ?&lt;/p&gt; &lt;p&gt;For the long-thinkers that failed (QwQ namely) I tried several tests where they would think themselves in circles or get caught up convincing themselves that normal parts of a sci-fi story were 'nonsensical', but it was the train of thought that always ruined them. If tried with enough random settings, I'm sure they would have found it eventually.&lt;/p&gt; &lt;h2&gt;Results&lt;/h2&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="right"&gt;Params (B)&lt;/th&gt; &lt;th align="center"&gt;Quantization&lt;/th&gt; &lt;th align="left"&gt;Results&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Meta Llama Family&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 2 70&lt;/td&gt; &lt;td align="right"&gt;70&lt;/td&gt; &lt;td align="center"&gt;q2&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 3.3 70&lt;/td&gt; &lt;td align="right"&gt;70&lt;/td&gt; &lt;td align="center"&gt;iq3&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 3.3 70&lt;/td&gt; &lt;td align="right"&gt;70&lt;/td&gt; &lt;td align="center"&gt;iq2&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 4 Scout&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="center"&gt;iq2&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 3.1 8&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 3.1 8&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q6&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 3.2 3&lt;/td&gt; &lt;td align="right"&gt;3&lt;/td&gt; &lt;td align="center"&gt;q6&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;IBM Granite 3.3&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Mistral Family&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Mistral Small 3.1&lt;/td&gt; &lt;td align="right"&gt;24&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Mistral Small 3&lt;/td&gt; &lt;td align="right"&gt;24&lt;/td&gt; &lt;td align="center"&gt;q6&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deephermes-preview&lt;/td&gt; &lt;td align="right"&gt;24&lt;/td&gt; &lt;td align="center"&gt;q6&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Magistral Small&lt;/td&gt; &lt;td align="right"&gt;24&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;Solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Nvidia&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Nemotron Super (nothink)&lt;/td&gt; &lt;td align="right"&gt;49&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Nemotron Super (think)&lt;/td&gt; &lt;td align="right"&gt;49&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Nemotron Ultra-Long 8&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Google&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma3 12&lt;/td&gt; &lt;td align="right"&gt;12&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Gemma3 27&lt;/td&gt; &lt;td align="right"&gt;27&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Qwen Family&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;QwQ&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;q6&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 8b (nothink)&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 8b (think)&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 14 (think)&lt;/td&gt; &lt;td align="right"&gt;14&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 14 (nothink)&lt;/td&gt; &lt;td align="right"&gt;14&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30 A3B (think)&lt;/td&gt; &lt;td align="right"&gt;30&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30 A3B (nothink)&lt;/td&gt; &lt;td align="right"&gt;30&lt;/td&gt; &lt;td align="center"&gt;iq4&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30 A6B Extreme (nothink)&lt;/td&gt; &lt;td align="right"&gt;30&lt;/td&gt; &lt;td align="center"&gt;q4&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 30 A6B Extreme (think)&lt;/td&gt; &lt;td align="right"&gt;30&lt;/td&gt; &lt;td align="center"&gt;q4&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 32 (think)&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 32 (nothink)&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek-R1-0528-Distill-Qwen3-8b&lt;/td&gt; &lt;td align="right"&gt;8&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Other&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;GLM-4&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;q5&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h2&gt;Some random bonus results from an inference provider (not 32GB)&lt;/h2&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th align="left"&gt;Model&lt;/th&gt; &lt;th align="right"&gt;Params (B)&lt;/th&gt; &lt;th align="center"&gt;Quantization&lt;/th&gt; &lt;th align="left"&gt;Results&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td align="left"&gt;&lt;strong&gt;Lambda Chat (some quick remote tests)&lt;/strong&gt;&lt;/td&gt; &lt;td align="right"&gt;&lt;/td&gt; &lt;td align="center"&gt;&lt;/td&gt; &lt;td align="left"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Hermes 3.1 405&lt;/td&gt; &lt;td align="right"&gt;405&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 4 Scout&lt;/td&gt; &lt;td align="right"&gt;100&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;failed&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Llama 4 Maverick&lt;/td&gt; &lt;td align="right"&gt;400&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Nemotron 3.1 70&lt;/td&gt; &lt;td align="right"&gt;70&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek R1 0528&lt;/td&gt; &lt;td align="right"&gt;671&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Deepseek V3 0324&lt;/td&gt; &lt;td align="right"&gt;671&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;R1-Distill-70&lt;/td&gt; &lt;td align="right"&gt;70&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 32 (think)&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen3 32 (nothink)&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left"&gt;Qwen2.5 Coder 32&lt;/td&gt; &lt;td align="right"&gt;32&lt;/td&gt; &lt;td align="center"&gt;fp8&lt;/td&gt; &lt;td align="left"&gt;solved&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/EmPips"&gt; /u/EmPips &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbfinu/26_quants_that_fit_on_32gb_vs_10000token_needle/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbfinu/26_quants_that_fit_on_32gb_vs_10000token_needle/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbfinu/26_quants_that_fit_on_32gb_vs_10000token_needle/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T18:27:59+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lbotj8</id>
     <title>Make Local Models watch your screen! Observer Tutorial</title>
@@ -32,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbotj8/make_local_models_watch_your_screen_observer/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T01:46:50+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lcfxg3</id>
-    <title>Is it possible to give Gemma 3 or any other model on-device screen awareness?</title>
-    <updated>2025-06-16T00:57:39+00:00</updated>
-    <author>
-      <name>/u/Lord_Greedyy</name>
-      <uri>https://old.reddit.com/user/Lord_Greedyy</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got Gemma3 working on my pc last night, it is very fun to have a local llm, now I am trying to find actual use cases that could benefit my workflow. Is it possible to give it onscreen awareness and allow the model to interact with programs on the pc? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_Greedyy"&gt; /u/Lord_Greedyy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-16T00:57:39+00:00</published>
   </entry>
   <entry>
     <id>t3_1lc5w5r</id>
@@ -60,17 +34,17 @@
     <published>2025-06-15T17:28:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbkd46</id>
-    <title>I added vision to Magistral</title>
-    <updated>2025-06-14T22:02:20+00:00</updated>
+    <id>t3_1lcli97</id>
+    <title>Does llama.cpp save chats?</title>
+    <updated>2025-06-16T06:11:37+00:00</updated>
     <author>
-      <name>/u/Vivid_Dot_6405</name>
-      <uri>https://old.reddit.com/user/Vivid_Dot_6405</uri>
+      <name>/u/LeiMoshen</name>
+      <uri>https://old.reddit.com/user/LeiMoshen</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt; &lt;img alt="I added vision to Magistral" src="https://external-preview.redd.it/X_g72xTZNGOJR899I7pB5eNf8G3zVQ49K4x504QQmpg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6cdf83a10d380087b7b9940bcbc3d928a15a2e93" title="I added vision to Magistral" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was inspired by an &lt;a href="https://huggingface.co/ngxson/Devstral-Small-Vision-2505-GGUF"&gt;experimental Devstral model&lt;/a&gt;, and had the idea to the same thing to Magistral Small.&lt;/p&gt; &lt;p&gt;I replaced Mistral Small 3.1's language layers with Magistral's.&lt;br /&gt; I suggest using vLLM for inference with the correct system prompt and sampling params.&lt;br /&gt; There may be config errors present. The model's visual reasoning is definitely not as good as text-only, but it does work.&lt;/p&gt; &lt;p&gt;At the moment, I don't have the resources to replicate Mistral's vision benchmarks from their tech report.&lt;br /&gt; Let me know if you notice any weird behavior!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vivid_Dot_6405"&gt; /u/Vivid_Dot_6405 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/OptimusePrime/Magistral-Small-2506-Vision"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I know Ollama will make save chat history in that history file. Does llama.cpp do something similar or is the chat gone forever when I close it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LeiMoshen"&gt; /u/LeiMoshen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-14T22:02:20+00:00</published>
+    <published>2025-06-16T06:11:37+00:00</published>
   </entry>
   <entry>
     <id>t3_1lc295w</id>
@@ -99,17 +73,43 @@
     <published>2025-06-16T04:30:38+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbwxj8</id>
-    <title>Do multimodal LLMs (like Chatgpt, Gemini, Claude) use OCR under the hood to read text in images?</title>
-    <updated>2025-06-15T10:11:55+00:00</updated>
+    <id>t3_1lcb4e6</id>
+    <title>Mistral-Small useless when running locally</title>
+    <updated>2025-06-15T21:09:03+00:00</updated>
     <author>
-      <name>/u/Comprehensive-Yam291</name>
-      <uri>https://old.reddit.com/user/Comprehensive-Yam291</uri>
+      <name>/u/mnze_brngo_7325</name>
+      <uri>https://old.reddit.com/user/mnze_brngo_7325</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;SOTA multimodal LLMs can read text from images (e.g. signs, screenshots, book pages) really well — almost better thatn OCR.&lt;/p&gt; &lt;p&gt;Are they actually using an internal OCR system (like Tesseract or Azure Vision), or do they learn to &amp;quot;read&amp;quot; purely through pretraining (like contrastive learning on image-text pairs)?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Comprehensive-Yam291"&gt; /u/Comprehensive-Yam291 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Mistral-Small from 2024 was one of my favorite local models, but their 2025 versions (running on llama.cpp with chat completion) is driving me crazy. It's not just the repetition problem people report, but in my use cases it behaves totally erratic, bad instruction following and sometimes completely off the rail answers that have nothing to do with my prompts.&lt;/p&gt; &lt;p&gt;I tried different temperatures (most use cases for me require &amp;lt;0.4 anyway) and played with different sampler settings, quants and quantization techniques, from different sources (Bartowski, unsloth).&lt;/p&gt; &lt;p&gt;I thought it might be the default prompt template in llama-server, tried to provide my own, using the old completion endpoint instead of chat. To no avail. Always bad results.&lt;/p&gt; &lt;p&gt;Abandoned it back then in favor of other models. Then I tried Magistral-Small (Q6, unsloth) the other day in an agentic test setup. It did pick tools, but not intelligently and it used them in a wrong way and with stupid parameters. For example, one of my low bar tests: given current date tool, weather tool and the prompt to get me the weather in New York yesterday, it called the weather tool without calling the date tool first and asked for the weather in Moscow. The final answer was then some product review about a phone called magistral. Other times it generates product reviews about tekken (not their tokenizer, the game). Tried the same with Mistral-Small-3.1-24B-Instruct-2503-Q6_K (unsloth). Same problems.&lt;/p&gt; &lt;p&gt;I'm also using Mistral-Small via openrouter in a production RAG application. There it's pretty reliable and sometimes produces better results that Mistral Medium (sure, they use higher quants, but that can't be it).&lt;/p&gt; &lt;p&gt;What am I doing wrong? I never had similar issues with any other model.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mnze_brngo_7325"&gt; /u/mnze_brngo_7325 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcb4e6/mistralsmall_useless_when_running_locally/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T10:11:55+00:00</published>
+    <published>2025-06-15T21:09:03+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lcfxg3</id>
+    <title>Is it possible to give Gemma 3 or any other model on-device screen awareness?</title>
+    <updated>2025-06-16T00:57:39+00:00</updated>
+    <author>
+      <name>/u/Lord_Greedyy</name>
+      <uri>https://old.reddit.com/user/Lord_Greedyy</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I got Gemma3 working on my pc last night, it is very fun to have a local llm, now I am trying to find actual use cases that could benefit my workflow. Is it possible to give it onscreen awareness and allow the model to interact with programs on the pc? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Lord_Greedyy"&gt; /u/Lord_Greedyy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcfxg3/is_it_possible_to_give_gemma_3_or_any_other_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-16T00:57:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbkd46</id>
+    <title>I added vision to Magistral</title>
+    <updated>2025-06-14T22:02:20+00:00</updated>
+    <author>
+      <name>/u/Vivid_Dot_6405</name>
+      <uri>https://old.reddit.com/user/Vivid_Dot_6405</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt; &lt;img alt="I added vision to Magistral" src="https://external-preview.redd.it/X_g72xTZNGOJR899I7pB5eNf8G3zVQ49K4x504QQmpg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=6cdf83a10d380087b7b9940bcbc3d928a15a2e93" title="I added vision to Magistral" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I was inspired by an &lt;a href="https://huggingface.co/ngxson/Devstral-Small-Vision-2505-GGUF"&gt;experimental Devstral model&lt;/a&gt;, and had the idea to the same thing to Magistral Small.&lt;/p&gt; &lt;p&gt;I replaced Mistral Small 3.1's language layers with Magistral's.&lt;br /&gt; I suggest using vLLM for inference with the correct system prompt and sampling params.&lt;br /&gt; There may be config errors present. The model's visual reasoning is definitely not as good as text-only, but it does work.&lt;/p&gt; &lt;p&gt;At the moment, I don't have the resources to replicate Mistral's vision benchmarks from their tech report.&lt;br /&gt; Let me know if you notice any weird behavior!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vivid_Dot_6405"&gt; /u/Vivid_Dot_6405 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/OptimusePrime/Magistral-Small-2506-Vision"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbkd46/i_added_vision_to_magistral/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-14T22:02:20+00:00</published>
   </entry>
   <entry>
     <id>t3_1lcl2m1</id>
@@ -125,30 +125,17 @@
     <published>2025-06-16T05:43:26+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lcli97</id>
-    <title>Does llama.cpp save chats?</title>
-    <updated>2025-06-16T06:11:37+00:00</updated>
+    <id>t3_1lbwxj8</id>
+    <title>Do multimodal LLMs (like Chatgpt, Gemini, Claude) use OCR under the hood to read text in images?</title>
+    <updated>2025-06-15T10:11:55+00:00</updated>
     <author>
-      <name>/u/LeiMoshen</name>
-      <uri>https://old.reddit.com/user/LeiMoshen</uri>
+      <name>/u/Comprehensive-Yam291</name>
+      <uri>https://old.reddit.com/user/Comprehensive-Yam291</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I know Ollama will make save chat history in that history file. Does llama.cpp do something similar or is the chat gone forever when I close it.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/LeiMoshen"&gt; /u/LeiMoshen &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcli97/does_llamacpp_save_chats/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;SOTA multimodal LLMs can read text from images (e.g. signs, screenshots, book pages) really well — almost better thatn OCR.&lt;/p&gt; &lt;p&gt;Are they actually using an internal OCR system (like Tesseract or Azure Vision), or do they learn to &amp;quot;read&amp;quot; purely through pretraining (like contrastive learning on image-text pairs)?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Comprehensive-Yam291"&gt; /u/Comprehensive-Yam291 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbwxj8/do_multimodal_llms_like_chatgpt_gemini_claude_use/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-16T06:11:37+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lbqwfs</id>
-    <title>Mistral Small 3.1 is incredible for agentic use cases</title>
-    <updated>2025-06-15T03:40:51+00:00</updated>
-    <author>
-      <name>/u/ButterscotchVast2948</name>
-      <uri>https://old.reddit.com/user/ButterscotchVast2948</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently tried switching from Gemini 2.5 to Mistral Small 3.1 for most components of my agentic workflow and barely saw any drop off in performance. It’s absolutely mind blowing how good 3.1 is given how few parameters it has. Extremely accurate and intelligent tool calling and structured output capabilities, and equipping 3.1 with web search makes it as good as any frontier LLM in my use cases. Not to mention 3.1 is DIRT cheap and super fast.&lt;/p&gt; &lt;p&gt;Anyone else having great experiences with Mistral Small 3.1? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ButterscotchVast2948"&gt; /u/ButterscotchVast2948 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T03:40:51+00:00</published>
+    <published>2025-06-15T10:11:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1lc9alf</id>
@@ -164,17 +151,17 @@
     <published>2025-06-15T19:50:41+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lbva5o</id>
-    <title>rednote-hilab dots.llm1 support has been merged into llama.cpp</title>
-    <updated>2025-06-15T08:18:35+00:00</updated>
+    <id>t3_1lbqwfs</id>
+    <title>Mistral Small 3.1 is incredible for agentic use cases</title>
+    <updated>2025-06-15T03:40:51+00:00</updated>
     <author>
-      <name>/u/jacek2023</name>
-      <uri>https://old.reddit.com/user/jacek2023</uri>
+      <name>/u/ButterscotchVast2948</name>
+      <uri>https://old.reddit.com/user/ButterscotchVast2948</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"&gt; &lt;img alt="rednote-hilab dots.llm1 support has been merged into llama.cpp" src="https://external-preview.redd.it/RLBNoVg_e7B3XdrLX8zzgLBIrezL9D4uJwyF2H_1MAE.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c7d590a18325c50ec13cca839d15368aa53334ae" title="rednote-hilab dots.llm1 support has been merged into llama.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/14118"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I recently tried switching from Gemini 2.5 to Mistral Small 3.1 for most components of my agentic workflow and barely saw any drop off in performance. It’s absolutely mind blowing how good 3.1 is given how few parameters it has. Extremely accurate and intelligent tool calling and structured output capabilities, and equipping 3.1 with web search makes it as good as any frontier LLM in my use cases. Not to mention 3.1 is DIRT cheap and super fast.&lt;/p&gt; &lt;p&gt;Anyone else having great experiences with Mistral Small 3.1? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ButterscotchVast2948"&gt; /u/ButterscotchVast2948 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbqwfs/mistral_small_31_is_incredible_for_agentic_use/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-15T08:18:35+00:00</published>
+    <published>2025-06-15T03:40:51+00:00</published>
   </entry>
   <entry>
     <id>t3_1lbnb79</id>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbnb79/llm_training_on_rtx_5090/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T00:25:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lbva5o</id>
+    <title>rednote-hilab dots.llm1 support has been merged into llama.cpp</title>
+    <updated>2025-06-15T08:18:35+00:00</updated>
+    <author>
+      <name>/u/jacek2023</name>
+      <uri>https://old.reddit.com/user/jacek2023</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"&gt; &lt;img alt="rednote-hilab dots.llm1 support has been merged into llama.cpp" src="https://external-preview.redd.it/RLBNoVg_e7B3XdrLX8zzgLBIrezL9D4uJwyF2H_1MAE.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=c7d590a18325c50ec13cca839d15368aa53334ae" title="rednote-hilab dots.llm1 support has been merged into llama.cpp" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jacek2023"&gt; /u/jacek2023 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ggml-org/llama.cpp/pull/14118"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lbva5o/rednotehilab_dotsllm1_support_has_been_merged/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-15T08:18:35+00:00</published>
   </entry>
   <entry>
     <id>t3_1lc8cse</id>
@@ -307,19 +307,6 @@
     <published>2025-06-15T21:37:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lcksww</id>
-    <title>Do AI wrapper startups have a real future?</title>
-    <updated>2025-06-16T05:26:41+00:00</updated>
-    <author>
-      <name>/u/Samonji</name>
-      <uri>https://old.reddit.com/user/Samonji</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been thinking about how many startups right now are essentially just wrappers around GPT or Claude, where they take the base model, add a nice UI or some prompt chains, and maybe tailor it to a niche, all while calling it a product.&lt;/p&gt; &lt;p&gt;Some of them are even making money, but I keep wondering… how long can that really last?&lt;/p&gt; &lt;p&gt;Like, once OpenAI or whoever bakes those same features into their platform, what’s stopping these wrapper apps from becoming irrelevant overnight? Can any of them actually build a moat?&lt;/p&gt; &lt;p&gt;Or is the only real path to focus super hard on a specific vertical (like legal or finance), gather your own data, and basically evolve beyond being just a wrapper?&lt;/p&gt; &lt;p&gt;Curious what you all think. Are these wrapper apps legit businesses, or just temporary hacks riding the hype wave?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Samonji"&gt; /u/Samonji &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-16T05:26:41+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lc6tii</id>
     <title>I wrapped Apple’s new on-device models in an OpenAI-compatible API</title>
     <updated>2025-06-15T18:06:56+00:00</updated>
@@ -331,5 +318,18 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lc6tii/i_wrapped_apples_new_ondevice_models_in_an/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-15T18:06:56+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lcksww</id>
+    <title>Do AI wrapper startups have a real future?</title>
+    <updated>2025-06-16T05:26:41+00:00</updated>
+    <author>
+      <name>/u/Samonji</name>
+      <uri>https://old.reddit.com/user/Samonji</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I’ve been thinking about how many startups right now are essentially just wrappers around GPT or Claude, where they take the base model, add a nice UI or some prompt chains, and maybe tailor it to a niche, all while calling it a product.&lt;/p&gt; &lt;p&gt;Some of them are even making money, but I keep wondering… how long can that really last?&lt;/p&gt; &lt;p&gt;Like, once OpenAI or whoever bakes those same features into their platform, what’s stopping these wrapper apps from becoming irrelevant overnight? Can any of them actually build a moat?&lt;/p&gt; &lt;p&gt;Or is the only real path to focus super hard on a specific vertical (like legal or finance), gather your own data, and basically evolve beyond being just a wrapper?&lt;/p&gt; &lt;p&gt;Curious what you all think. Are these wrapper apps legit businesses, or just temporary hacks riding the hype wave?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Samonji"&gt; /u/Samonji &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lcksww/do_ai_wrapper_startups_have_a_real_future/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-16T05:26:41+00:00</published>
   </entry>
 </feed>
