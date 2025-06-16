@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-16T07:10:16+00:00</updated>
+  <updated>2025-06-16T07:24:35+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lbbt1c</id>
-    <title>OAuth 2.1 / 2025-DRAFT-v2 – Resource Metadata Required? - Probably only experts will get this :)</title>
-    <updated>2025-06-14T15:47:45+00:00</updated>
-    <author>
-      <name>/u/riverflow2025</name>
-      <uri>https://old.reddit.com/user/riverflow2025</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Has anyone implemented OAuth 2.1 and dealt with the 2025-DRAFT-v2 update introducing addition &lt;code&gt;resource metadata&lt;/code&gt;requirements?&lt;/p&gt; &lt;p&gt;My server correctly serves the &lt;code&gt;.well-known/oauth-authorization-server&lt;/code&gt; with full metadata (see below), which worked fine until recently. &lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &amp;quot;issuer&amp;quot;: &amp;quot;https://myserver.mydomain.com&amp;quot;, &amp;quot;authorization_endpoint&amp;quot;: &amp;quot;https://myserver.mydomain.com/authorize&amp;quot;, &amp;quot;token_endpoint&amp;quot;: &amp;quot;https://myserver.mydomain.com/token&amp;quot;, &amp;quot;registration_endpoint&amp;quot;: &amp;quot;https://myserver.mydomain.com/register&amp;quot;, &amp;quot;response_types_supported&amp;quot;: [ &amp;quot;code&amp;quot; ], &amp;quot;grant_types_supported&amp;quot;: [ &amp;quot;authorization_code&amp;quot; ], &amp;quot;token_endpoint_auth_methods_supported&amp;quot;: [ &amp;quot;none&amp;quot; ], &amp;quot;revocation_endpoint&amp;quot;: &amp;quot;https://myserver.mydomain.com/token&amp;quot;, &amp;quot;code_challenge_methods_supported&amp;quot;: [ &amp;quot;plain&amp;quot;, &amp;quot;S256&amp;quot; ], &amp;quot;jwks_uri&amp;quot;: &amp;quot;https://myserver.mydomain.com/jwks&amp;quot; } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Now I'm getting (since Inspector &lt;a href="https://github.com/modelcontextprotocol/inspector/releases/tag/0.14.0"&gt;0.14.0&lt;/a&gt;):&lt;/p&gt; &lt;pre&gt;&lt;code&gt;ℹ️ No resource metadata available from https://&amp;lt;domain&amp;gt;/.well-known/oauth-protected-resource Resource metadata was added in the 2025-DRAFT-v2 specification update HTTP 401 trying to load well-known OAuth protected resource metadata &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;What is the expected structure or minimum required fields for this new endpoint? Spec seems sparse. Anyone dealt with this transition?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/riverflow2025"&gt; /u/riverflow2025 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbbt1c/oauth_21_2025draftv2_resource_metadata_required/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lbbt1c/oauth_21_2025draftv2_resource_metadata_required/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lbbt1c/oauth_21_2025draftv2_resource_metadata_required/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-14T15:47:45+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lb7u6s</id>
     <title>Just tested Claude with MCP (Model Context Protocol) - Mind = Blown 🤯</title>
@@ -266,6 +253,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lclkxn/multi_tier_ai_project_management_mcp_server/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-16T06:16:33+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lcmkln</id>
+    <title>Found an AI that actually DEPLOYS your code (not just writes it)</title>
+    <updated>2025-06-16T07:23:26+00:00</updated>
+    <author>
+      <name>/u/prammr</name>
+      <uri>https://old.reddit.com/user/prammr</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Just tested Manus AI and I'm genuinely shocked. Unlike ChatGPT/Claude that give you code to copy-paste, this thing actually:&lt;/p&gt; &lt;p&gt;✅ Writes the code&lt;br /&gt; ✅ Sets up the environment&lt;br /&gt; ✅ Installs dependencies&lt;br /&gt; ✅ Tests everything&lt;br /&gt; ✅ &lt;strong&gt;DEPLOYS to a live URL&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;All in 3-4 minutes. No manual setup, no &amp;quot;it works on my machine&amp;quot; issues.&lt;/p&gt; &lt;h1&gt;What makes it different?&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Traditional AI workflow:&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Ask for code → Get code snippet&lt;/li&gt; &lt;li&gt;Copy-paste into your editor&lt;/li&gt; &lt;li&gt;Spend hours debugging dependencies&lt;/li&gt; &lt;li&gt;Fight with deployment configs&lt;/li&gt; &lt;li&gt;Maybe get it working&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;strong&gt;Manus workflow:&lt;/strong&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&amp;quot;Build me a TODO app with React + TypeScript&amp;quot;&lt;/li&gt; &lt;li&gt;Watch it work in real-time through Ubuntu sandbox&lt;/li&gt; &lt;li&gt;Get live URL: &lt;a href="https://your-app.manusvm.computer"&gt;&lt;code&gt;https://your-app.manusvm.computer&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Download source code if you want&lt;/li&gt; &lt;/ol&gt; &lt;h1&gt;Key features that caught my attention:&lt;/h1&gt; &lt;p&gt;🔥 &lt;strong&gt;Multi-agent collaboration&lt;/strong&gt; - Different AI agents handle planning, coding, testing, deployment&lt;br /&gt; 🔥 &lt;strong&gt;VM Sandbox execution&lt;/strong&gt; - Actually runs commands, installs packages, fixes errors&lt;br /&gt; 🔥 &lt;strong&gt;GAIA benchmark leader&lt;/strong&gt; - 86.5% score (beats most AI assistants)&lt;br /&gt; 🔥 &lt;strong&gt;Task Replay&lt;/strong&gt; - Visual playback of exactly what it did&lt;br /&gt; 🔥 &lt;strong&gt;Privacy-first&lt;/strong&gt; - Won't access your personal accounts/credentials&lt;/p&gt; &lt;h1&gt;Real example:&lt;/h1&gt; &lt;p&gt;Asked for: &amp;quot;Remix + TypeScript + Tailwind TODO app&amp;quot;&lt;br /&gt; Got: Fully functional app with add/delete tasks, proper styling, deployed and ready to use&lt;br /&gt; Time: 4 minutes&lt;br /&gt; Credits used: ~300&lt;/p&gt; &lt;h1&gt;The &amp;quot;holy shit&amp;quot; moment:&lt;/h1&gt; &lt;p&gt;Watching it debug its own errors in real-time. When a package failed to install, it automatically tried alternative approaches until it worked.&lt;/p&gt; &lt;h1&gt;Limitations I noticed:&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Credit-based pricing (1000+500 free, 300 daily refill)&lt;/li&gt; &lt;li&gt;Chinese company (if that matters to you)&lt;/li&gt; &lt;li&gt;Complex enterprise apps might hit limits&lt;/li&gt; &lt;li&gt;Temporary URLs expire after session&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Bottom line:&lt;/h1&gt; &lt;p&gt;If you're tired of AI giving you code that &amp;quot;should work&amp;quot; but doesn't, this is worth trying. It's like having a junior dev who actually finishes the job.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Full detailed review here:&lt;/strong&gt; &lt;a href="https://medium.com/@kansm/manus-ai-from-code-to-deployment-in-one-shot-36d757a816c0"&gt;https://medium.com/@kansm/manus-ai-from-code-to-deployment-in-one-shot-36d757a816c0&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Anyone else tried this? Curious about experiences with more complex projects.&lt;/p&gt; &lt;p&gt;&lt;em&gt;Note: Not sponsored, just genuinely impressed by the execution-first approach&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/prammr"&gt; /u/prammr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lcmkln/found_an_ai_that_actually_deploys_your_code_not/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lcmkln/found_an_ai_that_actually_deploys_your_code_not/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lcmkln/found_an_ai_that_actually_deploys_your_code_not/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-16T07:23:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1lcl0de</id>
