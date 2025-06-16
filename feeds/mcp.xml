@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-16T06:10:19+00:00</updated>
+  <updated>2025-06-16T06:26:06+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lb4yrm</id>
-    <title>Real world (non-Dev) mcp?</title>
-    <updated>2025-06-14T09:49:32+00:00</updated>
-    <author>
-      <name>/u/derekoh</name>
-      <uri>https://old.reddit.com/user/derekoh</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Curious to hear about how you are using mcp in the real world and not for development/coding. Things like working with HR and Finance business systems, ITSM platforms, etc. &lt;/p&gt; &lt;p&gt;Especially interested to hear if you’ve done this with M365 Copilot or Slack AI in an enterprise environment, with OAuth.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/derekoh"&gt; /u/derekoh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb4yrm/real_world_nondev_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lb4yrm/real_world_nondev_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lb4yrm/real_world_nondev_mcp/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-14T09:49:32+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lbbt1c</id>
     <title>OAuth 2.1 / 2025-DRAFT-v2 – Resource Metadata Required? - Probably only experts will get this :)</title>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lcl0de/are_mcps_actually_scalable_with_a_custom_client/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-16T05:39:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lclkxn</id>
+    <title>Multi Tier AI - Project management MCP server (Vikunja backend)</title>
+    <updated>2025-06-16T06:16:33+00:00</updated>
+    <author>
+      <name>/u/BelKirill</name>
+      <uri>https://old.reddit.com/user/BelKirill</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone, &lt;/p&gt; &lt;p&gt;I recently faced a morning routine dilemma: staring at 20+ tasks, my ADHD brain would freeze, delaying me by nearly 30 minutes before choosing what to work on. Sound familiar? To hack my own productivity, I built an AI Task Recommender that sorts through tasks based on “cognitive metadata” embedded directly in their descriptions—even if it feels a bit hacky! &lt;/p&gt; &lt;p&gt;Here’s a quick rundown of what I did and some of the trade-offs I encountered: &lt;/p&gt; &lt;p&gt;• The Problem:&lt;br /&gt; Every morning, my task list (powered by Vikunja) would result in choice paralysis. I needed a way to quickly decide what task to tackle based on current energy levels and available time. &lt;/p&gt; &lt;p&gt;• The Approach:&lt;br /&gt; – I embedded JSON metadata (e.g., energy: &amp;quot;high&amp;quot;, mode: &amp;quot;deep&amp;quot;, minutes: 60) directly into task descriptions. This kept the metadata portable (even if messy) and avoided extra DB schema migrations.&lt;br /&gt; – I built a multi-tier AI system using Claude for natural language input (like “I have 30 minutes and medium energy”), OpenAI for the recommendation logic, and an MCP server to manage communication between components.&lt;br /&gt; – A Go HTTP client with retry logic and structured logging handles interactions with the task system reliably. &lt;/p&gt; &lt;p&gt;• What Worked &amp;amp; What Didn’t:&lt;br /&gt; - Energy levels and focus modes (&amp;quot;deep&amp;quot;, &amp;quot;quick&amp;quot;, &amp;quot;admin&amp;quot;) helped the AI recommend tasks that truly matched my state.&lt;br /&gt; - The advice changed from “classic generic filtering” to a nuanced suggestion with reasoning (e.g., “This task is a good match because it builds on yesterday’s work and fits a low-energy slot.”)&lt;br /&gt; - However, the idea of embedding JSON in task descriptions, while convenient, made them messier. Also, the system still lacks outcome tracking (it doesn’t yet know if the choice was “right”) or context switching support. &lt;/p&gt; &lt;p&gt;• A Glimpse at the Code:&lt;br /&gt; Imagine having a task description like this in Vikunja:&lt;br /&gt; Fix the deployment pipeline timeout issue&lt;br /&gt; { &amp;quot;energy&amp;quot;: &amp;quot;high&amp;quot;, &amp;quot;mode&amp;quot;: &amp;quot;deep&amp;quot;, &amp;quot;extend&amp;quot;: true, &amp;quot;minutes&amp;quot;: 60 }&lt;br /&gt; The system parses out the JSON, feeds it into the AI modules, and recommends the best next step based on your current state. &lt;/p&gt; &lt;p&gt;I’d love to know:&lt;br /&gt; • Has anyone else built self-improving productivity tools with similar “hacky” approaches?&lt;br /&gt; • How do you manage metadata or extra task context without over-complicating your data model?&lt;br /&gt; • What are your experiences integrating multiple LLMs (I used both Claude and OpenAI) in a single workflow? &lt;/p&gt; &lt;p&gt;The full story (with more technical details on the MCP server and Go client implementation) is available on my [blog](&lt;a href="https://blog.gilblinov.com/posts/ai-task-recommender-choice-paralysis/"&gt;https://blog.gilblinov.com/posts/ai-task-recommender-choice-paralysis/&lt;/a&gt;) and [GitHub repository](&lt;a href="https://github.com/BelKirill/vikunja-mcp"&gt;https://github.com/BelKirill/vikunja-mcp&lt;/a&gt;) if you’re curious—but I’m really looking forward to discussing design decisions, improvements, or alternative strategies you all have tried. &lt;/p&gt; &lt;p&gt;Looking forward to your thoughts and questions—let’s discuss how we can truly hack our productivity challenges! &lt;/p&gt; &lt;p&gt;Cheers,&lt;br /&gt; Kirill&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/BelKirill"&gt; /u/BelKirill &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lclkxn/multi_tier_ai_project_management_mcp_server/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lclkxn/multi_tier_ai_project_management_mcp_server/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lclkxn/multi_tier_ai_project_management_mcp_server/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-16T06:16:33+00:00</published>
   </entry>
   <entry>
     <id>t3_1lccsqf</id>
