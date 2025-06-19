@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-19T16:52:08+00:00</updated>
+  <updated>2025-06-19T17:05:46+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1le81tq</id>
-    <title>MCP is a security joke</title>
-    <updated>2025-06-18T04:23:53+00:00</updated>
-    <author>
-      <name>/u/Aadeetya</name>
-      <uri>https://old.reddit.com/user/Aadeetya</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;One sketchy GitHub issue and your agent can leak private code. This isn’t a clever exploit. It’s just how MCP works right now.&lt;/p&gt; &lt;p&gt;There’s no sandboxing. No proper scoping. And worst of all, no observability. You have no idea what these agents are doing behind the scenes until something breaks.&lt;/p&gt; &lt;p&gt;We’re hooking up powerful tools to untrusted input and calling it a protocol. It’s not. It’s a security hole waiting to happen.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Aadeetya"&gt; /u/Aadeetya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1le81tq/mcp_is_a_security_joke/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1le81tq/mcp_is_a_security_joke/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1le81tq/mcp_is_a_security_joke/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-18T04:23:53+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lf5ewr</id>
     <title>Materials Project MCP – A tool for querying and analyzing materials data from the Materials Project database using natural language prompts, enabling materials scientists to explore properties, structures, and compositions of materials through conversational interfaces.</title>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lf83xp/cloudsmith_are_experimenting_in_mcpdriven_package/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-19T11:10:35+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lffrbh</id>
+    <title>[Release] Content Core MCP Server - Extract content from URLs, documents, videos &amp; audio via MCP</title>
+    <updated>2025-06-19T16:52:34+00:00</updated>
+    <author>
+      <name>/u/lfnovo</name>
+      <uri>https://old.reddit.com/user/lfnovo</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone! 👋&lt;/p&gt; &lt;p&gt;I'm excited to share Content Core, a new MCP (Model Context Protocol) server that brings powerful content extraction capabilities directly to Claude Desktop and other MCP-compatible apps.&lt;/p&gt; &lt;p&gt;🚀 What it does&lt;/p&gt; &lt;p&gt;Content Core lets you extract content from practically any source: - Web pages (including complex sites with smart fallbacks) - Documents (PDFs, Word docs, EPUB, PowerPoints, Excel files) - Videos &amp;amp; Audio (YouTube transcripts, MP4/MP3 transcription) - Images (OCR text extraction)&lt;/p&gt; &lt;p&gt;🔧 Key Features&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Zero-install option: Run with uvx - no local installation needed&lt;/li&gt; &lt;li&gt;Intelligent engine selection: Auto-picks the best extraction method (Docling included)&lt;/li&gt; &lt;li&gt;Structured JSON responses: Consistent format with rich metadata&lt;/li&gt; &lt;li&gt;Fallback system: Firecrawl → Jina → BeautifulSoup for web content- Local processing: Your data stays private&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;⚡ Quick Setup&lt;/p&gt; &lt;h1&gt;Zero-install with uvx&lt;/h1&gt; &lt;p&gt;uvx --from &amp;quot;content-core[mcp]&amp;quot; content-core-mcp&lt;/p&gt; &lt;p&gt;Add to Claude Desktop config:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;content-core&amp;quot;: { &amp;quot;command&amp;quot;: &amp;quot;uvx&amp;quot;, &amp;quot;args&amp;quot;: [&amp;quot;--from&amp;quot;, &amp;quot;content-core[mcp]&amp;quot;, &amp;quot;content-core-mcp&amp;quot;], &amp;quot;env&amp;quot;: { &amp;quot;OPENAI_API_KEY&amp;quot;: &amp;quot;your-key-for-audio-video&amp;quot; } } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;🐍 Python Library Too!&lt;/p&gt; &lt;p&gt;Content Core isn't just an MCP server - it's also a standalone Python library you can use in any project:&lt;/p&gt; &lt;p&gt;```python import content_core as cc&lt;/p&gt; &lt;p&gt;# Extract from any source result = await cc.extract(&amp;quot;&lt;a href="https://example.com/article%22"&gt;https://example.com/article&amp;quot;&lt;/a&gt;) content = await cc.extract(&amp;quot;/path/to/document.pdf&amp;quot;) transcript = await cc.extract(&amp;quot;/path/to/video.mp4&amp;quot;)&lt;/p&gt; &lt;p&gt;# Clean and summarize cleaned = await cc.clean(messy_content) summary = await cc.summarize_content(long_text, context=&amp;quot;bullet points&amp;quot;) ```&lt;/p&gt; &lt;p&gt;Perfect for RAG pipelines, data processing, or any project needing robust content extraction.&lt;/p&gt; &lt;p&gt;🔗 Links&lt;/p&gt; &lt;ul&gt; &lt;li&gt;GitHub: &lt;a href="https://github.com/lfnovo/content-core"&gt;https://github.com/lfnovo/content-core&lt;/a&gt;&lt;/li&gt; &lt;li&gt;PyPI: pip install content-core[mcp]&lt;/li&gt; &lt;li&gt;MCP Documentation: &lt;a href="https://github.com/lfnovo/content-core/blob/main/docs/mcp.md"&gt;https://github.com/lfnovo/content-core/blob/main/docs/mcp.md&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would love to hear your feedback and use cases! What content sources would you want to extract from?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/lfnovo"&gt; /u/lfnovo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lffrbh/release_content_core_mcp_server_extract_content/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lffrbh/release_content_core_mcp_server_extract_content/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lffrbh/release_content_core_mcp_server_extract_content/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-19T16:52:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1lf5pu4</id>
