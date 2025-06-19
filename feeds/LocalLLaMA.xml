@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-19T18:25:40+00:00</updated>
+  <updated>2025-06-19T18:41:50+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lfeam0</id>
-    <title>1-Bit LLM vs 1.58-Bit LLM</title>
-    <updated>2025-06-19T15:53:38+00:00</updated>
-    <author>
-      <name>/u/Vegetable_End_8935</name>
-      <uri>https://old.reddit.com/user/Vegetable_End_8935</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;1.58-bit LLM model is using terniary coding (-1, 0, +1) for the coefficients, where as 1-bit models are using binary coding (-1, +1) for the coefficients. In practice the terniary 1.58 bit coding is done using 2 bits of information.&lt;/p&gt; &lt;p&gt;The problem with 1-bit coefficients is that it is not possible to represent a zero, where as in terniary coding is possible to represent a zero value precisely.&lt;/p&gt; &lt;p&gt;However, it is possible to represent a value of zero using 1-bit coefficients with coding values (-1, +1), and get the benefits of terniary representation: The original terniary coefficient of -1, 0, +1 can be represented by using two 1-bit operations.&lt;/p&gt; &lt;p&gt;Let's assume that we would want to multiply a number A using a terniary multiplier with values of (-1, 0, +1). We can achieve this by using two 1-bit operations:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;(+1 * A) + (+1 * A) = +2A&lt;/li&gt; &lt;li&gt;(-1 * A) + (-1 * A) = -2A&lt;/li&gt; &lt;li&gt;(+1 * A) + (-1 * A) = 0&lt;/li&gt; &lt;li&gt;(-1 * A) + (+1 * A) = 0.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;This approach essentially decomposes each ternary weight into two binary operations that can represent the same three states:&lt;/p&gt; &lt;p&gt;+1: Use (+1, +1) → 2A → A (after scaling)&lt;/p&gt; &lt;p&gt;-1: Use (-1, -1) → -2A → -A (after scaling)&lt;/p&gt; &lt;p&gt;0: Use (+1, -1) or (-1, +1) → 0&lt;/p&gt; &lt;p&gt;The key advantages of this decomposition are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;True 1-bit storage: Each binary coefficient only needs 1 bit, so two coefficients need 2 bits total - the same as storing one ternary value, but without wasting bit combinations.&lt;/li&gt; &lt;li&gt;Hardware efficiency: Binary multiplications are much simpler than ternary operations in hardware. Multiplying by -1 or +1 is just sign flipping or pass-through.&lt;/li&gt; &lt;li&gt;Maintains expressiveness: Preserves the key benefit of ternary (precise zero representation) while using only binary operations.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Would this approach provide practical advantages over the existing 1.58-bit or 1-bit LLM implementations in terms of computing power and efficiency? What do you think?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Vegetable_End_8935"&gt; /u/Vegetable_End_8935 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfeam0/1bit_llm_vs_158bit_llm/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfeam0/1bit_llm_vs_158bit_llm/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfeam0/1bit_llm_vs_158bit_llm/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T15:53:38+00:00</published>
-  </entry>
   <entry>
     <id>t3_1leod7d</id>
     <title>OpenAI found features in AI models that correspond to different ‘personas’</title>
@@ -112,17 +99,17 @@
     <published>2025-06-19T01:34:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lfhjja</id>
-    <title>New Finnish models (Poro 2) based on Llama 3.1 8B and 70B</title>
-    <updated>2025-06-19T18:02:04+00:00</updated>
+    <id>t3_1lficpj</id>
+    <title>Kyutai's STT with semantic VAD now opensource</title>
+    <updated>2025-06-19T18:33:58+00:00</updated>
     <author>
-      <name>/u/mpasila</name>
-      <uri>https://old.reddit.com/user/mpasila</uri>
+      <name>/u/phhusson</name>
+      <uri>https://old.reddit.com/user/phhusson</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Poro 2 models are based on Llama 3.1 for both 8B and 70B versions. They've been continually pre-trained on 165B tokens using a carefully balanced mix of Finnish, English, code, and math data.&lt;/p&gt; &lt;p&gt;In my opinion they perform better than Gemma 3 at least when it comes to Finnish. Gemma 3 is probably still smarter but won't work as well for Finnish. It's also much better at Finnish when comparing to Llama 3.1. Especially the 8B model is a huge difference. Other new models generally suck at Finnish besides DeepSeekV3/R1, so this is a pretty good release for GPU poor people.&lt;/p&gt; &lt;p&gt;Poro 2 Collection:&lt;br /&gt; &lt;a href="https://huggingface.co/collections/LumiOpen/poro-2-6835bec8186e98712b061f02"&gt;https://huggingface.co/collections/LumiOpen/poro-2-6835bec8186e98712b061f02&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUFs (only for Instruct):&lt;br /&gt; &lt;a href="https://huggingface.co/mradermacher/Llama-Poro-2-70B-Instruct-GGUF"&gt;https://huggingface.co/mradermacher/Llama-Poro-2-70B-Instruct-GGUF&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/mradermacher/Llama-Poro-2-8B-Instruct-GGUF"&gt;https://huggingface.co/mradermacher/Llama-Poro-2-8B-Instruct-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mpasila"&gt; /u/mpasila &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Kyutai published their latest tech demo few weeks ago, unmute.sh. It is an impressive voice-to-voice assistant using a 3rd-party text-to-text LLM (gemma), while retaining the conversation low latency of Moshi.&lt;/p&gt; &lt;p&gt;They are currently opensourcing the various components for that.&lt;/p&gt; &lt;p&gt;The first component they opensourced is their STT, available at &lt;a href="https://github.com/kyutai-labs/delayed-streams-modeling"&gt;https://github.com/kyutai-labs/delayed-streams-modeling&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The best feature of that STT is Semantic VAD. In a local assistant, the VAD is a component that determines when to stop listening to a request. Most local VAD are sadly not very sophisticated, and won't allow you to pause or think in the middle of your sentence.&lt;/p&gt; &lt;p&gt;The Semantic VAD in Kyutai's STT will allow local assistant to be much more comfortable to use.&lt;/p&gt; &lt;p&gt;Hopefully we'll also get the streaming LLM integration and TTS from them soon, to be able to have our own low-latency local voice-to-voice assistant 🤞&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phhusson"&gt; /u/phhusson &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T18:02:04+00:00</published>
+    <published>2025-06-19T18:33:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfhdnb</id>
@@ -177,6 +164,19 @@
     <published>2025-06-19T16:27:11+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lfhjja</id>
+    <title>New Finnish models (Poro 2) based on Llama 3.1 8B and 70B</title>
+    <updated>2025-06-19T18:02:04+00:00</updated>
+    <author>
+      <name>/u/mpasila</name>
+      <uri>https://old.reddit.com/user/mpasila</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Poro 2 models are based on Llama 3.1 for both 8B and 70B versions. They've been continually pre-trained on 165B tokens using a carefully balanced mix of Finnish, English, code, and math data.&lt;/p&gt; &lt;p&gt;In my opinion they perform better than Gemma 3 at least when it comes to Finnish. Gemma 3 is probably still smarter but won't work as well for Finnish. It's also much better at Finnish when comparing to Llama 3.1. Especially the 8B model is a huge difference. Other new models generally suck at Finnish besides DeepSeekV3/R1, so this is a pretty good release for GPU poor people.&lt;/p&gt; &lt;p&gt;Poro 2 Collection:&lt;br /&gt; &lt;a href="https://huggingface.co/collections/LumiOpen/poro-2-6835bec8186e98712b061f02"&gt;https://huggingface.co/collections/LumiOpen/poro-2-6835bec8186e98712b061f02&lt;/a&gt;&lt;/p&gt; &lt;p&gt;GGUFs (only for Instruct):&lt;br /&gt; &lt;a href="https://huggingface.co/mradermacher/Llama-Poro-2-70B-Instruct-GGUF"&gt;https://huggingface.co/mradermacher/Llama-Poro-2-70B-Instruct-GGUF&lt;/a&gt;&lt;br /&gt; &lt;a href="https://huggingface.co/mradermacher/Llama-Poro-2-8B-Instruct-GGUF"&gt;https://huggingface.co/mradermacher/Llama-Poro-2-8B-Instruct-GGUF&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mpasila"&gt; /u/mpasila &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfhjja/new_finnish_models_poro_2_based_on_llama_31_8b/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T18:02:04+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lfeein</id>
     <title>[Project] DeepSeek-Based 15M-Parameter Model for Children’s Stories (Open Source)</title>
     <updated>2025-06-19T15:58:06+00:00</updated>
@@ -203,6 +203,19 @@
     <published>2025-06-19T01:59:17+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lfbqgw</id>
+    <title>Local AI setup 1x5090, 5x3090</title>
+    <updated>2025-06-19T14:08:38+00:00</updated>
+    <author>
+      <name>/u/Emergency_Fuel_2988</name>
+      <uri>https://old.reddit.com/user/Emergency_Fuel_2988</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt; &lt;img alt="Local AI setup 1x5090, 5x3090" src="https://a.thumbs.redditmedia.com/4j9dI7_6M7_J4HmChLe-I_nyPiLiYdWe2VXne3OTO88.jpg" title="Local AI setup 1x5090, 5x3090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/orhogvwgow7f1.png?width=2004&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6388beca42f8ede320b52252ebfc59fed1bcb171"&gt;https://preview.redd.it/orhogvwgow7f1.png?width=2004&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6388beca42f8ede320b52252ebfc59fed1bcb171&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/orbkwkvkow7f1.png?width=1872&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e1e41d0223bad473c21ff4618a8c15113d06bbf5"&gt;https://preview.redd.it/orbkwkvkow7f1.png?width=1872&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e1e41d0223bad473c21ff4618a8c15113d06bbf5&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/x25gl8mrqw7f1.png?width=1150&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=35bf80c636b87db84ea3bf203be424c9c0350c81"&gt;https://preview.redd.it/x25gl8mrqw7f1.png?width=1150&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=35bf80c636b87db84ea3bf203be424c9c0350c81&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rd8cy8mrqw7f1.png?width=808&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e8a641c5fe1582f4499ea1193d7267e805da6284"&gt;https://preview.redd.it/rd8cy8mrqw7f1.png?width=808&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e8a641c5fe1582f4499ea1193d7267e805da6284&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gxun35mrqw7f1.png?width=1018&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4c8b5ec6b6685230f3aeda1c21fbe3ca7d5c7b6"&gt;https://preview.redd.it/gxun35mrqw7f1.png?width=1018&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4c8b5ec6b6685230f3aeda1c21fbe3ca7d5c7b6&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I’ve been building lately: a local multi-model AI stack that’s getting kind of wild (in a good way)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Been heads-down working on a local AI stack that’s all about fast iteration and strong reasoning, fully running on consumer GPUs. It’s still evolving, but here’s what the current setup looks like:&lt;/p&gt; &lt;h1&gt;🧑‍💻 Coding Assistant&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; Devstral Q6 on LMStudio&lt;br /&gt; &lt;strong&gt;Specs:&lt;/strong&gt; Q4 KV cache, 128K context, running on a 5090&lt;br /&gt; Getting ~72 tokens/sec and still have 4GB VRAM free. Might try upping the quant if quality holds, or keep it as-is to push for a 40K token context experiment later.&lt;/p&gt; &lt;h1&gt;🧠 Reasoning Engine&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; Magistral Q4 on LMStudio&lt;br /&gt; &lt;strong&gt;Specs:&lt;/strong&gt; Q8 KV cache, 128K context, running on a single 3090&lt;br /&gt; Tuned more for heavy-duty reasoning tasks. Performs effectively up to 40K context.&lt;/p&gt; &lt;h1&gt;🧪 Eval + Experimentation&lt;/h1&gt; &lt;p&gt;Using local Arize Phoenix for evals, tracing, and tweaking. Super useful to visualize what’s actually happening under the hood.&lt;/p&gt; &lt;h1&gt;📁 Codebase Indexing&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Using:&lt;/strong&gt; Roo Code&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen3 8B embedding model, FP16, 40K context, 4096D embeddings&lt;/li&gt; &lt;li&gt;Running on a dedicated 3090&lt;/li&gt; &lt;li&gt;Talking to Qdrant (GPU mode), though having a minor issue where embedding vectors aren’t passing through cleanly—might just need to dig into what’s getting sent/received.&lt;/li&gt; &lt;li&gt;Would love a way to dedicate &lt;em&gt;part&lt;/em&gt; of a GPU just to embedding workloads. Anyone done that? ✅ Indexing status: green&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;🔜 What’s next&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Testing &lt;strong&gt;Kimi-Dev 72B&lt;/strong&gt; (EXL3 quant @ 5bpw, layer split) across 3x3090s—two for layers, one for the context window—via TextGenWebUI or vLLM on WSL2&lt;/li&gt; &lt;li&gt;Also experimenting with an &lt;strong&gt;8B reranker model&lt;/strong&gt; on a single 3090 to improve retrieval quality, still playing around with where it best fits in the workflow&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This stack is definitely becoming a bit of a GPU jungle, but the speed and flexibility it gives are worth it.&lt;/p&gt; &lt;p&gt;If you're working on similar local inference workflows—or know a good way to do smart GPU assignment in multi-model setups—I’m super interested in this one challenge:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;When a smaller model fails (say, after 3 tries), auto-escalate to a larger model with the same context, and save the larger model’s response as a reference for the smaller one in the future.&lt;/strong&gt; Would be awesome to see something like that integrated into Roo Code.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Emergency_Fuel_2988"&gt; /u/Emergency_Fuel_2988 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T14:08:38+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lfetix</id>
     <title>Computer-Use on Windows Sandbox</title>
     <updated>2025-06-19T16:14:44+00:00</updated>
@@ -227,19 +240,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfgp3i/run_deepseek_locally_on_a_24g_gpu_quantizing_on/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T17:28:59+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lfbqgw</id>
-    <title>Local AI setup 1x5090, 5x3090</title>
-    <updated>2025-06-19T14:08:38+00:00</updated>
-    <author>
-      <name>/u/Emergency_Fuel_2988</name>
-      <uri>https://old.reddit.com/user/Emergency_Fuel_2988</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt; &lt;img alt="Local AI setup 1x5090, 5x3090" src="https://a.thumbs.redditmedia.com/4j9dI7_6M7_J4HmChLe-I_nyPiLiYdWe2VXne3OTO88.jpg" title="Local AI setup 1x5090, 5x3090" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/orhogvwgow7f1.png?width=2004&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6388beca42f8ede320b52252ebfc59fed1bcb171"&gt;https://preview.redd.it/orhogvwgow7f1.png?width=2004&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=6388beca42f8ede320b52252ebfc59fed1bcb171&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/orbkwkvkow7f1.png?width=1872&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e1e41d0223bad473c21ff4618a8c15113d06bbf5"&gt;https://preview.redd.it/orbkwkvkow7f1.png?width=1872&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e1e41d0223bad473c21ff4618a8c15113d06bbf5&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/x25gl8mrqw7f1.png?width=1150&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=35bf80c636b87db84ea3bf203be424c9c0350c81"&gt;https://preview.redd.it/x25gl8mrqw7f1.png?width=1150&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=35bf80c636b87db84ea3bf203be424c9c0350c81&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rd8cy8mrqw7f1.png?width=808&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e8a641c5fe1582f4499ea1193d7267e805da6284"&gt;https://preview.redd.it/rd8cy8mrqw7f1.png?width=808&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=e8a641c5fe1582f4499ea1193d7267e805da6284&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/gxun35mrqw7f1.png?width=1018&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4c8b5ec6b6685230f3aeda1c21fbe3ca7d5c7b6"&gt;https://preview.redd.it/gxun35mrqw7f1.png?width=1018&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=b4c8b5ec6b6685230f3aeda1c21fbe3ca7d5c7b6&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I’ve been building lately: a local multi-model AI stack that’s getting kind of wild (in a good way)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Been heads-down working on a local AI stack that’s all about fast iteration and strong reasoning, fully running on consumer GPUs. It’s still evolving, but here’s what the current setup looks like:&lt;/p&gt; &lt;h1&gt;🧑‍💻 Coding Assistant&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; Devstral Q6 on LMStudio&lt;br /&gt; &lt;strong&gt;Specs:&lt;/strong&gt; Q4 KV cache, 128K context, running on a 5090&lt;br /&gt; Getting ~72 tokens/sec and still have 4GB VRAM free. Might try upping the quant if quality holds, or keep it as-is to push for a 40K token context experiment later.&lt;/p&gt; &lt;h1&gt;🧠 Reasoning Engine&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; Magistral Q4 on LMStudio&lt;br /&gt; &lt;strong&gt;Specs:&lt;/strong&gt; Q8 KV cache, 128K context, running on a single 3090&lt;br /&gt; Tuned more for heavy-duty reasoning tasks. Performs effectively up to 40K context.&lt;/p&gt; &lt;h1&gt;🧪 Eval + Experimentation&lt;/h1&gt; &lt;p&gt;Using local Arize Phoenix for evals, tracing, and tweaking. Super useful to visualize what’s actually happening under the hood.&lt;/p&gt; &lt;h1&gt;📁 Codebase Indexing&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Using:&lt;/strong&gt; Roo Code&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Qwen3 8B embedding model, FP16, 40K context, 4096D embeddings&lt;/li&gt; &lt;li&gt;Running on a dedicated 3090&lt;/li&gt; &lt;li&gt;Talking to Qdrant (GPU mode), though having a minor issue where embedding vectors aren’t passing through cleanly—might just need to dig into what’s getting sent/received.&lt;/li&gt; &lt;li&gt;Would love a way to dedicate &lt;em&gt;part&lt;/em&gt; of a GPU just to embedding workloads. Anyone done that? ✅ Indexing status: green&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;🔜 What’s next&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Testing &lt;strong&gt;Kimi-Dev 72B&lt;/strong&gt; (EXL3 quant @ 5bpw, layer split) across 3x3090s—two for layers, one for the context window—via TextGenWebUI or vLLM on WSL2&lt;/li&gt; &lt;li&gt;Also experimenting with an &lt;strong&gt;8B reranker model&lt;/strong&gt; on a single 3090 to improve retrieval quality, still playing around with where it best fits in the workflow&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This stack is definitely becoming a bit of a GPU jungle, but the speed and flexibility it gives are worth it.&lt;/p&gt; &lt;p&gt;If you're working on similar local inference workflows—or know a good way to do smart GPU assignment in multi-model setups—I’m super interested in this one challenge:&lt;/p&gt; &lt;p&gt;&lt;strong&gt;When a smaller model fails (say, after 3 tries), auto-escalate to a larger model with the same context, and save the larger model’s response as a reference for the smaller one in the future.&lt;/strong&gt; Would be awesome to see something like that integrated into Roo Code.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Emergency_Fuel_2988"&gt; /u/Emergency_Fuel_2988 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfbqgw/local_ai_setup_1x5090_5x3090/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T14:08:38+00:00</published>
   </entry>
   <entry>
     <id>t3_1lei5mb</id>
@@ -294,19 +294,6 @@
     <published>2025-06-19T15:45:12+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lf9wof</id>
-    <title>Explain AI and MCP to a 5 year old in the 90s</title>
-    <updated>2025-06-19T12:45:32+00:00</updated>
-    <author>
-      <name>/u/cov_id19</name>
-      <uri>https://old.reddit.com/user/cov_id19</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt; &lt;img alt="Explain AI and MCP to a 5 year old in the 90s" src="https://external-preview.redd.it/64oqjh3Mi1lX6NMRJ57nKz9L5oT26BTAsIGTdNtrvn8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=edf2b1569a37ddebb64bb52fbe85643cb9a0b4ec" title="Explain AI and MCP to a 5 year old in the 90s" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cov_id19"&gt; /u/cov_id19 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1lf9wof"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T12:45:32+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lfgqkd</id>
     <title>Sam Altman says Meta offered OpenAI staff $100 million bonuses, as Mark Zuckerberg ramps up AI poaching efforts</title>
     <updated>2025-06-19T17:30:37+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfgqkd/sam_altman_says_meta_offered_openai_staff_100/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T17:30:37+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lf9wof</id>
+    <title>Explain AI and MCP to a 5 year old in the 90s</title>
+    <updated>2025-06-19T12:45:32+00:00</updated>
+    <author>
+      <name>/u/cov_id19</name>
+      <uri>https://old.reddit.com/user/cov_id19</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt; &lt;img alt="Explain AI and MCP to a 5 year old in the 90s" src="https://external-preview.redd.it/64oqjh3Mi1lX6NMRJ57nKz9L5oT26BTAsIGTdNtrvn8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=edf2b1569a37ddebb64bb52fbe85643cb9a0b4ec" title="Explain AI and MCP to a 5 year old in the 90s" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cov_id19"&gt; /u/cov_id19 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1lf9wof"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T12:45:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1lf5yog</id>
