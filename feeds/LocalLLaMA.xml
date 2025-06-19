@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-19T12:28:05+00:00</updated>
+  <updated>2025-06-19T12:51:10+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lexg9w</id>
-    <title>How to set up local llms on a 6700 xt</title>
-    <updated>2025-06-19T00:42:29+00:00</updated>
-    <author>
-      <name>/u/Electronic_Image1665</name>
-      <uri>https://old.reddit.com/user/Electronic_Image1665</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All right so I struggled for what’s gotta be about four or five weeks now to get local LLM’s running with my GPU which is a 6700 XT. After this process of about four weeks I finally got something working on windows so here is the guide in case anyone is interested:&lt;/p&gt; &lt;h1&gt;AMD RX 6700 XT LLM Setup Guide - KoboldCpp with GPU Acceleration&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Successfully tested on AMD Radeon RX 6700 XT (gfx1031) running Windows 11&lt;/strong&gt;&lt;/p&gt; &lt;h2&gt;Performance Results&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Generation Speed&lt;/strong&gt;: ~17 tokens/second&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Processing Speed&lt;/strong&gt;: ~540 tokens/second&lt;br /&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU Utilization&lt;/strong&gt;: 20/29 layers offloaded to GPU&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM Usage&lt;/strong&gt;: ~2.7GB&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context Size&lt;/strong&gt;: 4096 tokens&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;The Problem&lt;/h2&gt; &lt;p&gt;Most guides focus on ROCm setup, but AMD RX 6700 XT (gfx1031 architecture) has compatibility issues with ROCm on Windows. The solution is using &lt;strong&gt;Vulkan acceleration&lt;/strong&gt; instead, which provides excellent performance and stability.&lt;/p&gt; &lt;h2&gt;Prerequisites&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;AMD RX 6700 XT graphics card&lt;/li&gt; &lt;li&gt;Windows 10/11&lt;/li&gt; &lt;li&gt;At least 8GB system RAM&lt;/li&gt; &lt;li&gt;4-5GB free storage space&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;Step 1: Download KoboldCpp-ROCm&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Go to: &lt;a href="https://github.com/YellowRoseCx/koboldcpp-rocm/releases"&gt;https://github.com/YellowRoseCx/koboldcpp-rocm/releases&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Download the latest &lt;code&gt;koboldcpp_rocm.exe&lt;/code&gt; &lt;/li&gt; &lt;li&gt;Create folder: &lt;code&gt;C:\Users\[YourUsername]\llamafile_test\koboldcpp-rocm\&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Place the executable inside the &lt;code&gt;koboldcpp-rocm&lt;/code&gt; folder&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Step 2: Download a Model&lt;/h2&gt; &lt;p&gt;Download a GGUF model (recommended: 7B parameter models for RX 6700 XT): - Qwen2.5-Coder-7B-Instruct (recommended for coding) - Llama-3.1-8B-Instruct - Any other 7B-8B GGUF model&lt;/p&gt; &lt;p&gt;Place the &lt;code&gt;.gguf&lt;/code&gt; file in: &lt;code&gt;C:\Users\[YourUsername]\llamafile_test\&lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Step 3: Create Launch Script&lt;/h2&gt; &lt;p&gt;Create &lt;code&gt;start_koboldcpp_optimized.bat&lt;/code&gt; with this content:&lt;/p&gt; &lt;p&gt;```batch @echo off cd /d &amp;quot;C:\Users[YourUsername]\llamafile_test&amp;quot;&lt;/p&gt; &lt;p&gt;REM Kill any existing processes taskkill /F /IM koboldcpp-rocm.exe 2&amp;gt;nul&lt;/p&gt; &lt;p&gt;echo =============================================== echo KoboldCpp with Vulkan GPU Acceleration echo =============================================== echo Model: [your-model-name].gguf echo GPU: AMD RX 6700 XT via Vulkan echo GPU Layers: 20 echo Context: 4096 tokens echo Port: 5001 echo ===============================================&lt;/p&gt; &lt;p&gt;koboldcpp-rocm\koboldcpp-rocm.exe ^ --model &amp;quot;[your-model-name].gguf&amp;quot; ^ --host 127.0.0.1 ^ --port 5001 ^ --contextsize 4096 ^ --gpulayers 20 ^ --blasbatchsize 1024 ^ --blasthreads 4 ^ --highpriority ^ --skiplauncher&lt;/p&gt; &lt;p&gt;echo. echo Server running at: http://localhost:5001 echo Performance: ~17 tokens/second generation echo. pause ```&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Replace &lt;code&gt;[YourUsername]&lt;/code&gt; and &lt;code&gt;[your-model-name]&lt;/code&gt; with your actual values.&lt;/strong&gt;&lt;/p&gt; &lt;h2&gt;Step 4: Run and Verify&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Run the script&lt;/strong&gt;: Double-click &lt;code&gt;start_koboldcpp_optimized.bat&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Look for these success indicators&lt;/strong&gt;: &lt;code&gt; Auto Selected Vulkan Backend... ggml_vulkan: 0 = AMD Radeon RX 6700 XT (AMD proprietary driver) offloaded 20/29 layers to GPU Starting Kobold API on port 5001 &lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Open browser&lt;/strong&gt;: Navigate to http://localhost:5001&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Test generation&lt;/strong&gt;: Try generating some text to verify GPU acceleration&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Expected Output&lt;/h2&gt; &lt;p&gt;&lt;code&gt; Processing Prompt [BLAS] (XXX / XXX tokens) Generating (XXX / XXX tokens) [Time] CtxLimit:XXXX/4096, Process:X.XXs (500+ T/s), Generate:X.XXs (15-20 T/s) &lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Troubleshooting&lt;/h2&gt; &lt;h3&gt;If you get &amp;quot;ROCm failed&amp;quot; or crashes:&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Solution&lt;/strong&gt;: The script automatically falls back to Vulkan - this is expected and optimal&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Don't install ROCm&lt;/strong&gt; - it's not needed and can cause conflicts&lt;/li&gt; &lt;/ul&gt; &lt;h3&gt;If you get low performance (&amp;lt; 10 tokens/sec):&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Reduce GPU layers&lt;/strong&gt;: Change &lt;code&gt;--gpulayers 20&lt;/code&gt; to &lt;code&gt;--gpulayers 15&lt;/code&gt; or &lt;code&gt;--gpulayers 10&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Check VRAM&lt;/strong&gt;: Monitor GPU memory usage in Task Manager&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reduce context&lt;/strong&gt;: Change &lt;code&gt;--contextsize 4096&lt;/code&gt; to &lt;code&gt;--contextsize 2048&lt;/code&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h3&gt;If server won't start:&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Check port&lt;/strong&gt;: Change &lt;code&gt;--port 5001&lt;/code&gt; to &lt;code&gt;--port 5002&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Run as administrator&lt;/strong&gt;: Right-click script → &amp;quot;Run as administrator&amp;quot;&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Key Differences from Other Guides&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;No ROCm required&lt;/strong&gt;: Uses Vulkan instead of ROCm&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No environment variables needed&lt;/strong&gt;: Auto-detection works perfectly&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No compilation required&lt;/strong&gt;: Uses pre-built executable&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Optimized for gaming GPUs&lt;/strong&gt;: Settings tuned for consumer hardware&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Performance Comparison&lt;/h2&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Method&lt;/th&gt; &lt;th&gt;Setup Complexity&lt;/th&gt; &lt;th&gt;Performance&lt;/th&gt; &lt;th&gt;Stability&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;ROCm (typical guides)&lt;/td&gt; &lt;td&gt;High&lt;/td&gt; &lt;td&gt;Variable&lt;/td&gt; &lt;td&gt;Poor on gfx1031&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;strong&gt;Vulkan (this guide)&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;Low&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;17+ T/s&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;Excellent&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;CPU-only&lt;/td&gt; &lt;td&gt;Low&lt;/td&gt; &lt;td&gt;3-4 T/s&lt;/td&gt; &lt;td&gt;Good&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h2&gt;Final Notes&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;VRAM limit&lt;/strong&gt;: RX 6700 XT has 12GB, can handle up to ~28 GPU layers for 7B models&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context scaling&lt;/strong&gt;: Larger context (8192+) may require fewer GPU layers&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model size&lt;/strong&gt;: 13B models work but require fewer GPU layers (~10-15)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Stability&lt;/strong&gt;: Vulkan is more stable than ROCm for gaming GPUs&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This setup provides near-optimal performance for AMD RX 6700 XT without the complexity and instability of ROCm configuration.&lt;/p&gt; &lt;h2&gt;Support&lt;/h2&gt; &lt;p&gt;If you encounter issues: 1. Check Windows GPU drivers are up to date 2. Ensure you have latest Visual C++ redistributables 3. Try reducing &lt;code&gt;--gpulayers&lt;/code&gt; value if you run out of VRAM&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Tested Configuration&lt;/strong&gt;: Windows 11, AMD RX 6700 XT, 32GB RAM, AMD Ryzen 5 5600&lt;/p&gt; &lt;p&gt;Hope this helps!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic_Image1665"&gt; /u/Electronic_Image1665 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T00:42:29+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lex3pi</id>
     <title>How much is the 3090 on the used market in your country?</title>
@@ -32,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T00:25:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lf9zph</id>
+    <title>Chatbox AI Delisted from iOS App Store. Any good alternatives?</title>
+    <updated>2025-06-19T12:49:29+00:00</updated>
+    <author>
+      <name>/u/simracerman</name>
+      <uri>https://old.reddit.com/user/simracerman</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Not sure why it got delisted.. &lt;a href="https://chatboxai.app/en"&gt;https://chatboxai.app/en&lt;/a&gt;&lt;/p&gt; &lt;p&gt;What do you use to connect back to Llamacpp/Kobold/LM Studio?&lt;/p&gt; &lt;p&gt;Most of the apps require a ton of permissions.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/simracerman"&gt; /u/simracerman &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9zph/chatbox_ai_delisted_from_ios_app_store_any_good/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9zph/chatbox_ai_delisted_from_ios_app_store_any_good/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9zph/chatbox_ai_delisted_from_ios_app_store_any_good/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T12:49:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1leyvq5</id>
@@ -60,19 +60,6 @@
     <published>2025-06-18T15:26:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lexlsd</id>
-    <title>Best realtime open source STT model?</title>
-    <updated>2025-06-19T00:49:58+00:00</updated>
-    <author>
-      <name>/u/ThatIsNotIllegal</name>
-      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the best model to transcribe a conversation in realtime, meaning that the words have to appear as the person is talking.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T00:49:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lezxa9</id>
     <title>[Open] LMeterX - Professional Load Testing for Any OpenAI-Compatible LLM API</title>
     <updated>2025-06-19T02:45:45+00:00</updated>
@@ -84,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lezxa9/open_lmeterx_professional_load_testing_for_any/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T02:45:45+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lexlsd</id>
+    <title>Best realtime open source STT model?</title>
+    <updated>2025-06-19T00:49:58+00:00</updated>
+    <author>
+      <name>/u/ThatIsNotIllegal</name>
+      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the best model to transcribe a conversation in realtime, meaning that the words have to appear as the person is talking.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T00:49:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1lepjc5</id>
@@ -151,19 +151,6 @@
     <published>2025-06-18T19:29:31+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lemmsq</id>
-    <title>We took Qwen3 235B A22B from 34 tokens/sec to 54 tokens/sec by switching from llama.cpp with Unsloth dynamic Q4_K_M GGUF to vLLM with INT4 w4a16</title>
-    <updated>2025-06-18T17:09:31+00:00</updated>
-    <author>
-      <name>/u/__JockY__</name>
-      <uri>https://old.reddit.com/user/__JockY__</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;System: quad RTX A6000 Epyc. &lt;/p&gt; &lt;p&gt;Originally we were running the Unsloth dynamic GGUFs at UD_Q4_K_M and UD_Q5_K_XL with which we were getting speeds of 34 and 31 tokens/sec, respectively, for small-ish prompts of 1-2k tokens. &lt;/p&gt; &lt;p&gt;A couple of days ago we tried an experiment with another 4-bit quant type: INT 4, specifically w4a16, which is a 4-bit quant that's expanded and run at FP16. Or something. The wizard and witches will know better, forgive my butchering of LLM mechanics. This is the one we used: &lt;code&gt;justinjja/Qwen3-235B-A22B-INT4-W4A16&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The point is that w4a16 runs in vLLM and is a whopping 20 tokens/sec faster than Q4 in llama.cpp in like-for-like tests (as close as we could get without going crazy). &lt;/p&gt; &lt;p&gt;Does anyone know how w4a16 compares to Q4_K_M in terms of quantization quality? Are these 4-bit quants actually comparing apples to apples? Or are we sacrificing quality for speed? We'll do our own tests, but I'd like to hear opinions from the peanut gallery.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T17:09:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lf96ez</id>
     <title>Help me pick a PDF to Markdown/JSON converter pleaseeee</title>
     <updated>2025-06-19T12:09:24+00:00</updated>
@@ -177,17 +164,17 @@
     <published>2025-06-19T12:09:24+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lf9hq8</id>
-    <title>I just shipped an AI Voice Agent that replaced the entire cold calling team</title>
-    <updated>2025-06-19T12:24:58+00:00</updated>
+    <id>t3_1lemmsq</id>
+    <title>We took Qwen3 235B A22B from 34 tokens/sec to 54 tokens/sec by switching from llama.cpp with Unsloth dynamic Q4_K_M GGUF to vLLM with INT4 w4a16</title>
+    <updated>2025-06-18T17:09:31+00:00</updated>
     <author>
-      <name>/u/Agile_Baseball8351</name>
-      <uri>https://old.reddit.com/user/Agile_Baseball8351</uri>
+      <name>/u/__JockY__</name>
+      <uri>https://old.reddit.com/user/__JockY__</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9hq8/i_just_shipped_an_ai_voice_agent_that_replaced/"&gt; &lt;img alt="I just shipped an AI Voice Agent that replaced the entire cold calling team" src="https://b.thumbs.redditmedia.com/cEButYx9awemr4MrtoH4w0kh40exT1SAjvqxzeynkZM.jpg" title="I just shipped an AI Voice Agent that replaced the entire cold calling team" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/ap25f767nv7f1.png?width=1375&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=30462d11f4685b74033a9c2bc34abe0c122ca001"&gt;https://preview.redd.it/ap25f767nv7f1.png?width=1375&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=30462d11f4685b74033a9c2bc34abe0c122ca001&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Most automated-call setups are glorified IVRs:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;No real outbound calls&lt;/li&gt; &lt;li&gt;Freeze at objections&lt;/li&gt; &lt;li&gt;Can’t lock meetings or send follow-ups by email &lt;/li&gt; &lt;li&gt;Definitely can’t close deals or trigger payments&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;So I built a smarter one with &lt;strong&gt;a NO CODE voice agent&lt;/strong&gt; with 6 plugins. Rolled it out last week for a mid-size healthcare clinic, and here’s what it handles from them now:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;24/7 inbound:&lt;/strong&gt; every call answered, zero hold music.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Smart triage:&lt;/strong&gt; checks doctor availability, books the slot and send a calendar invite, then emails + messages the patient the details.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Post-visit feedback:&lt;/strong&gt; calls back after the appointment, grabs NPS in under a minute.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Under the hood it’s the same multi-agent stack I use for outbound SDR work: &lt;strong&gt;Superu AI&lt;/strong&gt; grabs form data, scrapes public info, writes context-aware scripts on the fly, branches when the caller changes topic, and logs everything to the CRM. &lt;/p&gt; &lt;p&gt;My role?&lt;br /&gt; We'll building an agent that talks is just a few min. task. &lt;/p&gt; &lt;p&gt;Shaping the agent to handle the queries, random questions and detailed info on the topic all this is done through the prompting which took me 3 days of hit and trail to make it talk like this.&lt;/p&gt; &lt;p&gt;Ofcourse it can be done better just spend more time in fining your promt.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Week-one stats:&lt;/strong&gt; zero missed calls, 72 % booking rate, receptionist finally free to help walk-ins.&lt;/p&gt; &lt;p&gt;I can see a lot of business opportunities for folks like us dealing with even local business can make us good bucks&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Agile_Baseball8351"&gt; /u/Agile_Baseball8351 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9hq8/i_just_shipped_an_ai_voice_agent_that_replaced/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9hq8/i_just_shipped_an_ai_voice_agent_that_replaced/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9hq8/i_just_shipped_an_ai_voice_agent_that_replaced/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;System: quad RTX A6000 Epyc. &lt;/p&gt; &lt;p&gt;Originally we were running the Unsloth dynamic GGUFs at UD_Q4_K_M and UD_Q5_K_XL with which we were getting speeds of 34 and 31 tokens/sec, respectively, for small-ish prompts of 1-2k tokens. &lt;/p&gt; &lt;p&gt;A couple of days ago we tried an experiment with another 4-bit quant type: INT 4, specifically w4a16, which is a 4-bit quant that's expanded and run at FP16. Or something. The wizard and witches will know better, forgive my butchering of LLM mechanics. This is the one we used: &lt;code&gt;justinjja/Qwen3-235B-A22B-INT4-W4A16&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The point is that w4a16 runs in vLLM and is a whopping 20 tokens/sec faster than Q4 in llama.cpp in like-for-like tests (as close as we could get without going crazy). &lt;/p&gt; &lt;p&gt;Does anyone know how w4a16 compares to Q4_K_M in terms of quantization quality? Are these 4-bit quants actually comparing apples to apples? Or are we sacrificing quality for speed? We'll do our own tests, but I'd like to hear opinions from the peanut gallery.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T12:24:58+00:00</published>
+    <published>2025-06-18T17:09:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1lenf36</id>
@@ -227,6 +214,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf6nvw/mixture_of_adversaries/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T09:39:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lf9wof</id>
+    <title>Explain AI and MCP to a 5 year old in the 90s</title>
+    <updated>2025-06-19T12:45:32+00:00</updated>
+    <author>
+      <name>/u/cov_id19</name>
+      <uri>https://old.reddit.com/user/cov_id19</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt; &lt;img alt="Explain AI and MCP to a 5 year old in the 90s" src="https://external-preview.redd.it/64oqjh3Mi1lX6NMRJ57nKz9L5oT26BTAsIGTdNtrvn8.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=edf2b1569a37ddebb64bb52fbe85643cb9a0b4ec" title="Explain AI and MCP to a 5 year old in the 90s" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/cov_id19"&gt; /u/cov_id19 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1lf9wof"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lf9wof/explain_ai_and_mcp_to_a_5_year_old_in_the_90s/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T12:45:32+00:00</published>
   </entry>
   <entry>
     <id>t3_1leod7d</id>
