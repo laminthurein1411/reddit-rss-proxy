@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-19T01:36:45+00:00</updated>
+  <updated>2025-06-19T02:25:13+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lexg9w</id>
-    <title>How to set up local llms on a 6700 xt</title>
-    <updated>2025-06-19T00:42:29+00:00</updated>
-    <author>
-      <name>/u/Electronic_Image1665</name>
-      <uri>https://old.reddit.com/user/Electronic_Image1665</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All right so I struggled for what’s gotta be about four or five weeks now to get local LLM’s running with my GPU which is a 6700 XT. After this process of about four weeks I finally got something working on windows so here is the guide in case anyone is interested:&lt;/p&gt; &lt;h1&gt;AMD RX 6700 XT LLM Setup Guide - KoboldCpp with GPU Acceleration&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Successfully tested on AMD Radeon RX 6700 XT (gfx1031) running Windows 11&lt;/strong&gt;&lt;/p&gt; &lt;h2&gt;Performance Results&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Generation Speed&lt;/strong&gt;: ~17 tokens/second&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Processing Speed&lt;/strong&gt;: ~540 tokens/second&lt;br /&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;GPU Utilization&lt;/strong&gt;: 20/29 layers offloaded to GPU&lt;/li&gt; &lt;li&gt;&lt;strong&gt;VRAM Usage&lt;/strong&gt;: ~2.7GB&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context Size&lt;/strong&gt;: 4096 tokens&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;The Problem&lt;/h2&gt; &lt;p&gt;Most guides focus on ROCm setup, but AMD RX 6700 XT (gfx1031 architecture) has compatibility issues with ROCm on Windows. The solution is using &lt;strong&gt;Vulkan acceleration&lt;/strong&gt; instead, which provides excellent performance and stability.&lt;/p&gt; &lt;h2&gt;Prerequisites&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;AMD RX 6700 XT graphics card&lt;/li&gt; &lt;li&gt;Windows 10/11&lt;/li&gt; &lt;li&gt;At least 8GB system RAM&lt;/li&gt; &lt;li&gt;4-5GB free storage space&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;Step 1: Download KoboldCpp-ROCm&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Go to: &lt;a href="https://github.com/YellowRoseCx/koboldcpp-rocm/releases"&gt;https://github.com/YellowRoseCx/koboldcpp-rocm/releases&lt;/a&gt;&lt;/li&gt; &lt;li&gt;Download the latest &lt;code&gt;koboldcpp_rocm.exe&lt;/code&gt; &lt;/li&gt; &lt;li&gt;Create folder: &lt;code&gt;C:\Users\[YourUsername]\llamafile_test\koboldcpp-rocm\&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Place the executable inside the &lt;code&gt;koboldcpp-rocm&lt;/code&gt; folder&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Step 2: Download a Model&lt;/h2&gt; &lt;p&gt;Download a GGUF model (recommended: 7B parameter models for RX 6700 XT): - Qwen2.5-Coder-7B-Instruct (recommended for coding) - Llama-3.1-8B-Instruct - Any other 7B-8B GGUF model&lt;/p&gt; &lt;p&gt;Place the &lt;code&gt;.gguf&lt;/code&gt; file in: &lt;code&gt;C:\Users\[YourUsername]\llamafile_test\&lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Step 3: Create Launch Script&lt;/h2&gt; &lt;p&gt;Create &lt;code&gt;start_koboldcpp_optimized.bat&lt;/code&gt; with this content:&lt;/p&gt; &lt;p&gt;```batch @echo off cd /d &amp;quot;C:\Users[YourUsername]\llamafile_test&amp;quot;&lt;/p&gt; &lt;p&gt;REM Kill any existing processes taskkill /F /IM koboldcpp-rocm.exe 2&amp;gt;nul&lt;/p&gt; &lt;p&gt;echo =============================================== echo KoboldCpp with Vulkan GPU Acceleration echo =============================================== echo Model: [your-model-name].gguf echo GPU: AMD RX 6700 XT via Vulkan echo GPU Layers: 20 echo Context: 4096 tokens echo Port: 5001 echo ===============================================&lt;/p&gt; &lt;p&gt;koboldcpp-rocm\koboldcpp-rocm.exe ^ --model &amp;quot;[your-model-name].gguf&amp;quot; ^ --host 127.0.0.1 ^ --port 5001 ^ --contextsize 4096 ^ --gpulayers 20 ^ --blasbatchsize 1024 ^ --blasthreads 4 ^ --highpriority ^ --skiplauncher&lt;/p&gt; &lt;p&gt;echo. echo Server running at: http://localhost:5001 echo Performance: ~17 tokens/second generation echo. pause ```&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Replace &lt;code&gt;[YourUsername]&lt;/code&gt; and &lt;code&gt;[your-model-name]&lt;/code&gt; with your actual values.&lt;/strong&gt;&lt;/p&gt; &lt;h2&gt;Step 4: Run and Verify&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Run the script&lt;/strong&gt;: Double-click &lt;code&gt;start_koboldcpp_optimized.bat&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Look for these success indicators&lt;/strong&gt;: &lt;code&gt; Auto Selected Vulkan Backend... ggml_vulkan: 0 = AMD Radeon RX 6700 XT (AMD proprietary driver) offloaded 20/29 layers to GPU Starting Kobold API on port 5001 &lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Open browser&lt;/strong&gt;: Navigate to http://localhost:5001&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Test generation&lt;/strong&gt;: Try generating some text to verify GPU acceleration&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Expected Output&lt;/h2&gt; &lt;p&gt;&lt;code&gt; Processing Prompt [BLAS] (XXX / XXX tokens) Generating (XXX / XXX tokens) [Time] CtxLimit:XXXX/4096, Process:X.XXs (500+ T/s), Generate:X.XXs (15-20 T/s) &lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Troubleshooting&lt;/h2&gt; &lt;h3&gt;If you get &amp;quot;ROCm failed&amp;quot; or crashes:&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Solution&lt;/strong&gt;: The script automatically falls back to Vulkan - this is expected and optimal&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Don't install ROCm&lt;/strong&gt; - it's not needed and can cause conflicts&lt;/li&gt; &lt;/ul&gt; &lt;h3&gt;If you get low performance (&amp;lt; 10 tokens/sec):&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Reduce GPU layers&lt;/strong&gt;: Change &lt;code&gt;--gpulayers 20&lt;/code&gt; to &lt;code&gt;--gpulayers 15&lt;/code&gt; or &lt;code&gt;--gpulayers 10&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Check VRAM&lt;/strong&gt;: Monitor GPU memory usage in Task Manager&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Reduce context&lt;/strong&gt;: Change &lt;code&gt;--contextsize 4096&lt;/code&gt; to &lt;code&gt;--contextsize 2048&lt;/code&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h3&gt;If server won't start:&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Check port&lt;/strong&gt;: Change &lt;code&gt;--port 5001&lt;/code&gt; to &lt;code&gt;--port 5002&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Run as administrator&lt;/strong&gt;: Right-click script → &amp;quot;Run as administrator&amp;quot;&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Key Differences from Other Guides&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;No ROCm required&lt;/strong&gt;: Uses Vulkan instead of ROCm&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No environment variables needed&lt;/strong&gt;: Auto-detection works perfectly&lt;/li&gt; &lt;li&gt;&lt;strong&gt;No compilation required&lt;/strong&gt;: Uses pre-built executable&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Optimized for gaming GPUs&lt;/strong&gt;: Settings tuned for consumer hardware&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Performance Comparison&lt;/h2&gt; &lt;table&gt;&lt;thead&gt; &lt;tr&gt; &lt;th&gt;Method&lt;/th&gt; &lt;th&gt;Setup Complexity&lt;/th&gt; &lt;th&gt;Performance&lt;/th&gt; &lt;th&gt;Stability&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt;&lt;tbody&gt; &lt;tr&gt; &lt;td&gt;ROCm (typical guides)&lt;/td&gt; &lt;td&gt;High&lt;/td&gt; &lt;td&gt;Variable&lt;/td&gt; &lt;td&gt;Poor on gfx1031&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;strong&gt;Vulkan (this guide)&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;Low&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;17+ T/s&lt;/strong&gt;&lt;/td&gt; &lt;td&gt;&lt;strong&gt;Excellent&lt;/strong&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;CPU-only&lt;/td&gt; &lt;td&gt;Low&lt;/td&gt; &lt;td&gt;3-4 T/s&lt;/td&gt; &lt;td&gt;Good&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;h2&gt;Final Notes&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;VRAM limit&lt;/strong&gt;: RX 6700 XT has 12GB, can handle up to ~28 GPU layers for 7B models&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Context scaling&lt;/strong&gt;: Larger context (8192+) may require fewer GPU layers&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Model size&lt;/strong&gt;: 13B models work but require fewer GPU layers (~10-15)&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Stability&lt;/strong&gt;: Vulkan is more stable than ROCm for gaming GPUs&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This setup provides near-optimal performance for AMD RX 6700 XT without the complexity and instability of ROCm configuration.&lt;/p&gt; &lt;h2&gt;Support&lt;/h2&gt; &lt;p&gt;If you encounter issues: 1. Check Windows GPU drivers are up to date 2. Ensure you have latest Visual C++ redistributables 3. Try reducing &lt;code&gt;--gpulayers&lt;/code&gt; value if you run out of VRAM&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Tested Configuration&lt;/strong&gt;: Windows 11, AMD RX 6700 XT, 32GB RAM, AMD Ryzen 5 5600&lt;/p&gt; &lt;p&gt;Hope this helps!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Electronic_Image1665"&gt; /u/Electronic_Image1665 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexg9w/how_to_set_up_local_llms_on_a_6700_xt/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T00:42:29+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1leuz0z</id>
-    <title>LocalBuddys - Local Friends For Everyone (But need help)</title>
-    <updated>2025-06-18T22:45:56+00:00</updated>
-    <author>
-      <name>/u/Dismal-Cupcake-3641</name>
-      <uri>https://old.reddit.com/user/Dismal-Cupcake-3641</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leuz0z/localbuddys_local_friends_for_everyone_but_need/"&gt; &lt;img alt="LocalBuddys - Local Friends For Everyone (But need help)" src="https://b.thumbs.redditmedia.com/OQZIVUA83N007IrACsqroCQk8qML6_WUgf8WOnSgW1g.jpg" title="LocalBuddys - Local Friends For Everyone (But need help)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;LocalBuddys has a lightweight interface that works on every device and works locally to ensure data security and not depend on any API.&lt;br /&gt; It is currently designed to be connected from other devices, using your laptop or computer as a main server.&lt;br /&gt; I am thinking of raising funds on Kickstarter and making this project professional so that more people will want to use it, but there are many shortcomings in this regard.&lt;br /&gt; Of course, a web interface is not enough, there are dozens of them nowadays. So I fine-tuned a few open source models to develop a friendly model, but the result is not good at all.&lt;br /&gt; I really need help and guidance. This project is not for profit, the reason I want to raise funds on kickstarter is to generate resources for further development. I'd like to share a screenshot to hear your thoughts.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/dixaevbdkr7f1.png?width=1916&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a3d6c9ff7752e1e84d8ac7571bc6871ff754e0f8"&gt;https://preview.redd.it/dixaevbdkr7f1.png?width=1916&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=a3d6c9ff7752e1e84d8ac7571bc6871ff754e0f8&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Of course, it's very simple right now. I wanted to create a few characters and add their animations, but I couldn't. If you're interested and want to spend your free time, we can work together :)&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dismal-Cupcake-3641"&gt; /u/Dismal-Cupcake-3641 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leuz0z/localbuddys_local_friends_for_everyone_but_need/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leuz0z/localbuddys_local_friends_for_everyone_but_need/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1leuz0z/localbuddys_local_friends_for_everyone_but_need/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T22:45:56+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ler0ew</id>
-    <title>RAG injection in Chain of Thought (COT)</title>
-    <updated>2025-06-18T20:00:58+00:00</updated>
-    <author>
-      <name>/u/Strange_Test7665</name>
-      <uri>https://old.reddit.com/user/Strange_Test7665</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I just recently started running 'deepseek-ai/DeepSeek-R1-Distill-Qwen-14B' locally (Macbook Pro M4 48GB). I have been messing around with an idea where I inject information from a ToolUse/RAG model in to the &amp;lt;think&amp;gt; section. Essentially: User prompt &amp;gt; DeepseekR1 runs 50 tokens &amp;gt; stop. Run another tool use model on user prompt ask if we have a tool to answer the question, if yes return results, if no return empty string&amp;gt; result injected back in the conversation started with DeepseekR1 that ran for 50 tokens &amp;gt; continue running &amp;gt; output from DeepseekR1 with RAG thought injection. Essentially trying to get the benefit of a reasoning model and a tool use model (i'm aware tool use is output structure training, but R1 wasn't trained to output tool struct commonly used). Curious if anyone else has done anything like this. happy to share code.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Strange_Test7665"&gt; /u/Strange_Test7665 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ler0ew/rag_injection_in_chain_of_thought_cot/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ler0ew/rag_injection_in_chain_of_thought_cot/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ler0ew/rag_injection_in_chain_of_thought_cot/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T20:00:58+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lek8yo</id>
     <title>M4 Max 128GB MacBook arrives today. Is LM Studio still king for running MLX or have things moved on?</title>
@@ -58,6 +19,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lek8yo/m4_max_128gb_macbook_arrives_today_is_lm_studio/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-18T15:36:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1leyvq5</id>
+    <title>Dual CPU Penalty?</title>
+    <updated>2025-06-19T01:53:34+00:00</updated>
+    <author>
+      <name>/u/jsconiers</name>
+      <uri>https://old.reddit.com/user/jsconiers</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Should there be a noticable penalty for running dual CPUs on a workload? Two systems running same version of Ubuntu Linux, on ollama with gemma3 (27b-it-fp16). One has a thread ripper 7985 with 256GB memory, 5090. Second system is a dual 8480 Xeon with 256GB memory and a 5090. Regaurdless of workload the threadripper is always faster.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jsconiers"&gt; /u/jsconiers &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyvq5/dual_cpu_penalty/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyvq5/dual_cpu_penalty/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1leyvq5/dual_cpu_penalty/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T01:53:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1le951x</id>
@@ -73,19 +47,6 @@
     <published>2025-06-18T05:28:44+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lewg4u</id>
-    <title>Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?</title>
-    <updated>2025-06-18T23:53:58+00:00</updated>
-    <author>
-      <name>/u/Just_Lingonberry_352</name>
-      <uri>https://old.reddit.com/user/Just_Lingonberry_352</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"&gt; &lt;img alt="Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?" src="https://preview.redd.it/y31qo2q5xr7f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b2f2ad2fad2ebbe87b16acdd6835744a159aea21" title="Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Just_Lingonberry_352"&gt; /u/Just_Lingonberry_352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/y31qo2q5xr7f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T23:53:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lecpcr</id>
     <title>NVIDIA B300 cut all INT8 and FP64 performance???</title>
     <updated>2025-06-18T09:27:17+00:00</updated>
@@ -99,19 +60,6 @@
     <published>2025-06-18T09:27:17+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lej1z2</id>
-    <title>Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about</title>
-    <updated>2025-06-18T14:49:16+00:00</updated>
-    <author>
-      <name>/u/dvilasuero</name>
-      <uri>https://old.reddit.com/user/dvilasuero</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt; &lt;img alt="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" src="https://external-preview.redd.it/OWhnczl0czI3cDdmMbW9BBj7Ryw9x5mw-FdJgsMiyoCrCN12S1yIw2gj5bap.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=aea3a17e2d4293a184e92289dd98ff806adedf2d" title="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;We've built this app as a playground of open LLMs for unstructured datasets. &lt;/p&gt; &lt;p&gt;It might be interesting to this community. It's powered by HF Inference Providers and could be useful for playing and finding the right open models for your use case, without downloading them or running code.&lt;/p&gt; &lt;p&gt;I'd love to hear your ideas.&lt;/p&gt; &lt;p&gt;You can try it out here:&lt;br /&gt; &lt;a href="https://huggingface.co/spaces/aisheets/sheets"&gt;https://huggingface.co/spaces/aisheets/sheets&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Available models:&lt;br /&gt; &lt;a href="https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending"&gt;https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dvilasuero"&gt; /u/dvilasuero &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/w0j5vts27p7f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T14:49:16+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1letslu</id>
     <title>Run Open WebUI over HTTPS on Windows without exposing it to the internet tutorial</title>
     <updated>2025-06-18T21:54:52+00:00</updated>
@@ -123,6 +71,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1letslu/run_open_webui_over_https_on_windows_without/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-18T21:54:52+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lej1z2</id>
+    <title>Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about</title>
+    <updated>2025-06-18T14:49:16+00:00</updated>
+    <author>
+      <name>/u/dvilasuero</name>
+      <uri>https://old.reddit.com/user/dvilasuero</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt; &lt;img alt="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" src="https://external-preview.redd.it/OWhnczl0czI3cDdmMbW9BBj7Ryw9x5mw-FdJgsMiyoCrCN12S1yIw2gj5bap.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=aea3a17e2d4293a184e92289dd98ff806adedf2d" title="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;We've built this app as a playground of open LLMs for unstructured datasets. &lt;/p&gt; &lt;p&gt;It might be interesting to this community. It's powered by HF Inference Providers and could be useful for playing and finding the right open models for your use case, without downloading them or running code.&lt;/p&gt; &lt;p&gt;I'd love to hear your ideas.&lt;/p&gt; &lt;p&gt;You can try it out here:&lt;br /&gt; &lt;a href="https://huggingface.co/spaces/aisheets/sheets"&gt;https://huggingface.co/spaces/aisheets/sheets&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Available models:&lt;br /&gt; &lt;a href="https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending"&gt;https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dvilasuero"&gt; /u/dvilasuero &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/w0j5vts27p7f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-18T14:49:16+00:00</published>
   </entry>
   <entry>
     <id>t3_1ley18c</id>
@@ -164,17 +125,17 @@
     <published>2025-06-19T00:49:58+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lehbra</id>
-    <title>Built memX: a shared memory backend for LLM agents (demo + open-source code)</title>
-    <updated>2025-06-18T13:37:19+00:00</updated>
+    <id>t3_1lewg4u</id>
+    <title>Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?</title>
+    <updated>2025-06-18T23:53:58+00:00</updated>
     <author>
-      <name>/u/Temporary-Tap-7323</name>
-      <uri>https://old.reddit.com/user/Temporary-Tap-7323</uri>
+      <name>/u/Just_Lingonberry_352</name>
+      <uri>https://old.reddit.com/user/Just_Lingonberry_352</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"&gt; &lt;img alt="Built memX: a shared memory backend for LLM agents (demo + open-source code)" src="https://external-preview.redd.it/bWpmbGR5djV2bzdmMYCyFtIdy85G-V-pyC1NhTykFPs5rMNi1ya3S7fCsS5U.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=16d6b58da2a98255f6e48827413597a42a678592" title="Built memX: a shared memory backend for LLM agents (demo + open-source code)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone — I built this over the weekend and wanted to share:&lt;/p&gt; &lt;p&gt;🔗 &lt;a href="https://github.com/MehulG/memX"&gt;https://github.com/MehulG/memX&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;memX&lt;/strong&gt; is a shared memory layer for LLM agents — kind of like Redis, but with real-time sync, pub/sub, schema validation, and access control.&lt;/p&gt; &lt;p&gt;Instead of having agents pass messages or follow a fixed pipeline, they just read and write to shared memory keys. It’s like a collaborative whiteboard where agents evolve context together.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Key features:&lt;/strong&gt; - Real-time pub/sub - Per-key JSON schema validation - API key-based ACLs - Python SDK&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Temporary-Tap-7323"&gt; /u/Temporary-Tap-7323 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ibq16xv5vo7f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"&gt; &lt;img alt="Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?" src="https://preview.redd.it/y31qo2q5xr7f1.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=b2f2ad2fad2ebbe87b16acdd6835744a159aea21" title="Does this mean we are free from the shackles of CUDA? We can use AMD GPUs wired up together to run models ?" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Just_Lingonberry_352"&gt; /u/Just_Lingonberry_352 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/y31qo2q5xr7f1.png"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lewg4u/does_this_mean_we_are_free_from_the_shackles_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T13:37:19+00:00</published>
+    <published>2025-06-18T23:53:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1led23c</id>
@@ -188,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1led23c/local_ai_for_a_smallmedian_accounting_firm_buget/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-18T09:51:00+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lehbra</id>
+    <title>Built memX: a shared memory backend for LLM agents (demo + open-source code)</title>
+    <updated>2025-06-18T13:37:19+00:00</updated>
+    <author>
+      <name>/u/Temporary-Tap-7323</name>
+      <uri>https://old.reddit.com/user/Temporary-Tap-7323</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"&gt; &lt;img alt="Built memX: a shared memory backend for LLM agents (demo + open-source code)" src="https://external-preview.redd.it/bWpmbGR5djV2bzdmMYCyFtIdy85G-V-pyC1NhTykFPs5rMNi1ya3S7fCsS5U.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=16d6b58da2a98255f6e48827413597a42a678592" title="Built memX: a shared memory backend for LLM agents (demo + open-source code)" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone — I built this over the weekend and wanted to share:&lt;/p&gt; &lt;p&gt;🔗 &lt;a href="https://github.com/MehulG/memX"&gt;https://github.com/MehulG/memX&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;memX&lt;/strong&gt; is a shared memory layer for LLM agents — kind of like Redis, but with real-time sync, pub/sub, schema validation, and access control.&lt;/p&gt; &lt;p&gt;Instead of having agents pass messages or follow a fixed pipeline, they just read and write to shared memory keys. It’s like a collaborative whiteboard where agents evolve context together.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Key features:&lt;/strong&gt; - Real-time pub/sub - Per-key JSON schema validation - API key-based ACLs - Python SDK&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Temporary-Tap-7323"&gt; /u/Temporary-Tap-7323 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/ibq16xv5vo7f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lehbra/built_memx_a_shared_memory_backend_for_llm_agents/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-18T13:37:19+00:00</published>
   </entry>
   <entry>
     <id>t3_1lepjc5</id>
@@ -253,6 +227,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1led0lb/google_doubled_the_price_of_gemini_25_flash/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-18T09:48:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1leyi70</id>
+    <title>Self-hosting LLaMA: What are your biggest pain points?</title>
+    <updated>2025-06-19T01:34:58+00:00</updated>
+    <author>
+      <name>/u/Sriyakee</name>
+      <uri>https://old.reddit.com/user/Sriyakee</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey fellow llama enthusiasts!&lt;/p&gt; &lt;p&gt;Setting aside compute, what has been the biggest issues that you guys have faced when trying to self host models? e.g:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Running out of GPU memory or dealing with slow inference times&lt;/li&gt; &lt;li&gt;Struggling to optimize model performance for specific use cases&lt;/li&gt; &lt;li&gt;Privacy?&lt;/li&gt; &lt;li&gt;Scaling models to handle high traffic or large datasets&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Sriyakee"&gt; /u/Sriyakee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyi70/selfhosting_llama_what_are_your_biggest_pain/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyi70/selfhosting_llama_what_are_your_biggest_pain/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1leyi70/selfhosting_llama_what_are_your_biggest_pain/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T01:34:58+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1leyzxp</id>
+    <title>Private AI Voice Assistant + Open-Source Speaker Powered by Llama &amp; Jetson!</title>
+    <updated>2025-06-19T01:59:17+00:00</updated>
+    <author>
+      <name>/u/FutureProofHomes</name>
+      <uri>https://old.reddit.com/user/FutureProofHomes</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyzxp/private_ai_voice_assistant_opensource_speaker/"&gt; &lt;img alt="Private AI Voice Assistant + Open-Source Speaker Powered by Llama &amp;amp; Jetson!" src="https://external-preview.redd.it/1cKeuQGVkwjz1OX7NjtAv9GHzhusji4vD5LLPS4kBVk.jpeg?width=320&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=47f09968e3b0f627cdcdb3a1244eedbba09400f1" title="Private AI Voice Assistant + Open-Source Speaker Powered by Llama &amp;amp; Jetson!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt;&lt;br /&gt; We built a &lt;strong&gt;100% private, AI-powered voice assistant&lt;/strong&gt; for your smart home — runs locally on &lt;strong&gt;Jetson&lt;/strong&gt;, uses &lt;strong&gt;Llama models&lt;/strong&gt;, connects to our &lt;strong&gt;open-source Sonos-like speaker&lt;/strong&gt;, and integrates with &lt;strong&gt;Home Assistant&lt;/strong&gt; to control basically &lt;em&gt;everything&lt;/em&gt;. No cloud. Just fast, private, real-time control.&lt;/p&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;Wassup Llama friends!&lt;/p&gt; &lt;p&gt;I started a YouTube channel showing how to build a private/local voice assistant (think Alexa, but off-grid). It kinda/sorta blew up… and that led to a full-blown hardware startup.&lt;/p&gt; &lt;p&gt;We built a &lt;strong&gt;local LLM server and conversational voice pipeline&lt;/strong&gt; on Jetson hardware, then connected it wirelessly to our &lt;strong&gt;open-source smart speaker&lt;/strong&gt; (like a DIY Sonos One). Then we layered in robust &lt;strong&gt;tool-calling support to integrate with Home Assistant&lt;/strong&gt;, unlocking full control over your smart home — lights, sensors, thermostats, you name it.&lt;/p&gt; &lt;p&gt;End result? A &lt;strong&gt;100% private, local voice assistant&lt;/strong&gt; for the smart home. No cloud. No spying. Just you, your home, and a talking box that &lt;em&gt;actually respects your privacy&lt;/em&gt;.&lt;/p&gt; &lt;p&gt;We’re call ourselves &lt;strong&gt;FutureProofHomes&lt;/strong&gt;, and we’d love a little LocalLLaMA love to help spread the word.&lt;/p&gt; &lt;p&gt;Check us out @ &lt;a href="https://FutureProofHomes.ai"&gt;FutureProofHomes.ai&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Cheers, everyone!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/FutureProofHomes"&gt; /u/FutureProofHomes &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/WrreIi8LCiw"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1leyzxp/private_ai_voice_assistant_opensource_speaker/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1leyzxp/private_ai_voice_assistant_opensource_speaker/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T01:59:17+00:00</published>
   </entry>
   <entry>
     <id>t3_1lenf36</id>
