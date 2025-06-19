@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-19T05:24:19+00:00</updated>
+  <updated>2025-06-19T05:38:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
   <entry>
-    <id>t3_1lej1z2</id>
-    <title>Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about</title>
-    <updated>2025-06-18T14:49:16+00:00</updated>
+    <id>t3_1letslu</id>
+    <title>Run Open WebUI over HTTPS on Windows without exposing it to the internet tutorial</title>
+    <updated>2025-06-18T21:54:52+00:00</updated>
     <author>
-      <name>/u/dvilasuero</name>
-      <uri>https://old.reddit.com/user/dvilasuero</uri>
+      <name>/u/gwyngwynsituation</name>
+      <uri>https://old.reddit.com/user/gwyngwynsituation</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt; &lt;img alt="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" src="https://external-preview.redd.it/OWhnczl0czI3cDdmMbW9BBj7Ryw9x5mw-FdJgsMiyoCrCN12S1yIw2gj5bap.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=aea3a17e2d4293a184e92289dd98ff806adedf2d" title="Hugging Face Sheets - experiment with 1.5K open LLMs on data you care about" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi!&lt;/p&gt; &lt;p&gt;We've built this app as a playground of open LLMs for unstructured datasets. &lt;/p&gt; &lt;p&gt;It might be interesting to this community. It's powered by HF Inference Providers and could be useful for playing and finding the right open models for your use case, without downloading them or running code.&lt;/p&gt; &lt;p&gt;I'd love to hear your ideas.&lt;/p&gt; &lt;p&gt;You can try it out here:&lt;br /&gt; &lt;a href="https://huggingface.co/spaces/aisheets/sheets"&gt;https://huggingface.co/spaces/aisheets/sheets&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Available models:&lt;br /&gt; &lt;a href="https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending"&gt;https://huggingface.co/models?inference_provider=featherless-ai,together,hf-inference,sambanova,cohere,cerebras,fireworks-ai,groq,hyperbolic,nebius,novita&amp;amp;sort=trending&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dvilasuero"&gt; /u/dvilasuero &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://v.redd.it/w0j5vts27p7f1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lej1z2/hugging_face_sheets_experiment_with_15k_open_llms/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Disclaimer! I'm learning. Feel free to help me make this tutorial better.&lt;/p&gt; &lt;p&gt;Hello! I've struggled with running open webui over https without exposing it to the internet on windows for a bit. I wanted to be able to use voice and call mode on iOS browsers but https was a requirement for that.&lt;/p&gt; &lt;p&gt;At first I tried to do it with an autosigned certificate but that proved to be not valid.&lt;/p&gt; &lt;p&gt;So after a bit of back and forth with gemini pro 2.5 I finally managed to do it! and I wanted to share it here in case anyone find it useful as I didn't find a complete tutorial on how to do it.&lt;/p&gt; &lt;p&gt;The only perk is that you have to have a domain to be able to sign the certificate. (I don't know if there is any way to bypass this limitation)&lt;/p&gt; &lt;h2&gt;Prerequisites&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;OpenWebUI installed and running on Windows (accessible at &lt;a href="http://localhost:8080"&gt;http://localhost:8080&lt;/a&gt;)&lt;/li&gt; &lt;li&gt;WSL2 with a Linux distribution (I've used Ubuntu) installed on Windows&lt;/li&gt; &lt;li&gt;A custom domain (we’ll use mydomain.com) managed via a provider that supports API access (I've used Cloudflare)&lt;/li&gt; &lt;li&gt;Know your Windows local IP address (e.g., 192.168.1.123). To find it, open CMD and run &lt;code&gt;ipconfig&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2&gt;Step 1: Preparing the Windows Environment&lt;/h2&gt; &lt;p&gt;Edit the &lt;code&gt;hosts&lt;/code&gt; file so your PC resolves &lt;code&gt;openwebui.mydomain.com&lt;/code&gt; to itself instead of the public internet.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Open Notepad as Administrator&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Go to File &amp;gt; Open &amp;gt; &lt;code&gt;C:\Windows\System32\drivers\etc&lt;/code&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Select “All Files” and open the &lt;code&gt;hosts&lt;/code&gt; file&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Add this line at the end (replace with your local IP):&lt;/p&gt; &lt;p&gt;&lt;code&gt; 192.168.1.123 openwebui.mydomain.com &lt;/code&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;Save and close&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Step 2: Install Required Software in WSL (Ubuntu)&lt;/h2&gt; &lt;p&gt;Open your WSL terminal and update the system:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Install Nginx and Certbot with DNS plugin:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo apt-get install -y nginx certbot python3-certbot-dns-cloudflare &lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Step 3: Get a Valid SSL Certificate via DNS Challenge&lt;/h2&gt; &lt;p&gt;This method doesn’t require exposing your machine to the internet.&lt;/p&gt; &lt;h3&gt;Get your API credentials:&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;Log into Cloudflare&lt;/li&gt; &lt;li&gt;Create an API Token with permissions to edit DNS for &lt;code&gt;mydomain.com&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Copy the token&lt;/li&gt; &lt;/ol&gt; &lt;h3&gt;Create the credentials file in WSL:&lt;/h3&gt; &lt;p&gt;&lt;code&gt;bash mkdir -p ~/.secrets/certbot nano ~/.secrets/certbot/cloudflare.ini &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Paste the following (replace with your actual token):&lt;/p&gt; &lt;p&gt;```ini&lt;/p&gt; &lt;h1&gt;Cloudflare API token&lt;/h1&gt; &lt;p&gt;dns_cloudflare_api_token = YOUR_API_TOKEN_HERE ```&lt;/p&gt; &lt;p&gt;Secure the credentials file:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo chmod 600 ~/.secrets/certbot/cloudflare.ini &lt;/code&gt;&lt;/p&gt; &lt;h3&gt;Request the certificate:&lt;/h3&gt; &lt;p&gt;&lt;code&gt;bash sudo certbot certonly \ --dns-cloudflare \ --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini \ -d openwebui.mydomain.com \ --non-interactive --agree-tos -m your-email@example.com &lt;/code&gt;&lt;/p&gt; &lt;p&gt;If successful, the certificate will be stored at: &lt;code&gt;/etc/letsencrypt/live/openwebui.mydomain.com/&lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Step 4: Configure Nginx as a Reverse Proxy&lt;/h2&gt; &lt;p&gt;Create the Nginx site config:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo nano /etc/nginx/sites-available/openwebui.mydomain.com &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Paste the following (replace &lt;code&gt;192.168.1.123&lt;/code&gt; with your Windows local IP):&lt;/p&gt; &lt;p&gt;```nginx server { listen 443 ssl; listen [::]:443 ssl;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;server_name openwebui.mydomain.com; ssl_certificate /etc/letsencrypt/live/openwebui.mydomain.com/fullchain.pem; ssl_certificate_key /etc/letsencrypt/live/openwebui.mydomain.com/privkey.pem; location / { proxy_pass http://192.168.1.123:8080; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto $scheme; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &amp;quot;upgrade&amp;quot;; } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;} ```&lt;/p&gt; &lt;p&gt;Enable the site and test Nginx:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo ln -s /etc/nginx/sites-available/openwebui.mydomain.com /etc/nginx/sites-enabled/ sudo rm /etc/nginx/sites-enabled/default sudo nginx -t &lt;/code&gt;&lt;/p&gt; &lt;p&gt;You should see: &lt;code&gt;syntax is ok&lt;/code&gt; and &lt;code&gt;test is successful&lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Step 5: Network Configuration Between Windows and WSL&lt;/h2&gt; &lt;p&gt;Get your WSL internal IP:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash ip addr | grep eth0 &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Look for the &lt;code&gt;inet&lt;/code&gt; IP (e.g., &lt;code&gt;172.29.93.125&lt;/code&gt;)&lt;/p&gt; &lt;p&gt;Set up port forwarding using PowerShell as Administrator (in Windows):&lt;/p&gt; &lt;p&gt;&lt;code&gt;powershell netsh interface portproxy add v4tov4 listenport=443 listenaddress=0.0.0.0 connectport=443 connectaddress=&amp;lt;WSL-IP&amp;gt; &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Add a firewall rule to allow external connections on port 443:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Open Windows Defender Firewall with Advanced Security&lt;/li&gt; &lt;li&gt;Go to Inbound Rules &amp;gt; New Rule&lt;/li&gt; &lt;li&gt;Rule type: Port&lt;/li&gt; &lt;li&gt;Protocol: TCP. Local Port: 443&lt;/li&gt; &lt;li&gt;Action: Allow the connection&lt;/li&gt; &lt;li&gt;Profile: Check Private (at minimum)&lt;/li&gt; &lt;li&gt;Name: Something like &lt;code&gt;Nginx WSL (HTTPS)&lt;/code&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h2&gt;Step 6: Start Everything and Enjoy&lt;/h2&gt; &lt;p&gt;Restart Nginx in WSL:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo systemctl restart nginx &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Check that it’s running:&lt;/p&gt; &lt;p&gt;&lt;code&gt;bash sudo systemctl status nginx &lt;/code&gt;&lt;/p&gt; &lt;p&gt;You should see: &lt;code&gt;Active: active (running)&lt;/code&gt;&lt;/p&gt; &lt;h2&gt;Final Test&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;Open a browser on your PC and go to:&lt;/p&gt; &lt;p&gt;&lt;a href="https://openwebui.mydomain.com"&gt;https://openwebui.mydomain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;You should see the OpenWebUI interface with:&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;ul&gt; &lt;li&gt;A green padlock&lt;/li&gt; &lt;li&gt;No security warnings&lt;/li&gt; &lt;/ul&gt; &lt;ol&gt; &lt;li&gt;To access it from your phone:&lt;/li&gt; &lt;/ol&gt; &lt;ul&gt; &lt;li&gt;Either edit its &lt;code&gt;hosts&lt;/code&gt; file (if possible)&lt;/li&gt; &lt;li&gt;Or configure your router’s DNS to resolve &lt;code&gt;openwebui.mydomain.com&lt;/code&gt; to your local IP&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Alternatively, you can access:&lt;/p&gt; &lt;p&gt;&lt;code&gt; https://192.168.1.123 &lt;/code&gt;&lt;/p&gt; &lt;p&gt;This may show a certificate warning because the certificate is issued for the domain, not the IP, but encryption still works.&lt;/p&gt; &lt;h2&gt;Pending problems:&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;When using voice call mode on the phone, only the first sentence of the LLM response is spoken. If I exit voice call mode and click on the read out loud button of the response, only the first sentence is read as well. Then if I go to the PC where everything is running and click on the read out loud button all the LLM response is read. So the audio is generated, this seems to be a iOS issue, but I haven't managed to solved it yet. Any tips will be appreciated.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;I hope you find this tutorial useful &lt;sup&gt;^&lt;/sup&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/gwyngwynsituation"&gt; /u/gwyngwynsituation &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1letslu/run_open_webui_over_https_on_windows_without/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1letslu/run_open_webui_over_https_on_windows_without/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1letslu/run_open_webui_over_https_on_windows_without/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T14:49:16+00:00</published>
+    <published>2025-06-18T21:54:52+00:00</published>
   </entry>
   <entry>
     <id>t3_1lf1j2v</id>
@@ -73,19 +73,6 @@
     <published>2025-06-19T00:42:29+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lexlsd</id>
-    <title>Best realtime open source STT model?</title>
-    <updated>2025-06-19T00:49:58+00:00</updated>
-    <author>
-      <name>/u/ThatIsNotIllegal</name>
-      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the best model to transcribe a conversation in realtime, meaning that the words have to appear as the person is talking.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T00:49:58+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1led23c</id>
     <title>Local AI for a small/median accounting firm - € Buget of 10k-25k</title>
     <updated>2025-06-18T09:51:00+00:00</updated>
@@ -125,6 +112,19 @@
     <published>2025-06-18T13:37:19+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lex3pi</id>
+    <title>How much is the 3090 on the used market in your country?</title>
+    <updated>2025-06-19T00:25:34+00:00</updated>
+    <author>
+      <name>/u/panchovix</name>
+      <uri>https://old.reddit.com/user/panchovix</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi there guys, hoping you're having a good day.&lt;/p&gt; &lt;p&gt;I was wondering the 3090 used prices on your country, as they seem very different based on this.&lt;/p&gt; &lt;p&gt;I will start, with Chile. Here the used 3090s used hover between 550 and 650USD. This is a bit of increase in price vs some months ago, when it was between 500 and 550 USD instead.&lt;/p&gt; &lt;p&gt;Also I went to EU, specifically to Madrid, Spain 3 weeks ago. And when I did check on a quick search, they hovered between 600 and 700 EUR.&lt;/p&gt; &lt;p&gt;BTW as reference, 4090s used go for ~1800-1900USD which is just insane, and new 5090s are at 2700-2900USD range, which is also insane.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/panchovix"&gt; /u/panchovix &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T00:25:34+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lf01uz</id>
     <title>Any LLM that can detect musical tonality from an audio?</title>
     <updated>2025-06-19T02:52:23+00:00</updated>
@@ -138,17 +138,17 @@
     <published>2025-06-19T02:52:23+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lex3pi</id>
-    <title>How much is the 3090 on the used market in your country?</title>
-    <updated>2025-06-19T00:25:34+00:00</updated>
+    <id>t3_1lexlsd</id>
+    <title>Best realtime open source STT model?</title>
+    <updated>2025-06-19T00:49:58+00:00</updated>
     <author>
-      <name>/u/panchovix</name>
-      <uri>https://old.reddit.com/user/panchovix</uri>
+      <name>/u/ThatIsNotIllegal</name>
+      <uri>https://old.reddit.com/user/ThatIsNotIllegal</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi there guys, hoping you're having a good day.&lt;/p&gt; &lt;p&gt;I was wondering the 3090 used prices on your country, as they seem very different based on this.&lt;/p&gt; &lt;p&gt;I will start, with Chile. Here the used 3090s used hover between 550 and 650USD. This is a bit of increase in price vs some months ago, when it was between 500 and 550 USD instead.&lt;/p&gt; &lt;p&gt;Also I went to EU, specifically to Madrid, Spain 3 weeks ago. And when I did check on a quick search, they hovered between 600 and 700 EUR.&lt;/p&gt; &lt;p&gt;BTW as reference, 4090s used go for ~1800-1900USD which is just insane, and new 5090s are at 2700-2900USD range, which is also insane.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/panchovix"&gt; /u/panchovix &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lex3pi/how_much_is_the_3090_on_the_used_market_in_your/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;What's the best model to transcribe a conversation in realtime, meaning that the words have to appear as the person is talking.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ThatIsNotIllegal"&gt; /u/ThatIsNotIllegal &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lexlsd/best_realtime_open_source_stt_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T00:25:34+00:00</published>
+    <published>2025-06-19T00:49:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1lezxa9</id>
@@ -190,19 +190,6 @@
     <published>2025-06-18T15:26:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lemmsq</id>
-    <title>We took Qwen3 235B A22B from 34 tokens/sec to 54 tokens/sec by switching from llama.cpp with Unsloth dynamic Q4_K_M GGUF to vLLM with INT4 w4a16</title>
-    <updated>2025-06-18T17:09:31+00:00</updated>
-    <author>
-      <name>/u/__JockY__</name>
-      <uri>https://old.reddit.com/user/__JockY__</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;System: quad RTX A6000 Epyc. &lt;/p&gt; &lt;p&gt;Originally we were running the Unsloth dynamic GGUFs at UD_Q4_K_M and UD_Q5_K_XL with which we were getting speeds of 34 and 31 tokens/sec, respectively, for small-ish prompts of 1-2k tokens. &lt;/p&gt; &lt;p&gt;A couple of days ago we tried an experiment with another 4-bit quant type: INT 4, specifically w4a16, which is a 4-bit quant that's expanded and run at FP16. Or something. The wizard and witches will know better, forgive my butchering of LLM mechanics. This is the one we used: &lt;code&gt;justinjja/Qwen3-235B-A22B-INT4-W4A16&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The point is that w4a16 runs in vLLM and is a whopping 20 tokens/sec faster than Q4 in llama.cpp in like-for-like tests (as close as we could get without going crazy). &lt;/p&gt; &lt;p&gt;Does anyone know how w4a16 compares to Q4_K_M in terms of quantization quality? Are these 4-bit quants actually comparing apples to apples? Or are we sacrificing quality for speed? We'll do our own tests, but I'd like to hear opinions from the peanut gallery.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-18T17:09:31+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1led0lb</id>
     <title>Google doubled the price of Gemini 2.5 Flash thinking output after GA from 0.15 to 0.30 what</title>
     <updated>2025-06-18T09:48:16+00:00</updated>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1led0lb/google_doubled_the_price_of_gemini_25_flash/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-18T09:48:16+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lemmsq</id>
+    <title>We took Qwen3 235B A22B from 34 tokens/sec to 54 tokens/sec by switching from llama.cpp with Unsloth dynamic Q4_K_M GGUF to vLLM with INT4 w4a16</title>
+    <updated>2025-06-18T17:09:31+00:00</updated>
+    <author>
+      <name>/u/__JockY__</name>
+      <uri>https://old.reddit.com/user/__JockY__</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;System: quad RTX A6000 Epyc. &lt;/p&gt; &lt;p&gt;Originally we were running the Unsloth dynamic GGUFs at UD_Q4_K_M and UD_Q5_K_XL with which we were getting speeds of 34 and 31 tokens/sec, respectively, for small-ish prompts of 1-2k tokens. &lt;/p&gt; &lt;p&gt;A couple of days ago we tried an experiment with another 4-bit quant type: INT 4, specifically w4a16, which is a 4-bit quant that's expanded and run at FP16. Or something. The wizard and witches will know better, forgive my butchering of LLM mechanics. This is the one we used: &lt;code&gt;justinjja/Qwen3-235B-A22B-INT4-W4A16&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The point is that w4a16 runs in vLLM and is a whopping 20 tokens/sec faster than Q4 in llama.cpp in like-for-like tests (as close as we could get without going crazy). &lt;/p&gt; &lt;p&gt;Does anyone know how w4a16 compares to Q4_K_M in terms of quantization quality? Are these 4-bit quants actually comparing apples to apples? Or are we sacrificing quality for speed? We'll do our own tests, but I'd like to hear opinions from the peanut gallery.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/__JockY__"&gt; /u/__JockY__ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lemmsq/we_took_qwen3_235b_a22b_from_34_tokenssec_to_54/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-18T17:09:31+00:00</published>
   </entry>
   <entry>
     <id>t3_1leq843</id>
