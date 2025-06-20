@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-20T23:06:56+00:00</updated>
+  <updated>2025-06-20T23:24:11+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lg89fq</id>
-    <title>The S in MCP is for security</title>
-    <updated>2025-06-20T16:24:31+00:00</updated>
-    <author>
-      <name>/u/opensourcecolumbus</name>
-      <uri>https://old.reddit.com/user/opensourcecolumbus</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Source: My favorite comment on this sub &lt;a href="https://www.reddit.com/r/mcp/s/JoaX8YDuiT"&gt;https://www.reddit.com/r/mcp/s/JoaX8YDuiT&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/opensourcecolumbus"&gt; /u/opensourcecolumbus &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lg89fq/the_s_in_mcp_is_for_security/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lg89fq/the_s_in_mcp_is_for_security/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lg89fq/the_s_in_mcp_is_for_security/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-20T16:24:31+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lf7ta6</id>
     <title>Built a tiny MCP server so my AI actually knows my docs (even for weird/niche stuff)</title>
@@ -164,19 +151,6 @@
     <published>2025-06-20T22:36:55+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lghbhh</id>
-    <title>Build personal MCP tools across MCP servers</title>
-    <updated>2025-06-20T22:44:18+00:00</updated>
-    <author>
-      <name>/u/AccurateSuggestion54</name>
-      <uri>https://old.reddit.com/user/AccurateSuggestion54</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am the creator of Datagen, a tool that lets you build workflows across MCP servers.&lt;/p&gt; &lt;p&gt;MCP has quietly transformed the way I interact with services. I now ask Claude for calendar items, do meeting prep, and review web analytics, all through asking Claude to interact with my MCPs. However, there are two major pain points when using MCP:&lt;/p&gt; &lt;h2&gt;The Problems&lt;/h2&gt; &lt;h3&gt;1. Inconsistent Multi-Step Calls&lt;/h3&gt; &lt;p&gt;I like to use Linear MCP to create tickets for me. Most of the time I want a ticket with title, description, owner, associated project, and priority status all set up. To accomplish this, my LLM client has to:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Call list all projects tool&lt;/li&gt; &lt;li&gt;List all members tool&lt;br /&gt;&lt;/li&gt; &lt;li&gt;List all teams tool&lt;/li&gt; &lt;li&gt;Synthesize and match task to find owner, project, team&lt;/li&gt; &lt;li&gt;Create ticket&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Often it loses one or two steps in the middle, given only team ID and title are required for ticket creation.&lt;/p&gt; &lt;h3&gt;2. Incapable of Handling Tool Returns with Long Context&lt;/h3&gt; &lt;p&gt;This is truly annoying. I have a custom LinkedIn MCP, and for any interesting post I see, I can hand Claude the post URL and my MCP gets all the post commenters. But when I try to save them to Notion, Claude literally writes all the commenters (sometimes thousands) into the Notion tool call and quickly consumes all my context quota.&lt;/p&gt; &lt;h2&gt;The Solution: Modularized Tools&lt;/h2&gt; &lt;p&gt;Most common tasks rarely rely on just one tool or server. To improve user experience and reliability, we need custom tool sets built on top of primitive servers that are tailored to our needs.&lt;/p&gt; &lt;p&gt;Datagen makes modularized tool creation easy with these features:&lt;/p&gt; &lt;h3&gt;1. Prompt to Code AI Agent&lt;/h3&gt; &lt;p&gt;Instead of relying on AI agents to interact with tool output, we let users describe the tool they want and turn it into code. This guarantees reliability and easily handles large datasets.&lt;/p&gt; &lt;h3&gt;2. Treating MCP as Standardized API Format&lt;/h3&gt; &lt;p&gt;Unlike traditional integrations gated by workflow providers, being MCP native allows users to plugin any integration as long as there's an MCP server.&lt;/p&gt; &lt;h3&gt;3. One Click Deploy&lt;/h3&gt; &lt;p&gt;No complicated server setup - the workflow you build is your tool. With one click, it's immediately available in your Datagen MCP server. We're remote MCP with OAuth, so you just need our server URL in Cursor or Claude Pro.&lt;/p&gt; &lt;h3&gt;4. All Tools Are Asynchronous&lt;/h3&gt; &lt;p&gt;When tools take a long time to finish, Datagen only has submit and fetch tools. Once you submit a request, Claude can hop to another task and check back later.&lt;/p&gt; &lt;h2&gt;Results&lt;/h2&gt; &lt;p&gt;By building with Datagen, I now have a tool that always matches my tickets with the right team, owner and project along with topic and description. I can easily scrape large website content and push to Supabase without hindering other Claude tasks.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Demo video:&lt;/strong&gt; &lt;a href="https://youtu.be/KoANY6ZXdog"&gt;https://youtu.be/KoANY6ZXdog&lt;/a&gt;&lt;/p&gt; &lt;h2&gt;Try It Out&lt;/h2&gt; &lt;p&gt;We're still early but ready to see if what we're building is useful. It's available now with free 1K credits. If you feel frustrated with current MCP experiences and see the need for custom tools, try what we're building: &lt;a href="https://datagen.dev"&gt;https://datagen.dev&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AccurateSuggestion54"&gt; /u/AccurateSuggestion54 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-20T22:44:18+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lghcuq</id>
     <title>How do I control the number of times an LLM agent or MCP client can run a tool or MCP server in a single request?</title>
     <updated>2025-06-20T22:45:59+00:00</updated>
@@ -279,6 +253,32 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lg5qbu/feedback_needed_im_building_an_any_api_to_hosted/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-20T14:42:39+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lghbhh</id>
+    <title>Build personal MCP tools across MCP servers</title>
+    <updated>2025-06-20T22:44:18+00:00</updated>
+    <author>
+      <name>/u/AccurateSuggestion54</name>
+      <uri>https://old.reddit.com/user/AccurateSuggestion54</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am the creator of Datagen, a tool that lets you build workflows across MCP servers.&lt;/p&gt; &lt;p&gt;MCP has quietly transformed the way I interact with services. I now ask Claude for calendar items, do meeting prep, and review web analytics, all through asking Claude to interact with my MCPs. However, there are two major pain points when using MCP:&lt;/p&gt; &lt;h2&gt;The Problems&lt;/h2&gt; &lt;h3&gt;1. Inconsistent Multi-Step Calls&lt;/h3&gt; &lt;p&gt;I like to use Linear MCP to create tickets for me. Most of the time I want a ticket with title, description, owner, associated project, and priority status all set up. To accomplish this, my LLM client has to:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Call list all projects tool&lt;/li&gt; &lt;li&gt;List all members tool&lt;br /&gt;&lt;/li&gt; &lt;li&gt;List all teams tool&lt;/li&gt; &lt;li&gt;Synthesize and match task to find owner, project, team&lt;/li&gt; &lt;li&gt;Create ticket&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Often it loses one or two steps in the middle, given only team ID and title are required for ticket creation.&lt;/p&gt; &lt;h3&gt;2. Incapable of Handling Tool Returns with Long Context&lt;/h3&gt; &lt;p&gt;This is truly annoying. I have a custom LinkedIn MCP, and for any interesting post I see, I can hand Claude the post URL and my MCP gets all the post commenters. But when I try to save them to Notion, Claude literally writes all the commenters (sometimes thousands) into the Notion tool call and quickly consumes all my context quota.&lt;/p&gt; &lt;h2&gt;The Solution: Modularized Tools&lt;/h2&gt; &lt;p&gt;Most common tasks rarely rely on just one tool or server. To improve user experience and reliability, we need custom tool sets built on top of primitive servers that are tailored to our needs.&lt;/p&gt; &lt;p&gt;Datagen makes modularized tool creation easy with these features:&lt;/p&gt; &lt;h3&gt;1. Prompt to Code AI Agent&lt;/h3&gt; &lt;p&gt;Instead of relying on AI agents to interact with tool output, we let users describe the tool they want and turn it into code. This guarantees reliability and easily handles large datasets.&lt;/p&gt; &lt;h3&gt;2. Treating MCP as Standardized API Format&lt;/h3&gt; &lt;p&gt;Unlike traditional integrations gated by workflow providers, being MCP native allows users to plugin any integration as long as there's an MCP server.&lt;/p&gt; &lt;h3&gt;3. One Click Deploy&lt;/h3&gt; &lt;p&gt;No complicated server setup - the workflow you build is your tool. With one click, it's immediately available in your Datagen MCP server. We're remote MCP with OAuth, so you just need our server URL in Cursor or Claude Pro.&lt;/p&gt; &lt;h3&gt;4. All Tools Are Asynchronous&lt;/h3&gt; &lt;p&gt;When tools take a long time to finish, Datagen only has submit and fetch tools. Once you submit a request, Claude can hop to another task and check back later.&lt;/p&gt; &lt;h2&gt;Results&lt;/h2&gt; &lt;p&gt;By building with Datagen, I now have a tool that always matches my tickets with the right team, owner and project along with topic and description. I can easily scrape large website content and push to Supabase without hindering other Claude tasks.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Demo video:&lt;/strong&gt; &lt;a href="https://youtu.be/KoANY6ZXdog"&gt;https://youtu.be/KoANY6ZXdog&lt;/a&gt;&lt;/p&gt; &lt;h2&gt;Try It Out&lt;/h2&gt; &lt;p&gt;We're still early but ready to see if what we're building is useful. It's available now with free 1K credits. If you feel frustrated with current MCP experiences and see the need for custom tools, try what we're building: &lt;a href="https://datagen.dev"&gt;https://datagen.dev&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/AccurateSuggestion54"&gt; /u/AccurateSuggestion54 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lghbhh/build_personal_mcp_tools_across_mcp_servers/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-20T22:44:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lgi4bb</id>
+    <title>MCP Security is still Broken</title>
+    <updated>2025-06-20T23:21:42+00:00</updated>
+    <author>
+      <name>/u/West-Chocolate2977</name>
+      <uri>https://old.reddit.com/user/West-Chocolate2977</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've been playing around MCP (Model Context Protocol) implementations and found some serious security issues.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Main issues:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Tool descriptions can inject malicious instructions&lt;/li&gt; &lt;li&gt;Authentication is often just API keys in plain text (OAuth flows are now required in MCP 2025-06-18 but it's not widely implemented yet)&lt;/li&gt; &lt;li&gt;MCP servers run with way too many privileges&lt;/li&gt; &lt;li&gt;Supply chain attacks through malicious tool packages&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;More details&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;a href="https://forgecode.dev/blog/prevent-attacks-on-mcp/"&gt;Part 1: The vulnerabilities&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/"&gt;Part 2: How to defend against this&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you have any ideas on what else we can add, please feel free to share them in the comments below. I'd like to turn the second part into an ongoing document that we can use as a checklist.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/West-Chocolate2977"&gt; /u/West-Chocolate2977 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lgi4bb/mcp_security_is_still_broken/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lgi4bb/mcp_security_is_still_broken/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lgi4bb/mcp_security_is_still_broken/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-20T23:21:42+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfypu3</id>
