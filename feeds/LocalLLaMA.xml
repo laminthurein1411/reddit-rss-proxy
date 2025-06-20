@@ -2,50 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-20T16:07:22+00:00</updated>
+  <updated>2025-06-20T16:25:12+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lg0mqq</id>
-    <title>Performance expectations question (Devstral)</title>
-    <updated>2025-06-20T10:30:14+00:00</updated>
-    <author>
-      <name>/u/_-Carnage</name>
-      <uri>https://old.reddit.com/user/_-Carnage</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Started playing around last weekend with some local models (devstral small Q4) on my dev laptop and while I got some useful results it took hours. For the given task of refactoring since Vue components from options to composition API this was fine as I just left it to get in with it while I did other things. However if it's too be more generally useful I'm going to need at least a 10x performance boost 50-100x ideally. &lt;/p&gt; &lt;p&gt;I'm 90% sure the performance is limited by hardware but before spending $$$$ on something better I wanted to check the problem doesn't reside between keyboard and chair ;) &lt;/p&gt; &lt;p&gt;Laptop is powerful but wasn't built with AI in mind; kubuntu running on Intel i7 10870H, 64GB ram, Nvidia 3070 8GB vram. Initial runs on CPU only got 1.85 TPS and when I updated the GPU drivers and got 16 layers offloaded to the GPU it went up to 2.25 TPS (this very small increase is what's making me wonder if I'm perhaps missing something else in the software setup as I'd have expected a 40% GPU offload to give a bigger boost)&lt;/p&gt; &lt;p&gt;Model is Devstral small Q4, 16k context and 1k batch size. I followed a few tuning guides but they didn't make much difference. &lt;/p&gt; &lt;p&gt;Question then is: am I getting the performance you'd expect out of my hardware or have I done something wrong? &lt;/p&gt; &lt;p&gt;As a follow-up; what would be a cost effective build for running local models and getting a reasonable TPS rate with a single user. I'm thinking of a couple of options ATM; one is to sling a 5090 into my gaming rig and use that for AI as well (this was built for performance but is from the 1080 era so is likely too old and would need more than the card upgrading)&lt;/p&gt; &lt;p&gt;Second option is to build a new machine with decent spec and room to grow; so a mb (suggestions ?) which can support 2-4 cards without being hyper expensive and perhaps a second hand 3090 to start. Am I best going with AMD or Intel processor? &lt;/p&gt; &lt;p&gt;Initial budget would be about the cost of a 5090 so £2-3k is it realistic to get a system that'll do ~50 TPS on devstral for that? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_-Carnage"&gt; /u/_-Carnage &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg0mqq/performance_expectations_question_devstral/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg0mqq/performance_expectations_question_devstral/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg0mqq/performance_expectations_question_devstral/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-20T10:30:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lftz5s</id>
-    <title>Open Discussion: Improving HTML-to-Markdown Extraction Using Local LLMs (7B/8B, llama.cpp) – Seeking Feedback on My Approach!</title>
-    <updated>2025-06-20T03:28:14+00:00</updated>
-    <author>
-      <name>/u/coolmenu</name>
-      <uri>https://old.reddit.com/user/coolmenu</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey Reddit,&lt;/p&gt; &lt;p&gt;I'm working on a smarter way to convert HTML web pages to high-quality Markdown using &lt;strong&gt;local LLMs&lt;/strong&gt; (Qwen2.5-7B/8B, llama.cpp) running on consumer GPUs. My goal: outperform traditional tools like Readability or html2text on tricky websites (e.g. modern SPAs, tech blogs, and noisy sites) — and do it all &lt;em&gt;fully offline&lt;/em&gt;, without sending data to cloud APIs.&lt;/p&gt; &lt;h1&gt;Project Outline&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Core features:&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Website type detection:&lt;/strong&gt; My script first analyzes if a site is text-focused or media-centric (e.g. video/image/social), with structural and domain heuristics.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;HTML structure analysis:&lt;/strong&gt; Uses BeautifulSoup to extract candidate content areas, main titles, headings, and framework fingerprints (React, Vue, WordPress, etc).&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI-powered extraction planning:&lt;/strong&gt; Local LLM generates JSON-formatted extraction strategies (selectors, noise filters, special rules) for each page, not just using static rules.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;AI quality scoring:&lt;/strong&gt; After Markdown extraction, the LLM scores content for completeness, readability, info value, and offers improvement advice. Low scores auto-trigger domain-specific extraction rule generation for next time.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Everything is local:&lt;/strong&gt; I use llama-cpp-python with quantized GGUF models, so it runs on a 4070/4080/4090 or even a 7B model on a MacBook.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;What works well?&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;On standard article/news/blog pages, quality is usually “good” or “excellent” (AI assessment scores 7-9/10).&lt;/li&gt; &lt;li&gt;On tricky/modern sites (dynamic content, noisy layout, SPAs), the LLM can suggest better selectors or filters than hard-coded rules.&lt;/li&gt; &lt;li&gt;All quality metrics, extraction strategies, and improvement rules are saved as JSON/Markdown reports for review or reuse.&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Issues &amp;amp; Open Questions&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;For &lt;em&gt;media-heavy&lt;/em&gt; or JavaScript-only sites, even the LLM struggles without browser rendering. Anyone have robust approaches for these?&lt;/li&gt; &lt;li&gt;The overall speed is decent (one page ≈ 10–20 sec on 4070 8G, q4_K_M), but batch processing hundreds of pages could be faster. Any tips for optimizing llama.cpp in this workflow?&lt;/li&gt; &lt;li&gt;Are there other open-source local LLM tools you’d recommend for this use case?&lt;/li&gt; &lt;li&gt;Would you find such a tool useful for personal archiving, knowledge bases, or note-taking?&lt;/li&gt; &lt;li&gt;Any recommended datasets or benchmarks for evaluating web-to-Markdown extraction quality (beyond manual review)?&lt;/li&gt; &lt;/ul&gt; &lt;h1&gt;Source and Demo&lt;/h1&gt; &lt;p&gt;This is still a work-in-progress, but happy to share some code snippets or experiment results if anyone is interested.&lt;br /&gt; Would love to hear your feedback, suggestions, or experiences building similar tools!&lt;/p&gt; &lt;p&gt;&lt;em&gt;TL;DR: Building a fully local, AI-enhanced HTML-to-Markdown extractor that learns from its mistakes. Looking for advice, criticism, or fellow hackers to discuss!&lt;/em&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/coolmenu"&gt; /u/coolmenu &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lftz5s/open_discussion_improving_htmltomarkdown/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lftz5s/open_discussion_improving_htmltomarkdown/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lftz5s/open_discussion_improving_htmltomarkdown/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-20T03:28:14+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lg1fpo</id>
-    <title>Am I using lightrag + llama.cpp wrong?</title>
-    <updated>2025-06-20T11:17:22+00:00</updated>
-    <author>
-      <name>/u/Devonance</name>
-      <uri>https://old.reddit.com/user/Devonance</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I have a system where I put a document into docling, and converts it from PDF to markdown in the certain way I want, and then it sends it to lightRAG to have a KV store and knowledge graph built. For a simple 550 line (18k chars) markdown file its taking 11 minutes and creating a KG of 1751 lines. It took 49 seconds for the first query of it. &lt;/p&gt; &lt;p&gt;I'm using unsloths Gemma 3 27b 4_q_k_m and multilingual-e5-large-instruct for the embed with a built from.source llama.cpp using the llama-server. &lt;/p&gt; &lt;p&gt;The knowledge graph is excellent, but takes forever. I have a nvidia RTX Quadro 8000 with 48gb VRAM and 256gb ram, using WSL ubuntu. &lt;/p&gt; &lt;p&gt;I am just trying to make the document -&amp;gt; docling &amp;gt; lightrag -&amp;gt; llm -&amp;gt; Q/A type pipeline for technical documents that are about 300 pages long. &lt;/p&gt; &lt;p&gt;Had a lot of issues with ollama trying to do this, so I switch to llama.cpp, but still plagued with issues. &lt;/p&gt; &lt;p&gt;I'm mainly wondering if this is just how knowledge graph based RAG is, or if im doing something insanely wrong? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Devonance"&gt; /u/Devonance &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg1fpo/am_i_using_lightrag_llamacpp_wrong/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg1fpo/am_i_using_lightrag_llamacpp_wrong/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg1fpo/am_i_using_lightrag_llamacpp_wrong/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-20T11:17:22+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lfnn7b</id>
     <title>Optimized Chatterbox TTS (Up to 2-4x non-batched speedup)</title>
@@ -58,19 +19,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfnn7b/optimized_chatterbox_tts_up_to_24x_nonbatched/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T22:14:13+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lfgfu5</id>
-    <title>AMD Lemonade Server Update: Ubuntu, llama.cpp, Vulkan, webapp, and more!</title>
-    <updated>2025-06-19T17:18:57+00:00</updated>
-    <author>
-      <name>/u/jfowers_amd</name>
-      <uri>https://old.reddit.com/user/jfowers_amd</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfgfu5/amd_lemonade_server_update_ubuntu_llamacpp_vulkan/"&gt; &lt;img alt="AMD Lemonade Server Update: Ubuntu, llama.cpp, Vulkan, webapp, and more!" src="https://external-preview.redd.it/snRoVONGmevA0S70HKIe-_OVILdqukspGvuQ8vgG6Fg.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=854af80e0d39d84623d14e840f4c075c5351100c" title="AMD Lemonade Server Update: Ubuntu, llama.cpp, Vulkan, webapp, and more!" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hi &lt;a href="/r/localllama"&gt;r/localllama&lt;/a&gt;, it’s been a bit since my &lt;a href="https://www.reddit.com/r/LocalLLaMA/comments/1jujc9p/introducing_lemonade_server_npuaccelerated_local/"&gt;post&lt;/a&gt; introducing &lt;a href="https://lemonade-server.ai"&gt;Lemonade Server&lt;/a&gt;, AMD’s open-source local LLM server that prioritizes NPU and GPU acceleration.&lt;/p&gt; &lt;p&gt;GitHub: &lt;a href="https://github.com/lemonade-sdk/lemonade"&gt;https://github.com/lemonade-sdk/lemonade&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I want to sincerely thank the community here for all the feedback on that post! It’s time for an update, and I hope you’ll agree we took the feedback to heart and did our best to deliver.&lt;/p&gt; &lt;p&gt;The biggest changes since the last post are:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;🦙Added llama.cpp, GGUF, and Vulkan support as an additional backend alongside ONNX. This adds support for: A) GPU acceleration on Ryzen™ AI 7000/8000/300, Radeon™ 7000/9000, and many other device families. B) Tons of new models, including VLMs.&lt;/li&gt; &lt;li&gt;🐧Ubuntu is now a fully supported operating system for llama.cpp+GGUF+Vulkan (GPU)+CPU, as well as ONNX+CPU.&lt;/li&gt; &lt;/ol&gt; &lt;blockquote&gt; &lt;p&gt;ONNX+NPU support in Linux, as well as NPU support in llama.cpp, are a work in progress.&lt;/p&gt; &lt;/blockquote&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;💻Added a web app for model management (list/install/delete models) and basic LLM chat. Open it by pointing your browser at &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt; while the server is running.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;🤖Added support for streaming tool calling (all backends) and demonstrated it in our &lt;a href="https://www.amd.com/en/developer/resources/technical-articles/2025/local-tiny-agents--mcp-agents-on-ryzen-ai-with-lemonade-server.html"&gt;MCP + tiny-agents blog post&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;✨Polished overall look and feel: new getting started website at &lt;a href="https://lemonade-server.ai"&gt;https://lemonade-server.ai&lt;/a&gt;, install in under 2 minutes, and server launches in under 2 seconds.&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;With the added support for Ubuntu and llama.cpp, Lemonade Server should give great performance on many more PCs than it did 2 months ago. The team here at AMD would be very grateful if y'all could try it out with your favorite apps (I like Open WebUI) and give us another round of feedback. Cheers!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/jfowers_amd"&gt; /u/jfowers_amd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.reddit.com/gallery/1lfgfu5"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lfgfu5/amd_lemonade_server_update_ubuntu_llamacpp_vulkan/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfgfu5/amd_lemonade_server_update_ubuntu_llamacpp_vulkan/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T17:18:57+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfznhz</id>
@@ -125,6 +73,19 @@
     <published>2025-06-19T19:25:13+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lg7zmb</id>
+    <title>Help me decide on hardware for LLMs</title>
+    <updated>2025-06-20T16:13:21+00:00</updated>
+    <author>
+      <name>/u/Public-Mechanic-5476</name>
+      <uri>https://old.reddit.com/user/Public-Mechanic-5476</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;A bit of background : I've been working with LLMs (mostly dev work - pipelines and Agents) using APIs and Small Language models from past 1.5 years. Currently, I am using a Dell Inspiron 14 laptop which serves this purpose. At office/job, I have access to A5000 GPUs which I use to run VLMs and LLMs for POCs, traning jobs and other dev/production work.&lt;/p&gt; &lt;p&gt;I am planning to deep dive into Small Language Models such as building them from scratch, pretraining/fine-tuning and aligning them (just for learning purpose). And also looking at running a few bigger models as such as Llama3 and Qwen3 family (mostly 8B to 14B models) and quantized ones too.&lt;/p&gt; &lt;p&gt;So, hardware wise I was thinking the following :-&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Mac Mini M4 Pro (24GB/512GB) + Colab Pro (only when I want to seriously work on training) and use Inspiron for light weight task or for portability.&lt;/li&gt; &lt;li&gt;Macbook Air M4 (16GB RAM/512GB Storage) + Colab pro (for training tasks)&lt;/li&gt; &lt;li&gt;Proper PC build - 5060Ti (16GB) + 32GB RAM + Ryzen 7 7700&lt;/li&gt; &lt;li&gt;Open for suggestions.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;Note - Can't use those A5000s for personal stuff so thats not an option xD.&lt;/p&gt; &lt;p&gt;Thanks for your time! Really appreciate it.&lt;/p&gt; &lt;p&gt;Edit 1 - fixed typos.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Public-Mechanic-5476"&gt; /u/Public-Mechanic-5476 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7zmb/help_me_decide_on_hardware_for_llms/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7zmb/help_me_decide_on_hardware_for_llms/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7zmb/help_me_decide_on_hardware_for_llms/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-20T16:13:21+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lfp66e</id>
     <title>Dual RTX 6000, Blackwell and Ada Lovelace, with thermal imagery</title>
     <updated>2025-06-19T23:23:38+00:00</updated>
@@ -136,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfp66e/dual_rtx_6000_blackwell_and_ada_lovelace_with/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T23:23:38+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lficpj</id>
+    <title>Kyutai's STT with semantic VAD now opensource</title>
+    <updated>2025-06-19T18:33:58+00:00</updated>
+    <author>
+      <name>/u/phhusson</name>
+      <uri>https://old.reddit.com/user/phhusson</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Kyutai published their latest tech demo few weeks ago, unmute.sh. It is an impressive voice-to-voice assistant using a 3rd-party text-to-text LLM (gemma), while retaining the conversation low latency of Moshi.&lt;/p&gt; &lt;p&gt;They are currently opensourcing the various components for that.&lt;/p&gt; &lt;p&gt;The first component they opensourced is their STT, available at &lt;a href="https://github.com/kyutai-labs/delayed-streams-modeling"&gt;https://github.com/kyutai-labs/delayed-streams-modeling&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The best feature of that STT is Semantic VAD. In a local assistant, the VAD is a component that determines when to stop listening to a request. Most local VAD are sadly not very sophisticated, and won't allow you to pause or think in the middle of your sentence.&lt;/p&gt; &lt;p&gt;The Semantic VAD in Kyutai's STT will allow local assistant to be much more comfortable to use.&lt;/p&gt; &lt;p&gt;Hopefully we'll also get the streaming LLM integration and TTS from them soon, to be able to have our own low-latency local voice-to-voice assistant 🤞&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phhusson"&gt; /u/phhusson &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-19T18:33:58+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfpewd</id>
@@ -151,17 +125,17 @@
     <published>2025-06-19T23:35:16+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lficpj</id>
-    <title>Kyutai's STT with semantic VAD now opensource</title>
-    <updated>2025-06-19T18:33:58+00:00</updated>
+    <id>t3_1lg71aq</id>
+    <title>Study: Meta AI model can reproduce almost half of Harry Potter book - Ars Technica</title>
+    <updated>2025-06-20T15:35:34+00:00</updated>
     <author>
-      <name>/u/phhusson</name>
-      <uri>https://old.reddit.com/user/phhusson</uri>
+      <name>/u/mylittlethrowaway300</name>
+      <uri>https://old.reddit.com/user/mylittlethrowaway300</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Kyutai published their latest tech demo few weeks ago, unmute.sh. It is an impressive voice-to-voice assistant using a 3rd-party text-to-text LLM (gemma), while retaining the conversation low latency of Moshi.&lt;/p&gt; &lt;p&gt;They are currently opensourcing the various components for that.&lt;/p&gt; &lt;p&gt;The first component they opensourced is their STT, available at &lt;a href="https://github.com/kyutai-labs/delayed-streams-modeling"&gt;https://github.com/kyutai-labs/delayed-streams-modeling&lt;/a&gt;&lt;/p&gt; &lt;p&gt;The best feature of that STT is Semantic VAD. In a local assistant, the VAD is a component that determines when to stop listening to a request. Most local VAD are sadly not very sophisticated, and won't allow you to pause or think in the middle of your sentence.&lt;/p&gt; &lt;p&gt;The Semantic VAD in Kyutai's STT will allow local assistant to be much more comfortable to use.&lt;/p&gt; &lt;p&gt;Hopefully we'll also get the streaming LLM integration and TTS from them soon, to be able to have our own low-latency local voice-to-voice assistant 🤞&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/phhusson"&gt; /u/phhusson &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lficpj/kyutais_stt_with_semantic_vad_now_opensource/"/>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg71aq/study_meta_ai_model_can_reproduce_almost_half_of/"&gt; &lt;img alt="Study: Meta AI model can reproduce almost half of Harry Potter book - Ars Technica" src="https://external-preview.redd.it/LATs33JDlBoRUx0tiKg7DMdY6oXVXFPIYU36DtiY4tQ.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=98b804adca292cc34f817396897e2d3bdcafc87a" title="Study: Meta AI model can reproduce almost half of Harry Potter book - Ars Technica" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I thought this was a really well-written article. &lt;/p&gt; &lt;p&gt;I had a thought: do you guys think smaller LLMs will have fewer copyright issues than larger ones? If I train a huge model on text and tell it that &amp;quot;Romeo and Juliet&amp;quot; is a &amp;quot;tragic&amp;quot; story, and also that &amp;quot;Rabbit, Run&amp;quot; by Updike is also a tragic story, the larger LLM training is more likely to retain entire passages. It has the neurons of the NN (the model weights) to store information as rote memorization. &lt;/p&gt; &lt;p&gt;But, if I train a significantly smaller model, there's a higher chance that the training will manage to &amp;quot;extract&amp;quot; the components of each story that are tragic, but not retain the entire text verbatim.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/mylittlethrowaway300"&gt; /u/mylittlethrowaway300 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://arstechnica.com/features/2025/06/study-metas-llama-3-1-can-recall-42-percent-of-the-first-harry-potter-book/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg71aq/study_meta_ai_model_can_reproduce_almost_half_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg71aq/study_meta_ai_model_can_reproduce_almost_half_of/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-19T18:33:58+00:00</published>
+    <published>2025-06-20T15:35:34+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfgqkd</id>
@@ -229,6 +203,19 @@
     <published>2025-06-19T23:43:28+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lg4mp9</id>
+    <title>Use llama.cpp to run a model with the combined power of a networked cluster of GPUs.</title>
+    <updated>2025-06-20T13:56:28+00:00</updated>
+    <author>
+      <name>/u/farkinga</name>
+      <uri>https://old.reddit.com/user/farkinga</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama.cpp can be compiled with RPC support so that a model can be split across networked computers. Run even bigger models than before with a modest performance impact.&lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;GGML_RPC=ON&lt;/code&gt; when building llama.cpp so that &lt;code&gt;rpc-server&lt;/code&gt; will be compiled.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;cmake -B build -DGGML_RPC=ON cmake --build build --config Release &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Launch &lt;code&gt;rpc-server&lt;/code&gt; on each node:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;build/bin/rpc-server --host 0.0.0.0 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Finally, orchestrate the nodes with &lt;code&gt;llama-server&lt;/code&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;build/bin/llama-server --model YOUR_MODEL --gpu-layers 99 --rpc node01:50052,node02:50052,node03:50052 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm still exploring this so I am curious to hear how well it works for others.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/farkinga"&gt; /u/farkinga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-20T13:56:28+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lfuxn1</id>
     <title>New 24B finetune: Impish_Magic_24B</title>
     <updated>2025-06-20T04:21:57+00:00</updated>
@@ -253,19 +240,6 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg3oyy/intels_openvino_20252_brings_support_for_new/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-20T13:14:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lg4mp9</id>
-    <title>Use llama.cpp to run a model with the combined power of a networked cluster of GPUs.</title>
-    <updated>2025-06-20T13:56:28+00:00</updated>
-    <author>
-      <name>/u/farkinga</name>
-      <uri>https://old.reddit.com/user/farkinga</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;llama.cpp can be compiled with RPC support so that a model can be split across networked computers. Run even bigger models than before with a modest performance impact.&lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;GGML_RPC=ON&lt;/code&gt; when building llama.cpp so that &lt;code&gt;rpc-server&lt;/code&gt; will be compiled.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;cmake -B build -DGGML_RPC=ON cmake --build build --config Release &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Launch &lt;code&gt;rpc-server&lt;/code&gt; on each node:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;build/bin/rpc-server --host 0.0.0.0 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Finally, orchestrate the nodes with &lt;code&gt;llama-server&lt;/code&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;build/bin/llama-server --model YOUR_MODEL --gpu-layers 99 --rpc node01:50052,node02:50052,node03:50052 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I'm still exploring this so I am curious to hear how well it works for others.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/farkinga"&gt; /u/farkinga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg4mp9/use_llamacpp_to_run_a_model_with_the_combined/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-20T13:56:28+00:00</published>
   </entry>
   <entry>
     <id>t3_1lg5jpx</id>
@@ -294,6 +268,19 @@
     <published>2025-06-20T08:21:25+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lg80cq</id>
+    <title>New Mistral Small 3.2</title>
+    <updated>2025-06-20T16:14:11+00:00</updated>
+    <author>
+      <name>/u/ApprehensiveAd3629</name>
+      <uri>https://old.reddit.com/user/ApprehensiveAd3629</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;open weights: &lt;a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506"&gt;https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506&lt;/a&gt;&lt;/p&gt; &lt;p&gt;source: &lt;a href="https://x.com/MistralAI/status/1936093325116781016/photo/1"&gt;https://x.com/MistralAI/status/1936093325116781016/photo/1&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ApprehensiveAd3629"&gt; /u/ApprehensiveAd3629 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg80cq/new_mistral_small_32/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg80cq/new_mistral_small_32/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg80cq/new_mistral_small_32/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-20T16:14:11+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lg4nay</id>
     <title>Built an adaptive text classifier that learns continuously - no retraining needed for new classes</title>
     <updated>2025-06-20T13:57:13+00:00</updated>
@@ -318,6 +305,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lfpqs6/current_best_uncensored_model/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-19T23:51:12+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lg7vuc</id>
+    <title>mistralai/Mistral-Small-3.2-24B-Instruct-2506 · Hugging Face</title>
+    <updated>2025-06-20T16:09:13+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7vuc/mistralaimistralsmall3224binstruct2506_hugging/"&gt; &lt;img alt="mistralai/Mistral-Small-3.2-24B-Instruct-2506 · Hugging Face" src="https://external-preview.redd.it/3DBqKqgOLKDMFbcrOD5Qa-3M1IIegLfhMX6TTbsgXeU.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=7d6eecbfa2b523b92f82faf94cb6ab334696d320" title="mistralai/Mistral-Small-3.2-24B-Instruct-2506 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7vuc/mistralaimistralsmall3224binstruct2506_hugging/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg7vuc/mistralaimistralsmall3224binstruct2506_hugging/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-20T16:09:13+00:00</published>
   </entry>
   <entry>
     <id>t3_1lfzh05</id>
