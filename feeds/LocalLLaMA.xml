@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-21T19:34:03+00:00</updated>
+  <updated>2025-06-21T19:48:48+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -21,19 +21,6 @@
     <published>2025-06-21T08:50:46+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lgkhdk</id>
-    <title>A100 80GB can't serve 10 concurrent users - what am I doing wrong?</title>
-    <updated>2025-06-21T01:18:55+00:00</updated>
-    <author>
-      <name>/u/Creative_Yoghurt25</name>
-      <uri>https://old.reddit.com/user/Creative_Yoghurt25</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Running Qwen2.5-14B-AWQ on A100 80GB for voice calls.&lt;/p&gt; &lt;p&gt;People say RTX 4090 serves 10+ users fine. My A100 with 80GB VRAM can't even handle 10 concurrent requests without terrible TTFT (30+ seconds).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Current vLLM config:&lt;/strong&gt; &lt;code&gt;yaml --model Qwen/Qwen2.5-14B-Instruct-AWQ --quantization awq_marlin --gpu-memory-utilization 0.95 --max-model-len 12288 --max-num-batched-tokens 4096 --max-num-seqs 64 --enable-chunked-prefill --enable-prefix-caching --block-size 32 --preemption-mode recompute --enforce-eager &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Configs I've tried:&lt;/strong&gt; - &lt;code&gt;max-num-seqs&lt;/code&gt;: 4, 32, 64, 256, 1024 - &lt;code&gt;max-num-batched-tokens&lt;/code&gt;: 2048, 4096, 8192, 16384, 32768 - &lt;code&gt;gpu-memory-utilization&lt;/code&gt;: 0.7, 0.85, 0.9, 0.95 - &lt;code&gt;max-model-len&lt;/code&gt;: 2048 (too small), 4096, 8192, 12288 - Removed limits entirely - still terrible&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Context:&lt;/strong&gt; Input is ~6K tokens (big system prompt + conversation history). Output is only ~100 tokens. User messages are small but system prompt is large.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GuideLLM benchmark results:&lt;/strong&gt; - 1 user: 36ms TTFT ✅&lt;br /&gt; - 25 req/s target: Only got 5.34 req/s actual, 30+ second TTFT - Throughput test: 3.4 req/s max, 17+ second TTFT - 10+ concurrent: 30+ second TTFT ❌&lt;/p&gt; &lt;p&gt;Also considering Triton but haven't tried yet.&lt;/p&gt; &lt;p&gt;Need to maintain &amp;lt;500ms TTFT for at least 30 concurrent users. What vLLM config should I use? Is 14B just too big for this workload?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creative_Yoghurt25"&gt; /u/Creative_Yoghurt25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T01:18:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lghrf9</id>
     <title>If your tools and parameters aren’t too complex, even Qwen1.5 0.5B can handle tool calling with a simple DSL and finetuning.</title>
     <updated>2025-06-20T23:04:41+00:00</updated>
@@ -45,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-20T23:04:41+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lgkhdk</id>
+    <title>A100 80GB can't serve 10 concurrent users - what am I doing wrong?</title>
+    <updated>2025-06-21T01:18:55+00:00</updated>
+    <author>
+      <name>/u/Creative_Yoghurt25</name>
+      <uri>https://old.reddit.com/user/Creative_Yoghurt25</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Running Qwen2.5-14B-AWQ on A100 80GB for voice calls.&lt;/p&gt; &lt;p&gt;People say RTX 4090 serves 10+ users fine. My A100 with 80GB VRAM can't even handle 10 concurrent requests without terrible TTFT (30+ seconds).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Current vLLM config:&lt;/strong&gt; &lt;code&gt;yaml --model Qwen/Qwen2.5-14B-Instruct-AWQ --quantization awq_marlin --gpu-memory-utilization 0.95 --max-model-len 12288 --max-num-batched-tokens 4096 --max-num-seqs 64 --enable-chunked-prefill --enable-prefix-caching --block-size 32 --preemption-mode recompute --enforce-eager &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Configs I've tried:&lt;/strong&gt; - &lt;code&gt;max-num-seqs&lt;/code&gt;: 4, 32, 64, 256, 1024 - &lt;code&gt;max-num-batched-tokens&lt;/code&gt;: 2048, 4096, 8192, 16384, 32768 - &lt;code&gt;gpu-memory-utilization&lt;/code&gt;: 0.7, 0.85, 0.9, 0.95 - &lt;code&gt;max-model-len&lt;/code&gt;: 2048 (too small), 4096, 8192, 12288 - Removed limits entirely - still terrible&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Context:&lt;/strong&gt; Input is ~6K tokens (big system prompt + conversation history). Output is only ~100 tokens. User messages are small but system prompt is large.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GuideLLM benchmark results:&lt;/strong&gt; - 1 user: 36ms TTFT ✅&lt;br /&gt; - 25 req/s target: Only got 5.34 req/s actual, 30+ second TTFT - Throughput test: 3.4 req/s max, 17+ second TTFT - 10+ concurrent: 30+ second TTFT ❌&lt;/p&gt; &lt;p&gt;Also considering Triton but haven't tried yet.&lt;/p&gt; &lt;p&gt;Need to maintain &amp;lt;500ms TTFT for at least 30 concurrent users. What vLLM config should I use? Is 14B just too big for this workload?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creative_Yoghurt25"&gt; /u/Creative_Yoghurt25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T01:18:55+00:00</published>
   </entry>
   <entry>
     <id>t3_1lgtcrb</id>
@@ -73,19 +73,6 @@
     <published>2025-06-21T17:39:56+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lh1gkh</id>
-    <title>Deepseekv3-0324 671b LORA training</title>
-    <updated>2025-06-21T17:07:26+00:00</updated>
-    <author>
-      <name>/u/triestdain</name>
-      <uri>https://old.reddit.com/user/triestdain</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there a way currently to train LORAs off of Deepseekv3-0324 (671b) given that there is no huggingface transformers support yet?&lt;/p&gt; &lt;p&gt;I am aware of NeMo:&lt;a href="https://docs.nvidia.com/nemo-framework/user-guide/latest/llms/deepseek_v3.html"&gt;https://docs.nvidia.com/nemo-framework/user-guide/latest/llms/deepseek_v3.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But am curious if there is a path out there that works while keeping the model at FP8. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/triestdain"&gt; /u/triestdain &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T17:07:26+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lgv0y9</id>
     <title>Help me build a good TTS + LLM + STT stack</title>
     <updated>2025-06-21T12:07:25+00:00</updated>
@@ -110,6 +97,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgnri0/what_are_some_ai_tools_free_or_paid_that/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-21T04:17:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lh1gkh</id>
+    <title>Deepseekv3-0324 671b LORA training</title>
+    <updated>2025-06-21T17:07:26+00:00</updated>
+    <author>
+      <name>/u/triestdain</name>
+      <uri>https://old.reddit.com/user/triestdain</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Is there a way currently to train LORAs off of Deepseekv3-0324 (671b) given that there is no huggingface transformers support yet?&lt;/p&gt; &lt;p&gt;I am aware of NeMo:&lt;a href="https://docs.nvidia.com/nemo-framework/user-guide/latest/llms/deepseek_v3.html"&gt;https://docs.nvidia.com/nemo-framework/user-guide/latest/llms/deepseek_v3.html&lt;/a&gt;&lt;/p&gt; &lt;p&gt;But am curious if there is a path out there that works while keeping the model at FP8. &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/triestdain"&gt; /u/triestdain &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lh1gkh/deepseekv30324_671b_lora_training/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T17:07:26+00:00</published>
   </entry>
   <entry>
     <id>t3_1lh0div</id>
@@ -151,19 +151,6 @@
     <published>2025-06-21T09:58:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lgy4wa</id>
-    <title>Build Qwen3 from Scratch</title>
-    <updated>2025-06-21T14:41:27+00:00</updated>
-    <author>
-      <name>/u/entsnack</name>
-      <uri>https://old.reddit.com/user/entsnack</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm a big fan of Sebastian Raschka's earlier work on LLMs from scratch. He recently switched from Llama to Qwen (a switch I recently made too thanks to someone in this subreddit) and wrote a Jupyter notebook implementing Qwen3 from scratch.&lt;/p&gt; &lt;p&gt;Highly recommend this resource as a learning project.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/entsnack"&gt; /u/entsnack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/rasbt/LLMs-from-scratch/tree/main/ch05/11_qwen3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy4wa/build_qwen3_from_scratch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy4wa/build_qwen3_from_scratch/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T14:41:27+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lgg7a1</id>
     <title>Google releases MagentaRT for real time music generation</title>
     <updated>2025-06-20T21:54:20+00:00</updated>
@@ -177,17 +164,17 @@
     <published>2025-06-20T21:54:20+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lgy12q</id>
-    <title>moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face</title>
-    <updated>2025-06-21T14:36:31+00:00</updated>
+    <id>t3_1lgy4wa</id>
+    <title>Build Qwen3 from Scratch</title>
+    <updated>2025-06-21T14:41:27+00:00</updated>
     <author>
-      <name>/u/Dark_Fire_12</name>
-      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+      <name>/u/entsnack</name>
+      <uri>https://old.reddit.com/user/entsnack</uri>
     </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"&gt; &lt;img alt="moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face" src="https://external-preview.redd.it/nn6Om0LrvY9dh6qkhvLPezIS-aJdRaC0O6BpYJYgA5E.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c180a6be6bee520890e9e2bcc9303148c925f48" title="moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm a big fan of Sebastian Raschka's earlier work on LLMs from scratch. He recently switched from Llama to Qwen (a switch I recently made too thanks to someone in this subreddit) and wrote a Jupyter notebook implementing Qwen3 from scratch.&lt;/p&gt; &lt;p&gt;Highly recommend this resource as a learning project.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/entsnack"&gt; /u/entsnack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/rasbt/LLMs-from-scratch/tree/main/ch05/11_qwen3"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy4wa/build_qwen3_from_scratch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy4wa/build_qwen3_from_scratch/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T14:36:31+00:00</published>
+    <published>2025-06-21T14:41:27+00:00</published>
   </entry>
   <entry>
     <id>t3_1lgx222</id>
@@ -203,6 +190,19 @@
     <published>2025-06-21T13:51:53+00:00</published>
   </entry>
   <entry>
+    <id>t3_1lgy12q</id>
+    <title>moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face</title>
+    <updated>2025-06-21T14:36:31+00:00</updated>
+    <author>
+      <name>/u/Dark_Fire_12</name>
+      <uri>https://old.reddit.com/user/Dark_Fire_12</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"&gt; &lt;img alt="moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face" src="https://external-preview.redd.it/nn6Om0LrvY9dh6qkhvLPezIS-aJdRaC0O6BpYJYgA5E.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=0c180a6be6bee520890e9e2bcc9303148c925f48" title="moonshotai/Kimi-VL-A3B-Thinking-2506 · Hugging Face" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Dark_Fire_12"&gt; /u/Dark_Fire_12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgy12q/moonshotaikimivla3bthinking2506_hugging_face/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T14:36:31+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1lh359d</id>
     <title>From Arch-Function to Arch-Agent. Designed for fast multi-step, multi-turn workflow orchestration in agents.</title>
     <updated>2025-06-21T18:20:02+00:00</updated>
@@ -216,19 +216,6 @@
     <published>2025-06-21T18:20:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lh0qb9</id>
-    <title>how many people will tolerate slow speed for running LLM locally?</title>
-    <updated>2025-06-21T16:36:11+00:00</updated>
-    <author>
-      <name>/u/OwnSoup8888</name>
-      <uri>https://old.reddit.com/user/OwnSoup8888</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;just want to check how many people will tolerate speed for privacy? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OwnSoup8888"&gt; /u/OwnSoup8888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T16:36:11+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lgxjw2</id>
     <title>Self Adapting LLMs - legit?</title>
     <updated>2025-06-21T14:14:34+00:00</updated>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgxjw2/self_adapting_llms_legit/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-21T14:14:34+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lh0qb9</id>
+    <title>how many people will tolerate slow speed for running LLM locally?</title>
+    <updated>2025-06-21T16:36:11+00:00</updated>
+    <author>
+      <name>/u/OwnSoup8888</name>
+      <uri>https://old.reddit.com/user/OwnSoup8888</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;just want to check how many people will tolerate speed for privacy? &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/OwnSoup8888"&gt; /u/OwnSoup8888 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lh0qb9/how_many_people_will_tolerate_slow_speed_for/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T16:36:11+00:00</published>
   </entry>
   <entry>
     <id>t3_1lgsxyw</id>
