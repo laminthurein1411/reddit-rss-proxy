@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-21T06:08:26+00:00</updated>
+  <updated>2025-06-21T06:25:25+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
+  <entry>
+    <id>t3_1lg16ds</id>
+    <title>What is the ideal scenario for using MCP in new project?</title>
+    <updated>2025-06-20T11:02:36+00:00</updated>
+    <author>
+      <name>/u/CartographerNo6587</name>
+      <uri>https://old.reddit.com/user/CartographerNo6587</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;MCP is being thrown around in many projects I see, want to understand what really makes sense, what is the ideal scenario where usage of MCP fits best. I have seen PoC and toy examples, reference to real-life setup would be helpful!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/CartographerNo6587"&gt; /u/CartographerNo6587 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lg16ds/what_is_the_ideal_scenario_for_using_mcp_in_new/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lg16ds/what_is_the_ideal_scenario_for_using_mcp_in_new/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lg16ds/what_is_the_ideal_scenario_for_using_mcp_in_new/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-20T11:02:36+00:00</published>
+  </entry>
   <entry>
     <id>t3_1lg0k4e</id>
     <title>Open Source MCP Server for Automatisch (Zapier alternative) – Feedback &amp; Ideas Welcome!</title>
@@ -214,19 +227,6 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lfypu3/which_mcp_do_you_use_most_in_your_daily_life/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-20T08:22:48+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lgoc6q</id>
-    <title>I built a MCP tool for LLMs to use GPT-Image-1, etc., but hit some core challenges with the Model Calling pattern. Looking for advice.</title>
-    <updated>2025-06-21T04:50:43+00:00</updated>
-    <author>
-      <name>/u/sarvsarv</name>
-      <uri>https://old.reddit.com/user/sarvsarv</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt; &lt;p&gt;I've been diving deep into the world of LLMs and multi-modal AI and recently built a tool called &lt;strong&gt;ImgMCP&lt;/strong&gt;. This is a Streamable HTTP MCP Tool.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Project Link:&lt;/strong&gt; &lt;a href="https://imgmcp.com"&gt;https://imgmcp.com&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In short, it’s an aggregation platform that lets an LLM intelligently call various multimedia AI models to get a task done.&lt;/p&gt; &lt;p&gt;![](&lt;a href="https://cdn.imgmcp.com/snapshot-studio-1.png"&gt;https://cdn.imgmcp.com/snapshot-studio-1.png&lt;/a&gt;)&lt;/p&gt; &lt;h3&gt;The Core Idea&lt;/h3&gt; &lt;p&gt;We all know how painful it can be to switch between different AI tools. You might use Midjourney for its artistic flair, another model for its powerful in-painting, and a third for its contextual understanding.&lt;/p&gt; &lt;p&gt;My goal was to create a unified entry point. You just tell an LLM your idea in natural language, and it figures out the rest—maybe it calls Midjourney for a concept, then uses another model to refine it based on more detailed context, and finally a third one for touch-ups.&lt;/p&gt; &lt;p&gt;This also means we could give &amp;quot;superpowers&amp;quot; to text-only LLMs, allowing them to orchestrate complex image generation tasks. My early tests show this is totally feasible, even with smaller local models.&lt;/p&gt; &lt;h3&gt;The Challenges I'm Facing (And Where I Need Your Ideas)&lt;/h3&gt; &lt;p&gt;This is the main reason I'm posting. While building this, I ran into some fundamental issues with the current state of the Model Calling pattern, and I'd love to hear how you all are thinking about these.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Asynchronous Tasks &amp;amp; Notifications:&lt;/strong&gt; Many MCP hosts don't seem to have a proper notification mechanism. This means when an LLM kicks off a long-running task (like generating a complex image), the only way to know if it's done is to poll for status by calling the tool again. The user experience is clunky. How are you handling long-running, asynchronous jobs initiated by LLMs?&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;strong&gt;Local File Uploads:&lt;/strong&gt; Remote MCP tools can't directly access a user's local files. This makes essential features like &amp;quot;image-to-image&amp;quot; or &amp;quot;image-to-video&amp;quot; a real pain. The user has to upload a file somewhere first and then pass the URL. I built a small side-project (&lt;a href="https://github.com/sjzar/file-store-mcp"&gt;&lt;code&gt;file-store-mcp&lt;/code&gt;&lt;/a&gt;) that acts as a local helper to upload files and return a URL, but it feels like a workaround. Is there a more elegant, standardized solution for this?&lt;/p&gt;&lt;/li&gt; &lt;/ol&gt; &lt;h3&gt;A Deeper Question: Is MCP a New Kind of Interface?&lt;/h3&gt; &lt;p&gt;This got me thinking. We have UIs for humans and APIs for programs. Is MCP becoming a third kind of interface, designed specifically for LLMs?&lt;/p&gt; &lt;p&gt;If an API requires precise parameters, should an MCP be designed to accept more natural, &amp;quot;fuzzier&amp;quot; language, much like an email? You email a colleague a request because they have specialized skills. Maybe an MCP should work the same way, allowing an LLM to delegate a specialized task without cluttering its own context.&lt;/p&gt; &lt;p&gt;If so, does this mean the best MCPs will need their own specialized LLM at the entry point to translate the incoming request into concrete actions? This feels like we're stepping into a true Agent-to-Agent (A2A) world. Am I overthinking this?&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;I've shared a lot, but my main goal is to get your thoughts on the challenges around MCP. I welcome you to try out &lt;strong&gt;ImgMCP&lt;/strong&gt;, but more importantly, I'd love to discuss these ideas with you all.&lt;/p&gt; &lt;p&gt;How would you solve the notification and file upload problems? Is MCP the &amp;quot;third interface&amp;quot;?&lt;/p&gt; &lt;p&gt;Looking forward to the discussion&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/sarvsarv"&gt; /u/sarvsarv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lgoc6q/i_built_a_mcp_tool_for_llms_to_use_gptimage1_etc/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lgoc6q/i_built_a_mcp_tool_for_llms_to_use_gptimage1_etc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lgoc6q/i_built_a_mcp_tool_for_llms_to_use_gptimage1_etc/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-21T04:50:43+00:00</published>
   </entry>
   <entry>
     <id>t3_1lgkakn</id>
