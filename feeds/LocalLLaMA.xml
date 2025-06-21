@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-21T07:06:18+00:00</updated>
+  <updated>2025-06-21T07:23:41+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -242,19 +242,6 @@
     <published>2025-06-21T04:17:18+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lgkhdk</id>
-    <title>A100 80GB can't serve 10 concurrent users - what am I doing wrong?</title>
-    <updated>2025-06-21T01:18:55+00:00</updated>
-    <author>
-      <name>/u/Creative_Yoghurt25</name>
-      <uri>https://old.reddit.com/user/Creative_Yoghurt25</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Running Qwen2.5-14B-AWQ on A100 80GB for voice calls.&lt;/p&gt; &lt;p&gt;People say RTX 4090 serves 10+ users fine. My A100 with 80GB VRAM can't even handle 10 concurrent requests without terrible TTFT (30+ seconds).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Current vLLM config:&lt;/strong&gt; &lt;code&gt;yaml --model Qwen/Qwen2.5-14B-Instruct-AWQ --quantization awq_marlin --gpu-memory-utilization 0.95 --max-model-len 12288 --max-num-batched-tokens 4096 --max-num-seqs 64 --enable-chunked-prefill --enable-prefix-caching --block-size 32 --preemption-mode recompute --enforce-eager &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Configs I've tried:&lt;/strong&gt; - &lt;code&gt;max-num-seqs&lt;/code&gt;: 4, 32, 64, 256, 1024 - &lt;code&gt;max-num-batched-tokens&lt;/code&gt;: 2048, 4096, 8192, 16384, 32768 - &lt;code&gt;gpu-memory-utilization&lt;/code&gt;: 0.7, 0.85, 0.9, 0.95 - &lt;code&gt;max-model-len&lt;/code&gt;: 2048 (too small), 4096, 8192, 12288 - Removed limits entirely - still terrible&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Context:&lt;/strong&gt; Input is ~6K tokens (big system prompt + conversation history). Output is only ~100 tokens. User messages are small but system prompt is large.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GuideLLM benchmark results:&lt;/strong&gt; - 1 user: 36ms TTFT ✅&lt;br /&gt; - 25 req/s target: Only got 5.34 req/s actual, 30+ second TTFT - Throughput test: 3.4 req/s max, 17+ second TTFT - 10+ concurrent: 30+ second TTFT ❌&lt;/p&gt; &lt;p&gt;Also considering Triton but haven't tried yet.&lt;/p&gt; &lt;p&gt;Need to maintain &amp;lt;500ms TTFT for at least 30 concurrent users. What vLLM config should I use? Is 14B just too big for this workload?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creative_Yoghurt25"&gt; /u/Creative_Yoghurt25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T01:18:55+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lgcbyh</id>
     <title>Performance comparison on gemma-3-27b-it-Q4_K_M, on 5090 vs 4090 vs 3090 vs A6000, tuned for performance. Both compute and bandwidth bound.</title>
     <updated>2025-06-20T19:09:42+00:00</updated>
@@ -268,19 +255,6 @@
     <published>2025-06-20T19:09:42+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lghrf9</id>
-    <title>If your tools and parameters aren’t too complex, even Qwen1.5 0.5B can handle tool calling with a simple DSL and finetuning.</title>
-    <updated>2025-06-20T23:04:41+00:00</updated>
-    <author>
-      <name>/u/umtksa</name>
-      <uri>https://old.reddit.com/user/umtksa</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I designed a super minimal syntax like:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;TOOL: param1, param2, param3 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Then fine-tuned Qwen 1.5 0.5B for just &lt;strong&gt;5 epochs&lt;/strong&gt;, and now it can reliably call &lt;strong&gt;all 11 tools&lt;/strong&gt; in my dataset without any issues.&lt;/p&gt; &lt;p&gt;I'm working in Turkish, and before this, I could only get accurate tool calls using much larger models like &lt;strong&gt;Gemma3:12B&lt;/strong&gt;. But this little model now handles it surprisingly well.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; – If your tool names and parameters are relatively simple like mine, just invent a small DSL and fine-tune a base model. Even &lt;strong&gt;Google Colab’s free tier&lt;/strong&gt; is enough.&lt;/p&gt; &lt;p&gt;here is my own dataset that I use to fine tune qwen1.5 &lt;a href="https://huggingface.co/datasets/umtksa/tools"&gt;https://huggingface.co/datasets/umtksa/tools&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/umtksa"&gt; /u/umtksa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-20T23:04:41+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lg80cq</id>
     <title>New Mistral Small 3.2</title>
     <updated>2025-06-20T16:14:11+00:00</updated>
@@ -292,6 +266,32 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lg80cq/new_mistral_small_32/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-20T16:14:11+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lgkhdk</id>
+    <title>A100 80GB can't serve 10 concurrent users - what am I doing wrong?</title>
+    <updated>2025-06-21T01:18:55+00:00</updated>
+    <author>
+      <name>/u/Creative_Yoghurt25</name>
+      <uri>https://old.reddit.com/user/Creative_Yoghurt25</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Running Qwen2.5-14B-AWQ on A100 80GB for voice calls.&lt;/p&gt; &lt;p&gt;People say RTX 4090 serves 10+ users fine. My A100 with 80GB VRAM can't even handle 10 concurrent requests without terrible TTFT (30+ seconds).&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Current vLLM config:&lt;/strong&gt; &lt;code&gt;yaml --model Qwen/Qwen2.5-14B-Instruct-AWQ --quantization awq_marlin --gpu-memory-utilization 0.95 --max-model-len 12288 --max-num-batched-tokens 4096 --max-num-seqs 64 --enable-chunked-prefill --enable-prefix-caching --block-size 32 --preemption-mode recompute --enforce-eager &lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Configs I've tried:&lt;/strong&gt; - &lt;code&gt;max-num-seqs&lt;/code&gt;: 4, 32, 64, 256, 1024 - &lt;code&gt;max-num-batched-tokens&lt;/code&gt;: 2048, 4096, 8192, 16384, 32768 - &lt;code&gt;gpu-memory-utilization&lt;/code&gt;: 0.7, 0.85, 0.9, 0.95 - &lt;code&gt;max-model-len&lt;/code&gt;: 2048 (too small), 4096, 8192, 12288 - Removed limits entirely - still terrible&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Context:&lt;/strong&gt; Input is ~6K tokens (big system prompt + conversation history). Output is only ~100 tokens. User messages are small but system prompt is large.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;GuideLLM benchmark results:&lt;/strong&gt; - 1 user: 36ms TTFT ✅&lt;br /&gt; - 25 req/s target: Only got 5.34 req/s actual, 30+ second TTFT - Throughput test: 3.4 req/s max, 17+ second TTFT - 10+ concurrent: 30+ second TTFT ❌&lt;/p&gt; &lt;p&gt;Also considering Triton but haven't tried yet.&lt;/p&gt; &lt;p&gt;Need to maintain &amp;lt;500ms TTFT for at least 30 concurrent users. What vLLM config should I use? Is 14B just too big for this workload?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Creative_Yoghurt25"&gt; /u/Creative_Yoghurt25 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgkhdk/a100_80gb_cant_serve_10_concurrent_users_what_am/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T01:18:55+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lghrf9</id>
+    <title>If your tools and parameters aren’t too complex, even Qwen1.5 0.5B can handle tool calling with a simple DSL and finetuning.</title>
+    <updated>2025-06-20T23:04:41+00:00</updated>
+    <author>
+      <name>/u/umtksa</name>
+      <uri>https://old.reddit.com/user/umtksa</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I designed a super minimal syntax like:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;TOOL: param1, param2, param3 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Then fine-tuned Qwen 1.5 0.5B for just &lt;strong&gt;5 epochs&lt;/strong&gt;, and now it can reliably call &lt;strong&gt;all 11 tools&lt;/strong&gt; in my dataset without any issues.&lt;/p&gt; &lt;p&gt;I'm working in Turkish, and before this, I could only get accurate tool calls using much larger models like &lt;strong&gt;Gemma3:12B&lt;/strong&gt;. But this little model now handles it surprisingly well.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; – If your tool names and parameters are relatively simple like mine, just invent a small DSL and fine-tune a base model. Even &lt;strong&gt;Google Colab’s free tier&lt;/strong&gt; is enough.&lt;/p&gt; &lt;p&gt;here is my own dataset that I use to fine tune qwen1.5 &lt;a href="https://huggingface.co/datasets/umtksa/tools"&gt;https://huggingface.co/datasets/umtksa/tools&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/umtksa"&gt; /u/umtksa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lghrf9/if_your_tools_and_parameters_arent_too_complex/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-20T23:04:41+00:00</published>
   </entry>
   <entry>
     <id>t3_1lg7vuc</id>
