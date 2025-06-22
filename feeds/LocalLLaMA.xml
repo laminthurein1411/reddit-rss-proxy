@@ -2,37 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-22T07:23:59+00:00</updated>
+  <updated>2025-06-22T07:35:25+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1lhhs1r</id>
-    <title>Best open agentic coding assistants that don’t need an OpenAI key?</title>
-    <updated>2025-06-22T07:03:21+00:00</updated>
-    <author>
-      <name>/u/Fabulous_Bluebird931</name>
-      <uri>https://old.reddit.com/user/Fabulous_Bluebird931</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looking for ai dev tools that actually let you use your own models, something agent-style that can analyse multiple files, track goals, and suggest edits/refactors, ideally all within vscode or terminal.&lt;/p&gt; &lt;p&gt;I’ve used Copilot’s agent mode, but it’s obviously tied to OpenAI. I’m more interested in&lt;/p&gt; &lt;p&gt;Tools that work with local models (via Ollama or similar)&lt;/p&gt; &lt;p&gt;API-pluggable setups (Gemini 1.5, deepseek, Qwen3, etc)&lt;/p&gt; &lt;p&gt;Agents that can track tasks, not just generate single responses&lt;/p&gt; &lt;p&gt;I’ve been trying Blackbox’s vscode integration, which has some agentic behaviour now. Also tried cline and roo, which are promising for CLI work.&lt;/p&gt; &lt;p&gt;But most tools either&lt;/p&gt; &lt;p&gt;Require a paid key to do anything useful Aren’t flexible with models&lt;/p&gt; &lt;p&gt;Or don’t handle full-project context&lt;/p&gt; &lt;p&gt;anyone found a combo that works well with open models and integrates tightly with your coding environment? Not looking for prompt uis, looking for workflow tools please&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fabulous_Bluebird931"&gt; /u/Fabulous_Bluebird931 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-22T07:03:21+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1lgsykj</id>
-    <title>AbsenceBench: LLMs can't tell what's missing</title>
-    <updated>2025-06-21T09:58:18+00:00</updated>
-    <author>
-      <name>/u/Chromix_</name>
-      <uri>https://old.reddit.com/user/Chromix_</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt; &lt;img alt="AbsenceBench: LLMs can't tell what's missing" src="https://b.thumbs.redditmedia.com/PjMEdZcgsAhmRkC952iAQojRviDlyPY_z4tXX2TYqCE.jpg" title="AbsenceBench: LLMs can't tell what's missing" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The &lt;a href="https://arxiv.org/pdf/2506.11440"&gt;AbsenceBench paper&lt;/a&gt; establishes a test that's basically Needle In A Haystack (NIAH) in reverse. &lt;a href="https://github.com/harvey-fin/absence-bench"&gt;Code here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The idea is that models score 100% on NIAH tests, thus perfectly identify added tokens that stand out - which is not equal to perfectly reasoning over longer context though - and try that in reverse, with added hints.&lt;/p&gt; &lt;p&gt;They gave the model poetry, number sequences and GitHub PRs, &lt;em&gt;together with&lt;/em&gt; a modified version with removed words or lines, and then asked the model to identify what's missing. A simple program can figure this out with 100% accurracy. The LLMs can't.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rzlyybfr598f1.png?width=2154&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fcadbf591cdd0de119850a164f3ad1488efa3285"&gt;https://preview.redd.it/rzlyybfr598f1.png?width=2154&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fcadbf591cdd0de119850a164f3ad1488efa3285&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Using around 8k thinking tokens improved the score by 8% on average. Those 8k thinking tokens are quite longer than the average input - just 5k, with almost all tests being shorter than 12k. Thus, this isn't an issue of long context handling, although results get worse with longer context. For some reason the results also got worse when testing with shorter omissions.&lt;/p&gt; &lt;p&gt;The hypothesis is that the attention mechanism can only attend to tokens that exist. Omissions have no tokens, thus there are no tokens to put attention on. They tested this by adding placeholders, which boosted the scores by 20% to 50%.&lt;/p&gt; &lt;p&gt;The NIAH test just tested finding literal matches. Models that didn't score close to 100% were also bad at long context understanding. Yet as we've seen with NoLiMa and fiction.liveBench, getting 100% NIAH score doesn't equal good long context &lt;em&gt;understanding&lt;/em&gt;. This paper only tests literal omissions and not semantic omissions, like incomplete evidence for a conclusion. Thus, like NIAH a model scoring 100% here won't automatically guarantee good long context understanding.&lt;/p&gt; &lt;p&gt;Bonus: They also shared the average reasoning tokens per model.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/6b6gzd2w698f1.png?width=1053&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c62b0fe40613886510bd91922032278ec146a874"&gt;https://preview.redd.it/6b6gzd2w698f1.png?width=1053&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c62b0fe40613886510bd91922032278ec146a874&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Chromix_"&gt; /u/Chromix_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-21T09:58:18+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lgg7a1</id>
     <title>Google releases MagentaRT for real time music generation</title>
@@ -58,6 +32,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lh66t7/anyone_using_jetbrainsrider/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-21T20:36:13+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lgsykj</id>
+    <title>AbsenceBench: LLMs can't tell what's missing</title>
+    <updated>2025-06-21T09:58:18+00:00</updated>
+    <author>
+      <name>/u/Chromix_</name>
+      <uri>https://old.reddit.com/user/Chromix_</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt; &lt;img alt="AbsenceBench: LLMs can't tell what's missing" src="https://b.thumbs.redditmedia.com/PjMEdZcgsAhmRkC952iAQojRviDlyPY_z4tXX2TYqCE.jpg" title="AbsenceBench: LLMs can't tell what's missing" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;The &lt;a href="https://arxiv.org/pdf/2506.11440"&gt;AbsenceBench paper&lt;/a&gt; establishes a test that's basically Needle In A Haystack (NIAH) in reverse. &lt;a href="https://github.com/harvey-fin/absence-bench"&gt;Code here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The idea is that models score 100% on NIAH tests, thus perfectly identify added tokens that stand out - which is not equal to perfectly reasoning over longer context though - and try that in reverse, with added hints.&lt;/p&gt; &lt;p&gt;They gave the model poetry, number sequences and GitHub PRs, &lt;em&gt;together with&lt;/em&gt; a modified version with removed words or lines, and then asked the model to identify what's missing. A simple program can figure this out with 100% accurracy. The LLMs can't.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/rzlyybfr598f1.png?width=2154&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fcadbf591cdd0de119850a164f3ad1488efa3285"&gt;https://preview.redd.it/rzlyybfr598f1.png?width=2154&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fcadbf591cdd0de119850a164f3ad1488efa3285&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Using around 8k thinking tokens improved the score by 8% on average. Those 8k thinking tokens are quite longer than the average input - just 5k, with almost all tests being shorter than 12k. Thus, this isn't an issue of long context handling, although results get worse with longer context. For some reason the results also got worse when testing with shorter omissions.&lt;/p&gt; &lt;p&gt;The hypothesis is that the attention mechanism can only attend to tokens that exist. Omissions have no tokens, thus there are no tokens to put attention on. They tested this by adding placeholders, which boosted the scores by 20% to 50%.&lt;/p&gt; &lt;p&gt;The NIAH test just tested finding literal matches. Models that didn't score close to 100% were also bad at long context understanding. Yet as we've seen with NoLiMa and fiction.liveBench, getting 100% NIAH score doesn't equal good long context &lt;em&gt;understanding&lt;/em&gt;. This paper only tests literal omissions and not semantic omissions, like incomplete evidence for a conclusion. Thus, like NIAH a model scoring 100% here won't automatically guarantee good long context understanding.&lt;/p&gt; &lt;p&gt;Bonus: They also shared the average reasoning tokens per model.&lt;/p&gt; &lt;p&gt;&lt;a href="https://preview.redd.it/6b6gzd2w698f1.png?width=1053&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c62b0fe40613886510bd91922032278ec146a874"&gt;https://preview.redd.it/6b6gzd2w698f1.png?width=1053&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=c62b0fe40613886510bd91922032278ec146a874&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Chromix_"&gt; /u/Chromix_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgsykj/absencebench_llms_cant_tell_whats_missing/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-21T09:58:18+00:00</published>
   </entry>
   <entry>
     <id>t3_1lh5gwl</id>
@@ -97,6 +84,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgyv8a/steering_llm_outputs/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-21T15:14:23+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lhhs1r</id>
+    <title>Best open agentic coding assistants that don’t need an OpenAI key?</title>
+    <updated>2025-06-22T07:03:21+00:00</updated>
+    <author>
+      <name>/u/Fabulous_Bluebird931</name>
+      <uri>https://old.reddit.com/user/Fabulous_Bluebird931</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Looking for ai dev tools that actually let you use your own models, something agent-style that can analyse multiple files, track goals, and suggest edits/refactors, ideally all within vscode or terminal.&lt;/p&gt; &lt;p&gt;I’ve used Copilot’s agent mode, but it’s obviously tied to OpenAI. I’m more interested in&lt;/p&gt; &lt;p&gt;Tools that work with local models (via Ollama or similar)&lt;/p&gt; &lt;p&gt;API-pluggable setups (Gemini 1.5, deepseek, Qwen3, etc)&lt;/p&gt; &lt;p&gt;Agents that can track tasks, not just generate single responses&lt;/p&gt; &lt;p&gt;I’ve been trying Blackbox’s vscode integration, which has some agentic behaviour now. Also tried cline and roo, which are promising for CLI work.&lt;/p&gt; &lt;p&gt;But most tools either&lt;/p&gt; &lt;p&gt;Require a paid key to do anything useful Aren’t flexible with models&lt;/p&gt; &lt;p&gt;Or don’t handle full-project context&lt;/p&gt; &lt;p&gt;anyone found a combo that works well with open models and integrates tightly with your coding environment? Not looking for prompt uis, looking for workflow tools please&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Fabulous_Bluebird931"&gt; /u/Fabulous_Bluebird931 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lhhs1r/best_open_agentic_coding_assistants_that_dont/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-22T07:03:21+00:00</published>
   </entry>
   <entry>
     <id>t3_1lgy12q</id>
@@ -229,19 +229,6 @@
     <published>2025-06-21T18:20:02+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lhbgcn</id>
-    <title>A Great Breakdown of the "Disney vs Midjourney" Lawsuit Case</title>
-    <updated>2025-06-22T00:51:14+00:00</updated>
-    <author>
-      <name>/u/Iory1998</name>
-      <uri>https://old.reddit.com/user/Iory1998</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As you all know by now, Disney has sued Midjourney on the basis that the latter trained its AI image generating models on copyrighted materials. &lt;/p&gt; &lt;p&gt;This is a serious case that we all should follow up closely. LegalEagle broke down the case in their new YouTube video linked below:&lt;br /&gt; &lt;a href="https://www.youtube.com/watch?v=zpcWv1lHU6I"&gt;https://www.youtube.com/watch?v=zpcWv1lHU6I&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I really hope Midjourney wins this one.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Iory1998"&gt; /u/Iory1998 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-22T00:51:14+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1lgvl40</id>
     <title>After trying to buy Ilya Sutskever's $32B AI startup, Meta looks to hire its CEO | TechCrunch</title>
     <updated>2025-06-21T12:38:20+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lgvl40/after_trying_to_buy_ilya_sutskevers_32b_ai/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-21T12:38:20+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lhbgcn</id>
+    <title>A Great Breakdown of the "Disney vs Midjourney" Lawsuit Case</title>
+    <updated>2025-06-22T00:51:14+00:00</updated>
+    <author>
+      <name>/u/Iory1998</name>
+      <uri>https://old.reddit.com/user/Iory1998</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;As you all know by now, Disney has sued Midjourney on the basis that the latter trained its AI image generating models on copyrighted materials. &lt;/p&gt; &lt;p&gt;This is a serious case that we all should follow up closely. LegalEagle broke down the case in their new YouTube video linked below:&lt;br /&gt; &lt;a href="https://www.youtube.com/watch?v=zpcWv1lHU6I"&gt;https://www.youtube.com/watch?v=zpcWv1lHU6I&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I really hope Midjourney wins this one.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Iory1998"&gt; /u/Iory1998 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lhbgcn/a_great_breakdown_of_the_disney_vs_midjourney/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-22T00:51:14+00:00</published>
   </entry>
   <entry>
     <id>t3_1lh0qb9</id>
