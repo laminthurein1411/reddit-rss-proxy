@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-24T09:50:07+00:00</updated>
+  <updated>2025-06-24T10:07:20+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lin3l5</id>
-    <title>Supergateway + Nginx + MCP server – POST to /sequentialthinking returns 404, SSE works</title>
-    <updated>2025-06-23T17:41:14+00:00</updated>
-    <author>
-      <name>/u/theborngeek</name>
-      <uri>https://old.reddit.com/user/theborngeek</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I'm hosting an MCP stdio server (&lt;code&gt;@modelcontextprotocol/server-sequential-thinking&lt;/code&gt;) on an &lt;strong&gt;AWS EC2 instance&lt;/strong&gt;, using &lt;strong&gt;Supergateway&lt;/strong&gt; to wrap it with HTTP/SSE, and &lt;strong&gt;Nginx&lt;/strong&gt; as a reverse proxy. The goal is to expose it cleanly (e.g., &lt;code&gt;https://my-server.com/sequential&lt;/code&gt;) so tools like &lt;strong&gt;VSCode Copilot&lt;/strong&gt; can access it without needing raw npx setups or port exposure.&lt;/p&gt; &lt;h1&gt;Setup&lt;/h1&gt; &lt;p&gt;&lt;strong&gt;Supergateway command:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;npx -y supergateway \ --stdio &amp;quot;npx -y u/modelcontextprotocol/server-sequential-thinking@latest&amp;quot; \ --port 8000 \ --baseUrl http://0.0.0.0:8000 \ --ssePath /sequential \ --messagePath /sequential &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;Nginx config:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;location /sequential { proxy_pass http://sequential-mcp:8000/sequential; include proxy.conf; add_header X-Accel-Buffering no; } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;Docker Compose for Supergateway:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;sequential-mcp: image: node:20-alpine restart: unless-stopped ports: - &amp;quot;8000:8000&amp;quot; command: &amp;gt; sh -c &amp;quot;npx -y supergateway --stdio 'npx -y @modelcontextprotocol/server-sequential-thinking@latest' --port 8000 --baseUrl http://0.0.0.0:8000 --ssePath /sequential --messagePath /sequential --logLevel debug&amp;quot; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;Client config (VSCode Copilot):&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &amp;quot;servers&amp;quot;: { &amp;quot;sample-mcp&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;http://&amp;lt;my-server&amp;gt;/sequential&amp;quot; } } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;What works&lt;/strong&gt; SSE (GET) to /sequential works and I see the event stream. When running Supergateway directly (not behind Nginx), both GET and POST to /sequential work and tools are discovered.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What doesn’t work&lt;/strong&gt; When using Nginx, POST to /sequential returns 404, and the client hangs on initialize.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;What I’ve tried&lt;/strong&gt; Ensured both --ssePath and --messagePath are /sequential. Confirmed Nginx proxies to the correct backend and port. Added add_header X-Accel-Buffering no; to the location block. Restarted all containers and Nginx. Curl GET to /sequential works, but POST returns 404.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Nginx access log:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;49.204.14.212 - - [date] &amp;quot;POST /sequential HTTP/1.1&amp;quot; 404 ... 49.204.14.212 - - [date] &amp;quot;GET /sequential HTTP/1.1&amp;quot; 200 ... &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;VSCode Copilot log:&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;404 status sending message to http://&amp;lt;my-server&amp;gt;/sequential, will attempt to fall back to legacy SSE Waiting for server to respond to `initialize` request... &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;&lt;strong&gt;Question&lt;/strong&gt;&lt;br /&gt; What am I missing in my Nginx or Docker setup that causes POST to /sequential to return 404, even though GET works? Any advice or working config examples would be greatly appreciated!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/theborngeek"&gt; /u/theborngeek &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lin3l5/supergateway_nginx_mcp_server_post_to/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lin3l5/supergateway_nginx_mcp_server_post_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lin3l5/supergateway_nginx_mcp_server_post_to/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-23T17:41:14+00:00</published>
-  </entry>
   <entry>
     <id>t3_1liuvxw</id>
     <title>Do any major LLM mobile apps (free tier) support custom MCP server settings?</title>
@@ -240,6 +227,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1lj0xjq/i_just_vibecoded_a_multillmmcp_for_claude_desktop/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-24T03:36:21+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lj71y3</id>
+    <title>Pulsar Editor MCP</title>
+    <updated>2025-06-24T09:58:29+00:00</updated>
+    <author>
+      <name>/u/drunnells</name>
+      <uri>https://old.reddit.com/user/drunnells</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt; &lt;img alt="Pulsar Editor MCP" src="https://external-preview.redd.it/UXksWlGPK7VQLrsUPhVCcD-tpXGZBATX0In8ptnsM4M.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=73a3346ed620d29f39115c3648433c9cdb36b67a" title="Pulsar Editor MCP" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've started working on an MCP server package for the Pulsar (formally Atom) editor. The idea was to chat with ChatGPT or my local llama.cpp through a client like AnythingLLM and work on development projects, kind of like Open AI's Canvas, but without copy/pasting from where I'm doing the work in Pulsar. I've had a little success and wanted to share it:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/drunnells/pulsar-edit-mcp-server"&gt;https://github.com/drunnells/pulsar-edit-mcp-server&lt;/a&gt;&lt;/p&gt; &lt;p&gt;My current challenge is figuring out the right tools that the LLM should have for editing documents. I've experimented with having it position the cursor, but it isn't good at counting columns/rows. I've tried having the LLM generate a diff/patch and a tool to apply it, but ran into the counting problem again. I've had the most luck so far by providing the contents of the document with row numbers prefixed on each line and hinting that it should just send the entire document back with modifications, but the LLM doesn't always strip the line numbers out when making updates. I'm curious to hear how others have done MCP (or any LLM tooling) for editors? I think I'm on the right path since Cursor looks like it just starts from the top with every edit.. like a replace-document function or something.&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/sy67lvqzlu8f1.gif"&gt;https://i.redd.it/sy67lvqzlu8f1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/drunnells"&gt; /u/drunnells &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-24T09:58:29+00:00</published>
   </entry>
   <entry>
     <id>t3_1lj3rkn</id>
