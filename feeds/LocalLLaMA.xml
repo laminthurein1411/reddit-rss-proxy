@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-25T08:42:19+00:00</updated>
+  <updated>2025-06-25T08:54:58+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ljqgxb</id>
-    <title>Best tts and stt open source or cheap - NOT real time?</title>
-    <updated>2025-06-24T23:30:48+00:00</updated>
-    <author>
-      <name>/u/dabble_</name>
-      <uri>https://old.reddit.com/user/dabble_</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Seeing a lot of realtime qna when I was browsing and searching the sub, what about not real time? Ideally not insanely slow but I have no need for anything close to real time so higher quality audio would be preferred.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/dabble_"&gt; /u/dabble_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljqgxb/best_tts_and_stt_open_source_or_cheap_not_real/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljqgxb/best_tts_and_stt_open_source_or_cheap_not_real/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljqgxb/best_tts_and_stt_open_source_or_cheap_not_real/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-24T23:30:48+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ljz6sh</id>
     <title>How effective are LLMs at translating heavy context-based languages like Japanese, Korean, Thai, and others?</title>
@@ -71,6 +58,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljyhkc/suggestions_to_build_local_voice_assistant/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-25T06:32:42+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lk0cjv</id>
+    <title>Jan Nano + Deepseek R1: Combining Remote Reasoning with Local Models using MCP</title>
+    <updated>2025-06-25T08:37:45+00:00</updated>
+    <author>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Combining Remote Reasoning with Local Models&lt;/h1&gt; &lt;p&gt;I made this MCP server which wraps open source models on Hugging Face. It's useful if you want to give you local model access to (bigger) models via an API.&lt;/p&gt; &lt;p&gt;This is the basic idea:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; handles initial user input and decides task complexity&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Remote model&lt;/strong&gt; (via MCP) processes complex reasoning and solves the problem&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; formats and delivers the final response, say in markdown or LaTeX.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;To use MCP tools on Hugging Face, you need to add the MCP server to your local tool.&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;servers&amp;quot;: { &amp;quot;hf-mcp-server&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://huggingface.co/mcp&amp;quot;, &amp;quot;headers&amp;quot;: { &amp;quot;Authorization&amp;quot;: &amp;quot;Bearer &amp;lt;YOUR_HF_TOKEN&amp;gt;&amp;quot; } } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;This will give your MCP client access to all the MCP servers you define in your &lt;a href="https://huggingface.co/settings/mcp"&gt;MCP settings&lt;/a&gt;. This is the best approach because the model get's access to general tools like searching the hub for models and datasets.&lt;/p&gt; &lt;p&gt;If you just want to add the inference providers MCP server directly, you can do this:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot; } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Or this, if your tool doesn't support url:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;mcp-remote&amp;quot;, &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot;, &amp;quot;--transport&amp;quot;, &amp;quot;sse-only&amp;quot; ] } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;You will need to duplicate the space on huggingface.co and add your own inference token.&lt;/p&gt; &lt;p&gt;Once you've down that, you can then prompt your local model to use the remote model. For example, I tried this:&lt;/p&gt; &lt;p&gt;``` Search for a deepseek r1 model on hugging face and use it to solve this problem via inference providers and groq: &amp;quot;Two quantum states with energies E1 and E2 have a lifetime of 10&lt;sup&gt;-9&lt;/sup&gt; sec and 10&lt;sup&gt;-8&lt;/sup&gt; sec, respectively. We want to clearly distinguish these two energy levels. Which one of the following options could be their energy difference so that they be clearly resolved?&lt;/p&gt; &lt;p&gt;10&lt;sup&gt;-4&lt;/sup&gt; eV 10&lt;sup&gt;-11&lt;/sup&gt; eV 10&lt;sup&gt;-8&lt;/sup&gt; eV 10&lt;sup&gt;-9&lt;/sup&gt; eV&amp;quot; ```&lt;/p&gt; &lt;p&gt;The main limitation is that the local model needs to be prompted directly to use the correct MCP tool, and parameters need to be declared rather than inferred, but this will depend on the local model's performance.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-25T08:37:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljnoj7</id>
@@ -164,19 +164,6 @@
     <published>2025-06-25T04:15:40+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ljs4e7</id>
-    <title>All of our posts for the last week:</title>
-    <updated>2025-06-25T00:47:47+00:00</updated>
-    <author>
-      <name>/u/Porespellar</name>
-      <uri>https://old.reddit.com/user/Porespellar</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"&gt; &lt;img alt="All of our posts for the last week:" src="https://preview.redd.it/0feqhgvc0z8f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fb98aa33f9a72ba846bb3609af050401518880f2" title="All of our posts for the last week:" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0feqhgvc0z8f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-25T00:47:47+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ljogsx</id>
     <title>LinusTechTips reviews Chinese 4090s with 48Gb VRAM, messes with LLMs</title>
     <updated>2025-06-24T22:05:08+00:00</updated>
@@ -188,6 +175,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljogsx/linustechtips_reviews_chinese_4090s_with_48gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-24T22:05:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ljs4e7</id>
+    <title>All of our posts for the last week:</title>
+    <updated>2025-06-25T00:47:47+00:00</updated>
+    <author>
+      <name>/u/Porespellar</name>
+      <uri>https://old.reddit.com/user/Porespellar</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"&gt; &lt;img alt="All of our posts for the last week:" src="https://preview.redd.it/0feqhgvc0z8f1.jpeg?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=fb98aa33f9a72ba846bb3609af050401518880f2" title="All of our posts for the last week:" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Porespellar"&gt; /u/Porespellar &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://i.redd.it/0feqhgvc0z8f1.jpeg"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs4e7/all_of_our_posts_for_the_last_week/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-25T00:47:47+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljo4ns</id>
@@ -229,32 +229,6 @@
     <published>2025-06-24T22:30:10+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ljr1wn</id>
-    <title>Where is OpenAI's open source model?</title>
-    <updated>2025-06-24T23:57:16+00:00</updated>
-    <author>
-      <name>/u/_Vedr</name>
-      <uri>https://old.reddit.com/user/_Vedr</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Did I miss something?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_Vedr"&gt; /u/_Vedr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-24T23:57:16+00:00</published>
-  </entry>
-  <entry>
-    <id>t3_1ljxa2e</id>
-    <title>Gemini CLI: your open-source AI agent</title>
-    <updated>2025-06-25T05:18:00+00:00</updated>
-    <author>
-      <name>/u/adefa</name>
-      <uri>https://old.reddit.com/user/adefa</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"&gt; &lt;img alt="Gemini CLI: your open-source AI agent" src="https://external-preview.redd.it/v_nU-59VjAFg3tUf3ktH0OR1eDLLCpt7sTIO-4lpiic.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=66dc977cf68889558dd1e0a18ef318dff22dc727" title="Gemini CLI: your open-source AI agent" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Really generous free tier&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/adefa"&gt; /u/adefa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.google/technology/developers/introducing-gemini-cli/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-25T05:18:00+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ljnhca</id>
     <title>Made an LLM Client for the PS Vita</title>
     <updated>2025-06-24T21:24:23+00:00</updated>
@@ -268,6 +242,19 @@
     <published>2025-06-24T21:24:23+00:00</published>
   </entry>
   <entry>
+    <id>t3_1ljr1wn</id>
+    <title>Where is OpenAI's open source model?</title>
+    <updated>2025-06-24T23:57:16+00:00</updated>
+    <author>
+      <name>/u/_Vedr</name>
+      <uri>https://old.reddit.com/user/_Vedr</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Did I miss something?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/_Vedr"&gt; /u/_Vedr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljr1wn/where_is_openais_open_source_model/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-24T23:57:16+00:00</published>
+  </entry>
+  <entry>
     <id>t3_1ljs95d</id>
     <title>ThermoAsk: getting an LLM to set its own temperature</title>
     <updated>2025-06-25T00:54:24+00:00</updated>
@@ -279,6 +266,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljs95d/thermoask_getting_an_llm_to_set_its_own/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-25T00:54:24+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ljxa2e</id>
+    <title>Gemini CLI: your open-source AI agent</title>
+    <updated>2025-06-25T05:18:00+00:00</updated>
+    <author>
+      <name>/u/adefa</name>
+      <uri>https://old.reddit.com/user/adefa</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"&gt; &lt;img alt="Gemini CLI: your open-source AI agent" src="https://external-preview.redd.it/v_nU-59VjAFg3tUf3ktH0OR1eDLLCpt7sTIO-4lpiic.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=66dc977cf68889558dd1e0a18ef318dff22dc727" title="Gemini CLI: your open-source AI agent" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Really generous free tier&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/adefa"&gt; /u/adefa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.google/technology/developers/introducing-gemini-cli/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljxa2e/gemini_cli_your_opensource_ai_agent/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-25T05:18:00+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljpo64</id>
