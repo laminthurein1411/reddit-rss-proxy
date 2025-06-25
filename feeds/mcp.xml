@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-25T12:11:22+00:00</updated>
+  <updated>2025-06-25T12:28:19+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>The Model Context Protocol is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools</subtitle>
-  <entry>
-    <id>t3_1lj71y3</id>
-    <title>Pulsar Editor MCP</title>
-    <updated>2025-06-24T09:58:29+00:00</updated>
-    <author>
-      <name>/u/drunnells</name>
-      <uri>https://old.reddit.com/user/drunnells</uri>
-    </author>
-    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt; &lt;img alt="Pulsar Editor MCP" src="https://external-preview.redd.it/UXksWlGPK7VQLrsUPhVCcD-tpXGZBATX0In8ptnsM4M.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=73a3346ed620d29f39115c3648433c9cdb36b67a" title="Pulsar Editor MCP" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I've started working on an MCP server package for the Pulsar (formally Atom) editor. The idea was to chat with ChatGPT or my local llama.cpp through a client like AnythingLLM and work on development projects, kind of like Open AI's Canvas, but without copy/pasting from where I'm doing the work in Pulsar. I've had a little success and wanted to share it:&lt;/p&gt; &lt;p&gt;&lt;a href="https://github.com/drunnells/pulsar-edit-mcp-server"&gt;https://github.com/drunnells/pulsar-edit-mcp-server&lt;/a&gt;&lt;/p&gt; &lt;p&gt;My current challenge is figuring out the right tools that the LLM should have for editing documents. I've experimented with having it position the cursor, but it isn't good at counting columns/rows. I've tried having the LLM generate a diff/patch and a tool to apply it, but ran into the counting problem again. I've had the most luck so far by providing the contents of the document with row numbers prefixed on each line and hinting that it should just send the entire document back with modifications, but the LLM doesn't always strip the line numbers out when making updates. I'm curious to hear how others have done MCP (or any LLM tooling) for editors? I think I'm on the right path since Cursor looks like it just starts from the top with every edit.. like a replace-document function or something.&lt;/p&gt; &lt;p&gt;&lt;a href="https://i.redd.it/sy67lvqzlu8f1.gif"&gt;https://i.redd.it/sy67lvqzlu8f1.gif&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/drunnells"&gt; /u/drunnells &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1lj71y3/pulsar_editor_mcp/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-24T09:58:29+00:00</published>
-  </entry>
   <entry>
     <id>t3_1lix63g</id>
     <title>Made an Ollama MCP Client for macos</title>
@@ -292,6 +279,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1ljg62k/livestream_with_the_mcp_team_at_microsoft_startin/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-24T16:45:22+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lk41hn</id>
+    <title>What part of building and launching your MCP server was the hardest?</title>
+    <updated>2025-06-25T12:14:06+00:00</updated>
+    <author>
+      <name>/u/ravi-scalekit</name>
+      <uri>https://old.reddit.com/user/ravi-scalekit</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Not the agent logic or wrapper code — I mean:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Modeling Input and Output schema in such a way that public MCP clients can infer data accurately&lt;/li&gt; &lt;li&gt;Dealing with fallback flows (tool unavailability, silent fails)&lt;/li&gt; &lt;li&gt;Mapping scopes and permissions to tool&lt;/li&gt; &lt;li&gt;Traceability between MCP client and server for tool invocation and authentication updates&lt;/li&gt; &lt;li&gt;Sharing metadata to MCP client as a response to a tool invocation to enhance further operations&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/ravi-scalekit"&gt; /u/ravi-scalekit &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lk41hn/what_part_of_building_and_launching_your_mcp/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1lk41hn/what_part_of_building_and_launching_your_mcp/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1lk41hn/what_part_of_building_and_launching_your_mcp/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-25T12:14:06+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljb4vs</id>
