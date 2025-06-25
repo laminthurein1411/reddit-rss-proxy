@@ -2,24 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/LocalLLaMA/.rss</id>
   <title>LocalLlama</title>
-  <updated>2025-06-25T09:25:12+00:00</updated>
+  <updated>2025-06-25T09:39:05+00:00</updated>
   <link href="https://old.reddit.com/r/LocalLLaMA/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
   <subtitle>Subreddit to discuss Llama, the large language model created by Meta AI.</subtitle>
-  <entry>
-    <id>t3_1ljzwro</id>
-    <title>Looking to buy a MacBook Pro for on the go local LLMs. Would be dealing with several workflows, files, ocr, csv data analysis (80k lines) webapps creation etc. What are your experiences with the Apple silicone and ram selection? What is the max model size you ran and what was the max context length?</title>
-    <updated>2025-06-25T08:07:38+00:00</updated>
-    <author>
-      <name>/u/alor_van_diaz</name>
-      <uri>https://old.reddit.com/user/alor_van_diaz</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Do mention the configuration of your Mac’s also please &lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/alor_van_diaz"&gt; /u/alor_van_diaz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljzwro/looking_to_buy_a_macbook_pro_for_on_the_go_local/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljzwro/looking_to_buy_a_macbook_pro_for_on_the_go_local/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljzwro/looking_to_buy_a_macbook_pro_for_on_the_go_local/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-25T08:07:38+00:00</published>
-  </entry>
   <entry>
     <id>t3_1ljup39</id>
     <title>LM Studio alternative for remote APIs?</title>
@@ -86,19 +73,6 @@
     <published>2025-06-25T06:26:39+00:00</published>
   </entry>
   <entry>
-    <id>t3_1lk0cjv</id>
-    <title>Jan Nano + Deepseek R1: Combining Remote Reasoning with Local Models using MCP</title>
-    <updated>2025-06-25T08:37:45+00:00</updated>
-    <author>
-      <name>/u/Zealousideal-Cut590</name>
-      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Combining Remote Reasoning with Local Models&lt;/h1&gt; &lt;p&gt;I made this MCP server which wraps open source models on Hugging Face. It's useful if you want to give you local model access to (bigger) models via an API.&lt;/p&gt; &lt;p&gt;This is the basic idea:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; handles initial user input and decides task complexity&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Remote model&lt;/strong&gt; (via MCP) processes complex reasoning and solves the problem&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; formats and delivers the final response, say in markdown or LaTeX.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;To use MCP tools on Hugging Face, you need to add the MCP server to your local tool.&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;servers&amp;quot;: { &amp;quot;hf-mcp-server&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://huggingface.co/mcp&amp;quot;, &amp;quot;headers&amp;quot;: { &amp;quot;Authorization&amp;quot;: &amp;quot;Bearer &amp;lt;YOUR_HF_TOKEN&amp;gt;&amp;quot; } } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;This will give your MCP client access to all the MCP servers you define in your &lt;a href="https://huggingface.co/settings/mcp"&gt;MCP settings&lt;/a&gt;. This is the best approach because the model get's access to general tools like searching the hub for models and datasets.&lt;/p&gt; &lt;p&gt;If you just want to add the inference providers MCP server directly, you can do this:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot; } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Or this, if your tool doesn't support url:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;mcp-remote&amp;quot;, &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot;, &amp;quot;--transport&amp;quot;, &amp;quot;sse-only&amp;quot; ] } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;You will need to duplicate the space on huggingface.co and add your own inference token.&lt;/p&gt; &lt;p&gt;Once you've down that, you can then prompt your local model to use the remote model. For example, I tried this:&lt;/p&gt; &lt;p&gt;``` Search for a deepseek r1 model on hugging face and use it to solve this problem via inference providers and groq: &amp;quot;Two quantum states with energies E1 and E2 have a lifetime of 10&lt;sup&gt;-9&lt;/sup&gt; sec and 10&lt;sup&gt;-8&lt;/sup&gt; sec, respectively. We want to clearly distinguish these two energy levels. Which one of the following options could be their energy difference so that they be clearly resolved?&lt;/p&gt; &lt;p&gt;10&lt;sup&gt;-4&lt;/sup&gt; eV 10&lt;sup&gt;-11&lt;/sup&gt; eV 10&lt;sup&gt;-8&lt;/sup&gt; eV 10&lt;sup&gt;-9&lt;/sup&gt; eV&amp;quot; ```&lt;/p&gt; &lt;p&gt;The main limitation is that the local model needs to be prompted directly to use the correct MCP tool, and parameters need to be declared rather than inferred, but this will depend on the local model's performance.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"/>
-    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-25T08:37:45+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ljrt7g</id>
     <title>WebBench: A real-world benchmark for Browser Agents</title>
     <updated>2025-06-25T00:32:43+00:00</updated>
@@ -151,17 +125,17 @@
     <published>2025-06-25T07:08:25+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ljw728</id>
-    <title>NeuralTranslate: Nahuatl to Spanish LLM! (Gemma 3 27b fine-tune)</title>
-    <updated>2025-06-25T04:15:40+00:00</updated>
+    <id>t3_1lk0cjv</id>
+    <title>Jan Nano + Deepseek R1: Combining Remote Reasoning with Local Models using MCP</title>
+    <updated>2025-06-25T08:37:45+00:00</updated>
     <author>
-      <name>/u/Azuriteh</name>
-      <uri>https://old.reddit.com/user/Azuriteh</uri>
+      <name>/u/Zealousideal-Cut590</name>
+      <uri>https://old.reddit.com/user/Zealousideal-Cut590</uri>
     </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey! After quite a long time there's a new release from my open-source series of models: NeuralTranslate!&lt;/p&gt; &lt;p&gt;This time I full fine-tuned Gemma 3 27b on a Nahuatl-Spanish dataset. It comes with 3 versions: v1, v1.1 &amp;amp; v1.2. v1 is the epoch 4 checkpoint for the model, v1.1 is for epoch 9 &amp;amp; v1.2 is for epoch 10. I've seen great results with the v1.2 version and the demo for the model actually uses that one! But there might be some overfitting... I haven't thoroughly tested the checkpoints yet. v1 is the main release and shouldn't be presenting signs of overfitting from my limited testing, though!&lt;/p&gt; &lt;p&gt;Here is the demo: &lt;a href="https://huggingface.co/spaces/Thermostatic/neuraltranslate-27b-mt-nah-es"&gt;https://huggingface.co/spaces/Thermostatic/neuraltranslate-27b-mt-nah-es&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here are the weights:&lt;/p&gt; &lt;p&gt;- v1: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;- v1.1: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.1"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;- v1.2: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.2"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I've contacted a few knowledgeable nahuatl speakers and it seems that the dataset itself is archaic, so sadly the model itself it's not as good as I'd wish I wanted, but hopefully I can overcome those issues in future releases! Currently working in creating the v1 of NeuralTranslate English to Spanish and will be releasing it shortly :)&lt;/p&gt; &lt;p&gt;I fine-tuned the model using a B200 with the help of Unsloth (4-bit full fine-tuning is a game changer). You can easily recreate my workflow with my public repo for training LLMs in QLoRa &amp;amp; Full fine-tune with Unsloth too: &lt;a href="https://github.com/Sekinal/neuraltranslate-nahuatl/tree/master"&gt;https://github.com/Sekinal/neuraltranslate-nahuatl/tree/master&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hopefully this isn't taken as spam, I'm really not trying to make a profit nor anything like that, I just think the model itself or my workflow would be of help for a lot of people and this is a really exciting project I wanted to share!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Azuriteh"&gt; /u/Azuriteh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;h1&gt;Combining Remote Reasoning with Local Models&lt;/h1&gt; &lt;p&gt;I made this MCP server which wraps open source models on Hugging Face. It's useful if you want to give you local model access to (bigger) models via an API.&lt;/p&gt; &lt;p&gt;This is the basic idea:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; handles initial user input and decides task complexity&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Remote model&lt;/strong&gt; (via MCP) processes complex reasoning and solves the problem&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Local model&lt;/strong&gt; formats and delivers the final response, say in markdown or LaTeX.&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;To use MCP tools on Hugging Face, you need to add the MCP server to your local tool.&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;servers&amp;quot;: { &amp;quot;hf-mcp-server&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://huggingface.co/mcp&amp;quot;, &amp;quot;headers&amp;quot;: { &amp;quot;Authorization&amp;quot;: &amp;quot;Bearer &amp;lt;YOUR_HF_TOKEN&amp;gt;&amp;quot; } } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;This will give your MCP client access to all the MCP servers you define in your &lt;a href="https://huggingface.co/settings/mcp"&gt;MCP settings&lt;/a&gt;. This is the best approach because the model get's access to general tools like searching the hub for models and datasets.&lt;/p&gt; &lt;p&gt;If you just want to add the inference providers MCP server directly, you can do this:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot; } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Or this, if your tool doesn't support url:&lt;/p&gt; &lt;p&gt;&lt;code&gt;json { &amp;quot;mcpServers&amp;quot;: { &amp;quot;inference-providers-mcp&amp;quot;: { &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;, &amp;quot;args&amp;quot;: [ &amp;quot;mcp-remote&amp;quot;, &amp;quot;https://burtenshaw-inference-providers-mcp.hf.space/gradio_api/mcp/sse&amp;quot;, &amp;quot;--transport&amp;quot;, &amp;quot;sse-only&amp;quot; ] } } } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;You will need to duplicate the space on huggingface.co and add your own inference token.&lt;/p&gt; &lt;p&gt;Once you've down that, you can then prompt your local model to use the remote model. For example, I tried this:&lt;/p&gt; &lt;p&gt;``` Search for a deepseek r1 model on hugging face and use it to solve this problem via inference providers and groq: &amp;quot;Two quantum states with energies E1 and E2 have a lifetime of 10&lt;sup&gt;-9&lt;/sup&gt; sec and 10&lt;sup&gt;-8&lt;/sup&gt; sec, respectively. We want to clearly distinguish these two energy levels. Which one of the following options could be their energy difference so that they be clearly resolved?&lt;/p&gt; &lt;p&gt;10&lt;sup&gt;-4&lt;/sup&gt; eV 10&lt;sup&gt;-11&lt;/sup&gt; eV 10&lt;sup&gt;-8&lt;/sup&gt; eV 10&lt;sup&gt;-9&lt;/sup&gt; eV&amp;quot; ```&lt;/p&gt; &lt;p&gt;The main limitation is that the local model needs to be prompted directly to use the correct MCP tool, and parameters need to be declared rather than inferred, but this will depend on the local model's performance.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Zealousideal-Cut590"&gt; /u/Zealousideal-Cut590 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lk0cjv/jan_nano_deepseek_r1_combining_remote_reasoning/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
-    <published>2025-06-25T04:15:40+00:00</published>
+    <published>2025-06-25T08:37:45+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljogsx</id>
@@ -175,6 +149,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljogsx/linustechtips_reviews_chinese_4090s_with_48gb/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-24T22:05:08+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ljw728</id>
+    <title>NeuralTranslate: Nahuatl to Spanish LLM! (Gemma 3 27b fine-tune)</title>
+    <updated>2025-06-25T04:15:40+00:00</updated>
+    <author>
+      <name>/u/Azuriteh</name>
+      <uri>https://old.reddit.com/user/Azuriteh</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Hey! After quite a long time there's a new release from my open-source series of models: NeuralTranslate!&lt;/p&gt; &lt;p&gt;This time I full fine-tuned Gemma 3 27b on a Nahuatl-Spanish dataset. It comes with 3 versions: v1, v1.1 &amp;amp; v1.2. v1 is the epoch 4 checkpoint for the model, v1.1 is for epoch 9 &amp;amp; v1.2 is for epoch 10. I've seen great results with the v1.2 version and the demo for the model actually uses that one! But there might be some overfitting... I haven't thoroughly tested the checkpoints yet. v1 is the main release and shouldn't be presenting signs of overfitting from my limited testing, though!&lt;/p&gt; &lt;p&gt;Here is the demo: &lt;a href="https://huggingface.co/spaces/Thermostatic/neuraltranslate-27b-mt-nah-es"&gt;https://huggingface.co/spaces/Thermostatic/neuraltranslate-27b-mt-nah-es&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here are the weights:&lt;/p&gt; &lt;p&gt;- v1: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;- v1.1: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.1"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.1&lt;/a&gt;&lt;/p&gt; &lt;p&gt;- v1.2: &lt;a href="https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.2"&gt;https://huggingface.co/Thermostatic/neuraltranslate-27b-mt-nah-es-v1.2&lt;/a&gt;&lt;/p&gt; &lt;p&gt;I've contacted a few knowledgeable nahuatl speakers and it seems that the dataset itself is archaic, so sadly the model itself it's not as good as I'd wish I wanted, but hopefully I can overcome those issues in future releases! Currently working in creating the v1 of NeuralTranslate English to Spanish and will be releasing it shortly :)&lt;/p&gt; &lt;p&gt;I fine-tuned the model using a B200 with the help of Unsloth (4-bit full fine-tuning is a game changer). You can easily recreate my workflow with my public repo for training LLMs in QLoRa &amp;amp; Full fine-tune with Unsloth too: &lt;a href="https://github.com/Sekinal/neuraltranslate-nahuatl/tree/master"&gt;https://github.com/Sekinal/neuraltranslate-nahuatl/tree/master&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Hopefully this isn't taken as spam, I'm really not trying to make a profit nor anything like that, I just think the model itself or my workflow would be of help for a lot of people and this is a really exciting project I wanted to share!!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Azuriteh"&gt; /u/Azuriteh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljw728/neuraltranslate_nahuatl_to_spanish_llm_gemma_3/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-25T04:15:40+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljs4e7</id>
@@ -214,6 +201,19 @@
     <link href="https://old.reddit.com/r/LocalLLaMA/comments/1ljnmj9/google_researcher_requesting_feedback_on_the_next/"/>
     <category term="LocalLLaMA" label="r/LocalLLaMA"/>
     <published>2025-06-24T21:30:18+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1lk12th</id>
+    <title>New Mistral Small 3.2 actually feels like something big. [non-reasoning]</title>
+    <updated>2025-06-25T09:26:23+00:00</updated>
+    <author>
+      <name>/u/Snail_Inference</name>
+      <uri>https://old.reddit.com/user/Snail_Inference</uri>
+    </author>
+    <content type="html">&lt;table&gt; &lt;tr&gt;&lt;td&gt; &lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk12th/new_mistral_small_32_actually_feels_like/"&gt; &lt;img alt="New Mistral Small 3.2 actually feels like something big. [non-reasoning]" src="https://external-preview.redd.it/RVufpUx3tddh_BCVq7ZzBCU7nLRDZ_d0EprIuvN6J-E.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=47f397e4a22ed5ec7e82aad070eb446319603abc" title="New Mistral Small 3.2 actually feels like something big. [non-reasoning]" /&gt; &lt;/a&gt; &lt;/td&gt;&lt;td&gt; &lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://preview.redd.it/1wwakei8k19f1.png?width=1009&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fb72a4bf78efba7661e6ea5f54df70331a15539b"&gt;https://preview.redd.it/1wwakei8k19f1.png?width=1009&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=fb72a4bf78efba7661e6ea5f54df70331a15539b&lt;/a&gt;&lt;/p&gt; &lt;p&gt;In my experience, it ranges far above its size.&lt;/p&gt; &lt;p&gt;Source: &lt;a href="http://artificialanalysis.ai"&gt;artificialanalysis.ai&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/Snail_Inference"&gt; /u/Snail_Inference &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk12th/new_mistral_small_32_actually_feels_like/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/LocalLLaMA/comments/1lk12th/new_mistral_small_32_actually_feels_like/"&gt;[comments]&lt;/a&gt;&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content>
+    <link href="https://old.reddit.com/r/LocalLLaMA/comments/1lk12th/new_mistral_small_32_actually_feels_like/"/>
+    <category term="LocalLLaMA" label="r/LocalLLaMA"/>
+    <published>2025-06-25T09:26:23+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljp29d</id>
