@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/r/mcp/.rss</id>
   <title>Model Context Protocol (MCP)</title>
-  <updated>2025-06-25T04:26:12+00:00</updated>
+  <updated>2025-06-25T04:43:06+00:00</updated>
   <link href="https://old.reddit.com/r/mcp/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <icon>https://www.redditstatic.com/icon.png/</icon>
@@ -177,19 +177,6 @@
     <published>2025-06-24T23:15:05+00:00</published>
   </entry>
   <entry>
-    <id>t3_1ljqc2s</id>
-    <title>Handling MCP notifications in a client</title>
-    <updated>2025-06-24T23:25:01+00:00</updated>
-    <author>
-      <name>/u/squirrelwug</name>
-      <uri>https://old.reddit.com/user/squirrelwug</uri>
-    </author>
-    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Documentation and courses about MCP will often mention how the protocol supports notifications, which would allow the Server to communicate data to the Client without being prompted by a request or vice-versa.&lt;/p&gt; &lt;p&gt;For instance, the Client could request an MCP Server to perform a slow task using a tool request, the Server could reply with a confirmation that it is working on it and then send a notification to the Client when the task is finished, preventing the Client from being blocked in the meantime.&lt;/p&gt; &lt;p&gt;An alternative to that would be for the server to expose a tool or resource allowing the Client to poll for the slow task's status, but that wouldn't be as efficient.&lt;/p&gt; &lt;p&gt;I've always thought that MCP notifications were a neat feature but I haven't seen it in practice anywhere. &lt;/p&gt; &lt;p&gt;Furthermore, it isn't really obvious how you'd go about at integrating it with an LLM-based system as those generally follow a turn-based logic alternating between user prompts (User step) and LLM responses (Agent step); chances are that Server notifications are received by the Client during the User step, so we'd need either to wait until the Agent step and update the LLM's context with any notifications that might have been received in the meanwhile or modify the loop logic to allow notifications to 'wake up' the agent without an additional User prompt (breaking the turn-based logic, which opens a whole can of worms).&lt;/p&gt; &lt;p&gt;So, that leaves me with two questions:&lt;/p&gt; &lt;p&gt;1) Are there any MCP servers and clients with MCP notification-support we could use for reference?&lt;/p&gt; &lt;p&gt;2) How do they handle these issues?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/squirrelwug"&gt; /u/squirrelwug &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
-    <link href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"/>
-    <category term="mcp" label="r/mcp"/>
-    <published>2025-06-24T23:25:01+00:00</published>
-  </entry>
-  <entry>
     <id>t3_1ljamuw</id>
     <title>MXCP: Build Your Own Enterprise-Grade MCP Server</title>
     <updated>2025-06-24T13:06:45+00:00</updated>
@@ -253,6 +240,19 @@
     <link href="https://old.reddit.com/r/mcp/comments/1ljjc7w/mcpuse_133_streamablehttp_and_observability/"/>
     <category term="mcp" label="r/mcp"/>
     <published>2025-06-24T18:44:10+00:00</published>
+  </entry>
+  <entry>
+    <id>t3_1ljqc2s</id>
+    <title>Handling MCP notifications in a client</title>
+    <updated>2025-06-24T23:25:01+00:00</updated>
+    <author>
+      <name>/u/squirrelwug</name>
+      <uri>https://old.reddit.com/user/squirrelwug</uri>
+    </author>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Documentation and courses about MCP will often mention how the protocol supports notifications, which would allow the Server to communicate data to the Client without being prompted by a request or vice-versa.&lt;/p&gt; &lt;p&gt;For instance, the Client could request an MCP Server to perform a slow task using a tool request, the Server could reply with a confirmation that it is working on it and then send a notification to the Client when the task is finished, preventing the Client from being blocked in the meantime.&lt;/p&gt; &lt;p&gt;An alternative to that would be for the server to expose a tool or resource allowing the Client to poll for the slow task's status, but that wouldn't be as efficient.&lt;/p&gt; &lt;p&gt;I've always thought that MCP notifications were a neat feature but I haven't seen it in practice anywhere. &lt;/p&gt; &lt;p&gt;Furthermore, it isn't really obvious how you'd go about at integrating it with an LLM-based system as those generally follow a turn-based logic alternating between user prompts (User step) and LLM responses (Agent step); chances are that Server notifications are received by the Client during the User step, so we'd need either to wait until the Agent step and update the LLM's context with any notifications that might have been received in the meanwhile or modify the loop logic to allow notifications to 'wake up' the agent without an additional User prompt (breaking the turn-based logic, which opens a whole can of worms).&lt;/p&gt; &lt;p&gt;So, that leaves me with two questions:&lt;/p&gt; &lt;p&gt;1) Are there any MCP servers and clients with MCP notification-support we could use for reference?&lt;/p&gt; &lt;p&gt;2) How do they handle these issues?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href="https://old.reddit.com/user/squirrelwug"&gt; /u/squirrelwug &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <link href="https://old.reddit.com/r/mcp/comments/1ljqc2s/handling_mcp_notifications_in_a_client/"/>
+    <category term="mcp" label="r/mcp"/>
+    <published>2025-06-24T23:25:01+00:00</published>
   </entry>
   <entry>
     <id>t3_1ljb43t</id>
